@@ -1,0 +1,7 @@
+build	computer.platform	computer.touch	date	time	subject	group	sessionid	blockcode	blocknum	trialcode	k	latency	randStart	scrfunc	rtvspos	mag	freq	ev	inc	rng	totalPoints	radius_px
+6.6.1	mac	0	2022-09-15	12:27:21	1	1	1	instructions	1	instructions1	37	862	0	DEV	POS						0	475.2000000000000454747px
+6.6.1	mac	0	2022-09-15	12:27:21	1	1	1	instructions	1	instructions2	37	174	0	DEV	POS						0	475.2000000000000454747px
+6.6.1	mac	0	2022-09-15	12:27:21	1	1	1	instructions	1	instructions3	37	235	0	DEV	POS						0	475.2000000000000454747px
+6.6.1	mac	0	2022-09-15	12:27:21	1	1	1	experiment	2	experiment	37	511	0	DEV	POS						0	475.2000000000000454747px
+6.6.1	mac	0	2022-09-15	12:27:21	1	1	1	experiment	2	dispFeedback	37	1000	0	DEV	POS	70	0.8269999999999999574	57.4854343708089530196	0	0.8874860868992949792	0	475.2000000000000454747px
+6.6.1	mac	0	2022-09-15	12:27:21	1	1	1	experiment	2	experiment	37	0	0	DEV	POS						0	475.2000000000000454747px

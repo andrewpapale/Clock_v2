@@ -1,0 +1,10 @@
+build	computer.platform	computer.touch	date	time	subject	group	sessionid	blockcode	blocknum	trialcode	latency	randStart	startPos	scrfunc	rtvspos	randStart	circleproportion	mag	freq	ev	inc	rng	startPos	n_revolutions	totalPoints	totalEarnings	Earnings
+6.6.1	mac	0	2023-01-17	12:30:42	1	1	1	instructions	1	instructions1	491	1	75	IEV	POS	1	0.3300000000000000155						75	0	0	0	
+6.6.1	mac	0	2023-01-17	12:30:42	1	1	1	instructions	1	displayGoodJob	791	1	75	IEV	POS	1	0.3300000000000000155						75	0	0	0	
+6.6.1	mac	0	2023-01-17	12:30:42	1	1	1	instructions	1	instructions3	273	1	75	IEV	POS	1	0.3300000000000000155						75	0	0	0	
+6.6.1	mac	0	2023-01-17	12:30:42	1	1	1	instructions	1	countdown	1000	1	75	IEV	POS	1	0.3300000000000000155						75	0	0	0	
+6.6.1	mac	0	2023-01-17	12:30:42	1	1	1	experiment	2	experiment	1560	1	4	IEV	POS	1	0.3300000000000000155						4	8507	0	0	
+6.6.1	mac	0	2023-01-17	12:30:42	1	1	1	experiment	2	dispFeedback	1000	1	4	IEV	POS	1	0.3300000000000000155	97	1.1135466326228162792	107.9427621260533953773	97	0.7541695057307764571	4	8507	97	9	9
+6.6.1	mac	0	2023-01-17	12:30:42	1	1	1	experiment	3	experiment	1733	1	53	CEV	POS	1	0.3300000000000000155						53	12282	97	9	9
+6.6.1	mac	0	2023-01-17	12:30:42	1	1	1	experiment	3	dispFeedback	1000	1	53	CEV	POS	1	0.3300000000000000155	50	0.8095714285714286085	40.2382857142857162103	50	0.267119905740749064	53	12282	147	15	6
+6.6.1	mac	0	2023-01-17	12:30:42	1	1	1	endscreen	4	endscreen	2294	1	53	CEV	POS	1	0.3300000000000000155						53	12282	147	15	

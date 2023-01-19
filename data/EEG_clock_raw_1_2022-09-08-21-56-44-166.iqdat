@@ -1,0 +1,15 @@
+build	computer.platform	computer.touch	date	time	subject	group	sessionid	blockcode	blocknum	trialcode	k	latency	scrfunc	mag	freq	ev	inc	rng
+6.6.1	mac	0	2022-09-08	17:56:44	1	1	1	instructions	1	instructions1	37	582	DEV					
+6.6.1	mac	0	2022-09-08	17:56:44	1	1	1	instructions	1	instructions2	37	238	DEV					
+6.6.1	mac	0	2022-09-08	17:56:44	1	1	1	instructions	1	instructions3	37	273	DEV					
+6.6.1	mac	0	2022-09-08	17:56:44	1	1	1	experiment	2	experiment	37	621	DEV					
+6.6.1	mac	0	2022-09-08	17:56:44	1	1	1	experiment	2	dispFeedback	37	1000	DEV	76	0.7341405022364468902	55.6929578976018078151	76	0.1653310817585632031
+6.6.1	mac	0	2022-09-08	17:56:44	1	1	1	experiment	2	experiment	37	421	DEV					
+6.6.1	mac	0	2022-09-08	17:56:44	1	1	1	experiment	2	dispFeedback	37	1000	DEV	70	0.7849623956801828895	55.1198743546448355346	70	0.5368702231293707161
+6.6.1	mac	0	2022-09-08	17:56:44	1	1	1	experiment	2	experiment	37	643	DEV					
+6.6.1	mac	0	2022-09-08	17:56:44	1	1	1	experiment	2	dispFeedback	37	1000	DEV	69	0.7287210891154421999	50.3011478492531480811	69	0.1754486831313578077
+6.6.1	mac	0	2022-09-08	17:56:44	1	1	1	experiment	2	experiment	37	3016	DEV					
+6.6.1	mac	0	2022-09-08	17:56:44	1	1	1	experiment	2	dispFeedback	37	1000	DEV	84	0.3579675019494871213	30.1423066309099496607	0	0.6189435428518205162
+6.6.1	mac	0	2022-09-08	17:56:44	1	1	1	experiment	2	experiment	37	684	DEV					
+6.6.1	mac	0	2022-09-08	17:56:44	1	1	1	experiment	2	dispFeedback	37	1000	DEV	77	0.7187152988019551714	55.5763360652367452985	77	0.4875493346451663657
+6.6.1	mac	0	2022-09-08	17:56:44	1	1	1	endscreen	3	endscreen	37	3000	DEV					

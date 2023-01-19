@@ -1,0 +1,5 @@
+build	computer.platform	computer.touch	date	time	subject	group	sessionid	blockcode	blocknum	trialcode	k	latency	scrfunc	mag	freq	ev	inc	rng
+6.6.1	mac	0	2022-09-12	14:35:10	1	1	1	instructions	1	instructions1	37	664	CEVR					
+6.6.1	mac	0	2022-09-12	14:35:10	1	1	1	instructions	1	instructions2	37	284	CEVR					
+6.6.1	mac	0	2022-09-12	14:35:10	1	1	1	instructions	1	instructions3	37	376	CEVR					
+6.6.1	mac	0	2022-09-12	14:35:10	1	1	1	experiment	2	experiment	37	0	CEVR					

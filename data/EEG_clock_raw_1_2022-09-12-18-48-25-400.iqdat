@@ -1,0 +1,15 @@
+build	computer.platform	computer.touch	date	time	subject	group	sessionid	blockcode	blocknum	trialcode	k	latency	scrfunc	mag	freq	ev	inc	rng
+6.6.1	mac	0	2022-09-12	14:48:25	1	1	1	instructions	1	instructions1	37	644	CEVR					
+6.6.1	mac	0	2022-09-12	14:48:25	1	1	1	instructions	1	instructions2	37	215	CEVR					
+6.6.1	mac	0	2022-09-12	14:48:25	1	1	1	instructions	1	instructions3	37	286	CEVR					
+6.6.1	mac	0	2022-09-12	14:48:25	1	1	1	experiment	2	experiment	37	1811	CEVR					
+6.6.1	mac	0	2022-09-12	14:48:25	1	1	1	experiment	2	dispFeedback	37	1000	CEVR	130	0.2199015112922397819	28.6437425708948865122	0	0.8019851177935454212
+6.6.1	mac	0	2022-09-12	14:48:25	1	1	1	experiment	2	experiment	37	2395	CEVR					
+6.6.1	mac	0	2022-09-12	14:48:25	1	1	1	experiment	2	dispFeedback	37	1000	CEVR	115	0.2441093308199811796	27.9679547596606994375	0	0.9668347046167670156
+6.6.1	mac	0	2022-09-12	14:48:25	1	1	1	experiment	2	experiment	37	3162	CEVR					
+6.6.1	mac	0	2022-09-12	14:48:25	1	1	1	experiment	2	dispFeedback	37	1000	CEVR	92	0.2853680035257822878	26.1560158660202723979	0	0.9203671857063582262
+6.6.1	mac	0	2022-09-12	14:48:25	1	1	1	experiment	2	experiment	37	3033	CEVR					
+6.6.1	mac	0	2022-09-12	14:48:25	1	1	1	experiment	2	dispFeedback	37	1000	CEVR	91	0.2774801799871438046	25.3458324405399686441	0	0.4503112392151521481
+6.6.1	mac	0	2022-09-12	14:48:25	1	1	1	experiment	2	experiment	37	3310	CEVR					
+6.6.1	mac	0	2022-09-12	14:48:25	1	1	1	experiment	2	dispFeedback	37	1000	CEVR	85	0.2949886104783598917	25.2004555808656043325	0	0.9041371121779403497
+6.6.1	mac	0	2022-09-12	14:48:25	1	1	1	endscreen	3	endscreen	37	3000	CEVR					

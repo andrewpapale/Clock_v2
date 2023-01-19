@@ -1,0 +1,15 @@
+build	computer.platform	computer.touch	date	time	subject	group	sessionid	blockcode	blocknum	trialcode	k	latency	randStart	scrfunc	rtvspos	mag	freq	ev	inc	rng	totalPoints
+6.6.1	mac	0	2022-09-15	12:13:52	1	1	1	instructions	1	instructions1	37	555	0	DEV	POS						0
+6.6.1	mac	0	2022-09-15	12:13:52	1	1	1	instructions	1	instructions2	37	248	0	DEV	POS						0
+6.6.1	mac	0	2022-09-15	12:13:52	1	1	1	instructions	1	instructions3	37	206	0	DEV	POS						0
+6.6.1	mac	0	2022-09-15	12:13:52	1	1	1	experiment	2	experiment	37	871	0	DEV	POS						0
+6.6.1	mac	0	2022-09-15	12:13:52	1	1	1	experiment	2	dispFeedback	37	1000	0	DEV	POS	64	0.7755714285714285783	49.257164484215202549	64	0.3484372718605299735	64
+6.6.1	mac	0	2022-09-15	12:13:52	1	1	1	experiment	2	experiment	37	8725	0	DEV	POS						64
+6.6.1	mac	0	2022-09-15	12:13:52	1	1	1	experiment	2	dispFeedback	37	1000	0	DEV	POS	69	-0.3464285714285715301	-23.7340997321146573995	0	0.2714880628677755481	64
+6.6.1	mac	0	2022-09-15	12:13:52	1	1	1	experiment	2	experiment	37	6421	0	DEV	POS						64
+6.6.1	mac	0	2022-09-15	12:13:52	1	1	1	experiment	2	dispFeedback	37	1000	0	DEV	POS	66	-0.0172857142857143486	-1.1324010293432211771	0	0.5441127732731664279	64
+6.6.1	mac	0	2022-09-15	12:13:52	1	1	1	experiment	2	experiment	37	11075	0	DEV	POS						64
+6.6.1	mac	0	2022-09-15	12:13:52	1	1	1	experiment	2	dispFeedback	37	1000	0	DEV	POS	66	-0.6821428571428571619	-44.6877265711889393174	0	0.8104533392029007466	64
+6.6.1	mac	0	2022-09-15	12:13:52	1	1	1	experiment	2	experiment	37	5013	0	DEV	POS						64
+6.6.1	mac	0	2022-09-15	12:13:52	1	1	1	experiment	2	dispFeedback	37	1000	0	DEV	POS	61	0.1838571428571428301	11.1253434160012290022	61	0.0520533295469482737	125
+6.6.1	mac	0	2022-09-15	12:13:52	1	1	1	endscreen	3	endscreen	37	3000	0	DEV	POS						125

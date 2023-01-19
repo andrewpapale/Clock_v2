@@ -1,0 +1,10 @@
+build	computer.platform	computer.touch	date	time	subject	group	sessionid	blockcode	blocknum	trialcode	k	latency	scrfunc	mag	freq	ev
+6.6.1	mac	0	2022-09-08	17:43:03	1	1	1	instructions	1	instructions1	37	564	IEV			
+6.6.1	mac	0	2022-09-08	17:43:03	1	1	1	instructions	1	instructions2	37	243	IEV			
+6.6.1	mac	0	2022-09-08	17:43:03	1	1	1	instructions	1	instructions3	37	264	IEV			
+6.6.1	mac	0	2022-09-08	17:43:03	1	1	1	experiment	2	experiment	37	4203	IEV			
+6.6.1	mac	0	2022-09-08	17:43:03	1	1	1	experiment	2	experiment	37	4210	IEV	162	0.3355275656804624362	54.3700699217929610541
+6.6.1	mac	0	2022-09-08	17:43:03	1	1	1	experiment	2	experiment	37	279	IEV	164	0.3341192087737855365	54.7476367906790883922
+6.6.1	mac	0	2022-09-08	17:43:03	1	1	1	experiment	2	experiment	37	586	IEV	20	0.8976460328287126922	18.1027414921743030618
+6.6.1	mac	0	2022-09-08	17:43:03	1	1	1	experiment	2	experiment	37	1505	IEV	22	0.8897374853500551461	19.629044677215944148
+6.6.1	mac	0	2022-09-08	17:43:03	1	1	1	endscreen	3	endscreen	37	3000	IEV	28	0.8238597032175439816	23.1046256872566004859
