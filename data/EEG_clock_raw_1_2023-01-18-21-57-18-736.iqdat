@@ -1,4 +1,0 @@
-build	computer.platform	computer.touch	date	time	subject	group	sessionid	blockcode	blocknum	trialcode	latency	randStart	startPos	scrfunc	rtvspos	randStart	circleproportion	mag	freq	ev	inc	rng	startPos	n_revolutions	totalPoints	totalEarnings	Earnings
-6.6.1	mac	0	2023-01-18	16:57:18	1	1	1	experiment	1	experiment_noU	410	1	25	CEVR	POS	1	0.3300000000000000155						25	1516	0	0	
-6.6.1	mac	0	2023-01-18	16:57:18	1	1	1	experiment	1	dispFeedback_noU	1000	1	25	CEVR	POS	1	0.3300000000000000155	94	0.2703549060542797533	25.3747390396659717737	0	0.4039811611650467871	25	1516	0	0	0
-6.6.1	mac	0	2023-01-18	16:57:18	1	1	1	experiment	1	experiment_U	330	1	42	CEVR	POS	1	0.3300000000000000155						42	3868	0	0	0

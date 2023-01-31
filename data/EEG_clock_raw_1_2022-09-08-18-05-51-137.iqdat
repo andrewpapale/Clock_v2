@@ -1,9 +1,0 @@
-build	computer.platform	computer.touch	date	time	subject	group	sessionid	blockcode	blocknum	trialcode	k	latency
-6.6.1	mac	0	2022-09-08	14:05:51	1	1	1	instructions	1	instructions1	37	675
-6.6.1	mac	0	2022-09-08	14:05:51	1	1	1	instructions	1	instructions2	37	263
-6.6.1	mac	0	2022-09-08	14:05:51	1	1	1	instructions	1	instructions3	37	318
-6.6.1	mac	0	2022-09-08	14:05:51	1	1	1	experiment	2	experiment	37	1024
-6.6.1	mac	0	2022-09-08	14:05:51	1	1	1	experiment	2	experiment	37	1383
-6.6.1	mac	0	2022-09-08	14:05:51	1	1	1	experiment	2	experiment	37	1199
-6.6.1	mac	0	2022-09-08	14:05:51	1	1	1	experiment	2	experiment	37	1086
-6.6.1	mac	0	2022-09-08	14:05:51	1	1	1	experiment	2	experiment	37	0
