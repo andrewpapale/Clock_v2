@@ -237,11 +237,17 @@ EEG Clock variants
 / blockCount = 0;
 / uncertaintyStart1 = 0;
 / uncertaintyStart2 = 0;
-/ uncertaintyCount = 0;
-/ nUncertainty = 0;
-/ fogPos = 0;
-/ chooseFog = 0;
-/ chooseUncertainty = 0;
+/ nUncertainty1 = 0;
+/ nUncertainty2 = 0;
+/ fogPos1 = 0;
+/ fogPos2 = 0;
+/ chooseFog1 = 0;
+/ chooseFog2 = 0;
+/ chooseUncertainty1 = 0;
+/ chooseUncertainty2 = 0;
+/ uncertaintyCount1 = 0;
+/ uncertaintyCount2 = 0;
+/ uncertainty_block = 0;
 </values>
 
 <parameters>
@@ -256,13 +262,17 @@ EEG Clock variants
 
 <data>
 / columns = (build, computer.platform, computer.touch, date, time, subject, group, script.sessionid, blockcode, blocknum, 
-trialcode,latency, parameters.randStart, values.startPos,values.scrfunc, parameters.rtvspos, parameters.randStart, parameters.circleproportion, 
-values.mag, values.freq, values.ev, values.inc, values.rng values.startPos, values.fogPos,values.chooseUncertainty, values.uncertaintyCount, values.rt_shifted,values.n_revolutions,values.totalPoints, values.totalEarnings, values.Earnings)
+trialcode,latency,parameters.randStart, values.startPos,values.scrfunc, parameters.rtvspos, parameters.randStart, 
+values.mag, values.freq, values.ev, values.inc, values.rng values.startPos, values.fogPos1,values.fogPos2,
+values.chooseUncertainty1, values.chooseUncertainty2, values.uncertaintyCount1, values.uncertaintyCount2,
+values.blockCount,parameters.ntrials, values.trialCount, 
+values.uncertaintyStart1, values.uncertaintyStart2, values.uncertainty_block,
+values.rt_shifted,values.totalPoints, values.totalEarnings, values.Earnings)
 </data>
 
 <summarydata>
 / columns = (computer.platform,computer.touch,script.sessionid,values.k,values.Shift,values.rt_extended,
-values.DEV_factor,values.DEV_factor2,values.sin_factor,values.time_per_revolution,expressions.radius_px)
+values.DEV_factor,values.DEV_factor2,values.sin_factor,values.time_per_revolution,expressions.radius_px, values.gamma)
 </summarydata>
 
 
@@ -470,7 +480,7 @@ values.DEV_factor,values.DEV_factor2,values.sin_factor,values.time_per_revolutio
 
 
 <list fog_hpos>
-/items = (
+/ items = (
 expressions.centerx + expressions.widthchange_angle0,
 expressions.centerx + expressions.widthchange_angle30,
 expressions.centerx + expressions.widthchange_angle60,
@@ -526,13 +536,13 @@ expressions.centery + expressions.heightchange_angle330
 
 
 <item instructions1>
-/1 = "In this game, you are catching trolls on a far away planet.
+/ 1 = "In this game, you are rescuing trolls on a far away planet.
       
 On each of your 320 trials you can decide where to land your spacecraft.  Your spacecraft will orbit the planet, and you can land it at any point by pressing the spacebar.
       
-If you stop in a good location, you will find 1-10 trolls. Every troll is worth 1 cent.
+If you stop in a good location, you will find 1-10 trolls. Every troll will give you 1 cent for their rescue.
       
-The goal of this game is to catch the most trolls.
+The goal of this game is to get the most trolls off the planet.
 
 The game takes about 30-35 minutes."
 </item>
@@ -549,7 +559,7 @@ This is just for practice.")
 <text instructions3>
 / items = ("Sometimes a cloud will appear.
 If you land the spacecraft on the cloud,
-the number of trolls you catch will change
+the number of trolls you rescue will change
 from what you experienced before.")
 / fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
 / position = (50%, 45%)
@@ -563,7 +573,7 @@ on the cloud.")
 </text>
 
 <text instructions5>
-/ items = ("Now you will play to catch real trolls 
+/ items = ("Now you will play to rescue trolls 
 (ahem...get money!). 
 Get ready!")
 / fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
@@ -592,7 +602,7 @@ The average score is $10.  Thank you for playing!")
 </text>
 
 <text feedback1>
-/ items = ("You caught <% values.Earnings %> trolls")
+/ items = ("You got <% values.Earnings %> trolls")
 / fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
 / position = (50%, 60%)
 / vjustify = center
@@ -1236,7 +1246,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 </text>
 
 <text cloudPos>
-/ items = ("<%values.fogPos%>")
+/ items = ("<%values.fogPos1%>")
 / erase = false
 / position = (40%,60%)
 </text>
@@ -1306,7 +1316,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60]
 <text instructions2_5>
 / items = ("If you don't respond
 in 6.5s, you will run out of fuel
-and catch no trolls")
+and rescue no trolls")
 / fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
 / position = (50%, 45%)
 / vjustify = center
@@ -1426,11 +1436,11 @@ uncertainty]
 <trial sampleResponse>
 / ontrialbegin = [
 	if (values.startPos >= 0 && values.startPos < 75) {
-			values.rt_shifted = mod(values.gamma*(values.startPos+25)+trial.instructions4.latency,values.time_per_revolution);
+		values.rt_shifted = mod(values.gamma*(values.startPos+25)+trial.instructions4.latency,values.time_per_revolution);
 	} else if (values.startPos >= 75) {
-			values.rt_shifted = mod(values.gamma*(values.startPos-75)+trial.instructions4.latency,values.time_per_revolution);
+		values.rt_shifted = mod(values.gamma*(values.startPos-75)+trial.instructions4.latency,values.time_per_revolution);
 	}
-	if (values.rt_shifted > 2652 && values.rt_shifted < 3298){
+	if (values.rt_shifted > 2652 && values.rt_shifted < 3298) {
 		text.sampleResponse.items.1 = "Good Job!"
 	} else if (values.rt_shifted <= 2652 || values.rt_shifted >= 3298) {
 		text.sampleResponse.items.1 = "Try Again!"
@@ -1446,7 +1456,7 @@ uncertainty;
 ]
 / timeout = 3000
 / branch = [
-	if (values.rt_shifted  > 2652 && values.rt_shifted  < 3298){
+	if (values.rt_shifted  > 2652 && values.rt_shifted  < 3298) {
 		trial.instructions5;
 	} else {
 		trial.instructions4;
@@ -1485,8 +1495,8 @@ uncertainty;
 </text>
 
 <trial countdown>
-/stimulustimes = [0=three;1000=two;2000=one]
-/timeout = 3000
+/ stimulustimes = [0=three;1000=two;2000=one]
+/ timeout = 3000
 </trial>
 
 
@@ -1500,16 +1510,21 @@ uncertainty;
 	values.blockCount = values.blockCount + 1;
 	values.trialCount = 0;
 	values.trialCountTotal = values.trialCountTotal + parameters.ntrials;
-	
 	// local uncertainty manipulation starts on trial N
-	values.uncertaintyStart1 = noreplace(10,11,12,13,14,15,16,17);
-	values.uncertaintyStart2 = noreplace(25,26,27,28,29,30,31,32);
+	values.uncertaintyStart1 = noreplace(5,6,7,8,9,10,11,12);
+	values.uncertaintyStart2 = noreplace(24,25,26,27,28,29,30,31);
 	//values.uncertaintyStart = 1;
-	values.nUncertainty = values.uncertaintyStart + 12;
-	values.chooseUncertainty = 0;
-	
+	//values.uncertaintyStart1 = 2;
+	//values.uncertaintyStart2 = 14;
+	values.nUncertainty1 = values.uncertaintyStart1 + 10;
+	values.nUncertainty2 = values.uncertaintyStart2 + 10;
+	values.chooseUncertainty1 = 0;
+	values.chooseUncertainty2 = 0;
+	values.uncertaintyCount1 = 0;
+	values.uncertaintyCount2 = 0;
 	// determine position of fog
-	values.fogPos = noreplace(1,5,10,15,20,25,30,35,40,45,50);
+	values.fogPos1 = noreplace(1,5,10,15,20,25,30,35,40,45,50);
+	values.fogPos2 = noreplace(1,5,10,15,20,25,30,35,40,45,50);
 	//values.fogPos = 50;
 	
 	
@@ -1521,13 +1536,13 @@ uncertainty;
 </block>
 
 <list triallist_noU>
-/items = (trial.experiment_noU)
-/ poolsize = parameters.ntrials
+/ items = (trial.experiment_noU)
+/ poolsize = parameters.ntrials*2
 </list>
 
 <list triallist_U>
-/items = (trial.experiment_U)
-/ poolsize = parameters.ntrials
+/ items = (trial.experiment_U)
+/ poolsize = parameters.ntrials*2
 </list>
 
 <trial experiment_noU>
@@ -1586,53 +1601,99 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	if (parameters.randStart==TRUE) {
 		values.startPos =  round(rand(0, 100));
 	}
-	
-	if (values.fogPos==1){
-		picture.uncertainty.item.1 = "fog0.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle270;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle270;
-	} else if (values.fogPos==5){
-		picture.uncertainty.item.1 = "fog5.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle210;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle210;
-	} else if (values.fogPos==10){
-		picture.uncertainty.item.1 = "fog10.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle180;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle180;
-	} else if (values.fogPos==15){
-		picture.uncertainty.item.1 = "fog15.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle150;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle150;
-	} else if (values.fogPos==20){
-		picture.uncertainty.item.1 = "fog20.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle120;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle120;
-	} else if (values.fogPos==25){
-		picture.uncertainty.item.1 = "fog25.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle90;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle90;
-	} else if (values.fogPos==30){
-		picture.uncertainty.item.1 = "fog30.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle60;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle60;
-	} else if (values.fogPos==35){
-		picture.uncertainty.item.1 = "fog35.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle30;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle30;
-	} else if (values.fogPos==40){
-		picture.uncertainty.item.1 = "fog40.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle0;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle0;
-	} else if (values.fogPos==45){
-		picture.uncertainty.item.1 = "fog45.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle330;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle330;		
-	} else if (values.fogPos==50){
-		picture.uncertainty.item.1 = "fog50.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle300;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle300;
-	} 
-
+	if (values.uncertainty_block==1) {
+		if (values.fogPos1==1) {
+			picture.uncertainty.item.1 = "fog0.png";
+			picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle270;
+			picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle270;
+		} else if (values.fogPos1==5) {
+			picture.uncertainty.item.1 = "fog5.png";
+			picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle210;
+			picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle210;
+		} else if (values.fogPos1==10) {
+			picture.uncertainty.item.1 = "fog10.png";
+			picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle180;
+			picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle180;
+		} else if (values.fogPos1==15) {
+			picture.uncertainty.item.1 = "fog15.png";
+			picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle150;
+			picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle150;
+		} else if (values.fogPos1==20) {
+			picture.uncertainty.item.1 = "fog20.png";
+			picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle120;
+			picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle120;
+		} else if (values.fogPos1==25) {
+			picture.uncertainty.item.1 = "fog25.png";
+			picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle90;
+			picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle90;
+		} else if (values.fogPos1==30) {
+			picture.uncertainty.item.1 = "fog30.png";
+			picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle60;
+			picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle60;
+		} else if (values.fogPos1==35) {
+			picture.uncertainty.item.1 = "fog35.png";
+			picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle30;
+			picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle30;
+		} else if (values.fogPos1==40) {
+			picture.uncertainty.item.1 = "fog40.png";
+			picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle0;
+			picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle0;
+		} else if (values.fogPos1==45) {
+			picture.uncertainty.item.1 = "fog45.png";
+			picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle330;
+			picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle330;
+		} else if (values.fogPos1==50) {
+			picture.uncertainty.item.1 = "fog50.png";
+			picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle300;
+			picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle300;
+		}
+	} else if (values.uncertainty_block==2) {
+		if (values.fogPos2==1) {
+			picture.uncertainty.item.1 = "fog0.png";
+			picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle270;
+			picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle270;
+		} else if (values.fogPos2==5) {
+			picture.uncertainty.item.1 = "fog5.png";
+			picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle210;
+			picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle210;
+		} else if (values.fogPos2==10) {
+			picture.uncertainty.item.1 = "fog10.png";
+			picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle180;
+			picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle180;
+		} else if (values.fogPos2==15) {
+			picture.uncertainty.item.1 = "fog15.png";
+			picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle150;
+			picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle150;
+		} else if (values.fogPos2==20) {
+			picture.uncertainty.item.1 = "fog20.png";
+			picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle120;
+			picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle120;
+		} else if (values.fogPos2==25) {
+			picture.uncertainty.item.1 = "fog25.png";
+			picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle90;
+			picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle90;
+		} else if (values.fogPos2==30) {
+			picture.uncertainty.item.1 = "fog30.png";
+			picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle60;
+			picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle60;
+		} else if (values.fogPos2==35) {
+			picture.uncertainty.item.1 = "fog35.png";
+			picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle30;
+			picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle30;
+		} else if (values.fogPos2==40) {
+			picture.uncertainty.item.1 = "fog40.png";
+			picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle0;
+			picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle0;
+		} else if (values.fogPos2==45) {
+			picture.uncertainty.item.1 = "fog45.png";
+			picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle330;
+			picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle330;
+		} else if (values.fogPos2==50) {
+			picture.uncertainty.item.1 = "fog50.png";
+			picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle300;
+			picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle300;
+		}
+	}
 ]
 
 / stimulustimes = [0 = planet, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
@@ -1728,53 +1789,53 @@ uncertainty;
 	values.mag = values.mag + values.r;
 	values.ev = values.mag * values.freq;
 	values.mag = round(values.mag);
-	values.rng = rand(0,1);
+	values.rng = rand(0,0.5); // decrease probability of omission
 	if (values.freq > values.rng) {
 		values.inc = values.mag;
 	} else {
 		values.inc = 0;
 	}
+	//values.inc = values.mag;
 	values.totalPoints = values.totalPoints + values.inc;
-	
 	// convert points to 'mushroom/troll' units
-	if (parameters.mushrooms==TRUE && trial.experiment_noU.response != 0){
-		if (values.inc > 0 && values.inc <= 16) {
+	if (trial.experiment_noU.response != 0) {
+		if (values.inc > 0 && values.inc <= 24) {
 			picture.feedback.item.1 = "trolls1.png";
 			values.Earnings = 1;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
-		} else if (values.inc > 16 && values.inc <= 24) {
+		} else if (values.inc > 24 && values.inc <= 32) {
 			values.Earnings = 2;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
 			picture.feedback.item.1 = "trolls2.png";
-		} else if (values.inc > 24 && values.inc <= 32) {
+		} else if (values.inc > 32 && values.inc <= 46) {
 			values.Earnings = 3;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
 			picture.feedback.item.1 = "trolls3.png";
-		} else if (values.inc > 32 && values.inc <= 46) {
+		} else if (values.inc > 46 && values.inc <= 60) {
 			values.Earnings = 4;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
 			picture.feedback.item.1 = "trolls4.png";
-		} else if (values.inc > 46 && values.inc <= 60) {
+		} else if (values.inc > 60 && values.inc <= 74) {
 			values.Earnings = 5;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
 			picture.feedback.item.1 = "trolls5.png";
-		} else if (values.inc > 60 && values.inc <= 74) {
+		} else if (values.inc > 74 && values.inc <= 88) {
 			values.Earnings = 6;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
 			picture.feedback.item.1 = "trolls6.png";
-		} else if (values.inc > 74 && values.inc <= 88) {
+		} else if (values.inc > 88 && values.inc <= 102) {
 			values.Earnings = 7;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
 			picture.feedback.item.1 = "trolls7.png";
-		} else if (values.inc > 88 && values.inc <= 102) {
+		} else if (values.inc > 102 && values.inc <= 124) {
 			values.Earnings = 8;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
 			picture.feedback.item.1 = "trolls8.png";
-		} else if (values.inc > 102 && values.inc <= 124) {
+		} else if (values.inc > 124 && values.inc <= 136) {
 			values.Earnings = 9;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
 			picture.feedback.item.1 = "trolls9.png";
-		} else if (values.inc > 124) {
+		} else if (values.inc > 136) {
 			values.Earnings = 10;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
 			picture.feedback.item.1 = "trolls10.png";
@@ -1782,37 +1843,58 @@ uncertainty;
 			values.Earnings = 0;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
 			picture.feedback.item.1 = "notrolls.png";
-		} 	
+		}
 	} else {
 		values.Earnings = 0;
 		picture.feedback.item.1 = "timeout.png"
 	}
 	values.trialCount  += 1;
-	
 ]
 / stimulusframes = [
-	1=picture.feedback, text.feedback1, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+	1=picture.feedback, text.feedback1,dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
 dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
 dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 ]
-/ trialduration = 1000
+/trialduration = 1000
+// correctresponse = (next)
 / recorddata = true
+/ ontrialend = [
+	if (values.trialCount >= values.uncertaintyStart1 && values.uncertaintyCount1 < values.nUncertainty1 && values.chooseUncertainty1 <= 3) {
+		values.uncertainty_block=1;
+	} else if (values.trialCount >= values.uncertaintyStart2 && values.uncertaintyCount2 < values.nUncertainty2 && values.chooseUncertainty2 <= 3) {
+		values.uncertainty_block=2;
+	} else {
+		values.uncertainty_block=0;
+	}
+]
 / branch = [
-	if ((values.trialCount >= values.uncertaintyStart1 && values.uncertaintyCount < values.nUncertainty && values.chooseUncertainty < 3) || (values.trialCount >= values.uncertaintyStart2 && values.uncertaintyCount < values.nUncertainty && values.chooseUncertainty < 3)){
+	if (values.trialCount >= values.uncertaintyStart1 && values.uncertaintyCount1 < values.nUncertainty1 && values.chooseUncertainty1 <= 3) {
+		list.triallist_U.nextvalue
+	} else if (values.trialCount >= values.uncertaintyStart2 && values.uncertaintyCount2 < values.nUncertainty2 && values.chooseUncertainty2 <= 3) {
 		list.triallist_U.nextvalue
 	} else {
 		list.triallist_noU.nextvalue
-		values.chooseUncertainty = 0;
 	}
 ]
 </trial>
 
+<text testUct>
+/ items = ("trCt =<%values.trialCount%> uSt1=<%values.uncertaintyStart1%> uCt1=<%values.uncertaintyCount1%> nU1=<%values.nUncertainty1%>, cU1=<%values.chooseUncertainty1%>")
+</text>
+
+<text rng>
+/ items = ("RT = <%values.rt_shifted%> Mag = <% values.mag%> Freq = <%values.freq%>")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
+/ position = (40%, 45%)
+/ vjustify = center
+/ hjustify = left
+</text>
 
 <text chooseFog>
-/ items = ("<% values.chooseFog%>")
+/ items = ("<% values.chooseFog2%>")
 / fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
 / position = (50%, 45%)
 / vjustify = center
@@ -1821,9 +1903,8 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 
 <trial dispFeedback_U>
 / ontrialbegin = [
-	
-	values.chooseFog = 0;
-
+	values.chooseFog1 = 0;
+	values.chooseFog2 = 0;
 	if (parameters.rtvspos=="RT") {
 		if (values.scrfunc == "CEV") {
 			values.mag = (values.k * values.rt_extended)/(values.rt_extended-(trial.experiment_U.latency+values.Shift));
@@ -1844,7 +1925,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 		} else if (values.scrfunc =="CEVR") {
 			values.mag = 1-((trial.experiment_U.latency+values.Shift)/values.rt_extended);
 			values.mag = values.mag*200;
-			values.freq = (values.k*values.rt_extended)/(values.rt_extended-(trial.experiment_U.latency-values.Shift));
+			values.freq = (values.k*values.rt_extended)/(values.rt_extended-(trial.experiment_U.latency+values.Shift));
 			values.freq = values.freq/200;
 		}
 	} else if (parameters.rtvspos=="POS") {
@@ -1880,53 +1961,53 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	values.mag = values.mag + values.r;
 	values.ev = values.mag * values.freq;
 	values.mag = round(values.mag);
-	values.rng = rand(0,1);
+	values.rng = rand(0,0.5);  // decrease probability of omission
 	if (values.freq > values.rng) {
 		values.inc = values.mag;
 	} else {
 		values.inc = 0;
 	}
+	//values.inc = values.mag;
 	values.totalPoints = values.totalPoints + values.inc;
-	
 	// convert points to 'mushroom/troll' units
-	if (parameters.mushrooms==TRUE  && trial.experiment_U.response != 0){
-		if (values.inc > 0 && values.inc <= 16) {
+	if (trial.experiment_U.response != 0) {
+		if (values.inc > 0 && values.inc <= 24) {
 			picture.feedback.item.1 = "trolls1.png";
 			values.Earnings = 1;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
-		} else if (values.inc > 16 && values.inc <= 24) {
+		} else if (values.inc > 24 && values.inc <= 32) {
 			values.Earnings = 2;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
 			picture.feedback.item.1 = "trolls2.png";
-		} else if (values.inc > 24 && values.inc <= 32) {
+		} else if (values.inc > 32 && values.inc <= 46) {
 			values.Earnings = 3;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
 			picture.feedback.item.1 = "trolls3.png";
-		} else if (values.inc > 32 && values.inc <= 46) {
+		} else if (values.inc > 46 && values.inc <= 60) {
 			values.Earnings = 4;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
 			picture.feedback.item.1 = "trolls4.png";
-		} else if (values.inc > 46 && values.inc <= 60) {
+		} else if (values.inc > 60 && values.inc <= 74) {
 			values.Earnings = 5;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
 			picture.feedback.item.1 = "trolls5.png";
-		} else if (values.inc > 60 && values.inc <= 74) {
+		} else if (values.inc > 74 && values.inc <= 88) {
 			values.Earnings = 6;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
 			picture.feedback.item.1 = "trolls6.png";
-		} else if (values.inc > 74 && values.inc <= 88) {
+		} else if (values.inc > 88 && values.inc <= 102) {
 			values.Earnings = 7;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
 			picture.feedback.item.1 = "trolls7.png";
-		} else if (values.inc > 88 && values.inc <= 102) {
+		} else if (values.inc > 102 && values.inc <= 124) {
 			values.Earnings = 8;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
 			picture.feedback.item.1 = "trolls8.png";
-		} else if (values.inc > 102 && values.inc <= 124) {
+		} else if (values.inc > 124 && values.inc <= 136) {
 			values.Earnings = 9;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
 			picture.feedback.item.1 = "trolls9.png";
-		} else if (values.inc > 124) {
+		} else if (values.inc > 136) {
 			values.Earnings = 10;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
 			picture.feedback.item.1 = "trolls10.png";
@@ -1934,51 +2015,85 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 			values.Earnings = 0;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
 			picture.feedback.item.1 = "notrolls.png";
-		} 
+		}
 	} else {
 		values.Earnings = 0;
 		picture.feedback.item.1 = "timeout.png"
-		
 	}
-
-	if (values.fogPos==1 && values.rt_shifted > 4677 || values.rt_shifted < 323){
-		values.chooseFog = 1;
-		values.chooseUncertainty += 1;
-	} else if (values.fogPos==5 && (values.rt_shifted > 3927 || values.rt_shifted < 4573)){
-		values.chooseFog = 1;
-		values.chooseUncertainty += 1;
-	} else if (values.fogPos==10 && values.rt_shifted > 3502 && values.rt_shifted < 4148){
-		values.chooseFog = 1;
-		values.chooseUncertainty += 1;
-	} else if (values.fogPos==15 && values.rt_shifted > 3077 && values.rt_shifted < 3723){
-		values.chooseFog = 1;	
-		values.chooseUncertainty += 1;
-	} else if (values.fogPos==20 && values.rt_shifted > 2652 && values.rt_shifted < 3298){
-		values.chooseFog = 1;
-		values.chooseUncertainty += 1;
-	} else if (values.fogPos==25 && values.rt_shifted > 2227 && values.rt_shifted < 2873){
-		values.chooseFog = 1;
-		values.chooseUncertainty += 1;
-	} else if (values.fogPos==30 && values.rt_shifted > 1802 && values.rt_shifted < 2448){
-		values.chooseFog = 1;
-		values.chooseUncertainty += 1;
-	} else if (values.fogPos==35 && values.rt_shifted > 1377 && values.rt_shifted < 2023){
-		values.chooseFog = 1;
-		values.chooseUncertainty += 1;
-	} else if (values.fogPos==40 && (values.rt_shifted > 952 || values.rt_shifted < 1598)){
-		values.chooseFog = 1;
-		values.chooseUncertainty += 1;
-	} else if (values.fogPos==45 && values.rt_shifted > 527 && values.rt_shifted < 1173){
-		values.chooseFog = 1;
-		values.chooseUncertainty += 1;
-	} else if (values.fogPos==50 && values.rt_shifted > 102 && values.rt_shifted < 748){
-		values.chooseFog = 1;
-		values.chooseUncertainty += 1;
+	if (values.uncertainty_block==1) {
+		values.uncertaintyCount1 +=1;
+		if (values.fogPos1==1 && values.rt_shifted > 4677 || values.rt_shifted < 323) {
+			values.chooseFog1 = 1;
+			values.chooseUncertainty1 += 1;
+		} else if (values.fogPos1==5 && (values.rt_shifted > 3927 || values.rt_shifted < 4573)) {
+			values.chooseFog1 = 1;
+			values.chooseUncertainty1 += 1;
+		} else if (values.fogPos1==10 && values.rt_shifted > 3502 && values.rt_shifted < 4148) {
+			values.chooseFog1 = 1;
+			values.chooseUncertainty1 += 1;
+		} else if (values.fogPos1==15 && values.rt_shifted > 3077 && values.rt_shifted < 3723) {
+			values.chooseFog1 = 1;
+			values.chooseUncertainty1 += 1;
+		} else if (values.fogPos1==20 && values.rt_shifted > 2652 && values.rt_shifted < 3298) {
+			values.chooseFog1 = 1;
+			values.chooseUncertainty1 += 1;
+		} else if (values.fogPos1==25 && values.rt_shifted > 2227 && values.rt_shifted < 2873) {
+			values.chooseFog1 = 1;
+			values.chooseUncertainty1 += 1;
+		} else if (values.fogPos1==30 && values.rt_shifted > 1802 && values.rt_shifted < 2448) {
+			values.chooseFog1 = 1;
+			values.chooseUncertainty1 += 1;
+		} else if (values.fogPos1==35 && values.rt_shifted > 1377 && values.rt_shifted < 2023) {
+			values.chooseFog1 = 1;
+			values.chooseUncertainty1 += 1;
+		} else if (values.fogPos1==40 && (values.rt_shifted > 952 || values.rt_shifted < 1598)) {
+			values.chooseFog1 = 1;
+			values.chooseUncertainty1 += 1;
+		} else if (values.fogPos1==45 && values.rt_shifted > 527 && values.rt_shifted < 1173) {
+			values.chooseFog1 = 1;
+			values.chooseUncertainty1 += 1;
+		} else if (values.fogPos1==50 && values.rt_shifted > 102 && values.rt_shifted < 748) {
+			values.chooseFog1 = 1;
+			values.chooseUncertainty1 += 1;
+		}
+	} else if (values.uncertainty_block==2) {
+		values.uncertaintyCount2 +=1;
+		if (values.fogPos2==1 && values.rt_shifted > 4677 || values.rt_shifted < 323) {
+			values.chooseFog2 = 1;
+			values.chooseUncertainty2 += 1;
+		} else if (values.fogPos2==5 && (values.rt_shifted > 3927 || values.rt_shifted < 4573)) {
+			values.chooseFog2 = 1;
+			values.chooseUncertainty2 += 1;
+		} else if (values.fogPos2==10 && values.rt_shifted > 3502 && values.rt_shifted < 4148) {
+			values.chooseFog2 = 1;
+			values.chooseUncertainty2 += 1;
+		} else if (values.fogPos2==15 && values.rt_shifted > 3077 && values.rt_shifted < 3723) {
+			values.chooseFog2 = 1;
+			values.chooseUncertainty2 += 1;
+		} else if (values.fogPos2==20 && values.rt_shifted > 2652 && values.rt_shifted < 3298) {
+			values.chooseFog2 = 1;
+			values.chooseUncertainty2 += 1;
+		} else if (values.fogPos2==25 && values.rt_shifted > 2227 && values.rt_shifted < 2873) {
+			values.chooseFog2 = 1;
+			values.chooseUncertainty2 += 1;
+		} else if (values.fogPos2==30 && values.rt_shifted > 1802 && values.rt_shifted < 2448) {
+			values.chooseFog2 = 1;
+			values.chooseUncertainty2 += 1;
+		} else if (values.fogPos2==35 && values.rt_shifted > 1377 && values.rt_shifted < 2023) {
+			values.chooseFog2 = 1;
+			values.chooseUncertainty2 += 1;
+		} else if (values.fogPos2==40 && (values.rt_shifted > 952 || values.rt_shifted < 1598)) {
+			values.chooseFog2 = 1;
+			values.chooseUncertainty2 += 1;
+		} else if (values.fogPos2==45 && values.rt_shifted > 527 && values.rt_shifted < 1173) {
+			values.chooseFog2 = 1;
+			values.chooseUncertainty2 += 1;
+		} else if (values.fogPos2==50 && values.rt_shifted > 102 && values.rt_shifted < 748) {
+			values.chooseFog2 = 1;
+			values.chooseUncertainty2 += 1;
+		}
 	}
-	
 	values.trialCount  += 1;
-	values.uncertaintyCount +=1;
-	
 ]
 / stimulusframes = [
 	1=picture.feedback, text.feedback1,dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
@@ -1989,13 +2104,24 @@ dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
 dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 ]
 / trialduration = 1000
+// correctresponse = (next)
 / recorddata = true
+/ ontrialend = [
+	if (values.trialCount >= values.uncertaintyStart1 && values.uncertaintyCount1 < values.nUncertainty1 && values.chooseUncertainty1 <= 3) {
+		values.uncertainty_block=1;
+	} else if (values.trialCount >= values.uncertaintyStart2 && values.uncertaintyCount2 < values.nUncertainty2 && values.chooseUncertainty2 <= 3) {
+		values.uncertainty_block=2;
+	} else {
+		values.uncertainty_block=0;
+	}
+]
 / branch = [
-	if ((values.trialCount >= values.uncertaintyStart1 && values.uncertaintyCount < values.nUncertainty && values.chooseUncertainty < 3) || (values.trialCount >= values.uncertaintyStart2 && values.uncertaintyCount < values.nUncertainty && values.chooseUncertainty < 3)){
+	if (values.trialCount >= values.uncertaintyStart1 && values.uncertaintyCount1 < values.nUncertainty1 && values.chooseUncertainty1 <= 3) {
+		list.triallist_U.nextvalue
+	} else if (values.trialCount >= values.uncertaintyStart2 && values.uncertaintyCount2 < values.nUncertainty2 && values.chooseUncertainty2 <= 3) {
 		list.triallist_U.nextvalue
 	} else {
 		list.triallist_noU.nextvalue
-		values.chooseUncertainty = 0;
 	}
 ]
 </trial>
@@ -2023,10 +2149,103 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 / timeout = 5000
 </trial>
 
+**************************************************************************************************************
+**************************************************************************************************************
+	QUESTIONAIRRE
+**************************************************************************************************************
+**************************************************************************************************************
+
+<parameters>
+/ pageinstructions = "Please indicate your understanding by answering the following 4 questions:"
+</parameters>
+
+
+<surveypage FCQ_S1>
+/ caption = "<%parameters.pageinstructions%>"
+/ questions = [1 = q1, q2, q3, q4]
+</surveypage>
+
+<radiobuttons q1>
+/ caption = "1. How confident were you that you were able to find the best location?"
+/ options = ("Always","Sometimes","Rarely","Never")
+/ optionvalues = ("1", "2", "3", "4")
+/ required = true
+/ orientation = horizontalequal
+</radiobuttons>
+
+<radiobuttons q2>
+/ caption = "2. Did landing the spaceship on the cloud change your expectations?"
+/ options = ("Yes","No","Didn't land on the cloud")
+/ optionvalues = ("1", "2","3")
+/ required = true
+/ orientation = horizontalequal
+</radiobuttons>
+
+<radiobuttons q3>
+/ caption = "3. True or False: My past choices influenced the outcome of my current choice"
+/ options = ("True","False")
+/ optionvalues = ("1", "2")
+/ required = true
+/ orientation = horizontalequal
+</radiobuttons>
+
+<radiobuttons q4>
+/ caption = "4. True or False: I enjoyed playing this game"
+/ options = ("True","False")
+/ optionvalues = ("1", "2")
+/ required = true
+/ orientation = horizontalequal
+</radiobuttons>
+
+<survey questionnaire>
+/ pages = [
+	1 = FCQ_S1, openended; 
+]
+/ screencapture = false
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
+/ subcaptionfontstyle = ("Arial", 1.5%, false, false, false, false, 5, 1)
+/ itemfontstyle = ("Arial", 3%, true, false, false, false, 5, 1)
+/ responsefontstyle = ("Arial", 2.5%, false, false, false, false, 5, 1)
+/ txcolor = (0, 0, 0)
+/ showpagenumbers = false
+/ showquestionnumbers = false
+/ showpagenumbers = false
+/ showquestionnumbers = false
+/ navigationbuttonfontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
+/ navigationbuttonsize = (15%, 5%)
+/ backbuttonposition = (20%, 90%)
+/ nextbuttonposition = (70%, 90%)
+/ finishlabel = "Finish"
+</survey>
+
+
+
+<textbox openended>
+/caption = "Please provde feedback or comments on your experience to help us improve your understanding or enjoyment of the task.
+You may also comment as to your strategy for solving the task."
+/mask = ^[a-zA-Z\s]+$
+/required = TRUE
+/multiline = TRUE
+/textboxsize = (200,50)
+
+</textbox>
+
+<surveypage openended>
+/questions = [
+	1=openended
+]
+
+</surveypage>
+
+<block openended>
+/ trials = [
+	1 = openended
+]
+</block>
 
 <expt main1>
 / blocks = [
-	1=instructions; // uncomment for final product
+	1=instructions;
 	2=experiment;
 	3=experiment;
 	4=experiment;
@@ -2034,7 +2253,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	6=experiment;
 	7=experiment;
 	8=experiment;
-	9=experiment;
+	9=questionnaire;
 	10=endscreen;
 ]
 </expt>
