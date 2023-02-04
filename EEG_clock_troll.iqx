@@ -286,91 +286,91 @@ values.DEV_factor,values.DEV_factor2,values.sin_factor,values.time_per_revolutio
 
 
 <picture mushroom1>
-/ items = ("mushrooms1.png")
+/ items = ("trolls1.png")
 / position = (50%, 50%)
 / size = (35%, 35%)
 / erase = true(white)
 </picture>
 
 <picture mushroom2>
-/ items = ("mushrooms2.png")
+/ items = ("trolls2.png")
 / position = (50%, 50%)
 / size = (35%, 35%)
 / erase = true(white)
 </picture>
 
 <picture mushroom3>
-/ items = ("mushrooms3.png")
+/ items = ("trolls3.png")
 / position = (50%, 50%)
 / size = (35%, 35%)
 / erase = true(white)
 </picture>
 
 <picture mushroom4>
-/ items = ("mushrooms4.png")
+/ items = ("trolls4.png")
 / position = (50%, 50%)
 / size = (35%, 35%)
 / erase = true(white)
 </picture>
 
 <picture mushroom5>
-/ items = ("mushrooms5.png")
+/ items = ("trolls5.png")
 / position = (50%, 50%)
 / size = (35%, 35%)
 / erase = true(white)
 </picture>
 
 <picture mushroom6>
-/ items = ("mushrooms6.png")
+/ items = ("trolls6.png")
 / position = (50%, 50%)
 / size = (35%, 35%)
 / erase = true(white)
 </picture>
 
 <picture mushroom7>
-/ items = ("mushrooms7.png")
+/ items = ("trolls7.png")
 / position = (50%, 50%)
 / size = (35%, 35%)
 / erase = true(white)
 </picture>
 
 <picture mushroom8>
-/ items = ("mushrooms8.png")
+/ items = ("trolls8.png")
 / position = (50%, 50%)
 / size = (35%, 35%)
 / erase = true(white)
 </picture>
 
 <picture mushroom9>
-/ items = ("mushrooms9.png")
+/ items = ("trolls9.png")
 / position = (50%, 50%)
 / size = (35%, 35%)
 / erase = true(white)
 </picture>
 
 <picture mushroom10>
-/ items = ("mushrooms10.png")
+/ items = ("trolls10.png")
 / position = (50%, 50%)
 / size = (35%, 35%)
 / erase = true(white)
 </picture>
 
 <picture no_mushrooms>
-/ items = ("no_mushrooms.png")
+/ items = ("notrolls.png")
 / position = (50%, 50%)
 / size = (35%, 35%)
 / erase = true(white)
 </picture>
 
-<picture sampleMushroomL>
-/ items = ("mushrooms1.png")
+<picture sampleTrollL>
+/ items = ("trolls1.png")
 / position = (20%, 80%)
 / size = (35%, 35%)
 / erase = true(white)
 </picture>
 
-<picture sampleMushroomR>
-/ items = ("mushrooms1.png")
+<picture sampleTrollR>
+/ items = ("trolls1.png")
 / position = (80%, 80%)
 / size = (35%, 35%)
 / erase = true(white)
@@ -536,13 +536,13 @@ expressions.centery + expressions.heightchange_angle330
 
 
 <item instructions1>
-/ 1 = "In this game, you are picking mushrooms on a far away planet.
+/ 1 = "In this game, you are rescuing trolls on a far away planet.
       
 On each of your 320 trials you can decide where to land your spacecraft.  Your spacecraft will orbit the planet, and you can land it at any point by pressing the spacebar.
       
-If you stop in a good location, you will find 1-10 mushrooms. Every mushroom is worth 1 cent.
+If you stop in a good location, you will find 1-10 trolls. Every troll will give you 1 cent for their rescue.
       
-The goal of this game is to get the most mushrooms.
+The goal of this game is to get the most trolls off the planet.
 
 The game takes about 30-35 minutes."
 </item>
@@ -559,7 +559,7 @@ This is just for practice.")
 <text instructions3>
 / items = ("Sometimes a cloud will appear.
 If you land the spacecraft on the cloud,
-the number of mushrooms you get will change
+the number of trolls you rescue will change
 from what you experienced before.")
 / fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
 / position = (50%, 45%)
@@ -573,8 +573,8 @@ on the cloud.")
 </text>
 
 <text instructions5>
-/ items = ("Now you will play for real mushrooms 
-(ahem...money!). 
+/ items = ("Now you will play to rescue trolls 
+(ahem...get money!). 
 Get ready!")
 / fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
 / position = (50%, 45%)
@@ -602,7 +602,7 @@ The average score is $10.  Thank you for playing!")
 </text>
 
 <text feedback1>
-/ items = ("You got <% values.Earnings %> mushrooms")
+/ items = ("You got <% values.Earnings %> trolls")
 / fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
 / position = (50%, 60%)
 / vjustify = center
@@ -1267,7 +1267,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 
 
 <trial instructions1>
-/ stimulusframes = [1=instructions1, sampleMushroomL, sampleMushroomR, next]
+/ stimulusframes = [1=instructions1, sampleTrollL, sampleTrollR, next]
 / validresponse = (next)
 </trial>
 
@@ -1316,7 +1316,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60]
 <text instructions2_5>
 / items = ("If you don't respond
 in 6.5s, you will run out of fuel
-and get no mushrooms")
+and rescue no trolls")
 / fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
 / position = (50%, 45%)
 / vjustify = center
@@ -1798,51 +1798,51 @@ uncertainty;
 	//values.inc = values.mag;
 	values.totalPoints = values.totalPoints + values.inc;
 	// convert points to 'mushroom/troll' units
-	if (parameters.mushrooms==TRUE && trial.experiment_noU.response != 0) {
+	if (trial.experiment_noU.response != 0) {
 		if (values.inc > 0 && values.inc <= 24) {
-			picture.feedback.item.1 = "mushrooms1.png";
+			picture.feedback.item.1 = "trolls1.png";
 			values.Earnings = 1;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
 		} else if (values.inc > 24 && values.inc <= 32) {
 			values.Earnings = 2;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
-			picture.feedback.item.1 = "mushrooms2.png";
+			picture.feedback.item.1 = "trolls2.png";
 		} else if (values.inc > 32 && values.inc <= 46) {
 			values.Earnings = 3;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
-			picture.feedback.item.1 = "mushrooms3.png";
+			picture.feedback.item.1 = "trolls3.png";
 		} else if (values.inc > 46 && values.inc <= 60) {
 			values.Earnings = 4;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
-			picture.feedback.item.1 = "mushrooms4.png";
+			picture.feedback.item.1 = "trolls4.png";
 		} else if (values.inc > 60 && values.inc <= 74) {
 			values.Earnings = 5;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
-			picture.feedback.item.1 = "mushrooms5.png";
+			picture.feedback.item.1 = "trolls5.png";
 		} else if (values.inc > 74 && values.inc <= 88) {
 			values.Earnings = 6;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
-			picture.feedback.item.1 = "mushrooms6.png";
+			picture.feedback.item.1 = "trolls6.png";
 		} else if (values.inc > 88 && values.inc <= 102) {
 			values.Earnings = 7;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
-			picture.feedback.item.1 = "mushrooms7.png";
+			picture.feedback.item.1 = "trolls7.png";
 		} else if (values.inc > 102 && values.inc <= 124) {
 			values.Earnings = 8;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
-			picture.feedback.item.1 = "mushrooms8.png";
+			picture.feedback.item.1 = "trolls8.png";
 		} else if (values.inc > 124 && values.inc <= 136) {
 			values.Earnings = 9;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
-			picture.feedback.item.1 = "mushrooms9.png";
+			picture.feedback.item.1 = "trolls9.png";
 		} else if (values.inc > 136) {
 			values.Earnings = 10;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
-			picture.feedback.item.1 = "mushrooms10.png";
+			picture.feedback.item.1 = "trolls10.png";
 		} else if (values.inc ==0) {
 			values.Earnings = 0;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
-			picture.feedback.item.1 = "no_mushrooms.png";
+			picture.feedback.item.1 = "notrolls.png";
 		}
 	} else {
 		values.Earnings = 0;
@@ -1970,51 +1970,51 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	//values.inc = values.mag;
 	values.totalPoints = values.totalPoints + values.inc;
 	// convert points to 'mushroom/troll' units
-	if (parameters.mushrooms==TRUE  && trial.experiment_U.response != 0) {
+	if (trial.experiment_U.response != 0) {
 		if (values.inc > 0 && values.inc <= 24) {
-			picture.feedback.item.1 = "mushrooms1.png";
+			picture.feedback.item.1 = "trolls1.png";
 			values.Earnings = 1;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
 		} else if (values.inc > 24 && values.inc <= 32) {
 			values.Earnings = 2;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
-			picture.feedback.item.1 = "mushrooms2.png";
+			picture.feedback.item.1 = "trolls2.png";
 		} else if (values.inc > 32 && values.inc <= 46) {
 			values.Earnings = 3;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
-			picture.feedback.item.1 = "mushrooms3.png";
+			picture.feedback.item.1 = "trolls3.png";
 		} else if (values.inc > 46 && values.inc <= 60) {
 			values.Earnings = 4;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
-			picture.feedback.item.1 = "mushrooms4.png";
+			picture.feedback.item.1 = "trolls4.png";
 		} else if (values.inc > 60 && values.inc <= 74) {
 			values.Earnings = 5;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
-			picture.feedback.item.1 = "mushrooms5.png";
+			picture.feedback.item.1 = "trolls5.png";
 		} else if (values.inc > 74 && values.inc <= 88) {
 			values.Earnings = 6;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
-			picture.feedback.item.1 = "mushrooms6.png";
+			picture.feedback.item.1 = "trolls6.png";
 		} else if (values.inc > 88 && values.inc <= 102) {
 			values.Earnings = 7;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
-			picture.feedback.item.1 = "mushrooms7.png";
+			picture.feedback.item.1 = "trolls7.png";
 		} else if (values.inc > 102 && values.inc <= 124) {
 			values.Earnings = 8;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
-			picture.feedback.item.1 = "mushrooms8.png";
+			picture.feedback.item.1 = "trolls8.png";
 		} else if (values.inc > 124 && values.inc <= 136) {
 			values.Earnings = 9;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
-			picture.feedback.item.1 = "mushrooms9.png";
+			picture.feedback.item.1 = "trolls9.png";
 		} else if (values.inc > 136) {
 			values.Earnings = 10;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
-			picture.feedback.item.1 = "mushrooms10.png";
+			picture.feedback.item.1 = "trolls10.png";
 		} else if (values.inc ==0) {
 			values.Earnings = 0;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
-			picture.feedback.item.1 = "no_mushrooms.png";
+			picture.feedback.item.1 = "notrolls.png";
 		}
 	} else {
 		values.Earnings = 0;
