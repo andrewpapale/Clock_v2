@@ -1789,11 +1789,11 @@ uncertainty;
 	values.mag = values.mag + values.r;
 	values.ev = values.mag * values.freq;
 	values.mag = round(values.mag);
-	values.rng = rand(0,0.5); // decrease probability of omission
+	values.rng = rand(0,1);
 	if (values.freq > values.rng) {
 		values.inc = values.mag;
 	} else {
-		values.inc = 0;
+		values.inc = 1;
 	}
 	//values.inc = values.mag;
 	values.totalPoints = values.totalPoints + values.inc;
@@ -1961,11 +1961,11 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	values.mag = values.mag + values.r;
 	values.ev = values.mag * values.freq;
 	values.mag = round(values.mag);
-	values.rng = rand(0,0.5);  // decrease probability of omission
+	values.rng = rand(0,1);
 	if (values.freq > values.rng) {
 		values.inc = values.mag;
 	} else {
-		values.inc = 0;
+		values.inc = 1;
 	}
 	//values.inc = values.mag;
 	values.totalPoints = values.totalPoints + values.inc;
@@ -2174,7 +2174,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 </radiobuttons>
 
 <radiobuttons q2>
-/ caption = "2. Did landing the spaceship on the cloud change your expectations?"
+/ caption = "2. When landing on the cloud did you expect to find a different number of trolls?"
 / options = ("Yes","No","Didn't land on the cloud")
 / optionvalues = ("1", "2","3")
 / required = true
@@ -2221,8 +2221,8 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 
 
 <textbox openended>
-/caption = "Please provde feedback or comments on your experience to help us improve your understanding or enjoyment of the task.
-You may also comment as to your strategy for solving the task."
+/caption = "Please provde feedback that will help us improve the game.
+What strategies did you use in the game?"
 /mask = ^[a-zA-Z\s]+$
 /required = TRUE
 /multiline = TRUE
@@ -2253,7 +2253,8 @@ You may also comment as to your strategy for solving the task."
 	6=experiment;
 	7=experiment;
 	8=experiment;
-	9=questionnaire;
-	10=endscreen;
+	9=experiment;
+	10=questionnaire;
+	11=endscreen;
 ]
 </expt>
