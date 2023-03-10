@@ -1790,11 +1790,11 @@ uncertainty;
 	values.ev = values.mag * values.freq;
 	values.mag = round(values.mag);
 	values.rng = rand(0,1); 
-	//if (values.freq > values.rng) {
-	//	values.inc = values.mag;
-	//} else {
-	//	values.inc = 1;
-	//}
+	if (values.freq > values.rng) {
+		values.inc = values.mag;
+	} else {
+		values.inc = 1;
+	}
 	values.inc = values.mag;
 	values.totalPoints = values.totalPoints + values.inc;
 	// convert points to 'mushroom/troll' units
@@ -1962,12 +1962,12 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	values.ev = values.mag * values.freq;
 	values.mag = round(values.mag);
 	values.rng = rand(0,1);  // decrease probability of omission
-	//if (values.freq > values.rng) {
-	//	values.inc = values.mag;
-	//} else {
-	//	values.inc = 1;
-	//}
-	values.inc = values.mag;
+	if (values.freq > values.rng) {
+		values.inc = values.mag;
+	} else {
+		values.inc = 1;
+	}
+	//values.inc = values.mag;
 	values.totalPoints = values.totalPoints + values.inc;
 	// convert points to 'mushroom/troll' units
 	if (parameters.mushrooms==TRUE  && trial.experiment_U.response != 0) {
