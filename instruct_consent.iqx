@@ -6,7 +6,7 @@
 Consent Form
 
 <html Consent>
-/items = ("consent.htm")
+/items = ("consent.htmL")
 /position = (50%, 45%)
 / size = (80%, 80%)
 </html>
