@@ -58,7 +58,7 @@ onedrive_path='/Users/laurataglioni/University of Pittsburgh/DNPLskinner - Docum
 data_path=paste0(onedrive_path,'data/prolific/clock_v2_pilot/no_contingencies_March_2023/')
 
 #read in prolific export file
-export_file=read.csv(paste0(data_path, 'prolific_export/')) #add demographic file from prolific once data is collected
+export_file=read.csv(paste0(data_path, 'additional/prolific_export/')) #add demographic file from prolific once data is collected
 prolific_IDs=export_file$Participant.id
 
 #clean names and create variables to identify participants who were particularly slow (over 40 min) or did not get completion code to check on later
@@ -100,6 +100,8 @@ for (b in 1:length(raw_todo_files)) {
 
 #merge data for later analysis/more preproc + extract and calculate needed variables for prolific approvals and bonus payments
 processed_subjects=dir(paste0(data_path,'processed'))
+processed_subjects=processed_subjects[!(grepl('all_processed',processed_subjects,
+                                              fixed=TRUE))]
 rm(all_data)
 for (f in 1:length(processed_subjects)) {
   task_file=dir(paste0(data_path,'processed/',processed_subjects[f]),fixed('clock_pilot'))
@@ -120,34 +122,36 @@ for (f in 1:length(processed_subjects)) {
     } else {
       all_data=main_data
     }
-    main_data$timeout <- ifelse(main_data$latency == 7500, 1, 0)
-    main_data$n_timeout=sum(main_data$timeout==1)
-    main_data$too_fast <- ifelse(main_data$latency < 500, 1, 0) #not sure how well this one would work out
-    main_data$n_too_fast=sum(main_data$too_fast==1)
-    tails <- main_data %>% tail(1) %>% select(subject, date, blocknum, totalPoints, 
-                                                  totalEarnings, n_timeout, n_too_fast)
-    tails$approve <- ifelse(tails$blocknum==9, "yes", "no")
-    tails$bonus <- max(tails$totalEarnings)/100 #seems pretty high...?
-    colnames(tails) <- c("subject", "date", "blocks_completed", "total_points", 
-                         "total_earnings", "total_timeouts", "fast_trials", 
-                         "approve", "bonus")
-    if (exists("processed_sub_info")) {
-      processed_sub_info=rbind(processed_sub_info,tails)
-    } else {
-      aprocessed_sub_info=tails
-    }
   }
-} #still working on getting the second half to run properly
+  main_data$timeout <- ifelse(main_data$latency == 6500, 1, 0) #changed this from 7500 to 6500 because it looks like the trial start time is set to 1000 in task code so latency of 6500 would indicate that the subject reached the 7500 timeout before submitting a response on that trial
+  main_data$n_timeout=sum(main_data$timeout==1)
+  main_data$too_fast <- ifelse(main_data$latency < 500, 1, 0) #not sure how well this one would work out
+  main_data$n_too_fast=sum(main_data$too_fast==1)
+  tails <- main_data %>% tail(1) %>% select(subject, date, blocknum, totalPoints, 
+                                            totalEarnings, n_timeout, n_too_fast)
+  tails$approve <- ifelse(tails$blocknum==9, "Yes", "NO: DID NOT COMPLETE 9 BLOCKS")
+  tails$bonus <- ifelse(tails$approve=="Yes", max(tails$totalEarnings)/500, 0) #100 seems pretty high for bonus payments...? - change to 1000? or 500? pts already receive an hourly rate so bonus payments are typically $1-$5
+  tails$bonus <- round(tails$bonus, digits=2)
+  colnames(tails) <- c("subject", "date", "blocks_completed", "points", 
+                       "earnings", "total_timeouts", "fast_trials", 
+                       "approve", "bonus")
+  if (exists("processed_sub_info")) {
+    processed_sub_info=full_join(processed_sub_info, tails)
+  } else {
+    processed_sub_info=tails
+  }
+}
 
 write.csv(all_data,file=paste0(data_path,'processed/all_processed_data_',
-                               Sys.Date(),'.csv'))
-write.csv(processed_sub_info,file=paste0(data_path,'processed_subject_info',
-                                Sys.Date(),'.csv'))
+                               Sys.Date(),'.csv'), row.names = F)
+write.csv(processed_sub_info,file=paste0(data_path,'additional/processed_subject_info_',
+                                Sys.Date(),'.csv'), row.names = F)
 
 #get bonus formatting for bulk payment on prolific
-processed_sub_info$bonuses <- paste(processed_sub_info$subject, processed_sub_info$bonus,
+approve_subjects <- processed_sub_info %>% filter(approve=="Yes")
+approve_subjects$bonuses <- paste(approve_subjects$subject, approve_subjects$bonus,
                                     sep = ", ")
-bonuses <- processed_sub_info$bonuses
-write.table(bonuses, file = paste0(data_path, 'bonuses.txt'), sep = "\t", row.names = F, 
+bonuses <- approve_subjects$bonuses
+write.table(bonuses, file = paste0(data_path, 'additional/bonuses.txt'), sep = "\t", row.names = F, 
             col.names = F, quote = FALSE)
 
