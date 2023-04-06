@@ -55,10 +55,10 @@ library(stringr)
 #path to skinner
 #change onedrive_path for local skinner location
 onedrive_path='/Users/laurataglioni/University of Pittsburgh/DNPLskinner - Documents/skinner/'
-data_path=paste0(onedrive_path,'data/prolific/clock_v2_pilot/no_contingencies_March_2023/')
+data_path=paste0(onedrive_path,'data/prolific/clock_v2_pilot/no_contingencies_04-05-2023/')
 
 #read in prolific export file
-export_file=read.csv(paste0(data_path, 'additional/prolific_export/')) #add demographic file from prolific once data is collected
+export_file=read.csv(paste0(data_path, 'additional/prolific_export/prolific_export_642dc8c1ffd57036424e0ed2.csv')) #add demographic file from prolific once data is collected
 prolific_IDs=export_file$Participant.id
 
 #clean names and create variables to identify participants who were particularly slow (over 40 min) or did not get completion code to check on later
@@ -130,7 +130,7 @@ for (f in 1:length(processed_subjects)) {
   tails <- main_data %>% tail(1) %>% select(subject, date, blocknum, totalPoints, 
                                             totalEarnings, n_timeout, n_too_fast)
   tails$approve <- ifelse(tails$blocknum==9, "Yes", "NO: DID NOT COMPLETE 9 BLOCKS")
-  tails$bonus <- ifelse(tails$approve=="Yes", max(tails$totalEarnings)/500, 0) #100 seems pretty high for bonus payments...? - change to 1000? or 500? pts already receive an hourly rate so bonus payments are typically $1-$5
+  tails$bonus <- ifelse(tails$approve=="Yes", max(tails$totalEarnings)/200, 0) #100 seems pretty high for bonus payments...? - change to 1000? or 500? pts already receive an hourly rate so bonus payments are typically $1-$5
   tails$bonus <- round(tails$bonus, digits=2)
   colnames(tails) <- c("subject", "date", "blocks_completed", "points", 
                        "earnings", "total_timeouts", "fast_trials", 
@@ -142,16 +142,22 @@ for (f in 1:length(processed_subjects)) {
   }
 }
 
+names(processed_sub_info )[names(processed_sub_info ) == 'subject'] <- 'prolific_id'
+processed_sub_info <- full_join(processed_sub_info, prolific_data, by='prolific_id')
+processed_sub_info <- processed_sub_info %>% select(-c(date, status, date_time_started, date_time_completed, completion_code, total_approvals, time_taken))
+processed_sub_info <- processed_sub_info %>% select(prolific_id, blocks_completed, points, earnings, time_taken_min, total_timeouts, fast_trials, code, slow, submission_id, approve, bonus)
+
 write.csv(all_data,file=paste0(data_path,'processed/all_processed_data_',
                                Sys.Date(),'.csv'), row.names = F)
 write.csv(processed_sub_info,file=paste0(data_path,'additional/processed_subject_info_',
                                 Sys.Date(),'.csv'), row.names = F)
 
+
 #get bonus formatting for bulk payment on prolific
 approve_subjects <- processed_sub_info %>% filter(approve=="Yes")
-approve_subjects$bonuses <- paste(approve_subjects$subject, approve_subjects$bonus,
+approve_subjects$bonuses <- paste(approve_subjects$prolific_id, approve_subjects$bonus,
                                     sep = ", ")
 bonuses <- approve_subjects$bonuses
-write.table(bonuses, file = paste0(data_path, 'additional/bonuses.txt'), sep = "\t", row.names = F, 
+write.table(bonuses, file = paste0(data_path, 'additional/bonuses_0.25cents.txt'), sep = "\t", row.names = F, 
             col.names = F, quote = FALSE)
 
