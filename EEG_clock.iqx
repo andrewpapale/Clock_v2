@@ -540,7 +540,7 @@ expressions.centery + expressions.heightchange_angle330
       
 On each of your 320 trials you can decide where to land your spacecraft.  Your spacecraft will orbit the planet, and you can land it at any point by pressing the spacebar.
       
-If you stop in a good location, you will find 1-10 mushrooms. Every mushroom is worth 1 cent.
+If you stop in a good location, you will find 1-10 mushrooms. Every mushroom is worth 0.5 cents.
       
 The goal of this game is to get the most mushrooms.
 
@@ -593,7 +593,7 @@ Get ready!")
 </text>
 
 <text payment>
-/ items = ("You won a total of $ <%values.totalEarnings/100%> dollars.  
+/ items = ("You won a total of $ <%values.totalEarnings/200%> dollars.  
 The average score is $10.  Thank you for playing!")
 / fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
 / position = (50%, 45%)
@@ -602,7 +602,7 @@ The average score is $10.  Thank you for playing!")
 </text>
 
 <text feedback1>
-/ items = ("You got <% values.Earnings %> mushrooms")
+/ items = ("You got <% values.Earnings*2 %> mushrooms")
 / fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
 / position = (50%, 60%)
 / vjustify = center
@@ -1801,42 +1801,42 @@ uncertainty;
 	if (parameters.mushrooms==TRUE && trial.experiment_noU.response != 0) {
 		if (values.inc > 0 && values.inc <= 24) {
 			picture.feedback.item.1 = "mushrooms1.png";
-			values.Earnings = 1;
+			values.Earnings = 0.5;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
 		} else if (values.inc > 24 && values.inc <= 32) {
-			values.Earnings = 2;
+			values.Earnings = 1;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
 			picture.feedback.item.1 = "mushrooms2.png";
 		} else if (values.inc > 32 && values.inc <= 46) {
-			values.Earnings = 3;
+			values.Earnings = 1.5;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
 			picture.feedback.item.1 = "mushrooms3.png";
 		} else if (values.inc > 46 && values.inc <= 60) {
-			values.Earnings = 4;
+			values.Earnings = 2;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
 			picture.feedback.item.1 = "mushrooms4.png";
 		} else if (values.inc > 60 && values.inc <= 74) {
-			values.Earnings = 5;
+			values.Earnings = 2.5;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
 			picture.feedback.item.1 = "mushrooms5.png";
 		} else if (values.inc > 74 && values.inc <= 88) {
-			values.Earnings = 6;
+			values.Earnings = 3;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
 			picture.feedback.item.1 = "mushrooms6.png";
 		} else if (values.inc > 88 && values.inc <= 102) {
-			values.Earnings = 7;
+			values.Earnings = 3.5;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
 			picture.feedback.item.1 = "mushrooms7.png";
 		} else if (values.inc > 102 && values.inc <= 124) {
-			values.Earnings = 8;
+			values.Earnings = 4;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
 			picture.feedback.item.1 = "mushrooms8.png";
 		} else if (values.inc > 124 && values.inc <= 136) {
-			values.Earnings = 9;
+			values.Earnings = 4.5;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
 			picture.feedback.item.1 = "mushrooms9.png";
 		} else if (values.inc > 136) {
-			values.Earnings = 10;
+			values.Earnings = 5;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
 			picture.feedback.item.1 = "mushrooms10.png";
 		} else if (values.inc ==0) {
@@ -1973,42 +1973,42 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	if (parameters.mushrooms==TRUE  && trial.experiment_U.response != 0) {
 		if (values.inc > 0 && values.inc <= 24) {
 			picture.feedback.item.1 = "mushrooms1.png";
-			values.Earnings = 1;
+			values.Earnings = 0.5;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
 		} else if (values.inc > 24 && values.inc <= 32) {
-			values.Earnings = 2;
+			values.Earnings = 1;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
 			picture.feedback.item.1 = "mushrooms2.png";
 		} else if (values.inc > 32 && values.inc <= 46) {
-			values.Earnings = 3;
+			values.Earnings = 1.5;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
 			picture.feedback.item.1 = "mushrooms3.png";
 		} else if (values.inc > 46 && values.inc <= 60) {
-			values.Earnings = 4;
+			values.Earnings = 2;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
 			picture.feedback.item.1 = "mushrooms4.png";
 		} else if (values.inc > 60 && values.inc <= 74) {
-			values.Earnings = 5;
+			values.Earnings = 2.5;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
 			picture.feedback.item.1 = "mushrooms5.png";
 		} else if (values.inc > 74 && values.inc <= 88) {
-			values.Earnings = 6;
+			values.Earnings = 3;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
 			picture.feedback.item.1 = "mushrooms6.png";
 		} else if (values.inc > 88 && values.inc <= 102) {
-			values.Earnings = 7;
+			values.Earnings = 3.5;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
 			picture.feedback.item.1 = "mushrooms7.png";
 		} else if (values.inc > 102 && values.inc <= 124) {
-			values.Earnings = 8;
+			values.Earnings = 4;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
 			picture.feedback.item.1 = "mushrooms8.png";
 		} else if (values.inc > 124 && values.inc <= 136) {
-			values.Earnings = 9;
+			values.Earnings = 4.5;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
 			picture.feedback.item.1 = "mushrooms9.png";
 		} else if (values.inc > 136) {
-			values.Earnings = 10;
+			values.Earnings = 5;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
 			picture.feedback.item.1 = "mushrooms10.png";
 		} else if (values.inc ==0) {

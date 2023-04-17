@@ -1,0 +1,9 @@
+build	computer.platform	computer.touch	date	time	subject	group	sessionid	blockcode	blocknum	trialcode	latency	randStart	startPos	scrfunc	rtvspos	randStart	mag	freq	ev	inc	rng	startPos	fogPos1	fogPos2	chooseUncertainty1	chooseUncertainty2	uncertaintyCount1	uncertaintyCount2	blockCount	ntrials	trialCount	uncertaintyStart1	uncertaintyStart2	uncertainty_block	rt_shifted	totalPoints	totalEarnings	Earnings
+6.6.1	mac	0	2023-03-31	14:30:31	1	1	1	instructions	1	instructions1	46	1	75	IEV	POS	1						75	0	0	0	0	0	0	0	10	0	0	0	0		0	0	
+6.6.1	mac	0	2023-03-31	14:30:31	1	1	1	instructions	1	displayGoodJob	37	1	75	IEV	POS	1						75	0	0	0	0	0	0	0	10	0	0	0	0		0	0	
+6.6.1	mac	0	2023-03-31	14:30:31	1	1	1	instructions	1	feedback2_5	3000	1	75	IEV	POS	1						75	0	0	0	0	0	0	0	10	0	0	0	0		0	0	0
+6.6.1	mac	0	2023-03-31	14:30:31	1	1	1	instructions	1	instructions3	45	1	75	IEV	POS	1						75	0	0	0	0	0	0	0	10	0	0	0	0		0	0	0
+6.6.1	mac	0	2023-03-31	14:30:31	1	1	1	instructions	1	instructions4	38	1	75	IEV	POS	1						75	0	0	0	0	0	0	0	10	0	0	0	0		0	0	0
+6.6.1	mac	0	2023-03-31	14:30:31	1	1	1	instructions	1	sampleResponse	3000	1	75	IEV	POS	1						75	0	0	0	0	0	0	0	10	0	0	0	0	38	0	0	0
+6.6.1	mac	0	2023-03-31	14:30:31	1	1	1	instructions	1	instructions4	17	1	75	IEV	POS	1						75	0	0	0	0	0	0	0	10	0	0	0	0	38	0	0	0
+6.6.1	mac	0	2023-03-31	14:30:31	1	1	1	instructions	1	sampleResponse	1696	1	75	IEV	POS	1						75	0	0	0	0	0	0	0	10	0	0	0	0	17	0	0	0
