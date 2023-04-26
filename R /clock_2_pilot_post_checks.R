@@ -54,8 +54,8 @@ library(stringr)
 
 #path to skinner
 #change onedrive_path for local skinner location
-onedrive_path='/Users/laurataglioni/University of Pittsburgh/DNPLskinner - Documents/skinner/'
-data_path=paste0(onedrive_path,'data/prolific/clock_v2_pilot/no_contingencies_04-05-2023/')
+onedrive_path='/Users/andypapale/Library/CloudStorage/OneDrive-UniversityofPittsburgh/Documents - DNPLskinner/skinner/'
+data_path=paste0(onedrive_path,'data/prolific/clock_v2_pilot/original_contingencies_pseudo_uncertainty_04-05-23/')
 
 #read in prolific export file
 export_file=read.csv(paste0(data_path, 'additional/prolific_export/prolific_export_642dc8c1ffd57036424e0ed2.csv')) #add demographic file from prolific once data is collected
@@ -108,7 +108,7 @@ for (f in 1:length(processed_subjects)) {
   main_data_all=read.csv(paste0(data_path,'processed/',processed_subjects[f],'/',task_file),
                          header=T)
   if (dim(main_data_all)[1]>0) {
-    main_data=dplyr::select(main_data_all,c("subject","date", "blocknum","trialcode",
+    main_data=dplyr::select(main_data_all,c("subject","date", "startPos","blocknum","trialcode",
                                             "latency","scrfunc","mag","freq","ev",
                                             "inc","rng","fogPos1","fogPos2",
                                             "chooseUncertainty1","chooseUncertainty2", 

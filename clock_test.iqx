@@ -1,0 +1,188 @@
+﻿<values>
+/ k = 37;
+/ Shift = 700;
+/ rt_extended = 7000;
+/ DEV_factor = 10;
+/ DEV_factor2 = 1;
+/ sin_factor = 0.25;
+/ mag = NULL;
+/ freq = NULL;
+/ CEV_x = NULL;
+/ IEV_x = NULL;
+/ CEV_x2 = NULL;
+/ DEV_x = NULL;
+/ a = -5;
+/ b = 5;
+/ r = NULL;
+/ ev = NULL;
+/ inc = NULL;
+/ temp = NULL;
+/ rng = NULL;
+/ startPos = 75;
+/ totalPoints = 0;
+/ angDisp = 0;
+/ circle_x = 0%;
+/ circle_y = 0%;
+/ n_revolutions = 0;
+/ rt_shifted = NULL;
+/ time_per_revolution = 5000;
+/ gamma = values.time_per_revolution/100;
+/ scrfunc = "IEV";
+/ totalEarnings = 0;
+/ Earnings = NULL;
+/ trialCount = 0;
+/ test = NULL;
+</values>
+
+<parameters>
+/ rtvspos = "POS" // if POS, the clock position in space matters, if RT, the time from the starting position matters
+/ mushrooms = TRUE;
+/ randStart = TRUE;
+/ circleproportion = 0.33
+/ clockdotSize = 2%
+/ handDotSize = 3%
+</parameters>
+
+<data>
+/ columns = (build, computer.platform, computer.touch, date, time, subject, group, script.sessionid, blockcode, blocknum, 
+trialcode,latency,values.rt_shifted,values.scrfunc,values.mag, values.freq, values.ev, values.inc, values.rng, list.RT.currentvalue,values.Earnings)
+</data>
+
+<text scrfunc>
+/ items = ("IEV","DEV","CEV","CEVR")
+/ select = noreplace
+</text>
+
+<list RT>
+/items = (0,100 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000, 2100, 2200, 2300, 2400, 2500, 2600, 2700, 2800, 2900, 3000, 3100, 3200, 3300, 3400, 3500, 3600, 3700, 3800, 3900, 4000, 4100, 4200, 4300, 4400, 4500, 4600, 4700, 4800, 4900, 5000)
+</list>
+
+<block experiment>
+/ onblockbegin = [
+	list.RT.selectionmode = 1;
+	if (text.scrfunc.nextvalue==1){
+		values.scrfunc = "IEV";
+	} else if (text.scrfunc.nextvalue==2){
+		values.scrfunc = "DEV";
+	} else if (text.scrfunc.nextvalue==3){
+		values.scrfunc = "CEV";
+	} else if (text.scrfunc.nextvalue==4){
+		values.scrfunc = "CEVR";
+	}
+	]
+/ trials = [1-10000=dispFeedback_U]
+</block>
+
+<trial dispFeedback_U>
+/ ontrialbegin = [
+	values.startPos =  round(rand(0, 100));
+	if (parameters.rtvspos=="RT") {
+		if (values.scrfunc == "CEV") {
+			values.mag = (values.k * values.rt_extended)/(values.rt_extended-(list.RT.nextvalue+values.Shift));
+			values.freq = 1-((list.RT.nextvalue+values.Shift)/values.rt_extended);
+		} else if (values.scrfunc == "DEV") {
+			values.temp = values.DEV_factor2*(list.RT.nextvalue+values.Shift);
+			values.mag = values.DEV_factor*ln(values.temp);
+			values.CEV_x = 1-((list.RT.nextvalue+values.Shift)/values.rt_extended);
+			values.IEV_x = values.CEV_x + (values.CEV_x*(values.sin_factor*sin((list.RT.nextvalue*m_pi)/values.time_per_revolution)));
+			values.freq = (2*values.CEV_x)-values.IEV_x;
+		} else if (values.scrfunc =="IEV") {
+			values.CEV_x = (values.k*values.rt_extended)/(values.rt_extended-(list.RT.nextvalue+values.Shift));
+			values.temp = values.DEV_factor2*(list.RT.nextvalue+values.Shift);
+			values.DEV_x = values.DEV_factor*ln(values.temp);
+			values.mag = (2*values.CEV_x) - values.DEV_x;
+			values.CEV_x2 = 1-((list.RT.nextvalue+values.Shift)/values.rt_extended);
+			values.freq = values.CEV_x2 + (values.CEV_x2*(values.sin_factor*sin((list.RT.nextvalue*m_pi)/values.time_per_revolution)));
+		} else if (values.scrfunc =="CEVR") {
+			values.mag = 1-((list.RT.nextvalue+values.Shift)/values.rt_extended);
+			values.mag = values.mag*200;
+			values.freq = (values.k*values.rt_extended)/(values.rt_extended-(list.RT.nextvalue+values.Shift));
+			values.freq = values.freq/200;
+		}
+	} else if (parameters.rtvspos=="POS") {
+		if (values.startPos >= 0 && values.startPos < 75) {
+			values.rt_shifted = mod(values.gamma*(values.startPos+25)+list.RT.nextvalue,values.time_per_revolution);
+		} else if (values.startPos >= 75) {
+			values.rt_shifted = mod(values.gamma*(values.startPos-75)+list.RT.nextvalue,values.time_per_revolution);
+		}
+		if (values.scrfunc == "CEV") {
+			values.mag = (values.k * values.rt_extended)/(values.rt_extended-(values.rt_shifted+values.Shift));
+			values.freq = 1-((values.rt_shifted+values.Shift)/values.rt_extended);
+		} else if (values.scrfunc == "DEV") {
+			values.temp = values.DEV_factor2*(values.rt_shifted+values.Shift);
+			values.mag = values.DEV_factor*ln(values.temp);
+			values.CEV_x = 1-((values.rt_shifted+values.Shift)/values.rt_extended);
+			values.IEV_x = values.CEV_x + (values.CEV_x*(values.sin_factor*sin((values.rt_shifted*m_pi)/values.time_per_revolution)));
+			values.freq = (2*values.CEV_x)-values.IEV_x;
+		} else if (values.scrfunc =="IEV") {
+			values.CEV_x = (values.k*values.rt_extended)/(values.rt_extended-(values.rt_shifted+values.Shift));
+			values.temp = values.DEV_factor2*(values.rt_shifted+values.Shift);
+			values.DEV_x = values.DEV_factor*ln(values.temp);
+			values.mag = (2*values.CEV_x) - values.DEV_x;
+			values.CEV_x2 = 1-((values.rt_shifted+values.Shift)/values.rt_extended);
+			values.freq = values.CEV_x2 + (values.CEV_x2*(values.sin_factor*sin((values.rt_shifted*m_pi)/values.time_per_revolution)));
+		} else if (values.scrfunc =="CEVR") {
+			values.mag = 1-((values.rt_shifted+values.Shift)/values.rt_extended);
+			values.mag = values.mag*200;
+			values.freq = (values.k*values.rt_extended)/(values.rt_extended-(values.rt_shifted+values.Shift));
+			values.freq = values.freq/200;
+		}
+	}
+			//values.r = round(rand(values.a, values.b));
+	//values.mag = values.mag + values.r;
+	values.ev = values.mag * values.freq;
+	//values.mag = round(values.mag);
+	values.rng = rand(0,1);  // decrease probability of omission
+	if (values.freq >= values.rng) {
+		values.inc = values.mag;
+	} else {
+		values.inc = 1;
+	}
+		if (values.inc > 0 && values.inc <= 24) {
+			values.Earnings = 0.5;
+			values.totalEarnings = values.totalEarnings + values.Earnings;
+		} else if (values.inc > 24 && values.inc <= 32) {
+			values.Earnings = 1;
+			values.totalEarnings = values.totalEarnings + values.Earnings;
+		} else if (values.inc > 32 && values.inc <= 46) {
+			values.Earnings = 1.5;
+			values.totalEarnings = values.totalEarnings + values.Earnings;
+		} else if (values.inc > 46 && values.inc <= 60) {
+			values.Earnings = 2;
+			values.totalEarnings = values.totalEarnings + values.Earnings;
+		} else if (values.inc > 60 && values.inc <= 74) {
+			values.Earnings = 2.5;
+			values.totalEarnings = values.totalEarnings + values.Earnings;
+		} else if (values.inc > 74 && values.inc <= 88) {
+			values.Earnings = 3;
+			values.totalEarnings = values.totalEarnings + values.Earnings;
+		} else if (values.inc > 88 && values.inc <= 102) {
+			values.Earnings = 3.5;
+			values.totalEarnings = values.totalEarnings + values.Earnings;
+		} else if (values.inc > 102 && values.inc <= 124) {
+			values.Earnings = 4;
+			values.totalEarnings = values.totalEarnings + values.Earnings;
+		} else if (values.inc > 124 && values.inc <= 136) {
+			values.Earnings = 4.5;
+			values.totalEarnings = values.totalEarnings + values.Earnings;
+		} else if (values.inc > 136) {
+			values.Earnings = 5;
+			values.totalEarnings = values.totalEarnings + values.Earnings;	
+		} else if (values.inc ==0) {
+			values.Earnings = 0;
+			values.totalEarnings = values.totalEarnings + values.Earnings;
+		}
+		
+]
+/ trialduration = 1	
+</trial>
+	
+	
+<expt main1>
+/ blocks = [
+	1=experiment;
+	2=experiment;
+	3=experiment;
+	4=experiment;
+]
+</expt>
