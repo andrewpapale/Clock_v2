@@ -1,0 +1,18 @@
+build	computer.platform	computer.touch	date	time	subject	group	sessionid	blockcode	blocknum	trialcode	latency	randStart	startPos	scrfunc	rtvspos	randStart	mag	freq	ev	inc	rng	startPos	fogPos1	fogPos2	chooseUncertainty1	chooseUncertainty2	uncertaintyCount1	uncertaintyCount2	blockCount	ntrials	trialCount	uncertaintyStart1	uncertaintyStart2	uncertainty_block	rt_shifted	totalPoints	totalEarnings	Earnings
+6.6.1	mac	0	2023-04-27	10:46:26	1	1	1	experiment	1	experiment_noU	738	1	22	DEV	dynamic	1						22	45	35	0	0	0	0	1	42	0	7	28	0		0	0	
+6.6.1	mac	0	2023-04-27	10:46:26	1	1	1	experiment	1	dispFeedback_noU	1000	1	22	DEV	dynamic	1	0			1	0.3703810643335760378	22	45	35	0	0	0	0	1	42	1	7	28	0		1	0.5	0.5
+6.6.1	mac	0	2023-04-27	10:46:26	1	1	1	experiment	1	experiment_noU	678	1	86	DEV	dynamic	1						86	45	35	0	0	0	0	1	42	1	7	28	0		1	0.5	0.5
+6.6.1	mac	0	2023-04-27	10:46:26	1	1	1	experiment	1	dispFeedback_noU	1000	1	86	DEV	dynamic	1	0			1	0.8044667748744754876	86	45	35	0	0	0	0	1	42	2	7	28	0		2	1	0.5
+6.6.1	mac	0	2023-04-27	10:46:26	1	1	1	experiment	1	experiment_noU	953	1	60	DEV	dynamic	1						60	45	35	0	0	0	0	1	42	2	7	28	0		2	1	0.5
+6.6.1	mac	0	2023-04-27	10:46:26	1	1	1	experiment	1	dispFeedback_noU	1000	1	60	DEV	dynamic	1	0			1	0.4795653122662486001	60	45	35	0	0	0	0	1	42	3	7	28	0		3	1.5	0.5
+6.6.1	mac	0	2023-04-27	10:46:26	1	1	1	experiment	1	experiment_noU	737	1	85	DEV	dynamic	1						85	45	35	0	0	0	0	1	42	3	7	28	0		3	1.5	0.5
+6.6.1	mac	0	2023-04-27	10:46:26	1	1	1	experiment	1	dispFeedback_noU	1000	1	85	DEV	dynamic	1	0			1	0.0530133391853918612	85	45	35	0	0	0	0	1	42	4	7	28	0		4	2	0.5
+6.6.1	mac	0	2023-04-27	10:46:26	1	1	1	experiment	1	experiment_noU	866	1	18	DEV	dynamic	1						18	45	35	0	0	0	0	1	42	4	7	28	0		4	2	0.5
+6.6.1	mac	0	2023-04-27	10:46:26	1	1	1	experiment	1	dispFeedback_noU	1000	1	18	DEV	dynamic	1	0			1	0.6803951416351821102	18	45	35	0	0	0	0	1	42	5	7	28	0		5	2.5	0.5
+6.6.1	mac	0	2023-04-27	10:46:26	1	1	1	experiment	1	experiment_noU	558	1	37	DEV	dynamic	1						37	45	35	0	0	0	0	1	42	5	7	28	0		5	2.5	0.5
+6.6.1	mac	0	2023-04-27	10:46:26	1	1	1	experiment	1	dispFeedback_noU	1000	1	37	DEV	dynamic	1	0			1	0.7222918802225710699	37	45	35	0	0	0	0	1	42	6	7	28	0		6	3	0.5
+6.6.1	mac	0	2023-04-27	10:46:26	1	1	1	experiment	1	experiment_noU	838	1	67	DEV	dynamic	1						67	45	35	0	0	0	0	1	42	6	7	28	0		6	3	0.5
+6.6.1	mac	0	2023-04-27	10:46:26	1	1	1	experiment	1	dispFeedback_noU	1000	1	67	DEV	dynamic	1	0			1	0.7758008941951675119	67	45	35	0	0	0	0	1	42	7	7	28	1		7	3.5	0.5
+6.6.1	mac	0	2023-04-27	10:46:26	1	1	1	experiment	1	experiment_U	737	1	74	DEV	dynamic	1						74	45	35	0	0	0	0	1	42	7	7	28	1		7	3.5	0.5
+6.6.1	mac	0	2023-04-27	10:46:26	1	1	1	experiment	1	dispFeedback_U	1000	1	74	DEV	dynamic	1	0			1	0.0522682955610259195	74	45	35	0	0	1	0	1	42	8	7	28	1		8	4	0.5
+6.6.1	mac	0	2023-04-27	10:46:26	1	1	1	experiment	1	experiment_U	0	1	24	DEV	dynamic	1						24	45	35	0	0	1	0	1	42	8	7	28	1		8	4	0.5

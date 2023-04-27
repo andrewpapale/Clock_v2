@@ -1,0 +1,12 @@
+build	computer.platform	computer.touch	date	time	subject	group	sessionid	blockcode	blocknum	trialcode	latency	randStart	startPos	scrfunc	rtvspos	randStart	mag	freq	ev	inc	rng	startPos	fogPos1	fogPos2	chooseUncertainty1	chooseUncertainty2	uncertaintyCount1	uncertaintyCount2	blockCount	ntrials	trialCount	uncertaintyStart1	uncertaintyStart2	uncertainty_block	rt_shifted	totalPoints	totalEarnings	Earnings
+6.6.1	mac	0	2023-04-26	17:07:59	1	1	1	experiment	1	experiment_noU	1667	1	90	DEV	dynamic	1						90	50	20	0	0	0	0	1	37	0	11	31	0		0	0	
+6.6.1	mac	0	2023-04-26	17:07:59	1	1	1	experiment	1	dispFeedback_noU	1000	1	90	DEV	dynamic	1	0			1	0.7621361691882219125	90	50	20	0	0	0	0	1	37	1	11	31	0		1	0.5	0.5
+6.6.1	mac	0	2023-04-26	17:07:59	1	1	1	experiment	1	experiment_noU	1601	1	55	DEV	dynamic	1						55	50	20	0	0	0	0	1	37	1	11	31	0		1	0.5	0.5
+6.6.1	mac	0	2023-04-26	17:07:59	1	1	1	experiment	1	dispFeedback_noU	1000	1	55	DEV	dynamic	1	0			1	0.2675305999041373561	55	50	20	0	0	0	0	1	37	2	11	31	0		2	1	0.5
+6.6.1	mac	0	2023-04-26	17:07:59	1	1	1	experiment	1	experiment_noU	1071	1	19	DEV	dynamic	1						19	50	20	0	0	0	0	1	37	2	11	31	0		2	1	0.5
+6.6.1	mac	0	2023-04-26	17:07:59	1	1	1	experiment	1	dispFeedback_noU	1000	1	19	DEV	dynamic	1	0			1	0.3333849835520109606	19	50	20	0	0	0	0	1	37	3	11	31	0		3	1.5	0.5
+6.6.1	mac	0	2023-04-26	17:07:59	1	1	1	experiment	1	experiment_noU	1091	1	44	DEV	dynamic	1						44	50	20	0	0	0	0	1	37	3	11	31	0		3	1.5	0.5
+6.6.1	mac	0	2023-04-26	17:07:59	1	1	1	experiment	1	dispFeedback_noU	1000	1	44	DEV	dynamic	1	0			1	0.0905115651177502145	44	50	20	0	0	0	0	1	37	4	11	31	0		4	2	0.5
+6.6.1	mac	0	2023-04-26	17:07:59	1	1	1	experiment	1	experiment_noU	3716	1	39	DEV	dynamic	1						39	50	20	0	0	0	0	1	37	4	11	31	0		4	2	0.5
+6.6.1	mac	0	2023-04-26	17:07:59	1	1	1	experiment	1	dispFeedback_noU	1000	1	39	DEV	dynamic	1	0			1	0.7772758420969536619	39	50	20	0	0	0	0	1	37	5	11	31	0		5	2.5	0.5
+6.6.1	mac	0	2023-04-26	17:07:59	1	1	1	experiment	1	experiment_noU	0	1	5	DEV	dynamic	1						5	50	20	0	0	0	0	1	37	5	11	31	0		5	2.5	0.5

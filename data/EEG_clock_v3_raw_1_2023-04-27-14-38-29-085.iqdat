@@ -1,0 +1,7 @@
+build	computer.platform	computer.touch	date	time	subject	group	sessionid	blockcode	blocknum	trialcode	latency	randStart	startPos	scrfunc	rtvspos	randStart	mag	freq	ev	inc	rng	startPos	fogPos1	fogPos2	chooseUncertainty1	chooseUncertainty2	uncertaintyCount1	uncertaintyCount2	blockCount	ntrials	trialCount	uncertaintyStart1	uncertaintyStart2	uncertainty_block	rt_shifted	totalPoints	totalEarnings	Earnings
+6.6.1	mac	0	2023-04-27	10:38:29	1	1	1	experiment	1	experiment_noU	833	1	76	DEV	dynamic	1						76	1	40	0	0	0	0	1	41	0	6	26	0		0	0	
+6.6.1	mac	0	2023-04-27	10:38:29	1	1	1	experiment	1	dispFeedback_noU	1000	1	76	DEV	dynamic	1	0			1	0.7123230175842352185	76	1	40	0	0	0	0	1	41	1	6	26	0		1	0.5	0.5
+6.6.1	mac	0	2023-04-27	10:38:29	1	1	1	experiment	1	experiment_noU	1281	1	68	DEV	dynamic	1						68	1	40	0	0	0	0	1	41	1	6	26	0		1	0.5	0.5
+6.6.1	mac	0	2023-04-27	10:38:29	1	1	1	experiment	1	dispFeedback_noU	1000	1	68	DEV	dynamic	1	0			1	0.1110127992255177387	68	1	40	0	0	0	0	1	41	2	6	26	0		2	1	0.5
+6.6.1	mac	0	2023-04-27	10:38:29	1	1	1	experiment	1	experiment_noU	716	1	39	DEV	dynamic	1						39	1	40	0	0	0	0	1	41	2	6	26	0		2	1	0.5
+6.6.1	mac	0	2023-04-27	10:38:29	1	1	1	experiment	1	dispFeedback_noU	584	1	39	DEV	dynamic	1	0			1	0.0224370432604190512	39	1	40	0	0	0	0	1	41	3	6	26	0		3	1.5	0.5
