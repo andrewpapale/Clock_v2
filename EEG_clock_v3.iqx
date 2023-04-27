@@ -235,19 +235,22 @@ EEG Clock variant #2
 / trialCount = 0;
 / trialCountTotal = 0;
 / blockCount = 0;
-/ uncertaintyStart1 = 0;
-/ uncertaintyStart2 = 0;
+/ unc_att_start1 = 0;
+/ unc_att_start2 = 0;
 / nUncertainty1 = 0;
 / nUncertainty2 = 0;
 / fogPos1 = 0;
-/ fogPos2 = 0;
+/ windPos2 = 0;
 / chooseFog1 = 0;
-/ chooseFog2 = 0;
-/ chooseUncertainty1 = 0;
-/ chooseUncertainty2 = 0;
-/ uncertaintyCount1 = 0;
-/ uncertaintyCount2 = 0;
+/ chooseWind2 = 0;
+/ chooseAttentionalControl = 0;
+/ chooseUncertainty = 0;
+/ choose_unc_att1 = 0;
+/ choose_unc_att2 = 0;
+/ unc_att_count1 = 0;
+/ unc_att_count2 = 0;
 / uncertainty_block = 0;
+/ meta_trialCount = 0;
 </values>
 
 <parameters>
@@ -265,10 +268,10 @@ EEG Clock variant #2
 <data>
 / columns = (build, computer.platform, computer.touch, date, time, subject, group, script.sessionid, blockcode, blocknum, 
 trialcode,latency,parameters.randStart, values.startPos,values.scrfunc, parameters.rtvspos, parameters.randStart, 
-values.mag, values.freq, values.ev, values.inc, values.rng values.startPos, values.fogPos1,values.fogPos2,
-values.chooseUncertainty1, values.chooseUncertainty2, values.uncertaintyCount1, values.uncertaintyCount2,
-values.blockCount,parameters.ntrials, values.trialCount, 
-values.uncertaintyStart1, values.uncertaintyStart2, values.uncertainty_block,
+values.mag, values.freq, values.ev, values.inc, values.rng values.startPos, values.fogPos1,values.windPos2, values.chooseFog1, values.chooseWind2,
+values.choose_unc_att1, values.choose_unc_att2, values.unc_att_count1, values.unc_att_count2, values.chooseAttentionalControl, values.chooseUncertainty,
+values.blockCount,parameters.ntrials, values.trialCount, values.meta_trialCount,parameters.attentional_control,parameters.local_uncertainty,
+values.unc_att_start1, values.unc_att_start2, values.uncertainty_block,
 values.rt_shifted,values.totalPoints, values.totalEarnings, values.Earnings)
 </data>
 
@@ -3515,29 +3518,34 @@ uncertainty;
 		parameters.ntrials = round(rand(32, 43));
 		values.scrfunc = noreplace("IEV","DEV","CEV","CEVR","IEV","DEV","IEV","DEV");
 		values.scrfunc = "DEV";
+		list.triallist_noU.poolsize = parameters.ntrials;
+		list.triallist_U.poolsize = parameters.ntrials;
+		values.trialCount = 0;
 	} else {
-		parameters.ntrials = 300;
+		parameters.ntrials = round(rand(32, 43));
+		list.triallist_noU.poolsize = parameters.ntrials;
+		list.triallist_U.poolsize = parameters.ntrials;
+		values.trialCount = 0;
 	}
 	list.triallist_noU.poolsize = parameters.ntrials;
 	list.triallist_U.poolsize = parameters.ntrials;
 	values.blockCount = values.blockCount + 1;
-	values.trialCount = 0;
 	values.trialCountTotal = values.trialCountTotal + parameters.ntrials;
 	// local uncertainty manipulation starts on trial N
-	values.uncertaintyStart1 = noreplace(5,6,7,8,9,10,11,12);
-	values.uncertaintyStart2 = noreplace(24,25,26,27,28,29,30,31);
+	values.unc_att_start1 = noreplace(5,6,7,8,9,10,11,12);
+	values.unc_att_start2 = noreplace(24,25,26,27,28,29,30,31);
 	//values.uncertaintyStart = 1;
-	//values.uncertaintyStart1 = 2;
-	//values.uncertaintyStart2 = 14;
-	values.nUncertainty1 = values.uncertaintyStart1 + 10;
-	values.nUncertainty2 = values.uncertaintyStart2 + 10;
-	values.chooseUncertainty1 = 0;
-	values.chooseUncertainty2 = 0;
-	values.uncertaintyCount1 = 0;
-	values.uncertaintyCount2 = 0;
+	//values.unc_att_start1 = 2;
+	//values.unc_att_start2 = 14;
+	values.nUncertainty1 = values.unc_att_start1 + 10;
+	values.nUncertainty2 = values.unc_att_start2 + 10;
+	values.choose_unc_att1 = 0;
+	values.choose_unc_att2 = 0;
+	values.unc_att_count1 = 0;
+	values.unc_att_count2 = 0;
 	// determine position of fog
 	values.fogPos1 = noreplace(1,5,10,15,20,25,30,35,40,45,50);
-	values.fogPos2 = noreplace(1,5,10,15,20,25,30,35,40,45,50);
+	values.windPos2 = noreplace(1,5,10,15,20,25,30,35,40,45,50);
 	//values.fogPos = 50;
 	
 	
@@ -3661,48 +3669,48 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 			picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle300;
 		}
 	} else if (values.uncertainty_block==2) {
-		if (values.fogPos2==1) {
-			picture.uncertainty.item.1 = "fog0.png";
+		if (values.windPos2==1) {
+			picture.uncertainty.item.1 = "wind0.png";
 			picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle270;
 			picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle270;
-		} else if (values.fogPos2==5) {
-			picture.uncertainty.item.1 = "fog5.png";
+		} else if (values.windPos2==5) {
+			picture.uncertainty.item.1 = "wind5.png";
 			picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle210;
 			picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle210;
-		} else if (values.fogPos2==10) {
-			picture.uncertainty.item.1 = "fog10.png";
+		} else if (values.windPos2==10) {
+			picture.uncertainty.item.1 = "wind10.png";
 			picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle180;
 			picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle180;
-		} else if (values.fogPos2==15) {
-			picture.uncertainty.item.1 = "fog15.png";
+		} else if (values.windPos2==15) {
+			picture.uncertainty.item.1 = "wind15.png";
 			picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle150;
 			picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle150;
-		} else if (values.fogPos2==20) {
-			picture.uncertainty.item.1 = "fog20.png";
+		} else if (values.windPos2==20) {
+			picture.uncertainty.item.1 = "wind20.png";
 			picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle120;
 			picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle120;
-		} else if (values.fogPos2==25) {
-			picture.uncertainty.item.1 = "fog25.png";
+		} else if (values.windPos2==25) {
+			picture.uncertainty.item.1 = "wind25.png";
 			picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle90;
 			picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle90;
-		} else if (values.fogPos2==30) {
-			picture.uncertainty.item.1 = "fog30.png";
+		} else if (values.windPos2==30) {
+			picture.uncertainty.item.1 = "wind30.png";
 			picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle60;
 			picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle60;
-		} else if (values.fogPos2==35) {
-			picture.uncertainty.item.1 = "fog35.png";
+		} else if (values.windPos2==35) {
+			picture.uncertainty.item.1 = "wind35.png";
 			picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle30;
 			picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle30;
-		} else if (values.fogPos2==40) {
-			picture.uncertainty.item.1 = "fog40.png";
+		} else if (values.windPos2==40) {
+			picture.uncertainty.item.1 = "wind40.png";
 			picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle0;
 			picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle0;
-		} else if (values.fogPos2==45) {
-			picture.uncertainty.item.1 = "fog45.png";
+		} else if (values.windPos2==45) {
+			picture.uncertainty.item.1 = "wind45.png";
 			picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle330;
 			picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle330;
-		} else if (values.fogPos2==50) {
-			picture.uncertainty.item.1 = "fog50.png";
+		} else if (values.windPos2==50) {
+			picture.uncertainty.item.1 = "wind50.png";
 			picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle300;
 			picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle300;
 		}
@@ -4943,6 +4951,7 @@ uncertainty;
 		}
 	}
 	values.trialCount  += 1;
+	values.meta_trialCount +=1;
 ]
 / stimulusframes = [
 	1=picture.feedback, text.feedback1,dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
@@ -4950,24 +4959,24 @@ dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
 dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
-dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60,text.magtest;
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 ]
 / trialduration = 1000
 // correctresponse = (next)
 / recorddata = true
 / ontrialend = [
-	if (values.trialCount >= values.uncertaintyStart1 && values.uncertaintyCount1 < values.nUncertainty1 && values.chooseUncertainty1 <= 3) {
+	if (values.trialCount >= values.unc_att_start1 && values.unc_att_count1 < values.nUncertainty1 && values.choose_unc_att1 <= 2) {
 		values.uncertainty_block=1;
-	} else if (values.trialCount >= values.uncertaintyStart2 && values.uncertaintyCount2 < values.nUncertainty2 && values.chooseUncertainty2 <= 3) {
+	} else if (values.trialCount >= values.unc_att_start2 && values.unc_att_count2 < values.nUncertainty2 && values.choose_unc_att2 <= 2) {
 		values.uncertainty_block=2;
 	} else {
 		values.uncertainty_block=0;
 	}
 ]
 / branch = [
-	if (values.trialCount >= values.uncertaintyStart1 && values.uncertaintyCount1 < values.nUncertainty1 && values.chooseUncertainty1 <= 3) {
+	if (values.trialCount >= values.unc_att_start1 && values.unc_att_count1 < values.nUncertainty1 && values.choose_unc_att1 <= 3) {
 		list.triallist_U.nextvalue
-	} else if (values.trialCount >= values.uncertaintyStart2 && values.uncertaintyCount2 < values.nUncertainty2 && values.chooseUncertainty2 <= 3) {
+	} else if (values.trialCount >= values.unc_att_start2 && values.unc_att_count2 < values.nUncertainty2 && values.choose_unc_att2 <= 3) {
 		list.triallist_U.nextvalue
 	} else {
 		list.triallist_noU.nextvalue
@@ -4976,7 +4985,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60,text.magtes
 </trial>
 
 <text testUct>
-/ items = ("trCt =<%values.trialCount%> uSt1=<%values.uncertaintyStart1%> uCt1=<%values.uncertaintyCount1%> nU1=<%values.nUncertainty1%>, cU1=<%values.chooseUncertainty1%>")
+/ items = ("trCt =<%values.trialCount%> uSt1=<%values.unc_att_start1%> uCt1=<%values.unc_att_count1%> nU1=<%values.nUncertainty1%>, cU1=<%values.choose_unc_att1%>")
 </text>
 
 <text rng>
@@ -4988,7 +4997,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60,text.magtes
 </text>
 
 <text chooseFog>
-/ items = ("<% values.chooseFog2%>")
+/ items = ("<% values.chooseWind2%>")
 / fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
 / position = (50%, 45%)
 / vjustify = center
@@ -5358,7 +5367,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60,text.magtes
 	list.rt_358.nextvalue;
 	list.rt_359.nextvalue;
 	values.chooseFog1 = 0;
-	values.chooseFog2 = 0;
+	values.chooseWind2 = 0;
 	if (parameters.rtvspos=="RT") {
 		if (values.scrfunc == "CEV") {
 			values.mag = (values.k * values.rt_extended)/(values.rt_extended-(trial.experiment_U.latency+values.Shift));
@@ -6197,80 +6206,196 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60,text.magtes
 		values.Earnings = 0;
 		picture.feedback.item.1 = "timeout.png"
 	}
-	if (values.uncertainty_block==1) {
-		values.uncertaintyCount1 +=1;
+	if (values.uncertainty_block==1 && parameters.local_uncertainty=="cloud") {
+		values.unc_att_count1 +=1;
 		if (values.fogPos1==1 && values.rt_shifted > 4677 || values.rt_shifted < 323) {
 			values.chooseFog1 = 1;
-			values.chooseUncertainty1 += 1;
+			values.choose_unc_att1 += 1;
 		} else if (values.fogPos1==5 && (values.rt_shifted > 3927 || values.rt_shifted < 4573)) {
 			values.chooseFog1 = 1;
-			values.chooseUncertainty1 += 1;
+			values.choose_unc_att1 += 1;
+			values.chooseUncertainty = 1;
 		} else if (values.fogPos1==10 && values.rt_shifted > 3502 && values.rt_shifted < 4148) {
 			values.chooseFog1 = 1;
-			values.chooseUncertainty1 += 1;
+			values.choose_unc_att1 += 1;
+			values.chooseUncertainty = 1;
 		} else if (values.fogPos1==15 && values.rt_shifted > 3077 && values.rt_shifted < 3723) {
 			values.chooseFog1 = 1;
-			values.chooseUncertainty1 += 1;
+			values.choose_unc_att1 += 1;
+			values.chooseUncertainty = 1;
 		} else if (values.fogPos1==20 && values.rt_shifted > 2652 && values.rt_shifted < 3298) {
 			values.chooseFog1 = 1;
-			values.chooseUncertainty1 += 1;
+			values.choose_unc_att1 += 1;
+			values.chooseUncertainty = 1;
 		} else if (values.fogPos1==25 && values.rt_shifted > 2227 && values.rt_shifted < 2873) {
 			values.chooseFog1 = 1;
-			values.chooseUncertainty1 += 1;
+			values.choose_unc_att1 += 1;
+			values.chooseUncertainty = 1;
 		} else if (values.fogPos1==30 && values.rt_shifted > 1802 && values.rt_shifted < 2448) {
 			values.chooseFog1 = 1;
-			values.chooseUncertainty1 += 1;
+			values.choose_unc_att1 += 1;
+			values.chooseUncertainty = 1;
 		} else if (values.fogPos1==35 && values.rt_shifted > 1377 && values.rt_shifted < 2023) {
 			values.chooseFog1 = 1;
-			values.chooseUncertainty1 += 1;
+			values.choose_unc_att1 += 1;
+			values.chooseUncertainty = 1;
 		} else if (values.fogPos1==40 && (values.rt_shifted > 952 || values.rt_shifted < 1598)) {
 			values.chooseFog1 = 1;
-			values.chooseUncertainty1 += 1;
+			values.choose_unc_att1 += 1;
+			values.chooseUncertainty = 1;
 		} else if (values.fogPos1==45 && values.rt_shifted > 527 && values.rt_shifted < 1173) {
 			values.chooseFog1 = 1;
-			values.chooseUncertainty1 += 1;
+			values.choose_unc_att1 += 1;
+			values.chooseUncertainty = 1;
 		} else if (values.fogPos1==50 && values.rt_shifted > 102 && values.rt_shifted < 748) {
 			values.chooseFog1 = 1;
-			values.chooseUncertainty1 += 1;
+			values.choose_unc_att1 += 1;
+			values.chooseUncertainty = 1;
 		}
-	} else if (values.uncertainty_block==2) {
-		values.uncertaintyCount2 +=1;
-		if (values.fogPos2==1 && values.rt_shifted > 4677 || values.rt_shifted < 323) {
-			values.chooseFog2 = 1;
-			values.chooseUncertainty2 += 1;
-		} else if (values.fogPos2==5 && (values.rt_shifted > 3927 || values.rt_shifted < 4573)) {
-			values.chooseFog2 = 1;
-			values.chooseUncertainty2 += 1;
-		} else if (values.fogPos2==10 && values.rt_shifted > 3502 && values.rt_shifted < 4148) {
-			values.chooseFog2 = 1;
-			values.chooseUncertainty2 += 1;
-		} else if (values.fogPos2==15 && values.rt_shifted > 3077 && values.rt_shifted < 3723) {
-			values.chooseFog2 = 1;
-			values.chooseUncertainty2 += 1;
-		} else if (values.fogPos2==20 && values.rt_shifted > 2652 && values.rt_shifted < 3298) {
-			values.chooseFog2 = 1;
-			values.chooseUncertainty2 += 1;
-		} else if (values.fogPos2==25 && values.rt_shifted > 2227 && values.rt_shifted < 2873) {
-			values.chooseFog2 = 1;
-			values.chooseUncertainty2 += 1;
-		} else if (values.fogPos2==30 && values.rt_shifted > 1802 && values.rt_shifted < 2448) {
-			values.chooseFog2 = 1;
-			values.chooseUncertainty2 += 1;
-		} else if (values.fogPos2==35 && values.rt_shifted > 1377 && values.rt_shifted < 2023) {
-			values.chooseFog2 = 1;
-			values.chooseUncertainty2 += 1;
-		} else if (values.fogPos2==40 && (values.rt_shifted > 952 || values.rt_shifted < 1598)) {
-			values.chooseFog2 = 1;
-			values.chooseUncertainty2 += 1;
-		} else if (values.fogPos2==45 && values.rt_shifted > 527 && values.rt_shifted < 1173) {
-			values.chooseFog2 = 1;
-			values.chooseUncertainty2 += 1;
-		} else if (values.fogPos2==50 && values.rt_shifted > 102 && values.rt_shifted < 748) {
-			values.chooseFog2 = 1;
-			values.chooseUncertainty2 += 1;
+	} else if (values.uncertainty_block==2 && parameters.local_uncertainty=="wind") {
+		values.unc_att_count2 +=1;
+		if (values.windPos2==1 && values.rt_shifted > 4677 || values.rt_shifted < 323) {
+			values.chooseWind2 = 1;
+			values.choose_unc_att2 += 1;
+			values.chooseUncertainty = 1;
+		} else if (values.windPos2==5 && (values.rt_shifted > 3927 || values.rt_shifted < 4573)) {
+			values.chooseWind2 = 1;
+			values.choose_unc_att2 += 1;
+			values.chooseUncertainty = 1;
+		} else if (values.windPos2==10 && values.rt_shifted > 3502 && values.rt_shifted < 4148) {
+			values.chooseWind2 = 1;
+			values.choose_unc_att2 += 1;
+			values.chooseUncertainty = 1;
+		} else if (values.windPos2==15 && values.rt_shifted > 3077 && values.rt_shifted < 3723) {
+			values.chooseWind2 = 1;
+			values.choose_unc_att2 += 1;
+			values.chooseUncertainty = 1;
+		} else if (values.windPos2==20 && values.rt_shifted > 2652 && values.rt_shifted < 3298) {
+			values.chooseWind2 = 1;
+			values.choose_unc_att2 += 1;
+			values.chooseUncertainty = 1;
+		} else if (values.windPos2==25 && values.rt_shifted > 2227 && values.rt_shifted < 2873) {
+			values.chooseWind2 = 1;
+			values.choose_unc_att2 += 1;
+			values.chooseUncertainty = 1;
+		} else if (values.windPos2==30 && values.rt_shifted > 1802 && values.rt_shifted < 2448) {
+			values.chooseWind2 = 1;
+			values.choose_unc_att2 += 1;
+			values.chooseUncertainty = 1;
+		} else if (values.windPos2==35 && values.rt_shifted > 1377 && values.rt_shifted < 2023) {
+			values.chooseWind2 = 1;
+			values.choose_unc_att2 += 1;
+			values.chooseUncertainty = 1;
+		} else if (values.windPos2==40 && (values.rt_shifted > 952 || values.rt_shifted < 1598)) {
+			values.chooseWind2 = 1;
+			values.choose_unc_att2 += 1;
+			values.chooseUncertainty = 1;
+		} else if (values.windPos2==45 && values.rt_shifted > 527 && values.rt_shifted < 1173) {
+			values.chooseWind2 = 1;
+			values.choose_unc_att2 += 1;
+			values.chooseUncertainty = 1;
+		} else if (values.windPos2==50 && values.rt_shifted > 102 && values.rt_shifted < 748) {
+			values.chooseWind2 = 1;
+			values.choose_unc_att2 += 1;
+			values.chooseUncertainty = 1;
+		}
+	} else if (values.uncertainty_block==1 && parameters.attentional_control=="cloud") {
+		values.unc_att_count1 +=1;
+		if (values.fogPos1==1 && values.rt_shifted > 4677 || values.rt_shifted < 323) {
+			values.chooseFog1 = 1;
+			values.choose_unc_att1 += 1;
+			values.chooseAttentionalControl = 1;
+		} else if (values.fogPos1==5 && (values.rt_shifted > 3927 || values.rt_shifted < 4573)) {
+			values.chooseFog1 = 1;
+			values.choose_unc_att1 += 1;
+			values.chooseAttentionalControl = 1;
+		} else if (values.fogPos1==10 && values.rt_shifted > 3502 && values.rt_shifted < 4148) {
+			values.chooseFog1 = 1;
+			values.choose_unc_att1 += 1;
+			values.chooseAttentionalControl = 1;
+		} else if (values.fogPos1==15 && values.rt_shifted > 3077 && values.rt_shifted < 3723) {
+			values.chooseFog1 = 1;
+			values.choose_unc_att1 += 1;
+			values.chooseAttentionalControl = 1;
+		} else if (values.fogPos1==20 && values.rt_shifted > 2652 && values.rt_shifted < 3298) {
+			values.chooseFog1 = 1;
+			values.choose_unc_att1 += 1;
+			values.chooseAttentionalControl = 1;
+		} else if (values.fogPos1==25 && values.rt_shifted > 2227 && values.rt_shifted < 2873) {
+			values.chooseFog1 = 1;
+			values.choose_unc_att1 += 1;
+			values.chooseAttentionalControl = 1;
+		} else if (values.fogPos1==30 && values.rt_shifted > 1802 && values.rt_shifted < 2448) {
+			values.chooseFog1 = 1;
+			values.choose_unc_att1 += 1;
+			values.chooseAttentionalControl = 1;
+		} else if (values.fogPos1==35 && values.rt_shifted > 1377 && values.rt_shifted < 2023) {
+			values.chooseFog1 = 1;
+			values.choose_unc_att1 += 1;
+			values.chooseAttentionalControl = 1;
+		} else if (values.fogPos1==40 && (values.rt_shifted > 952 || values.rt_shifted < 1598)) {
+			values.chooseFog1 = 1;
+			values.choose_unc_att1 += 1;
+			values.chooseAttentionalControl = 1;
+		} else if (values.fogPos1==45 && values.rt_shifted > 527 && values.rt_shifted < 1173) {
+			values.chooseFog1 = 1;
+			values.choose_unc_att1 += 1;
+			values.chooseAttentionalControl = 1;
+		} else if (values.fogPos1==50 && values.rt_shifted > 102 && values.rt_shifted < 748) {
+			values.chooseFog1 = 1;
+			values.choose_unc_att1 += 1;
+			values.chooseAttentionalControl = 1;
+		}
+	} else if (values.uncertainty_block==2 && parameters.attentional_control=="wind") {
+		values.unc_att_count2 +=1;
+		if (values.windPos2==1 && values.rt_shifted > 4677 || values.rt_shifted < 323) {
+			values.chooseWind2 = 1;
+			values.choose_unc_att2 += 1;
+			values.chooseAttentionalControl += 1;
+		} else if (values.windPos2==5 && (values.rt_shifted > 3927 || values.rt_shifted < 4573)) {
+			values.chooseWind2 = 1;
+			values.choose_unc_att2 += 1;
+			values.chooseAttentionalControl += 1;
+		} else if (values.windPos2==10 && values.rt_shifted > 3502 && values.rt_shifted < 4148) {
+			values.chooseWind2 = 1;
+			values.choose_unc_att2 += 1;
+			values.chooseAttentionalControl += 1;
+		} else if (values.windPos2==15 && values.rt_shifted > 3077 && values.rt_shifted < 3723) {
+			values.chooseWind2 = 1;
+			values.choose_unc_att2 += 1;
+			values.chooseAttentionalControl += 1;
+		} else if (values.windPos2==20 && values.rt_shifted > 2652 && values.rt_shifted < 3298) {
+			values.chooseWind2 = 1;
+			values.choose_unc_att2 += 1;
+			values.chooseAttentionalControl += 1;
+		} else if (values.windPos2==25 && values.rt_shifted > 2227 && values.rt_shifted < 2873) {
+			values.chooseWind2 = 1;
+			values.choose_unc_att2 += 1;
+			values.chooseAttentionalControl += 1;
+		} else if (values.windPos2==30 && values.rt_shifted > 1802 && values.rt_shifted < 2448) {
+			values.chooseWind2 = 1;
+			values.choose_unc_att2 += 1;
+			values.chooseAttentionalControl += 1;
+		} else if (values.windPos2==35 && values.rt_shifted > 1377 && values.rt_shifted < 2023) {
+			values.chooseWind2 = 1;
+			values.choose_unc_att2 += 1;
+			values.chooseAttentionalControl += 1;
+		} else if (values.windPos2==40 && (values.rt_shifted > 952 || values.rt_shifted < 1598)) {
+			values.chooseWind2 = 1;
+			values.choose_unc_att2 += 1;
+			values.chooseAttentionalControl += 1;
+		} else if (values.windPos2==45 && values.rt_shifted > 527 && values.rt_shifted < 1173) {
+			values.chooseWind2 = 1;
+			values.choose_unc_att2 += 1;
+			values.chooseAttentionalControl += 1;
+		} else if (values.windPos2==50 && values.rt_shifted > 102 && values.rt_shifted < 748) {
+			values.chooseWind2 = 1;
+			values.choose_unc_att2 += 1;
+			values.chooseAttentionalControl += 1;
 		}
 	}
 	values.trialCount  += 1;
+	values.meta_trialCount +=1;
 ]
 / stimulusframes = [
 	1=picture.feedback, text.feedback1,dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
@@ -6278,24 +6403,24 @@ dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
 dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
-dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, text.magtest;
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 ]
 / trialduration = 1000
 // correctresponse = (next)
 / recorddata = true
 / ontrialend = [
-	if (values.trialCount >= values.uncertaintyStart1 && values.uncertaintyCount1 < values.nUncertainty1 && values.chooseUncertainty1 <= 3) {
+	if (values.trialCount >= values.unc_att_start1 && values.unc_att_count1 < values.nUncertainty1 && values.choose_unc_att1 <= 2) {
 		values.uncertainty_block=1;
-	} else if (values.trialCount >= values.uncertaintyStart2 && values.uncertaintyCount2 < values.nUncertainty2 && values.chooseUncertainty2 <= 3) {
+	} else if (values.trialCount >= values.unc_att_start2 && values.unc_att_count2 < values.nUncertainty2 && values.choose_unc_att2 <= 2) {
 		values.uncertainty_block=2;
 	} else {
 		values.uncertainty_block=0;
 	}
 ]
 / branch = [
-	if (values.trialCount >= values.uncertaintyStart1 && values.uncertaintyCount1 < values.nUncertainty1 && values.chooseUncertainty1 <= 3) {
+	if (values.trialCount >= values.unc_att_start1 && values.unc_att_count1 < values.nUncertainty1 && values.choose_unc_att1 <= 2) {
 		list.triallist_U.nextvalue
-	} else if (values.trialCount >= values.uncertaintyStart2 && values.uncertaintyCount2 < values.nUncertainty2 && values.chooseUncertainty2 <= 3) {
+	} else if (values.trialCount >= values.unc_att_start2 && values.unc_att_count2 < values.nUncertainty2 && values.choose_unc_att2 <= 2) {
 		list.triallist_U.nextvalue
 	} else {
 		list.triallist_noU.nextvalue
@@ -6449,12 +6574,13 @@ What strategies did you use in the game?"
 		picture.attention.items.1 = "wind0.png";
 		picture.uncertainty.items.1 = "fog0.png";
 	}
+	values.meta_trialCount = 0;
 ]
 
 / blocks = [
 	//1=instructions;
 	1=experiment;
-	//3=experiment;
+	2=experiment;
 	//4=experiment;
 	//5=experiment;
 	//6=experiment;
