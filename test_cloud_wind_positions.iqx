@@ -1357,7 +1357,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, uncertaint
 		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle270+20;
 	} else if (values.windPos2==5) {
 		picture.uncertainty.item.1 = "wind5.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle210+120;
+		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle210+100;
 		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle210;
 	} else if (values.windPos2==10) {
 		picture.uncertainty.item.1 = "wind10.png";	
