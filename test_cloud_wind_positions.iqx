@@ -1354,47 +1354,47 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, uncertaint
 	if (values.windPos2==1) {
 		picture.uncertainty.item.1 = "wind0.png";
 		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle270;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle270;
+		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle270+20;
 	} else if (values.windPos2==5) {
 		picture.uncertainty.item.1 = "wind5.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle210;
+		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle210+120;
 		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle210;
 	} else if (values.windPos2==10) {
-		picture.uncertainty.item.1 = "wind10.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle180;
+		picture.uncertainty.item.1 = "wind10.png";	
+		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle180+20;
 		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle180;
 	} else if (values.windPos2==15) {
 		picture.uncertainty.item.1 = "wind15.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle150;
+		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle150+80;
 		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle150;
 	} else if (values.windPos2==20) {
 		picture.uncertainty.item.1 = "wind20.png";
 		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle120;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle120;
+		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle120-80;
 	} else if (values.windPos2==25) {
 		picture.uncertainty.item.1 = "wind25.png";
 		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle90;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle90;
+		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle90-20;
 	} else if (values.windPos2==30) {
 		picture.uncertainty.item.1 = "wind30.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle60;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle60;
+		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle60-45;
+		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle60-45;
 	} else if (values.windPos2==35) {
 		picture.uncertainty.item.1 = "wind35.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle30;
+		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle30-100;
 		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle30;
 	} else if (values.windPos2==40) {
 		picture.uncertainty.item.1 = "wind40.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle0;
+		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle0-20;
 		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle0;
 	} else if (values.windPos2==45) {
 		picture.uncertainty.item.1 = "wind45.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle330;
+		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle330-80;
 		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle330;
 	} else if (values.windPos2==50) {
 		picture.uncertainty.item.1 = "wind50.png";
 		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle300;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle300;
+		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle300+80;
 	}
 ]
 
@@ -1425,7 +1425,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, uncertaint
 
 <expt main1>
 / blocks = [
-	//1=experiment_fog;
-	1=experiment_wind;
+	1=experiment_fog;
+	2=experiment_wind;
 ]
 </expt>
