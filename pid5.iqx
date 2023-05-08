@@ -1,0 +1,952 @@
+<radiobuttons pid5_1>
+/ caption = "1. Plenty of people are out to get me."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_2>
+/ caption = "2. I feel I act totally on impulse."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_3>
+/ caption = "3. I change what I do depending on what others want."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_4>
+/ caption = "4. I usually do what others think I should do."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_5>
+/ caption = "5. I usually do things on impulse without thinking about what might happen as a result."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_6>
+/ caption = "6. Even though I know better, I can't stop making rash decisions."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_7>
+/ caption = "7. I really don't care if I make other people suffer."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_8>
+/ caption = "8. I always do things on the spur of the moment."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_9>
+/ caption = "9. Nothing seems to interest me very much."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_10>
+/ caption = "10. People have told me that I think about things in a really strange way."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_11>
+/ caption = "11. I almost never enjoy life."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_12>
+/ caption = "12. I am easily angered."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_13>
+/ caption = "13. I have no limits when it comes to doing dangerous things."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_14>
+/ caption = "14. To be honest, I'm just more important than other people."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_15>
+/ caption = "15. It's weird, but sometimes ordinary objects seem to be a different shape than usual."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_16>
+/ caption = "16. I do a lot of things that others consider risky."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_17>
+/ caption = "17. I worry a lot about being alone."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_18>
+/ caption = "18. I often make up things about myself to help me get what I want."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_19>
+/ caption = "19. I keep approaching things that same way, even when it isn't working."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_20>
+/ caption = "20. I do what other people tell me to do."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_21>
+/ caption = "21. I like to take risks."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_22>
+/ caption = "22. Others seem to think I'm quite odd or unusual."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_23>
+/ caption = "23. I love getting the attention of other people."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_24>
+/ caption = "24. I worry a lot about terrible things that might happen."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_25>
+/ caption = "25. I have trouble changing how I'm doing something even if what I'm doing isn't going well."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_26>
+/ caption = "26. The world would be better off if I were dead."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_27>
+/ caption = "27. I keep my distance from people."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_28>
+/ caption = "28. I don't get emotional."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_29>
+/ caption = "29. I prefer to keep romance out of my life."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_30>
+/ caption = "30. I don't show emotions strongly."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_31>
+/ caption = "4. I have a very short temper."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_32>
+/ caption = "32. I get fixated on certain things and can't stop."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_33>
+/ caption = "33. If something I do isn't absolutely perfect, it's simply not acceptable."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_34>
+/ caption = "34. I often have unusual experiences, such as sensing the presence of someone who isn't actually there."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_35>
+/ caption = "35. I'm good at making people do what I want them to do."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_36>
+/ caption = "36. I'm always worrying about something."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_37>
+/ caption = "37. I'm better than almost everyone else."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_38>
+/ caption = "38. I'm always on my guard for someone trying to trick or harm me."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_39>
+/ caption = "39. I have trouble keeping my mind focused on what needs to be done."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_40>
+/ caption = "40. I'm just not interested in having sexual relationships."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_41>
+/ caption = "41. I get emotional easily, often for very little reason."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_42>
+/ caption = "42. Even though it drives other people crazy, I insist on absolute perfection in everything I do."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_43>
+/ caption = "43. I almost never feel happy about my day-to-day activities."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_44>
+/ caption = "44. Sweet-talking others helps me get what I want."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_45>
+/ caption = "45. I fear being alone in life more than anything else."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_46>
+/ caption = "46. I get stuck on one way of doing things, even when it's clear it won't work."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_47>
+/ caption = "47. I'm often pretty careless with my own and others' things."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_48>
+/ caption = "48. I am a very anxious person."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_49>
+/ caption = "49. I am easily distracted."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_50>
+/ caption = "50. It seems like I'm always getting a "raw deal" from others."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_51>
+/ caption = "51. I don't hesitate to cheat if it gets me ahead."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_52>
+/ caption = "52. I don't like spending time with others."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_53>
+/ caption = "53. I never know where my emotions will go from moment to moment."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_54>
+/ caption = "54. I have seen things that weren't really there."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_55>
+/ caption = "55. I can't focus on things for very long."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_56>
+/ caption = "56. I steer clear of romantic relationships."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_57>
+/ caption = "57. I'm not interested in making friends."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_58>
+/ caption = "58. I'll do just about anything to keep someone from abandoning me."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_59>
+/ caption = "59. Sometimes I can influence other people just by sending my thoughts to them."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_60>
+/ caption = "60. Life looks pretty bleak to me."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_61>
+/ caption = "61. I think about things in odd ways that don't make sense to most people."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_62>
+/ caption = "62. I don't care if my actions hurt others."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_63>
+/ caption = "63. Sometimes I feel "controlled" by thoughts that belong to someone else."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_64>
+/ caption = "64. I make promises that I don't really intend to keep."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_65>
+/ caption = "65. Nothing seems to make me feel good."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_66>
+/ caption = "66. I get irritated easily by all sorts of things."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_67>
+/ caption = "67. I do what I want regardless of how unsafe it might be."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_68>
+/ caption = "68. I often forget to pay my bills."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_69>
+/ caption = "69. I'm good at conning people."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_70>
+/ caption = "70. Everything seems pointless to me."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_71>
+/ caption = "71. I get emotional over every little thing."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_72>
+/ caption = "72. It's no big deal if I hurt other people's feelings."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_73>
+/ caption = "73. I never show emotions to others."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_74>
+/ caption = "74. I have no worth as a person."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_75>
+/ caption = "75. I am usually pretty hostile."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_76>
+/ caption = "76. I've skipped town to avoid responsibilities."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_77>
+/ caption = "77. I like being a person who gets noticed."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_78>
+/ caption = "78. I'm always fearful or on edge about bad things that might happen."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_79>
+/ caption = "79. I never want to be alone."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_80>
+/ caption = "80. I keep trying to make things perfect, even when I've gotten them as good as they're likely to get."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_81>
+/ caption = "81. My emotions are unpredictable."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_82>
+/ caption = "82. I don't care about other people's problems."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_83>
+/ caption = "83. I don't react much to things that seem to make others emotional."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_84>
+/ caption = "84. I avoid social events."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_85>
+/ caption = "85. I deserve special treatment."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_86>
+/ caption = "86. I suspect that even my so-called "friends" betray me a lot."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_87>
+/ caption = "87. I crave attention."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_88>
+/ caption = "88. Sometimes I think someone else is removing thoughts from my head."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_89>
+/ caption = "89. I simply won't put up with things being out of their proper places."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_90>
+/ caption = "90. I often have to deal with people who are less important than me."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_91>
+/ caption = "91. I get pulled off-task by even minor distractions."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_92>
+/ caption = "92. I try to do what others want me to do."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_93>
+/ caption = "93. I prefer being alone to having a close romantic partner."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_94>
+/ caption = "94. I often have thoughts that make sense to me but that other people say are strange."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_95>
+/ caption = "95. I use people to get what I want."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_96>
+/ caption = "96. I've had some really weird experiences that are difficult to explain."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_97>
+/ caption = "97. I like to draw attention to myself."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_98>
+/ caption = "98. Things around me often feel unreal, or more than usual."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_99>
+/ caption = "99. I'll stretch the truth if it's to my advantage."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<radiobuttons pid5_100>
+/ caption = "100. It's easy for me to take advantage of others."
+/ options = ("Very False or Often False,
+"Sometimes or Somewhat False",
+"Sometimes or Somewhat True",
+"Very True or Often True")
+/ optionvalues = ("0", "1", "2", "3")
+</radiobuttons>
+
+<surveypage q1to25>
+/ questions = [1=pid5_1; 2=pid5_2; 3=pid5_3; 4=pid5_4; 5=pid5_5; 6=pid5_6; 7=pid5_7; 8=pid5_8; 9=pid5_9; 10=pid5_10; 11=pid5_11; 12=pid5_12; 13=pid5_13; 14=pid5_14; 15=pid5_15; 16=pid5_16; 17=pid5_17; 18=pid5_18; 19=pid5_19; 20=pid5_20; 21=pid5_21; 22=pid5_22; 23=pid5_23; 24=pid5_24; 25=pid5_25;]
+</surveypage>
+
+<surveypage q26to50>
+/ questions = [26=pid5_26; 27=pid5_27; 28=pid5_28; 29=pid5_29; 30=pid5_30; 31=pid5_31; 32=pid5_32; 33=pid5_33; 34=pid5_34; 35=pid5_35; 36=pid5_36; 37=pid5_37; 38=pid5_38; 39=pid5_39; 40=pid5_40; 41=pid5_41; 42=pid5_42; 43=pid5_43; 44=pid5_44; 45=pid5_45; 46=pid5_46; 47=pid5_47; 48=pid5_48; 49=pid5_49; 50=pid5_50;]
+</surveypage>
+
+<surveypage q51to75>
+/ questions = [51=pid5_51; 52=pid5_52; 53=pid5_53; 54=pid5_54; 55=pid5_55; 56=pid5_56; 57=pid5_57; 58=pid5_58; 59=pid5_59; 60=pid5_60; 61=pid5_61; 62=pid5_62; 63=pid5_63; 64=pid5_64; 65=pid5_65; 66=pid5_66; 67=pid5_67; 68=pid5_68; 69=pid5_69; 70=pid5_70; 71=pid5_71; 72=pid5_72; 73=pid5_73; 74=pid5_24; 75=pid5_75;]
+</surveypage>
+
+<surveypage q76to100>
+/ questions = [76=pid5_76; 77=pid5_77; 78=pid5_78; 79=pid5_79; 80=pid5_80; 81=pid5_81; 82=pid5_82; 83=pid5_83; 84=pid5_84; 85=pid5_85; 86=pid5_86; 87=pid5_87; 88=pid5_88; 89=pid5_89; 90=pid5_90; 91=pid5_91; 92=pid5_92; 93=pid5_93; 94=pid5_94; 95=pid5_95; 96=pid5_96; 97=pid5_97; 98=pid5_98; 99=pid5_99; 100=pid5_100;]
+</surveypage>
+
+<surveypage end>
+/ questions = [1=e]
+</surveypage>
+
+<expressions>
+/ pid5_anh = radiobuttons.pid5_9.response + radiobuttons.pid5_11.response + radiobuttons.pid5_43.response + radiobuttons.pid5_63.response
+/ pid5_anx = radiobuttons.pid5_24.response + radiobuttons.pid5_36.response + radiobuttons.pid5_48.response + radiobuttons.pid5_78.response
+/ pid5_attn = radiobuttons.pid5_23.response + radiobuttons.pid5_77.response + radiobuttons.pid5_87.response + radiobuttons.pid5_97.response
+/ pid5_callous = radiobuttons.pid5_7.response + radiobuttons.pid5_62.response + radiobuttons.pid5_72.response + radiobuttons.pid5_82.response
+/ pid5_deceit = radiobuttons.pid5_18.response + radiobuttons.pid5_51.response + radiobuttons.pid5_95.response + radiobuttons.pid5_99.response
+/ pid5_depres = radiobuttons.pid5_26.response + radiobuttons.pid5_60.response + radiobuttons.pid5_70.response + radiobuttons.pid5_74.response
+/ pid5_distr = radiobuttons.pid5_39.response + radiobuttons.pid5_49.response + radiobuttons.pid5_55.response + radiobuttons.pid5_91.response
+/ pid5_ecc = radiobuttons.pid5_10.response + radiobuttons.pid5_22.response + radiobuttons.pid5_61.response + radiobuttons.pid5_94.response
+/ pid5_emo_lab = radiobuttons.pid5_41.response + radiobuttons.pid5_53.response + radiobuttons.pid5_71.response + radiobuttons.pid5_81.response
+/ pid5_grnd = radiobuttons.pid5_14.response + radiobuttons.pid5_37.response + radiobuttons.pid5_85.response + radiobuttons.pid5_90.response
+/ pid5_host = radiobuttons.pid5_12.response + radiobuttons.pid5_31.response + radiobuttons.pid5_66.response + radiobuttons.pid5_75.response
+/ pid5_impuls = radiobuttons.pid5_2.response + radiobuttons.pid5_5.response + radiobuttons.pid5_6.response + radiobuttons.pid5_8.response
+/ pid5_int_avd = radiobuttons.pid5_29.response + radiobuttons.pid5_40.response + radiobuttons.pid5_56.response + radiobuttons.pid5_93.response
+/ pid5_irr = radiobuttons.pid5_47.response + radiobuttons.pid5_64.response + radiobuttons.pid5_68.response + radiobuttons.pid5_76.response
+/ pid5_man = radiobuttons.pid5_35.response + radiobuttons.pid5_44.response + radiobuttons.pid5_69.response + radiobuttons.pid5_100.response
+/ pid5_perc_dysreg = radiobuttons.pid5_15.response + radiobuttons.pid5_63.response + radiobuttons.pid5_88.response + radiobuttons.pid5_98.response
+/ pid5_persev = radiobuttons.pid5_19.response + radiobuttons.pid5_25.response + radiobuttons.pid5_32.response + radiobuttons.pid5_46.response
+/ pid5_rest_aff = radiobuttons.pid5_28.response + radiobuttons.pid5_30.response + radiobuttons.pid5_73.response + radiobuttons.pid5_83.response
+/ pid5_perf = radiobuttons.pid5_33.response + radiobuttons.pid5_42.response + radiobuttons.pid5_80.response + radiobuttons.pid5_89.response
+/ pid5_rt = radiobuttons.pid5_13.response + radiobuttons.pid5_16.response + radiobuttons.pid5_21.response + radiobuttons.pid5_67.response
+/ pid5_sep_insec = radiobuttons.pid5_17.response + radiobuttons.pid5_45.response + radiobuttons.pid5_58.response + radiobuttons.pid5_79.response
+/ pid5_sub = radiobuttons.pid5_3.response + radiobuttons.pid5_4.response + radiobuttons.pid5_20.response + radiobuttons.pid5_92.response
+/ pid5_sus = radiobuttons.pid5_1.response + radiobuttons.pid5_38.response + radiobuttons.pid5_50.response + radiobuttons.pid5_86.response
+/ pid5_unusual = radiobuttons.pid5_34.response + radiobuttons.pid5_54.response + radiobuttons.pid5_59.response + radiobuttons.pid5_96.response
+/ pid5_wthdrwl = radiobuttons.pid5_27.response + radiobuttons.pid5_52.response + radiobuttons.pid5_57.response + radiobuttons.pid5_84.response
+/ pid5_neg_aff = radiobuttons.pid5_17.response + radiobuttons.pid5_24.response + radiobuttons.pid5_36.response + radiobuttons.pid5_41.response + radiobuttons.pid5_45.response + radiobuttons.pid5_48.response + radiobuttons.pid5_53.response + radiobuttons.pid5_58.response + radiobuttons.pid5_71.response + radiobuttons.pid5_78.response + radiobuttons.pid5_79.response + radiobuttons.pid5_81.response
+/ pid5_detach = radiobuttons.pid5_9.response + radiobuttons.pid5_11.response + radiobuttons.pid5_27.response + radiobuttons.pid5_29.response + radiobuttons.pid5_40.response + radiobuttons.pid5_43.response + radiobuttons.pid5_52.response + radiobuttons.pid5_56.response + radiobuttons.pid5_57.response + radiobuttons.pid5_65.response + radiobuttons.pid5_84.response + radiobuttons.pid5_93.response
+/ pid5_antag = radiobuttons.pid5_14.response + radiobuttons.pid5_18.response + radiobuttons.pid5_35.response + radiobuttons.pid5_37.response + radiobuttons.pid5_44.response + radiobuttons.pid5_51.response + radiobuttons.pid5_69.response + radiobuttons.pid5_85.response + radiobuttons.pid5_90.response + radiobuttons.pid5_95.response + radiobuttons.pid5_99.response + radiobuttons.pid5_100.response
+/ pid5_disinhib = radiobuttons.pid5_2.response + radiobuttons.pid5_5.response + radiobuttons.pid5_6.response + radiobuttons.pid5_8.response + radiobuttons.pid5_39.response + radiobuttons.pid5_47.response + radiobuttons.pid5_49.response + radiobuttons.pid5_55.response + radiobuttons.pid5_64.response + radiobuttons.pid5_68.response + radiobuttons.pid5_76.response + radiobuttons.pid5_91.response
+/ pid5_psycho = radiobuttons.pid5_10.response + radiobuttons.pid5_15.response + radiobuttons.pid5_22.response + radiobuttons.pid5_34.response + radiobuttons.pid5_54.response + radiobuttons.pid5_59.response + radiobuttons.pid5_61.response + radiobuttons.pid5_63.response + radiobuttons.pid5_88.response + radiobuttons.pid5_94.response + radiobuttons.pid5_96.response + radiobuttons.pid5_98.response
+</expressions>
