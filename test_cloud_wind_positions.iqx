@@ -396,6 +396,14 @@
 / erase = true(white)
 </picture>
 
+<picture fog2>
+/ items = ("fog2.png") //default
+/ hposition = expressions.centerx + expressions.widthchange_angle0
+/ vposition = expressions.centery + expressions.heightchange_angle0
+/ size = (30%, 30%)
+/ erase = true(white)
+</picture>
+
 <picture fog5>
 / items = ("fog5.png") //default
 / hposition = expressions.centerx + expressions.widthchange_angle330
@@ -478,6 +486,14 @@
 
 <picture wind0>
 / items = ("wind0.png") //default
+/ hposition = expressions.centerx + expressions.widthchange_angle0
+/ vposition = expressions.centery + expressions.heightchange_angle0
+/ size = (30%, 30%)
+/ erase = true(white)
+</picture>
+
+<picture wind2>
+/ items = ("wind2.png") //default
 / hposition = expressions.centerx + expressions.widthchange_angle0
 / vposition = expressions.centery + expressions.heightchange_angle0
 / size = (30%, 30%)
@@ -643,7 +659,7 @@ expressions.centery + expressions.heightchange_angle330
 </list>
 
 <list positions>
-/ items = (1,5,10,15,20,25,30,35,40,45,50)
+/ items = (1,2,5,10,15,20,25,30,35,40,45,50)
 / selectionmode = sequence
 </list>
 
@@ -1277,7 +1293,23 @@ expressions.centery + expressions.heightchange_angle330
 </shape>
 
 <text upos>
-/ items = ("<%list.positions.currentvalue%>")
+/ items = ("<%trial.testFog.latency%>")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
+/ position = (50%, 45%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<text upos2>
+/ items = ("<%trial.testWind.latency%>")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
+/ position = (50%, 45%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<text upos3>
+/ items = ("<%trial.testWindFog.latency%>")
 / fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
 / position = (50%, 45%)
 / vjustify = center
@@ -1291,6 +1323,10 @@ expressions.centery + expressions.heightchange_angle330
 		picture.uncertainty.item.1 = "fog0.png";
 		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle270;
 		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle270;
+	} else if (values.fogPos1==2) {
+		picture.uncertainty.item.1 = "fog2.png";
+		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle240;
+		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle240;
 	} else if (values.fogPos1==5) {
 		picture.uncertainty.item.1 = "fog5.png";
 		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle210;
@@ -1334,7 +1370,7 @@ expressions.centery + expressions.heightchange_angle330
 	}
 ]
 
-/ stimulustimes = [0=dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+/ stimulustimes = [0=animatedCircle, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
@@ -1346,70 +1382,242 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, uncertaint
 / beginresponsetime = 0
 / validresponse = (" ") 
 / recorddata = FALSE
+/ branch = [
+	trial.getFeedback;
+]
 </trial>
 
-<trial testWind>
-/ ontrialbegin = [
-	values.windPos2 = list.positions.nextvalue;
-	if (values.windPos2==1) {
-		picture.uncertainty.item.1 = "wind0.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle270;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle270+20;
-	} else if (values.windPos2==5) {
-		picture.uncertainty.item.1 = "wind5.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle210+100;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle210;
-	} else if (values.windPos2==10) {
-		picture.uncertainty.item.1 = "wind10.png";	
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle180+20;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle180;
-	} else if (values.windPos2==15) {
-		picture.uncertainty.item.1 = "wind15.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle150+80;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle150;
-	} else if (values.windPos2==20) {
-		picture.uncertainty.item.1 = "wind20.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle120;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle120-80;
-	} else if (values.windPos2==25) {
-		picture.uncertainty.item.1 = "wind25.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle90;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle90-20;
-	} else if (values.windPos2==30) {
-		picture.uncertainty.item.1 = "wind30.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle60-45;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle60-45;
-	} else if (values.windPos2==35) {
-		picture.uncertainty.item.1 = "wind35.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle30-100;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle30;
-	} else if (values.windPos2==40) {
-		picture.uncertainty.item.1 = "wind40.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle0-20;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle0;
-	} else if (values.windPos2==45) {
-		picture.uncertainty.item.1 = "wind45.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle330-80;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle330;
-	} else if (values.windPos2==50) {
-		picture.uncertainty.item.1 = "wind50.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle300;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle300+80;
-	}
-]
-
+<trial getFeedback>
 / stimulustimes = [0=dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
 dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
 dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, uncertainty, upos;
+] 
+/ inputdevice = keyboard
+/ beginresponsetime = 0
+/ validresponse = (" ") 
+/ recorddata = FALSE  
+</trial>
+
+<trial getFeedback2>
+/ stimulustimes = [0=dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, uncertainty, upos2;
+] 
+/ inputdevice = keyboard
+/ beginresponsetime = 0
+/ validresponse = (" ") 
+/ recorddata = FALSE  
+</trial>
+
+<trial getFeedback3>
+/ stimulustimes = [0=dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, uncertainty, upos3;
+] 
+/ inputdevice = keyboard
+/ beginresponsetime = 0
+/ validresponse = (" ") 
+/ recorddata = FALSE  
+</trial>
+<trial testWind>
+/ ontrialbegin = [
+	values.windPos2 = list.positions.nextvalue;
+	if (values.windPos2==1) {
+		picture.attention.item.1 = "wind0.png";
+		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle270;
+		picture.attention.vposition = expressions.centery + expressions.heightchange_angle270;
+	} else if (values.windPos2==2) {
+		picture.attention.item.1 = "wind2.png";
+		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle240;
+		picture.attention.vposition = expressions.centery + expressions.heightchange_angle240;		
+	} else if (values.windPos2==5) {
+		picture.attention.item.1 = "wind5.png";
+		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle210+20;
+		picture.attention.vposition = expressions.centery + expressions.heightchange_angle210;
+	} else if (values.windPos2==10) {
+		picture.attention.item.1 = "wind10.png";	
+		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle180;
+		picture.attention.vposition = expressions.centery + expressions.heightchange_angle180;
+	} else if (values.windPos2==15) {
+		picture.attention.item.1 = "wind15.png";
+		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle150+20;
+		picture.attention.vposition = expressions.centery + expressions.heightchange_angle150;
+	} else if (values.windPos2==20) {
+		picture.attention.item.1 = "wind20.png";
+		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle120;
+		picture.attention.vposition = expressions.centery + expressions.heightchange_angle120-20;
+	} else if (values.windPos2==25) {
+		picture.attention.item.1 = "wind25.png";
+		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle90;
+		picture.attention.vposition = expressions.centery + expressions.heightchange_angle90;
+	} else if (values.windPos2==30) {
+		picture.attention.item.1 = "wind30.png";
+		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle60;
+		picture.attention.vposition = expressions.centery + expressions.heightchange_angle60-20;
+	} else if (values.windPos2==35) {
+		picture.attention.item.1 = "wind35.png";
+		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle30-20;	
+		picture.attention.vposition = expressions.centery + expressions.heightchange_angle30;
+	} else if (values.windPos2==40) {
+		picture.attention.item.1 = "wind40.png";
+		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle0;
+		picture.attention.vposition = expressions.centery + expressions.heightchange_angle0;
+	} else if (values.windPos2==45) {
+		picture.attention.item.1 = "wind45.png";
+		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle330;
+		picture.attention.vposition = expressions.centery + expressions.heightchange_angle330+20;
+	} else if (values.windPos2==50) {
+		picture.attention.item.1 = "wind50.png";
+		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle300;
+		picture.attention.vposition = expressions.centery + expressions.heightchange_angle300+20;
+	}
+]
+
+/ stimulustimes = [0=animatedCircle, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, attention, upos2;
 ]
 
 / inputdevice = keyboard
 / beginresponsetime = 0
 / validresponse = (" ") 
 / recorddata = FALSE
+/ branch = [
+	trial.getFeedback2;
+]
+</trial>
+
+<trial testWindFog>
+/ ontrialbegin = [
+	values.fogPos1 = list.positions.nextvalue;
+	if (values.fogPos1==1) {
+		picture.uncertainty.item.1 = "fog0.png";
+		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle270;
+		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle270;
+	} else if (values.fogPos1==2) {
+		picture.uncertainty.item.1 = "fog2.png";
+		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle240;
+		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle240;
+	} else if (values.fogPos1==5) {
+		picture.uncertainty.item.1 = "fog5.png";
+		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle210;
+		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle210;
+	} else if (values.fogPos1==10) {
+		picture.uncertainty.item.1 = "fog10.png";
+		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle180;
+		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle180;
+	} else if (values.fogPos1==15) {
+		picture.uncertainty.item.1 = "fog15.png";
+		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle150;
+		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle150;
+	} else if (values.fogPos1==20) {
+		picture.uncertainty.item.1 = "fog20.png";
+		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle120;
+		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle120;
+	} else if (values.fogPos1==25) {
+		picture.uncertainty.item.1 = "fog25.png";
+		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle90;
+		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle90;
+	} else if (values.fogPos1==30) {
+		picture.uncertainty.item.1 = "fog30.png";
+		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle60;
+		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle60;
+	} else if (values.fogPos1==35) {
+		picture.uncertainty.item.1 = "fog35.png";
+		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle30;
+		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle30;
+	} else if (values.fogPos1==40) {
+		picture.uncertainty.item.1 = "fog40.png";
+		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle0;
+		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle0;
+	} else if (values.fogPos1==45) {
+		picture.uncertainty.item.1 = "fog45.png";
+		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle330;
+		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle330;
+	} else if (values.fogPos1==50) {
+		picture.uncertainty.item.1 = "fog50.png";
+		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle300;
+		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle300;
+	}
+	values.windPos2 = list.positions.nextvalue;
+	if (values.windPos2==1) {
+		picture.attention.item.1 = "wind0.png";
+		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle270;
+		picture.attention.vposition = expressions.centery + expressions.heightchange_angle270;
+	} else if (values.windPos2==2) {
+		picture.attention.item.1 = "wind2.png";
+		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle240;
+		picture.attention.vposition = expressions.centery + expressions.heightchange_angle240;		
+	} else if (values.windPos2==5) {
+		picture.attention.item.1 = "wind5.png";
+		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle210+20;
+		picture.attention.vposition = expressions.centery + expressions.heightchange_angle210;
+	} else if (values.windPos2==10) {
+		picture.attention.item.1 = "wind10.png";	
+		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle180;
+		picture.attention.vposition = expressions.centery + expressions.heightchange_angle180;
+	} else if (values.windPos2==15) {
+		picture.attention.item.1 = "wind15.png";
+		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle150+20;
+		picture.attention.vposition = expressions.centery + expressions.heightchange_angle150;
+	} else if (values.windPos2==20) {
+		picture.attention.item.1 = "wind20.png";
+		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle120;
+		picture.attention.vposition = expressions.centery + expressions.heightchange_angle120-20;
+	} else if (values.windPos2==25) {
+		picture.attention.item.1 = "wind25.png";
+		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle90;
+		picture.attention.vposition = expressions.centery + expressions.heightchange_angle90;
+	} else if (values.windPos2==30) {
+		picture.attention.item.1 = "wind30.png";
+		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle60;
+		picture.attention.vposition = expressions.centery + expressions.heightchange_angle60-20;
+	} else if (values.windPos2==35) {
+		picture.attention.item.1 = "wind35.png";
+		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle30-20;	
+		picture.attention.vposition = expressions.centery + expressions.heightchange_angle30;
+	} else if (values.windPos2==40) {
+		picture.attention.item.1 = "wind40.png";
+		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle0;
+		picture.attention.vposition = expressions.centery + expressions.heightchange_angle0;
+	} else if (values.windPos2==45) {
+		picture.attention.item.1 = "wind45.png";
+		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle330;
+		picture.attention.vposition = expressions.centery + expressions.heightchange_angle330+20;
+	} else if (values.windPos2==50) {
+		picture.attention.item.1 = "wind50.png";
+		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle300;
+		picture.attention.vposition = expressions.centery + expressions.heightchange_angle300+20;
+	}
+]
+
+/ stimulustimes = [0=animatedCircle, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, uncertainty, attention,upos3;
+]
+
+/ inputdevice = keyboard
+/ beginresponsetime = 0
+/ validresponse = (" ") 
+/ recorddata = FALSE
+/ branch = [
+	trial.getFeedback3;
+]
 </trial>
 
 <block experiment_fog>
@@ -1422,10 +1630,15 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, uncertaint
 	1-12 = testWind;
 ]
 </block>
-
+<block experiment_wind_fog>
+/ trials = [
+	1-12 = testWindFog;
+]
+</block>
 <expt main1>
 / blocks = [
 	1=experiment_fog;
 	2=experiment_wind;
+	2=experiment_wind_fog;
 ]
 </expt>
