@@ -274,10 +274,10 @@ EEG Clock variant #2
 
 <data>
 / columns = (build, computer.platform, computer.touch, date, time, subject, group, script.sessionid, blockcode, blocknum, 
-trialcode,latency,parameters.randStart, values.startPos,values.scrfunc, parameters.rtvspos, parameters.randStart, 
-values.mag, values.freq, values.ev, values.inc, values.rng values.startPos, values.fogPos1, values.fogPos_out, values.windPos2, values.windPos_out, values.chooseFog1, values.chooseWind2,
+trialcode,latency, values.startPos,values.scrfunc, parameters.rtvspos, parameters.randStart, 
+values.mag, values.freq, values.ev, values.inc, values.rng values.fogPos1, values.fogPos_out, values.windPos2, values.windPos_out, values.chooseFog1, values.chooseWind2,
 values.choose_unc_att1, values.choose_unc_att_out1, values.choose_unc_att2, values.choose_unc_att_out2, values.unc_att_count1, 
-values.unc_att_count_out1,values.unc_att_count2, values.choose_unc_att_out2, values.chooseAttentionalControl, values.chooseUncertainty,
+values.unc_att_count_out1,values.unc_att_count2, values.chooseAttentionalControl, values.chooseUncertainty,
 values.blockCount,parameters.ntrials, values.trialCount, values.meta_trialCount,parameters.attentional_control,parameters.local_uncertainty,
 values.unc_att_start1, values.unc_att_start2, values.unc_att_block,
 values.rt_shifted,values.pos_shifted, values.totalPoints, values.totalEarnings, values.Earnings)
@@ -3795,6 +3795,8 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	values.choose_unc_att_out2 = 0;
 	values.unc_att_count_out1 = 0;
 	values.unc_att_count_out2 = 0;
+	values.fogPos_out = NULL;
+	values.windPos_out = NULL;
 	values.n_revolutions = 0;
 	if (parameters.randStart==TRUE) {
 		values.startPos =  round(rand(0, 100));
@@ -4417,11 +4419,10 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	} else if (parameters.rtvspos=="POS") {
 		if (values.startPos >= 0 && values.startPos < 75) {
 			values.rt_shifted = mod(values.gamma*(values.startPos+25)+trial.experiment_noU.latency,values.time_per_revolution);
-			values.pos_shifted = mod(((values.startPos+25)/values.gamma)+trial.experiment_noU.latency, 100)*360/100;
 		} else if (values.startPos >= 75) {
 			values.rt_shifted = mod(values.gamma*(values.startPos-75)+trial.experiment_noU.latency,values.time_per_revolution);
-			values.pos_shifted = mod(((values.startPos-75)/values.gamma)+trial.experiment_noU.latency, 100)*360/100;
 		}
+		values.pos_shifted = values.rt_shifted*360/values.time_per_revolution;
 		if (values.scrfunc == "CEV") {
 			values.mag = (values.k * values.rt_extended)/(values.rt_extended-(values.rt_shifted+values.Shift));
 			values.freq = 1-((values.rt_shifted+values.Shift)/values.rt_extended);
@@ -5674,11 +5675,10 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	} else if (parameters.rtvspos=="POS") {
 		if (values.startPos >= 0 && values.startPos < 75) {
 			values.rt_shifted = mod(values.gamma*(values.startPos+25)+trial.experiment_U.latency,values.time_per_revolution);
-			values.pos_shifted = mod(((values.startPos+25)/values.gamma)+trial.experiment_U.latency, 100)*360/100;
 		} else if (values.startPos >= 75) {
 			values.rt_shifted = mod(values.gamma*(values.startPos-75)+trial.experiment_U.latency,values.time_per_revolution);
-			values.pos_shifted = mod(((values.startPos-75)/values.gamma)+trial.experiment_U.latency, 100)*360/100;
 		}
+		values.pos_shifted = values.rt_shifted*360/values.time_per_revolution;
 		if (values.scrfunc == "CEV") {
 			values.mag = (values.k * values.rt_extended)/(values.rt_extended-(values.rt_shifted+values.Shift));
 			values.freq = 1-((values.rt_shifted+values.Shift)/values.rt_extended);
