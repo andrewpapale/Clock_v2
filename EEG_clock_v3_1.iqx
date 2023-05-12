@@ -279,7 +279,7 @@ values.mag, values.freq, values.ev, values.inc, values.rng values.fogPos1, value
 values.choose_unc_att1, values.choose_unc_att_out1, values.choose_unc_att2, values.choose_unc_att_out2, values.unc_att_count1, 
 values.unc_att_count_out1,values.unc_att_count2, values.chooseAttentionalControl, values.chooseUncertainty,
 values.blockCount,parameters.ntrials, values.trialCount, values.meta_trialCount,parameters.attentional_control,parameters.local_uncertainty,
-values.unc_att_start1, values.unc_att_start2, values.unc_att_block,
+values.unc_att_start1, values.unc_att_start2, values.unc_att_block, list.rt_0.currentindex,
 values.rt_shifted,values.pos_shifted, values.totalPoints, values.totalEarnings, values.Earnings)
 </data>
 
