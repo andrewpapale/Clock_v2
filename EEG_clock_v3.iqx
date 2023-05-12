@@ -237,8 +237,8 @@ EEG Clock variant #2
 / blockCount = 0;
 / unc_att_start1 = 0;
 / unc_att_start2 = 0;
-/ nUncertainty1 = 0;
-/ nUncertainty2 = 0;
+/ nunc_att1 = 0;
+/ nunc_att2 = 0;
 / fogPos1 = 0;
 / windPos2 = 0;
 / chooseFog1 = 0;
@@ -246,6 +246,10 @@ EEG Clock variant #2
 / chooseAttentionalControl = 0;
 / chooseUncertainty = 0;
 / choose_unc_att1 = 0;
+/ choose_unc_att_out1 = 0;
+/ choose_unc_att_out2 = 0;
+/ unc_att_count_out1 = 0;
+/ unc_att_count_out2 = 0;
 / choose_unc_att2 = 0;
 / unc_att_count1 = 0;
 / unc_att_count2 = 0;
@@ -677,6 +681,10 @@ expressions.centery + expressions.heightchange_angle330
 )
 / selectionmode = list.wind_vpos.currentindex
 / selectionrate = always
+</list>
+
+<list wind_size>
+/ selectionmode = sequence
 </list>
 
 <list rt_0>
@@ -2482,11 +2490,11 @@ expressions.centery + expressions.heightchange_angle330
 
 
 
-<picture uncertainty>
+<picture unc_att>
 / items = ("fog0.png") //default
 / hposition = list.wind_hpos.nextvalue
 / vposition = list.wind_vpos.nextvalue
-/ size = (30%, 30%)
+/ size = (list.wind_size.currentvalue, list.wind_size.currentvalue)
 / erase = true(white)
 </picture>
 
@@ -2623,7 +2631,7 @@ Thank you for playing!")
 </text>
 
 <text feedback1>
-/ items = ("You got <% values.Earnings*2 %> mushrooms")
+/ items = ("You got <% values.Earnings*2 %> mushroom(s)")
 / fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
 / position = (50%, 60%)
 / vjustify = center
@@ -3260,12 +3268,6 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / position = (50%,50%)
 </text>
 
-<text ntrials>
-/ items = ("<%values.chooseFog%>")
-/ erase = false
-/ position = (50%,60%)
-</text>
-
 <text cloudPos>
 / items = ("<%values.fogPos1%>")
 / erase = false
@@ -3283,7 +3285,10 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 </text>
 
 <block instructions> 
-/ trials = [1=instructions1, instructions2, instructions2_5, instructions3, instructions4, instructions5, instructions5_1, instructions5_2, instructions6, countdown]
+// trials = [1=instructions1, instructions2, instructions2_5, instructions3, instructions4, instructions5, instructions5_1, instructions5_2, instructions6, countdown]
+/ trials = [
+	1= instructions4;
+]
 </block>
 
 
@@ -3429,30 +3434,33 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 <trial instructions4>
 / ontrialbegin = [
 	if (parameters.local_uncertainty=="cloud") {
-		picture.uncertainty.item.1 = "fog20.png";
+		picture.unc_att.item.1 = "fog20.png";
+		list.wind_size.appenditem = 30%;
+		list.wind_size.nextvalue;
 	} else if (parameters.local_uncertainty=="wind") {
-		picture.uncertainty.item.1 = "wind20.png";
+		picture.unc_att.item.1 = "wind20.png";
+		list.wind_size.appenditem = 25%;
+		list.wind_size.nextvalue;
 	}
-	picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle120;
-	picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle120;
+	picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle120;
+	picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle120;
 	values.startPos = 75;
 ]
 
-/ stimulustimes = [0=instructions4, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+/ stimulustimes = [0=instructions4, unc_att, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
 dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
-dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60,
-uncertainty;
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 
-1000 = instructions4, animatedCircle, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+1000 = instructions4, animatedCircle, unc_att, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
 dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
-dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60,
-uncertainty]
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60
+]
 
 / inputdevice = keyboard
 / beginresponsetime = 1000
@@ -3500,15 +3508,15 @@ from what you experienced before")
 <trial instructions5_1>
 / ontrialbegin = [
 	if (parameters.local_uncertainty=="cloud") {
-		picture.uncertainty.item.1 = "fog0.png";
+		picture.unc_att.item.1 = "fog0.png";
 	} else if (parameters.local_uncertainty=="wind") {
-		picture.uncertainty.item.1 = "wind0.png";
+		picture.unc_att.item.1 = "wind0.png";
 	}
-	picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle270;
-	picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle270;
+	picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle270;
+	picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle270;
 ]
 
-/ stimulusframes = [1=instructions5_1, uncertainty, true_box, false_box]
+/ stimulusframes = [1=instructions5_1, unc_att, true_box, false_box]
 / validresponse = (true_box,false_box)
 / branch = [
 	trial.dummytrial;
@@ -3607,15 +3615,15 @@ from what you experienced before.")
 <trial instructions5_2>
 / ontrialbegin = [
 	if (parameters.attentional_control=="cloud") {
-		picture.uncertainty.item.1 = "fog0.png";
+		picture.unc_att.item.1 = "fog0.png";
 	} else if (parameters.attentional_control=="wind") {
-		picture.uncertainty.item.1 = "wind0.png";
+		picture.unc_att.item.1 = "wind0.png";
 	}
-	picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle270;
-	picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle270;
+	picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle270;
+	picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle270;
 ]
 
-/ stimulusframes = [1=instructions5_2, uncertainty, true_box, false_box]
+/ stimulusframes = [1=instructions5_2, unc_att, true_box, false_box]
 / validresponse = (true_box,false_box)
 / branch = [
 	trial.dummytrial1;
@@ -3673,13 +3681,12 @@ from what you experienced before.")
 		text.sampleResponse.items.1 = "Try Again!"
 	}
 ]
-/ stimulustimes = [0=sampleResponse, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+/ stimulustimes = [0=sampleResponse, unc_att, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
 dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
-dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60,
-uncertainty;
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 ]
 / timeout = 3000
 / branch = [
@@ -3745,8 +3752,8 @@ uncertainty;
 	//values.uncertaintyStart = 1;
 	//values.unc_att_start1 = 2;
 	//values.unc_att_start2 = 14;
-	values.nUncertainty1 = values.unc_att_start1 + 10;
-	values.nUncertainty2 = values.unc_att_start2 + 10;
+	values.nunc_att1 = values.unc_att_start1 + 10;
+	values.nunc_att2 = values.unc_att_start2 + 10;
 	values.choose_unc_att1 = 0;
 	values.choose_unc_att2 = 0;
 	values.unc_att_count1 = 0;
@@ -3754,8 +3761,6 @@ uncertainty;
 	// determine position of fog
 	values.fogPos1 = noreplace(1,2,5,10,15,20,25,30,35,40,45,50);
 	values.windPos2 = noreplace(1,2,5,10,15,20,25,30,35,40,45,50);
-	//values.fogPos = 50;
-	
 	
 ]
 / stop = [
@@ -3785,10 +3790,10 @@ uncertainty;
 	values.chooseWind2 = 0;
 	values.chooseAttentionalControl = 0;
 	values.chooseUncertainty = 0;
-	values.choose_unc_att1 = 0;
-	values.choose_unc_att2 = 0;
-	values.unc_att_count1 = 0;
-	values.unc_att_count2 = 0;
+	values.choose_unc_att_out1 = 0;
+	values.choose_unc_att_out2 = 0;
+	values.unc_att_count_out1 = 0;
+	values.unc_att_count_out2 = 0;
 	values.n_revolutions = 0;
 	if (parameters.randStart==TRUE) {
 		values.startPos =  round(rand(0, 100));
@@ -3840,123 +3845,145 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	}
 	if (values.unc_att_block==1) {
 	if (values.fogPos1==1) {
-		picture.uncertainty.item.1 = "fog0.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle270;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle270;
+		picture.unc_att.item.1 = "fog0.png";
+		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle270;
+		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle270;
+		list.wind_size.appenditem = 30%;
 	} else if (values.fogPos1==2) {
-		picture.uncertainty.item.1 = "fog2.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle240;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle240;
+		picture.unc_att.item.1 = "fog2.png";
+		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle240;
+		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle240;
+		list.wind_size.appenditem = 30%;
 	} else if (values.fogPos1==5) {
-		picture.uncertainty.item.1 = "fog5.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle210;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle210;
+		picture.unc_att.item.1 = "fog5.png";
+		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle210;
+		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle210;
+		list.wind_size.appenditem = 30%;
 	} else if (values.fogPos1==10) {
-		picture.uncertainty.item.1 = "fog10.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle180;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle180;
+		picture.unc_att.item.1 = "fog10.png";
+		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle180;
+		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle180;
+		list.wind_size.appenditem = 30%;
 	} else if (values.fogPos1==15) {
-		picture.uncertainty.item.1 = "fog15.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle150;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle150;
+		picture.unc_att.item.1 = "fog15.png";
+		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle150;
+		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle150;
+		list.wind_size.appenditem = 30%;
 	} else if (values.fogPos1==20) {
-		picture.uncertainty.item.1 = "fog20.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle120;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle120;
+		picture.unc_att.item.1 = "fog20.png";
+		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle120;
+		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle120;
+		list.wind_size.appenditem = 30%;
 	} else if (values.fogPos1==25) {
-		picture.uncertainty.item.1 = "fog25.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle90;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle90;
+		picture.unc_att.item.1 = "fog25.png";
+		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle90;
+		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle90;
+		list.wind_size.appenditem = 30%;
 	} else if (values.fogPos1==30) {
-		picture.uncertainty.item.1 = "fog30.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle60;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle60;
+		picture.unc_att.item.1 = "fog30.png";
+		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle60;
+		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle60;
+		list.wind_size.appenditem = 30%;
 	} else if (values.fogPos1==35) {
-		picture.uncertainty.item.1 = "fog35.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle30;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle30;
+		picture.unc_att.item.1 = "fog35.png";
+		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle30;
+		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle30;
+		list.wind_size.appenditem = 30%;
 	} else if (values.fogPos1==40) {
-		picture.uncertainty.item.1 = "fog40.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle0;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle0;
+		picture.unc_att.item.1 = "fog40.png";
+		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle0;
+		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle0;
+		list.wind_size.appenditem = 30%;
 	} else if (values.fogPos1==45) {
-		picture.uncertainty.item.1 = "fog45.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle330;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle330;
+		picture.unc_att.item.1 = "fog45.png";
+		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle330;
+		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle330;
+		list.wind_size.appenditem = 30%;
 	} else if (values.fogPos1==50) {
-		picture.uncertainty.item.1 = "fog50.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle300;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle300;
+		picture.unc_att.item.1 = "fog50.png";
+		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle300;
+		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle300;
+		list.wind_size.appenditem = 30%;
 	}
 	} else if (values.unc_att_block==2) {
 	if (values.windPos2==1) {
-		picture.uncertainty.item.1 = "wind0.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle270;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle270;
+		picture.unc_att.item.1 = "wind0.png";
+		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle270;
+		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle270;
+		list.wind_size.appenditem = 30%;
 	} else if (values.windPos2==2) {
-		picture.uncertainty.item.1 = "wind2.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle240;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle240;		
+		picture.unc_att.item.1 = "wind2.png";
+		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle240;
+		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle240;
+		list.wind_size.appenditem = 25%;
 	} else if (values.windPos2==5) {
-		picture.uncertainty.item.1 = "wind5.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle210+20;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle210;
+		picture.unc_att.item.1 = "wind5.png";
+		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle210;
+		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle210;
+		list.wind_size.appenditem = 25%;
 	} else if (values.windPos2==10) {
-		picture.uncertainty.item.1 = "wind10.png";	
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle180;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle180;
+		picture.unc_att.item.1 = "wind10.png";	
+		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle180;
+		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle180;
+		list.wind_size.appenditem = 30%;
 	} else if (values.windPos2==15) {
-		picture.uncertainty.item.1 = "wind15.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle150+20;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle150;
+		picture.unc_att.item.1 = "wind15.png";
+		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle150;
+		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle150;
+		list.wind_size.appenditem = 25%;
 	} else if (values.windPos2==20) {
-		picture.uncertainty.item.1 = "wind20.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle120;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle120-20;
+		picture.unc_att.item.1 = "wind20.png";
+		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle120;
+		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle120;
+		list.wind_size.appenditem = 25%;
 	} else if (values.windPos2==25) {
-		picture.uncertainty.item.1 = "wind25.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle90;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle90;
+		picture.unc_att.item.1 = "wind25.png";
+		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle90;
+		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle90;
+		list.wind_size.appenditem = 30%;
 	} else if (values.windPos2==30) {
-		picture.uncertainty.item.1 = "wind30.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle60;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle60-20;
+		picture.unc_att.item.1 = "wind30.png";
+		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle60;
+		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle60;
+		list.wind_size.appenditem = 25%;
 	} else if (values.windPos2==35) {
-		picture.uncertainty.item.1 = "wind35.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle30-20;	
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle30;
+		picture.unc_att.item.1 = "wind35.png";
+		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle30;	
+		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle30;
+		list.wind_size.appenditem = 25%;
 	} else if (values.windPos2==40) {
-		picture.uncertainty.item.1 = "wind40.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle0;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle0;
+		picture.unc_att.item.1 = "wind40.png";
+		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle0;
+		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle0;
+		list.wind_size.appenditem = 30%;
 	} else if (values.windPos2==45) {
-		picture.uncertainty.item.1 = "wind45.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle330;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle330+20;
+		picture.unc_att.item.1 = "wind45.png";
+		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle330;
+		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle330;
+		list.wind_size.appenditem = 25%;
 	} else if (values.windPos2==50) {
-		picture.uncertainty.item.1 = "wind50.png";
-		picture.uncertainty.hposition = expressions.centerx + expressions.widthchange_angle300;
-		picture.uncertainty.vposition = expressions.centery + expressions.heightchange_angle300+20;
+		picture.unc_att.item.1 = "wind50.png";
+		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle300;
+		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle300;
+		list.wind_size.appenditem = 25%;
 	}
 	}
 
 ]
 
-/ stimulustimes = [0 = planet, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+/ stimulustimes = [0 = planet, unc_att, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
 dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
-dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60,
-uncertainty; 
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60; 
 
-1000 = planet, animatedCircle, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+1000 = planet, animatedCircle, unc_att, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
 dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
-dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60,
-uncertainty;
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 ]
 
 / inputdevice = keyboard
@@ -5125,7 +5152,7 @@ uncertainty;
 	//values.inc = values.mag;
 	values.totalPoints = values.totalPoints + values.inc;
 	// convert points to 'mushroom/troll' units
-	if (parameters.mushrooms==TRUE && trial.experiment_noU.response != 0) {
+	if (parameters.mushrooms==TRUE  && trial.experiment_U.response != 0) {
 		if (values.inc > 0 && values.inc <= 24) {
 			picture.feedback.item.1 = "mushrooms1.png";
 			values.Earnings = 0.5;
@@ -5170,10 +5197,10 @@ uncertainty;
 			values.Earnings = 0;
 			values.totalEarnings = values.totalEarnings + values.Earnings;
 			picture.feedback.item.1 = "no_mushrooms.png";
-		} else {
-			values.Earnings = 0;
-			picture.feedback.item.1 = "timeout.png"
 		}
+	} else {
+		values.Earnings = 0;
+		picture.feedback.item.1 = "timeout.png"
 	}
 	values.trialCount  += 1;
 	values.meta_trialCount +=1;
@@ -5190,18 +5217,18 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 // correctresponse = (next)
 / recorddata = true
 / ontrialend = [
-	if (values.trialCount >= values.unc_att_start1 && values.unc_att_count1 < values.nUncertainty1 && values.choose_unc_att1 <= 1) {
+	if (values.trialCount >= values.unc_att_start1 && values.unc_att_count1 < values.nunc_att1 && values.choose_unc_att1 <= 1) {
 		values.unc_att_block=1;
-	} else if (values.trialCount >= values.unc_att_start2 && values.unc_att_count2 < values.nUncertainty2 && values.choose_unc_att2 <= 1) {
+	} else if (values.trialCount >= values.unc_att_start2 && values.unc_att_count2 < values.nunc_att2 && values.choose_unc_att2 <= 1) {
 		values.unc_att_block=2;
 	} else {
 		values.unc_att_block=0;
 	}
 ]
 / branch = [
-	if (values.trialCount >= values.unc_att_start1 && values.unc_att_count1 < values.nUncertainty1 && values.choose_unc_att1 <= 1) {
+	if (values.trialCount >= values.unc_att_start1 && values.unc_att_count1 < values.nunc_att1 && values.choose_unc_att1 <= 1) {
 		list.triallist_U.nextvalue
-	} else if (values.trialCount >= values.unc_att_start2 && values.unc_att_count2 < values.nUncertainty2 && values.choose_unc_att2 <= 1) {
+	} else if (values.trialCount >= values.unc_att_start2 && values.unc_att_count2 < values.nunc_att2 && values.choose_unc_att2 <= 1) {
 		list.triallist_U.nextvalue
 	} else {
 		list.triallist_noU.nextvalue
@@ -5210,7 +5237,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 </trial>
 
 <text testUct>
-/ items = ("trCt =<%values.trialCount%> uSt1=<%values.unc_att_start1%> uCt1=<%values.unc_att_count1%> nU1=<%values.nUncertainty1%>, cU1=<%values.choose_unc_att1%>")
+/ items = ("trCt =<%values.trialCount%> uSt1=<%values.unc_att_start1%> uCt1=<%values.unc_att_count1%> nU1=<%values.nunc_att1%>, cU1=<%values.choose_unc_att1%>")
 </text>
 
 <text rng>
@@ -6435,206 +6462,258 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	values.chooseUncertainty = 0;
 	if (values.unc_att_block==1 && parameters.local_uncertainty=="cloud") {
 		values.unc_att_count1 +=1;
+		values.unc_att_count_out1 +=1;
 		if (values.fogPos1==1 && (values.rt_shifted > 4677 || values.rt_shifted < 323)) {
 			values.chooseFog1 = 1;
 			values.choose_unc_att1 += 1;
+			values.choose_unc_att_out1 +=1;
 			values.chooseUncertainty = 1;
 		} else if (values.fogPos1==2 && values.rt_shifted > 4308 && values.rt_shifted < 4954){
 			values.chooseFog1 = 1;
 			values.choose_unc_att1 +=1;
+			values.choose_unc_att_out1 +=1;
 			values.chooseUncertainty = 1;
 		} else if (values.fogPos1==5 && values.rt_shifted > 3927 && values.rt_shifted < 4573) {
 			values.chooseFog1 = 1;
 			values.choose_unc_att1 += 1;
+			values.choose_unc_att_out1 +=1;
 			values.chooseUncertainty = 1;
 		} else if (values.fogPos1==10 && values.rt_shifted > 3502 && values.rt_shifted < 4148) {
 			values.chooseFog1 = 1;
 			values.choose_unc_att1 += 1;
+			values.choose_unc_att_out1 +=1;
 			values.chooseUncertainty = 1;
 		} else if (values.fogPos1==15 && values.rt_shifted > 3077 && values.rt_shifted < 3723) {
 			values.chooseFog1 = 1;
 			values.choose_unc_att1 += 1;
+			values.choose_unc_att_out1 +=1;
 			values.chooseUncertainty = 1;
 		} else if (values.fogPos1==20 && values.rt_shifted > 2652 && values.rt_shifted < 3298) {
 			values.chooseFog1 = 1;
 			values.choose_unc_att1 += 1;
+			values.choose_unc_att_out1 +=1;
 			values.chooseUncertainty = 1;
 		} else if (values.fogPos1==25 && values.rt_shifted > 2227 && values.rt_shifted < 2873) {
 			values.chooseFog1 = 1;
 			values.choose_unc_att1 += 1;
+			values.choose_unc_att_out1 +=1;
 			values.chooseUncertainty = 1;
 		} else if (values.fogPos1==30 && values.rt_shifted > 1802 && values.rt_shifted < 2448) {
 			values.chooseFog1 = 1;
 			values.choose_unc_att1 += 1;
+			values.choose_unc_att_out1 +=1;
 			values.chooseUncertainty = 1;
 		} else if (values.fogPos1==35 && values.rt_shifted > 1377 && values.rt_shifted < 2023) {
 			values.chooseFog1 = 1;
 			values.choose_unc_att1 += 1;
+			values.choose_unc_att_out1 +=1;
 			values.chooseUncertainty = 1;
 		} else if (values.fogPos1==40 && (values.rt_shifted > 952 && values.rt_shifted < 1598)) {
 			values.chooseFog1 = 1;
 			values.choose_unc_att1 += 1;
+			values.choose_unc_att_out1 +=1;
 			values.chooseUncertainty = 1;
 		} else if (values.fogPos1==45 && values.rt_shifted > 527 && values.rt_shifted < 1173) {
 			values.chooseFog1 = 1;
 			values.choose_unc_att1 += 1;
+			values.choose_unc_att_out1 +=1;
 			values.chooseUncertainty = 1;
 		} else if (values.fogPos1==50 && values.rt_shifted > 102 && values.rt_shifted < 748) {
 			values.chooseFog1 = 1;
 			values.choose_unc_att1 += 1;
+			values.choose_unc_att_out1 +=1;
 			values.chooseUncertainty = 1;
 		}
 	} else if (values.unc_att_block==2 && parameters.local_uncertainty=="wind") {
 		values.unc_att_count2 +=1;
+		values.unc_att_count_out2 +=1;
 		if (values.windPos2==1 && (values.rt_shifted > 4677 || values.rt_shifted < 323)) {
 			values.chooseWind2 = 1;
 			values.choose_unc_att2 += 1;
+			values.choose_unc_att_out2 += 1;
 			values.chooseUncertainty = 1;
 		} else if(values.windPos2==2 && values.rt_shifted > 4308 && values.rt_shifted < 4954){
 			values.chooseWind2 = 1;
 			values.choose_unc_att2 +=1;
+			values.choose_unc_att_out2 += 1;
 			values.chooseUncertainty = 1;
 		} else if (values.windPos2==5 && values.rt_shifted > 3927 && values.rt_shifted < 4573) {
 			values.chooseWind2 = 1;
 			values.choose_unc_att2 += 1;
+			values.choose_unc_att_out2 += 1;
 			values.chooseUncertainty = 1;
 		} else if (values.windPos2==10 && values.rt_shifted > 3502 && values.rt_shifted < 4148) {
 			values.chooseWind2 = 1;
 			values.choose_unc_att2 += 1;
+			values.choose_unc_att_out2 += 1;
 			values.chooseUncertainty = 1;
 		} else if (values.windPos2==15 && values.rt_shifted > 3077 && values.rt_shifted < 3723) {
 			values.chooseWind2 = 1;
 			values.choose_unc_att2 += 1;
+			values.choose_unc_att_out2 += 1;
 			values.chooseUncertainty = 1;
 		} else if (values.windPos2==20 && values.rt_shifted > 2652 && values.rt_shifted < 3298) {
 			values.chooseWind2 = 1;
 			values.choose_unc_att2 += 1;
+			values.choose_unc_att_out2 += 1;
 			values.chooseUncertainty = 1;
 		} else if (values.windPos2==25 && values.rt_shifted > 2227 && values.rt_shifted < 2873) {
 			values.chooseWind2 = 1;
 			values.choose_unc_att2 += 1;
+			values.choose_unc_att_out2 += 1;
 			values.chooseUncertainty = 1;
 		} else if (values.windPos2==30 && values.rt_shifted > 1802 && values.rt_shifted < 2448) {
 			values.chooseWind2 = 1;
 			values.choose_unc_att2 += 1;
+			values.choose_unc_att_out2 += 1;
 			values.chooseUncertainty = 1;
 		} else if (values.windPos2==35 && values.rt_shifted > 1377 && values.rt_shifted < 2023) {
 			values.chooseWind2 = 1;
 			values.choose_unc_att2 += 1;
+			values.choose_unc_att_out2 += 1;
 			values.chooseUncertainty = 1;
 		} else if (values.windPos2==40 && (values.rt_shifted > 952 && values.rt_shifted < 1598)) {
 			values.chooseWind2 = 1;
 			values.choose_unc_att2 += 1;
+			values.choose_unc_att_out2 += 1;
 			values.chooseUncertainty = 1;
 		} else if (values.windPos2==45 && values.rt_shifted > 527 && values.rt_shifted < 1173) {
 			values.chooseWind2 = 1;
 			values.choose_unc_att2 += 1;
+			values.choose_unc_att_out2 += 1;
 			values.chooseUncertainty = 1;
 		} else if (values.windPos2==50 && values.rt_shifted > 102 && values.rt_shifted < 748) {
 			values.chooseWind2 = 1;
 			values.choose_unc_att2 += 1;
+			values.choose_unc_att_out2 += 1;
 			values.chooseUncertainty = 1;
 		}
 	} else if (values.unc_att_block==1 && parameters.attentional_control=="cloud") {
 		values.unc_att_count1 +=1;
+		values.unc_att_count_out1 +=1;
 		if (values.fogPos1==1 && (values.rt_shifted > 4677 || values.rt_shifted < 323)) {
 			values.chooseFog1 = 1;
 			values.choose_unc_att1 += 1;
+			values.choose_unc_att_out1 +=1;
 			values.chooseAttentionalControl = 1;
 		} else if (values.fogPos1==2 && values.rt_shifted > 4308 && values.rt_shifted < 4954) {
 			values.chooseFog1 = 1;
 			values.choose_unc_att1 += 1;
+			values.choose_unc_att_out1 +=1;
 			values.chooseAttentionalControl = 1;
 		} else if (values.fogPos1==5 && values.rt_shifted > 3927 && values.rt_shifted < 4625) {
 			values.chooseFog1 = 1;
 			values.choose_unc_att1 += 1;
+			values.choose_unc_att_out1 +=1;
 			values.chooseAttentionalControl = 1;
 		} else if (values.fogPos1==10 && values.rt_shifted > 3502 && values.rt_shifted < 4148) {
 			values.chooseFog1 = 1;
 			values.choose_unc_att1 += 1;
+			values.choose_unc_att_out1 +=1;
 			values.chooseAttentionalControl = 1;
 		} else if (values.fogPos1==15 && values.rt_shifted > 3077 && values.rt_shifted < 3723) {
 			values.chooseFog1 = 1;
 			values.choose_unc_att1 += 1;
+			values.choose_unc_att_out1 +=1;
 			values.chooseAttentionalControl = 1;
 		} else if (values.fogPos1==20 && values.rt_shifted > 2652 && values.rt_shifted < 3298) {
 			values.chooseFog1 = 1;
 			values.choose_unc_att1 += 1;
+			values.choose_unc_att_out1 +=1;
 			values.chooseAttentionalControl = 1;
 		} else if (values.fogPos1==25 && values.rt_shifted > 2227 && values.rt_shifted < 2873) {
 			values.chooseFog1 = 1;
 			values.choose_unc_att1 += 1;
+			values.choose_unc_att_out1 +=1;
 			values.chooseAttentionalControl = 1;
 		} else if (values.fogPos1==30 && values.rt_shifted > 1802 && values.rt_shifted < 2448) {
 			values.chooseFog1 = 1;
 			values.choose_unc_att1 += 1;
+			values.choose_unc_att_out1 +=1;
 			values.chooseAttentionalControl = 1;
 		} else if (values.fogPos1==35 && values.rt_shifted > 1377 && values.rt_shifted < 2023) {
 			values.chooseFog1 = 1;
 			values.choose_unc_att1 += 1;
+			values.choose_unc_att_out1 +=1;
 			values.chooseAttentionalControl = 1;
 		} else if (values.fogPos1==40 && (values.rt_shifted > 952 && values.rt_shifted < 1598)) {
 			values.chooseFog1 = 1;
 			values.choose_unc_att1 += 1;
+			values.choose_unc_att_out1 +=1;
 			values.chooseAttentionalControl = 1;
 		} else if (values.fogPos1==45 && values.rt_shifted > 527 && values.rt_shifted < 1173) {
 			values.chooseFog1 = 1;
 			values.choose_unc_att1 += 1;
+			values.choose_unc_att_out1 +=1;
 			values.chooseAttentionalControl = 1;
 		} else if (values.fogPos1==50 && values.rt_shifted > 102 && values.rt_shifted < 748) {
 			values.chooseFog1 = 1;
 			values.choose_unc_att1 += 1;
+			values.choose_unc_att_out1 +=1;
 			values.chooseAttentionalControl = 1;
 		}
 	} else if (values.unc_att_block==2 && parameters.attentional_control=="wind") {
 		values.unc_att_count2 +=1;
+		values.unc_att_count_out2 +=1;
 		if (values.windPos2==1 && values.rt_shifted > 4677 || values.rt_shifted < 323) { // 323
 			values.chooseWind2 = 1;
 			values.choose_unc_att2 += 1;
+			values.choose_unc_att_out2 +=1;
 			values.chooseAttentionalControl = 1;
 		} else if (values.windPos2==2 && (values.rt_shifted > 4308 && values.rt_shifted < 4954)) { //323
 			values.chooseWind2 = 1;
 			values.choose_unc_att2 += 1;
+			values.choose_unc_att_out2 +=1;
 			values.chooseAttentionalControl = 1;
 		} else if (values.windPos2==5 && values.rt_shifted > 3927 && values.rt_shifted < 4573) { // 323
 			values.chooseWind2 = 1;
 			values.choose_unc_att2 += 1;
+			values.choose_unc_att_out2 +=1;
 			values.chooseAttentionalControl = 1;
 		} else if (values.windPos2==10 && values.rt_shifted > 3502 && values.rt_shifted < 4148) { // 323
 			values.chooseWind2 = 1;
 			values.choose_unc_att2 += 1;
+			values.choose_unc_att_out2 +=1;
 			values.chooseAttentionalControl = 1;
 		} else if (values.windPos2==15 && values.rt_shifted > 3077 && values.rt_shifted < 3723) { //323
 			values.chooseWind2 = 1;
 			values.choose_unc_att2 += 1;
+			values.choose_unc_att_out2 +=1;
 			values.chooseAttentionalControl = 1;
 		} else if (values.windPos2==20 && values.rt_shifted > 2652 && values.rt_shifted < 3298) { //323
 			values.chooseWind2 = 1;
 			values.choose_unc_att2 += 1;
+			values.choose_unc_att_out2 +=1;
 			values.chooseAttentionalControl = 1;
 		} else if (values.windPos2==25 && values.rt_shifted > 2227 && values.rt_shifted < 2873) { //323
 			values.chooseWind2 = 1;
 			values.choose_unc_att2 += 1;
+			values.choose_unc_att_out2 +=1;
 			values.chooseAttentionalControl = 1;
 		} else if (values.windPos2==30 && values.rt_shifted > 1802 && values.rt_shifted < 2448) { //323
 			values.chooseWind2 = 1;
 			values.choose_unc_att2 += 1;
+			values.choose_unc_att_out2 +=1;
 			values.chooseAttentionalControl = 1;
 		} else if (values.windPos2==35 && values.rt_shifted > 1377 && values.rt_shifted < 2023) { // 323
 			values.chooseWind2 = 1;
 			values.choose_unc_att2 += 1;
+			values.choose_unc_att_out2 +=1;
 			values.chooseAttentionalControl = 1;
 		} else if (values.windPos2==40 && (values.rt_shifted > 952 && values.rt_shifted < 1598)) { // 323
 			values.chooseWind2 = 1;
 			values.choose_unc_att2 += 1;
+			values.choose_unc_att_out2 +=1;
 			values.chooseAttentionalControl = 1;
 		} else if (values.windPos2==45 && values.rt_shifted > 527 && values.rt_shifted < 1173) { // 323
 			values.chooseWind2 = 1;
 			values.choose_unc_att2 += 1;
+			values.choose_unc_att_out2 +=1;
 			values.chooseAttentionalControl = 1;
 		} else if (values.windPos2==50 && values.rt_shifted > 102 && values.rt_shifted < 748) { // 323
 			values.chooseWind2 = 1;
 			values.choose_unc_att2 += 1;
+			values.choose_unc_att_out2 +=1;
 			values.chooseAttentionalControl = 1;
 		}
 	}
@@ -6653,18 +6732,18 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 // correctresponse = (next)
 / recorddata = true
 / ontrialend = [
-	if (values.trialCount >= values.unc_att_start1 && values.unc_att_count1 < values.nUncertainty1 && values.choose_unc_att1 <= 1) {
+	if (values.trialCount >= values.unc_att_start1 && values.unc_att_count1 < values.nunc_att1 && values.choose_unc_att1 <= 1) {
 		values.unc_att_block=1;
-	} else if (values.trialCount >= values.unc_att_start2 && values.unc_att_count2 < values.nUncertainty2 && values.choose_unc_att2 <= 1) {
+	} else if (values.trialCount >= values.unc_att_start2 && values.unc_att_count2 < values.nunc_att2 && values.choose_unc_att2 <= 1) {
 		values.unc_att_block=2;
 	} else {
 		values.unc_att_block=0;
 	}
 ]
 / branch = [
-	if (values.trialCount >= values.unc_att_start1 && values.unc_att_count1 < values.nUncertainty1 && values.choose_unc_att1 <= 1) {
+	if (values.trialCount >= values.unc_att_start1 && values.unc_att_count1 < values.nunc_att1 && values.choose_unc_att1 <= 1) {
 		list.triallist_U.nextvalue
-	} else if (values.trialCount >= values.unc_att_start2 && values.unc_att_count2 < values.nUncertainty2 && values.choose_unc_att2 <= 1) {
+	} else if (values.trialCount >= values.unc_att_start2 && values.unc_att_count2 < values.nunc_att2 && values.choose_unc_att2 <= 1) {
 		list.triallist_U.nextvalue
 	} else {
 		list.triallist_noU.nextvalue
@@ -6806,7 +6885,7 @@ What strategies did you use in the game?"
 		text.local_uncertainty.items.1 = "wind";
 		text.local_uncertainty.items.2 = "wind";
 		picture.attention.items.1 = "fog0.png";
-		picture.uncertainty.items.1 = "wind0.png";
+		picture.unc_att.items.1 = "wind0.png";
 	} else {
 		parameters.attentional_control = "wind";
 		parameters.local_uncertainty = "cloud";
@@ -6815,22 +6894,23 @@ What strategies did you use in the game?"
 		text.local_uncertainty.items.1 = "a cloud";
 		text.local_uncertainty.items.2 = "cloud";
 		picture.attention.items.1 = "wind0.png";
-		picture.uncertainty.items.1 = "fog0.png";
+		picture.unc_att.items.1 = "fog0.png";
 	}
 	values.meta_trialCount = 0;
 ]
 
 / blocks = [
 	1=instructions;
-	//3=experiment;
-	//4=experiment;
-	//5=experiment;
-	//6=experiment;
-	//7=experiment;
-	//8=experiment;
-	//9=experiment;
-	//10=experiment;
-	//11=questionnaire;
-	//12=endscreen;
+	2=experiment;
+	3=experiment;
+	4=experiment;
+	5=experiment;
+	6=experiment;
+	7=experiment;
+	8=experiment;
+	9=experiment;
+	10=experiment;
+	11=questionnaire;
+	12=endscreen;
 ]
 </expt>
