@@ -273,7 +273,8 @@ EEG Clock variant #2
 / columns = (build, computer.platform, computer.touch, date, time, subject, group, script.sessionid, blockcode, blocknum, 
 trialcode,latency,parameters.randStart, values.startPos,values.scrfunc, parameters.rtvspos, parameters.randStart, 
 values.mag, values.freq, values.ev, values.inc, values.rng values.startPos, values.fogPos1,values.windPos2, values.chooseFog1, values.chooseWind2,
-values.choose_unc_att1, values.choose_unc_att2, values.unc_att_count1, values.unc_att_count2, values.chooseAttentionalControl, values.chooseUncertainty,
+values.choose_unc_att1, values.choose_unc_att_out1, values.choose_unc_att2, values.choose_unc_att_out2, values.unc_att_count1, 
+values.unc_att_count_out1,values.unc_att_count2, values.choose_unc_att_out2, values.chooseAttentionalControl, values.chooseUncertainty,
 values.blockCount,parameters.ntrials, values.trialCount, values.meta_trialCount,parameters.attentional_control,parameters.local_uncertainty,
 values.unc_att_start1, values.unc_att_start2, values.unc_att_block,
 values.rt_shifted,values.totalPoints, values.totalEarnings, values.Earnings)
@@ -3849,61 +3850,73 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle270;
 		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle270;
 		list.wind_size.appenditem = 30%;
+		values.fogPos_out = 360;
 	} else if (values.fogPos1==2) {
 		picture.unc_att.item.1 = "fog2.png";
 		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle240;
 		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle240;
 		list.wind_size.appenditem = 30%;
+		values.fogPos_out = 330;
 	} else if (values.fogPos1==5) {
 		picture.unc_att.item.1 = "fog5.png";
 		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle210;
 		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle210;
 		list.wind_size.appenditem = 30%;
+		values.fogPos_out = 300;
 	} else if (values.fogPos1==10) {
 		picture.unc_att.item.1 = "fog10.png";
 		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle180;
 		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle180;
 		list.wind_size.appenditem = 30%;
+		values.fogPos_out = 270;
 	} else if (values.fogPos1==15) {
 		picture.unc_att.item.1 = "fog15.png";
 		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle150;
 		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle150;
 		list.wind_size.appenditem = 30%;
+		values.fogPos_out = 240;
 	} else if (values.fogPos1==20) {
 		picture.unc_att.item.1 = "fog20.png";
 		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle120;
 		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle120;
 		list.wind_size.appenditem = 30%;
+		values.fogPos_out = 210;
 	} else if (values.fogPos1==25) {
 		picture.unc_att.item.1 = "fog25.png";
 		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle90;
 		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle90;
 		list.wind_size.appenditem = 30%;
+		values.fogPos_out = 180;
 	} else if (values.fogPos1==30) {
 		picture.unc_att.item.1 = "fog30.png";
 		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle60;
 		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle60;
 		list.wind_size.appenditem = 30%;
+		values.fogPos_out = 150;
 	} else if (values.fogPos1==35) {
 		picture.unc_att.item.1 = "fog35.png";
 		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle30;
 		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle30;
 		list.wind_size.appenditem = 30%;
+		values.fogPos_out = 120;
 	} else if (values.fogPos1==40) {
 		picture.unc_att.item.1 = "fog40.png";
 		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle0;
 		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle0;
 		list.wind_size.appenditem = 30%;
+		values.fogPos_out = 90;
 	} else if (values.fogPos1==45) {
 		picture.unc_att.item.1 = "fog45.png";
 		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle330;
 		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle330;
 		list.wind_size.appenditem = 30%;
+		values.fogPos_out = 60;
 	} else if (values.fogPos1==50) {
 		picture.unc_att.item.1 = "fog50.png";
 		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle300;
 		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle300;
 		list.wind_size.appenditem = 30%;
+		values.fogPos_out = 30;
 	}
 	} else if (values.unc_att_block==2) {
 	if (values.windPos2==1) {
@@ -3911,61 +3924,73 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle270;
 		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle270;
 		list.wind_size.appenditem = 30%;
+		values.windPos_out = 360;
 	} else if (values.windPos2==2) {
 		picture.unc_att.item.1 = "wind2.png";
 		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle240;
 		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle240;
 		list.wind_size.appenditem = 25%;
+		values.windPos_out = 330;
 	} else if (values.windPos2==5) {
 		picture.unc_att.item.1 = "wind5.png";
 		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle210;
 		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle210;
 		list.wind_size.appenditem = 25%;
+		values.windPos_out = 300;
 	} else if (values.windPos2==10) {
 		picture.unc_att.item.1 = "wind10.png";	
 		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle180;
 		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle180;
 		list.wind_size.appenditem = 30%;
+		values.windPos_out = 270;
 	} else if (values.windPos2==15) {
 		picture.unc_att.item.1 = "wind15.png";
 		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle150;
 		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle150;
 		list.wind_size.appenditem = 25%;
+		values.windPos_out = 240;
 	} else if (values.windPos2==20) {
 		picture.unc_att.item.1 = "wind20.png";
 		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle120;
 		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle120;
 		list.wind_size.appenditem = 25%;
+		values.windPos_out = 210;
 	} else if (values.windPos2==25) {
 		picture.unc_att.item.1 = "wind25.png";
 		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle90;
 		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle90;
 		list.wind_size.appenditem = 30%;
+		values.windPos_out = 180;
 	} else if (values.windPos2==30) {
 		picture.unc_att.item.1 = "wind30.png";
 		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle60;
 		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle60;
 		list.wind_size.appenditem = 25%;
+		values.windPos_out = 150;
 	} else if (values.windPos2==35) {
 		picture.unc_att.item.1 = "wind35.png";
 		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle30;	
 		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle30;
 		list.wind_size.appenditem = 25%;
+		values.windPos_out = 120;
 	} else if (values.windPos2==40) {
 		picture.unc_att.item.1 = "wind40.png";
 		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle0;
 		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle0;
 		list.wind_size.appenditem = 30%;
+		values.windPos_out = 90;
 	} else if (values.windPos2==45) {
 		picture.unc_att.item.1 = "wind45.png";
 		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle330;
 		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle330;
 		list.wind_size.appenditem = 25%;
+		values.windPos_out = 60;
 	} else if (values.windPos2==50) {
 		picture.unc_att.item.1 = "wind50.png";
 		picture.unc_att.hposition = expressions.centerx + expressions.widthchange_angle300;
 		picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle300;
 		list.wind_size.appenditem = 25%;
+		values.windPos_out = 30;
 	}
 	}
 
