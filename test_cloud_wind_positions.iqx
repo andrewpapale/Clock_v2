@@ -663,6 +663,16 @@ expressions.centery + expressions.heightchange_angle330
 / selectionmode = sequence
 </list>
 
+<list wind_hsize>
+/ items = (30%,25%,25%,30%,25%,25%,30%,25%,25%,30%,25%,25%)
+/ selectionmode = sequence
+</list>
+
+<list wind_vsize>
+/ items = (30%,25%,25%,30%,25%,25%,30%,25%,25%,30%,25%,25%)
+/ selectionmode = sequence
+</list>
+
 <picture uncertainty>
 / items = ("fog0.png") //default
 / hposition = list.wind_hpos.nextvalue
@@ -675,7 +685,7 @@ expressions.centery + expressions.heightchange_angle330
 / items = ("fog0.png") //default
 / hposition = list.fog_hpos.nextvalue
 / vposition = list.fog_vpos.nextvalue
-/ size = (30%, 30%)
+/ size = (list.wind_hsize.nextvalue, list.wind_vsize.nextvalue)
 / erase = true(white)
 </picture>
 
@@ -1370,12 +1380,12 @@ expressions.centery + expressions.heightchange_angle330
 	}
 ]
 
-/ stimulustimes = [0=animatedCircle, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+/ stimulustimes = [0=animatedCircle, uncertainty, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
 dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
-dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, uncertainty, upos;
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, upos;
 ]          
 
 / inputdevice = keyboard
@@ -1388,12 +1398,12 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, uncertaint
 </trial>
 
 <trial getFeedback>
-/ stimulustimes = [0=dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+/ stimulustimes = [0= dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
 dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
-dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, uncertainty, upos;
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, upos;
 ] 
 / inputdevice = keyboard
 / beginresponsetime = 0
@@ -1402,12 +1412,12 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, uncertaint
 </trial>
 
 <trial getFeedback2>
-/ stimulustimes = [0=dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+/ stimulustimes = [0= dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
 dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
-dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, uncertainty, upos2;
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, upos2;
 ] 
 / inputdevice = keyboard
 / beginresponsetime = 0
@@ -1416,12 +1426,12 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, uncertaint
 </trial>
 
 <trial getFeedback3>
-/ stimulustimes = [0=dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+/ stimulustimes = [0 = dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
 dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
-dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, uncertainty, upos3;
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, upos3;
 ] 
 / inputdevice = keyboard
 / beginresponsetime = 0
@@ -1435,59 +1445,71 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, uncertaint
 		picture.attention.item.1 = "wind0.png";
 		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle270;
 		picture.attention.vposition = expressions.centery + expressions.heightchange_angle270;
+		//picture.attention.scale = 1%;
 	} else if (values.windPos2==2) {
 		picture.attention.item.1 = "wind2.png";
 		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle240;
-		picture.attention.vposition = expressions.centery + expressions.heightchange_angle240;		
+		picture.attention.vposition = expressions.centery + expressions.heightchange_angle240;
+		//picture.attention.scale = 0.83%;
 	} else if (values.windPos2==5) {
 		picture.attention.item.1 = "wind5.png";
-		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle210+20;
+		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle210;
 		picture.attention.vposition = expressions.centery + expressions.heightchange_angle210;
+		picture.attention.scale = 0.83%;
 	} else if (values.windPos2==10) {
 		picture.attention.item.1 = "wind10.png";	
 		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle180;
 		picture.attention.vposition = expressions.centery + expressions.heightchange_angle180;
+		//picture.attention.scale = 1%;
 	} else if (values.windPos2==15) {
 		picture.attention.item.1 = "wind15.png";
-		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle150+20;
+		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle150;
 		picture.attention.vposition = expressions.centery + expressions.heightchange_angle150;
+		//picture.attention.scale = 0.83%;
 	} else if (values.windPos2==20) {
 		picture.attention.item.1 = "wind20.png";
 		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle120;
-		picture.attention.vposition = expressions.centery + expressions.heightchange_angle120-20;
+		picture.attention.vposition = expressions.centery + expressions.heightchange_angle120;
+		//picture.attention.scale = 0.83%;
 	} else if (values.windPos2==25) {
 		picture.attention.item.1 = "wind25.png";
 		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle90;
 		picture.attention.vposition = expressions.centery + expressions.heightchange_angle90;
+		//picture.attention.scale = 1%;
 	} else if (values.windPos2==30) {
 		picture.attention.item.1 = "wind30.png";
 		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle60;
-		picture.attention.vposition = expressions.centery + expressions.heightchange_angle60-20;
+		picture.attention.vposition = expressions.centery + expressions.heightchange_angle60;
+		//picture.attention.scale = 0.83%;
 	} else if (values.windPos2==35) {
 		picture.attention.item.1 = "wind35.png";
-		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle30-20;	
+		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle30;	
 		picture.attention.vposition = expressions.centery + expressions.heightchange_angle30;
+		//picture.attention.scale = 0.83%;
 	} else if (values.windPos2==40) {
 		picture.attention.item.1 = "wind40.png";
 		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle0;
 		picture.attention.vposition = expressions.centery + expressions.heightchange_angle0;
+		//picture.attention.scale = 1%;
 	} else if (values.windPos2==45) {
 		picture.attention.item.1 = "wind45.png";
 		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle330;
-		picture.attention.vposition = expressions.centery + expressions.heightchange_angle330+20;
+		picture.attention.vposition = expressions.centery + expressions.heightchange_angle330;
+		//picture.attention.scale = 0.83%;
 	} else if (values.windPos2==50) {
 		picture.attention.item.1 = "wind50.png";
 		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle300;
-		picture.attention.vposition = expressions.centery + expressions.heightchange_angle300+20;
+		picture.attention.vposition = expressions.centery + expressions.heightchange_angle300;
+		//picture.attention.scale = 0.83%;
 	}
 ]
 
-/ stimulustimes = [0=animatedCircle, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+/ stimulustimes = [0=animatedCircle, attention, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
 dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
-dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, attention, upos2;
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, upos2;
 ]
 
 / inputdevice = keyboard
@@ -1556,59 +1578,71 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, attention,
 		picture.attention.item.1 = "wind0.png";
 		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle270;
 		picture.attention.vposition = expressions.centery + expressions.heightchange_angle270;
+		//picture.attention.scale = 1%;
 	} else if (values.windPos2==2) {
 		picture.attention.item.1 = "wind2.png";
 		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle240;
-		picture.attention.vposition = expressions.centery + expressions.heightchange_angle240;		
+		picture.attention.vposition = expressions.centery + expressions.heightchange_angle240;
+		//picture.attention.scale = 0.83%;
 	} else if (values.windPos2==5) {
 		picture.attention.item.1 = "wind5.png";
-		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle210+20;
+		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle210;
 		picture.attention.vposition = expressions.centery + expressions.heightchange_angle210;
+		//picture.attention.scale = 0.83%;
 	} else if (values.windPos2==10) {
 		picture.attention.item.1 = "wind10.png";	
 		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle180;
 		picture.attention.vposition = expressions.centery + expressions.heightchange_angle180;
+		//picture.attention.scale = 1%;
 	} else if (values.windPos2==15) {
 		picture.attention.item.1 = "wind15.png";
-		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle150+20;
+		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle150;
 		picture.attention.vposition = expressions.centery + expressions.heightchange_angle150;
+		//picture.attention.scale = 0.83%;
 	} else if (values.windPos2==20) {
 		picture.attention.item.1 = "wind20.png";
 		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle120;
-		picture.attention.vposition = expressions.centery + expressions.heightchange_angle120-20;
+		picture.attention.vposition = expressions.centery + expressions.heightchange_angle120;
+		//picture.attention.scale = 0.83%;
 	} else if (values.windPos2==25) {
 		picture.attention.item.1 = "wind25.png";
 		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle90;
 		picture.attention.vposition = expressions.centery + expressions.heightchange_angle90;
+		//picture.attention.scale = 1%;
 	} else if (values.windPos2==30) {
 		picture.attention.item.1 = "wind30.png";
 		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle60;
-		picture.attention.vposition = expressions.centery + expressions.heightchange_angle60-20;
+		picture.attention.vposition = expressions.centery + expressions.heightchange_angle60;
+		//picture.attention.scale = 0.83%;
 	} else if (values.windPos2==35) {
 		picture.attention.item.1 = "wind35.png";
-		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle30-20;	
+		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle30;	
 		picture.attention.vposition = expressions.centery + expressions.heightchange_angle30;
+		//picture.attention.scale = 0.83%;
 	} else if (values.windPos2==40) {
 		picture.attention.item.1 = "wind40.png";
 		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle0;
 		picture.attention.vposition = expressions.centery + expressions.heightchange_angle0;
+		//picture.attention.scale = 1%;
 	} else if (values.windPos2==45) {
 		picture.attention.item.1 = "wind45.png";
 		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle330;
-		picture.attention.vposition = expressions.centery + expressions.heightchange_angle330+20;
+		picture.attention.vposition = expressions.centery + expressions.heightchange_angle330;
+		//picture.attention.scale = 0.83%;
 	} else if (values.windPos2==50) {
 		picture.attention.item.1 = "wind50.png";
 		picture.attention.hposition = expressions.centerx + expressions.widthchange_angle300;
-		picture.attention.vposition = expressions.centery + expressions.heightchange_angle300+20;
+		picture.attention.vposition = expressions.centery + expressions.heightchange_angle300;
+		//picture.attention.scale = 0.83%;
 	}
 ]
 
-/ stimulustimes = [0=animatedCircle, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+/ stimulustimes = [0=animatedCircle,attention,uncertainty, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
 dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
-dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, uncertainty, attention,upos3;
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60,upos3;
 ]
 
 / inputdevice = keyboard
@@ -1637,8 +1671,8 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, uncertaint
 </block>
 <expt main1>
 / blocks = [
-	1=experiment_fog;
-	2=experiment_wind;
-	2=experiment_wind_fog;
+	//1=experiment_fog;
+	//2=experiment_wind;
+	1=experiment_wind_fog;
 ]
 </expt>
