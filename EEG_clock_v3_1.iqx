@@ -5193,7 +5193,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 				values.mag = list.rt_356.currentvalue;
 			} else if (values.rt_shifted > 4958 && values.rt_shifted <= 4972) {
 				values.mag = list.rt_357.currentvalue;
-			} else if (values.rt_shifted < 4986 && values.rt_shifted <= 5000) {
+			} else if (values.rt_shifted > 4986 && values.rt_shifted <= 5000) {
 				values.mag = list.rt_359.currentvalue;
 			}
 			values.freq = 0.7;
@@ -6449,7 +6449,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 				values.mag = list.rt_356.currentvalue;
 			} else if (values.rt_shifted > 4958 && values.rt_shifted <= 4972) {
 				values.mag = list.rt_357.currentvalue;
-			} else if (values.rt_shifted < 4986 && values.rt_shifted <= 5000) {
+			} else if (values.rt_shifted > 4986 && values.rt_shifted <= 5000) {
 				values.mag = list.rt_359.currentvalue;
 			}
 			values.freq = 0.7;
