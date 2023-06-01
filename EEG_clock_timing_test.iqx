@@ -636,7 +636,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle276)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle276)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot2>
@@ -646,7 +646,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle282)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle282)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot3>
@@ -656,7 +656,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle288)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle288)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot4>
@@ -666,7 +666,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle294)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle294)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot5>
@@ -676,7 +676,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle300)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle300)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot6>
@@ -686,7 +686,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle306)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle306)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot7>
@@ -696,7 +696,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle312)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle312)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot8>
@@ -706,7 +706,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle318)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle318)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot9>
@@ -716,7 +716,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle324)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle324)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot10>
@@ -726,7 +726,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle330)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle330)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot11>
@@ -736,7 +736,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle336)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle336)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot12>
@@ -746,7 +746,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle342)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle342)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot13>
@@ -756,7 +756,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle348)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle348)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot14>
@@ -766,7 +766,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle354)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle354)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot15>
@@ -776,7 +776,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle0)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle0)
-/ erase = true(white)
+/ erase = false
 </shape>
 
 <shape dot16>
@@ -786,7 +786,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle6)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle6)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot17>
@@ -796,7 +796,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle12)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle12)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot18>
@@ -806,7 +806,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle18)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle18)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot19>
@@ -816,7 +816,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle24)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle24)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot20>
@@ -826,7 +826,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle30)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle30)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot21>
@@ -836,7 +836,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle36)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle36)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot22>
@@ -846,7 +846,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle42)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle42)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot23>
@@ -856,7 +856,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle48)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle48)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot24>
@@ -866,7 +866,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle54)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle54)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot25>
@@ -876,7 +876,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle60)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle60)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot26>
@@ -886,7 +886,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle66)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle66)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot27>
@@ -896,7 +896,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle72)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle72)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot28>
@@ -906,7 +906,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle78)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle78)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot29>
@@ -916,7 +916,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle84)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle84)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot30>
@@ -926,7 +926,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle90)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle90)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot31>
@@ -936,7 +936,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle96)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle96)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot32>
@@ -946,7 +946,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle102)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle102)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot33>
@@ -956,7 +956,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle108)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle108)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot34>
@@ -966,7 +966,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle114)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle114)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot35>
@@ -976,7 +976,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle120)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle120)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot36>
@@ -986,7 +986,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle126)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle126)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot37>
@@ -996,7 +996,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle132)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle132)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot38>
@@ -1006,7 +1006,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle138)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle138)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot39>
@@ -1016,7 +1016,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle144)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle144)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot40>
@@ -1026,7 +1026,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle150)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle150)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot41>
@@ -1036,7 +1036,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle156)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle156)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot42>
@@ -1046,7 +1046,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle162)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle162)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot43>
@@ -1056,7 +1056,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle168)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle168)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot44>
@@ -1066,7 +1066,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle174)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle174)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot45>
@@ -1076,7 +1076,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle180)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle180)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot46>
@@ -1086,7 +1086,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle186)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle186)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot47>
@@ -1096,7 +1096,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle192)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle192)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot48>
@@ -1106,7 +1106,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle198)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle198)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot49>
@@ -1116,7 +1116,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle204)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle204)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot50>
@@ -1126,7 +1126,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle210)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle210)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot51>
@@ -1136,7 +1136,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle216)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle216)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot52>
@@ -1146,7 +1146,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle222)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle222)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot53>
@@ -1156,7 +1156,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle228)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle228)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot54>
@@ -1166,7 +1166,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle234)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle234)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot55>
@@ -1176,7 +1176,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle240)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle240)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot56>
@@ -1186,7 +1186,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle246)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle246)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot57>
@@ -1196,7 +1196,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle252)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle252)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot58>
@@ -1206,7 +1206,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle258)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle258)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot59>
@@ -1216,7 +1216,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle264)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle264)
-/ erase = true(white)
+/ erase = false
 </shape>
  
 <shape dot60>
@@ -1226,7 +1226,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle270)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle270)
-/ erase = true(white)
+/ erase = false
 </shape>
 
 <shape blacksquare>
