@@ -260,6 +260,7 @@ EEG Clock variant #2
 / meta_trialCount = 0;
 / flag1 = 0;
 / flag2 = 0;
+/ trialCount_dum = 0;
 </values>
 
 
@@ -3663,7 +3664,7 @@ from what you experienced before.")
 </trial>
 
 <text latencyTest>
-/ items = ("<% trial.instructions4.latency%>")
+/ items = ("<% trial.experiment_noU.latency%>")
 / fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
 / position = (50%, 45%)
 / vjustify = center
@@ -3761,30 +3762,24 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 <block experiment>
 / onblockbegin = [
 	if (values.scrfunc=="dynamic") {		
-		parameters.ntrials = round(rand(32, 43));
-		list.triallist_noU.poolsize = parameters.ntrials;
-		list.triallist_U.poolsize = parameters.ntrials;
-		values.trialCount = 0;
+		parameters.ntrials = round(rand(44, 48));
 	} else {
-		parameters.ntrials = round(rand(32, 43));
+		parameters.ntrials = round(rand(44, 48));
 		values.scrfunc = noreplace("IEV","DEV","CEV","CEVR","IEV","DEV","IEV","DEV");
 		values.scrfunc = "DEV";
-		list.triallist_noU.poolsize = parameters.ntrials;
-		list.triallist_U.poolsize = parameters.ntrials;
 		values.trialCount = 0;
 	}
+	values.trialCount = 0;
+	values.trialCount_dum = 1;
 	list.triallist_noU.poolsize = parameters.ntrials;
 	list.triallist_U.poolsize = parameters.ntrials;
 	values.blockCount = values.blockCount + 1;
 	values.trialCountTotal = values.trialCountTotal + parameters.ntrials;
 	// local uncertainty manipulation starts on trial N
-	values.unc_att_start1 = noreplace(5,6,7,8,9,10,11,12);
-	values.unc_att_start2 = noreplace(24,25,26,27,28,29,30,31);
-	//values.uncertaintyStart = 1;
-	//values.unc_att_start1 = 2;
-	//values.unc_att_start2 = 14;
-	values.nunc_att1 = values.unc_att_start1 + 10;
-	values.nunc_att2 = values.unc_att_start2 + 10;
+	values.unc_att_start1 = noreplace(5,6,7,8,9,10);
+	values.unc_att_start2 = noreplace(24,25,26,27,28,29);
+	values.nunc_att1 = values.unc_att_start1 + 12;
+	values.nunc_att2 = values.unc_att_start2 + 12;
 	values.choose_unc_att1 = 0;
 	values.choose_unc_att2 = 0;
 	values.unc_att_count1 = 0;
@@ -3795,9 +3790,14 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	
 ]
 / stop = [
-	values.trialCount > parameters.ntrials
+	values.trialCount_dum > parameters.ntrials
 ]
 / trials = [1=list.triallist_noU]
+/ branch = [
+	if (values.trialCount==parameters.ntrials+1){
+		
+	}
+]
 </block>
 
 <list triallist_noU>
@@ -3828,6 +3828,8 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	values.fogPos_out = NULL;
 	values.windPos_out = NULL;
 	values.n_revolutions = 0;
+	values.trialCount  += 1;
+	values.meta_trialCount +=1;
 	if (parameters.randStart==TRUE) {
 		values.startPos =  round(rand(0, 100));
 	}
@@ -3838,7 +3840,7 @@ dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
 dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
-dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60; 
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 
 1000 = planet, animatedCircle, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
@@ -3875,6 +3877,8 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	values.n_revolutions = 0;
 	values.choose_unc_att_out1 = 0;
 	values.choose_unc_att_out2 = 0;
+	values.trialCount  += 1;
+	values.meta_trialCount +=1;
 	if (parameters.randStart==TRUE) {
 		values.startPos =  round(rand(0, 100));
 	}
@@ -4027,7 +4031,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 		values.windPos_out = 30;
 	}
 	}
-
+	list.wind_size.nextvalue;
 ]
 
 / stimulustimes = [0 = planet, unc_att, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
@@ -4035,7 +4039,7 @@ dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
 dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
-dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60; 
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 
 1000 = planet, animatedCircle, unc_att, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
@@ -5212,7 +5216,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	//values.inc = values.mag;
 	values.totalPoints = values.totalPoints + values.inc;
 	// convert points to 'mushroom/troll' units
-	if (parameters.mushrooms==TRUE  && trial.experiment_U.response != 0) {
+	if (parameters.mushrooms==TRUE  && trial.experiment_noU.latency < 6500) {
 		if (values.inc > 0 && values.inc <= 24) {
 			picture.feedback.item.1 = "mushrooms1.png";
 			values.Earnings = 0.5;
@@ -5260,10 +5264,9 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 		}
 	} else {
 		values.Earnings = 0;
+		values.totalEarnings = values.totalEarnings + values.Earnings;
 		picture.feedback.item.1 = "timeout.png"
 	}
-	values.trialCount  += 1;
-	values.meta_trialCount +=1;
 ]
 / stimulusframes = [
 	1=picture.feedback, text.feedback1,dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
@@ -5277,18 +5280,19 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 // correctresponse = (next)
 / recorddata = true
 / ontrialend = [
-	if (values.trialCount >= values.unc_att_start1 && values.unc_att_count1 < values.nunc_att1 && values.choose_unc_att1 <= 1) {
+	if (values.trialCount >= values.unc_att_start1 && values.trialCount < values.nunc_att1 && values.choose_unc_att1 <= 1) {
 		values.unc_att_block=1;
-	} else if (values.trialCount >= values.unc_att_start2 && values.unc_att_count2 < values.nunc_att2 && values.choose_unc_att2 <= 1) {
+	} else if (values.trialCount >= values.unc_att_start2 && values.trialCount < values.nunc_att2 && values.choose_unc_att2 <= 1) {
 		values.unc_att_block=2;
 	} else {
 		values.unc_att_block=0;
 	}
+	values.trialCount_dum  += 1;
 ]
 / branch = [
-	if (values.trialCount >= values.unc_att_start1 && values.unc_att_count1 < values.nunc_att1 && values.choose_unc_att1 <= 1) {
+	if (values.trialCount >= values.unc_att_start1 && values.trialCount < values.nunc_att1 && values.choose_unc_att1 <= 1) {
 		list.triallist_U.nextvalue
-	} else if (values.trialCount >= values.unc_att_start2 && values.unc_att_count2 < values.nunc_att2 && values.choose_unc_att2 <= 1) {
+	} else if (values.trialCount >= values.unc_att_start2 && values.trialCount < values.nunc_att2 && values.choose_unc_att2 <= 1) {
 		list.triallist_U.nextvalue
 	} else {
 		list.triallist_noU.nextvalue
@@ -5298,6 +5302,17 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 
 <text testUct>
 / items = ("trCt =<%values.trialCount%> uSt1=<%values.unc_att_start1%> uCt1=<%values.unc_att_count1%> nU1=<%values.nunc_att1%>, cU1=<%values.choose_unc_att1%>")
+/ position = (50%, 35%)
+</text>
+
+<text testUct2>
+/ items = ("trCt =<%values.trialCount%> uSt2=<%values.unc_att_start2%> uCt2=<%values.unc_att_count2%> nU2=<%values.nunc_att2%>, cU2=<%values.choose_unc_att2%>")
+/ position = (50%, 30%)
+</text>
+
+<text test_unc_att>
+/ items = ("<%picture.unc_att.item.1%>")
+/ position = (50%, 25%)
 </text>
 
 <text rng>
@@ -6469,7 +6484,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	//values.inc = values.mag;
 	values.totalPoints = values.totalPoints + values.inc;
 	// convert points to 'mushroom/troll' units
-	if (parameters.mushrooms==TRUE  && trial.experiment_U.response != 0) {
+	if (parameters.mushrooms==TRUE  && trial.experiment_U.latency < 6500) {
 		if (values.inc > 0 && values.inc <= 24) {
 			picture.feedback.item.1 = "mushrooms1.png";
 			values.Earnings = 0.5;
@@ -6517,6 +6532,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 		}
 	} else {
 		values.Earnings = 0;
+		values.totalEarnings = values.totalEarnings + values.Earnings;
 		picture.feedback.item.1 = "timeout.png"
 	}
 	values.chooseAttentionalControl = 0;
@@ -6778,8 +6794,6 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 			values.chooseAttentionalControl = 1;
 		}
 	}
-	values.trialCount  += 1;
-	values.meta_trialCount +=1;
 ]
 / stimulusframes = [
 	1=picture.feedback, text.feedback1,dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
@@ -6793,18 +6807,19 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 // correctresponse = (next)
 / recorddata = true
 / ontrialend = [
-	if (values.trialCount >= values.unc_att_start1 && values.unc_att_count1 < values.nunc_att1 && values.choose_unc_att1 <= 1) {
+	if (values.trialCount >= values.unc_att_start1 && values.trialCount < values.nunc_att1 && values.choose_unc_att1 <= 1) {
 		values.unc_att_block=1;
-	} else if (values.trialCount >= values.unc_att_start2 && values.unc_att_count2 < values.nunc_att2 && values.choose_unc_att2 <= 1) {
+	} else if (values.trialCount >= values.unc_att_start2 && values.trialCount < values.nunc_att2 && values.choose_unc_att2 <= 1) {
 		values.unc_att_block=2;
 	} else {
 		values.unc_att_block=0;
 	}
+	values.trialCount_dum  += 1;
 ]
 / branch = [
-	if (values.trialCount >= values.unc_att_start1 && values.unc_att_count1 < values.nunc_att1 && values.choose_unc_att1 <= 1) {
+	if (values.trialCount >= values.unc_att_start1 && values.trialCount < values.nunc_att1 && values.choose_unc_att1 <= 1) {
 		list.triallist_U.nextvalue
-	} else if (values.trialCount >= values.unc_att_start2 && values.unc_att_count2 < values.nunc_att2 && values.choose_unc_att2 <= 1) {
+	} else if (values.trialCount >= values.unc_att_start2 && values.trialCount < values.nunc_att2 && values.choose_unc_att2 <= 1) {
 		list.triallist_U.nextvalue
 	} else {
 		list.triallist_noU.nextvalue
@@ -6919,37 +6934,37 @@ What strategies did you use in the game?"
 	if (rand(0, 1) < 0.5) {
 		parameters.attentional_control = "cloud";
 		parameters.local_uncertainty = "wind";
-		text.attentional_control.items.1 = "a cloud";
-		text.attentional_control.items.2 = "cloud";
-		text.local_uncertainty.items.1 = "wind";
-		text.local_uncertainty.items.2 = "wind";
-		picture.attention.items.1 = "fog0.png";
-		picture.unc_att.items.1 = "wind0.png";
+		text.attentional_control.item.1 = "a cloud";
+		text.attentional_control.item.2 = "cloud";
+		text.local_uncertainty.item.1 = "wind";
+		text.local_uncertainty.item.2 = "wind";
+		picture.attention.item.1 = "fog0.png";
+		picture.unc_att.item.1 = "wind0.png";
 	} else {
 		parameters.attentional_control = "wind";
 		parameters.local_uncertainty = "cloud";
-		text.attentional_control.items.1 = "wind";
-		text.attentional_control.items.2 = "wind";
-		text.local_uncertainty.items.1 = "a cloud";
-		text.local_uncertainty.items.2 = "cloud";
-		picture.attention.items.1 = "wind0.png";
-		picture.unc_att.items.1 = "fog0.png";
+		text.attentional_control.item.1 = "wind";
+		text.attentional_control.item.2 = "wind";
+		text.local_uncertainty.item.1 = "a cloud";
+		text.local_uncertainty.item.2 = "cloud";
+		picture.attention.item.1 = "wind0.png";
+		picture.unc_att.item.1 = "fog0.png";
 	}
 	values.meta_trialCount = 0;
+	list.wind_size.nextvalue;
 ]
 
 / blocks = [
-	1=instructions;
-	2=experiment;
-	3=experiment;
-	4=experiment;
-	5=experiment;
-	6=experiment;
-	7=experiment;
-	8=experiment;
-	9=experiment;
-	10=experiment;
-	11=questionnaire;
-	12=endscreen;
+	//1=instructions;
+	1=experiment;
+	//3=experiment;
+	//4=experiment;
+	//5=experiment;
+	//6=experiment;
+	//7=experiment;
+	//8=experiment;
+	//9=experiment;
+	//10=questionnaire;
+	2=endscreen;
 ]
 </expt>

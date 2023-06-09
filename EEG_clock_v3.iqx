@@ -3748,10 +3748,10 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	values.blockCount = values.blockCount + 1;
 	values.trialCountTotal = values.trialCountTotal + parameters.ntrials;
 	// local uncertainty manipulation starts on trial N
-	values.unc_att_start1 = noreplace(5,6,7,8,9,10,11,12);
+	//values.unc_att_start1 = noreplace(5,6,7,8,9,10,11,12);
 	values.unc_att_start2 = noreplace(24,25,26,27,28,29,30,31);
 	//values.uncertaintyStart = 1;
-	//values.unc_att_start1 = 2;
+	values.unc_att_start1 = 2;
 	//values.unc_att_start2 = 14;
 	values.nunc_att1 = values.unc_att_start1 + 10;
 	values.nunc_att2 = values.unc_att_start2 + 10;
@@ -6929,17 +6929,17 @@ What strategies did you use in the game?"
 ]
 
 / blocks = [
-	1=instructions;
-	2=experiment;
-	3=experiment;
-	4=experiment;
-	5=experiment;
-	6=experiment;
-	7=experiment;
-	8=experiment;
-	9=experiment;
-	10=experiment;
-	11=questionnaire;
-	12=endscreen;
+	//1=instructions;
+	1=experiment;
+	//3=experiment;
+	//4=experiment;
+	//5=experiment;
+	//6=experiment;
+	//7=experiment;
+	//8=experiment;
+	//9=experiment;
+	//10=experiment;
+	//11=questionnaire;
+	//12=endscreen;
 ]
 </expt>
