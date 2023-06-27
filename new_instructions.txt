@@ -1,0 +1,10 @@
+When wind (a cloud) blows in (appears) in an area the number of mushrooms (trolls) in the wind (cloud) area changes from what you experienced before.
+
+When wind blows on a part of the planet, the number of mushrooms on that part of the planet will change from what you experienced before.  The number of mushrooms in other parts of the planet will stay the same.
+
+When a cloud appears above a part of the planet, the number of mushrooms on that part of the planet...
+
+Att Control
+...Has no effect on the number of mushrooms anywhere on the planet.
+
+
