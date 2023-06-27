@@ -7,4 +7,17 @@ When a cloud appears above a part of the planet, the number of mushrooms on that
 Att Control
 ...Has no effect on the number of mushrooms anywhere on the planet.
 
+Debriefing open ended item, how do you understand what happened when the cloud appeared, wind appeared
+
+Multiple choice span of what do you think happens when you click on cloud/wind items should represent underlying segment is uncertain, whole planet becomes uncertain, no effect, rewards (de)increase in general
+
+Make intro questions multiple choice, multiple choice at end as well
+
+
+
+
+
+
+
+
 
