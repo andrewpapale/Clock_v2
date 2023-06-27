@@ -2545,10 +2545,10 @@ This is just for practice.")
 </text>
 
 <text instructions3>
-/ items = ("Sometimes <%text.local_uncertainty.item.1%> will appear.
-If you land the spacecraft on the <%text.local_uncertainty.item.2%>,
-the number of mushrooms you get will change
-from what you experienced before.")
+/ items = ("When <%text.local_uncertainty.item.1%> appears,
+the number of mushrooms on that part of the planet will change
+from what you experienced before.  The number of mushrooms on
+other parts of the planet will stay the same.")
 / fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
 / position = (50%, 45%)
 / vjustify = center
@@ -2565,9 +2565,9 @@ on the <%text.local_uncertainty.item.2%>.")
 </text>
 
 <text instructions5>
-/ items = ("Sometimes you will see <%text.attentional_control.item.1%>,
-but the <%text.attentional_control.item.2%> has no effect on the number
-of mushrooms")
+/ items = ("When <%text.attentional_control.item.1%> appears,
+it has no effect on the number of mushrooms
+anywhere on the planet.")
 / fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
 / position = (50%, 45%)
 / vjustify = center
@@ -3294,7 +3294,10 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 </text>
 
 <block instructions> 
-/trials = [1=instructions1, instructions2, instructions2_5, instructions3, instructions4, instructions5, instructions5_1, instructions5_2, instructions6, countdown]
+//trials = [1=instructions1, instructions2, instructions2_5, instructions3, instructions4, instructions5, instructions5_1, instructions5_2, instructions6, countdown]
+/trials = [
+	1= instructions5_2
+]
 </block>
 
 
@@ -3499,8 +3502,9 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60
 
 <text instructions5_1>
 / items = ("Please check your understanding by answering the following question: 
-If you land on the <%text.local_uncertainty.items.2%>, the number of mushrooms will change 
-from what you experienced before")
+What do you think happens when you land on the <%text.local_uncertainty.items.2%>?
+
+The number of mushrooms...")
 / fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
 / position = (50%, 45%)
 / vjustify = center
@@ -3509,8 +3513,9 @@ from what you experienced before")
 
 <text instructions5_2>
 / items = ("Please check your understanding by answering the following question: 
-If you land on the <%text.attentional_control.items.2%>, the number of mushrooms will change 
-from what you experienced before")
+What do you think happens when you land on the <%text.attentional_control.items.2%>?
+
+The number of mushrooms...")
 / fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
 / position = (50%, 45%)
 / vjustify = center
@@ -3528,20 +3533,59 @@ from what you experienced before")
 	picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle270;
 ]
 
-/ stimulusframes = [1=instructions5_1, unc_att, true_box, false_box]
-/ validresponse = (true_box,false_box)
+/ stimulusframes = [1=instructions5_1, unc_att, local_box, global_box, nothing_box, increase_box]
+/ validresponse = (local_box,global_box,nothing_box,increase_box)
 / branch = [
 	trial.dummytrial;
 ]
 </trial>
 
+<text local_box>
+/ items = ("only on that part of the planet changes")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 0)
+/ position = (10%, 75%)
+/ size = (20%, 20%)
+/ vjustify = center
+/ txbgcolor = gainsboro
+/ txcolor = black
+</text>
+
+<text global_box>
+/ items = ("all over the entire planet changes")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 0)
+/ position = (35%, 75%)
+/ size = (20%, 20%)
+/ vjustify = center
+/ txbgcolor = gainsboro
+/ txcolor = black
+</text>
+
+<text nothing_box>
+/ items = ("does not change anywhere")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 0)
+/ position = (60%, 75%)
+/ size = (20%, 20%)
+/ vjustify = center
+/ txbgcolor = gainsboro
+/ txcolor = black
+</text>
+
+<text increase_box>
+/ items = ("will always increase")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 0)
+/ position = (85%, 75%)
+/ size = (20%, 20%)
+/ vjustify = center
+/ txbgcolor = gainsboro
+/ txcolor = black
+</text>
 
 <trial dummytrial>
 / trialduration = 100;
 / branch = [
-	if (trial.instructions5_1.response=="true_box"){
+	if (trial.instructions5_1.response=="local_box"){
 		trial.posfeedback1;
-	} else if (trial.instructions5_1.response=="false_box"){
+	} else if (trial.instructions5_1.response!="local_box"){
 		trial.negfeedback1;
 	}
 ]
@@ -3550,9 +3594,9 @@ from what you experienced before")
 <trial dummytrial1>
 / trialduration = 100;
 / branch = [
-	if (trial.instructions5_2.response=="true_box"){
+	if (trial.instructions5_2.response!="nothing_box"){
 		trial.negfeedback2;
-	} else if (trial.instructions5_2.response=="false_box"){
+	} else if (trial.instructions5_2.response=="nothing_box"){
 		trial.posfeedback2;
 	}
 ]
@@ -3560,8 +3604,9 @@ from what you experienced before")
 
 <text posfeedback1>
 / items = ("Correct! if you land on the <%text.local_uncertainty.items.2%>,
-the number of mushrooms WILL change 
-from what you experienced before.")
+the number of mushrooms only on that part of the planet 
+will change. The number of mushrooms everywhere else 
+on the planet will stay the same.")
 / fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
 / position = (50%, 45%)
 / vjustify = center
@@ -3582,9 +3627,11 @@ from what you experienced before.")
 </trial>
 
 <text negfeedback1>
-/ items = ("Incorrect, if you land on the <%text.local_uncertainty.items.2%>,
-the number of mushrooms WILL change 
-from what you experienced before.")
+/ items = ("Incorrect, if you land on the <%text.local_uncertainty.items.2%>, 
+the number of mushrooms only on that part of the planet 
+will change from what you experienced before.  
+The number of mushrooms everywhere else on
+the planet will stay the same.")
 / fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
 / position = (50%, 45%)
 / vjustify = center
@@ -3604,8 +3651,8 @@ from what you experienced before.")
 
 <text posfeedback2>
 / items = ("Correct! if you land on the <%text.attentional_control.items.2%>,
-the number of mushrooms will not change 
-from what you experienced before.")
+this has absolutely no effect on the 
+number of mushrooms anywhere on the planet.")
 / fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
 / position = (50%, 45%)
 / vjustify = center
@@ -3622,8 +3669,8 @@ from what you experienced before.")
 
 <text negfeedback2>
 / items = ("Incorrect, if you land on the <%text.attentional_control.items.2%>,
-the number of mushrooms will NOT change 
-from what you experienced before.")
+this has absolutely no effect on the 
+number of mushrooms anywhere on the planet.")
 / fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
 / position = (50%, 45%)
 / vjustify = center
@@ -3652,8 +3699,8 @@ from what you experienced before.")
 	picture.unc_att.vposition = expressions.centery + expressions.heightchange_angle270;
 ]
 
-/ stimulusframes = [1=instructions5_2, unc_att, true_box, false_box]
-/ validresponse = (true_box,false_box)
+/ stimulusframes = [1=instructions5_2, unc_att, local_box, global_box, nothing_box, increase_box]
+/ validresponse = (local_box,global_box,nothing_box,increase_box)
 / branch = [
 	trial.dummytrial1;
 ]
@@ -3830,6 +3877,13 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	values.n_revolutions = 0;
 	values.trialCount  += 1;
 	values.meta_trialCount +=1;
+	if (values.trialCount >= values.unc_att_start1 && values.trialCount <= values.nunc_att1 && values.choose_unc_att1 <= 1) {
+		values.unc_att_block=1;
+	} else if (values.trialCount >= values.unc_att_start2 && values.trialCount <= values.nunc_att2 && values.choose_unc_att2 <= 1) {
+		values.unc_att_block=2;
+	} else {
+		values.unc_att_block=0;
+	}
 	if (parameters.randStart==TRUE) {
 		values.startPos =  round(rand(0, 100));
 	}
@@ -3877,10 +3931,23 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	values.n_revolutions = 0;
 	values.choose_unc_att_out1 = 0;
 	values.choose_unc_att_out2 = 0;
+	values.chooseUncertainty = 0;
+	values.chooseAttentionalControl = 0;
 	values.trialCount  += 1;
 	values.meta_trialCount +=1;
 	if (parameters.randStart==TRUE) {
 		values.startPos =  round(rand(0, 100));
+	}
+	if (values.trialCount >= values.unc_att_start1 && values.trialCount <= values.nunc_att1 && values.choose_unc_att1 <= 1) {
+		values.unc_att_block=1;
+		values.unc_att_count_out1+=1;
+	} else if (values.trialCount >= values.unc_att_start2 && values.trialCount <= values.nunc_att2 && values.choose_unc_att2 <= 1) {
+		values.unc_att_block=2;
+		values.unc_att_count_out2+=1;
+	} else {
+		values.unc_att_block=0;
+		values.unc_att_count_out1 = 0;
+		values.unc_att_count_out2 = 0;
 	}
 	if (values.unc_att_block==1) {
 	if (values.fogPos1==1) {
@@ -5280,19 +5347,12 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 // correctresponse = (next)
 / recorddata = true
 / ontrialend = [
-	if (values.trialCount >= values.unc_att_start1 && values.trialCount < values.nunc_att1 && values.choose_unc_att1 <= 1) {
-		values.unc_att_block=1;
-	} else if (values.trialCount >= values.unc_att_start2 && values.trialCount < values.nunc_att2 && values.choose_unc_att2 <= 1) {
-		values.unc_att_block=2;
-	} else {
-		values.unc_att_block=0;
-	}
 	values.trialCount_dum  += 1;
 ]
 / branch = [
-	if (values.trialCount >= values.unc_att_start1 && values.trialCount < values.nunc_att1 && values.choose_unc_att1 <= 1) {
+	if (values.trialCount >= values.unc_att_start1-1 && values.trialCount < values.nunc_att1 && values.choose_unc_att1 <= 1) {
 		list.triallist_U.nextvalue
-	} else if (values.trialCount >= values.unc_att_start2 && values.trialCount < values.nunc_att2 && values.choose_unc_att2 <= 1) {
+	} else if (values.trialCount >= values.unc_att_start2-1 && values.trialCount < values.nunc_att2 && values.choose_unc_att2 <= 1) {
 		list.triallist_U.nextvalue
 	} else {
 		list.triallist_noU.nextvalue
@@ -6539,7 +6599,6 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	values.chooseUncertainty = 0;
 	if (values.unc_att_block==1 && parameters.local_uncertainty=="cloud") {
 		values.unc_att_count1 +=1;
-		values.unc_att_count_out1 +=1;
 		if (values.fogPos1==1 && (values.rt_shifted > 4677 || values.rt_shifted < 323)) {
 			values.chooseFog1 = 1;
 			values.choose_unc_att1 += 1;
@@ -6603,7 +6662,6 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 		}
 	} else if (values.unc_att_block==2 && parameters.local_uncertainty=="wind") {
 		values.unc_att_count2 +=1;
-		values.unc_att_count_out2 +=1;
 		if (values.windPos2==1 && (values.rt_shifted > 4677 || values.rt_shifted < 323)) {
 			values.chooseWind2 = 1;
 			values.choose_unc_att2 += 1;
@@ -6667,7 +6725,6 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 		}
 	} else if (values.unc_att_block==1 && parameters.attentional_control=="cloud") {
 		values.unc_att_count1 +=1;
-		values.unc_att_count_out1 +=1;
 		if (values.fogPos1==1 && (values.rt_shifted > 4677 || values.rt_shifted < 323)) {
 			values.chooseFog1 = 1;
 			values.choose_unc_att1 += 1;
@@ -6731,7 +6788,6 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 		}
 	} else if (values.unc_att_block==2 && parameters.attentional_control=="wind") {
 		values.unc_att_count2 +=1;
-		values.unc_att_count_out2 +=1;
 		if (values.windPos2==1 && values.rt_shifted > 4677 || values.rt_shifted < 323) { // 323
 			values.chooseWind2 = 1;
 			values.choose_unc_att2 += 1;
@@ -6807,19 +6863,12 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 // correctresponse = (next)
 / recorddata = true
 / ontrialend = [
-	if (values.trialCount >= values.unc_att_start1 && values.trialCount < values.nunc_att1 && values.choose_unc_att1 <= 1) {
-		values.unc_att_block=1;
-	} else if (values.trialCount >= values.unc_att_start2 && values.trialCount < values.nunc_att2 && values.choose_unc_att2 <= 1) {
-		values.unc_att_block=2;
-	} else {
-		values.unc_att_block=0;
-	}
 	values.trialCount_dum  += 1;
 ]
 / branch = [
-	if (values.trialCount >= values.unc_att_start1 && values.trialCount < values.nunc_att1 && values.choose_unc_att1 <= 1) {
+	if (values.trialCount >= values.unc_att_start1-1 && values.trialCount < values.nunc_att1 && values.choose_unc_att1 <= 1) {
 		list.triallist_U.nextvalue
-	} else if (values.trialCount >= values.unc_att_start2 && values.trialCount < values.nunc_att2 && values.choose_unc_att2 <= 1) {
+	} else if (values.trialCount >= values.unc_att_start2-1 && values.trialCount < values.nunc_att2 && values.choose_unc_att2 <= 1) {
 		list.triallist_U.nextvalue
 	} else {
 		list.triallist_noU.nextvalue
@@ -6956,14 +7005,14 @@ What strategies did you use in the game?"
 
 / blocks = [
 	1=instructions;
-	2=experiment;
-	3=experiment;
-	4=experiment;
-	5=experiment;
-	6=experiment;
-	7=experiment;
-	8=experiment;
-	9=questionnaire;
-	10=endscreen;
+	//2=experiment;
+	//3=experiment;
+	//4=experiment;
+	//5=experiment;
+	//6=experiment;
+	//7=experiment;
+	//8=experiment;
+	//9=questionnaire;
+	//10=endscreen;
 ]
 </expt>
