@@ -6947,7 +6947,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 
 <radiobuttons q1>
 / caption = "1. When landing on the <%text.local_uncertainty.items.2%> what did you expect to happen?  ~n The number of mushrooms..."
-/ options = ("will always decrease","will ~n not change ~n anywyere","all over ~n the planet ~n changes","changes only ~n on that part ~n of the planet")
+/ options = ("will always decrease","will ~n not change ~n anywhere","all over ~n the planet ~n changes","changes only ~n on that part ~n of the planet")
 / optionvalues = ("1", "2", "3","4")
 / size = (500,20)
 / required = true
@@ -6956,7 +6956,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 
 <radiobuttons q2>
 / caption = "2. When landing on the <%text.attentional_control.items.2%> what did you expect to happen? ~n The number of mushrooms..."
-/ options = ("will always decrease","will ~n not change ~n anywyere","all over ~n the planet ~n changes","changes only ~n on that part ~n of the planet")
+/ options = ("will always decrease","will ~n not change ~n anywhere","all over ~n the planet ~n changes","changes only ~n on that part ~n of the planet")
 / optionvalues = ("1", "2","3","4")
 / size = (500,20)
 / required = true
@@ -6989,7 +6989,8 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 <textbox openended>
 / caption = "What strategies did you use in the game?
 What was your understanding of the effect the wind and cloud
-had on the number of mushrooms?"
+had on the number of mushrooms?
+Any additional comments about your experience with the task?"
 / mask = ^[a-zA-Z\s0-9.,!@#$%^&*()`~;:'\n]+$
 / required = TRUE
 / multiline = TRUE
@@ -7037,14 +7038,14 @@ had on the number of mushrooms?"
 
 / blocks = [
 	1=instructions;
-	//2=experiment;
-	//3=experiment;
-	//4=experiment;
-	//5=experiment;
-	//6=experiment;
-	//7=experiment;
-	//8=experiment;
-	//9=questionnaire;
-	//10=endscreen;
+	2=experiment;
+	3=experiment;
+	4=experiment;
+	5=experiment;
+	6=experiment;
+	7=experiment;
+	8=experiment;
+	9=questionnaire;
+	10=endscreen;
 ]
 </expt>
