@@ -2545,10 +2545,14 @@ This is just for practice.")
 </text>
 
 <text instructions3>
-/ items = ("When <%text.local_uncertainty.item.1%> appears,
-the number of mushrooms on that part of the planet will change
-from what you experienced before.  The number of mushrooms on
-other parts of the planet will stay the same.")
+/ items = ("Sometimes <%text.local_uncertainty.item.1%> will appear.
+If you land the spacecraft on the location of the <%text.local_uncertainty.item.2%>, 
+the conditions will change in that location ONLY. That is, the number 
+of mushrooms you will earn by landing on the area covered by the <%text.local_uncertainty.item.2%> 
+will be different from what you previously learned about that location. 
+However, all other locations around the planet will remain the same, 
+and the location covered by the <%text.local_uncertainty.item.2%> will revert back to what you 
+originally learned once the wind disappears.")
 / fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
 / position = (50%, 45%)
 / vjustify = center
@@ -3296,7 +3300,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 <block instructions> 
 //trials = [1=instructions1, instructions2, instructions2_5, instructions3, instructions4, instructions5, instructions5_1, instructions5_2, instructions6, countdown]
 /trials = [
-	1= instructions5_2
+	1= instructions3
 ]
 </block>
 
@@ -3539,6 +3543,38 @@ The number of mushrooms...")
 	trial.dummytrial;
 ]
 </trial>
+
+<trial instructions5_3>
+/ stimulusframes = [
+	1=instructions5_3, next
+]
+/ validresponse = (next)
+
+</trial>
+
+<text instructions5_3>
+/ items = ("To review, you will have to learn about which 
+locations earn you the greatest number of mushrooms by experience.
+ 
+At certain points throughout the game, you might see clouds or wind 
+around your planet. Remember these 2 things:
+
+(1) <%text.attentional_control.items.2%> has no effect on the number 
+of mushrooms you earn, so you should continue to search 
+for the location that you think will earn you the most mushrooms.
+
+(2) <%text.local_uncertainty.items.1%> affects the local conditions 
+in that area of the planet, so if you choose to land on the <%text.local_uncertainty.items.2%>, 
+the number of mushrooms you will earn there will change. 
+However, conditions will remain the same throughout the rest 
+of the planet, and the location affected by the <%text.local_uncertainty.items.2%>
+will also revert back to normal once the <%text.local_uncertainty.items.2%> disappears.
+")
+/ fontstyle = ("Arial", 2.5%, false, false, false, false, 5, 238)
+/ position = (50%, 40%)
+/ vjustify = center
+/ hjustify = left
+</text>
 
 <text local_box>
 / items = ("only on that part of the planet changes")
@@ -6906,7 +6942,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 **************************************************************************************************************
 
 <parameters>
-/ pageinstructions = "Please answer the following 5 questions:"
+/ pageinstructions = "Please answer the following 2 questions:"
 </parameters>
 
 
@@ -6917,17 +6953,19 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 
 
 <radiobuttons q1>
-/ caption = "1. When landing on the <%text.local_uncertainty.items.2%> did you expect to find a different number of mushrooms?"
-/ options = ("Yes","No")
-/ optionvalues = ("1", "2")
+/ caption = "1. When landing on the <%text.local_uncertainty.items.2%> what did you expect to happen?  ~n The number of mushrooms..."
+/ options = ("will always decrease","will ~n not change ~n anywyere","all over ~n the planet ~n changes","changes only ~n on that part ~n of the planet")
+/ optionvalues = ("1", "2", "3","4")
+/ size = (500,20)
 / required = true
 / orientation = horizontalequal
 </radiobuttons>
 
 <radiobuttons q2>
-/ caption = "2. When landing on the <%text.attentional_control.items.2%> did you expect to find a different number of mushrooms?"
-/ options = ("Yes","No")
-/ optionvalues = ("1", "2")
+/ caption = "2. When landing on the <%text.attentional_control.items.2%> what did you expect to happen? ~n The number of mushrooms..."
+/ options = ("will always decrease","will ~n not change ~n anywyere","all over ~n the planet ~n changes","changes only ~n on that part ~n of the planet")
+/ optionvalues = ("1", "2","3","4")
+/ size = (500,20)
 / required = true
 / orientation = horizontalequal
 </radiobuttons>
@@ -6956,8 +6994,9 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 
 
 <textbox openended>
-/ caption = "Please provde feedback that will help us improve the game.
-What strategies did you use in the game?"
+/ caption = "What strategies did you use in the game?
+What was your understanding of the effect the wind and cloud
+had on the number of mushrooms?"
 / mask = ^[a-zA-Z\s0-9.,!@#$%^&*()`~;:'\n]+$
 / required = TRUE
 / multiline = TRUE
@@ -7004,7 +7043,7 @@ What strategies did you use in the game?"
 ]
 
 / blocks = [
-	1=instructions;
+	//1=instructions;
 	//2=experiment;
 	//3=experiment;
 	//4=experiment;
@@ -7012,7 +7051,7 @@ What strategies did you use in the game?"
 	//6=experiment;
 	//7=experiment;
 	//8=experiment;
-	//9=questionnaire;
+	1=questionnaire;
 	//10=endscreen;
 ]
 </expt>
