@@ -1366,5 +1366,19 @@ that corresponds to the accuracy of the statement."
 / ipipneo120_n = radiobuttons.ipipneo120_1_n_n1_s.response + radiobuttons.ipipneo120_6_n_n2_s.response + radiobuttons.ipipneo120_11_n_n3_s.response + radiobuttons.ipipneo120_16_n_n4_s.response + radiobuttons.ipipneo120_21_n_n5_s.response + radiobuttons.ipipneo120_26_n_n6_s.response + radiobuttons.ipipneo120_31_n_n1_s.response + radiobuttons.ipipneo120_36_n_n2_s.response + radiobuttons.ipipneo120_41_n_n3_s.response + radiobuttons.ipipneo120_46_n_n4_s.response + radiobuttons.ipipneo120_51_n_n5_s.response + radiobuttons.ipipneo120_56_n_n6_r.response + radiobuttons.ipipneo120_61_n_n1_s.response + radiobuttons.ipipneo120_66_n_n2_s.response + radiobuttons.ipipneo120_71_n_n3_s.response + radiobuttons.ipipneo120_76_n_n4_r.response + radiobuttons.ipipneo120_81_n_n5_r.response + radiobuttons.ipipneo120_86_n_n6_r.response + radiobuttons.ipipneo120_91_n_n1_s.response + radiobuttons.ipipneo120_96_n_n2_r.response + radiobuttons.ipipneo120_101_n_n3_s.response + radiobuttons.ipipneo120_106_n_n4_r.response + radiobuttons.ipipneo120_111_n_n5_r.response + radiobuttons.ipipneo120_116_n_n6_r.response
 </expressions>
 
-
+<summarydata>
+/ columns = (script.subjectid, script.startdate, script.starttime, 
+expressions.ipipneo120_a1, expressions.ipipneo120_a2, expressions.ipipneo120_a3, 
+expressions.ipipneo120_a4, expressions.ipipneo120_a5, expressions.ipipneo120_a6,
+expressions.ipipneo120_c1, expressions.ipipneo120_c2, expressions.ipipneo120_c3, 
+expressions.ipipneo120_c4, expressions.ipipneo120_c5, expressions.ipipneo120_c6,
+expressions.ipipneo120_e1, expressions.ipipneo120_e2, expressions.ipipneo120_e3, 
+expressions.ipipneo120_e4, expressions.ipipneo120_e5, expressions.ipipneo120_e6,
+expressions.ipipneo120_o1, expressions.ipipneo120_o2, expressions.ipipneo120_o3, 
+expressions.ipipneo120_o4, expressions.ipipneo120_o5, expressions.ipipneo120_o6,
+expressions.ipipneo120_n1, expressions.ipipneo120_n2, expressions.ipipneo120_n3, 
+expressions.ipipneo120_n4, expressions.ipipneo120_n5, expressions.ipipneo120_n6,
+expressions.ipipneo120_a, expressions.ipipneo120_c, expressions.ipipneo120_e, 
+expressions.ipipneo120_o, expressions.ipipneo120_n)
+</summarydata>
 

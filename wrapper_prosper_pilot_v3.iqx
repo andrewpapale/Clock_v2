@@ -5,7 +5,9 @@ IRB approval date: 2/24/2023
 / groups = (1 of 1)
 / groupassignment = random
 / file = "instruct_consent.iqx"
-/ file = "eeg_clock.iqx"
+/ file = "EEG_clock_v3_2.iqx"
+/ file = "IPIP_120.iqx"
+/ file = "pid5.iqx"
 </batch>
 
 <summarydata>
