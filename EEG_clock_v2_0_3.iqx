@@ -258,8 +258,6 @@ EEG Clock variant #2
 / unc_att_count2 = 0;
 / unc_att_block = 0;
 / meta_trialCount = 0;
-/ flag1 = 0;
-/ flag2 = 0;
 / trialCount_dum = 0;
 </values>
 
@@ -279,7 +277,7 @@ EEG Clock variant #2
 
 <data>
 / columns = (build, computer.platform, computer.touch, date, time, subject, group, script.sessionid, blockcode, blocknum, 
-trialcode,latency, values.startPos,values.scrfunc, parameters.rtvspos, parameters.randStart, 
+trialcode,latency, trial.instructions5_1.response, trial.instructions5_2.response,values.startPos,values.scrfunc, parameters.rtvspos, parameters.randStart, 
 values.mag, values.freq, values.ev, values.inc, values.rng values.fogPos1, values.fogPos_out, values.windPos2, values.windPos_out, values.chooseFog1, values.chooseWind2,
 values.choose_unc_att1, values.choose_unc_att_out1, values.choose_unc_att2, values.choose_unc_att_out2, values.unc_att_count1, 
 values.unc_att_count_out1,values.unc_att_count2, values.unc_att_count_out2, values.chooseAttentionalControl, values.chooseUncertainty,
@@ -3300,7 +3298,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 <block instructions> 
 //trials = [1=instructions1, instructions2, instructions2_5, instructions3, instructions4, instructions5, instructions5_1, instructions5_2, instructions6, countdown]
 /trials = [
-	1= instructions3
+	1= instructions3, countdown
 ]
 </block>
 
@@ -3435,6 +3433,9 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 <trial instructions3>
 / stimulusframes = [1=instructions3, next]
 / validresponse = (next)
+/ branch = [
+	trial.instructions4;
+]
 </trial>
 
 <text sampleResponse>
@@ -3498,9 +3499,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60
 / stimulusframes = [1=instructions5, sampleAttentionR, sampleAttentionL, next]
 / validresponse = (next)
 / branch = [
-	if (values.flag1==1 || values.flag2==1){
 		trial.instructions5_1;
-	}
 ]
 </trial>
 
@@ -3539,6 +3538,7 @@ The number of mushrooms...")
 
 / stimulusframes = [1=instructions5_1, unc_att, local_box, global_box, nothing_box, increase_box]
 / validresponse = (local_box,global_box,nothing_box,increase_box)
+/ recorddata = TRUE
 / branch = [
 	trial.dummytrial;
 ]
@@ -3549,6 +3549,9 @@ The number of mushrooms...")
 	1=instructions5_3, next
 ]
 / validresponse = (next)
+/ branch = [
+	trial.instructions6;
+]
 
 </trial>
 
@@ -3650,15 +3653,10 @@ on the planet will stay the same.")
 </text>
 
 <trial posfeedback1>
-/ ontrialbegin = [
-		values.flag1 = 0;
-]
 / stimulusframes = [1=posfeedback1, next]
 / validresponse = (next)
 / branch = [
-		if (values.flag2==1){
-			trial.instructions5_2;
-		}
+	trial.instructions5_2;
 ]
 </trial>
 
@@ -3675,13 +3673,10 @@ the planet will stay the same.")
 </text>
 
 <trial negfeedback1>
-/ ontrialbegin = [
-		values.flag1 = 1;
-]
 / stimulusframes = [1=negfeedback1, next]
 / validresponse = (next)
 / branch = [
-	trial.instructions4;
+	trial.instructions3;
 ]
 </trial>
 
@@ -3696,11 +3691,11 @@ number of mushrooms anywhere on the planet.")
 </text>
 
 <trial posfeedback2>
-/ ontrialbegin = [
-		values.flag2 = 0;
-]
 / stimulusframes = [1=posfeedback2, next]
 / validresponse = (next)
+/ branch = [
+	trial.instructions5_3;
+]
 </trial>
 
 <text negfeedback2>
@@ -3714,13 +3709,10 @@ number of mushrooms anywhere on the planet.")
 </text>
 
 <trial negfeedback2>
-/ ontrialbegin = [
-		values.flag2 = 1;
-]
 / stimulusframes = [1=negfeedback2, next]
 / validresponse = (next)
 / branch = [
-	trial.instructions4;
+	trial.instructions3;
 ]
 </trial>
 
@@ -3737,6 +3729,7 @@ number of mushrooms anywhere on the planet.")
 
 / stimulusframes = [1=instructions5_2, unc_att, local_box, global_box, nothing_box, increase_box]
 / validresponse = (local_box,global_box,nothing_box,increase_box)
+/ recorddata = TRUE
 / branch = [
 	trial.dummytrial1;
 ]
@@ -7043,7 +7036,7 @@ had on the number of mushrooms?"
 ]
 
 / blocks = [
-	//1=instructions;
+	1=instructions;
 	//2=experiment;
 	//3=experiment;
 	//4=experiment;
@@ -7051,7 +7044,7 @@ had on the number of mushrooms?"
 	//6=experiment;
 	//7=experiment;
 	//8=experiment;
-	1=questionnaire;
+	//9=questionnaire;
 	//10=endscreen;
 ]
 </expt>
