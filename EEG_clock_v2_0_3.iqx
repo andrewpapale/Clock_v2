@@ -278,7 +278,7 @@ EEG Clock variant #2
 
 <data>
 / columns = (build, computer.platform, computer.touch, date, time, subject, group, script.sessionid, blockcode, blocknum, 
-trialcode,latency, values.preClockFreezeBlock, list.preClockFreeze.currentvalue, trial.instructions5_1.response, trial.instructions5_2.response,values.startPos,values.scrfunc, parameters.rtvspos, parameters.randStart, 
+trialcode,latency, values.preClockFreezeBlock, list.preClockFreeze.currentvalue, list.ITI.currentvalue, trial.instructions5_1.response, trial.instructions5_2.response,values.startPos,values.scrfunc, parameters.rtvspos, parameters.randStart, 
 values.mag, values.freq, values.ev, values.inc, values.rng values.fogPos1, values.fogPos_out, values.windPos2, values.windPos_out, values.chooseFog1, values.chooseWind2,
 values.choose_unc_att1, values.choose_unc_att_out1, values.choose_unc_att2, values.choose_unc_att_out2, values.unc_att_count1, 
 values.unc_att_count_out1,values.unc_att_count2, values.unc_att_count_out2, values.chooseAttentionalControl, values.chooseUncertainty,
@@ -692,6 +692,13 @@ expressions.centery + expressions.heightchange_angle330
 </list>
 
 <list wind_size>
+/ selectionmode = sequence
+</list>
+
+<list ITI>
+// items = (100,110,120,130,l40,150,160,170,180,190,200,210,220,230,240,250,260,270,280,290,300,310,320,330,340,350,360,370,380,390,400,410,420,430,440,450,460,470,480,490,500)
+/ items =(1000,2000,3000)
+/ poolsize = 3
 / selectionmode = sequence
 </list>
 
@@ -3844,30 +3851,36 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 / timeout = 3000
 </trial>
 
+<block dumITI>
+/ trials = [1=ITI]
+</block>
+
 
 <block experiment>
 / onblockbegin = [
 	if (values.scrfunc=="dynamic") {		
-		parameters.ntrials = round(rand(3, 5));
+		parameters.ntrials = round(rand(2, 2));
 	} else {
 		parameters.ntrials = round(rand(42, 45));
 		values.scrfunc = noreplace("IEV","DEV","CEV","CEVR","IEV","DEV","IEV","DEV");
 		values.scrfunc = "DEV";
 		values.trialCount = 0;
 	}
-	if (mod(script.groupid, 2)==0){
-		values.preClockFreezeBlock = 1;
+	values.blockCount = values.blockCount + 1;
+	if (mod(script.groupid, 2)==0 && (values.blockCount==1 || values.blockCount==2 || values.blockCount==5 || values.blockCount==6)){
 		list.preClockFreeze.appenditem = 250;
-	} else if (mod(script.groupid, 2)==1){
-		values.preClockFreezeBlock = 2;
+	} else if (mod(script.groupid, 2)==1 && (values.blockCount==1 || values.blockCount==2 || values.blockCount==5 || values.blockCount==6)){
 		list.preClockFreeze.appenditem = 750;
+	} else if (mod(script.groupid, 2)==0 && (values.blockCount==3 || values.blockCount==4 || values.blockCount==7 || values.blockCount==8)){
+		list.preClockFreeze.appenditem = 750;
+	} else if (mod(script.groupid, 2)==1 && (values.blockCount==3 || values.blockCount==4 || values.blockCount==7 || values.blockCount==8)){
+		list.preClockFreeze.appenditem = 250;
 	}
 	list.preClockFreeze.nextvalue;
 	values.trialCount = 0;
 	values.trialCount_dum = 1;
 	list.triallist_noU.poolsize = parameters.ntrials;
 	list.triallist_U.poolsize = parameters.ntrials;
-	values.blockCount = values.blockCount + 1;
 	values.trialCountTotal = values.trialCountTotal + parameters.ntrials;
 	// local uncertainty manipulation starts on trial N
 	values.unc_att_start1 = noreplace(5,6,7,8,9,10);
@@ -3887,11 +3900,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	values.trialCount_dum > parameters.ntrials
 ]
 / trials = [1=list.triallist_noU]
-/ branch = [
-	if (values.trialCount==parameters.ntrials+1){
-		
-	}
-]
+
 </block>
 
 <list triallist_noU>
@@ -3924,6 +3933,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	values.n_revolutions = 0;
 	values.trialCount  += 1;
 	values.meta_trialCount +=1;
+	list.ITI.nextvalue;
 	if (values.trialCount >= values.unc_att_start1 && values.trialCount <= values.nunc_att1 && values.choose_unc_att1 <= 1) {
 		values.unc_att_block=1;
 	} else if (values.trialCount >= values.unc_att_start2 && values.trialCount <= values.nunc_att2 && values.choose_unc_att2 <= 1) {
@@ -3982,6 +3992,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	values.chooseAttentionalControl = 0;
 	values.trialCount  += 1;
 	values.meta_trialCount +=1;
+	list.ITI.nextvalue;
 	if (parameters.randStart==TRUE) {
 		values.startPos =  round(rand(0, 100));
 	}
@@ -5397,6 +5408,20 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	values.trialCount_dum  += 1;
 ]
 / branch = [
+	return trial.ITI;
+]
+</trial>
+
+<trial ITI>
+/ stimulustimes = [ 0 = fixationCross, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
+]
+/ timeout = list.ITI.currentvalue
+/ branch = [
 	if (values.trialCount >= values.unc_att_start1-1 && values.trialCount < values.nunc_att1 && values.choose_unc_att1 <= 1) {
 		list.triallist_U.nextvalue
 	} else if (values.trialCount >= values.unc_att_start2-1 && values.trialCount < values.nunc_att2 && values.choose_unc_att2 <= 1) {
@@ -5405,6 +5430,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 		list.triallist_noU.nextvalue
 	}
 ]
+/ recorddata = false
 </trial>
 
 <text testUct>
@@ -6913,13 +6939,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	values.trialCount_dum  += 1;
 ]
 / branch = [
-	if (values.trialCount >= values.unc_att_start1-1 && values.trialCount < values.nunc_att1 && values.choose_unc_att1 <= 1) {
-		list.triallist_U.nextvalue
-	} else if (values.trialCount >= values.unc_att_start2-1 && values.trialCount < values.nunc_att2 && values.choose_unc_att2 <= 1) {
-		list.triallist_U.nextvalue
-	} else {
-		list.triallist_noU.nextvalue
-	}
+	return trial.ITI;
 ]
 </trial>
 
@@ -7078,13 +7098,21 @@ Any additional comments about your experience with the task?"
 / blocks = [
 	//1=instructions;
 	1=experiment;
-	//3=experiment;
-	//4=experiment;
-//	5=experiment;
-//	6=experiment;
-//	7=experiment;
-//	8=experiment;
-//  9=experiment;
+	2 = dumITI;
+	3=experiment;
+	4 = dumITI;
+	5=experiment;
+	6 = dumITI;
+	7=experiment;
+	8 = dumITI;
+	9=experiment;
+	10 = dumITI;
+	11=experiment;
+	12 = dumITI;
+	13=experiment;
+	14 = dumITI;
+	15=experiment;
+	16 = dumITI;
 //	10=questionnaire;
 //	11=endscreen;
 ]
