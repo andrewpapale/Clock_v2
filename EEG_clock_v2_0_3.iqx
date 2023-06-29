@@ -259,6 +259,7 @@ EEG Clock variant #2
 / unc_att_block = 0;
 / meta_trialCount = 0;
 / trialCount_dum = 0;
+/ preClockFreezeBlock = 2;
 </values>
 
 
@@ -277,7 +278,7 @@ EEG Clock variant #2
 
 <data>
 / columns = (build, computer.platform, computer.touch, date, time, subject, group, script.sessionid, blockcode, blocknum, 
-trialcode,latency, trial.instructions5_1.response, trial.instructions5_2.response,values.startPos,values.scrfunc, parameters.rtvspos, parameters.randStart, 
+trialcode,latency, values.preClockFreezeBlock, list.preClockFreeze.currentvalue, trial.instructions5_1.response, trial.instructions5_2.response,values.startPos,values.scrfunc, parameters.rtvspos, parameters.randStart, 
 values.mag, values.freq, values.ev, values.inc, values.rng values.fogPos1, values.fogPos_out, values.windPos2, values.windPos_out, values.chooseFog1, values.chooseWind2,
 values.choose_unc_att1, values.choose_unc_att_out1, values.choose_unc_att2, values.choose_unc_att_out2, values.unc_att_count1, 
 values.unc_att_count_out1,values.unc_att_count2, values.unc_att_count_out2, values.chooseAttentionalControl, values.chooseUncertainty,
@@ -2495,6 +2496,9 @@ expressions.centery + expressions.heightchange_angle330
  / selectionmode=sequence
 </list>
 
+<list preClockFreeze>
+/ selectionmode = sequence
+</list>
 
 
 <picture unc_att>
@@ -3844,13 +3848,21 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 <block experiment>
 / onblockbegin = [
 	if (values.scrfunc=="dynamic") {		
-		parameters.ntrials = round(rand(44, 48));
+		parameters.ntrials = round(rand(3, 5));
 	} else {
-		parameters.ntrials = round(rand(44, 48));
+		parameters.ntrials = round(rand(42, 45));
 		values.scrfunc = noreplace("IEV","DEV","CEV","CEVR","IEV","DEV","IEV","DEV");
 		values.scrfunc = "DEV";
 		values.trialCount = 0;
 	}
+	if (mod(script.groupid, 2)==0){
+		values.preClockFreezeBlock = 1;
+		list.preClockFreeze.appenditem = 250;
+	} else if (mod(script.groupid, 2)==1){
+		values.preClockFreezeBlock = 2;
+		list.preClockFreeze.appenditem = 750;
+	}
+	list.preClockFreeze.nextvalue;
 	values.trialCount = 0;
 	values.trialCount_dum = 1;
 	list.triallist_noU.poolsize = parameters.ntrials;
@@ -7064,15 +7076,16 @@ Any additional comments about your experience with the task?"
 ]
 
 / blocks = [
-	1=instructions;
-	2=experiment;
-	3=experiment;
-	4=experiment;
-	5=experiment;
-	6=experiment;
-	7=experiment;
-	8=experiment;
-	9=questionnaire;
-	10=endscreen;
+	//1=instructions;
+	1=experiment;
+	//3=experiment;
+	//4=experiment;
+//	5=experiment;
+//	6=experiment;
+//	7=experiment;
+//	8=experiment;
+//  9=experiment;
+//	10=questionnaire;
+//	11=endscreen;
 ]
 </expt>
