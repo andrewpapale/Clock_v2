@@ -3298,10 +3298,16 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 <block instructions> 
 //trials = [1=instructions1, instructions2, instructions2_5, instructions3, instructions4, instructions5, instructions5_1, instructions5_2, instructions6, countdown]
 /trials = [
-	1= instructions3, countdown
+	1= instructions4, countdown
 ]
 </block>
 
+
+<text testSubject>
+/ items = ("<%script.subjectid%>")
+/ erase = false
+/ position = (40%,60%)
+</text>
 
 <trial instructions1>
 / stimulusframes = [1=instructions1, sampleMushroomL, sampleMushroomR, next]
@@ -3562,7 +3568,7 @@ locations earn you the greatest number of mushrooms by experience.
 At certain points throughout the game, you might see clouds or wind 
 around your planet. Remember these 2 things:
 
-(1) <%text.attentional_control.items.2%> has no effect on the number 
+(1) <%text.attentional_control.items.1%> has no effect on the number 
 of mushrooms you earn, so you should continue to search 
 for the location that you think will earn you the most mushrooms.
 
@@ -7013,7 +7019,7 @@ Any additional comments about your experience with the task?"
 
 <expt main1>
 / onexptbegin = [
-	if (rand(0, 1) < 0.5) {
+	if (substring(script.subjectid,0,1)=="5"){ // if subject ID starts with 5, wind is local uncertainty and cloud is attentional control
 		parameters.attentional_control = "cloud";
 		parameters.local_uncertainty = "wind";
 		text.attentional_control.item.1 = "a cloud";
@@ -7022,7 +7028,7 @@ Any additional comments about your experience with the task?"
 		text.local_uncertainty.item.2 = "wind";
 		picture.attention.item.1 = "fog0.png";
 		picture.unc_att.item.1 = "wind0.png";
-	} else {
+	} else if (substring(script.subjectid,0,1)=="6"){
 		parameters.attentional_control = "wind";
 		parameters.local_uncertainty = "cloud";
 		text.attentional_control.item.1 = "wind";
@@ -7031,7 +7037,28 @@ Any additional comments about your experience with the task?"
 		text.local_uncertainty.item.2 = "cloud";
 		picture.attention.item.1 = "wind0.png";
 		picture.unc_att.item.1 = "fog0.png";
+	} else {
+		if (rand(0, 1) < 0.5) {
+			parameters.attentional_control = "cloud";
+			parameters.local_uncertainty = "wind";
+			text.attentional_control.item.1 = "a cloud";
+			text.attentional_control.item.2 = "cloud";
+			text.local_uncertainty.item.1 = "wind";
+			text.local_uncertainty.item.2 = "wind";
+			picture.attention.item.1 = "fog0.png";
+			picture.unc_att.item.1 = "wind0.png";
+		} else {
+			parameters.attentional_control = "wind";
+			parameters.local_uncertainty = "cloud";
+			text.attentional_control.item.1 = "wind";
+			text.attentional_control.item.2 = "wind";
+			text.local_uncertainty.item.1 = "a cloud";
+			text.local_uncertainty.item.2 = "cloud";
+			picture.attention.item.1 = "wind0.png";
+			picture.unc_att.item.1 = "fog0.png";
+		}
 	}
+	
 	values.meta_trialCount = 0;
 	list.wind_size.nextvalue;
 ]
