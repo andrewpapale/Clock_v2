@@ -698,7 +698,7 @@ expressions.centery + expressions.heightchange_angle330
 
 <list ITI>
 / items = ( 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250, 260, 270, 280, 290, 300, 310, 320, 330, 340, 350, 360, 370, 380, 390, 400, 410, 420, 430, 440, 450, 460, 470, 480, 490, 500)
-/ poolsize = 40
+/ poolsize = 41
 / selectionmode = random
 </list>
 
@@ -3888,6 +3888,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	list.triallist_noU.poolsize = parameters.ntrials;
 	list.triallist_U.poolsize = parameters.ntrials;
 	values.trialCountTotal = values.trialCountTotal + parameters.ntrials;
+	values.unc_att_block = 0;
 	// local uncertainty manipulation starts on trial N
 	values.unc_att_start1 = noreplace(5,6,7,8,9,10);
 	values.unc_att_start2 = noreplace(24,25,26,27,28,29);
@@ -3940,6 +3941,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	values.trialCount  += 1;
 	values.meta_trialCount +=1;
 	list.ITI.nextvalue;
+	list.ISI.nextvalue;
 	if (values.trialCount >= values.unc_att_start1 && values.trialCount <= values.nunc_att1 && values.choose_unc_att1 <= 1) {
 		values.unc_att_block=1;
 	} else if (values.trialCount >= values.unc_att_start2 && values.trialCount <= values.nunc_att2 && values.choose_unc_att2 <= 1) {
@@ -3985,6 +3987,7 @@ dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
 dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
 dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 ]
+/ inputdevice = keyboard
 / timeout = list.ISI.currentvalue
 / recorddata = false
 / branch = [
@@ -4007,6 +4010,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	values.trialCount  += 1;
 	values.meta_trialCount +=1;
 	list.ITI.nextvalue;
+	list.ISI.nextvalue;
 	if (parameters.randStart==TRUE) {
 		values.startPos =  round(rand(0, 100));
 	}
@@ -4199,13 +4203,14 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 </trial>
 
 <trial ISI_noU>
-/ stimulustimes = [0 = planet, unc_att, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+/ stimulustimes = [0 = planet, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
 dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
 dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 ]
+/ inputdevice = keyboard
 / timeout = list.ISI.currentvalue
 / recorddata = false
 / branch = [
@@ -5424,6 +5429,7 @@ dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
 dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 ]
 / trialduration = 1000
+/ inputdevice = keyboard
 // correctresponse = (next)
 / recorddata = true
 / ontrialend = [
@@ -5442,6 +5448,7 @@ dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
 dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
 dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 ]
+/ inputdevice = keyboard
 / timeout = list.ITI.currentvalue
 / branch = [
 	if (values.trialCount >= values.unc_att_start1-1 && values.trialCount < values.nunc_att1 && values.choose_unc_att1 <= 1) {
