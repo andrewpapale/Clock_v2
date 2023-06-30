@@ -3313,7 +3313,7 @@ Clock Face with 60 equally spaced dots that are 6degrees apart
 </text>
 
 <block instructions> 
-/ trials = [1=instructions1, instructions2, instructions2_5, instructions3, instructions4, instructions5, instructions5_1, instructions5_2, instructions6, countdown]
+/ trials = [1=instructions1, instructions2, instructions2_5, instructions3]
 
 </block>
 
@@ -3759,6 +3759,9 @@ number of mushrooms anywhere on the planet.")
 <trial instructions6>
 / stimulusframes = [1=instructions6, next]
 / validresponse = (next)
+/ branch = [
+	return trial.countdown;
+]
 </trial>
 
 <text latencyTest>
