@@ -3979,6 +3979,9 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 </trial>
 
 <trial ISI_U>
+/ ontrialbegin = [
+	picture.planet.erase = true;
+]
 / stimulustimes = [0 = planet, unc_att, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
@@ -4202,6 +4205,9 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 </trial>
 
 <trial ISI_noU>
+/ ontrialbegin = [
+	picture.planet.erase = true;
+]
 / stimulustimes = [0 = planet, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
@@ -5462,6 +5468,71 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 </trial>
 
 <trial preFreeze_noU>
+/ ontrialbegin = [
+	
+	picture.planet.erase = false;
+	
+	shape.dot1.erase = false;
+	shape.dot2.erase = false;
+	shape.dot3.erase = false;
+	shape.dot4.erase = false;
+	shape.dot5.erase = false;
+	shape.dot6.erase = false;
+	shape.dot7.erase = false;
+	shape.dot8.erase = false;
+	shape.dot9.erase = false;
+	shape.dot10.erase = false;
+	shape.dot11.erase = false;
+	shape.dot12.erase = false;
+	shape.dot13.erase = false;
+	shape.dot14.erase = false;
+	shape.dot15.erase = false;
+	shape.dot16.erase = false;
+	shape.dot17.erase = false;
+	shape.dot18.erase = false;
+	shape.dot19.erase = false;
+	shape.dot20.erase = false;
+	shape.dot21.erase = false;
+	shape.dot22.erase = false;
+	shape.dot23.erase = false;
+	shape.dot24.erase = false;
+	shape.dot25.erase = false;
+	shape.dot26.erase = false;
+	shape.dot27.erase = false;
+	shape.dot28.erase = false;
+	shape.dot29.erase = false;
+	shape.dot30.erase = false;
+	shape.dot31.erase = false;
+	shape.dot32.erase = false;
+	shape.dot33.erase = false;
+	shape.dot34.erase = false;
+	shape.dot35.erase = false;
+	shape.dot36.erase = false;
+	shape.dot37.erase = false;
+	shape.dot38.erase = false;
+	shape.dot39.erase = false;
+	shape.dot40.erase = false;
+	shape.dot41.erase = false;
+	shape.dot42.erase = false;
+	shape.dot43.erase = false;
+	shape.dot44.erase = false;
+	shape.dot45.erase = false;
+	shape.dot46.erase = false;
+	shape.dot47.erase = false;
+	shape.dot48.erase = false;
+	shape.dot49.erase = false;
+	shape.dot50.erase = false;
+	shape.dot51.erase = false;
+	shape.dot52.erase = false;
+	shape.dot53.erase = false;
+	shape.dot54.erase = false;
+	shape.dot55.erase = false;
+	shape.dot56.erase = false;
+	shape.dot57.erase = false;
+	shape.dot58.erase = false;
+	shape.dot59.erase = false;
+	shape.dot60.erase = false;
+]
 / stimulustimes = [ 0 = planet, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
@@ -5485,6 +5556,72 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 </trial>
 
 <trial preFreeze_U>
+/ ontrialbegin = [
+	
+	picture.planet.erase = false;
+	
+	shape.dot1.erase = false;
+	shape.dot2.erase = false;
+	shape.dot3.erase = false;
+	shape.dot4.erase = false;
+	shape.dot5.erase = false;
+	shape.dot6.erase = false;
+	shape.dot7.erase = false;
+	shape.dot8.erase = false;
+	shape.dot9.erase = false;
+	shape.dot10.erase = false;
+	shape.dot11.erase = false;
+	shape.dot12.erase = false;
+	shape.dot13.erase = false;
+	shape.dot14.erase = false;
+	shape.dot15.erase = false;
+	shape.dot16.erase = false;
+	shape.dot17.erase = false;
+	shape.dot18.erase = false;
+	shape.dot19.erase = false;
+	shape.dot20.erase = false;
+	shape.dot21.erase = false;
+	shape.dot22.erase = false;
+	shape.dot23.erase = false;
+	shape.dot24.erase = false;
+	shape.dot25.erase = false;
+	shape.dot26.erase = false;
+	shape.dot27.erase = false;
+	shape.dot28.erase = false;
+	shape.dot29.erase = false;
+	shape.dot30.erase = false;
+	shape.dot31.erase = false;
+	shape.dot32.erase = false;
+	shape.dot33.erase = false;
+	shape.dot34.erase = false;
+	shape.dot35.erase = false;
+	shape.dot36.erase = false;
+	shape.dot37.erase = false;
+	shape.dot38.erase = false;
+	shape.dot39.erase = false;
+	shape.dot40.erase = false;
+	shape.dot41.erase = false;
+	shape.dot42.erase = false;
+	shape.dot43.erase = false;
+	shape.dot44.erase = false;
+	shape.dot45.erase = false;
+	shape.dot46.erase = false;
+	shape.dot47.erase = false;
+	shape.dot48.erase = false;
+	shape.dot49.erase = false;
+	shape.dot50.erase = false;
+	shape.dot51.erase = false;
+	shape.dot52.erase = false;
+	shape.dot53.erase = false;
+	shape.dot54.erase = false;
+	shape.dot55.erase = false;
+	shape.dot56.erase = false;
+	shape.dot57.erase = false;
+	shape.dot58.erase = false;
+	shape.dot59.erase = false;
+	shape.dot60.erase = false;
+]
+
 / stimulustimes = [ 0 = planet, unc_att, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
