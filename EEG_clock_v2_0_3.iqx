@@ -3865,7 +3865,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 <block experiment>
 / onblockbegin = [
 	if (values.scrfunc=="dynamic") {		
-		parameters.ntrials = round(rand(2, 2));
+		parameters.ntrials = round(rand(4, 4));
 	} else {
 		parameters.ntrials = round(rand(42, 45));
 		values.scrfunc = noreplace("IEV","DEV","CEV","CEVR","IEV","DEV","IEV","DEV");
@@ -3906,8 +3906,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 / stop = [
 	values.trialCount_dum > parameters.ntrials
 ]
-/ trials = [1=list.triallist_noU]
-
+/ trials = [1=preFreeze_noU; 2=list.triallist_noU]
 </block>
 
 <list triallist_noU>
@@ -5432,9 +5431,6 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 / inputdevice = keyboard
 // correctresponse = (next)
 / recorddata = true
-/ ontrialend = [
-	values.trialCount_dum  += 1;
-]
 / branch = [
 	return trial.ITI;
 ]
@@ -5452,6 +5448,32 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 / timeout = list.ITI.currentvalue
 / branch = [
 	if (values.trialCount >= values.unc_att_start1-1 && values.trialCount < values.nunc_att1 && values.choose_unc_att1 <= 1) {
+		trial.preFreeze_U
+	} else if (values.trialCount >= values.unc_att_start2-1 && values.trialCount < values.nunc_att2 && values.choose_unc_att2 <= 1) {
+		trial.preFreeze_U
+	} else {
+		trial.preFreeze_noU
+	}
+]
+/ recorddata = false
+/ ontrialend = [
+	values.trialCount_dum  += 1;
+]
+</trial>
+
+<trial preFreeze_noU>
+/ stimulustimes = [ 0 = planet, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
+]
+/ inputdevice = keyboard
+/ timeout = list.preClockFreeze.currentvalue
+/ recorddata = true
+/ branch = [
+	if (values.trialCount >= values.unc_att_start1-1 && values.trialCount < values.nunc_att1 && values.choose_unc_att1 <= 1) {
 		list.triallist_U.nextvalue
 	} else if (values.trialCount >= values.unc_att_start2-1 && values.trialCount < values.nunc_att2 && values.choose_unc_att2 <= 1) {
 		list.triallist_U.nextvalue
@@ -5459,7 +5481,29 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 		list.triallist_noU.nextvalue
 	}
 ]
+
+</trial>
+
+<trial preFreeze_U>
+/ stimulustimes = [ 0 = planet, unc_att, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
+]
+/ inputdevice = keyboard
+/ timeout = list.preClockFreeze.currentvalue
 / recorddata = false
+/ branch = [
+	if (values.trialCount >= values.unc_att_start1-1 && values.trialCount < values.nunc_att1 && values.choose_unc_att1 <= 1) {
+		list.triallist_U.nextvalue
+	} else if (values.trialCount >= values.unc_att_start2-1 && values.trialCount < values.nunc_att2 && values.choose_unc_att2 <= 1) {
+		list.triallist_U.nextvalue
+	} else {
+		list.triallist_noU.nextvalue
+	}
+]
 </trial>
 
 <text testUct>
@@ -6964,9 +7008,6 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 / trialduration = 1000
 // correctresponse = (next)
 / recorddata = true
-/ ontrialend = [
-	values.trialCount_dum  += 1;
-]
 / branch = [
 	return trial.ITI;
 ]
@@ -7127,21 +7168,13 @@ Any additional comments about your experience with the task?"
 / blocks = [
 	//1=instructions;
 	1=experiment;
-	2 = dumITI;
+	2=experiment;
 	3=experiment;
-	4 = dumITI;
+	4=experiment;
 	5=experiment;
-	6 = dumITI;
+	6=experiment;
 	7=experiment;
-	8 = dumITI;
-	9=experiment;
-	10 = dumITI;
-	11=experiment;
-	12 = dumITI;
-	13=experiment;
-	14 = dumITI;
-	15=experiment;
-	16 = dumITI;
+	8=experiment;
 //	10=questionnaire;
 //	11=endscreen;
 ]

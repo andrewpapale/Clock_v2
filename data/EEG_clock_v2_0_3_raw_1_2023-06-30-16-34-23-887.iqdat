@@ -1,0 +1,17 @@
+build	computer.platform	computer.touch	date	time	subject	group	sessionid	blockcode	blocknum	trialcode	latency	preClockFreezeBlock	list.preClockFreeze.currentvalue	list.ITI.currentvalue	list.ISI.currentvalue	trial.instructions5_1.response	trial.instructions5_2.response	startPos	scrfunc	rtvspos	randStart	mag	freq	ev	inc	rng	fogPos1	fogPos_out	windPos2	windPos_out	chooseFog1	chooseWind2	choose_unc_att1	choose_unc_att_out1	choose_unc_att2	choose_unc_att_out2	unc_att_count1	unc_att_count_out1	unc_att_count2	unc_att_count_out2	chooseAttentionalControl	chooseUncertainty	blockCount	ntrials	trialCount	meta_trialCount	attentional_control	local_uncertainty	unc_att_start1	unc_att_start2	unc_att_block	list.rt_0.currentindex	rt_shifted	pos_shifted	totalPoints	totalEarnings	Earnings
+6.6.1	mac	0	2023-06-30	12:34:23	1	1	1	experiment	1	preFreeze_noU	750	2	750					75	dynamic	POS	1						25	0	35	0	0	0	0	0	0	0	0	0	0	0	0	0	1	4	0	0	cloud	wind	8	24	0	0			0	0	
+6.6.1	mac	0	2023-06-30	12:34:23	1	1	1	experiment	1	preFreeze_noU	750	2	750					75	dynamic	POS	1						25	0	35	0	0	0	0	0	0	0	0	0	0	0	0	0	1	4	0	0	cloud	wind	8	24	0	0			0	0	
+6.6.1	mac	0	2023-06-30	12:34:23	1	1	1	experiment	1	preFreeze_noU	750	2	750					75	dynamic	POS	1						25	0	35	0	0	0	0	0	0	0	0	0	0	0	0	0	1	4	0	0	cloud	wind	8	24	0	0			0	0	
+6.6.1	mac	0	2023-06-30	12:34:23	1	1	1	experiment	1	preFreeze_noU	750	2	750					75	dynamic	POS	1						25	0	35	0	0	0	0	0	0	0	0	0	0	0	0	0	1	4	0	0	cloud	wind	8	24	0	0			0	0	
+6.6.1	mac	0	2023-06-30	12:34:23	1	1	1	experiment	1	preFreeze_noU	750	2	750					75	dynamic	POS	1						25	0	35	0	0	0	0	0	0	0	0	0	0	0	0	0	1	4	0	0	cloud	wind	8	24	0	0			0	0	
+6.6.1	mac	0	2023-06-30	12:34:23	1	1	1	experiment	1	preFreeze_noU	750	2	750					75	dynamic	POS	1						25	0	35	0	0	0	0	0	0	0	0	0	0	0	0	0	1	4	0	0	cloud	wind	8	24	0	0			0	0	
+6.6.1	mac	0	2023-06-30	12:34:23	1	1	1	experiment	1	preFreeze_noU	750	2	750					75	dynamic	POS	1						25	0	35	0	0	0	0	0	0	0	0	0	0	0	0	0	1	4	0	0	cloud	wind	8	24	0	0			0	0	
+6.6.1	mac	0	2023-06-30	12:34:23	1	1	1	experiment	1	preFreeze_noU	750	2	750					75	dynamic	POS	1						25	0	35	0	0	0	0	0	0	0	0	0	0	0	0	0	1	4	0	0	cloud	wind	8	24	0	0			0	0	
+6.6.1	mac	0	2023-06-30	12:34:23	1	1	1	experiment	1	preFreeze_noU	750	2	750					75	dynamic	POS	1						25	0	35	0	0	0	0	0	0	0	0	0	0	0	0	0	1	4	0	0	cloud	wind	8	24	0	0			0	0	
+6.6.1	mac	0	2023-06-30	12:34:23	1	1	1	experiment	1	preFreeze_noU	750	2	750					75	dynamic	POS	1						25	0	35	0	0	0	0	0	0	0	0	0	0	0	0	0	1	4	0	0	cloud	wind	8	24	0	0			0	0	
+6.6.1	mac	0	2023-06-30	12:34:23	1	1	1	experiment	1	preFreeze_noU	750	2	750					75	dynamic	POS	1						25	0	35	0	0	0	0	0	0	0	0	0	0	0	0	0	1	4	0	0	cloud	wind	8	24	0	0			0	0	
+6.6.1	mac	0	2023-06-30	12:34:23	1	1	1	experiment	1	preFreeze_noU	750	2	750					75	dynamic	POS	1						25	0	35	0	0	0	0	0	0	0	0	0	0	0	0	0	1	4	0	0	cloud	wind	8	24	0	0			0	0	
+6.6.1	mac	0	2023-06-30	12:34:23	1	1	1	experiment	1	preFreeze_noU	750	2	750					75	dynamic	POS	1						25	0	35	0	0	0	0	0	0	0	0	0	0	0	0	0	1	4	0	0	cloud	wind	8	24	0	0			0	0	
+6.6.1	mac	0	2023-06-30	12:34:23	1	1	1	experiment	1	preFreeze_noU	750	2	750					75	dynamic	POS	1						25	0	35	0	0	0	0	0	0	0	0	0	0	0	0	0	1	4	0	0	cloud	wind	8	24	0	0			0	0	
+6.6.1	mac	0	2023-06-30	12:34:23	1	1	1	experiment	1	preFreeze_noU	750	2	750					75	dynamic	POS	1						25	0	35	0	0	0	0	0	0	0	0	0	0	0	0	0	1	4	0	0	cloud	wind	8	24	0	0			0	0	
+6.6.1	mac	0	2023-06-30	12:34:23	1	1	1	experiment	1	preFreeze_noU	385	2	750					75	dynamic	POS	1						25	0	35	0	0	0	0	0	0	0	0	0	0	0	0	0	1	4	0	0	cloud	wind	8	24	0	0			0	0	
