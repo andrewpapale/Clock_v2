@@ -278,7 +278,8 @@ EEG Clock variant #2
 
 <data>
 / columns = (build, computer.platform, computer.touch, date, time, subject, group, script.sessionid, blockcode, blocknum, 
-trialcode,latency, values.preClockFreezeBlock, list.preClockFreeze.currentvalue, list.ITI.currentvalue, trial.instructions5_1.response, trial.instructions5_2.response,values.startPos,values.scrfunc, parameters.rtvspos, parameters.randStart, 
+trialcode,latency, values.preClockFreezeBlock, list.preClockFreeze.currentvalue, list.ITI.currentvalue, list.ISI.currentvalue, 
+trial.instructions5_1.response, trial.instructions5_2.response,values.startPos,values.scrfunc, parameters.rtvspos, parameters.randStart, 
 values.mag, values.freq, values.ev, values.inc, values.rng values.fogPos1, values.fogPos_out, values.windPos2, values.windPos_out, values.chooseFog1, values.chooseWind2,
 values.choose_unc_att1, values.choose_unc_att_out1, values.choose_unc_att2, values.choose_unc_att_out2, values.unc_att_count1, 
 values.unc_att_count_out1,values.unc_att_count2, values.unc_att_count_out2, values.chooseAttentionalControl, values.chooseUncertainty,
@@ -696,10 +697,15 @@ expressions.centery + expressions.heightchange_angle330
 </list>
 
 <list ITI>
-// items = (100,110,120,130,l40,150,160,170,180,190,200,210,220,230,240,250,260,270,280,290,300,310,320,330,340,350,360,370,380,390,400,410,420,430,440,450,460,470,480,490,500)
-/ items =(1000,2000,3000)
-/ poolsize = 3
-/ selectionmode = sequence
+/ items = ( 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250, 260, 270, 280, 290, 300, 310, 320, 330, 340, 350, 360, 370, 380, 390, 400, 410, 420, 430, 440, 450, 460, 470, 480, 490, 500)
+/ poolsize = 40
+/ selectionmode = random
+</list>
+
+<list ISI>
+/ items = (200,210,220,230,240,250,260,270,280,290,300,310,320,330,340,350,360,370,380,390,400,410,420,430,440,450,460,470,480,490,500,510,520,530,540,550,560,570,580,590,600)
+/ poolsize = 41
+/ selectionmode = random
 </list>
 
 <list rt_0>
@@ -3946,14 +3952,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	}
 ]
 
-/ stimulustimes = [0 = planet, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
-dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
-dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
-dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
-dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
-dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
-
-1000 = planet, animatedCircle, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+/ stimulustimes = [0 = planet, animatedCircle, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
@@ -3962,8 +3961,8 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 ]
 
 / inputdevice = keyboard
-/ beginresponsetime = 1000
-/ timeout = 7500
+/ beginresponsetime = 0
+/ timeout = 6500
 / validresponse = (" ") 
 / responseinterrupt = immediate
 / recorddata = true
@@ -3974,7 +3973,22 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	return true;
 ]
 / branch = [
-	return trial.dispFeedback_noU;
+	return trial.ISI_noU;
+]
+</trial>
+
+<trial ISI_U>
+/ stimulustimes = [0 = planet, unc_att, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
+]
+/ timeout = list.ISI.currentvalue
+/ recorddata = false
+/ branch = [
+	return trial.dispFeedback_U;
 ]
 </trial>
 
@@ -4159,14 +4173,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	list.wind_size.nextvalue;
 ]
 
-/ stimulustimes = [0 = planet, unc_att, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
-dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
-dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
-dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
-dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
-dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
-
-1000 = planet, animatedCircle, unc_att, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+/ stimulustimes = [0 = planet, animatedCircle, unc_att, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
@@ -4175,8 +4182,8 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 ]
 
 / inputdevice = keyboard
-/ beginresponsetime = 1000
-/ timeout = 7500
+/ beginresponsetime = 0
+/ timeout = 6500
 / validresponse = (" ") 
 / responseinterrupt = immediate
 / recorddata = true
@@ -4187,7 +4194,22 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	return true;
 ]
 / branch = [
-	return trial.dispFeedback_U;
+	return trial.ISI_U;
+]
+</trial>
+
+<trial ISI_noU>
+/ stimulustimes = [0 = planet, unc_att, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
+]
+/ timeout = list.ISI.currentvalue
+/ recorddata = false
+/ branch = [
+	return trial.dispFeedback_noU;
 ]
 </trial>
 
