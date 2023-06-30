@@ -2567,7 +2567,7 @@ of mushrooms you will earn by landing on the area covered by the <%text.local_un
 will be different from what you previously learned about that location. 
 However, all other locations around the planet will remain the same, 
 and the location covered by the <%text.local_uncertainty.item.2%> will revert back to what you 
-originally learned once the wind disappears.")
+originally learned once the <%text.local_uncertainty.item.2%> disappears.")
 / fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
 / position = (50%, 45%)
 / vjustify = center
