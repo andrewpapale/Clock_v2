@@ -2541,7 +2541,7 @@ expressions.centery + expressions.heightchange_angle330
 <item instructions1>
 / 1 = "In this game, you are picking mushrooms on a far away planet.
       
-On each of your 320 trials you can decide where to land your spacecraft.  Your spacecraft will orbit the planet, and you can land it at any point by pressing the spacebar.
+You will get about 340 tries to land your spacecraft.  Your spacecraft will orbit the planet, and you can land it at any point by pressing the spacebar.
       
 If you stop in a good location, you will find more mushrooms. Every mushroom is worth 0.5 cents.
       
@@ -7241,7 +7241,9 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 / caption = "What strategies did you use in the game?
 What was your understanding of the effect the wind and cloud
 had on the number of mushrooms?
-Any additional comments about your experience with the task?"
+Any additional comments about your experience with the task?
+Please press enter at the end of the box to continue viewing
+what you are writing (otherwise the text will not be visible)"
 / mask = ^[a-zA-Z\s0-9.,!@#$%^&*()`~;:'\n]+$
 / required = TRUE
 / multiline = TRUE
@@ -7264,7 +7266,7 @@ Any additional comments about your experience with the task?"
 
 <expt main1>
 / onexptbegin = [
-	if (substring(script.subjectid,0,1)=="5"){ // if subject ID starts with 5, wind is local uncertainty and cloud is attentional control
+	if (script.groupid==1 || script.groupid==2){
 		parameters.attentional_control = "cloud";
 		parameters.local_uncertainty = "wind";
 		text.attentional_control.item.1 = "a cloud";
@@ -7273,7 +7275,7 @@ Any additional comments about your experience with the task?"
 		text.local_uncertainty.item.2 = "wind";
 		picture.attention.item.1 = "fog0.png";
 		picture.unc_att.item.1 = "wind0.png";
-	} else if (substring(script.subjectid,0,1)=="6"){
+	} else if (script.groupid==3 || script.groupid==4){
 		parameters.attentional_control = "wind";
 		parameters.local_uncertainty = "cloud";
 		text.attentional_control.item.1 = "wind";
@@ -7310,14 +7312,14 @@ Any additional comments about your experience with the task?"
 / blocks = [
 	1=instructions;
 	2=experiment;
-	//3=experiment;
-	//4=experiment;
-	//5=experiment;
-	//6=experiment;
-	//7=experiment;
-	//8=experiment;
-	//9=experiment;
-	3=endscreen;
-	4=questionnaire;
+	3=experiment;
+	4=experiment;
+	5=experiment;
+	6=experiment;
+	7=experiment;
+	8=experiment;
+	9=experiment;
+	10=endscreen;
+	11=questionnaire;
 ]
 </expt>
