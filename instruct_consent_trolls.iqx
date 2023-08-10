@@ -1,0 +1,67 @@
+﻿<htmlpage instructions>
+/ file = "instructions_prosper_trolls.html"
+</htmlpage>
+
+
+Consent Form
+
+<html Consent>
+/items = ("consent.htm")
+/position = (50%, 45%)
+/ size = (80%, 80%)
+</html>
+
+---
+Scroll down reminder 
+<text scroll>
+/items = ("SCROLL DOWN")
+/position = (50%, 88%)
+/ fontstyle = ("Times New Roman", 1.50%, false, false, false, false, 5, 1)
+/ txcolor = (firebrick)
+/txbgcolor = (cornsilk)
+/size = (8%, 4%)
+/ vjustify = center
+</text>
+
+----------------
+Response Buttons
+
+<text agree>
+/items = ("I agree")
+/position = (75%, 90%)
+/ fontstyle = ("Times New Roman", 3%, false, false, false, false, 5, 1)
+/ txcolor = (white)
+/txbgcolor = (black)
+/size = (10%, 5%)
+/ vjustify = center
+</text>
+
+<text disagree>
+/items = ("I do NOT agree to participate")
+/position = (25%, 90%)
+/ fontstyle = ("Times New Roman", 2%, false, false, false, false, 5, 1)
+/ txcolor = (white)
+/txbgcolor = (black)
+/size = (10%, 5%)
+/vjustify = center
+</text>
+
+-----------------
+Consent Trial
+if no consent the script as well as all other scripts in batch file get abortet via script.abort
+
+<trial Consent>
+/inputdevice = mouse
+/stimulusframes = [1 = Consent, agree, disagree, scroll]
+/validresponse = (agree, disagree)
+/monkeyresponse = ("agree")
+/ontrialend = [if (trial.Consent.response == "disagree") script.abort()]
+</trial>
+
+---------------------
+Consent Block
+
+<block Consent>
+/ preinstructions = (instructions)
+/trials = [1 = Consent]
+</block>
