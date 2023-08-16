@@ -7310,16 +7310,16 @@ what you are writing (otherwise the text will not be visible)"
 ]
 
 / blocks = [
-	1=instructions;
-	2=experiment;
-	3=experiment;
-	4=experiment;
-	5=experiment;
-	6=experiment;
-	7=experiment;
-	8=experiment;
-	9=experiment;
-	10=endscreen;
-	11=questionnaire;
+	//1=instructions;
+	1=experiment;
+	//3=experiment;
+	//4=experiment;
+	//5=experiment;
+	//6=experiment;
+	//7=experiment;
+	//8=experiment;
+	//9=experiment;
+	//10=endscreen;
+	//11=questionnaire;
 ]
 </expt>
