@@ -1,7 +1,7 @@
 ﻿2023-04-21 AndyP
 EEG Clock variant #2
 v2_0_4 implement breaks 1/3, 2/3 of the way through the task
-
+v2_0_4 two schedules of stimuli in up to 6 blocks
 
 
 <defaults>
@@ -240,11 +240,14 @@ v2_0_4 implement breaks 1/3, 2/3 of the way through the task
 / unc_att_start2 = 0;
 / unc_att_start3 = 0;
 / unc_att_start4 = 0;
-
+/ unc_att_start5 = 0;
+/ unc_att_start6 = 0;
 / nunc_att1 = 0;
 / nunc_att2 = 0;
 / nunc_att3 = 0;
 / nunc_att4 = 0;
+/ nunc_att5 = 0;
+/ nunc_att6 = 0;
 / fogPos1 = 0;
 / fogPos3 = 0;
 / fogPos5 = 0 ;
@@ -252,6 +255,7 @@ v2_0_4 implement breaks 1/3, 2/3 of the way through the task
 / windPos_out = 0;
 / windPos2 = 0;
 / windPos4 = 0;
+/ windPos6 = 0;
 / chooseFog1 = 0;
 / chooseWind2 = 0;
 / chooseFog3 = 0;
@@ -3993,10 +3997,14 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 	values.choose_unc_att2 = 0;
 	values.choose_unc_att3 = 0;
 	values.choose_unc_att4 = 0;
+	values.choose_unc_att5 = 0;
+	values.choose_unc_att6 = 0;
 	values.unc_att_count1 = 0;
 	values.unc_att_count2 = 0;
 	values.unc_att_count3 = 0;
 	values.unc_att_count4 = 0;
+	values.unc_att_count5 = 0;
+	values.unc_att_count6 = 0;
 	values.flag1 = false;
 	values.flag2 = false;
 	values.flag3 = false;
@@ -4008,104 +4016,104 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 	values.windPos2 = noreplace(1,2,5,10,15,20,25,30,35,40,45,50);
 	
 	if (values.fogPos1 == 1){
-		values.fogPos3 = noreplace(2,5,10,15,20,25,30,35,40,45,50)
+		values.fogPos3 = noreplace(2,5,10,15,20,25,30,35,40,45,50);
 	} else if (values.fogPos1 ==2){
-		values.fogPos3 = noreplace(1,5,10,15,20,25,30,35,40,45,50)
+		values.fogPos3 = noreplace(1,5,10,15,20,25,30,35,40,45,50);
 	} else if (values.fogPos1 ==5){
-		values.fogPos3 = noreplace(1,2,10,15,20,25,30,35,40,45,50)
+		values.fogPos3 = noreplace(1,2,10,15,20,25,30,35,40,45,50);
 	} else if (values.fogPos1 == 10){
-		values.fogPos3 = noreplace(1,2,5,15,20,25,30,35,40,45,50)
+		values.fogPos3 = noreplace(1,2,5,15,20,25,30,35,40,45,50);
 	} else if (values.fogPos1 ==15){
-		values.fogPos3 = noreplace(1,2,5,10,20,25,30,35,40,45,50)
+		values.fogPos3 = noreplace(1,2,5,10,20,25,30,35,40,45,50);
 	} else if (values.fogPos1==20){
-		values.fogPos3 = noreplace(1,2,5,10,15,25,30,35,40,45,50)
+		values.fogPos3 = noreplace(1,2,5,10,15,25,30,35,40,45,50);
 	} else if (values.fogPos1==25){
-		values.fogPos3 = noreplace(1,2,5,10,15,20,30,35,40,45,50)
+		values.fogPos3 = noreplace(1,2,5,10,15,20,30,35,40,45,50);
 	} else if (values.fogPos1==30){
-		values.fogPos3 = noreplace(1,2,5,10,15,20,25,35,40,45,50)
+		values.fogPos3 = noreplace(1,2,5,10,15,20,25,35,40,45,50);
 	} else if (values.fogPos1==35){
-		values.fogPos3 = noreplace(1,2,5,10,15,20,25,30,40,45,50)
+		values.fogPos3 = noreplace(1,2,5,10,15,20,25,30,40,45,50);
 	} else if (values.fogPos1==40){
-		values.fogPos3 = noreplace(1,2,5,10,15,20,25,30,35,45,50)
+		values.fogPos3 = noreplace(1,2,5,10,15,20,25,30,35,45,50);
 	} else if (values.fogPos1==45){
-		values.fogPos3 = noreplace(1,2,5,10,15,20,25,30,35,40,50)
+		values.fogPos3 = noreplace(1,2,5,10,15,20,25,30,35,40,50);
 	} else if (values.fogPos1==50){
-		values.fogPos3 = noreplace(1,2,5,10,15,20,25,30,35,40,45)
+		values.fogPos3 = noreplace(1,2,5,10,15,20,25,30,35,40,45);
 	}
 	if (values.windPos2 == 1){
-		values.windPos4 = noreplace(2,5,10,15,20,25,30,35,40,45,50)
+		values.windPos4 = noreplace(2,5,10,15,20,25,30,35,40,45,50);
 	} else if (values.windPos2 ==2){
-		values.windPos4 = noreplace(1,5,10,15,20,25,30,35,40,45,50)
+		values.windPos4 = noreplace(1,5,10,15,20,25,30,35,40,45,50);
 	} else if (values.windPos2 ==5){
-		values.windPos4 = noreplace(1,2,10,15,20,25,30,35,40,45,50)
+		values.windPos4 = noreplace(1,2,10,15,20,25,30,35,40,45,50);
 	} else if (values.windPos2 == 10){
-		values.windPos4 = noreplace(1,2,5,15,20,25,30,35,40,45,50)
+		values.windPos4 = noreplace(1,2,5,15,20,25,30,35,40,45,50);
 	} else if (values.windPos2 ==15){
-		values.windPos4 = noreplace(1,2,5,10,20,25,30,35,40,45,50)
+		values.windPos4 = noreplace(1,2,5,10,20,25,30,35,40,45,50);
 	} else if (values.windPos2==20){
-		values.windPos4 = noreplace(1,2,5,10,15,25,30,35,40,45,50)
+		values.windPos4 = noreplace(1,2,5,10,15,25,30,35,40,45,50);
 	} else if (values.windPos2==25){
-		values.windPos4 = noreplace(1,2,5,10,15,20,30,35,40,45,50)
+		values.windPos4 = noreplace(1,2,5,10,15,20,30,35,40,45,50);
 	} else if (values.windPos2==30){
-		values.windPos4 = noreplace(1,2,5,10,15,20,25,35,40,45,50)
+		values.windPos4 = noreplace(1,2,5,10,15,20,25,35,40,45,50);
 	} else if (values.windPos2==35){
-		values.windPos4 = noreplace(1,2,5,10,15,20,25,30,40,45,50)
+		values.windPos4 = noreplace(1,2,5,10,15,20,25,30,40,45,50);
 	} else if (values.windPos2==40){
-		values.windPos4 = noreplace(1,2,5,10,15,20,25,30,35,45,50)
+		values.windPos4 = noreplace(1,2,5,10,15,20,25,30,35,45,50);
 	} else if (values.windPos2==45){
-		values.windPos4 = noreplace(1,2,5,10,15,20,25,30,35,40,50)
+		values.windPos4 = noreplace(1,2,5,10,15,20,25,30,35,40,50);
 	} else if (values.windPos2==50){
-		values.fogPos4 = noreplace(1,2,5,10,15,20,25,30,35,40,45)
+		values.windPos4 = noreplace(1,2,5,10,15,20,25,30,35,40,45);
 	}
 	if (values.fogPos3 == 1){
-		values.fogPos5 = noreplace(2,5,10,15,20,25,30,35,40,45,50)
+		values.fogPos5 = noreplace(2,5,10,15,20,25,30,35,40,45,50);
 	} else if (values.fogPos3 ==2){
-		values.fogPos5 = noreplace(1,5,10,15,20,25,30,35,40,45,50)
+		values.fogPos5 = noreplace(1,5,10,15,20,25,30,35,40,45,50);
 	} else if (values.fogPos3 ==5){
-		values.fogPos5 = noreplace(1,2,10,15,20,25,30,35,40,45,50)
+		values.fogPos5 = noreplace(1,2,10,15,20,25,30,35,40,45,50);
 	} else if (values.fogPos3 == 10){
-		values.fogPos5 = noreplace(1,2,5,15,20,25,30,35,40,45,50)
+		values.fogPos5 = noreplace(1,2,5,15,20,25,30,35,40,45,50);
 	} else if (values.fogPos3 ==15){
-		values.fogPos5 = noreplace(1,2,5,10,20,25,30,35,40,45,50)
+		values.fogPos5 = noreplace(1,2,5,10,20,25,30,35,40,45,50);
 	} else if (values.fogPos3==20){
-		values.fogPos5 = noreplace(1,2,5,10,15,25,30,35,40,45,50)
+		values.fogPos5 = noreplace(1,2,5,10,15,25,30,35,40,45,50);
 	} else if (values.fogPos3==25){
-		values.fogPos5 = noreplace(1,2,5,10,15,20,30,35,40,45,50)
+		values.fogPos5 = noreplace(1,2,5,10,15,20,30,35,40,45,50);
 	} else if (values.fogPos3==30){
-		values.fogPos5 = noreplace(1,2,5,10,15,20,25,35,40,45,50)
+		values.fogPos5 = noreplace(1,2,5,10,15,20,25,35,40,45,50);
 	} else if (values.fogPos3==35){
-		values.fogPos5 = noreplace(1,2,5,10,15,20,25,30,40,45,50)
+		values.fogPos5 = noreplace(1,2,5,10,15,20,25,30,40,45,50);
 	} else if (values.fogPos3==40){
-		values.fogPos5 = noreplace(1,2,5,10,15,20,25,30,35,45,50)
+		values.fogPos5 = noreplace(1,2,5,10,15,20,25,30,35,45,50);
 	} else if (values.fogPos3==45){
-		values.fogPos5 = noreplace(1,2,5,10,15,20,25,30,35,40,50)
+		values.fogPos5 = noreplace(1,2,5,10,15,20,25,30,35,40,50);
 	} else if (values.fogPos3==50){
-		values.fogPos5 = noreplace(1,2,5,10,15,20,25,30,35,40,45)
+		values.fogPos5 = noreplace(1,2,5,10,15,20,25,30,35,40,45);
 	}
 	if (values.windPos4 == 1){
-		values.windPos6 = noreplace(2,5,10,15,20,25,30,35,40,45,50)
+		values.windPos6 = noreplace(2,5,10,15,20,25,30,35,40,45,50);
 	} else if (values.windPos4 ==2){
-		values.windPos6 = noreplace(1,5,10,15,20,25,30,35,40,45,50)
+		values.windPos6 = noreplace(1,5,10,15,20,25,30,35,40,45,50);
 	} else if (values.windPos4 ==5){
-		values.windPos6 = noreplace(1,2,10,15,20,25,30,35,40,45,50)
+		values.windPos6 = noreplace(1,2,10,15,20,25,30,35,40,45,50);
 	} else if (values.windPos4 == 10){
-		values.windPos6 = noreplace(1,2,5,15,20,25,30,35,40,45,50)
+		values.windPos6 = noreplace(1,2,5,15,20,25,30,35,40,45,50);
 	} else if (values.windPos4 ==15){
-		values.windPos6 = noreplace(1,2,5,10,20,25,30,35,40,45,50)
+		values.windPos6 = noreplace(1,2,5,10,20,25,30,35,40,45,50);
 	} else if (values.windPos4==20){
-		values.windPos6 = noreplace(1,2,5,10,15,25,30,35,40,45,50)
+		values.windPos6 = noreplace(1,2,5,10,15,25,30,35,40,45,50);
 	} else if (values.windPos4==25){
-		values.windPos6 = noreplace(1,2,5,10,15,20,30,35,40,45,50)
+		values.windPos6 = noreplace(1,2,5,10,15,20,30,35,40,45,50);
 	} else if (values.windPos4==30){
-		values.windPos6 = noreplace(1,2,5,10,15,20,25,35,40,45,50)
+		values.windPos6 = noreplace(1,2,5,10,15,20,25,35,40,45,50);
 	} else if (values.windPos4==35){
-		values.windPos6 = noreplace(1,2,5,10,15,20,25,30,40,45,50)
+		values.windPos6 = noreplace(1,2,5,10,15,20,25,30,40,45,50);
 	} else if (values.windPos4==40){
-		values.windPos6 = noreplace(1,2,5,10,15,20,25,30,35,45,50)
+		values.windPos6 = noreplace(1,2,5,10,15,20,25,30,35,45,50);
 	} else if (values.windPos4==45){
-		values.windPos6 = noreplace(1,2,5,10,15,20,25,30,35,40,50)
+		values.windPos6 = noreplace(1,2,5,10,15,20,25,30,35,40,50);
 	} else if (values.windPos4==50){
-		values.fogPos6 = noreplace(1,2,5,10,15,20,25,30,35,40,45)
+		values.windPos6 = noreplace(1,2,5,10,15,20,25,30,35,40,45);
 	}
 ]
 / stop = [
@@ -4265,7 +4273,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 		values.unc_att_count_out5+=1;
 	} else if (values.trialCount >= values.unc_att_start6 && values.trialCount <= values.nunc_att6 && values.choose_unc_att6 <= 1) {
 		values.unc_att_count_out6+=1;
-		else {
+	} else {
 		values.unc_att_count_out1 = 0;
 		values.unc_att_count_out2 = 0;
 		values.unc_att_count_out3 = 0;
@@ -8410,7 +8418,7 @@ what you are writing (otherwise the text will not be visible)"
 
 / blocks = [
 	//1=instructions;
-	//2=experiment;
+	1=experiment;
 	//3=experiment;
 	//4=experiment;
 	//5=break;
