@@ -316,7 +316,7 @@ v2_0_4 two schedules of stimuli in up to 6 blocks
 
 <data>
 / columns = (build, computer.platform, computer.touch, date, time, subject, group, script.sessionid, blockcode, blocknum, 
-trialcode, values.preClockFreezeBlock, list.preClockFreeze.currentvalue, latency, list.ISI.currentvalue, list.ITI.currentvalue, 
+trialcode, values.preClockFreezeBlock, list.preClockFreeze.currentvalue, latency, list.ISI.currentvalue, list.ITI.currentvalue, values.flag1,
 trial.instructions5_1.response, trial.instructions5_2.response,values.startPos,values.scrfunc, parameters.rtvspos, parameters.randStart, 
 values.mag, values.freq, values.ev, values.inc, values.rng values.fogPos1, values.fogPos3, values.fogPos5, values.fogPos_out, list.wind_size.currentvalue,values.windPos2, values.windPos4, values.windPos6, values.windPos_out, 
 values.chooseFog1, values.chooseWind2, values.chooseFog3, values.chooseWind4,values.chooseFog5, values.chooseWind6,
@@ -3986,13 +3986,13 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 	values.unc_att_block = 0;
 	// local uncertainty manipulation starts on trial N
 	values.unc_att_start1 = noreplace(5,6,7);
-	values.nunc_att1 = values.unc_att_start1 + 7;
+	values.nunc_att1 = values.unc_att_start1 + 6;
 	values.unc_att_start2 = noreplace(15,16,17);
-	values.nunc_att2 = values.unc_att_start1 + 7;
+	values.nunc_att2 = values.unc_att_start2 + 6;
 	values.unc_att_start3 = noreplace(25,26,27);
-	values.nunc_att3 = values.unc_att_start1 + 7;
+	values.nunc_att3 = values.unc_att_start3 + 6;
 	values.unc_att_start4 = noreplace(35,36,37);
-	values.nunc_att4 = values.unc_att_start1 + 7;
+	values.nunc_att4 = values.unc_att_start4 + 6;
 	values.choose_unc_att1 = 0;
 	values.choose_unc_att2 = 0;
 	values.choose_unc_att3 = 0;
@@ -4165,32 +4165,6 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 	if (parameters.randStart==TRUE) {
 		values.startPos =  round(rand(0, 100));
 	}
-	if (values.unc_att_count1 <= 3 && values.trialCount <= 12 && values.flag1 = false){ // clicking on stimuli, speed up stimulus schedule
-		values.unc_att_start2 = noreplace(12,13,14);
-		values.nunc_att2 = values.unc_att_start2 + 6;
-		values.flag1 = true;
-	}
-	if (values.unc_att_count2 <= 3 && values.trialCount <= 19 && values.flag2 = false){
-		values.unc_att_start3 = noreplace(19,20,21);
-		values.nunc_att3 = values.unc_att_start3 + 6;
-		values.flag2 = true;
-	}
-	if (values.unc_att_count3 <= 3 && values.trialCount <= 26 && values.flag3 = false){
-		values.unc_att_start4 = noreplace(26,27,28);
-		values.nunc_att4 = values.unc_att_start4 + 6;
-		values.flag3 = true;
-	}
-	if (values.unc_att_count4 <=3 && values.trialCount <= 33 && values.flag4 = false){
-		values.unc_att_start5 = noreplace(33,34,35);
-		values.nunc_att5 = values.unc_att_start5 + 6;
-		values.flag4 = true;
-	}
-	if (values.unc_att_count5 <=3 && values.trialCount <= 40 && values.flag5 = false){
-		values.unc_att_start6 = noreplace(40,41,42);
-		values.nunc_att6 = values.unc_att_start6 + 6;
-		values.flag6 = true;
-	}
-	
 ]
 
 / stimulustimes = [0 = planet, animatedCircle, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
@@ -4208,6 +4182,33 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 / responseinterrupt = immediate
 / recorddata = true
 / ontrialend = [
+
+	if (values.choose_unc_att1 >= 2 && values.trialCount <= 12 && values.flag1 == false){ // clicking on stimuli, speed up stimulus schedule
+		values.unc_att_start2 = 12;
+		values.nunc_att2 = values.unc_att_start2 + 6;
+		values.flag1 = true;
+	}
+	if (values.choose_unc_att2 >= 2 && values.trialCount <= 19 && values.flag2 == false){
+		values.unc_att_start3 = 19;
+		values.nunc_att3 = values.unc_att_start3 + 6;
+		values.flag2 = true;
+	}
+	if (values.choose_unc_att3 >= 2 && values.trialCount <= 26 && values.flag3 == false){
+		values.unc_att_start4 = 26;
+		values.nunc_att4 = values.unc_att_start4 + 6;
+		values.flag3 = true;
+	}
+	if (values.choose_unc_att4 >=2 && values.trialCount <= 33 && values.flag4 == false){
+		values.unc_att_start5 = 33;
+		values.nunc_att5 = values.unc_att_start5 + 6;
+		values.flag4 = true;
+	}
+	if (values.choose_unc_att5 >=2 && values.trialCount <= 40 && values.flag5 == false){
+		values.unc_att_start6 = 40;
+		values.nunc_att6 = values.unc_att_start6 + 6;
+		values.flag6 = true;
+	}
+
 	values.circle_x = picture.animatedCircle.xpct;
 	values.circle_y = picture.animatedCircle.ypct;
 	values.n_revolutions = ipart(script.elapsedtime - picture.animatedCircle.timestamp/values.time_per_revolution);
@@ -4217,6 +4218,12 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	return trial.ISI_noU;
 ]
 </trial>
+
+<text testSchedule>
+/items = ("unc_att_ct1=<%values.choose_unc_att1%> >=2, trialCount=<%values.trialCount%> <= 12, flag1=<%values.flag1%> = 0")
+/ position = (50%, 35%)
+</text>
+
 
 <trial ISI_U>
 / ontrialbegin = [
@@ -6256,8 +6263,8 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 </text>
 
 <text testUct2>
-/ items = ("trCt =<%values.trialCount%> uSt2=<%values.unc_att_start2%> uCt2=<%values.unc_att_count2%> nU2=<%values.nunc_att2%>, cU2=<%values.choose_unc_att2%>")
-/ position = (50%, 30%)
+/ items = ("trCt =<%values.trialCount%> uSt2=<%values.unc_att_start2%> uCt2=<%values.unc_att_count2%> nU2=<%values.nunc_att2%>, cU2=<%values.choose_unc_att2%> flag1=<%values.flag1%>")
+/ position = (50%, 40%)
 </text>
 
 <text test_unc_att>
