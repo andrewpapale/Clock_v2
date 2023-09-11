@@ -7881,7 +7881,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 			values.choose_unc_att3 += 1;
 			values.choose_unc_att_out3 +=1;
 			values.chooseAttentionalControl = 1;
-		} else if (values.fogPos1==2 && values.rt_shifted > 4308 && values.rt_shifted < 4954) {
+		} else if (values.fogPos3==2 && values.rt_shifted > 4308 && values.rt_shifted < 4954) {
 			values.chooseFog3 = 1;
 			values.choose_unc_att3 += 1;
 			values.choose_unc_att_out3 +=1;
@@ -7931,7 +7931,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 			values.choose_unc_att3 += 1;
 			values.choose_unc_att_out3 +=1;
 			values.chooseAttentionalControl = 1;
-		} else if (values.fogPos1==50 && values.rt_shifted > 102 && values.rt_shifted < 748) {
+		} else if (values.fogPos3==50 && values.rt_shifted > 102 && values.rt_shifted < 748) {
 			values.chooseFog3 = 1;
 			values.choose_unc_att3 += 1;
 			values.choose_unc_att_out3 +=1;
