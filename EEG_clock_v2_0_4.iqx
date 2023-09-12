@@ -333,7 +333,11 @@ values.rt_shifted,values.pos_shifted, values.totalPoints, values.totalEarnings, 
 values.DEV_factor,values.DEV_factor2,values.sin_factor,values.time_per_revolution,expressions.radius_px, values.gamma)
 </summarydata>
 
-
+<picture frozenShip>
+/items = ("challenger-5631958_1280.png")
+/ erase = true(white)
+/ size = (12%, 0.1px*display.canvaswidth)
+</picture>
 
 <picture fixationCross>
 / items = ("fixationCross.png")
@@ -4162,6 +4166,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 	values.meta_trialCount +=1;
 	list.ITI.nextvalue;
 	list.ISI.nextvalue;
+	picture.animatedCircle.erase = false
 	if (parameters.randStart==TRUE) {
 		values.startPos =  round(rand(0, 100));
 	}
@@ -4227,6 +4232,8 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 
 <trial ISI_U>
 / ontrialbegin = [
+	picture.frozenShip.xpct = values.circle_x;
+	picture.frozenShip.ypct = values.circle_y;
 	picture.planet.erase = true;
 ]
 / stimulustimes = [0 = planet, unc_att, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
@@ -4234,7 +4241,7 @@ dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
 dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
-dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip;
 ]
 / inputdevice = keyboard
 / timeout = list.ISI.currentvalue
@@ -4264,6 +4271,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	values.meta_trialCount +=1;
 	list.ITI.nextvalue;
 	list.ISI.nextvalue;
+	picture.animatedCircle.erase = false;
 	picture.unc_att.erase = true;
 	if (parameters.randStart==TRUE) {
 		values.startPos =  round(rand(0, 100));
@@ -4318,6 +4326,8 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 
 <trial ISI_noU>
 / ontrialbegin = [
+	picture.frozenShip.xpct = values.circle_x;
+	picture.frozenShip.ypct = values.circle_y;
 	picture.planet.erase = true;
 ]
 / stimulustimes = [0 = planet, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
@@ -4325,7 +4335,7 @@ dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
 dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
-dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60,frozenShip;
 ]
 / inputdevice = keyboard
 / timeout = list.ISI.currentvalue
