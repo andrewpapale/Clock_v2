@@ -5619,6 +5619,8 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 			values.inc_rg = round(values.inc - 0.2*values.inc);
 		} else if (values.inc_rg > values.inc + 0.2*values.inc){
 			values.inc_rg = round(values.inc + 0.2*values.inc);
+		} else if (values.inc_rg < 0){
+			values.inc_rg = 1;
 		}
 		values.Earnings = values.inc_rg;
 		picture.feedback.item.1 = "mushrooms1.png"
@@ -7442,6 +7444,8 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 			values.inc_rg = round(values.inc - 0.2*values.inc);
 		} else if (values.inc_rg > values.inc + 0.2*values.inc){
 			values.inc_rg = round(values.inc + 0.2*values.inc);
+		} else if (values.inc_rg <= 0){
+			values.inc_rg = 1;
 		}
 		
 		values.Earnings = values.inc_rg;
