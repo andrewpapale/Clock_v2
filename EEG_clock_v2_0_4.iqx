@@ -2587,9 +2587,9 @@ expressions.centery + expressions.heightchange_angle330
 <item instructions1>
 / 1 = "In this game, you are picking mushrooms on a far away planet.
       
-You will get about 340 tries to land your spacecraft.  Your spacecraft will orbit the planet, and you can land it at any point by pressing the spacebar.
+You will get about 360 tries to land your spacecraft.  Your spacecraft will orbit the planet, and you can land it at any point by pressing the spacebar.
       
-If you stop in a good location, you will find more mushrooms. Every 100 mushrooms is worth 5 cents.
+If you stop in a good location, you will find more mushrooms. Every 100 mushrooms is worth 3 cents.
       
 The goal of this game is to get the most mushrooms.
 
@@ -5619,8 +5619,8 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 			values.inc_rg = round(values.inc - 0.2*values.inc);
 		} else if (values.inc_rg > values.inc + 0.2*values.inc){
 			values.inc_rg = round(values.inc + 0.2*values.inc);
-		} else if (values.inc_rg < 0){
-			values.inc_rg = 1;
+		} else if (values.inc_rg < 10){
+			values.inc_rg = 10;
 		}
 		values.Earnings = values.inc_rg;
 		picture.feedback.item.1 = "mushrooms1.png"
@@ -7444,8 +7444,8 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 			values.inc_rg = round(values.inc - 0.2*values.inc);
 		} else if (values.inc_rg > values.inc + 0.2*values.inc){
 			values.inc_rg = round(values.inc + 0.2*values.inc);
-		} else if (values.inc_rg <= 0){
-			values.inc_rg = 1;
+		} else if (values.inc_rg <= 10){
+			values.inc_rg = 10;
 		}
 		
 		values.Earnings = values.inc_rg;
@@ -8389,16 +8389,16 @@ what you are writing (otherwise the text will not be visible)"
 / blocks = [
 	//1=instructions;
 	1=experiment;
-	//3=experiment;
+	2=experiment;
 	//4=experiment;
-	//5=break;
-	//6=experiment;
-	//7=experiment;
+	3=break;
+	4=experiment;
+	5=experiment;
 	//8=experiment;
 	//9=break;
 	//10=experiment;
 	//11=experiment;
-	//12=endscreen;
-	//13=questionnaire;
+	6=endscreen;
+	7=questionnaire;
 ]
 </expt>
