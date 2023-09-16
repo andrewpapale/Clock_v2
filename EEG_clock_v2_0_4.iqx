@@ -4532,6 +4532,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 / recorddata = false
 / ontrialend = [
 	values.trialCount  += 1;
+	values.meta_trialCount +=1;
 ]
 </trial>
 
@@ -4748,7 +4749,6 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 	values.chooseUncertainty = 0;
 	values.chooseAttentionalControl = 0;
 	values.trialCount  += 1;
-	values.meta_trialCount +=1;
 	list.ITI.nextvalue;
 	list.ISI.nextvalue;
 	picture.animatedCircle.erase = false;
