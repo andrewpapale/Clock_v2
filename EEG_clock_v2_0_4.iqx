@@ -231,6 +231,7 @@ v2_0_4 new contingency set
 / pos_shifted = NULL;
 / time_per_revolution = 5000;
 / gamma = values.time_per_revolution/100;
+/ conversion = 0.03 / 100;
 / scrfunc = "dynamic";  //if dynamic, load 'table' from 'csv' and dynamically update contingency
 / totalEarnings = 0;
 / Earnings = NULL;
@@ -2589,7 +2590,9 @@ expressions.centery + expressions.heightchange_angle330
 <item instructions1>
 / 1 = "In this game, you are picking mushrooms on a far away planet.
       
-You will get about 360 tries to land your spacecraft.  Your spacecraft will orbit the planet, and you can land it at any point by pressing the spacebar.
+You will get 360 tries to land your spacecraft with two 2 min breaks 1/3 and 2/3 of the way through.  
+
+Your spacecraft will orbit the planet, and you can land it at any point by pressing the spacebar.
       
 If you stop in a good location, you will find more mushrooms. Every 100 mushrooms is worth 3 cents.
       
@@ -2698,7 +2701,7 @@ Get ready!")
 </text>
 
 <text payment>
-/ items = ("You won a total of $ <%values.totalEarnings/200%> dollars.
+/ items = ("You won a total of $ <%values.totalEarnings%> dollars.
 Thank you for playing!")
 / fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
 / position = (50%, 45%)
@@ -2707,7 +2710,7 @@ Thank you for playing!")
 </text>
 
 <text feedback1>
-/ items = ("You got <% values.Earnings %> mushroom(s)")
+/ items = ("You got <% values.inc_rg %> mushroom(s)")
 / fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
 / position = (50%, 60%)
 / vjustify = center
@@ -5610,18 +5613,18 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 		values.inc = 1;
 	}
 	
-	values.totalPoints = values.totalPoints + values.inc;
-	
 	if (parameters.mushrooms==TRUE  && trial.experiment_U.latency < 6500) {
 		values.inc_rg = round(randgaussian(values.inc, 0.1*values.inc));
-		if (values.inc_rg < values.inc - 0.2*values.inc){
+		if (values.inc_rg < values.inc - 0.15*values.inc){
 			values.inc_rg = round(values.inc - 0.15*values.inc);
 		} else if (values.inc_rg > values.inc + 0.15*values.inc){
 			values.inc_rg = round(values.inc + 0.15*values.inc);
 		} else if (values.inc_rg < 10){
 			values.inc_rg = 10;
 		}
-		values.Earnings = values.inc_rg;
+		values.Earnings = round(values.inc_rg*values.conversion,3);
+		values.totalPoints = values.totalPoints + values.inc_rg;
+		values.totalEarnings = values.totalEarnings + values.Earnings;
 		picture.feedback.item.1 = "mushrooms1.png"
 	} else {
 		values.Earnings = 0;
@@ -7049,8 +7052,6 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 		values.inc = 1;
 	}
 	
-	values.totalPoints = values.totalPoints + values.inc;
-	
 	if (parameters.mushrooms==TRUE  && trial.experiment_U.latency < 6500) {
 		values.inc_rg = round(randgaussian(values.inc, 0.1*values.inc));
 		if (values.inc_rg < values.inc - 0.15*values.inc){
@@ -7060,8 +7061,9 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 		} else if (values.inc_rg < 10){
 			values.inc_rg = 10;
 		}
-		
-		values.Earnings = values.inc_rg;
+		values.totalPoints = values.totalPoints + values.inc;
+		values.Earnings = round(values.inc_rg*values.conversion);
+		values.totalEarnings = values.totalEarnings + values.Earnings;
 		picture.feedback.item.1 = "mushrooms1.png"
 	} else {
 		values.Earnings = 0;
@@ -8000,18 +8002,18 @@ what you are writing (otherwise the text will not be visible)"
 ]
 
 / blocks = [
-	//1=instructions;
-	1=experiment;
+	1=instructions;
 	2=experiment;
-	//4=experiment;
-	3=break;
+	3=experiment;
 	4=experiment;
-	5=experiment;
-	//8=experiment;
-	//9=break;
-	//10=experiment;
-	//11=experiment;
-	6=endscreen;
-	7=questionnaire;
+	5=break;
+	6=experiment;
+	7=experiment;
+	8=experiment;
+	9=break;
+	10=experiment;
+	11=experiment;
+	12=endscreen;
+	13=questionnaire;
 ]
 </expt>
