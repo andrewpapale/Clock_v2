@@ -5613,7 +5613,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 		values.inc = 1;
 	}
 	
-	if (parameters.mushrooms==TRUE  && trial.experiment_U.latency < 6500) {
+	if (parameters.mushrooms==TRUE  && trial.experiment_noU.latency < 6500) {
 		values.inc_rg = round(randgaussian(values.inc, 0.1*values.inc));
 		if (values.inc_rg < values.inc - 0.15*values.inc){
 			values.inc_rg = round(values.inc - 0.15*values.inc);
@@ -5622,11 +5622,13 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 		} else if (values.inc_rg < 10){
 			values.inc_rg = 10;
 		}
-		values.Earnings = round(values.inc_rg*values.conversion,3);
+		values.Earnings = values.inc_rg*values.conversion;
 		values.totalPoints = values.totalPoints + values.inc_rg;
 		values.totalEarnings = values.totalEarnings + values.Earnings;
 		picture.feedback.item.1 = "mushrooms1.png"
 	} else {
+		values.inc = 0;
+		values.inc_rg = 0;
 		values.Earnings = 0;
 		values.totalEarnings = values.totalEarnings + values.Earnings;
 		picture.feedback.item.1 = "timeout.png"
@@ -7062,10 +7064,12 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 			values.inc_rg = 10;
 		}
 		values.totalPoints = values.totalPoints + values.inc;
-		values.Earnings = round(values.inc_rg*values.conversion);
+		values.Earnings = values.inc_rg*values.conversion;
 		values.totalEarnings = values.totalEarnings + values.Earnings;
 		picture.feedback.item.1 = "mushrooms1.png"
 	} else {
+		values.inc = 0;
+		values.inc_rg = 0;
 		values.Earnings = 0;
 		values.totalEarnings = values.totalEarnings + values.Earnings;
 		picture.feedback.item.1 = "timeout.png"
@@ -8002,18 +8006,18 @@ what you are writing (otherwise the text will not be visible)"
 ]
 
 / blocks = [
-	1=instructions;
-	2=experiment;
-	3=experiment;
-	4=experiment;
-	5=break;
-	6=experiment;
-	7=experiment;
-	8=experiment;
-	9=break;
-	10=experiment;
-	11=experiment;
-	12=endscreen;
-	13=questionnaire;
+	//1=instructions;
+	1=experiment;
+	//3=experiment;
+	//4=experiment;
+	//5=break;
+	//6=experiment;
+	//7=experiment;
+	//8=experiment;
+	//9=break;
+	//10=experiment;
+	//11=experiment;
+	//12=endscreen;
+	//13=questionnaire;
 ]
 </expt>
