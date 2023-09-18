@@ -292,7 +292,6 @@ v2_0_4 new contingency set
 / unc_att_count6 = 0;
 / unc_att_block = 0;
 / meta_trialCount = 0;
-/ preClockFreezeBlock = 2;
 / flag1 = false;
 / flag2 = false;
 / flag3 = false;
@@ -317,7 +316,7 @@ v2_0_4 new contingency set
 
 <data>
 / columns = (build, computer.platform, computer.touch, date, time, subject, group, script.sessionid, blockcode, blocknum, 
-trialcode, values.preClockFreezeBlock, list.preClockFreeze.currentvalue, latency, list.ISI.currentvalue, list.ITI.currentvalue,
+trialcode, list.ITI.currentvalue, list.preClockFreeze.currentvalue, latency, list.ISI.currentvalue, // this is the sequence of the task ITI, preClockFreeze, latency=moving ship, ISI=frozen ship
 trial.instructions5_1.response, trial.instructions5_2.response,values.startPos,values.scrfunc, parameters.rtvspos, parameters.randStart, 
 values.mag, values.freq, values.ev, values.inc, values.inc_rg, values.rng values.fogPos1, values.fogPos3, values.fogPos5, values.fogPos_out, list.wind_size.currentvalue,values.windPos2, values.windPos4, values.windPos6, values.windPos_out, 
 values.chooseFog1, values.chooseWind2, values.chooseFog3, values.chooseWind4,values.chooseFog5, values.chooseWind6,
@@ -2557,9 +2556,10 @@ expressions.centery + expressions.heightchange_angle330
 
 
 
-
 <list preClockFreeze>
-/ selectionmode = sequence
+/ items = (500, 510, 520, 530, 540, 550, 560, 570, 580, 590, 600, 610, 620, 630, 640, 650, 660, 670, 680, 690, 700)
+/ poolsize = 21
+/ selectionmode = random
 </list>
 
 
@@ -3979,16 +3979,8 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 		//values.scrfunc = "DEV";
 	}
 	values.blockCount = values.blockCount + 1;
-	if (mod(script.groupid, 2)==0 && (values.blockCount==1 || values.blockCount==2 || values.blockCount==5 || values.blockCount==6)){
-		list.preClockFreeze.appenditem = 250;
-	} else if (mod(script.groupid, 2)==1 && (values.blockCount==1 || values.blockCount==2 || values.blockCount==5 || values.blockCount==6)){
-		list.preClockFreeze.appenditem = 750;
-	} else if (mod(script.groupid, 2)==0 && (values.blockCount==3 || values.blockCount==4 || values.blockCount==7 || values.blockCount==8)){
-		list.preClockFreeze.appenditem = 750;
-	} else if (mod(script.groupid, 2)==1 && (values.blockCount==3 || values.blockCount==4 || values.blockCount==7 || values.blockCount==8)){
-		list.preClockFreeze.appenditem = 250;
-	}
-	list.preClockFreeze.nextvalue;
+	//if (mod(script.groupid, 2)==0 && // retain logic for starting block
+
 	values.trialCount = 0;
 	list.triallist_noU.poolsize = parameters.ntrials;
 	list.triallist_U.poolsize = parameters.ntrials;
@@ -4504,6 +4496,10 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 	list.rt_357.nextvalue;
 	list.rt_358.nextvalue;
 	list.rt_359.nextvalue;
+	
+	list.preClockFreeze.nextvalue;
+	list.ITI.nextvalue;
+	list.ISI.nextvalue;
 ]
 
 / stimulustimes = [ 0 = fixationCross, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
@@ -4614,7 +4610,6 @@ dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
 dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
 dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 ]
-/ inputdevice = keyboard
 / timeout = list.preClockFreeze.currentvalue
 / recorddata = false
 / branch = [
@@ -4648,8 +4643,6 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	values.fogPos_out = NULL;
 	values.windPos_out = NULL;
 	values.n_revolutions = 0;
-	list.ITI.nextvalue;
-	list.ISI.nextvalue;
 	picture.animatedCircle.erase = false
 	if (parameters.randStart==TRUE) {
 		values.startPos =  round(rand(0, 100));
@@ -4751,8 +4744,6 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 	values.choose_unc_att_out6 = 0;
 	values.chooseUncertainty = 0;
 	values.chooseAttentionalControl = 0;
-	list.ITI.nextvalue;
-	list.ISI.nextvalue;
 	picture.animatedCircle.erase = false;
 	picture.unc_att.erase = true;
 	if (parameters.randStart==TRUE) {
@@ -6224,7 +6215,6 @@ dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
 dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
 dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 ]
-/ inputdevice = keyboard
 / timeout = list.preClockFreeze.currentvalue
 / recorddata = false
 / branch = [
