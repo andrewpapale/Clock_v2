@@ -2597,16 +2597,16 @@ expressions.centery + expressions.heightchange_angle330
 
 <item instructions1>
 / 1 = "In this game, you are picking mushrooms on a far away planet.
-      
-You will get 360 tries to land your spacecraft with two 2 min breaks 1/3 and 2/3 of the way through.  
-
+       
 Your spacecraft will orbit the planet, and you can land it at any point by pressing the spacebar.
       
 If you stop in a good location, you will find more mushrooms. Every 100 mushrooms is worth 3 cents.
       
 The goal of this game is to get the most mushrooms.
 
-The game takes about 25-30 minutes."
+You will get about 380 tries to land your spacecraft with two 1 minute breaks around trials 130 and 250. 
+
+The game takes about 25-30 minutes and there are some questions at the end."
 </item>
 
 <text instructions2>
@@ -3990,13 +3990,13 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 	values.unc_att_block = 0;
 	// local uncertainty manipulation starts on trial N
 	values.unc_att_start1 = noreplace(4,5);
-	values.nunc_att1 = values.unc_att_start1 + 6;
+	values.nunc_att1 = values.unc_att_start1 + 4;
 	values.unc_att_start2 = noreplace(14,15);
-	values.nunc_att2 = values.unc_att_start2 + 6;
+	values.nunc_att2 = values.unc_att_start2 + 4;
 	values.unc_att_start3 = noreplace(24,25);
-	values.nunc_att3 = values.unc_att_start3 + 6;
+	values.nunc_att3 = values.unc_att_start3 + 4;
 	values.unc_att_start4 = noreplace(32,33);
-	values.nunc_att4 = values.unc_att_start4 + 6;
+	values.nunc_att4 = values.unc_att_start4 + 4;
 	values.choose_unc_att1 = 0;
 	values.choose_unc_att2 = 0;
 	values.choose_unc_att3 = 0;
@@ -4653,28 +4653,33 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	if (values.choose_unc_att1 >= 2 && values.trialCount <= 9 && values.flag1 == false) {
 		// clicking on stimuli, speed up stimulus schedule
 		values.unc_att_start2 = 9;
-		values.nunc_att2 = values.unc_att_start2 + 6;
+		values.nunc_att2 = values.unc_att_start2 + 4;
 		values.flag1 = true;
+		values.fogPos_out = NULL;
 	}
 	if (values.choose_unc_att2 >= 2 && values.trialCount <= 16 && values.flag2 == false) {
 		values.unc_att_start3 = 16;
-		values.nunc_att3 = values.unc_att_start3 + 6;
+		values.nunc_att3 = values.unc_att_start3 + 4;
 		values.flag2 = true;
+		values.windPos_out = NULL;
 	}
 	if (values.choose_unc_att3 >= 2 && values.trialCount <= 23 && values.flag3 == false) {
 		values.unc_att_start4 = 23;
-		values.nunc_att4 = values.unc_att_start4 + 6;
+		values.nunc_att4 = values.unc_att_start4 + 4;
 		values.flag3 = true;
+		values.fogPos_out = NULL;
 	}
 	if (values.choose_unc_att4 >=2 && values.trialCount <= 30 && values.flag4 == false) {
 		values.unc_att_start5 = 30;
-		values.nunc_att5 = values.unc_att_start5 + 6;
+		values.nunc_att5 = values.unc_att_start5 + 4;
 		values.flag4 = true;
+		values.windPos_out = NULL;
 	}
 	if (values.choose_unc_att5 >=2 && values.trialCount <= 36 && values.flag5 == false) {
 		values.unc_att_start6 = 36;
-		values.nunc_att6 = values.unc_att_start6 + 6;
+		values.nunc_att6 = values.unc_att_start6 + 4;
 		values.flag6 = true;
+		values.fogPos_out = NULL;
 	}
 	values.circle_x = picture.animatedCircle.xpct;
 	values.circle_y = picture.animatedCircle.ypct;
