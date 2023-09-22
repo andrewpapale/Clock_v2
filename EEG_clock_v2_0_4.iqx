@@ -3990,13 +3990,13 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 	values.unc_att_block = 0;
 	// local uncertainty manipulation starts on trial N
 	values.unc_att_start1 = noreplace(4,5);
-	values.nunc_att1 = values.unc_att_start1 + 4;
+	values.nunc_att1 = values.unc_att_start1 + 5;
 	values.unc_att_start2 = noreplace(14,15);
-	values.nunc_att2 = values.unc_att_start2 + 4;
+	values.nunc_att2 = values.unc_att_start2 + 5;
 	values.unc_att_start3 = noreplace(24,25);
-	values.nunc_att3 = values.unc_att_start3 + 4;
+	values.nunc_att3 = values.unc_att_start3 + 5;
 	values.unc_att_start4 = noreplace(32,33);
-	values.nunc_att4 = values.unc_att_start4 + 4;
+	values.nunc_att4 = values.unc_att_start4 + 5;
 	values.choose_unc_att1 = 0;
 	values.choose_unc_att2 = 0;
 	values.choose_unc_att3 = 0;
@@ -4125,6 +4125,8 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 
 <trial ITI>
 / ontrialbegin = [
+	values.trialCount  += 1;
+	values.meta_trialCount +=1;
 	values.index +=1;
 	values.index = mod(values.index-1, 306) +1;
 	list.preClockFreeze.nextvalue;
@@ -4490,6 +4492,41 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 	list.rt_357.nextindex;
 	list.rt_358.nextindex;
 	list.rt_359.nextindex;
+	
+	
+	if (values.choose_unc_att1 >= 2 && values.trialCount <= 9 && values.flag1 == false) {
+		// clicking on stimuli, speed up stimulus schedule
+		values.unc_att_start2 = 9;
+		values.nunc_att2 = values.unc_att_start2 + 5;
+		values.flag1 = true;
+		values.fogPos_out = NULL;
+	}
+	if (values.choose_unc_att2 >= 2 && values.trialCount <= 16 && values.flag2 == false) {
+		values.unc_att_start3 = 16;
+		values.nunc_att3 = values.unc_att_start3 + 5;
+		values.flag2 = true;
+		values.windPos_out = NULL;
+	}
+	if (values.choose_unc_att3 >= 2 && values.trialCount <= 23 && values.flag3 == false) {
+		values.unc_att_start4 = 23;
+		values.nunc_att4 = values.unc_att_start4 + 5;
+		values.flag3 = true;
+		values.fogPos_out = NULL;
+	}
+	if (values.choose_unc_att4 >=2 && values.trialCount <= 30 && values.flag4 == false) {
+		values.unc_att_start5 = 30;
+		values.nunc_att5 = values.unc_att_start5 + 5;
+		values.flag4 = true;
+		values.windPos_out = NULL;
+	}
+	if (values.choose_unc_att5 >=2 && values.trialCount <= 36 && values.flag5 == false) {
+		values.unc_att_start6 = 36;
+		values.nunc_att6 = values.unc_att_start6 + 5;
+		values.flag6 = true;
+		values.fogPos_out = NULL;
+	}
+	
+	
 ]
 
 / stimulustimes = [ 0 = fixationCross, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
@@ -4501,17 +4538,17 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 ]
 / timeout = list.ITI.currentvalue
 / branch = [
-	if (values.trialCount >= values.unc_att_start1-1 && values.trialCount < values.nunc_att1 && values.choose_unc_att1 <= 1) {
+	if (values.trialCount >= values.unc_att_start1 && values.trialCount < values.nunc_att1 && values.choose_unc_att1 <= 1) {
 		trial.preFreeze_U
-	} else if (values.trialCount >= values.unc_att_start2-1 && values.trialCount < values.nunc_att2 && values.choose_unc_att2 <= 1) {
+	} else if (values.trialCount >= values.unc_att_start2 && values.trialCount < values.nunc_att2 && values.choose_unc_att2 <= 1) {
 		trial.preFreeze_U
-	} else if (values.trialCount >= values.unc_att_start3-1 && values.trialCount < values.nunc_att3 && values.choose_unc_att3 <= 1) {
+	} else if (values.trialCount >= values.unc_att_start3 && values.trialCount < values.nunc_att3 && values.choose_unc_att3 <= 1) {
 		trial.preFreeze_U
-	} else if (values.trialCount >= values.unc_att_start4-1 && values.trialCount < values.nunc_att4 && values.choose_unc_att4 <= 1) {
+	} else if (values.trialCount >= values.unc_att_start4 && values.trialCount < values.nunc_att4 && values.choose_unc_att4 <= 1) {
 		trial.preFreeze_U
-	} else if (values.trialCount >= values.unc_att_start5-1 && values.trialCount < values.nunc_att5 && values.choose_unc_att5 <= 1) {
+	} else if (values.trialCount >= values.unc_att_start5 && values.trialCount < values.nunc_att5 && values.choose_unc_att5 <= 1) {
 		trial.preFreeze_U
-	} else if (values.trialCount >= values.unc_att_start6-1 && values.trialCount < values.nunc_att6 && values.choose_unc_att6 <= 1) {
+	} else if (values.trialCount >= values.unc_att_start6 && values.trialCount < values.nunc_att6 && values.choose_unc_att6 <= 1) {
 		trial.preFreeze_U
 	} else {
 		trial.preFreeze_noU
@@ -4519,8 +4556,6 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 ]
 / recorddata = false
 / ontrialend = [
-	values.trialCount  += 1;
-	values.meta_trialCount +=1;
 ]
 </trial>
 
@@ -4650,37 +4685,6 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 / responseinterrupt = immediate
 / recorddata = true
 / ontrialend = [
-	if (values.choose_unc_att1 >= 2 && values.trialCount <= 9 && values.flag1 == false) {
-		// clicking on stimuli, speed up stimulus schedule
-		values.unc_att_start2 = 9;
-		values.nunc_att2 = values.unc_att_start2 + 4;
-		values.flag1 = true;
-		values.fogPos_out = NULL;
-	}
-	if (values.choose_unc_att2 >= 2 && values.trialCount <= 16 && values.flag2 == false) {
-		values.unc_att_start3 = 16;
-		values.nunc_att3 = values.unc_att_start3 + 4;
-		values.flag2 = true;
-		values.windPos_out = NULL;
-	}
-	if (values.choose_unc_att3 >= 2 && values.trialCount <= 23 && values.flag3 == false) {
-		values.unc_att_start4 = 23;
-		values.nunc_att4 = values.unc_att_start4 + 4;
-		values.flag3 = true;
-		values.fogPos_out = NULL;
-	}
-	if (values.choose_unc_att4 >=2 && values.trialCount <= 30 && values.flag4 == false) {
-		values.unc_att_start5 = 30;
-		values.nunc_att5 = values.unc_att_start5 + 4;
-		values.flag4 = true;
-		values.windPos_out = NULL;
-	}
-	if (values.choose_unc_att5 >=2 && values.trialCount <= 36 && values.flag5 == false) {
-		values.unc_att_start6 = 36;
-		values.nunc_att6 = values.unc_att_start6 + 4;
-		values.flag6 = true;
-		values.fogPos_out = NULL;
-	}
 	values.circle_x = picture.animatedCircle.xpct;
 	values.circle_y = picture.animatedCircle.ypct;
 	values.n_revolutions = ipart(script.elapsedtime - picture.animatedCircle.timestamp/values.time_per_revolution);
