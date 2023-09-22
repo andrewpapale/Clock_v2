@@ -4494,21 +4494,21 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 	list.rt_359.nextindex;
 	
 	
-	if (values.choose_unc_att1 >= 2 && values.trialCount <= 9 && values.flag1 == false) {
+	if (values.choose_unc_att1 >= 2 && values.trialCount <= 11 && values.flag1 == false) {
 		// clicking on stimuli, speed up stimulus schedule
-		values.unc_att_start2 = 9;
+		values.unc_att_start2 = 11;
 		values.nunc_att2 = values.unc_att_start2 + 5;
 		values.flag1 = true;
 		values.fogPos_out = NULL;
 	}
-	if (values.choose_unc_att2 >= 2 && values.trialCount <= 16 && values.flag2 == false) {
-		values.unc_att_start3 = 16;
+	if (values.choose_unc_att2 >= 2 && values.trialCount <= 17 && values.flag2 == false) {
+		values.unc_att_start3 = 17;
 		values.nunc_att3 = values.unc_att_start3 + 5;
 		values.flag2 = true;
 		values.windPos_out = NULL;
 	}
-	if (values.choose_unc_att3 >= 2 && values.trialCount <= 23 && values.flag3 == false) {
-		values.unc_att_start4 = 23;
+	if (values.choose_unc_att3 >= 2 && values.trialCount <= 24 && values.flag3 == false) {
+		values.unc_att_start4 = 24;
 		values.nunc_att4 = values.unc_att_start4 + 5;
 		values.flag3 = true;
 		values.fogPos_out = NULL;
@@ -4525,6 +4525,25 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 		values.flag6 = true;
 		values.fogPos_out = NULL;
 	}
+	
+	
+	if (values.trialCount >= values.unc_att_start1 && values.trialCount < values.nunc_att1 && values.choose_unc_att1 <= 1) {
+		values.windPos_out = NULL;
+	} else if (values.trialCount >= values.unc_att_start2 && values.trialCount < values.nunc_att2 && values.choose_unc_att2 <= 1) {
+		values.fogPos_out = NULL;
+	} else if (values.trialCount >= values.unc_att_start3 && values.trialCount < values.nunc_att3 && values.choose_unc_att3 <= 1) {
+		values.windPos_out = NULL;
+	} else if (values.trialCount >= values.unc_att_start4 && values.trialCount < values.nunc_att4 && values.choose_unc_att4 <= 1) {
+		values.fogPos_out = NULL;
+	} else if (values.trialCount >= values.unc_att_start5 && values.trialCount < values.nunc_att5 && values.choose_unc_att5 <= 1) {
+		values.windPos_out = NULL;
+	} else if (values.trialCount >= values.unc_att_start6 && values.trialCount < values.nunc_att6 && values.choose_unc_att6 <= 1) {
+		values.fogPos_out = NULL;
+	} else {
+		values.windPos_out = NULL;
+		values.fogPos_out = NULL;
+	}
+	
 	
 	
 ]
