@@ -317,10 +317,10 @@ v2_0_4 new contingency set
 </parameters>
 
 <data>
-/ columns = (build, computer.platform, computer.touch, date, time, subject, group, script.sessionid, blockcode, blocknum, 
+/ columns = (build, computer.platform, computer.touch, date, time, subject, group, script.sessionid, blockcode, blocknum,
 trialcode, list.ITI.currentvalue, list.preClockFreeze.currentvalue, latency, list.ISI.currentvalue, // this is the sequence of the task ITI, preClockFreeze, latency=moving ship, ISI=frozen ship.  Feedback is fixed at 1000ms.
 trial.instructions5_1.response, trial.instructions5_2.response,values.startPos,values.scrfunc, parameters.rtvspos, parameters.randStart, 
-values.mag, values.freq, values.ev, values.inc, values.inc_rg, values.rng values.fogPos1, values.fogPos3, values.fogPos5, values.fogPos_out, list.wind_size.currentvalue,values.windPos2, values.windPos4, values.windPos6, values.windPos_out, 
+values.mag, values.freq, values.ev, values.inc, values.gauss_sd, values.inc_rg, values.rng values.fogPos1, values.fogPos3, values.fogPos5, values.fogPos_out, list.wind_size.currentvalue,values.windPos2, values.windPos4, values.windPos6, values.windPos_out, 
 values.chooseFog1, values.chooseWind2, values.chooseFog3, values.chooseWind4,values.chooseFog5, values.chooseWind6,
 values.choose_unc_att1, values.choose_unc_att_out1, values.choose_unc_att2, values.choose_unc_att_out2, values.choose_unc_att3, values.choose_unc_att_out3, values.choose_unc_att4, values.choose_unc_att_out4, values.unc_att_count1, 
 values.unc_att_count_out1,values.unc_att_count2, values.unc_att_count_out2, values.unc_att_count3, values.unc_att_count_out3, values.unc_att_count4,values.unc_att_count_out4,values.unc_att_count5,values.unc_att_count_out5,values.unc_att_count6,values.unc_att_count_out6,
@@ -3978,9 +3978,9 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 <block experiment>
 / onblockbegin = [
 	if (values.scrfunc=="dynamic") {
-		parameters.ntrials = 45;
+		parameters.ntrials = 42;
 	} else {
-		parameters.ntrials = 45;
+		parameters.ntrials = 42;
 		values.scrfunc = noreplace("IEV","DEV","CEV","CEVR","IEV","DEV","IEV","DEV");
 		//values.scrfunc = "DEV";
 	}
@@ -3989,13 +3989,13 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 	values.trialCountTotal = values.trialCountTotal + parameters.ntrials;
 	values.unc_att_block = 0;
 	// local uncertainty manipulation starts on trial N
-	values.unc_att_start1 = noreplace(5,6,7);
+	values.unc_att_start1 = noreplace(4,5);
 	values.nunc_att1 = values.unc_att_start1 + 6;
-	values.unc_att_start2 = noreplace(15,16,17);
+	values.unc_att_start2 = noreplace(14,15);
 	values.nunc_att2 = values.unc_att_start2 + 6;
-	values.unc_att_start3 = noreplace(25,26,27);
+	values.unc_att_start3 = noreplace(24,25);
 	values.nunc_att3 = values.unc_att_start3 + 6;
-	values.unc_att_start4 = noreplace(35,36,37);
+	values.unc_att_start4 = noreplace(32,33);
 	values.nunc_att4 = values.unc_att_start4 + 6;
 	values.choose_unc_att1 = 0;
 	values.choose_unc_att2 = 0;
@@ -4119,7 +4119,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 		values.windPos6 = noreplace(1,2,5,10,15,20,25,30,35,40,45);
 	}
 ]
-/ trials = [1-45=trial.ITI]
+/ trials = [1-42=trial.ITI]
 </block>
 
 
@@ -4650,29 +4650,29 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 / responseinterrupt = immediate
 / recorddata = true
 / ontrialend = [
-	if (values.choose_unc_att1 >= 2 && values.trialCount <= 12 && values.flag1 == false) {
+	if (values.choose_unc_att1 >= 2 && values.trialCount <= 9 && values.flag1 == false) {
 		// clicking on stimuli, speed up stimulus schedule
-		values.unc_att_start2 = 12;
+		values.unc_att_start2 = 9;
 		values.nunc_att2 = values.unc_att_start2 + 6;
 		values.flag1 = true;
 	}
-	if (values.choose_unc_att2 >= 2 && values.trialCount <= 19 && values.flag2 == false) {
-		values.unc_att_start3 = 19;
+	if (values.choose_unc_att2 >= 2 && values.trialCount <= 16 && values.flag2 == false) {
+		values.unc_att_start3 = 16;
 		values.nunc_att3 = values.unc_att_start3 + 6;
 		values.flag2 = true;
 	}
-	if (values.choose_unc_att3 >= 2 && values.trialCount <= 26 && values.flag3 == false) {
-		values.unc_att_start4 = 26;
+	if (values.choose_unc_att3 >= 2 && values.trialCount <= 23 && values.flag3 == false) {
+		values.unc_att_start4 = 23;
 		values.nunc_att4 = values.unc_att_start4 + 6;
 		values.flag3 = true;
 	}
-	if (values.choose_unc_att4 >=2 && values.trialCount <= 33 && values.flag4 == false) {
-		values.unc_att_start5 = 33;
+	if (values.choose_unc_att4 >=2 && values.trialCount <= 30 && values.flag4 == false) {
+		values.unc_att_start5 = 30;
 		values.nunc_att5 = values.unc_att_start5 + 6;
 		values.flag4 = true;
 	}
-	if (values.choose_unc_att5 >=2 && values.trialCount <= 40 && values.flag5 == false) {
-		values.unc_att_start6 = 40;
+	if (values.choose_unc_att5 >=2 && values.trialCount <= 36 && values.flag5 == false) {
+		values.unc_att_start6 = 36;
 		values.nunc_att6 = values.unc_att_start6 + 6;
 		values.flag6 = true;
 	}
@@ -5527,7 +5527,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 		values.mag = list.rt_356.nextvalue;
 	} else if (values.rt_shifted > 4958 && values.rt_shifted <= 4972) {
 		values.mag = list.rt_357.nextvalue;
-	} else if (values.rt_shifted > 4986 && values.rt_shifted <= 5000) {
+	} else if (values.rt_shifted > 4972 && values.rt_shifted <= 5000) {
 		values.mag = list.rt_359.nextvalue;
 	}
 	values.freq = 0.7;
@@ -5547,6 +5547,9 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 		}
 		if (values.inc_rg < 10) {
 			values.inc_rg = 10;
+		}
+		if (values.inc_rg > 150){
+			values.inc_rg = 150;
 		}
 		values.Earnings = values.inc_rg*values.conversion;
 		values.totalPoints = values.totalPoints + values.inc_rg;
@@ -6909,7 +6912,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 		values.mag = list.rt_356.nextvalue;
 	} else if (values.rt_shifted > 4958 && values.rt_shifted <= 4972) {
 		values.mag = list.rt_357.nextvalue;
-	} else if (values.rt_shifted > 4986 && values.rt_shifted <= 5000) {
+	} else if (values.rt_shifted > 4972 && values.rt_shifted <= 5000) {
 		values.mag = list.rt_359.nextvalue;
 	}
 	values.freq = 0.7;
@@ -6929,6 +6932,9 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 		}
 		if (values.inc_rg < 10) {
 			values.inc_rg = 10;
+		}
+		if (values.inc_rg > 150){
+			values.inc_rg = 150;
 		}
 		values.totalPoints = values.totalPoints + values.inc;
 		values.Earnings = values.inc_rg*values.conversion;
@@ -7934,22 +7940,35 @@ what you are writing (otherwise the text will not be visible)"
 	} else if (script.groupid==16) {
 		values.index = 275;
 	}
+	
+	if (script.groupid <= 4){
+		values.gauss_sd = 0.001;
+	} else if (script.groupid >4 && script.groupid<=8){
+		values.gauss_sd = 0.05;
+	} else if (script.groupid >8 && script.groupid <=12){
+		values.gauss_sd = 0.10;
+	} else if (script.groupid > 12 && script.groupid <=16){
+		values.gauss_sd = 0.15;
+	}
+	
+	
 	values.meta_trialCount = 0;
 ]
 
 / blocks = [
-	1=instructions;
-	2=experiment;
-	3=experiment;
-	4=break;
-	5=experiment;
-	6=experiment;
-	7=experiment;
-	8=break;
-	9=experiment;
-	10=experiment;
-	11=experiment;
-	12=endscreen;
-	13=questionnaire;
+	//1=instructions;
+	1=experiment;
+	//3=experiment;
+	//3=experiment;
+	//4=break;
+	//5=experiment;
+	//6=experiment;
+	//7=experiment;
+	//8=break;
+	//9=experiment;
+	//10=experiment;
+	//11=experiment;
+	//12=endscreen;
+	//13=questionnaire;
 ]
 </expt>
