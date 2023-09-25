@@ -4492,8 +4492,6 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 	list.rt_357.nextindex;
 	list.rt_358.nextindex;
 	list.rt_359.nextindex;
-	
-	
 	if (values.choose_unc_att1 >= 2 && values.trialCount <= 11 && values.flag1 == false) {
 		// clicking on stimuli, speed up stimulus schedule
 		values.unc_att_start2 = 11;
@@ -4525,8 +4523,6 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 		values.flag6 = true;
 		values.fogPos_out = NULL;
 	}
-	
-	
 	if (values.trialCount >= values.unc_att_start1 && values.trialCount < values.nunc_att1 && values.choose_unc_att1 <= 1) {
 		values.windPos_out = NULL;
 	} else if (values.trialCount >= values.unc_att_start2 && values.trialCount < values.nunc_att2 && values.choose_unc_att2 <= 1) {
@@ -4543,9 +4539,6 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 		values.windPos_out = NULL;
 		values.fogPos_out = NULL;
 	}
-	
-	
-	
 ]
 
 / stimulustimes = [ 0 = fixationCross, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
@@ -4839,7 +4832,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 		values.rt_shifted = mod(values.gamma*(values.startPos-75)+trial.experiment_noU.latency,values.time_per_revolution);
 	}
 	values.pos_shifted = values.rt_shifted*360/values.time_per_revolution;
-	if (values.rt_shifted > 0 && values.rt_shifted <= 14) {
+	if (values.rt_shifted >= 0 && values.rt_shifted <= 14) {
 		values.mag = list.rt_0.nextvalue;
 	} else if (values.rt_shifted > 14 && values.rt_shifted <= 28) {
 		values.mag = list.rt_1.nextvalue;
@@ -5555,7 +5548,9 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 		values.mag = list.rt_356.nextvalue;
 	} else if (values.rt_shifted > 4958 && values.rt_shifted <= 4972) {
 		values.mag = list.rt_357.nextvalue;
-	} else if (values.rt_shifted > 4972 && values.rt_shifted <= 5000) {
+	} else if (values.rt_shifted > 4972 && values.rt_shifted <= 4986) {
+		values.mag = list.rt_358.nextvalue;
+	} else if (values.rt_shifted > 4986 && values.rt_shifted <= 5000) {
 		values.mag = list.rt_359.nextvalue;
 	}
 	values.freq = 0.7;
@@ -5576,7 +5571,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 		if (values.inc_rg < 10) {
 			values.inc_rg = 10;
 		}
-		if (values.inc_rg > 150){
+		if (values.inc_rg > 150) {
 			values.inc_rg = 150;
 		}
 		values.Earnings = values.inc_rg*values.conversion;
@@ -6224,7 +6219,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 		values.rt_shifted = mod(values.gamma*(values.startPos-75)+trial.experiment_U.latency,values.time_per_revolution);
 	}
 	values.pos_shifted = values.rt_shifted*360/values.time_per_revolution;
-	if (values.rt_shifted > 0 && values.rt_shifted <= 14) {
+	if (values.rt_shifted >= 0 && values.rt_shifted <= 14) {
 		values.mag = list.rt_0.nextvalue;
 	} else if (values.rt_shifted > 14 && values.rt_shifted <= 28) {
 		values.mag = list.rt_1.nextvalue;
@@ -6940,7 +6935,9 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 		values.mag = list.rt_356.nextvalue;
 	} else if (values.rt_shifted > 4958 && values.rt_shifted <= 4972) {
 		values.mag = list.rt_357.nextvalue;
-	} else if (values.rt_shifted > 4972 && values.rt_shifted <= 5000) {
+	} else if (values.rt_shifted > 4972 && values.rt_shifted <= 4986) {
+		values.mag = list.rt_358.nextvalue;
+	} else if (values.rt_shifted > 4986 && values.rt_shifted <= 5000) {
 		values.mag = list.rt_359.nextvalue;
 	}
 	values.freq = 0.7;
@@ -6961,7 +6958,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 		if (values.inc_rg < 10) {
 			values.inc_rg = 10;
 		}
-		if (values.inc_rg > 150){
+		if (values.inc_rg > 150) {
 			values.inc_rg = 150;
 		}
 		values.totalPoints = values.totalPoints + values.inc;
@@ -7968,18 +7965,15 @@ what you are writing (otherwise the text will not be visible)"
 	} else if (script.groupid==16) {
 		values.index = 275;
 	}
-	
-	if (script.groupid <= 4){
+	if (script.groupid <= 4) {
 		values.gauss_sd = 0.001;
-	} else if (script.groupid >4 && script.groupid<=8){
+	} else if (script.groupid >4 && script.groupid<=8) {
 		values.gauss_sd = 0.05;
-	} else if (script.groupid >8 && script.groupid <=12){
+	} else if (script.groupid >8 && script.groupid <=12) {
 		values.gauss_sd = 0.10;
-	} else if (script.groupid > 12 && script.groupid <=16){
+	} else if (script.groupid > 12 && script.groupid <=16) {
 		values.gauss_sd = 0.15;
 	}
-	
-	
 	values.meta_trialCount = 0;
 ]
 
