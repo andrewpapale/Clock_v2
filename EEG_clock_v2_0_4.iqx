@@ -5564,7 +5564,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 	if (values.freq >= values.rng) {
 		values.inc = values.mag;
 	} else {
-		values.inc = 1;
+		values.inc = 10;
 	}
 	if (parameters.mushrooms==TRUE  && trial.experiment_noU.latency < 6500) {
 		values.inc_rg = round(randgaussian(values.inc, values.gauss_sd*values.inc));
@@ -6949,7 +6949,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	if (values.freq >= values.rng) {
 		values.inc = values.mag;
 	} else {
-		values.inc = 1;
+		values.inc = 10;
 	}
 	if (parameters.mushrooms==TRUE  && trial.experiment_U.latency < 6500) {
 		values.inc_rg = round(randgaussian(values.inc, values.gauss_sd*values.inc));
