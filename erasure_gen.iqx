@@ -112,7 +112,6 @@ list.triallist.currentindex, list.triallist.currentvalue, list.blocklist.current
 	picture.stim.hposition = expressions.centerx + cos(rad(list.degrees.nextvalue))*expressions.radius_px;
 	picture.stim.vposition = expressions.centery + sin(rad(list.degrees.nextvalue))*expressions.radius_px;
 	picture.stim.rotation = list.degrees.nextvalue - 270;
-	values.trial  += 1;
 	if (mod(values.trial,3)==0){
 		picture.stim.items.1 = ("blank.png")
 	} else if (mod(values.trial, 3)==1) {
@@ -167,8 +166,10 @@ list.triallist.currentindex, list.triallist.currentvalue, list.blocklist.current
 / trials = [
 	1 = list.triallist;
 ]
-/ onblockend = [
+/ branch = [
 	list.blocklist.nextvalue;
+]
+/ onblockend = [
 	list.blocklist.nextindex;
 ]
 
