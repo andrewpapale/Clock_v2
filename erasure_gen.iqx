@@ -62,8 +62,8 @@
 
 <data>
 / columns = (build, computer.platform, computer.touch, date, time, subject, group, script.sessionid, blockcode, blocknum, 
-trialcode,latency, values.trial, values.n_blocks,values.erase_blocks,values.attention_blocks,values.no_blocks,values.block_type
-list.triallist.currentindex, list.triallist.currentvalue, list.blocklist.currentindex,list.blocklist.currentvalue)
+trialcode,latency, values.trial, values.run_trial,values.n_blocks,values.erase_blocks,values.attention_blocks,values.no_blocks,values.block_type
+list.triallist.currentindex, list.blocklist.currentindex)
 </data>
 
 <picture stim>
@@ -150,7 +150,7 @@ list.triallist.currentindex, list.triallist.currentvalue, list.blocklist.current
 / onblockbegin = [
 	values.deg_index=1;
 	values.run_trial = 0; // reset run_trial on each block
-	list.triallist.poolsize = values.n_blocks;
+	list.triallist.poolsize = values.block_length;
 	// algorithm to generate erasure blocks (from clock2_troll_world.R)
 	values.block_type = noreplace("erasure","attention","no_erasure");
 	
