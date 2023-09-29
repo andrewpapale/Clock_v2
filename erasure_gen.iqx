@@ -45,6 +45,7 @@
 / rng = NULL;
 / trial = 0;
 / run_trial = 0;
+/ run_trial_dum = 0; // dummy counter to avoid extra ITI at the end of blocks
 / stim_idx = NULL;
 / erase_prop = 0.33333;
 / attention_prop = 0.33333;
@@ -58,6 +59,10 @@
 / attention_blocks = round(values.attention_prop*values.n_blocks)
 / no_blocks = round(values.no_erasure_prop*values.n_blocks)
 / block_type = NULL;
+/ block = 0;
+/ timeout = 6500; // timeout trials, when the ship runs out of fuel you get 0 mushrooms, in ms
+/ time_per_revolution = 5000; // how many ms does it take to go 360 degrees around the circle
+/ gamma = values.time_per_revolution/100; // conversion factor for computing rt_shifted (circle position is in units of 0-100)
 </values>
 
 <data>
@@ -65,6 +70,26 @@
 trialcode,latency, values.trial, values.run_trial,values.n_blocks,values.erase_blocks,values.attention_blocks,values.no_blocks,values.block_type
 list.triallist.currentindex, list.blocklist.currentindex)
 </data>
+
+<picture animatedCircle>
+/ items = ("challenger-5631958_1280.png")
+/ size = (12%, 0.1px*display.canvaswidth)
+/ animation = circle(values.time_per_revolution,-1,values.startPos,50%,50%,expressions.radius_px)
+/ erase = false
+</picture>
+
+<picture frozenShip>
+/ items = ("challenger-5631958_1280.png")
+/ erase = true(white)
+/ size = (12%, 0.1px*display.canvaswidth)
+</picture>
+
+<picture fixationCross>
+/ items = ("fixationCross.png")
+/ position = (50%, 50%)
+/ size = (7%, 7%)
+/ erase = true(white)
+</picture>
 
 <picture stim>
 / items = ("fog0.png")
@@ -90,9 +115,24 @@ list.triallist.currentindex, list.blocklist.currentindex)
 / erase = true(white)
 </picture>
 
+<picture planet>
+/ items = ("planet-1138237_1280.png")
+/ position = (50%, 50%)
+/ size = (35%,35%)
+/ erase = true(white)
+</picture>
+
 <text central>
 / items = ("<%values.block_type%> <%list.triallist.currentindex%>")
 /position = (50%, 50%)
+</text>
+
+<text feedback>
+/ items = ("You got <% values.inc_rg %> mushroom(s)")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
+/ position = (50%, 60%)
+/ vjustify = center
+/ hjustify = left
 </text>
 
 <trial ITI>
@@ -117,38 +157,146 @@ list.triallist.currentindex, list.blocklist.currentindex)
 ]
 / trialduration = 200
 / branch = [
-	trial.clock;
+	trial.preFreeze;
 ]
 
 </trial>
 
-<trial clock>
+<trial preFreeze>
 / ontrialbegin = [
+	picture.planet.erase = false;
+	picture.stim.erase = false;
+	shape.dot1.erase = false;
+	shape.dot2.erase = false;
+	shape.dot3.erase = false;
+	shape.dot4.erase = false;
+	shape.dot5.erase = false;
+	shape.dot6.erase = false;
+	shape.dot7.erase = false;
+	shape.dot8.erase = false;
+	shape.dot9.erase = false;
+	shape.dot10.erase = false;
+	shape.dot11.erase = false;
+	shape.dot12.erase = false;
+	shape.dot13.erase = false;
+	shape.dot14.erase = false;
+	shape.dot15.erase = false;
+	shape.dot16.erase = false;
+	shape.dot17.erase = false;
+	shape.dot18.erase = false;
+	shape.dot19.erase = false;
+	shape.dot20.erase = false;
+	shape.dot21.erase = false;
+	shape.dot22.erase = false;
+	shape.dot23.erase = false;
+	shape.dot24.erase = false;
+	shape.dot25.erase = false;
+	shape.dot26.erase = false;
+	shape.dot27.erase = false;
+	shape.dot28.erase = false;
+	shape.dot29.erase = false;
+	shape.dot30.erase = false;
+	shape.dot31.erase = false;
+	shape.dot32.erase = false;
+	shape.dot33.erase = false;
+	shape.dot34.erase = false;
+	shape.dot35.erase = false;
+	shape.dot36.erase = false;
+	shape.dot37.erase = false;
+	shape.dot38.erase = false;
+	shape.dot39.erase = false;
+	shape.dot40.erase = false;
+	shape.dot41.erase = false;
+	shape.dot42.erase = false;
+	shape.dot43.erase = false;
+	shape.dot44.erase = false;
+	shape.dot45.erase = false;
+	shape.dot46.erase = false;
+	shape.dot47.erase = false;
+	shape.dot48.erase = false;
+	shape.dot49.erase = false;
+	shape.dot50.erase = false;
+	shape.dot51.erase = false;
+	shape.dot52.erase = false;
+	shape.dot53.erase = false;
+	shape.dot54.erase = false;
+	shape.dot55.erase = false;
+	shape.dot56.erase = false;
+	shape.dot57.erase = false;
+	shape.dot58.erase = false;
+	shape.dot59.erase = false;
+	shape.dot60.erase = false;
 ]
 
-/ stimulusframes = [
-	1 = stim, central, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+/ stimulustimes = [ 0 = planet, stim, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
+]
+/ timeout = list.preClockFreeze.currentvalue
+/ recorddata = false
+/ branch = [
+	trial.experiment
+]
+</trial>
+
+<trial clock>
+/ ontrialbegin = [
+	values.n_revolutions = 0;
+	picture.animatedCircle.erase = false
+	if (parameters.randStart==TRUE) {
+		values.startPos =  round(rand(0, 100));
+	}
+]
+
+/ stimulustimes = [
+	0 = animatedCircle, planet, stim, central, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 		dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 		dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 		dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
 		dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
 		dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 ]
-/ inputdevice = keyboard
-/ validresponse = (" ")
+/ timeout = values.timeout;
+/ validresponse = (" ") 
+/ responseinterrupt = immediate
 / branch = [
-	list.triallist.nextvalue;
+	trial.ISI;
 ]
 / ontrialend = [
 	list.triallist.nextindex;
+	values.run_trial_dum  += 1
 ]
-
-
 </trial>
+
+<trial ISI>
+/ ontrialbegin = [
+	picture.frozenShip.xpct = values.circle_x;
+	picture.frozenShip.ypct = values.circle_y;
+	picture.planet.erase = true;
+]
+/ stimulustimes = [0 = planet, unc_att, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip;
+]
+/ inputdevice = keyboard
+/ timeout = list.ISI.currentvalue
+/ recorddata = false
+/ branch = [
+	return trial.dispFeedback;
+]
+</trial>
+
 
 <block experiment>
 / onblockbegin = [
 	values.deg_index=1;
+	values.run_trial_dum = 1;
 	values.run_trial = 0; // reset run_trial on each block
 	list.triallist.poolsize = values.block_length;
 	// algorithm to generate erasure blocks (from clock2_troll_world.R)
@@ -164,7 +312,7 @@ list.triallist.currentindex, list.blocklist.currentindex)
 	
 ]
 / stop = [
-	values.run_trial > values.block_length
+	values.run_trial_dum > values.block_length
 ]
 / trials = [
 	1 = list.triallist;
@@ -173,6 +321,9 @@ list.triallist.currentindex, list.blocklist.currentindex)
 	list.blocklist.nextvalue;
 ]
 / onblockend = [
+	values.circle_x = picture.animatedCircle.xpct;
+	values.circle_y = picture.animatedCircle.ypct;
+	values.n_revolutions = ipart(script.elapsedtime - picture.animatedCircle.timestamp/values.time_per_revolution);
 	list.blocklist.nextindex;
 ]
 
@@ -181,11 +332,16 @@ list.triallist.currentindex, list.blocklist.currentindex)
 <expt main1>
 / onexptbegin = [
 	list.blocklist.poolsize = values.n_blocks;
+	values.block +=1;
 ]
 
 / blocks = [
 	1 = list.blocklist;
 ]
+/ stop = [
+	values.block >= values.n_blocks
+]
+
 </expt>
 
 <expressions>

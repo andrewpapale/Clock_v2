@@ -302,6 +302,12 @@ values.DEV_factor,values.DEV_factor2,values.sin_factor,values.time_per_revolutio
 / erase = true(white)
 </picture>
 
+<picture planet>
+/ items = ("planet-1138237_1280.png")
+/ position = (50%, 50%)
+/ size = (35%,35%)
+/ erase = true(white)
+</picture>
 
 <picture mushroom1>
 / items = ("mushrooms1.png")
