@@ -16,7 +16,7 @@
 / handDotSize = 3%
 / ntrials = 10;
 / attentional_control = "wind";
-/ local_uncertainty = "fog";
+/ local_uncertainty = "cloud";
 </parameters>
 
 <list degrees>
@@ -88,16 +88,22 @@
 / conversion = 0.03 / 100;
 / totalEarnings = 0;
 / Earnings = NULL;
-/ rt_shifted = NULL;
-/ pos_shifted = NULL;
+/ rt_shifted = 0;
+/ pos_shifted = 0;
 / design_file_index = 0;
 / gauss_sd = 0.001;
+/ mag = 0;
+/ ev = 0;
+/ inc = 0;
+/ inc_rg = 0;
+/ n_revolutions = 0;
+/ startPos = 0;
 </values>
 
 <data>
 / columns = (build, computer.platform, computer.touch, date, time, subject, group, script.sessionid, blockcode, blocknum, 
 trialcode,latency, values.trial, values.run_trial,values.n_blocks,values.erase_blocks,values.attention_blocks,values.no_blocks,values.block_type
-list.triallist.currentindex, list.blocklist.currentindex)
+list.triallist.currentindex, list.blocklist.currentindex,values.startPos)
 </data>
 
 <picture animatedCircle>
@@ -151,13 +157,28 @@ list.triallist.currentindex, list.blocklist.currentindex)
 / erase = true(white)
 </picture>
 
+<picture feedback>
+/ items = ("mushrooms1.png") //default
+/ position = (50%, 50%)
+/ size = (25%, 25%)
+/ erase = true(white)
+</picture>
+
+<picture timeout>
+/ items = ("timeout.png")
+/ position = (50%, 50%)
+/ size = (35%, 35%)
+/ erase = true(white)
+</picture>
+
 <text central>
 / items = ("<%values.block_type%> <%list.triallist.currentindex%>")
 /position = (50%, 50%)
 </text>
 
-<text feedback>
-/ items = ("You got <% values.inc_rg %> mushroom(s)")
+<text feedback1>
+// items = ("You got <% values.inc_rg %> mushroom(s)")
+/ items = ("under construction")
 / fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
 / position = (50%, 60%)
 / vjustify = center
@@ -170,8 +191,8 @@ list.triallist.currentindex, list.blocklist.currentindex)
 	values.run_trial +=1;
 ]
 
-/ stimulusframes = [
-	1 = central, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+/ stimulustimes = [
+	0 = fixationCross, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 		dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 		dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 		dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
@@ -184,7 +205,7 @@ list.triallist.currentindex, list.blocklist.currentindex)
 	picture.stim.vposition = expressions.centery + sin(rad(list.degrees.nextvalue))*expressions.radius_px;
 	picture.stim.rotation = list.degrees.nextvalue - 270;
 ]
-/ trialduration = 200
+/ trialduration = list.ITI.nextvalue;
 / branch = [
 	trial.preFreeze;
 ]
@@ -264,39 +285,39 @@ dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
 dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
 dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 ]
-/ timeout = list.preClockFreeze.currentvalue
-/ recorddata = false
+/ timeout = list.preClockFreeze.nextvalue;
 / branch = [
-	trial.clock;
+	return trial.clock;
 ]
 </trial>
 
 <trial clock>
 / ontrialbegin = [
 	values.n_revolutions = 0;
-	picture.animatedCircle.erase = false
+	picture.animatedCircle.erase = false;
 	if (parameters.randStart==TRUE) {
 		values.startPos =  round(rand(0, 100));
 	}
 ]
 
 / stimulustimes = [
-	0 = planet, stim, central, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+	0 = planet, stim, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 		dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 		dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 		dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
 		dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
-		dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, animatedCircle,;
+		dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, animatedCircle;
 ]
 / timeout = values.timeout;
 / validresponse = (" ") 
+/ inputdevice =  keyboard
 / responseinterrupt = immediate
 / branch = [
-	trial.ISI;
+	return trial.ISI;
 ]
 / ontrialend = [
 	list.triallist.nextindex;
-	values.run_trial_dum  += 1
+	values.run_trial_dum  += 1;
 ]
 </trial>
 
@@ -313,9 +334,7 @@ dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
 dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
 dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip;
 ]
-/ inputdevice = keyboard
 / timeout = list.ISI.currentvalue
-/ recorddata = false
 / branch = [
 	return trial.feedback;
 ]
@@ -323,10 +342,6 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 
 <trial feedback>
 / ontrialbegin = [
-	values.chooseFog1 = 0;
-	values.chooseWind2 = 0;
-	values.chooseFog3 = 0;
-	values.chooseWind4 = 0;
 	if (values.startPos >= 0 && values.startPos < 75) { // shift 0 from 3 o'clock to 12 o'clock
 		values.rt_shifted = mod(values.gamma*(values.startPos+25)+trial.clock.latency,values.time_per_revolution);
 	} else if (values.startPos >= 75) {
@@ -334,6 +349,9 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 	}
 	values.pos_shifted = values.rt_shifted*360/values.time_per_revolution;
 
+	// temp
+	values.mag = 10;
+	
 	values.ev = values.mag * values.freq;
 	values.rng = rand(0,1);
 	if (values.freq >= values.rng) {
@@ -354,7 +372,6 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 		if (values.inc_rg > 150) {
 			values.inc_rg = 150;
 		}
-		values.totalPoints = values.totalPoints + values.inc;
 		values.Earnings = values.inc_rg*values.conversion;
 		values.totalEarnings = values.totalEarnings + values.Earnings;
 		picture.feedback.item.1 = "mushrooms1.png"
@@ -365,16 +382,10 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 		values.totalEarnings = values.totalEarnings + values.Earnings;
 		picture.feedback.item.1 = "timeout.png"
 	}
-	values.chooseAttentionalControl = 0;
-	values.chooseUncertainty = 0;
-
-	
-	
-	
 	
 ]
-/ stimulusframes = [
-	1 = stim, text.feedback1, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+/ stimulustimes = [
+	0 = feedback, text.feedback1, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
@@ -438,7 +449,9 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 
 </expt>
 
-<expressions>
+
+
+<expressions> // useful not to compute positions for dots on every trial to save compute time
 / centerx = 0.5*display.canvaswidth
 / centery = 0.5*display.canvasheight
 / radius_px = parameters.circleproportion * display.canvasheight
