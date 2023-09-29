@@ -40,6 +40,25 @@
 
 </list>
 
+<list ITI>
+/ items = ( 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250, 260, 270, 280, 290, 300, 310, 320, 330, 340, 350, 360, 370, 380, 390, 400, 410, 420, 430, 440, 450, 460, 470, 480, 490, 500)
+/ poolsize = 41
+/ selectionmode = random
+</list>
+
+<list ISI>
+/ items = (200,210,220,230,240,250,260,270,280,290,300,310,320,330,340,350,360,370,380,390,400,410,420,430,440,450,460,470,480,490,500,510,520,530,540,550,560,570,580,590,600)
+/ poolsize = 41
+/ selectionmode = random
+</list>
+
+
+<list preClockFreeze>
+/ items = (500, 510, 520, 530, 540, 550, 560, 570, 580, 590, 600, 610, 620, 630, 640, 650, 660, 670, 680, 690, 700)
+/ poolsize = 21
+/ selectionmode = random
+</list>
+
 <values>
 / deg_index = 1;
 / rng = NULL;
@@ -63,6 +82,16 @@
 / timeout = 6500; // timeout trials, when the ship runs out of fuel you get 0 mushrooms, in ms
 / time_per_revolution = 5000; // how many ms does it take to go 360 degrees around the circle
 / gamma = values.time_per_revolution/100; // conversion factor for computing rt_shifted (circle position is in units of 0-100)
+/ circle_x = 0%;
+/ circle_y = 0%;
+/ freq = 0.7;
+/ conversion = 0.03 / 100;
+/ totalEarnings = 0;
+/ Earnings = NULL;
+/ rt_shifted = NULL;
+/ pos_shifted = NULL;
+/ design_file_index = 0;
+/ gauss_sd = 0.001;
 </values>
 
 <data>
@@ -238,7 +267,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 / timeout = list.preClockFreeze.currentvalue
 / recorddata = false
 / branch = [
-	trial.experiment
+	trial.clock;
 ]
 </trial>
 
@@ -252,12 +281,12 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 ]
 
 / stimulustimes = [
-	0 = animatedCircle, planet, stim, central, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+	0 = planet, stim, central, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 		dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 		dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 		dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
 		dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
-		dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
+		dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, animatedCircle,;
 ]
 / timeout = values.timeout;
 / validresponse = (" ") 
@@ -277,7 +306,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	picture.frozenShip.ypct = values.circle_y;
 	picture.planet.erase = true;
 ]
-/ stimulustimes = [0 = planet, unc_att, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+/ stimulustimes = [0 = planet, stim, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
@@ -288,10 +317,75 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 / timeout = list.ISI.currentvalue
 / recorddata = false
 / branch = [
-	return trial.dispFeedback;
+	return trial.feedback;
 ]
 </trial>
 
+<trial feedback>
+/ ontrialbegin = [
+	values.chooseFog1 = 0;
+	values.chooseWind2 = 0;
+	values.chooseFog3 = 0;
+	values.chooseWind4 = 0;
+	if (values.startPos >= 0 && values.startPos < 75) { // shift 0 from 3 o'clock to 12 o'clock
+		values.rt_shifted = mod(values.gamma*(values.startPos+25)+trial.clock.latency,values.time_per_revolution);
+	} else if (values.startPos >= 75) {
+		values.rt_shifted = mod(values.gamma*(values.startPos-75)+trial.clock.latency,values.time_per_revolution);
+	}
+	values.pos_shifted = values.rt_shifted*360/values.time_per_revolution;
+
+	values.ev = values.mag * values.freq;
+	values.rng = rand(0,1);
+	if (values.freq >= values.rng) {
+		values.inc = values.mag;
+	} else {
+		values.inc = 10;
+	}
+	if (trial.clock.latency < values.timeout) {
+		values.inc_rg = round(randgaussian(values.inc, values.gauss_sd*values.inc));
+		if (values.inc_rg < values.inc - 1.5*values.gauss_sd*values.inc) {
+			values.inc_rg = round(values.inc - 1.5*values.gauss_sd*values.inc);
+		} else if (values.inc_rg > values.inc + 1.5*values.gauss_sd*values.inc) {
+			values.inc_rg = round(values.inc + 1.5*values.gauss_sd*values.inc);
+		}
+		if (values.inc_rg < 10) {
+			values.inc_rg = 10;
+		}
+		if (values.inc_rg > 150) {
+			values.inc_rg = 150;
+		}
+		values.totalPoints = values.totalPoints + values.inc;
+		values.Earnings = values.inc_rg*values.conversion;
+		values.totalEarnings = values.totalEarnings + values.Earnings;
+		picture.feedback.item.1 = "mushrooms1.png"
+	} else {
+		values.inc = 0;
+		values.inc_rg = 0;
+		values.Earnings = 0;
+		values.totalEarnings = values.totalEarnings + values.Earnings;
+		picture.feedback.item.1 = "timeout.png"
+	}
+	values.chooseAttentionalControl = 0;
+	values.chooseUncertainty = 0;
+
+	
+	
+	
+	
+]
+/ stimulusframes = [
+	1 = stim, text.feedback1, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
+]
+/ trialduration = 1000
+// correctresponse = (next)
+/ recorddata = true
+
+</trial>
 
 <block experiment>
 / onblockbegin = [
