@@ -404,6 +404,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	values.stim_center_deg = list.degrees.nextvalue + 90; // to account for 90 degree counterclockwise rotation so 12 o'clock is zero
 	if (values.pos_shifted >= values.stim_center_deg- 26 && values.pos_shifted <= values.stim_center_deg + 26){  // 26 seems to be about the right perceptual threshold for edge of stimulus
 		values.choose_stim = TRUE;
+		values.
 	} else {
 		values.choose_stim = FALSE;
 	}
