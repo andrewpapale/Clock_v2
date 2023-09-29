@@ -31,7 +31,7 @@
 </list>
 
 <list blocklist>
-/ items = (block.rotatetest1)
+/ items = (block.experiment)
 / poolsize = values.n_blocks;
 </list>
 
@@ -51,6 +51,7 @@
 / erase_blocks = round(values.erase_prop*values.n_blocks)
 / attention_blocks = round(values.attention_prop*values.n_blocks)
 / no_blocks = round(values.no_erasure_prop*values.n_blocks)
+/ block_type = NULL;
 </values>
 
 <picture stim>
@@ -78,7 +79,7 @@
 </picture>
 
 <text central>
-/ items = ("<%picture.stim.item.1%> <%list.degrees.currentvalue%>")
+/ items = ("<%values.block_type%> <%list.triallist.currentindex%>")
 /position = (50%, 50%)
 </text>
 
@@ -131,6 +132,7 @@
 / validresponse = (" ")
 / ontrialend = [
 	list.triallist.nextvalue;
+	values.trial +=1;
 ]
 
 
@@ -141,12 +143,12 @@
 	values.deg_index=1;
 	
 	// algorithm to generate erasure blocks (from clock2_troll_world.R)
-	
+	values.block_type = noreplace("erasure","attention","no erasure")
 	
 	
 ]
 / stop = [
-	values.trials > parameters.ntrials
+	values.trial > values.block_length
 ]
 / trials = [
 	1 = list.triallist;
