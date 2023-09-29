@@ -28,17 +28,22 @@
 <list triallist>
 / items = (trial.ITI)
 / poolsize = values.block_length;
+/ selectionrate =  trial
+/ selectionmode = sequence
 </list>
 
 <list blocklist>
 / items = (block.experiment)
 / poolsize = values.n_blocks;
+/ selectionrate = block
+/ selectionmode = sequence
+
 </list>
 
 <values>
 / deg_index = 1;
 / rng = NULL;
-/ trial = 1;
+/ trial = 0;
 / stim_idx = NULL;
 / erase_prop = 0.33333;
 / attention_prop = 0.33333;
@@ -53,6 +58,12 @@
 / no_blocks = round(values.no_erasure_prop*values.n_blocks)
 / block_type = NULL;
 </values>
+
+<data>
+/ columns = (build, computer.platform, computer.touch, date, time, subject, group, script.sessionid, blockcode, blocknum, 
+trialcode,latency, values.trial, values.n_blocks,values.erase_blocks,values.attention_blocks,values.no_blocks,values.block_type
+list.triallist.currentindex, list.triallist.currentvalue, list.blocklist.currentindex,list.blocklist.currentvalue)
+</data>
 
 <picture stim>
 / items = ("fog0.png")
@@ -85,6 +96,7 @@
 
 <trial ITI>
 / ontrialbegin = [
+	values.trial +=1;
 ]
 
 / stimulusframes = [
@@ -134,7 +146,7 @@
 	list.triallist.nextvalue;
 ]
 / ontrialend = [
-	values.trial +=1;
+	list.triallist.nextindex;
 ]
 
 
@@ -157,6 +169,7 @@
 ]
 / onblockend = [
 	list.blocklist.nextvalue;
+	list.blocklist.nextindex;
 ]
 
 </block>
