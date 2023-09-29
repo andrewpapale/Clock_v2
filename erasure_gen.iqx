@@ -114,13 +114,6 @@ list.triallist.currentindex, list.triallist.currentvalue, list.blocklist.current
 	picture.stim.hposition = expressions.centerx + cos(rad(list.degrees.nextvalue))*expressions.radius_px;
 	picture.stim.vposition = expressions.centery + sin(rad(list.degrees.nextvalue))*expressions.radius_px;
 	picture.stim.rotation = list.degrees.nextvalue - 270;
-	if (mod(values.trial,3)==0){
-		picture.stim.items.1 = ("blank.png")
-	} else if (mod(values.trial, 3)==1) {
-		picture.stim.item.1 = ("fog0.png")
-	} else {
-		picture.stim.item.1 = ("wind0.png")
-	}
 ]
 / trialduration = 200
 / branch = [
@@ -159,8 +152,15 @@ list.triallist.currentindex, list.triallist.currentvalue, list.blocklist.current
 	values.run_trial = 0; // reset run_trial on each block
 	list.triallist.poolsize = values.n_blocks;
 	// algorithm to generate erasure blocks (from clock2_troll_world.R)
-	values.block_type = noreplace("erasure","attention","no erasure")
+	values.block_type = noreplace("erasure","attention","no_erasure");
 	
+	if (values.block_type == "no_erasure"){
+		picture.stim.items.1 = ("blank.png")
+	} else if (values.block_type == "attention"){
+		picture.stim.item.1 = ("fog0.png")
+	} else if (values.block_type == "erasure"){
+		picture.stim.item.1 = ("wind0.png")
+	}
 	
 ]
 / stop = [
