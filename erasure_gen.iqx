@@ -1,0 +1,949 @@
+﻿<defaults>
+/ canvasaspectratio = (4,4)
+/ minimumversion = "6.0.0.0"
+/ inputdevice = mouse
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 0)
+/ txbgcolor = white
+/ txcolor = (0, 0, 0)
+</defaults>
+
+<parameters>
+/ rtvspos = "POS" // if POS, the clock position in space matters, if RT, the time from the starting position matters
+/ mushrooms = TRUE;
+/ randStart = TRUE;
+/ circleproportion = 0.33
+/ clockdotSize = 2%
+/ handDotSize = 3%
+/ ntrials = 10;
+/ attentional_control = "wind";
+/ local_uncertainty = "fog";
+</parameters>
+
+<list degrees>
+/ items = (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320, 321, 322, 323, 324, 325, 326, 327, 328, 329, 330, 331, 332, 333, 334, 335, 336, 337, 338, 339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360)
+/ selectionrate = trial
+/ selectionmode = values.deg_index;
+</list>
+
+<list triallist>
+/ items = (trial.ITI)
+/ poolsize = values.block_length;
+</list>
+
+<list blocklist>
+/ items = (block.rotatetest1)
+/ poolsize = values.n_blocks;
+</list>
+
+<values>
+/ deg_index = 1;
+/ rng = NULL;
+/ trial = 1;
+/ stim_idx = NULL;
+/ erase_prop = 0.33333;
+/ attention_prop = 0.33333;
+/ no_erasure_prop = 1 - values.erase_prop - values.attention_prop;
+/ block_length = 15;
+/ disappear_clicks = 2;
+/ timeout_trials = 1;
+/ n_trials = 360;
+/ n_blocks = floor(values.n_trials / values.block_length)
+/ erase_blocks = round(values.erase_prop*values.n_blocks)
+/ attention_blocks = round(values.attention_prop*values.n_blocks)
+/ no_blocks = round(values.no_erasure_prop*values.n_blocks)
+</values>
+
+<picture stim>
+/ items = ("fog0.png")
+/ hposition = expressions.centerx + expressions.widthchange_angle270
+/ vposition = expressions.centery + expressions.heightchange_angle270
+/ size = (30%, 30%)
+/ erase = true(white)
+</picture>
+
+<picture blank>
+/ items = ("blank.png")
+/ hposition = expressions.centerx + expressions.widthchange_angle270
+/ vposition = expressions.centery + expressions.heightchange_angle270
+/ size = (30%, 30%)
+/ erase = true(white)
+</picture>
+
+<picture wind>
+/ items = ("wind0.png")
+/ hposition = expressions.centerx + expressions.widthchange_angle270
+/ vposition = expressions.centery + expressions.heightchange_angle270
+/ size = (30%, 30%)
+/ erase = true(white)
+</picture>
+
+<text central>
+/ items = ("<%picture.stim.item.1%> <%list.degrees.currentvalue%>")
+/position = (50%, 50%)
+</text>
+
+<trial ITI>
+/ ontrialbegin = [
+]
+
+/ stimulusframes = [
+	1 = central, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+		dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+		dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+		dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+		dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+		dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
+]
+/ ontrialend = [
+	values.deg_index = values.deg_index +=1;
+	picture.stim.hposition = expressions.centerx + cos(rad(list.degrees.nextvalue))*expressions.radius_px;
+	picture.stim.vposition = expressions.centery + sin(rad(list.degrees.nextvalue))*expressions.radius_px;
+	picture.stim.rotation = list.degrees.nextvalue - 270;
+	values.trial  += 1;
+	if (mod(values.trial,3)==0){
+		picture.stim.items.1 = ("blank.png")
+	} else if (mod(values.trial, 3)==1) {
+		picture.stim.item.1 = ("fog0.png")
+	} else {
+		picture.stim.item.1 = ("wind0.png")
+	}
+]
+/ trialduration = 200
+/ branch = [
+	trial.clock;
+]
+
+</trial>
+
+<trial clock>
+/ ontrialbegin = [
+]
+
+/ stimulusframes = [
+	1 = stim, central, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+		dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+		dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+		dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+		dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+		dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
+]
+/ inputdevice = keyboard
+/ validresponse = (" ")
+/ ontrialend = [
+	list.triallist.nextvalue;
+]
+
+
+</trial>
+
+<block experiment>
+/ onblockbegin = [
+	values.deg_index=1;
+	
+	// algorithm to generate erasure blocks (from clock2_troll_world.R)
+	
+	
+	
+]
+/ stop = [
+	values.trials > parameters.ntrials
+]
+/ trials = [
+	1 = list.triallist;
+]
+/ onblockend = [
+	list.blocklist.nextvalue;
+]
+
+</block>
+
+<expt main1>
+/ blocks = [
+	1 = list.blocklist;
+]
+</expt>
+
+<expressions>
+/ centerx = 0.5*display.canvaswidth
+/ centery = 0.5*display.canvasheight
+/ radius_px = parameters.circleproportion * display.canvasheight
+/ radians_angle6 = rad(6)
+/ radians_angle12 = rad(12)
+/ radians_angle18 = rad(18)
+/ radians_angle24 = rad(24)
+/ radians_angle30 = rad(30)
+/ radians_angle36 = rad(36)
+/ radians_angle42 = rad(42)
+/ radians_angle48 = rad(48)
+/ radians_angle54 = rad(54)
+/ radians_angle60 = rad(60)
+/ radians_angle66 = rad(66)
+/ radians_angle72 = rad(72)
+/ radians_angle78 = rad(78)
+/ radians_angle84 = rad(84)
+/ radians_angle90 = rad(90)
+/ radians_angle96 = rad(96)
+/ radians_angle102 = rad(102)
+/ radians_angle108 = rad(108)
+/ radians_angle114 = rad(114)
+/ radians_angle120 = rad(120)
+/ radians_angle126 = rad(126)
+/ radians_angle132 = rad(132)
+/ radians_angle138 = rad(138)
+/ radians_angle144 = rad(144)
+/ radians_angle150 = rad(150)
+/ radians_angle156 = rad(156)
+/ radians_angle162 = rad(162)
+/ radians_angle168 = rad(168)
+/ radians_angle174 = rad(174)
+/ radians_angle180 = rad(180)
+/ radians_angle186 = rad(186)
+/ radians_angle192 = rad(192)
+/ radians_angle198 = rad(198)
+/ radians_angle204 = rad(204)
+/ radians_angle210 = rad(210)
+/ radians_angle216 = rad(216)
+/ radians_angle222 = rad(222)
+/ radians_angle228 = rad(228)
+/ radians_angle234 = rad(234)
+/ radians_angle240 = rad(240)
+/ radians_angle246 = rad(246)
+/ radians_angle252 = rad(252)
+/ radians_angle258 = rad(258)
+/ radians_angle264 = rad(264)
+/ radians_angle270 = rad(270)
+/ radians_angle276 = rad(276)
+/ radians_angle282 = rad(282)
+/ radians_angle288 = rad(288)
+/ radians_angle294 = rad(294)
+/ radians_angle300 = rad(300)
+/ radians_angle306 = rad(306)
+/ radians_angle312 = rad(312)
+/ radians_angle318 = rad(318)
+/ radians_angle324 = rad(324)
+/ radians_angle330 = rad(330)
+/ radians_angle336 = rad(336)
+/ radians_angle342 = rad(342)
+/ radians_angle348 = rad(348)
+/ radians_angle354 = rad(354)
+/ heightchange_angle6 = sin(expressions.Radians_angle6) * expressions.radius_px
+/ widthchange_angle6 = cos(expressions.Radians_angle6) * expressions.radius_px
+/ heightchange_angle12 = sin(expressions.Radians_angle12) * expressions.radius_px
+/ widthchange_angle12 = cos(expressions.Radians_angle12) * expressions.radius_px
+/ heightchange_angle18 = sin(expressions.Radians_angle18) * expressions.radius_px
+/ widthchange_angle18 = cos(expressions.Radians_angle18) * expressions.radius_px
+/ heightchange_angle24 = sin(expressions.Radians_angle24) * expressions.radius_px
+/ widthchange_angle24 = cos(expressions.Radians_angle24) * expressions.radius_px
+/ heightchange_angle30 = sin(expressions.Radians_angle30) * expressions.radius_px
+/ widthchange_angle30 = cos(expressions.Radians_angle30) * expressions.radius_px
+/ heightchange_angle36 = sin(expressions.Radians_angle36) * expressions.radius_px
+/ widthchange_angle36 = cos(expressions.Radians_angle36) * expressions.radius_px
+/ heightchange_angle42 = sin(expressions.Radians_angle42) * expressions.radius_px
+/ widthchange_angle42 = cos(expressions.Radians_angle42) * expressions.radius_px
+/ heightchange_angle48 = sin(expressions.Radians_angle48) * expressions.radius_px
+/ widthchange_angle48 = cos(expressions.Radians_angle48) * expressions.radius_px
+/ heightchange_angle54 = sin(expressions.Radians_angle54) * expressions.radius_px
+/ widthchange_angle54 = cos(expressions.Radians_angle54) * expressions.radius_px
+/ heightchange_angle60 = sin(expressions.Radians_angle60) * expressions.radius_px
+/ widthchange_angle60 = cos(expressions.Radians_angle60) * expressions.radius_px
+/ heightchange_angle66 = sin(expressions.Radians_angle66) * expressions.radius_px
+/ widthchange_angle66 = cos(expressions.Radians_angle66) * expressions.radius_px
+/ heightchange_angle72 = sin(expressions.Radians_angle72) * expressions.radius_px
+/ widthchange_angle72 = cos(expressions.Radians_angle72) * expressions.radius_px
+/ heightchange_angle78 = sin(expressions.Radians_angle78) * expressions.radius_px
+/ widthchange_angle78 = cos(expressions.Radians_angle78) * expressions.radius_px
+/ heightchange_angle84 = sin(expressions.Radians_angle84) * expressions.radius_px
+/ widthchange_angle84 = cos(expressions.Radians_angle84) * expressions.radius_px
+/ heightchange_angle90 = sin(expressions.Radians_angle90) * expressions.radius_px
+/ widthchange_angle90 = cos(expressions.Radians_angle90) * expressions.radius_px
+/ heightchange_angle96 = sin(expressions.Radians_angle96) * expressions.radius_px
+/ widthchange_angle96 = cos(expressions.Radians_angle96) * expressions.radius_px
+/ heightchange_angle102 = sin(expressions.Radians_angle102) * expressions.radius_px
+/ widthchange_angle102 = cos(expressions.Radians_angle102) * expressions.radius_px
+/ heightchange_angle108 = sin(expressions.Radians_angle108) * expressions.radius_px
+/ widthchange_angle108 = cos(expressions.Radians_angle108) * expressions.radius_px
+/ heightchange_angle114 = sin(expressions.Radians_angle114) * expressions.radius_px
+/ widthchange_angle114 = cos(expressions.Radians_angle114) * expressions.radius_px
+/ heightchange_angle120 = sin(expressions.Radians_angle120) * expressions.radius_px
+/ widthchange_angle120 = cos(expressions.Radians_angle120) * expressions.radius_px
+/ heightchange_angle126 = sin(expressions.Radians_angle126) * expressions.radius_px
+/ widthchange_angle126 = cos(expressions.Radians_angle126) * expressions.radius_px
+/ heightchange_angle132 = sin(expressions.Radians_angle132) * expressions.radius_px
+/ widthchange_angle132 = cos(expressions.Radians_angle132) * expressions.radius_px
+/ heightchange_angle138 = sin(expressions.Radians_angle138) * expressions.radius_px
+/ widthchange_angle138 = cos(expressions.Radians_angle138) * expressions.radius_px
+/ heightchange_angle144 = sin(expressions.Radians_angle144) * expressions.radius_px
+/ widthchange_angle144 = cos(expressions.Radians_angle144) * expressions.radius_px
+/ heightchange_angle150 = sin(expressions.Radians_angle150) * expressions.radius_px
+/ widthchange_angle150 = cos(expressions.Radians_angle150) * expressions.radius_px
+/ heightchange_angle156 = sin(expressions.Radians_angle156) * expressions.radius_px
+/ widthchange_angle156 = cos(expressions.Radians_angle156) * expressions.radius_px
+/ heightchange_angle162 = sin(expressions.Radians_angle162) * expressions.radius_px
+/ widthchange_angle162 = cos(expressions.Radians_angle162) * expressions.radius_px
+/ heightchange_angle168 = sin(expressions.Radians_angle168) * expressions.radius_px
+/ widthchange_angle168 = cos(expressions.Radians_angle168) * expressions.radius_px
+/ heightchange_angle174 = sin(expressions.Radians_angle174) * expressions.radius_px
+/ widthchange_angle174 = cos(expressions.Radians_angle174) * expressions.radius_px
+/ heightchange_angle180 = sin(expressions.Radians_angle180) * expressions.radius_px
+/ widthchange_angle180 = cos(expressions.Radians_angle180) * expressions.radius_px
+/ heightchange_angle186 = sin(expressions.Radians_angle186) * expressions.radius_px
+/ widthchange_angle186 = cos(expressions.Radians_angle186) * expressions.radius_px
+/ heightchange_angle192 = sin(expressions.Radians_angle192) * expressions.radius_px
+/ widthchange_angle192 = cos(expressions.Radians_angle192) * expressions.radius_px
+/ heightchange_angle198 = sin(expressions.Radians_angle198) * expressions.radius_px
+/ widthchange_angle198 = cos(expressions.Radians_angle198) * expressions.radius_px
+/ heightchange_angle204 = sin(expressions.Radians_angle204) * expressions.radius_px
+/ widthchange_angle204 = cos(expressions.Radians_angle204) * expressions.radius_px
+/ heightchange_angle210 = sin(expressions.Radians_angle210) * expressions.radius_px
+/ widthchange_angle210 = cos(expressions.Radians_angle210) * expressions.radius_px
+/ heightchange_angle216 = sin(expressions.Radians_angle216) * expressions.radius_px
+/ widthchange_angle216 = cos(expressions.Radians_angle216) * expressions.radius_px
+/ heightchange_angle222 = sin(expressions.Radians_angle222) * expressions.radius_px
+/ widthchange_angle222 = cos(expressions.Radians_angle222) * expressions.radius_px
+/ heightchange_angle228 = sin(expressions.Radians_angle228) * expressions.radius_px
+/ widthchange_angle228 = cos(expressions.Radians_angle228) * expressions.radius_px
+/ heightchange_angle234 = sin(expressions.Radians_angle234) * expressions.radius_px
+/ widthchange_angle234 = cos(expressions.Radians_angle234) * expressions.radius_px
+/ heightchange_angle240 = sin(expressions.Radians_angle240) * expressions.radius_px
+/ widthchange_angle240 = cos(expressions.Radians_angle240) * expressions.radius_px
+/ heightchange_angle246 = sin(expressions.Radians_angle246) * expressions.radius_px
+/ widthchange_angle246 = cos(expressions.Radians_angle246) * expressions.radius_px
+/ heightchange_angle252 = sin(expressions.Radians_angle252) * expressions.radius_px
+/ widthchange_angle252 = cos(expressions.Radians_angle252) * expressions.radius_px
+/ heightchange_angle258 = sin(expressions.Radians_angle258) * expressions.radius_px
+/ widthchange_angle258 = cos(expressions.Radians_angle258) * expressions.radius_px
+/ heightchange_angle264 = sin(expressions.Radians_angle264) * expressions.radius_px
+/ widthchange_angle264 = cos(expressions.Radians_angle264) * expressions.radius_px
+/ heightchange_angle270 = sin(expressions.Radians_angle270) * expressions.radius_px
+/ widthchange_angle270 = cos(expressions.Radians_angle270) * expressions.radius_px
+/ heightchange_angle276 = sin(expressions.Radians_angle276) * expressions.radius_px
+/ widthchange_angle276 = cos(expressions.Radians_angle276) * expressions.radius_px
+/ heightchange_angle282 = sin(expressions.Radians_angle282) * expressions.radius_px
+/ widthchange_angle282 = cos(expressions.Radians_angle282) * expressions.radius_px
+/ heightchange_angle288 = sin(expressions.Radians_angle288) * expressions.radius_px
+/ widthchange_angle288 = cos(expressions.Radians_angle288) * expressions.radius_px
+/ heightchange_angle294 = sin(expressions.Radians_angle294) * expressions.radius_px
+/ widthchange_angle294 = cos(expressions.Radians_angle294) * expressions.radius_px
+/ heightchange_angle300 = sin(expressions.Radians_angle300) * expressions.radius_px
+/ widthchange_angle300 = cos(expressions.Radians_angle300) * expressions.radius_px
+/ heightchange_angle306 = sin(expressions.Radians_angle306) * expressions.radius_px
+/ widthchange_angle306 = cos(expressions.Radians_angle306) * expressions.radius_px
+/ heightchange_angle312 = sin(expressions.Radians_angle312) * expressions.radius_px
+/ widthchange_angle312 = cos(expressions.Radians_angle312) * expressions.radius_px
+/ heightchange_angle318 = sin(expressions.Radians_angle318) * expressions.radius_px
+/ widthchange_angle318 = cos(expressions.Radians_angle318) * expressions.radius_px
+/ heightchange_angle324 = sin(expressions.Radians_angle324) * expressions.radius_px
+/ widthchange_angle324 = cos(expressions.Radians_angle324) * expressions.radius_px
+/ heightchange_angle330 = sin(expressions.Radians_angle330) * expressions.radius_px
+/ widthchange_angle330 = cos(expressions.Radians_angle330) * expressions.radius_px
+/ heightchange_angle336 = sin(expressions.Radians_angle336) * expressions.radius_px
+/ widthchange_angle336 = cos(expressions.Radians_angle336) * expressions.radius_px
+/ heightchange_angle342 = sin(expressions.Radians_angle342) * expressions.radius_px
+/ widthchange_angle342 = cos(expressions.Radians_angle342) * expressions.radius_px
+/ heightchange_angle348 = sin(expressions.Radians_angle348) * expressions.radius_px
+/ widthchange_angle348 = cos(expressions.Radians_angle348) * expressions.radius_px
+/ heightchange_angle354 = sin(expressions.Radians_angle354) * expressions.radius_px
+/ widthchange_angle354 = cos(expressions.Radians_angle354) * expressions.radius_px
+/ heightchange_angle0 = 0
+/ widthchange_angle0 = expressions.radius_px
+
+</expressions>
+
+<shape dot1>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle276)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle276)
+/ erase = true(white)
+</shape>
+ 
+<shape dot2>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*3,255/61*3,255/61*3)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle282)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle282)
+/ erase = true(white)
+</shape>
+ 
+<shape dot3>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*4,255/61*4,255/61*4)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle288)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle288)
+/ erase = true(white)
+</shape>
+ 
+<shape dot4>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*5,255/61*5,255/61*5)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle294)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle294)
+/ erase = true(white)
+</shape>
+ 
+<shape dot5>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*6,255/61*6,255/61*6)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle300)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle300)
+/ erase = true(white)
+</shape>
+ 
+<shape dot6>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*7,255/61*7,255/61*7)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle306)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle306)
+/ erase = true(white)
+</shape>
+ 
+<shape dot7>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*8,255/61*8,255/61*8)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle312)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle312)
+/ erase = true(white)
+</shape>
+ 
+<shape dot8>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*9,255/61*9,255/61*9)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle318)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle318)
+/ erase = true(white)
+</shape>
+ 
+<shape dot9>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*10,255/61*10,255/61*10)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle324)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle324)
+/ erase = true(white)
+</shape>
+ 
+<shape dot10>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*11,255/61*11,255/61*11)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle330)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle330)
+/ erase = true(white)
+</shape>
+ 
+<shape dot11>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*12,255/61*12,255/61*12)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle336)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle336)
+/ erase = true(white)
+</shape>
+ 
+<shape dot12>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*13,255/61*13,255/61*13)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle342)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle342)
+/ erase = true(white)
+</shape>
+ 
+<shape dot13>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*14,255/61*14,255/61*14)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle348)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle348)
+/ erase = true(white)
+</shape>
+ 
+<shape dot14>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*15,255/61*15,255/61*15)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle354)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle354)
+/ erase = true(white)
+</shape>
+ 
+<shape dot15>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*16,255/61*16,255/61*16)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle0)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle0)
+/ erase = true(white)
+</shape>
+
+<shape dot16>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*17,255/61*17,255/61*17)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle6)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle6)
+/ erase = true(white)
+</shape>
+ 
+<shape dot17>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*18,255/61*18,255/61*18)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle12)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle12)
+/ erase = true(white)
+</shape>
+ 
+<shape dot18>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*19,255/61*19,255/61*19)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle18)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle18)
+/ erase = true(white)
+</shape>
+ 
+<shape dot19>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*19,255/61*19,255/61*19)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle24)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle24)
+/ erase = true(white)
+</shape>
+ 
+<shape dot20>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*20,255/61*20,255/61*20)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle30)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle30)
+/ erase = true(white)
+</shape>
+ 
+<shape dot21>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*21,255/61*21,255/61*21)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle36)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle36)
+/ erase = true(white)
+</shape>
+ 
+<shape dot22>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*22,255/61*22,255/61*22)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle42)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle42)
+/ erase = true(white)
+</shape>
+ 
+<shape dot23>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*23,255/61*23,255/61*23)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle48)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle48)
+/ erase = true(white)
+</shape>
+ 
+<shape dot24>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*24,255/61*24,255/61*24)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle54)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle54)
+/ erase = true(white)
+</shape>
+ 
+<shape dot25>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*25,255/61*25,255/61*25)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle60)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle60)
+/ erase = true(white)
+</shape>
+ 
+<shape dot26>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*26,255/61*26,255/61*26)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle66)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle66)
+/ erase = true(white)
+</shape>
+ 
+<shape dot27>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*27,255/61*27,255/61*27)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle72)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle72)
+/ erase = true(white)
+</shape>
+ 
+<shape dot28>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*28,255/61*28,255/61*28)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle78)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle78)
+/ erase = true(white)
+</shape>
+ 
+<shape dot29>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*29,255/61*29,255/61*29)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle84)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle84)
+/ erase = true(white)
+</shape>
+ 
+<shape dot30>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*30,255/61*30,255/61*30)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle90)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle90)
+/ erase = true(white)
+</shape>
+ 
+<shape dot31>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*31,255/61*31,255/61*31)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle96)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle96)
+/ erase = true(white)
+</shape>
+ 
+<shape dot32>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*32,255/61*32,255/61*32)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle102)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle102)
+/ erase = true(white)
+</shape>
+ 
+<shape dot33>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*33,255/61*33,255/61*33)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle108)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle108)
+/ erase = true(white)
+</shape>
+ 
+<shape dot34>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*34,255/61*34,255/61*34)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle114)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle114)
+/ erase = true(white)
+</shape>
+ 
+<shape dot35>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*35,255/61*35,255/61*35)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle120)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle120)
+/ erase = true(white)
+</shape>
+ 
+<shape dot36>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*36,255/61*36,255/61*36)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle126)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle126)
+/ erase = true(white)
+</shape>
+ 
+<shape dot37>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*37,255/61*37,255/61*37)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle132)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle132)
+/ erase = true(white)
+</shape>
+ 
+<shape dot38>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*38,255/61*38,255/61*38)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle138)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle138)
+/ erase = true(white)
+</shape>
+ 
+<shape dot39>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*39,255/61*39,255/61*39)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle144)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle144)
+/ erase = true(white)
+</shape>
+ 
+<shape dot40>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*40,255/61*40,255/61*40)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle150)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle150)
+/ erase = true(white)
+</shape>
+ 
+<shape dot41>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*41,255/61*41,255/61*41)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle156)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle156)
+/ erase = true(white)
+</shape>
+ 
+<shape dot42>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*42,255/61*42,255/61*42)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle162)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle162)
+/ erase = true(white)
+</shape>
+ 
+<shape dot43>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*43,255/61*43,255/61*43)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle168)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle168)
+/ erase = true(white)
+</shape>
+ 
+<shape dot44>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*44,255/61*44,255/61*44)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle174)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle174)
+/ erase = true(white)
+</shape>
+ 
+<shape dot45>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*45,255/61*45,255/61*45)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle180)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle180)
+/ erase = true(white)
+</shape>
+ 
+<shape dot46>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*46,255/61*46,255/61*46)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle186)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle186)
+/ erase = true(white)
+</shape>
+ 
+<shape dot47>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*47,255/61*47,255/61*47)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle192)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle192)
+/ erase = true(white)
+</shape>
+ 
+<shape dot48>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*48,255/61*48,255/61*48)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle198)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle198)
+/ erase = true(white)
+</shape>
+ 
+<shape dot49>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*49,255/61*49,255/61*49)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle204)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle204)
+/ erase = true(white)
+</shape>
+ 
+<shape dot50>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*50,255/61*50,255/61*50)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle210)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle210)
+/ erase = true(white)
+</shape>
+ 
+<shape dot51>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*51,255/61*51,255/61*51)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle216)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle216)
+/ erase = true(white)
+</shape>
+ 
+<shape dot52>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*52,255/61*52,255/61*52)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle222)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle222)
+/ erase = true(white)
+</shape>
+ 
+<shape dot53>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*53,255/61*53,255/61*53)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle228)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle228)
+/ erase = true(white)
+</shape>
+ 
+<shape dot54>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*54,255/61*54,255/61*54)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle234)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle234)
+/ erase = true(white)
+</shape>
+ 
+<shape dot55>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*55,255/61*55,255/61*55)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle240)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle240)
+/ erase = true(white)
+</shape>
+ 
+<shape dot56>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*56,255/61*56,255/61*56)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle246)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle246)
+/ erase = true(white)
+</shape>
+ 
+<shape dot57>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*57,255/61*57,255/61*57)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle252)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle252)
+/ erase = true(white)
+</shape>
+ 
+<shape dot58>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*58,255/61*58,255/61*58)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle258)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle258)
+/ erase = true(white)
+</shape>
+ 
+<shape dot59>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*59,255/61*59,255/61*59)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle264)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle264)
+/ erase = true(white)
+</shape>
+ 
+<shape dot60>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*60,255/61*60,255/61*60)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle270)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle270)
+/ erase = true(white)
+</shape>
