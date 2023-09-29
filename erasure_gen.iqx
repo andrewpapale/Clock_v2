@@ -44,6 +44,7 @@
 / deg_index = 1;
 / rng = NULL;
 / trial = 0;
+/ run_trial = 0;
 / stim_idx = NULL;
 / erase_prop = 0.33333;
 / attention_prop = 0.33333;
@@ -97,6 +98,7 @@ list.triallist.currentindex, list.triallist.currentvalue, list.blocklist.current
 <trial ITI>
 / ontrialbegin = [
 	values.trial +=1;
+	values.run_trial +=1;
 ]
 
 / stimulusframes = [
@@ -154,6 +156,7 @@ list.triallist.currentindex, list.triallist.currentvalue, list.blocklist.current
 <block experiment>
 / onblockbegin = [
 	values.deg_index=1;
+	values.run_trial = 0; // reset run_trial on each block
 	list.triallist.poolsize = values.n_blocks;
 	// algorithm to generate erasure blocks (from clock2_troll_world.R)
 	values.block_type = noreplace("erasure","attention","no erasure")
@@ -161,7 +164,7 @@ list.triallist.currentindex, list.triallist.currentvalue, list.blocklist.current
 	
 ]
 / stop = [
-	values.trial > values.block_length
+	values.run_trial > values.block_length
 ]
 / trials = [
 	1 = list.triallist;
