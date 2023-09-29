@@ -103,9 +103,9 @@
 </values>
 
 <data>
-/ columns = (build, computer.platform, computer.touch, date, time, subject, group, script.sessionid, blockcode, blocknum, 
+/ columns = (build, computer.platform, computer.touch, date, time, subject, group, script.sessionid, blockcode, blocknum,values.block,values.n_blocks,
 trialcode,latency, values.trial, values.run_trial,values.n_blocks,values.erase_blocks,values.attention_blocks,values.no_blocks,values.block_type
-list.triallist.currentindex, list.blocklist.currentindex,values.startPos, values.stim_center_deg, values.choose_stim)
+list.triallist.currentindex, list.blocklist.currentindex,values.startPos, values.stim_center_deg, values.choose_stim,values.run_trial_dum)
 </data>
 
 <picture animatedCircle>
@@ -117,7 +117,7 @@ list.triallist.currentindex, list.blocklist.currentindex,values.startPos, values
 
 <picture frozenShip>
 / items = ("challenger-5631958_1280.png")
-/ erase = false
+/ erase = true(white)
 / size = (12%, 0.1px*display.canvaswidth)
 </picture>
 
@@ -320,7 +320,6 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	values.circle_x = picture.animatedCircle.xpct;
 	values.circle_y = picture.animatedCircle.ypct;
 	values.n_revolutions = ipart(script.elapsedtime - picture.animatedCircle.timestamp/values.time_per_revolution);
-	list.triallist.nextindex;
 	values.run_trial_dum  += 1;
 ]
 </trial>
@@ -330,15 +329,16 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	picture.frozenShip.xpct = values.circle_x;
 	picture.frozenShip.ypct = values.circle_y;
 	picture.planet.erase = true;
+	picture.stim.erase = true;
 ]
-/ stimulustimes = [0 = stim, frozenShip, planet, center, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+/ stimulustimes = [0 = stim, planet, center, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
 dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
-dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip;
 ]
-/ timeout = list.ISI.currentvalue
+/ timeout = list.ISI.nextvalue;
 / branch = [
 	return trial.feedback;
 ]
@@ -402,12 +402,15 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 / ontrialend = [
 	// now we have to convert pos_shifted into 'screen' coordinates which the stimuli are on
 	values.stim_center_deg = list.degrees.nextvalue + 90; // to account for 90 degree counterclockwise rotation so 12 o'clock is zero
-	if (values.pos_shifted >= values.stim_center_deg- 26 && values.pos_shifted <= values.stim_center_deg + 26){
+	if (values.pos_shifted >= values.stim_center_deg- 26 && values.pos_shifted <= values.stim_center_deg + 26){  // 26 seems to be about the right perceptual threshold for edge of stimulus
 		values.choose_stim = TRUE;
 	} else {
 		values.choose_stim = FALSE;
 	}
-	]
+]
+/ branch = [
+	list.triallist.nextvalue;
+]
 </trial>
 
 <block experiment>
@@ -426,7 +429,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	} else if (values.block_type == "erasure"){
 		picture.stim.item.1 = ("wind0.png")
 	}
-	
+	values.block +=1;
 	values.deg_index = 31;
 	list.degrees.nextvalue;
 	
@@ -437,11 +440,8 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 / trials = [
 	1 = list.triallist;
 ]
-/ branch = [
-	list.blocklist.nextvalue;
-]
 / onblockend = [
-	list.blocklist.nextindex;
+	list.blocklist.nextvalue;
 ]
 
 </block>
@@ -449,7 +449,6 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 <expt main1>
 / onexptbegin = [
 	list.blocklist.poolsize = values.n_blocks;
-	values.block +=1;
 ]
 
 / blocks = [
