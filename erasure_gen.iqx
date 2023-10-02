@@ -26,7 +26,7 @@
 <list triallist>
 / items = (trial.ITI)
 / poolsize = values.block_length;
-/ selectionrate =  trial
+/ selectionrate = trial
 / selectionmode = sequence
 </list>
 
@@ -77,6 +77,7 @@
 / disappear_clicks = 2;
 / timeout_trials = 1;
 / n_trials = 345;
+/ n_trials_original = values.n_trials;
 / n_blocks = floor(values.n_trials / values.block_length)
 / erase_blocks = round(values.erase_prop*values.n_blocks)
 / attention_blocks = round(values.attention_prop*values.n_blocks)
@@ -115,7 +116,7 @@
 
 <data>
 / columns = (build, computer.platform, computer.touch, date, time, subject, group, script.sessionid, blockcode, blocknum,values.block,values.n_blocks,
-trialcode,latency,values.best, values.rem0, values.rem1, values.rem2, values.rem3, values.rem4, values.rem5, values.trial, values.run_trial,values.erase_blocks,values.attention_blocks,values.no_blocks,values.block_type
+trialcode,latency,values.n_trials, values.n_trials_original,values.best, values.rem0, values.rem1, values.rem2, values.rem3, values.rem4, values.rem5, values.trial, values.run_trial,values.erase_blocks,values.attention_blocks,values.no_blocks,values.block_type
 list.triallist.currentindex, list.blocklist.currentindex,values.startPos, values.stim_center_deg, values.choose_stim,values.run_trial_dum)
 </data>
 
@@ -187,7 +188,7 @@ list.triallist.currentindex, list.blocklist.currentindex,values.startPos, values
 <text center>
 // items = ("center = <%values.stim_center_deg%>, pos_sh = <%values.pos_shifted%> choose = <%values.choose_stim%>")
 / items = ("best = <%values.best%>, <%values.rem0%> <%values.rem1%> <%values.rem2%> <%values.rem3%> <%values.rem4%> <%values.rem5%>")
-/position = (50%, 50%)
+/ position = (50%, 50%)
 </text>
 
 <text feedback1>
@@ -203,35 +204,43 @@ list.triallist.currentindex, list.blocklist.currentindex,values.startPos, values
 / ontrialbegin = [
 	values.trial +=1;
 	values.run_trial +=1;
-	
+	if (values.trial < values.n_trials_original - 15) {
+		// do not do this operation on the last block
 	// algorithm to generate erasure blocks (from clock2_troll_world.R)
 	values.rem0 = mod(values.n_trials / values.block_length - 0, 3);
-	values.rem1 = mod(values.n_trials / values.block_length - 1, 3);
-	values.rem2 = mod(values.n_trials / values.block_length - 2, 3);
-	values.rem3 = mod(values.n_trials / values.block_length - 3, 3);
-	values.rem4 = mod(values.n_trials / values.block_length - 4, 3);
-	values.rem5 = mod(values.n_trials / values.block_length - 5, 3);
-	
-	list.best.nextvalue;
-	values.best = -1;
-	
-	if (values.best==-1){
-		values.best = list.best.indexof(0); // if it can't find a value it seems to return -1
-	}
-	if (values.best==-1){
-		values.best = list.best.indexof(1);
-	}
-	if (values.best==-1){
-		values.best = list.best.indexof(2);
-	}
-	if (values.best==-1){
-		values.best = list.best.indexof(3);
-	}
-	if (values.best==-1){
-		values.best = list.best.indexof(4);
-	}
-	if (values.best==-1){
-		values.best = list.best.indexof(5);
+		values.rem1 = mod(values.n_trials / values.block_length - 1, 3);
+		values.rem2 = mod(values.n_trials / values.block_length - 2, 3);
+		values.rem3 = mod(values.n_trials / values.block_length - 3, 3);
+		values.rem4 = mod(values.n_trials / values.block_length - 4, 3);
+		values.rem5 = mod(values.n_trials / values.block_length - 5, 3);
+		list.best.nextvalue;
+		values.best = -1;
+		if (values.best==-1) {
+			values.best = list.best.indexof(0);
+			// if it can't find a value it seems to return -1
+		}
+		if (values.best==-1) {
+			values.best = list.best.indexof(1);
+		}
+		if (values.best==-1) {
+			values.best = list.best.indexof(2);
+		}
+		if (values.best==-1) {
+			values.best = list.best.indexof(3);
+		}
+		if (values.best==-1) {
+			values.best = list.best.indexof(4);
+		}
+		if (values.best==-1) {
+			values.best = list.best.indexof(5);
+		}
+		if (values.best <= 0) {
+			values.block_length = values.block_length  - values.best + 1;
+		}
+		values.n_blocks = floor(values.n_trials / values.block_length)
+	values.erase_blocks = round(values.erase_prop * values.n_blocks)
+	values.attention_blocks = round(values.attention_prop * values.n_blocks)
+	values.no_blocks = round(values.no_erasure_prop * values.n_blocks)
 	}
 ]
 
@@ -246,7 +255,8 @@ list.triallist.currentindex, list.blocklist.currentindex,values.startPos, values
 / ontrialend = [
 	picture.stim.hposition = expressions.centerx + cos(rad(list.degrees.nextvalue))*expressions.radius_px;
 	picture.stim.vposition = expressions.centery + sin(rad(list.degrees.nextvalue))*expressions.radius_px;
-	picture.stim.rotation = list.degrees.nextvalue - 270;  // this rotates the stimulus in the correct position
+	picture.stim.rotation = list.degrees.nextvalue - 270;
+	// this rotates the stimulus in the correct position
 ]
 / trialduration = list.ITI.nextvalue;
 / branch = [
@@ -353,7 +363,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 ]
 / timeout = values.timeout;
 / validresponse = (" ") 
-/ inputdevice =  keyboard
+/ inputdevice = keyboard
 / responseinterrupt = immediate
 / branch = [
 	return trial.ISI;
@@ -388,16 +398,15 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 
 <trial feedback>
 / ontrialbegin = [
-	if (values.startPos >= 0 && values.startPos < 75) { // shift 0 from 3 o'clock to 12 o'clock
+	if (values.startPos >= 0 && values.startPos < 75) {
+		// shift 0 from 3 o'clock to 12 o'clock
 		values.rt_shifted = mod(values.gamma*(values.startPos+25)+trial.clock.latency,values.time_per_revolution);
 	} else if (values.startPos >= 75) {
 		values.rt_shifted = mod(values.gamma*(values.startPos-75)+trial.clock.latency,values.time_per_revolution);
 	}
 	values.pos_shifted = values.rt_shifted*360/values.time_per_revolution;
-
 	// temp
 	values.mag = 10;
-	
 	values.ev = values.mag * values.freq;
 	values.rng = rand(0,1);
 	if (values.freq >= values.rng) {
@@ -428,7 +437,6 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 		values.totalEarnings = values.totalEarnings + values.Earnings;
 		picture.feedback.item.1 = "timeout.png"
 	}
-	
 ]
 / stimulustimes = [
 	0 = feedback, text.feedback1, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
@@ -443,8 +451,10 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 / recorddata = true
 / ontrialend = [
 	// now we have to convert pos_shifted into 'screen' coordinates which the stimuli are on
-	values.stim_center_deg = list.degrees.nextvalue + 90; // to account for 90 degree counterclockwise rotation so 12 o'clock is zero
-	if (values.pos_shifted >= values.stim_center_deg- 15 && values.pos_shifted <= values.stim_center_deg + 15){  // 15 + 15 = 30 degrees of arc
+	values.stim_center_deg = list.degrees.nextvalue + 90;
+	// to account for 90 degree counterclockwise rotation so 12 o'clock is zero
+	if (values.pos_shifted >= values.stim_center_deg- 15 && values.pos_shifted <= values.stim_center_deg + 15) {
+		// 15 + 15 = 30 degrees of arc
 		values.choose_stim = TRUE;
 	} else {
 		values.choose_stim = FALSE;
@@ -459,22 +469,24 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 / onblockbegin = [
 	values.deg_index=1;
 	values.run_trial_dum = 1;
-	values.run_trial = 0; // reset run_trial on each block
+	values.run_trial = 0;
+	// reset run_trial on each block
 	list.triallist.poolsize = values.block_length;
-	
 	values.block_type = noreplace("erasure","attention","no_erasure");
-	
-	if (values.block_type == "no_erasure"){
+	if (values.block_type == "no_erasure") {
 		picture.stim.items.1 = ("blank.png")
-	} else if (values.block_type == "attention"){
+	} else if (values.block_type == "attention") {
 		picture.stim.item.1 = ("fog0.png")
-	} else if (values.block_type == "erasure"){
+	} else if (values.block_type == "erasure") {
 		picture.stim.item.1 = ("wind0.png")
 	}
 	values.block +=1;
 	values.deg_index = 31;
 	list.degrees.nextvalue;
-	
+	if (values.block==values.n_blocks && values.trial < values.n_trials_original) {
+		values.block_length = values.block_length + (values.n_trials_original - values.n_trials);
+		// lengthen last block if it is less than the desired total number of trials
+	}
 ]
 / stop = [
 	values.run_trial_dum > values.block_length  // default is 15, this will change dynamically in trial ITI (hopefully)
