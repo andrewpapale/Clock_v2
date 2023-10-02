@@ -234,7 +234,7 @@ list.triallist.currentindex, list.blocklist.currentindex,values.startPos, values
 		values.rem5 = mod((values.n_trials-values.trial) / values.block_length - 5, 3);
 		list.best.nextvalue;
 		values.best = -1;
-		values.min = NULL;
+		values.min_rem = NULL;
 		// https://forums.millisecond.com/Topic35675.aspx?Update=1
 		values.min_rem = list.best.minimum;
 		if (values.best==-1) {
@@ -493,15 +493,15 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	if (values.generate_new_erasure==TRUE) {
 		values.block_type = noreplace("erasure","attention","no_erasure");
 		if (values.block_type == "no_erasure") {
-			picture.stim.items.1 = ("blank.png")
+			picture.stim.items.1 = ("blank.png");
 			values.n_clicks = NULL;
 		values.has_erasure = FALSE;
 		} else if (values.block_type == "attention") {
-			picture.stim.item.1 = ("fog0.png")
+			picture.stim.item.1 = ("fog0.png");
 			values.has_erasure = TRUE;
 			values.n_clicks = 0;
 		} else if (values.block_type == "erasure") {
-			picture.stim.item.1 = ("wind0.png")
+			picture.stim.item.1 = ("wind0.png");
 			values.has_erasure = TRUE;
 			values.n_clicks = 0;
 		}
