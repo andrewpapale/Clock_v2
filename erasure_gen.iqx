@@ -76,6 +76,7 @@
 / attention_prop = 0.33333;
 / no_erasure_prop = 1 - values.erase_prop - values.attention_prop;
 / block_length = 15;
+/ block_length_original = values.block_length;
 / disappear_clicks = 2;
 / timeout_trials = 1;
 / n_trials = 345;
@@ -119,6 +120,9 @@
 / generate_new_erasure = TRUE;
 / total_clicks = 2;
 / n_clicks = NULL;
+/ timeout_block = FALSE;
+/ timeouts_remain = 3;
+/ end_block = NULL;
 </values>
 
 <data>
@@ -211,28 +215,23 @@ list.triallist.currentindex, list.blocklist.currentindex,values.startPos, values
 / ontrialbegin = [
 	values.trial +=1;
 	values.run_trial +=1;
-	if (values.trial >= values.n_trials - values.block_length) {
+	if (values.timeout_block==TRUE){
+		values.timeouts_remain -= 1; // decrement timeouts trials remaining by 1 if in timeout block
+	}
+	if (values.trial >= values.n_trials - values.block_length_original) {
 	// I don't think it's possible to miss this condition?
 		values.last_block_flag = TRUE;
 		values.n_trials = values.n_trials - values.trial;
 	}
-	
-	// dynamically account for stimulus erasure choice
-	if (values.choose_stim >= values.total_clicks){
-		values.generate_new_erasure = FALSE;
-		
-	}
-	
-	
-	if (values.last_block_flag == FALSE) {
+	if (values.last_block_flag == FALSE && values.timeout_block == FALSE) {
 		// do not do this operation on the last block
 		// algorithm to generate erasure blocks (from clock2_troll_world.R)
-		values.rem0 = mod(values.n_trials / values.block_length - 0, 3);
-		values.rem1 = mod(values.n_trials / values.block_length - 1, 3);
-		values.rem2 = mod(values.n_trials / values.block_length - 2, 3);
-		values.rem3 = mod(values.n_trials / values.block_length - 3, 3);
-		values.rem4 = mod(values.n_trials / values.block_length - 4, 3);
-		values.rem5 = mod(values.n_trials / values.block_length - 5, 3);
+		values.rem0 = mod((values.n_trials-values.trial) / values.block_length - 0, 3);
+		values.rem1 = mod((values.n_trials-values.trial) / values.block_length - 1, 3);
+		values.rem2 = mod((values.n_trials-values.trial) / values.block_length - 2, 3);
+		values.rem3 = mod((values.n_trials-values.trial) / values.block_length - 3, 3);
+		values.rem4 = mod((values.n_trials-values.trial) / values.block_length - 4, 3);
+		values.rem5 = mod((values.n_trials-values.trial) / values.block_length - 5, 3);
 		list.best.nextvalue;
 		values.best = -1;
 		values.min = NULL;
@@ -242,7 +241,7 @@ list.triallist.currentindex, list.blocklist.currentindex,values.startPos, values
 			values.best = list.best.indexof(values.min_rem);
 		}
 		if (values.min > 0) {
-			values.block_length = values.block_length  - values.best + 1;
+			values.block_length = values.block_length_original  - values.best + 1;
 		}
 		values.n_blocks = floor(values.n_trials / values.block_length)
 		values.erase_blocks = round(values.erase_prop * values.n_blocks)
@@ -463,8 +462,19 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	if (values.pos_shifted >= values.stim_center_deg- 15 && values.pos_shifted <= values.stim_center_deg + 15) {
 		// 15 + 15 = 30 degrees of arc
 		values.choose_stim = TRUE;
+		values.n_clicks = values.n_clicks +=1;
 	} else {
 		values.choose_stim = FALSE;
+	}
+	// dynamically account for stimulus erasure choice
+	if (values.n_clicks >= values.total_clicks){
+		values.generate_new_erasure = FALSE;
+		values.timeout_block = TRUE;
+		values.end_block = TRUE; // current block automatically ends
+	}
+	if (values.timeouts_remain == 0){
+		values.timeout_block = FALSE;
+		values.end_block = TRUE; // current block automatically ends
 	}
 ]
 / branch = [
@@ -477,6 +487,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	values.deg_index=1;
 	values.run_trial_dum = 1;
 	values.run_trial = 0;
+	values.end_block = FALSE;
 	// reset run_trial on each block
 	list.triallist.poolsize = values.block_length;
 	if (values.generate_new_erasure==TRUE) {
@@ -498,13 +509,14 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 		values.block_type = "no_erasure";
 		values.has_erasure = FALSE;
 	}
+	if (values.timeout_block==TRUE){
+	}
 	values.block +=1;
-	values.last_deg_index = values.deg_index;
 	values.deg_index = noreplace(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36);  // will need to make this dynamic
 	list.degrees.nextvalue;
 ]
 / stop = [
-	values.run_trial_dum > values.block_length  // default is 15, this will change dynamically in trial ITI (hopefully)
+	values.run_trial_dum > values.block_length && values.end_block != TRUE   // default is 15, this will change dynamically in trial ITI (hopefully)
 ]
 / trials = [
 	1 = list.triallist;
