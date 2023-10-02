@@ -77,7 +77,6 @@
 / disappear_clicks = 2;
 / timeout_trials = 1;
 / n_trials = 345;
-/ n_trials_original = values.n_trials;
 / n_blocks = floor(values.n_trials / values.block_length)
 / erase_blocks = round(values.erase_prop*values.n_blocks)
 / attention_blocks = round(values.attention_prop*values.n_blocks)
@@ -114,6 +113,7 @@
 / best = NULL;
 / last_block_flag = FALSE;
 / min_rem = NULL;
+/ has_erasure = NULL;
 </values>
 
 <data>
@@ -206,6 +206,12 @@ list.triallist.currentindex, list.blocklist.currentindex,values.startPos, values
 / ontrialbegin = [
 	values.trial +=1;
 	values.run_trial +=1;
+	
+	if (values.trial >= values.n_trials - values.block_length){ // I don't think it's possible to miss this condition?
+		values.last_block_flag = TRUE;
+		values.n_trials = values.n_trials - values.trial;
+	}
+	
 	if (values.last_block_flag == TRUE) { // do not do this operation on the last block
 		// algorithm to generate erasure blocks (from clock2_troll_world.R)
 		values.rem0 = mod(values.n_trials / values.block_length - 0, 3);
@@ -219,10 +225,10 @@ list.triallist.currentindex, list.blocklist.currentindex,values.startPos, values
 		values.min = NULL;
 		// https://forums.millisecond.com/Topic35675.aspx?Update=1
 		values.min_rem = list.best.minimum;
-		if (values.best==NULL) {
+		if (values.best==-1) {
 			values.best = list.best.indexof(values.min_rem); 
 		}
-		if (values.best <= 0) {
+		if (values.min > 0) {
 			values.block_length = values.block_length  - values.best + 1;
 		}
 		values.n_blocks = floor(values.n_trials / values.block_length)
@@ -463,19 +469,18 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	values.block_type = noreplace("erasure","attention","no_erasure");
 	if (values.block_type == "no_erasure") {
 		picture.stim.items.1 = ("blank.png")
+		values.has_erasure = FALSE;
 	} else if (values.block_type == "attention") {
 		picture.stim.item.1 = ("fog0.png")
+		values.has_erasure = TRUE;
 	} else if (values.block_type == "erasure") {
 		picture.stim.item.1 = ("wind0.png")
+		values.has_erasure = TRUE;
 	}
 	values.block +=1;
 	values.deg_index = 31;
 	list.degrees.nextvalue;
-	if (values.block==values.n_blocks && values.trial < values.n_trials_original) {
-		values.block_length = values.block_length + (values.n_trials_original - values.n_trials);
-		values.last_block_flag = TRUE;
-		// lengthen last block if it is less than the desired total number of trials
-	}
+
 ]
 / stop = [
 	values.run_trial_dum > values.block_length  // default is 15, this will change dynamically in trial ITI (hopefully)
