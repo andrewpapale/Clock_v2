@@ -112,6 +112,8 @@
 / rem4 = NULL;
 / rem5 = NULL;
 / best = NULL;
+/ last_block_flag = FALSE;
+/ min_rem = NULL;
 </values>
 
 <data>
@@ -204,10 +206,9 @@ list.triallist.currentindex, list.blocklist.currentindex,values.startPos, values
 / ontrialbegin = [
 	values.trial +=1;
 	values.run_trial +=1;
-	if (values.trial < values.n_trials_original - 15) {
-		// do not do this operation on the last block
-	// algorithm to generate erasure blocks (from clock2_troll_world.R)
-	values.rem0 = mod(values.n_trials / values.block_length - 0, 3);
+	if (values.last_block_flag == TRUE) { // do not do this operation on the last block
+		// algorithm to generate erasure blocks (from clock2_troll_world.R)
+		values.rem0 = mod(values.n_trials / values.block_length - 0, 3);
 		values.rem1 = mod(values.n_trials / values.block_length - 1, 3);
 		values.rem2 = mod(values.n_trials / values.block_length - 2, 3);
 		values.rem3 = mod(values.n_trials / values.block_length - 3, 3);
@@ -215,32 +216,19 @@ list.triallist.currentindex, list.blocklist.currentindex,values.startPos, values
 		values.rem5 = mod(values.n_trials / values.block_length - 5, 3);
 		list.best.nextvalue;
 		values.best = -1;
-		if (values.best==-1) {
-			values.best = list.best.indexof(0);
-			// if it can't find a value it seems to return -1
-		}
-		if (values.best==-1) {
-			values.best = list.best.indexof(1);
-		}
-		if (values.best==-1) {
-			values.best = list.best.indexof(2);
-		}
-		if (values.best==-1) {
-			values.best = list.best.indexof(3);
-		}
-		if (values.best==-1) {
-			values.best = list.best.indexof(4);
-		}
-		if (values.best==-1) {
-			values.best = list.best.indexof(5);
+		values.min = NULL;
+		// https://forums.millisecond.com/Topic35675.aspx?Update=1
+		values.min_rem = list.best.minimum;
+		if (values.best==NULL) {
+			values.best = list.best.indexof(values.min_rem); 
 		}
 		if (values.best <= 0) {
 			values.block_length = values.block_length  - values.best + 1;
 		}
 		values.n_blocks = floor(values.n_trials / values.block_length)
-	values.erase_blocks = round(values.erase_prop * values.n_blocks)
-	values.attention_blocks = round(values.attention_prop * values.n_blocks)
-	values.no_blocks = round(values.no_erasure_prop * values.n_blocks)
+		values.erase_blocks = round(values.erase_prop * values.n_blocks)
+		values.attention_blocks = round(values.attention_prop * values.n_blocks)
+		values.no_blocks = round(values.no_erasure_prop * values.n_blocks)
 	}
 ]
 
@@ -485,6 +473,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	list.degrees.nextvalue;
 	if (values.block==values.n_blocks && values.trial < values.n_trials_original) {
 		values.block_length = values.block_length + (values.n_trials_original - values.n_trials);
+		values.last_block_flag = TRUE;
 		// lengthen last block if it is less than the desired total number of trials
 	}
 ]
