@@ -1,7 +1,7 @@
 ﻿<defaults>
 / canvasaspectratio = (4,4)
 / minimumversion = "6.0.0.0"
-/ inputdevice = mouse
+/ inputdevice = keyboard
 / fontstyle = ("Arial", 3%, false, false, false, false, 5, 0)
 / txbgcolor = white
 / txcolor = (0, 0, 0)
