@@ -13,8 +13,6 @@
 / randStart = TRUE;
 / circleproportion = 0.33
 / clockdotSize = 2%
-/ handDotSize = 3%
-/ ntrials = 10;
 / attentional_control = "wind";
 / local_uncertainty = "cloud";
 </parameters>
@@ -132,7 +130,7 @@ list.triallist.currentindex, list.blocklist.currentindex,values.startPos, values
 / items = ("fog0.png")
 / hposition = expressions.centerx + expressions.widthchange_angle270
 / vposition = expressions.centery + expressions.heightchange_angle270
-/ size = (30%, 30%)
+/ size = (18%, 18%)
 / erase = true(white)
 </picture>
 
@@ -140,7 +138,7 @@ list.triallist.currentindex, list.blocklist.currentindex,values.startPos, values
 / items = ("blank.png")
 / hposition = expressions.centerx + expressions.widthchange_angle270
 / vposition = expressions.centery + expressions.heightchange_angle270
-/ size = (30%, 30%)
+/ size = (18%, 18%)
 / erase = true(white)
 </picture>
 
@@ -148,7 +146,7 @@ list.triallist.currentindex, list.blocklist.currentindex,values.startPos, values
 / items = ("wind0.png")
 / hposition = expressions.centerx + expressions.widthchange_angle270
 / vposition = expressions.centery + expressions.heightchange_angle270
-/ size = (30%, 30%)
+/ size = (18%, 30%)
 / erase = true(white)
 </picture>
 
@@ -402,9 +400,8 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 / ontrialend = [
 	// now we have to convert pos_shifted into 'screen' coordinates which the stimuli are on
 	values.stim_center_deg = list.degrees.nextvalue + 90; // to account for 90 degree counterclockwise rotation so 12 o'clock is zero
-	if (values.pos_shifted >= values.stim_center_deg- 26 && values.pos_shifted <= values.stim_center_deg + 26){  // 26 seems to be about the right perceptual threshold for edge of stimulus
+	if (values.pos_shifted >= values.stim_center_deg- 15 && values.pos_shifted <= values.stim_center_deg + 15){  // 15 + 15 = 30 degrees of arc
 		values.choose_stim = TRUE;
-		values.
 	} else {
 		values.choose_stim = FALSE;
 	}
