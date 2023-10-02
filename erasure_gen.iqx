@@ -127,7 +127,7 @@
 
 <data>
 / columns = (build, computer.platform, computer.touch, date, time, subject, group, script.sessionid, blockcode, blocknum,values.block,values.n_blocks,
-trialcode,latency,values.n_trials, values.n_trials_original,values.best, values.rem0, values.rem1, values.rem2, values.rem3, values.rem4, values.rem5, values.trial, values.run_trial,values.erase_blocks,values.attention_blocks,values.no_blocks,values.block_type
+trialcode,latency,values.n_trials, values.block_length, values.best, values.rem0, values.rem1, values.rem2, values.rem3, values.rem4, values.rem5, values.trial, values.run_trial,values.erase_blocks,values.attention_blocks,values.no_blocks,values.block_type
 list.triallist.currentindex, list.blocklist.currentindex,values.startPos, values.stim_center_deg, values.choose_stim,values.run_trial_dum)
 </data>
 
@@ -240,7 +240,7 @@ list.triallist.currentindex, list.blocklist.currentindex,values.startPos, values
 		if (values.best==-1) {
 			values.best = list.best.indexof(values.min_rem);
 		}
-		if (values.min > 0) {
+		if (values.min_rem > 0) {
 			values.block_length = values.block_length_original  - values.best + 1;
 		}
 		values.n_blocks = floor(values.n_trials / values.block_length)
