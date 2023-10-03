@@ -231,14 +231,14 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 		values.has_erasure = FALSE;
 		values.generate_new_erasure = TRUE;
 	}
-	if (values.generate_new_erasure == TRUE && values.n_no_erasure < values.require_no_erasure && values.n_attention < values.require_attention && values.require_erasure < values.require_erasure) {
+	if (values.generate_new_erasure == TRUE && values.n_no_erasure < values.require_no_erasure && values.n_attention < values.require_attention && values.n_erasure < values.require_erasure) {
 		values.block_type = noreplace("erasure","attention","no_erasure");
 		if (values.block_type == "no_erasure") {
 			picture.stim.items.1 = ("blank.png");
 			values.n_clicks = NULL;
 			values.has_erasure = FALSE;
 			values.timeout_block = FALSE;
-			values.timeouts_remain = values.timeout_trials;
+			values.timeouts_remain = 0;
 			values.generate_new_erasure = FALSE;
 		} else if (values.block_type == "attention") {
 			picture.stim.item.1 = ("fog0.png");
@@ -255,7 +255,7 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 			values.timeouts_remain = values.timeout_trials;
 			values.generate_new_erasure = FALSE;
 		}
-	} else if (values.generate_new_erasure == TRUE && values.n_no_erasure >= values.require_no_erasure && values.n_attention < values.require_attention && values.require_erasure < values.require_erasure) {
+	} else if (values.generate_new_erasure == TRUE && values.n_no_erasure >= values.require_no_erasure && values.n_attention < values.require_attention && values.n_erasure < values.require_erasure) {
 		values.block_type = noreplace("erasure","attention");
 		if (values.block_type == "attention") {
 			picture.stim.item.1 = ("fog0.png");
@@ -272,7 +272,7 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 			values.timeouts_remain = values.timeout_trials;
 			values.generate_new_erasure = FALSE;
 		}
-	} else if (values.generate_new_erasure == TRUE && values.n_no_erasure >= values.require_no_erasure && values.n_attention >= values.require_attention && values.require_erasure < values.require_erasure) {
+	} else if (values.generate_new_erasure == TRUE && values.n_no_erasure >= values.require_no_erasure && values.n_attention >= values.require_attention && values.n_erasure < values.require_erasure) {
 		values.block_type = "erasure";
 		picture.stim.item.1 = ("wind0.png");
 		values.has_erasure = TRUE;
@@ -280,7 +280,7 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 		values.timeout_block = FALSE;
 		values.timeouts_remain = values.timeout_trials;
 		values.generate_new_erasure = FALSE;
-	} else if (values.generate_new_erasure == TRUE && values.n_no_erasure >= values.require_no_erasure && values.n_attention < values.require_attention && values.require_erasure >= values.require_erasure) {
+	} else if (values.generate_new_erasure == TRUE && values.n_no_erasure >= values.require_no_erasure && values.n_attention < values.require_attention && values.n_erasure >= values.require_erasure) {
 		values.block_type = "attention";
 		picture.stim.item.1 = ("fog0.png");
 		values.has_erasure = TRUE;
