@@ -73,7 +73,7 @@
 / erase_prop = 0.33333;
 / attention_prop = 0.33333;
 / no_erasure_prop = 1 - values.erase_prop - values.attention_prop;
-/ block_length = 9;
+/ block_length = 15;
 / block_length_original = values.block_length;
 / disappear_clicks = 2;
 / timeout_trials = 1;
@@ -252,17 +252,17 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 			picture.stim.items.1 = ("blank.png");
 			values.n_clicks = NULL;
 			values.has_erasure = FALSE;
-			values.n_curr_block = values.require_no_erasure - values. n_timeout;
+			values.n_curr_block = values.require_no_erasure - values.n_timeout;
 		} else if (values.block_type == "attention") {
 			picture.stim.item.1 = ("fog0.png");
 			values.has_erasure = TRUE;
 			values.n_clicks = 0;
-			values.n_curr_block = values.require_attention;
+			values.n_curr_block = values.require_attention - values.n_attention;
 		} else if (values.block_type == "erasure") {
 			picture.stim.item.1 = ("wind0.png");
 			values.has_erasure = TRUE;
 			values.n_clicks = 0;
-			values.n_curr_block = values.require_erasure;
+			values.n_curr_block = values.require_erasure - values.n_erasure;
 		}
 	}
 ]
@@ -542,6 +542,9 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	values.deg_index = noreplace(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36);
 	// will need to make this dynamic
 	list.degrees.nextvalue;
+]
+/ branch = [
+	list.blocklist.nextvalue;
 ]
 
 / trials = [
