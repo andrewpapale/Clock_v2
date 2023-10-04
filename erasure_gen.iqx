@@ -541,7 +541,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	1 = list.triallist;
 ]
 / stop = [
-	values.run_trial_dum >= values.block_length;
+	values.run_trial_dum > values.block_length;
 ]
 
 </block>
