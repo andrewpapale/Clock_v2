@@ -222,6 +222,12 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 	values.trial +=1;
 	values.run_trial +=1;
 	values.choose_stim = FALSE;
+	if (values.n_curr_block == 0 && values.block_type == "no_erasure"){
+		values.generate_new_erasure = TRUE;
+	} else {
+		// need to insert a timeout block here too
+		values.timeout_block == TRUE;
+	}
 	if (values.timeout_block==TRUE) {
 		// decrement timeouts trials remaining by 1 if in timeout block
 		values.timeouts_remain -= 1;
@@ -231,9 +237,6 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 		values.n_timeout +=1;
 		values.n_curr_block = values.timeout_trials;
 	} 
-	if (values.n_curr_block == 0){
-		values.generate_new_erasure = TRUE;
-	}
 	if (values.generate_new_erasure==TRUE) {
 		if (values.n_no_erasure < values.require_no_erasure && values.n_attention < values.require_attention && values.n_erasure < values.require_erasure) {
 			values.block_type = noreplace("erasure","attention","no_erasure");
@@ -507,8 +510,9 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	if (values.generate_new_erasure==TRUE){
 		values.generate_new_erasure = FALSE;
 	}
-	if (values.timeouts_remain==0){
+	if (values.timeouts_remain<=0){
 		values.timeout_block = FALSE;
+		values.generate_new_erasure = TRUE;
 		values.timeouts_remain = values.timeout_trials;
 	}
 	values.n_curr_block -= 1;
@@ -529,7 +533,6 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	values.n_attention = 0;
 	values.n_erasure = 0;
 	values.n_no_erasure = 0;
-	values.n_timeout = 0;
 	values.n_clicks = NULL;
 	// reset run_trial on each block
 	list.triallist.poolsize = values.block_length;
@@ -538,6 +541,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 		values.timeout_block = FALSE;
 		values.generate_new_erasure = TRUE;
 		values.n_curr_block = 0;
+		values.n_timeout = 0;
 	}
 	values.deg_index = noreplace(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36);
 	// will need to make this dynamic
