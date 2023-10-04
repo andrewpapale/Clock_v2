@@ -222,11 +222,16 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 	values.trial +=1;
 	values.run_trial +=1;
 	values.choose_stim = FALSE;
-	if (values.n_curr_block == 0 && values.block_type == "no_erasure"){
+	if (values.n_curr_block <= 0 && values.block_type == "no_erasure"){
 		values.generate_new_erasure = TRUE;
 	} else {
 		// need to insert a timeout block here too
 		values.timeout_block == TRUE;
+		values.generate_new_erasure = FALSE;
+	}
+	if (values.run_trial == 1 && values.block_type != "no_erasure"){
+		values.timeout_block = TRUE;
+		values.generate_new_erasure = FALSE;
 	}
 	if (values.timeout_block==TRUE) {
 		// decrement timeouts trials remaining by 1 if in timeout block
