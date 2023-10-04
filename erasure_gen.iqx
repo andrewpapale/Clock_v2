@@ -407,7 +407,6 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	values.circle_x = picture.animatedCircle.xpct;
 	values.circle_y = picture.animatedCircle.ypct;
 	values.n_revolutions = ipart(script.elapsedtime - picture.animatedCircle.timestamp/values.time_per_revolution);
-	values.run_trial_dum  += 1;
 ]
 </trial>
 
@@ -521,6 +520,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 		values.timeouts_remain = values.timeout_trials;
 	}
 	values.n_curr_block -= 1;
+	values.run_trial_dum  += 1;
 ]
 / branch = [
 	list.triallist.nextvalue;
