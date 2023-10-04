@@ -121,7 +121,7 @@
 / total_clicks = 2;
 / n_clicks = NULL;
 / timeout_block = FALSE;
-/ timeouts_remain = 2;
+/ timeouts_remain = 1;
 / end_block = NULL;
 / require_attention = NULL;
 / require_erasure = NULL;
@@ -129,6 +129,7 @@
 / n_attention = NULL;
 / n_erasure = NULL;
 / n_no_erasure = NULL;
+/ n_curr_block = NULL;
 </values>
 
 <data>
@@ -136,7 +137,7 @@
 trialcode,latency,values.n_trials, values.block_length, values.best, values.rem0, values.rem1, values.rem2, values.rem3, values.rem4, values.rem5, 
 values.trial, values.run_trial,values.erase_blocks,values.attention_blocks,values.no_blocks,values.block_type
 list.triallist.currentindex, list.blocklist.currentindex,values.startPos, values.stim_center_deg, values.choose_stim,values.run_trial_dum, values.n_attention,values.n_erasure,values.n_no_erasure,values.n_clicks,
-values.require_attention,values.require_no_erasure,values.require_erasure,values.timeouts_remain, values.timeout_block, values.generate_new_erasure)
+values.require_attention,values.require_no_erasure,values.require_erasure,values.timeouts_remain, values.timeout_block, values.generate_new_erasure, values.n_curr_block)
 </data>
 
 <picture animatedCircle>
@@ -224,15 +225,29 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 / ontrialbegin = [
 	values.trial +=1;
 	values.run_trial +=1;
+	values.choose_stim = FALSE;
 	if (values.timeout_block==TRUE) {
 		// decrement timeouts trials remaining by 1 if in timeout block
 		values.timeouts_remain -= 1;
 		values.block_type = "no_erasure";
+		picture.stim.items.1 = ("blank.png");
 		values.has_erasure = FALSE;
-		values.generate_new_erasure = TRUE;
+		values.generate_new_erasure = FALSE;
+	} 
+	if (values.n_curr_block == 0 || values.timeouts_remain==0){
+		values.timeout_block = FALSE;
+		values.generate_new_erasure == TRUE;
 	}
-	if (values.generate_new_erasure == TRUE && values.n_no_erasure < values.require_no_erasure && values.n_attention < values.require_attention && values.n_erasure < values.require_erasure) {
-		values.block_type = noreplace("erasure","attention","no_erasure");
+	if (values.generate_new_erasure==TRUE) {
+		if (values.n_no_erasure < values.require_no_erasure && values.n_attention < values.require_attention && values.n_erasure < values.require_erasure) {
+			values.block_type = noreplace("erasure","attention","no_erasure");
+		} else if (values.n_no_erasure >= values.require_no_erasure && values.n_attention < values.require_attention && values.n_erasure < values.require_erasure) {
+			values.block_type = noreplace("erasure","attention");
+		} else if (values.n_no_erasure >= values.require_no_erasure && values.n_attention >= values.require_attention && values.n_erasure < values.require_erasure) {
+			values.block_type = "erasure";
+		} else if (values.n_no_erasure >= values.require_no_erasure && values.n_attention < values.require_attention && values.n_erasure >= values.require_erasure) {
+			values.block_type = "attention";
+		}
 		if (values.block_type == "no_erasure") {
 			picture.stim.items.1 = ("blank.png");
 			values.n_clicks = NULL;
@@ -240,6 +255,7 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 			values.timeout_block = FALSE;
 			values.timeouts_remain = 0;
 			values.generate_new_erasure = FALSE;
+			values.n_curr_block = values.require_no_erasure;
 		} else if (values.block_type == "attention") {
 			picture.stim.item.1 = ("fog0.png");
 			values.has_erasure = TRUE;
@@ -247,6 +263,7 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 			values.timeout_block = FALSE;
 			values.timeouts_remain = values.timeout_trials;
 			values.generate_new_erasure = FALSE;
+			values.n_curr_block = values.require_attention;
 		} else if (values.block_type == "erasure") {
 			picture.stim.item.1 = ("wind0.png");
 			values.has_erasure = TRUE;
@@ -254,40 +271,8 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 			values.timeout_block = FALSE;
 			values.timeouts_remain = values.timeout_trials;
 			values.generate_new_erasure = FALSE;
+			values.n_curr_block = values.require_erasure;
 		}
-	} else if (values.generate_new_erasure == TRUE && values.n_no_erasure >= values.require_no_erasure && values.n_attention < values.require_attention && values.n_erasure < values.require_erasure) {
-		values.block_type = noreplace("erasure","attention");
-		if (values.block_type == "attention") {
-			picture.stim.item.1 = ("fog0.png");
-			values.has_erasure = TRUE;
-			values.n_clicks = 0;
-			values.timeout_block = FALSE;
-			values.timeouts_remain = values.timeout_trials;
-			values.generate_new_erasure = FALSE;
-		} else if (values.block_type == "erasure") {
-			picture.stim.item.1 = ("wind0.png");
-			values.has_erasure = TRUE;
-			values.n_clicks = 0;
-			values.timeout_block = FALSE;
-			values.timeouts_remain = values.timeout_trials;
-			values.generate_new_erasure = FALSE;
-		}
-	} else if (values.generate_new_erasure == TRUE && values.n_no_erasure >= values.require_no_erasure && values.n_attention >= values.require_attention && values.n_erasure < values.require_erasure) {
-		values.block_type = "erasure";
-		picture.stim.item.1 = ("wind0.png");
-		values.has_erasure = TRUE;
-		values.n_clicks = 0;
-		values.timeout_block = FALSE;
-		values.timeouts_remain = values.timeout_trials;
-		values.generate_new_erasure = FALSE;
-	} else if (values.generate_new_erasure == TRUE && values.n_no_erasure >= values.require_no_erasure && values.n_attention < values.require_attention && values.n_erasure >= values.require_erasure) {
-		values.block_type = "attention";
-		picture.stim.item.1 = ("fog0.png");
-		values.has_erasure = TRUE;
-		values.n_clicks = 0;
-		values.timeout_block = FALSE;
-		values.timeouts_remain = values.timeout_trials;
-		values.generate_new_erasure = FALSE;
 	}
 ]
 
@@ -510,24 +495,21 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 		}
 		// dynamically account for stimulus erasure choice
 		if (values.n_clicks >= values.total_clicks) {
-			values.generate_new_erasure = FALSE;
 			values.timeout_block = TRUE;
-			// current block automatically ends
-		}
-		if (values.timeouts_remain == 0) {
-			values.timeout_block = FALSE;
+			values.n_clicks = NULL;
 			// current block automatically ends
 		}
 	}
-	if (values.block_type == "erasure"){
+	if (values.block_type == "erasure") {
 		values.n_erasure += 1;
 	}
-	if (values.block_type == "attention"){
-		values.n_attention += 1; 
+	if (values.block_type == "attention") {
+		values.n_attention += 1;
 	}
-	if (values.block_type == "no_erasure"){
+	if (values.block_type == "no_erasure") {
 		values.n_no_erasure +=1;
 	}
+	values.n_curr_block -= 1;
 ]
 / branch = [
 	list.triallist.nextvalue;
