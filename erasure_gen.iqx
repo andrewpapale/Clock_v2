@@ -221,7 +221,7 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 / ontrialbegin = [
 	values.trial +=1;
 	values.run_trial +=1;
-	values.choose_stim = 0;
+	values.choose_stim = FALSE;
 	if (values.timeout_block==TRUE) {
 		// decrement timeouts trials remaining by 1 if in timeout block
 		values.timeouts_remain -= 1;
@@ -478,13 +478,13 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 / recorddata = true
 / ontrialend = [
 	// now we have to convert pos_shifted into 'screen' coordinates which the stimuli are on
-	values.stim_center_deg = list.degrees.nextvalue + 90;
+	values.stim_center_deg = mod(list.degrees.nextvalue + 90,360);
 	// to account for 90 degree counterclockwise rotation so 12 o'clock is zero
 	if (values.block_type != "no_erasure") {
 		if (values.pos_shifted >= values.stim_center_deg- 15 && values.pos_shifted <= values.stim_center_deg + 15) {
 			// 15 + 15 = 30 degrees of arc
 			values.choose_stim = TRUE;
-			values.n_clicks = values.n_clicks +=1;
+			values.n_clicks +=1;
 		} else {
 			values.choose_stim = FALSE;
 		}
