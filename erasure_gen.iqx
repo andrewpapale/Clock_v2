@@ -75,7 +75,7 @@
 / erase_prop = 0.33333;
 / attention_prop = 0.33333;
 / no_erasure_prop = 1 - values.erase_prop - values.attention_prop;
-/ block_length = 45;
+/ block_length = 15;
 / block_length_original = values.block_length;
 / disappear_clicks = 2;
 / timeout_trials = 1;
@@ -130,6 +130,7 @@
 / n_erasure = NULL;
 / n_no_erasure = NULL;
 / n_curr_block = NULL;
+/ n_timeout = NULL;
 </values>
 
 <data>
@@ -208,7 +209,7 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 <text center>
 // items = ("center = <%values.stim_center_deg%>, pos_sh = <%values.pos_shifted%> choose = <%values.choose_stim%>")
 // items = ("best = <%values.best%>, <%values.rem0%> <%values.rem1%> <%values.rem2%> <%values.rem3%> <%values.rem4%> <%values.rem5%>")
-/ items = ("<%values.block_type%>, to=<%values.timeouts_remain%>, att=<%values.n_attention%> era=<%values.n_erasure%>")
+/ items = ("gne=<%values.generate_new_erasure%>,to=<%values.timeouts_remain%>, att=<%values.n_attention%> era=<%values.n_erasure%>")
 / position = (50%, 50%)
 </text>
 
@@ -226,6 +227,14 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 	values.trial +=1;
 	values.run_trial +=1;
 	values.choose_stim = FALSE;
+	if (values.n_curr_block <= 0){
+		values.generate_new_erasure == TRUE;
+	}
+	if (values.timeouts_remain==0){
+		values.timeout_block = FALSE;
+		values.generate_new_erasure == TRUE;
+		values.timeouts_remain = values.timeout_trials;
+	}
 	if (values.timeout_block==TRUE) {
 		// decrement timeouts trials remaining by 1 if in timeout block
 		values.timeouts_remain -= 1;
@@ -233,11 +242,8 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 		picture.stim.items.1 = ("blank.png");
 		values.has_erasure = FALSE;
 		values.generate_new_erasure = FALSE;
+		values.n_timeout +=1;
 	} 
-	if (values.n_curr_block == 0 || values.timeouts_remain==0){
-		values.timeout_block = FALSE;
-		values.generate_new_erasure == TRUE;
-	}
 	if (values.generate_new_erasure==TRUE) {
 		if (values.n_no_erasure < values.require_no_erasure && values.n_attention < values.require_attention && values.n_erasure < values.require_erasure) {
 			values.block_type = noreplace("erasure","attention","no_erasure");
@@ -252,25 +258,16 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 			picture.stim.items.1 = ("blank.png");
 			values.n_clicks = NULL;
 			values.has_erasure = FALSE;
-			values.timeout_block = FALSE;
-			values.timeouts_remain = 0;
-			values.generate_new_erasure = FALSE;
-			values.n_curr_block = values.require_no_erasure;
+			values.n_curr_block = values.require_no_erasure - values.n_timeout;
 		} else if (values.block_type == "attention") {
 			picture.stim.item.1 = ("fog0.png");
 			values.has_erasure = TRUE;
 			values.n_clicks = 0;
-			values.timeout_block = FALSE;
-			values.timeouts_remain = values.timeout_trials;
-			values.generate_new_erasure = FALSE;
 			values.n_curr_block = values.require_attention;
 		} else if (values.block_type == "erasure") {
 			picture.stim.item.1 = ("wind0.png");
 			values.has_erasure = TRUE;
 			values.n_clicks = 0;
-			values.timeout_block = FALSE;
-			values.timeouts_remain = values.timeout_trials;
-			values.generate_new_erasure = FALSE;
 			values.n_curr_block = values.require_erasure;
 		}
 	}
@@ -509,6 +506,9 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	if (values.block_type == "no_erasure") {
 		values.n_no_erasure +=1;
 	}
+	if (values.generate_new_erasure==TRUE){
+		values.generate_new_erasure = FALSE;
+	}
 	values.n_curr_block -= 1;
 ]
 / branch = [
@@ -529,6 +529,8 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	values.n_attention = 0;
 	values.n_erasure = 0;
 	values.n_no_erasure = 0;
+	values.n_timeout = 0;
+	values.n_clicks = NULL;
 	// reset run_trial on each block
 	list.triallist.poolsize = values.block_length;
 	values.block +=1;
