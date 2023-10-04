@@ -31,14 +31,6 @@
 / selectionmode = sequence
 </list>
 
-<list blocklist>
-/ items = (block.experiment)
-/ poolsize = values.n_blocks;
-/ selectionrate = block
-/ selectionmode = sequence
-
-</list>
-
 <list ITI>
 / items = ( 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250, 260, 270, 280, 290, 300, 310, 320, 330, 340, 350, 360, 370, 380, 390, 400, 410, 420, 430, 440, 450, 460, 470, 480, 490, 500)
 / poolsize = 41
@@ -75,7 +67,7 @@
 / erase_prop = 0.33333;
 / attention_prop = 0.33333;
 / no_erasure_prop = 1 - values.erase_prop - values.attention_prop;
-/ block_length = 15;
+/ block_length = 9;
 / block_length_original = values.block_length;
 / disappear_clicks = 2;
 / timeout_trials = 1;
@@ -117,7 +109,7 @@
 / last_block_flag = FALSE;
 / min_rem = NULL;
 / has_erasure = NULL;
-/ generate_new_erasure = TRUE;
+/ generate_new_erasure = NULL;
 / total_clicks = 2;
 / n_clicks = NULL;
 / timeout_block = FALSE;
@@ -137,7 +129,7 @@
 / columns = (build, computer.platform, computer.touch, date, time, subject, group, script.sessionid, blockcode, blocknum,values.block,values.n_blocks,
 trialcode,latency,values.n_trials, values.block_length, values.best, values.rem0, values.rem1, values.rem2, values.rem3, values.rem4, values.rem5, 
 values.trial, values.run_trial,values.erase_blocks,values.attention_blocks,values.no_blocks,values.block_type
-list.triallist.currentindex, list.blocklist.currentindex,values.startPos, values.stim_center_deg, values.choose_stim,values.run_trial_dum, values.n_attention,values.n_erasure,values.n_no_erasure,values.n_clicks,
+list.triallist.currentindex, values.startPos, values.stim_center_deg, values.choose_stim,values.run_trial_dum, values.n_attention,values.n_erasure,values.n_no_erasure,values.n_clicks,
 values.require_attention,values.require_no_erasure,values.require_erasure,values.timeouts_remain, values.timeout_block, values.generate_new_erasure, values.n_curr_block)
 </data>
 
@@ -209,7 +201,7 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 <text center>
 // items = ("center = <%values.stim_center_deg%>, pos_sh = <%values.pos_shifted%> choose = <%values.choose_stim%>")
 // items = ("best = <%values.best%>, <%values.rem0%> <%values.rem1%> <%values.rem2%> <%values.rem3%> <%values.rem4%> <%values.rem5%>")
-/ items = ("gne=<%values.generate_new_erasure%>,to=<%values.timeouts_remain%>, att=<%values.n_attention%> era=<%values.n_erasure%>")
+/ items = ("gne=<%values.n_curr_block%>,to=<%values.generate_new_erasure%>, tob=<%values.timeout_block%>,att=<%values.n_attention%> era=<%values.n_erasure%>")
 / position = (50%, 50%)
 </text>
 
@@ -226,30 +218,28 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 / ontrialbegin = [
 	values.trial +=1;
 	values.run_trial +=1;
-	values.choose_stim = FALSE;
-	if (values.n_curr_block <= 0){
-		values.generate_new_erasure == TRUE;
-	}
-	if (values.timeouts_remain==0){
-		values.timeout_block = FALSE;
-		values.generate_new_erasure == TRUE;
-		values.timeouts_remain = values.timeout_trials;
-	}
-	if (values.timeout_block==TRUE) {
+	values.choose_stim = 0;
+	//if (values.timeout_block==TRUE) {
 		// decrement timeouts trials remaining by 1 if in timeout block
-		values.timeouts_remain -= 1;
-		values.block_type = "no_erasure";
-		picture.stim.items.1 = ("blank.png");
-		values.has_erasure = FALSE;
-		values.generate_new_erasure = FALSE;
-		values.n_timeout +=1;
-	} 
+	//	values.timeouts_remain -= 1;
+	//	values.block_type = "no_erasure";
+	//	picture.stim.items.1 = ("blank.png");
+	//	values.has_erasure = FALSE;
+	//	values.n_timeout +=1;
+	//} 
+	if (values.n_curr_block == 0){
+		values.generate_new_erasure = TRUE;
+	}
 	if (values.generate_new_erasure==TRUE) {
 		if (values.n_no_erasure < values.require_no_erasure && values.n_attention < values.require_attention && values.n_erasure < values.require_erasure) {
 			values.block_type = noreplace("erasure","attention","no_erasure");
 		} else if (values.n_no_erasure >= values.require_no_erasure && values.n_attention < values.require_attention && values.n_erasure < values.require_erasure) {
 			values.block_type = noreplace("erasure","attention");
-		} else if (values.n_no_erasure >= values.require_no_erasure && values.n_attention >= values.require_attention && values.n_erasure < values.require_erasure) {
+		} else if (values.n_no_erasure < values.require_no_erasure && values.n_attention >= values.require_attention && values.n_erasure < values.require_erasure) {
+			values.block_type = noreplace("erasure","no_erasure");
+		} else if (values.n_no_erasure < values.require_no_erasure && values.n_attention < values.require_attention && values.n_erasure >= values.require_erasure){
+			values.block_type = noreplace("attention","no_erasure");
+		} else if (values.n_no_erasure >= values.require_no_erasure && values.n_attention >= values.require_attention && values.n_erasure < values.require_erasure){
 			values.block_type = "erasure";
 		} else if (values.n_no_erasure >= values.require_no_erasure && values.n_attention < values.require_attention && values.n_erasure >= values.require_erasure) {
 			values.block_type = "attention";
@@ -258,7 +248,7 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 			picture.stim.items.1 = ("blank.png");
 			values.n_clicks = NULL;
 			values.has_erasure = FALSE;
-			values.n_curr_block = values.require_no_erasure - values.n_timeout;
+			values.n_curr_block = values.require_no_erasure - values. n_timeout;
 		} else if (values.block_type == "attention") {
 			picture.stim.item.1 = ("fog0.png");
 			values.has_erasure = TRUE;
@@ -291,6 +281,9 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 / branch = [
 	trial.preFreeze;
 ]
+/ ontrialend = [
+]
+
 
 </trial>
 
@@ -371,6 +364,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 / branch = [
 	return trial.clock;
 ]
+
 </trial>
 
 <trial clock>
@@ -491,11 +485,11 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 			values.choose_stim = FALSE;
 		}
 		// dynamically account for stimulus erasure choice
-		if (values.n_clicks >= values.total_clicks) {
-			values.timeout_block = TRUE;
-			values.n_clicks = NULL;
+		//if (values.n_clicks >= values.total_clicks) {
+		//	values.timeout_block = TRUE;
+		//	values.n_clicks = NULL;
 			// current block automatically ends
-		}
+		//}
 	}
 	if (values.block_type == "erasure") {
 		values.n_erasure += 1;
@@ -509,6 +503,10 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	if (values.generate_new_erasure==TRUE){
 		values.generate_new_erasure = FALSE;
 	}
+	//if (values.timeouts_remain==0){
+	//	values.timeout_block = FALSE;
+	//	values.timeouts_remain = values.timeout_trials;
+	//}
 	values.n_curr_block -= 1;
 ]
 / branch = [
@@ -531,6 +529,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	values.n_no_erasure = 0;
 	values.n_timeout = 0;
 	values.n_clicks = NULL;
+	values.n_curr_block = 0;
 	// reset run_trial on each block
 	list.triallist.poolsize = values.block_length;
 	values.block +=1;
@@ -541,15 +540,14 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 / trials = [
 	1 = list.triallist;
 ]
-/ branch = [
-	list.blocklist.nextvalue;
+/ stop = [
+	values.run_trial_dum >= values.block_length;
 ]
 
 </block>
 
 <expt main1>
 / onexptbegin = [
-	list.blocklist.poolsize = values.n_blocks;
 	// algorithm to generate erasure blocks (from clock2_troll_world.R)
 	values.rem0 = mod(values.n_trials / values.block_length - 0, 3);
 	values.rem1 = mod(values.n_trials / values.block_length - 1, 3);
@@ -575,10 +573,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 ]
 
 / blocks = [
-	1 = list.blocklist;
-]
-/ stop = [
-	values.block >= values.n_blocks
+	1-3 = experiment;
 ]
 
 </expt>
