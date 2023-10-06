@@ -569,15 +569,15 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 		values.generate_new_erasure = TRUE;
 		values.n_curr_block = NULL;
 		values.n_timeout = 0;
-		values.deg_index_era = replace(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36);
+		values.deg_index_era = replace(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35);
 	} else {
-		values.deg_index_era = replace(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30);
+		values.deg_index_era = replace(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29);
 	}
 	// append items to used era list before removing, note the order in which we populate this list WILL matter when repopulating the era and att lists for generation, so always {i, (i-1), (i+1)}
 	list.degrees_used.appenditem(list.degrees_era.item(values.deg_index_era)); // append to used set before removing
 	list.degrees_att.removeitem(values.deg_index_era); // remove the erasure item from the attention stim list at position i
 	// note can NOT remove values.deg_index_era or current stim will not populate
-	if (values.deg_index_era > 1 && values.deg_index_era < 36){
+	if ((values.deg_index_era > 1 && values.deg_index_era < 36 && values.block == 1) || (values.deg_index_era > 1 && values.deg_index_era < 30 && values.block > 1)){
 		list.degrees_used.appenditem(list.degrees_era.item(values.deg_index_era - 1));
 		list.degrees_used.appenditem(list.degrees_era.item(values.deg_index_era -1));
 		list.degrees_att.removeitem(values.deg_index_era-1); // also item (i - 1), which has NOT shifted in position, still at (i - 1)
@@ -591,22 +591,22 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 		list.degrees_att.removeitem(values.deg_index_era + 1); // also item (i + 1)
 		list.degrees_era.removeitem(list.degrees_att.itemcount); // also last item (circular coordinates)
 		list.degrees_era.removeitem(values.deg_index_era + 1); // also item (i + 1)
-	} else if (values.deg_index_era == 36){
+	} else if ((values.deg_index_era == 36 && values.block == 1) || (values.deg_index_era==30 && values.block > 1)){  // this isn't working for some reason
 		list.degrees_used.appenditem(list.degrees_att.item(values.deg_index_era -1));
-		list.degrees_used.appenditem(list.degress_att.item(1));
+		//list.degrees_used.appenditem(list.degress_att.item(1)); // this is throwing an error
 		list.degrees_att.removeitem(values.deg_index_era - 1); // also item (i - 1)
 		list.degrees_att.removeitem(1); // also remove 1st item (circular coordinates)	
 		list.degrees_era.removeitem(values.deg_index_era - 1); // also item (i - 1)
 		list.degrees_era.removeitem(1); // also remove 1st item (circular coordinates)	
 	}
 	if (values.block==1){
-		values.deg_index_att = replace(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33);  // 36 possibilities - 3 = 33 possibilities ONLY on block 1 to remove the possibility of att(j) = era(j)
+		values.deg_index_att = replace(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32);  // 36 possibilities - 3 = 33 possibilities ONLY on block 1 to remove the possibility of att(j) = era(j)
 	} else {
-		values.deg_index_att = replace(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27); // for blocks (j>1) there will be 36 - 3(3) = 27 possibilities to remove the possibilty of att(j) = era(j-1) OR att(j) = att(j-1) OR att(j) = era(j)
+		values.deg_index_att = replace(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26); // for blocks (j>1) there will be 36 - 3(3) = 27 possibilities to remove the possibilty of att(j) = era(j-1) OR att(j) = att(j-1) OR att(j) = era(j)
 	}
 	// now populate degrees_att_used list for block (j + 1)
 	list.degrees_used.appenditem(list.degrees_att.item(values.deg_index_att)); // append to used set before removing
-	if (values.deg_index_att > 1 && values.deg_index_att < 36){
+	if ((values.deg_index_att > 1 && values.deg_index_att < 33 && values.block == 1) || (values.deg_index_era > 1 && values.deg_index_era < 27 && values.block > 1)){
 		list.degrees_used.appenditem(list.degrees_att.item(values.deg_index_att - 1));
 		list.degrees_used.appenditem(list.degrees_att.item(values.deg_index_att -1));
 		list.degrees_att.removeitem(values.deg_index_att - 1); // also item (i - 1), which has NOT shifted in position, still at (i - 1)
@@ -620,9 +620,9 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 		list.degrees_att.removeitem(values.deg_index_att + 1); // also item (i + 1)
 		list.degrees_era.removeitem(list.degrees_att.itemcount); // also last item (circular coordinates)
 		list.degrees_era.removeitem(values.deg_index_era + 1); // also item (i + 1)
-	} else if (values.deg_index_att == 36){
+	} else if ((values.deg_index_era == 33 && values.block == 1) || (values.deg_index_era==27 && values.block > 1)){ // this also isn't working
 		list.degrees_used.appenditem(list.degrees_att.item(values.deg_index_att -1));
-		list.degrees_used.appenditem(list.degress_att.item(1));
+		//list.degrees_used.appenditem(list.degress_att.item(1));
 		list.degrees_att.removeitem(values.deg_index_att - 1); // also item (i - 1)
 		list.degrees_att.removeitem(1); // also remove 1st item (circular coordinates)	
 		list.degrees_era.removeitem(values.deg_index_era - 1); // also item (i - 1)
@@ -656,6 +656,13 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 		list.degrees_era.appenditem(list.degrees_used.item(4));
 		list.degrees_era.appenditem(list.degrees_used.item(5));
 		list.degrees_era.appenditem(list.degrees_used.item(6));
+		
+		list.degrees_used.removeitem(1);
+		list.degrees_used.removeitem(2);
+		list.degrees_used.removeitem(3);
+		list.degrees_used.removeitem(4);
+		list.degrees_used.removeitem(5);
+		list.degrees_used.removeitem(6);
 	}
 	
 	// iterate the list
