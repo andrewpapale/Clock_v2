@@ -17,11 +17,18 @@
 / local_uncertainty = "cloud";
 </parameters>
 
-<list degrees>
+<list degrees_att>
 / items = (10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250, 260, 270, 280, 290, 300, 310, 320, 330, 340, 350, 360)
 / poolsize = 36;
 / selectionrate = trial
-/ selectionmode = values.deg_index;
+/ selectionmode = values.deg_index_att;
+</list>
+
+<list degrees_era>
+/ items = (10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250, 260, 270, 280, 290, 300, 310, 320, 330, 340, 350, 360)
+/ poolsize = 36;
+/ selectionrate = trial
+/ selectionmode = values.deg_index_era;
 </list>
 
 <list triallist>
@@ -63,8 +70,10 @@
 </list>
 
 <values>
-/ deg_index = NULL;
-/ last_deg_index = NULL;
+/ deg_index_att = NULL;
+/ deg_index_era = NULL;
+/ last_deg_index_att = NULL;
+/ last_deg_index_era = NULL;
 / rng = NULL;
 / trial = 0;
 / run_trial = 0;
@@ -221,15 +230,26 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 / ontrialbegin = [
 	values.trial +=1;
 	values.run_trial +=1;
-	values.choose_stim = FALSE;
+	// dynamically account for stimulus erasure choice
+	if (values.n_clicks >= values.total_clicks) {
+		values.timeout_block = TRUE;
+		values.n_clicks = NULL;
+		// current block automatically ends
+	}
+	if (values.timeouts_remain<=0){
+		values.timeout_block = FALSE;
+		values.generate_new_erasure = TRUE;
+		values.timeouts_remain = values.timeout_trials;
+	}
 	if (values.n_curr_block <= 0 && values.block_type == "no_erasure"){
 		values.generate_new_erasure = TRUE;
-	} else {
+	} else if (values.n_curr_block <= 0){
 		// need to insert a timeout block here too
 		values.timeout_block == TRUE;
 		values.generate_new_erasure = FALSE;
 	}
-	if (values.run_trial == 1 && values.block_type != "no_erasure"){
+	if (values.run_trial == 1 && values.block != 1 && values.block_type != "no_erasure"){
+		// if on trial 1 of block N, and last block was not an erasure, generate timeout block, then generate new erasure
 		values.timeout_block = TRUE;
 		values.generate_new_erasure = FALSE;
 	}
@@ -239,6 +259,7 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 		values.block_type = "no_erasure";
 		picture.stim.items.1 = ("blank.png");
 		values.has_erasure = FALSE;
+		values.choose_stim = NULL;
 		values.n_timeout +=1;
 		values.n_curr_block = values.timeout_trials;
 	} 
@@ -260,17 +281,20 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 			picture.stim.items.1 = ("blank.png");
 			values.n_clicks = NULL;
 			values.has_erasure = FALSE;
+			values.choose_stim = NULL;
 			values.n_curr_block = values.require_no_erasure - values.n_timeout;
 		} else if (values.block_type == "attention") {
 			picture.stim.item.1 = ("fog0.png");
 			values.has_erasure = TRUE;
 			values.n_clicks = 0;
+			values.choose_stim = 0;
 			values.n_curr_block = values.require_attention - values.n_attention;
 		} else if (values.block_type == "erasure") {
 			picture.stim.item.1 = ("wind0.png");
 			values.has_erasure = TRUE;
 			values.n_clicks = 0;
 			values.n_curr_block = values.require_erasure - values.n_erasure;
+			values.choose_stim = 0;
 		}
 	}
 ]
@@ -287,7 +311,8 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 	picture.stim.hposition = expressions.centerx + cos(rad(list.degrees.nextvalue))*expressions.radius_px;
 	picture.stim.vposition = expressions.centery + sin(rad(list.degrees.nextvalue))*expressions.radius_px;
 	picture.stim.rotation = list.degrees.nextvalue - 270;
-	// this rotates the stimulus in the correct position
+	// now we have to convert pos_shifted into 'screen' coordinates which the stimuli are on
+	values.stim_center_deg = mod(list.degrees.nextvalue + 90,360);
 ]
 / trialduration = list.ITI.nextvalue;
 / branch = [
@@ -484,22 +509,14 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 // correctresponse = (next)
 / recorddata = true
 / ontrialend = [
-	// now we have to convert pos_shifted into 'screen' coordinates which the stimuli are on
-	values.stim_center_deg = mod(list.degrees.nextvalue + 90,360);
-	// to account for 90 degree counterclockwise rotation so 12 o'clock is zero
 	if (values.block_type != "no_erasure") {
+		// to account for 90 degree counterclockwise rotation so 12 o'clock is zero
 		if (values.pos_shifted >= values.stim_center_deg- 15 && values.pos_shifted <= values.stim_center_deg + 15) {
 			// 15 + 15 = 30 degrees of arc
 			values.choose_stim = TRUE;
 			values.n_clicks +=1;
 		} else {
 			values.choose_stim = FALSE;
-		}
-		// dynamically account for stimulus erasure choice
-		if (values.n_clicks >= values.total_clicks) {
-			values.timeout_block = TRUE;
-			values.n_clicks = NULL;
-			// current block automatically ends
 		}
 	}
 	if (values.block_type == "erasure") {
@@ -513,11 +530,6 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	}
 	if (values.generate_new_erasure==TRUE){
 		values.generate_new_erasure = FALSE;
-	}
-	if (values.timeouts_remain<=0){
-		values.timeout_block = FALSE;
-		values.generate_new_erasure = TRUE;
-		values.timeouts_remain = values.timeout_trials;
 	}
 	values.n_curr_block -= 1;
 	values.run_trial_dum  += 1;
@@ -545,7 +557,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	if (values.block==1){
 		values.timeout_block = FALSE;
 		values.generate_new_erasure = TRUE;
-		values.n_curr_block = 0;
+		values.n_curr_block = NULL;
 		values.n_timeout = 0;
 	}
 	values.deg_index = noreplace(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36);
