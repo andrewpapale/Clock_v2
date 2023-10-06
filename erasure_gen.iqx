@@ -570,26 +570,41 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	// reset run_trial on each block
 	list.triallist.poolsize = values.block_length;
 	values.block +=1;
+	// repopulate full set of erasures
+	
 	if (values.block==1){
 		values.timeout_block = FALSE;
 		values.generate_new_erasure = TRUE;
 		values.n_curr_block = NULL;
 		values.n_timeout = 0;
 		values.deg_index_era = replace(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36);
-		list.degrees_att.removeitem(values.deg_index_era); // remove the erasure item from the attention stim list at position i
-		if (values.deg_index_era > 1 && values.deg_index_era < 36){
-			list.degrees_att.removeitem(values.deg_index_era - 1); // also item (i - 1), which has NOT shifted in position, still at (i - 1)
-			list.degrees_att.removeitem(values.deg_index_era - 1); // also item (i + 1), which has shifted from position (i + 1) into position (i - 1) with removal of position i and (i - 1)
-		} else if (values.deg_index_era ==1){
-			list.degrees_att.removeitem(values.deg_index_era + 1); // also item (i + 1)
-			list.degrees_att.removeitem(list.degrees_att.itemcount); // also last item (circular coordinates)
-		} else if (values.deg_index_era == 36){
-			list.degrees_att.removeitem(values.deg_index_era - 1); // also item (i - 1)
-			list.degrees_att.removeitem(1); // also remove 1st item (circular coordinates)
-			
-		}
-		values.deg_index_att = replace(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33);  // 36 possibilities - 3 items
 	}
+	list.degrees_era_used.appenditem(values.deg_index_era) // append to used set before removing
+	list.degrees_att.removeitem(values.deg_index_era); // remove the erasure item from the attention stim list at position i
+	if (values.deg_index_era > 1 && values.deg_index_era < 36){
+		list.degrees_era_used.appenditem(values.deg_index_era - 1);
+		list.degrees_era_used.appenditem(values.deg_index_era -1);
+		list.degrees_att.removeitem(values.deg_index_era - 1); // also item (i - 1), which has NOT shifted in position, still at (i - 1)
+		list.degrees_att.removeitem(values.deg_index_era - 1); // also item (i + 1), which has shifted from position (i + 1) into position (i - 1) with removal of position i and (i - 1)
+	} else if (values.deg_index_era ==1){
+		list.degrees_era_used.appenditem(values.deg_index_era + 1);
+		list.degrees_era_used.appenditem(list.degrees_att.itemcount);
+		list.degrees_att.removeitem(values.deg_index_era + 1); // also item (i + 1)
+		list.degrees_att.removeitem(list.degrees_att.itemcount); // also last item (circular coordinates)
+	} else if (values.deg_index_era == 36){
+		list.degrees_era_used.appenditem(values.deg_index_era -1);
+		list.degrees_era_used.appenditem(1);
+		list.degrees_att.removeitem(values.deg_index_era - 1); // also item (i - 1)
+		list.degrees_att.removeitem(1); // also remove 1st item (circular coordinates)	
+	}
+	values.deg_index_att = replace(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33);  // 36 possibilities - 3 items
+	
+	if (values.block > 1){
+		// also remove last stim positions from prior blocks
+		list.degrees_att.removeitem()
+	}
+	
+	
 	values.last_deg_index_era = values.deg_index_era;
 	values.last_deg_index_att = values.deg_index_att;
 	list.degrees_att.nextvalue;
