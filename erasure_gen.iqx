@@ -31,6 +31,18 @@
 / selectionmode = values.deg_index_era;
 </list>
 
+<list degrees_att_used>
+/ items = ()
+/ selectionrate = trial
+/ selectionmode = values.last_deg_index_att
+</list>
+
+<list degrees_era_used>
+/ items = ()
+/ selectionrate = trial
+/ selectionmode = values.last_deg_index_att
+</list>
+
 <list triallist>
 / items = (trial.ITI)
 / poolsize = values.block_length;
@@ -213,7 +225,7 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 <text center>
 // items = ("center = <%values.stim_center_deg%>, pos_sh = <%values.pos_shifted%> choose = <%values.choose_stim%>")
 // items = ("best = <%values.best%>, <%values.rem0%> <%values.rem1%> <%values.rem2%> <%values.rem3%> <%values.rem4%> <%values.rem5%>")
-/ items = ("gne=<%values.n_curr_block%>,to=<%values.generate_new_erasure%>, tob=<%values.timeout_block%>,att=<%values.n_attention%> era=<%values.n_erasure%>")
+/ items = ("gne=<%list.degrees_att.itemcount%>,to=<%values.generate_new_erasure%>, tob=<%values.timeout_block%>,att=<%values.n_attention%> era=<%values.n_erasure%>")
 / position = (50%, 50%)
 </text>
 
@@ -287,14 +299,24 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 			picture.stim.item.1 = ("fog0.png");
 			values.has_erasure = TRUE;
 			values.n_clicks = 0;
-			values.choose_stim = 0;
 			values.n_curr_block = values.require_attention - values.n_attention;
+			values.choose_stim = 0;
+			// now we have to convert pos_shifted into 'screen' coordinates which the stimuli are on
+			picture.stim.hposition = expressions.centerx + cos(rad(list.degrees_att.nextvalue))*expressions.radius_px;
+			picture.stim.vposition = expressions.centery + sin(rad(list.degrees_att.nextvalue))*expressions.radius_px;
+			picture.stim.rotation = list.degrees_att.nextvalue - 270;
+			values.stim_center_deg = mod(list.degrees_att.nextvalue + 90,360);
 		} else if (values.block_type == "erasure") {
 			picture.stim.item.1 = ("wind0.png");
 			values.has_erasure = TRUE;
 			values.n_clicks = 0;
 			values.n_curr_block = values.require_erasure - values.n_erasure;
 			values.choose_stim = 0;
+			// now we have to convert pos_shifted into 'screen' coordinates which the stimuli are on
+			picture.stim.hposition = expressions.centerx + cos(rad(list.degrees_era.nextvalue))*expressions.radius_px;
+			picture.stim.vposition = expressions.centery + sin(rad(list.degrees_era.nextvalue))*expressions.radius_px;
+			picture.stim.rotation = list.degrees_era.nextvalue - 270;
+			values.stim_center_deg = mod(list.degrees_era.nextvalue + 90,360);
 		}
 	}
 ]
@@ -308,11 +330,6 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 		dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 ]
 / ontrialend = [
-	picture.stim.hposition = expressions.centerx + cos(rad(list.degrees.nextvalue))*expressions.radius_px;
-	picture.stim.vposition = expressions.centery + sin(rad(list.degrees.nextvalue))*expressions.radius_px;
-	picture.stim.rotation = list.degrees.nextvalue - 270;
-	// now we have to convert pos_shifted into 'screen' coordinates which the stimuli are on
-	values.stim_center_deg = mod(list.degrees.nextvalue + 90,360);
 ]
 / trialduration = list.ITI.nextvalue;
 / branch = [
@@ -541,7 +558,6 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 
 <block experiment>
 / onblockbegin = [
-	values.deg_index=1;
 	values.run_trial_dum = 1;
 	values.run_trial = 0;
 	values.require_erasure = ceil(values.block_length*values.erase_prop);
@@ -559,10 +575,13 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 		values.generate_new_erasure = TRUE;
 		values.n_curr_block = NULL;
 		values.n_timeout = 0;
+		values.deg_index_era = replace(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36);
+		list.degrees_att.removeitem(values.deg_index_era); // remove the erasure item from the attention stim list, also items +1 and -1
+		values.deg_index_att = replace(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35);
 	}
-	values.deg_index = noreplace(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36);
 	// will need to make this dynamic
-	list.degrees.nextvalue;
+	list.degrees_att.nextvalue;
+	list.degrees_era.nextvalue;
 ]
 / branch = [
 	list.blocklist.nextvalue;
