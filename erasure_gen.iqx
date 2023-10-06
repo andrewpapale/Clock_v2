@@ -576,8 +576,16 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 		values.n_curr_block = NULL;
 		values.n_timeout = 0;
 		values.deg_index_era = replace(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36);
-		list.degrees_att.removeitem(values.deg_index_era); // remove the erasure item from the attention stim list, also items +1 and -1
-		values.deg_index_att = replace(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35);
+		list.degrees_att.removeitem(values.deg_index_era); // remove the erasure item from the attention stim list at position i
+		if (values.deg_index_era > 1 && values.deg_index_era < 36){
+			list.degrees_att.removeitem(values.deg_index_era - 1); // also item - 1, which has NOT shifted in position, still at (i - 1)
+			list.degrees_att.removeitem(values.deg_index_era - 1); // also item + 1, which has shifted from position (i + 1) into position (i - 1) with removal of position i and (i - 1)
+		} else if (values.deg_index_era ==1){
+			
+		} else if (values.deg_index_era == 36){
+			
+		}
+		values.deg_index_att = replace(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33);
 	}
 	// will need to make this dynamic
 	list.degrees_att.nextvalue;
