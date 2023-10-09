@@ -5483,6 +5483,7 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 // items = ("att=<%list.degrees_att.itemcount%>,era=<%list.degrees_era.itemcount%>, used=<%list.degrees_used.itemcount%>")
 // items = ("<%list.sorted_values.items.1%> <%list.sorted_values.items.2%> <%list.sorted_values.items.3%> <%list.sorted_values.items.4%> <%list.sorted_values.items.5%>")
 // items = ("<%list.available_seg.items.1%> <%list.available_seg.items.2%> <%list.available_seg.items.3%> <%list.available_seg.items.4%> <%list.available_seg.items.5%>")
+/ items = ("di=<%values.deg_index_era%> dei=<%values.degrees_erasure_index%>")
 / position = (50%, 50%)
 </text>
 
@@ -7248,30 +7249,78 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 		values.generate_new_erasure = TRUE;
 		values.n_curr_block = NULL;
 		values.n_timeout = 0;
-		values.deg_index_era = replace(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35);
-		// this will now depend on Vmax
-	} else {
-		values.deg_index_era = replace(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29);
-		// this will now depend on Vmax
+		values.degrees_erasure_index = rand(1,list.trqv_0.itemcount); values.values_erasure_index=values.degrees_erasure_index; values.curr_val_era = list.trqv_0.nextvalue; values.curr_index_era = list.trqi_0.nextvalue;
+		values.length_trqi = list.trqv_0.itemcount; // will need to update this trial by trial
 	}
 	// append items to used era list before removing, note the order in which we populate this list WILL matter when repopulating the era and att lists for generation, so always {i, (i-1), (i+1)}
-	list.degrees_used.appenditem(list.degrees_era.item(values.deg_index_era));
+	list.degrees_used.appenditem(list.degrees_era.item(values.curr_index_era));
 	// append to used set before removing
-	list.degrees_att.removeitem(values.deg_index_era);
+	list.degrees_att.removeitem(values.curr_index_era);
 	// remove the erasure item from the attention stim list at position i
 	// note can NOT remove values.deg_index_era or current stim will not populate
-	if ((values.deg_index_era > 1 && values.deg_index_era < 36 && values.block == 1) || (values.deg_index_era > 1 && values.deg_index_era < 30 && values.block > 1)) {
-		list.degrees_used.appenditem(list.degrees_era.item(values.deg_index_era - 1));
-		list.degrees_used.appenditem(list.degrees_era.item(values.deg_index_era -1));
-		list.degrees_att.removeitem(values.deg_index_era-1);
-		// also item (i - 1), which has NOT shifted in position, still at (i - 1)
-		list.degrees_att.removeitem(values.deg_index_era-1);
-		// also item (i + 1), which has shifted from position (i + 1) into position (i - 1) with removal of position i and (i - 1)
-		list.degrees_era.removeitem(values.deg_index_era-1);
-		// also item (i - 1), which has NOT shifted in position, still at (i - 1)
-		list.degrees_era.removeitem(values.deg_index_era-1);
-		// also item (i + 1), which has shifted from position (i + 1) into position (i - 1) with removal of position i and (i - 1)
-	} else if (values.deg_index_era ==1) {
+	if ((values.deg_index_era > 15 && values.deg_index_era < values.length_trqi-15 && values.block == 1) || (values.curr_index_era > 15 && values.deg_index_era < values.lengtht_trqi-15 && values.block > 1)) {
+		list.degrees_used.appenditem(list.degrees_era.item(values.curr_index_era - 1));
+		list.degrees_used.appenditem(list.degrees_era.item(values.curr_index_era - 2));
+		list.degrees_used.appenditem(list.degrees_era.item(values.curr_index_era - 3));
+		list.degrees_used.appenditem(list.degrees_era.item(values.curr_index_era - 4));
+		list.degrees_used.appenditem(list.degrees_era.item(values.curr_index_era - 5));
+		list.degrees_used.appenditem(list.degrees_era.item(values.curr_index_era - 6));
+		list.degrees_used.appenditem(list.degrees_era.item(values.curr_index_era - 7));
+		list.degrees_used.appenditem(list.degrees_era.item(values.curr_index_era - 8));
+		list.degrees_used.appenditem(list.degrees_era.item(values.curr_index_era - 9));
+		list.degrees_used.appenditem(list.degrees_era.item(values.curr_index_era - 10));
+		list.degrees_used.appenditem(list.degrees_era.item(values.curr_index_era - 11));
+		list.degrees_used.appenditem(list.degrees_era.item(values.curr_index_era - 12));
+		list.degrees_used.appenditem(list.degrees_era.item(values.curr_index_era - 13));
+		list.degrees_used.appenditem(list.degrees_era.item(values.curr_index_era - 14));
+		list.degrees_used.appenditem(list.degrees_era.item(values.curr_index_era - 15));
+		list.degrees_used.appenditem(list.degrees_era.item(values.curr_index_era + 1));
+		list.degrees_used.appenditem(list.degrees_era.item(values.curr_index_era + 2));
+		list.degrees_used.appenditem(list.degrees_era.item(values.curr_index_era + 3));
+		list.degrees_used.appenditem(list.degrees_era.item(values.curr_index_era + 4));
+		list.degrees_used.appenditem(list.degrees_era.item(values.curr_index_era + 5));
+		list.degrees_used.appenditem(list.degrees_era.item(values.curr_index_era + 6));
+		list.degrees_used.appenditem(list.degrees_era.item(values.curr_index_era + 7));
+		list.degrees_used.appenditem(list.degrees_era.item(values.curr_index_era + 8));
+		list.degrees_used.appenditem(list.degrees_era.item(values.curr_index_era + 9));
+		list.degrees_used.appenditem(list.degrees_era.item(values.curr_index_era + 10));
+		list.degrees_used.appenditem(list.degrees_era.item(values.curr_index_era + 11));
+		list.degrees_used.appenditem(list.degrees_era.item(values.curr_index_era + 12));
+		list.degrees_used.appenditem(list.degrees_era.item(values.curr_index_era + 13));
+		list.degrees_used.appenditem(list.degrees_era.item(values.curr_index_era + 14));
+		list.degrees_used.appenditem(list.degrees_era.item(values.curr_index_era + 15));		
+		list.degrees_att.removeitem(values.curr_index_era+15);
+		list.degrees_att.removeitem(values.curr_index_era+14);
+		list.degrees_att.removeitem(values.curr_index_era+13);
+		list.degrees_att.removeitem(values.curr_index_era+12);
+		list.degrees_att.removeitem(values.curr_index_era+11);
+		list.degrees_att.removeitem(values.curr_index_era+10);
+		list.degrees_att.removeitem(values.curr_index_era+9);
+		list.degrees_att.removeitem(values.curr_index_era+8);
+		list.degrees_att.removeitem(values.curr_index_era+7);
+		list.degrees_att.removeitem(values.curr_index_era+6);
+		list.degrees_att.removeitem(values.curr_index_era+5);
+		list.degrees_att.removeitem(values.curr_index_era+4);
+		list.degrees_att.removeitem(values.curr_index_era+3);
+		list.degrees_att.removeitem(values.curr_index_era+2);
+		list.degrees_att.removeitem(values.curr_index_era+1);
+		list.degrees_att.removeitem(values.curr_index_era);
+		list.degrees_att.removeitem(values.curr_index_era-1);
+		list.degrees_att.removeitem(values.curr_index_era-2);
+		list.degrees_att.removeitem(values.curr_index_era-3);
+		list.degrees_att.removeitem(values.curr_index_era-4);
+		list.degrees_att.removeitem(values.curr_index_era-5);
+		list.degrees_att.removeitem(values.curr_index_era-6);
+		list.degrees_att.removeitem(values.curr_index_era-7);
+		list.degrees_att.removeitem(values.curr_index_era-8);
+		list.degrees_att.removeitem(values.curr_index_era-9);
+		list.degrees_att.removeitem(values.curr_index_era-10);
+		list.degrees_att.removeitem(values.curr_index_era-11);
+		list.degrees_att.removeitem(values.curr_index_era+12);
+		list.degrees_att.removeitem(values.curr_index_era+13);
+		list.degrees_att.removeitem(values.curr_index_era+14);
+		list.degrees_att.removeitem(values.curr_index_era+15);
+	} else if (values.curr_index_era ==1) {
 		list.degrees_used.appenditem(list.degrees_era.itemcount);
 		list.degrees_used.appenditem(list.degrees_era.item(values.deg_index_era + 1));
 		list.degrees_att.removeitem(list.degrees_att.itemcount);
@@ -7282,15 +7331,15 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 		// also last item (circular coordinates)
 		list.degrees_era.removeitem(values.deg_index_era + 1);
 		// also item (i + 1)
-	} else if ((values.deg_index_era == 36 && values.block == 1) || (values.deg_index_era==30 && values.block > 1)) {
+	} else if ((values.curr_index_era == 36 && values.block == 1) || (values.curr_index_era==30 && values.block > 1)) {
 		// this isn't working for some reason
-		list.degrees_used.appenditem(list.degrees_att.item(values.deg_index_era -1));
+		list.degrees_used.appenditem(list.degrees_att.item(values.curr_index_era -1));
 		//list.degrees_used.appenditem(list.degress_att.items(1)); // this is throwing an error
-		list.degrees_att.removeitem(values.deg_index_era - 1);
+		list.degrees_att.removeitem(values.curr_index_era - 1);
 		// also item (i - 1)
 		list.degrees_att.removeitem(1);
 		// also remove 1st item (circular coordinates)	
-		list.degrees_era.removeitem(values.deg_index_era - 1);
+		list.degrees_era.removeitem(values.curr_index_era - 1);
 		// also item (i - 1)
 		list.degrees_era.removeitem(1);
 		// also remove 1st item (circular coordinates)
