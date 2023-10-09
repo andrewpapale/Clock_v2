@@ -70,6 +70,61 @@
 / selectionmode = random
 </list>
 
+
+<list rt_1>
+/ items = (0)
+/ poolsize = 1
+/ selectionmode = values.trial_index;
+</list>
+
+<list rt_2>
+/ items = (25)
+/ poolsize = 1
+/ selectionmode = values.trial_index;
+</list>
+
+<list rt_3>
+/ items = (50)
+/ poolsize = 1
+/ selectionmode = values.trial_index;
+</list>
+
+<list rt_4>
+/ items = (100)
+/ poolsize = 1
+/ selectionmode = values.trial_index;
+</list>
+
+<list rt_5>
+/ items = (50)
+/ poolsize = 1
+/ selectionmode = values.trial_index;
+</list>
+
+<list values>
+/ items = (0, 25, 50, 100, 50)
+/ poolsize = 5
+/ selectionrate = always
+</list>
+
+<list quantile25>
+/ items = (18.75)
+/ poolsize = 1
+/ selectionrate = always
+</list>
+
+<list quantile75>
+/ items = (18.75)
+/ poolsize = 1
+/ selectionrate = always
+</list>
+
+<list sorted_values>
+/ items = ()
+/ poolsize = 5
+/ selectionrate = always
+</list>
+
 <list best>
 / items = (values.rem0, values.rem1, values.rem2, values.rem3, values.rem4, values.rem5)
 / poolsize = 6
@@ -141,6 +196,8 @@
 / n_no_erasure = NULL;
 / n_curr_block = NULL;
 / n_timeout = NULL;
+
+/ trial_index = 1;
 </values>
 
 <data>
@@ -219,7 +276,8 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 <text center>
 // items = ("center = <%values.stim_center_deg%>, pos_sh = <%values.pos_shifted%> choose = <%values.choose_stim%>")
 // items = ("best = <%values.best%>, <%values.rem0%> <%values.rem1%> <%values.rem2%> <%values.rem3%> <%values.rem4%> <%values.rem5%>")
-/ items = ("att=<%list.degrees_att.itemcount%>,era=<%list.degrees_era.itemcount%>, used=<%list.degrees_used.itemcount%>")
+// items = ("att=<%list.degrees_att.itemcount%>,era=<%list.degrees_era.itemcount%>, used=<%list.degrees_used.itemcount%>")
+/ items = ("<%list.sorted_values.items.1%> <%list.sorted_values.items.2%> <%list.sorted_values.items.3%> <%list.sorted_values.items.4%> <%list.sorted_values.items.5%>")
 / position = (50%, 50%)
 </text>
 
@@ -476,7 +534,17 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 	}
 	values.pos_shifted = values.rt_shifted*360/values.time_per_revolution;
 	// temp
-	values.mag = 10;
+	if (values.rt_shifted >= 0 && values.rt_shifted < 1000){
+		values.mag = list.rt_1.currentvalue;
+	} else if (values.rt_shifted >= 1000 && values.rt_shifted < 2000){
+		values.mag = list.rt_2.currentvalue;
+	} else if (values.rt_shifted >= 2000 && values.rt_shifted < 3000){
+		values.mag = list.rt_3.currentvalue;
+	} else if (values.rt_shifted >= 3000 && values.rt_shifted < 4000){
+		values.mag = list.rt_4.currentvalue;
+	} else if (values.rt_shifted >= 4000 && values.rt_shifted <= 5000){
+		values.mag = list.rt_5.currentvalue;
+	}
 	values.ev = values.mag * values.freq;
 	values.rng = rand(0,1);
 	if (values.freq >= values.rng) {
@@ -564,14 +632,28 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	// reset run_trial on each block
 	list.triallist.poolsize = values.block_length;
 	values.block +=1;
+	
+	
+	// erasure algorithm
+	list.sorted_values.appenditem(list.values.items.1);
+	list.sorted_values.appenditem(list.values.items.2);
+	list.sorted_values.appenditem(list.values.items.3);
+	list.sorted_values.appenditem(list.values.items.4);
+	list.sorted_values.appenditem(list.values.items.5);
+	
+	list.sorted_values.sort(true,false); // sort ascending
+	
+	
+	
+	
 	if (values.block==1){
 		values.timeout_block = FALSE;
 		values.generate_new_erasure = TRUE;
 		values.n_curr_block = NULL;
 		values.n_timeout = 0;
-		values.deg_index_era = replace(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35);
+		values.deg_index_era = replace(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35);  // this will now depend on Vmax
 	} else {
-		values.deg_index_era = replace(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29);
+		values.deg_index_era = replace(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29); // this will now depend on Vmax
 	}
 	// append items to used era list before removing, note the order in which we populate this list WILL matter when repopulating the era and att lists for generation, so always {i, (i-1), (i+1)}
 	list.degrees_used.appenditem(list.degrees_era.item(values.deg_index_era)); // append to used set before removing
