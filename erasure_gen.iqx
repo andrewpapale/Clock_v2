@@ -284,7 +284,7 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 	list.curr_values.reset();
 	list.curr_RTs.reset();
 	list.curr_trials.reset();
-	while (list.curr_RTs.itemcount < 361){
+	while (list.curr_RTs.itemcount < 360){
 		list.curr_values.appenditem(list.values.nextvalue);
 		list.curr_RTs.appenditem(list.RT.nextvalue);
 		list.curr_trials.appenditem(list.trial.nextvalue);
