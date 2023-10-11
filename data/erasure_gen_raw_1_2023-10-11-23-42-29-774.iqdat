@@ -1,0 +1,42 @@
+build	computer.platform	computer.touch	date	time	subject	group	sessionid	blockcode	blocknum	block	n_blocks	trialcode	latency	n_trials	block_length	best	trial	run_trial	block_type	list.triallist.currentindex	startPos	stim_center_deg	choose_stim	run_trial_dum	n_attention	n_erasure	n_no_erasure	n_clicks	require_attention	require_no_erasure	require_erasure	timeouts_remain	timeout_block	generate_new_erasure	n_curr_block	list.degrees_att.currentvalue	list.degrees_era.currentvalue
+6.6.1	mac	0	2023-10-11	19:42:29	1	1	1	experiment	1	1	3	ITI	480	45	15	6	1	1	no_erasure	1	0			1	0	0	0		4	6	5	1	0	1	6		
+6.6.1	mac	0	2023-10-11	19:42:29	1	1	1	experiment	1	1	3	preFreeze	650	45	15	6	1	1	no_erasure	1	0			1	0	0	0		4	6	5	1	0	1	6		
+6.6.1	mac	0	2023-10-11	19:42:29	1	1	1	experiment	1	1	3	clock	625	45	15	6	1	1	no_erasure	1	92			1	0	0	0		4	6	5	1	0	1	6		
+6.6.1	mac	0	2023-10-11	19:42:29	1	1	1	experiment	1	1	3	ISI	230	45	15	6	1	1	no_erasure	1	92			1	0	0	0		4	6	5	1	0	1	6		
+6.6.1	mac	0	2023-10-11	19:42:29	1	1	1	experiment	1	1	3	feedback	1000	45	15	6	1	1	no_erasure	1	92			2	0	0	1		4	6	5	1	0	0	5		
+6.6.1	mac	0	2023-10-11	19:42:29	1	1	1	experiment	1	1	3	ITI	390	45	15	6	2	2	no_erasure	2	92			2	0	0	1		4	6	5	1	0	0	5		
+6.6.1	mac	0	2023-10-11	19:42:29	1	1	1	experiment	1	1	3	preFreeze	610	45	15	6	2	2	no_erasure	2	92			2	0	0	1		4	6	5	1	0	0	5		
+6.6.1	mac	0	2023-10-11	19:42:29	1	1	1	experiment	1	1	3	clock	305	45	15	6	2	2	no_erasure	2	34			2	0	0	1		4	6	5	1	0	0	5		
+6.6.1	mac	0	2023-10-11	19:42:29	1	1	1	experiment	1	1	3	ISI	270	45	15	6	2	2	no_erasure	2	34			2	0	0	1		4	6	5	1	0	0	5		
+6.6.1	mac	0	2023-10-11	19:42:29	1	1	1	experiment	1	1	3	feedback	1000	45	15	6	2	2	no_erasure	2	34			3	0	0	2		4	6	5	1	0	0	4		
+6.6.1	mac	0	2023-10-11	19:42:29	1	1	1	experiment	1	1	3	ITI	350	45	15	6	3	3	no_erasure	3	34			3	0	0	2		4	6	5	1	0	0	4		
+6.6.1	mac	0	2023-10-11	19:42:29	1	1	1	experiment	1	1	3	preFreeze	570	45	15	6	3	3	no_erasure	3	34			3	0	0	2		4	6	5	1	0	0	4		
+6.6.1	mac	0	2023-10-11	19:42:29	1	1	1	experiment	1	1	3	clock	260	45	15	6	3	3	no_erasure	3	51			3	0	0	2		4	6	5	1	0	0	4		
+6.6.1	mac	0	2023-10-11	19:42:29	1	1	1	experiment	1	1	3	ISI	200	45	15	6	3	3	no_erasure	3	51			3	0	0	2		4	6	5	1	0	0	4		
+6.6.1	mac	0	2023-10-11	19:42:29	1	1	1	experiment	1	1	3	feedback	1000	45	15	6	3	3	no_erasure	3	51			4	0	0	3		4	6	5	1	0	0	3		
+6.6.1	mac	0	2023-10-11	19:42:29	1	1	1	experiment	1	1	3	ITI	470	45	15	6	4	4	no_erasure	4	51			4	0	0	3		4	6	5	1	0	0	3		
+6.6.1	mac	0	2023-10-11	19:42:29	1	1	1	experiment	1	1	3	preFreeze	560	45	15	6	4	4	no_erasure	4	51			4	0	0	3		4	6	5	1	0	0	3		
+6.6.1	mac	0	2023-10-11	19:42:29	1	1	1	experiment	1	1	3	clock	314	45	15	6	4	4	no_erasure	4	23			4	0	0	3		4	6	5	1	0	0	3		
+6.6.1	mac	0	2023-10-11	19:42:29	1	1	1	experiment	1	1	3	ISI	340	45	15	6	4	4	no_erasure	4	23			4	0	0	3		4	6	5	1	0	0	3		
+6.6.1	mac	0	2023-10-11	19:42:29	1	1	1	experiment	1	1	3	feedback	1000	45	15	6	4	4	no_erasure	4	23			5	0	0	4		4	6	5	1	0	0	2		
+6.6.1	mac	0	2023-10-11	19:42:29	1	1	1	experiment	1	1	3	ITI	140	45	15	6	5	5	no_erasure	5	23			5	0	0	4		4	6	5	1	0	0	2		
+6.6.1	mac	0	2023-10-11	19:42:29	1	1	1	experiment	1	1	3	preFreeze	680	45	15	6	5	5	no_erasure	5	23			5	0	0	4		4	6	5	1	0	0	2		
+6.6.1	mac	0	2023-10-11	19:42:29	1	1	1	experiment	1	1	3	clock	243	45	15	6	5	5	no_erasure	5	50			5	0	0	4		4	6	5	1	0	0	2		
+6.6.1	mac	0	2023-10-11	19:42:29	1	1	1	experiment	1	1	3	ISI	370	45	15	6	5	5	no_erasure	5	50			5	0	0	4		4	6	5	1	0	0	2		
+6.6.1	mac	0	2023-10-11	19:42:29	1	1	1	experiment	1	1	3	feedback	1000	45	15	6	5	5	no_erasure	5	50			6	0	0	5		4	6	5	1	0	0	1		
+6.6.1	mac	0	2023-10-11	19:42:29	1	1	1	experiment	1	1	3	ITI	170	45	15	6	6	6	no_erasure	6	50			6	0	0	5		4	6	5	1	0	0	1		
+6.6.1	mac	0	2023-10-11	19:42:29	1	1	1	experiment	1	1	3	preFreeze	600	45	15	6	6	6	no_erasure	6	50			6	0	0	5		4	6	5	1	0	0	1		
+6.6.1	mac	0	2023-10-11	19:42:29	1	1	1	experiment	1	1	3	clock	300	45	15	6	6	6	no_erasure	6	49			6	0	0	5		4	6	5	1	0	0	1		
+6.6.1	mac	0	2023-10-11	19:42:29	1	1	1	experiment	1	1	3	ISI	570	45	15	6	6	6	no_erasure	6	49			6	0	0	5		4	6	5	1	0	0	1		
+6.6.1	mac	0	2023-10-11	19:42:29	1	1	1	experiment	1	1	3	feedback	1000	45	15	6	6	6	no_erasure	6	49			7	0	0	6		4	6	5	1	0	0	0		
+6.6.1	mac	0	2023-10-11	19:42:29	1	1	1	experiment	1	1	3	ITI	200	45	15	6	7	7	erasure	7	49	279	0	7	0	0	6	0	4	6	5	1	0	1	5		189
+6.6.1	mac	0	2023-10-11	19:42:29	1	1	1	experiment	1	1	3	preFreeze	580	45	15	6	7	7	erasure	7	49	279	0	7	0	0	6	0	4	6	5	1	0	1	5		189
+6.6.1	mac	0	2023-10-11	19:42:29	1	1	1	experiment	1	1	3	clock	427	45	15	6	7	7	erasure	7	48	279	0	7	0	0	6	0	4	6	5	1	0	1	5		189
+6.6.1	mac	0	2023-10-11	19:42:29	1	1	1	experiment	1	1	3	ISI	240	45	15	6	7	7	erasure	7	48	279	0	7	0	0	6	0	4	6	5	1	0	1	5		189
+6.6.1	mac	0	2023-10-11	19:42:29	1	1	1	experiment	1	1	3	feedback	1000	45	15	6	7	7	erasure	7	48	279	1	8	0	1	6	1	4	6	5	1	0	0	4		189
+6.6.1	mac	0	2023-10-11	19:42:29	1	1	1	experiment	1	1	3	ITI	500	45	15	6	8	8	erasure	8	48	279	1	8	0	1	6	1	4	6	5	1	0	0	4		189
+6.6.1	mac	0	2023-10-11	19:42:29	1	1	1	experiment	1	1	3	preFreeze	660	45	15	6	8	8	erasure	8	48	279	1	8	0	1	6	1	4	6	5	1	0	0	4		189
+6.6.1	mac	0	2023-10-11	19:42:29	1	1	1	experiment	1	1	3	clock	442	45	15	6	8	8	erasure	8	85	279	1	8	0	1	6	1	4	6	5	1	0	0	4		189
+6.6.1	mac	0	2023-10-11	19:42:29	1	1	1	experiment	1	1	3	ISI	420	45	15	6	8	8	erasure	8	85	279	1	8	0	1	6	1	4	6	5	1	0	0	4		189
+6.6.1	mac	0	2023-10-11	19:42:29	1	1	1	experiment	1	1	3	feedback	1000	45	15	6	8	8	erasure	8	85	279	0	9	0	2	6	1	4	6	5	1	0	0	3		189
+6.6.1	mac	0	2023-10-11	19:42:29	1	1	1	experiment	1	1	3	ITI	131	45	15	6	9	9	erasure	9	85	279	0	9	0	2	6	1	4	6	5	1	0	0	3		189
