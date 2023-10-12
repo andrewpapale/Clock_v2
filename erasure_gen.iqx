@@ -101,6 +101,7 @@
 </list>
 
 <list curr_trials>
+/ selectionmode = values.rt_index;
 </list>
 
 <list best>
@@ -182,13 +183,15 @@
 / curr_val_era = NULL;
 / curr_index_era = NULL;
 
+/ rt_index = NULL;
+
 </values>
 
 <data>
 / columns = (build, computer.platform, computer.touch, date, time, subject, group, script.sessionid, blockcode, blocknum,values.block,values.n_blocks,
 trialcode,latency,values.n_trials, values.block_length, values.best,
-values.trial, values.run_trial,values.block_type
-list.triallist.currentindex, values.startPos, values.stim_center_deg, values.choose_stim,values.run_trial_dum, values.n_attention,values.n_erasure,values.n_no_erasure,values.n_clicks,
+values.trial, values.run_trial,values.block_type,
+list.triallist.currentindex, values.startPos, values.pos_shifted, values.rt_shifted, values.rt_index, list.curr_values.nextvalue, values.mag, values.ev, values.rng, values.inc, values.inc_rg, values.stim_center_deg, values.choose_stim,values.run_trial_dum, values.n_attention,values.n_erasure,values.n_no_erasure,values.n_clicks,
 values.require_attention,values.require_no_erasure,values.require_erasure,values.timeouts_remain, values.timeout_block, values.generate_new_erasure, values.n_curr_block,list.degrees_att.currentvalue,list.degrees_era.currentvalue)
 </data>
 
@@ -289,7 +292,8 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 		list.curr_RTs.appenditem(list.RT.nextvalue);
 		list.curr_trials.appenditem(list.trial.nextvalue);
 	};
-	
+	values.rt_shifted = NULL;
+	values.pos_shifted = NULL;
 	// dynamically account for stimulus erasure choice
 	if (values.n_clicks >= values.total_clicks) {
 		values.timeout_block = TRUE;
@@ -531,8 +535,9 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 		values.rt_shifted = mod(values.gamma*(values.startPos-75)+trial.clock.latency,values.time_per_revolution);
 	}
 	values.pos_shifted = values.rt_shifted*360/values.time_per_revolution;
-	// 5000 / 360 RT segments gives 14ms RT bins
-	values.mag = 10;
+	// 5000 / 360 RT segments gives 14ms RT bins, conveniently, 1 degree / segment so the index for the value = the degree of the position selected
+	values.rt_index = round(values.pos_shifted);
+	values.mag = list.curr_values.nextvalue;
 	values.ev = values.mag * values.freq;
 	values.rng = rand(0,1);
 	if (values.freq >= values.rng) {

@@ -1,0 +1,66 @@
+﻿<expt main1>
+/ blocks = [
+    1 = experiment;
+]
+</expt>
+
+<block experiment>
+/ trials = [
+    1-8 = test_list;
+]
+</block>
+
+<values>
+/ i = NULL;
+/ lower_quartile = NULL;
+/ upper_quartile = NULL;
+
+</values>
+
+<trial test_list>
+/ ontrialbegin = [
+	list.test_list.reset();
+	values.i = 0;
+	while (values.i < list.a.itemcount) {
+			list.a.nextvalue;
+			if (list.a.currentvalue < list.a.median){
+				list.lower_half.appenditem(list.a.currentvalue);
+			} else if (list.a.currentvalue > list.a.median){
+				list.upper_half.appenditem(list.a.currentvalue);
+			}
+			values.i += 1;
+	};
+	values.lower_quartile = list.lower_half.median;
+	values.upper_quartile = list.upper_half.median;
+	
+	while (list.test_list.itemcount < 1){
+		list.a.nextvalue;
+		if (list.a.currentvalue >= values.lower_quartile && list.a.currentvalue <= values.upper_quartile){
+			list.test_list.appenditem(list.a.currentvalue);
+		}
+	};
+	
+]
+/ stimulusframes = [1 = test_list]
+/ validresponse = (57)
+</trial>
+ 
+<list a> // sort the list first
+/ items = (1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20)
+/ selectionrate = always
+</list>
+
+<text test_list>
+/ items = ("iterations = <%values.i%> [<%list.test_list.items.1%>]")
+/ position = (50%, 50%)
+/ size = (50%, 50%)
+</text>
+
+<list lower_half>
+</list>
+
+<list upper_half>
+</list>
+
+<list test_list>
+</list>
