@@ -249,7 +249,7 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 <picture feedback>
 / items = ("mushrooms1.png") //default
 / position = (50%, 50%)
-/ size = (25%, 25%)
+/ size = (50%, 50%)
 / erase = true(white)
 </picture>
 
@@ -272,9 +272,10 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 
 <text feedback1>
 // items = ("You got <% values.inc_rg %> mushroom(s)")
-/ items = ("under construction")
-/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
-/ position = (50%, 60%)
+/ items = ("<%values.inc_rg%>")
+/ fontstyle = ("Arial", 25%, false, false, false, false, 5, 238)
+/ txbgcolor = (transparent)
+/ position = (50%, 50%)
 / vjustify = center
 / hjustify = left
 </text>
