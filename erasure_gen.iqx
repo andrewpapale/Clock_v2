@@ -196,14 +196,32 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 </data>
 
 <picture animatedCircle>
-/ items = ("challenger-5631958_1280.png")
+/ items = ("blank.png")
 / size = (12%, 0.1px*display.canvaswidth)
 / animation = circle(values.time_per_revolution,-1,values.startPos,50%,50%,expressions.radius_px)
 / erase = false
 </picture>
 
 <picture frozenShip>
-/ items = ("challenger-5631958_1280.png")
+/ items = ("blank.png")
+/ erase = true(white)
+/ size = (12%, 0.1px*display.canvaswidth)
+</picture>
+
+<picture shuttle1>
+/ items = ("585f94c1cb11b227491c3585.png")
+/ erase = true(white)
+/ size = (12%, 0.1px*display.canvaswidth)
+</picture>
+
+<picture shuttle2>
+/ items = ("585f94d8cb11b227491c3588.png")
+/ erase = true(white)
+/ size = (12%, 0.1px*display.canvaswidth)
+</picture>
+
+<picture shuttle3>
+/ items = ("585f94c8cb11b227491c3586.png")
 / erase = true(white)
 / size = (12%, 0.1px*display.canvaswidth)
 </picture>
@@ -240,14 +258,56 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 </picture>
 
 <picture planet>
-/ items = ("planet-1138237_1280.png")
+/ items = ("blank.png")
 / position = (50%, 50%)
 / size = (35%,35%)
 / erase = true(white)
 </picture>
 
 <picture feedback>
-/ items = ("mushrooms1.png") //default
+/ items = ("blank.png")
+/ position = (50%, 50%)
+/ size = (50%, 50%)
+/ erase = true(white)
+</picture>
+
+<picture mushrooms1>
+/ items = ("mushrooms1.png")
+/ position = (50%, 50%)
+/ size = (50%, 50%)
+/ erase = true(white)
+</picture>
+
+<picture mushrooms2>
+/ items = ("mushrooms2.png")
+/ position = (50%, 50%)
+/ size = (50%, 50%)
+/ erase = true(white)
+</picture>
+
+<picture mushrooms3>
+/ items = ("mushrooms3.png")
+/ position = (50%, 50%)
+/ size = (50%, 50%)
+/ erase = true(white)
+</picture>
+
+<picture planet1>
+/ items = ("purple-sphere-7346837_1920.png")
+/ position = (50%, 50%)
+/ size = (50%, 50%)
+/ erase = true(white)
+</picture>
+
+<picture planet2>
+/ items = ("exoplanet-2896662_1920.png")
+/ position = (50%, 50%)
+/ size = (50%, 50%)
+/ erase = true(white)
+</picture>
+
+<picture planet3>
+/ items = ("planet-1138237_1280.png")
 / position = (50%, 50%)
 / size = (50%, 50%)
 / erase = true(white)
@@ -491,7 +551,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 ]
 
 / stimulustimes = [
-	0 = animatedCircle, stim, center, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+	0 = animatedCircle, stim, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 		dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 		dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 		dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
@@ -566,13 +626,19 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 		}
 		values.Earnings = values.inc_rg*values.conversion;
 		values.totalEarnings = values.totalEarnings + values.Earnings;
-		picture.feedback.item.1 = "mushrooms1.png"
+		if (values.block ==1){
+			picture.feedback.item.1 = ("mushrooms2.png")
+		} else if (values.block == 2 && values.block < 3){
+			picture.feedback.item.1 = ("mushrooms1.png")
+		} else if (values.block == 3 && values.block < 4){
+			picture.feedback.item.1 = ("mushrooms3.png")
+		}
 	} else {
 		values.inc = 0;
-		values.inc_rg = 0;
+		values.inc_rg = NULL;
 		values.Earnings = 0;
 		values.totalEarnings = values.totalEarnings + values.Earnings;
-		picture.feedback.item.1 = "timeout.png"
+		picture.feedback.item.1 = "timeout.png"		
 	}
 ]
 / stimulustimes = [
@@ -641,6 +707,20 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	values.deg_index_era = replace(160,190,210,240,270);
 	
 
+	if (values.block==2){
+		picture.planet.item.1 = ("exoplanet-2896662_1920.png");
+		picture.frozenShip.item.1 = ("585f94c8cb11b227491c3586.png");
+		picture.animatedCircle.item.1 = ("585f94c8cb11b227491c3586.png");
+	} else if (values.block==3){
+		picture.planet.item.1 = ("purple-sphere-7346837_1920.png");
+		picture.frozenShip.item.1 = ("585f94d8cb11b227491c3588.png");
+		picture.animatedCircle.item.1 = ("585f94d8cb11b227491c3588.png");
+	} else if (values.block==1){
+		picture.planet.item.1 = ("planet-1138237_1280.png");
+		picture.frozenShip.item.1 = ("585f94c1cb11b227491c3585.png");
+		picture.animatedCircle.item.1 = ("585f94c1cb11b227491c3585.png");
+	}
+	
 ]
 / branch = [
 	list.blocklist.nextvalue;

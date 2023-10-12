@@ -1,0 +1,36 @@
+build	computer.platform	computer.touch	date	time	subject	group	sessionid	blockcode	blocknum	block	n_blocks	trialcode	latency	n_trials	block_length	best	trial	run_trial	block_type	list.triallist.currentindex	startPos	pos_shifted	rt_shifted	rt_index	list.curr_values.nextvalue	mag	ev	rng	inc	inc_rg	stim_center_deg	choose_stim	run_trial_dum	n_attention	n_erasure	n_no_erasure	n_clicks	require_attention	require_no_erasure	require_erasure	timeouts_remain	timeout_block	generate_new_erasure	n_curr_block	list.degrees_att.currentvalue	list.degrees_era.currentvalue
+6.6.1	mac	0	2023-10-12	15:47:47	1	1	1	experiment	1	1	3	ITI	500	45	15	6	1	1	attention	1	0					0					149	0	1	0	0	0	0	4	6	5	1	0	1	4	59	
+6.6.1	mac	0	2023-10-12	15:47:47	1	1	1	experiment	1	1	3	preFreeze	590	45	15	6	1	1	attention	1	0					0					149	0	1	0	0	0	0	4	6	5	1	0	1	4	59	
+6.6.1	mac	0	2023-10-12	15:47:47	1	1	1	experiment	1	1	3	clock	272	45	15	6	1	1	attention	1	12					0					149	0	1	0	0	0	0	4	6	5	1	0	1	4	59	
+6.6.1	mac	0	2023-10-12	15:47:47	1	1	1	experiment	1	1	3	ISI	290	45	15	6	1	1	attention	1	12					0					149	0	1	0	0	0	0	4	6	5	1	0	1	4	59	
+6.6.1	mac	0	2023-10-12	15:47:47	1	1	1	experiment	1	1	3	feedback	1000	45	15	6	1	1	attention	1	12	152.7839999999999918145	2122	153		141	98.6999999999999886313	0.4166403092482686699	141	141	149	1	2	1	0	0	1	4	6	5	1	0	0	3	59	
+6.6.1	mac	0	2023-10-12	15:47:47	1	1	1	experiment	1	1	3	ITI	390	45	15	6	2	2	attention	2	12			153		141					149	1	2	1	0	0	1	4	6	5	1	0	0	3	59	
+6.6.1	mac	0	2023-10-12	15:47:47	1	1	1	experiment	1	1	3	preFreeze	520	45	15	6	2	2	attention	2	12			153		141					149	1	2	1	0	0	1	4	6	5	1	0	0	3	59	
+6.6.1	mac	0	2023-10-12	15:47:47	1	1	1	experiment	1	1	3	clock	326	45	15	6	2	2	attention	2	49			153		141					149	1	2	1	0	0	1	4	6	5	1	0	0	3	59	
+6.6.1	mac	0	2023-10-12	15:47:47	1	1	1	experiment	1	1	3	ISI	500	45	15	6	2	2	attention	2	49			153		141					149	1	2	1	0	0	1	4	6	5	1	0	0	3	59	
+6.6.1	mac	0	2023-10-12	15:47:47	1	1	1	experiment	1	1	3	feedback	1000	45	15	6	2	2	attention	2	49	289.8720000000000140972	4026	290		4	2.7999999999999998224	0.0479790342617731139	4	10	149	0	3	2	0	0	1	4	6	5	1	0	0	2	59	
+6.6.1	mac	0	2023-10-12	15:47:47	1	1	1	experiment	1	1	3	ITI	290	45	15	6	3	3	attention	3	49			290		4					149	0	3	2	0	0	1	4	6	5	1	0	0	2	59	
+6.6.1	mac	0	2023-10-12	15:47:47	1	1	1	experiment	1	1	3	preFreeze	570	45	15	6	3	3	attention	3	49			290		4					149	0	3	2	0	0	1	4	6	5	1	0	0	2	59	
+6.6.1	mac	0	2023-10-12	15:47:47	1	1	1	experiment	1	1	3	clock	327	45	15	6	3	3	attention	3	73			290		4					149	0	3	2	0	0	1	4	6	5	1	0	0	2	59	
+6.6.1	mac	0	2023-10-12	15:47:47	1	1	1	experiment	1	1	3	ISI	320	45	15	6	3	3	attention	3	73			290		4					149	0	3	2	0	0	1	4	6	5	1	0	0	2	59	
+6.6.1	mac	0	2023-10-12	15:47:47	1	1	1	experiment	1	1	3	feedback	1000	45	15	6	3	3	attention	3	73	16.3440000000000011937	227	16		40	28	0.6659615644407369528	40	40	149	0	4	3	0	0	1	4	6	5	1	0	0	1	59	
+6.6.1	mac	0	2023-10-12	15:47:47	1	1	1	experiment	1	1	3	ITI	110	45	15	6	4	4	attention	4	73			16		40					149	0	4	3	0	0	1	4	6	5	1	0	0	1	59	
+6.6.1	mac	0	2023-10-12	15:47:47	1	1	1	experiment	1	1	3	preFreeze	690	45	15	6	4	4	attention	4	73			16		40					149	0	4	3	0	0	1	4	6	5	1	0	0	1	59	
+6.6.1	mac	0	2023-10-12	15:47:47	1	1	1	experiment	1	1	3	clock	314	45	15	6	4	4	attention	4	73			16		40					149	0	4	3	0	0	1	4	6	5	1	0	0	1	59	
+6.6.1	mac	0	2023-10-12	15:47:47	1	1	1	experiment	1	1	3	ISI	530	45	15	6	4	4	attention	4	73			16		40					149	0	4	3	0	0	1	4	6	5	1	0	0	1	59	
+6.6.1	mac	0	2023-10-12	15:47:47	1	1	1	experiment	1	1	3	feedback	1000	45	15	6	4	4	attention	4	73	15.4079999999999994742	214	15		42	29.3999999999999985789	0.5872007931087167565	42	42	149	0	5	4	0	0	1	4	6	5	1	0	0	0	59	
+6.6.1	mac	0	2023-10-12	15:47:47	1	1	1	experiment	1	1	3	ITI	200	45	15	6	5	5	attention	5	73			15		42					149	0	5	4	0	0	1	4	6	5	1	0	0	0	59	
+6.6.1	mac	0	2023-10-12	15:47:47	1	1	1	experiment	1	1	3	preFreeze	660	45	15	6	5	5	attention	5	73			15		42					149	0	5	4	0	0	1	4	6	5	1	0	0	0	59	
+6.6.1	mac	0	2023-10-12	15:47:47	1	1	1	experiment	1	1	3	clock	340	45	15	6	5	5	attention	5	22			15		42					149	0	5	4	0	0	1	4	6	5	1	0	0	0	59	
+6.6.1	mac	0	2023-10-12	15:47:47	1	1	1	experiment	1	1	3	ISI	250	45	15	6	5	5	attention	5	22			15		42					149	0	5	4	0	0	1	4	6	5	1	0	0	0	59	
+6.6.1	mac	0	2023-10-12	15:47:47	1	1	1	experiment	1	1	3	feedback	1000	45	15	6	5	5	attention	5	22	193.6800000000000068212	2690	194		155	108.5	0.4525596230413205245	155	150	149	0	6	5	0	0	1	4	6	5	1	0	0	-1	59	
+6.6.1	mac	0	2023-10-12	15:47:47	1	1	1	experiment	1	1	3	ITI	250	45	15	6	6	6	attention	6	22			194		155					149	0	6	5	0	0	1	4	6	5	1	0	0	-1	59	
+6.6.1	mac	0	2023-10-12	15:47:47	1	1	1	experiment	1	1	3	preFreeze	540	45	15	6	6	6	attention	6	22			194		155					149	0	6	5	0	0	1	4	6	5	1	0	0	-1	59	
+6.6.1	mac	0	2023-10-12	15:47:47	1	1	1	experiment	1	1	3	clock	362	45	15	6	6	6	attention	6	58			194		155					149	0	6	5	0	0	1	4	6	5	1	0	0	-1	59	
+6.6.1	mac	0	2023-10-12	15:47:47	1	1	1	experiment	1	1	3	ISI	560	45	15	6	6	6	attention	6	58			194		155					149	0	6	5	0	0	1	4	6	5	1	0	0	-1	59	
+6.6.1	mac	0	2023-10-12	15:47:47	1	1	1	experiment	1	1	3	feedback	1000	45	15	6	6	6	attention	6	58	324.8639999999999758984	4512	325		14	9.7999999999999989342	0.6479963615182778858	14	14	149	0	7	6	0	0	1	4	6	5	1	0	0	-2	59	
+6.6.1	mac	0	2023-10-12	15:47:47	1	1	1	experiment	1	1	3	ITI	330	45	15	6	7	7	attention	7	58			325		14					149	0	7	6	0	0	1	4	6	5	1	0	0	-2	59	
+6.6.1	mac	0	2023-10-12	15:47:47	1	1	1	experiment	1	1	3	preFreeze	600	45	15	6	7	7	attention	7	58			325		14					149	0	7	6	0	0	1	4	6	5	1	0	0	-2	59	
+6.6.1	mac	0	2023-10-12	15:47:47	1	1	1	experiment	1	1	3	clock	238	45	15	6	7	7	attention	7	14			325		14					149	0	7	6	0	0	1	4	6	5	1	0	0	-2	59	
+6.6.1	mac	0	2023-10-12	15:47:47	1	1	1	experiment	1	1	3	ISI	220	45	15	6	7	7	attention	7	14			325		14					149	0	7	6	0	0	1	4	6	5	1	0	0	-2	59	
+6.6.1	mac	0	2023-10-12	15:47:47	1	1	1	experiment	1	1	3	feedback	930	45	15	6	7	7	attention	7	14	157.5360000000000013642	2188	158		104	72.7999999999999971578	0.3898858852660949115	104	104	149	1	8	7	0	0	2	4	6	5	1	0	0	-3	59	
