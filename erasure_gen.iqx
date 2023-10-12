@@ -294,6 +294,11 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 	};
 	values.rt_shifted = NULL;
 	values.pos_shifted = NULL;
+	values.ev = NULL;
+	values.rng = NULL;
+	values.inc = NULL;
+	values.inc_rg = NULL;
+	
 	// dynamically account for stimulus erasure choice
 	if (values.n_clicks >= values.total_clicks) {
 		values.timeout_block = TRUE;
@@ -537,7 +542,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 	values.pos_shifted = values.rt_shifted*360/values.time_per_revolution;
 	// 5000 / 360 RT segments gives 14ms RT bins, conveniently, 1 degree / segment so the index for the value = the degree of the position selected
 	values.rt_index = round(values.pos_shifted);
-	values.mag = list.curr_values.nextvalue;
+	values.mag = list.curr_values.item(values.rt_index);
 	values.ev = values.mag * values.freq;
 	values.rng = rand(0,1);
 	if (values.freq >= values.rng) {
