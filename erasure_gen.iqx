@@ -101,7 +101,16 @@
 </list>
 
 <list curr_trials>
-/ selectionmode = values.rt_index;
+</list>
+
+<list curr_values_temp>
+/ selectionmode = random
+</list>
+
+<list curr_RT_temp>
+</list>
+
+<list era_values>
 </list>
 
 <list best>
@@ -184,12 +193,16 @@
 / curr_index_era = NULL;
 
 / rt_index = NULL;
+/ i = NULL;
+
+/ lower_quartile = NULL;
+/ upper_quartile = NULL;
 
 </values>
 
 <data>
 / columns = (build, computer.platform, computer.touch, date, time, subject, group, script.sessionid, blockcode, blocknum,values.block,values.n_blocks,
-trialcode,latency,values.n_trials, values.block_length, values.best,
+trialcode,latency,values.n_trials, values.block_length, values.best, values.lower_quartile,values.upper_quartile,
 values.trial, values.run_trial,values.block_type,
 list.triallist.currentindex, values.startPos, values.pos_shifted, values.rt_shifted, values.rt_index, list.curr_values.nextvalue, values.mag, values.ev, values.rng, values.inc, values.inc_rg, values.stim_center_deg, values.choose_stim,values.run_trial_dum, values.n_attention,values.n_erasure,values.n_no_erasure,values.n_clicks,
 values.require_attention,values.require_no_erasure,values.require_erasure,values.timeouts_remain, values.timeout_block, values.generate_new_erasure, values.n_curr_block,list.degrees_att.currentvalue,list.degrees_era.currentvalue)
@@ -326,7 +339,7 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 // items = ("att=<%list.degrees_att.itemcount%>,era=<%list.degrees_era.itemcount%>, used=<%list.degrees_used.itemcount%>")
 // items = ("<%list.sorted_values.items.1%> <%list.sorted_values.items.2%> <%list.sorted_values.items.3%> <%list.sorted_values.items.4%> <%list.sorted_values.items.5%>")
 // items = ("<%list.available_seg.items.1%> <%list.available_seg.items.2%> <%list.available_seg.items.3%> <%list.available_seg.items.4%> <%list.available_seg.items.5%>")
-/ items = ("RT=<%list.curr_RTs.items.1%> trial=<%list.curr_trials.items.1%> value=<%list.curr_values.items.1%>")
+/ items = ("ERA_Val=<%list.era_values.items.1%> RT=<%list.curr_RTs.items.1%> trial=<%list.curr_trials.items.1%> value=<%list.curr_values.items.1%>")
 / position = (50%, 50%)
 </text>
 
@@ -359,7 +372,6 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 	values.rng = NULL;
 	values.inc = NULL;
 	values.inc_rg = NULL;
-	
 	// dynamically account for stimulus erasure choice
 	if (values.n_clicks >= values.total_clicks) {
 		values.timeout_block = TRUE;
@@ -437,8 +449,6 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 			values.stim_center_deg = mod(list.degrees_era.nextvalue + 90,360);
 		}
 	}
-	
-
 ]
 
 / stimulustimes = [
@@ -527,7 +537,7 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 	shape.dot60.erase = false;
 ]
 
-/ stimulustimes = [ 0 = planet, stim, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+/ stimulustimes = [ 0 = planet, center, stim, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
@@ -626,11 +636,11 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 		}
 		values.Earnings = values.inc_rg*values.conversion;
 		values.totalEarnings = values.totalEarnings + values.Earnings;
-		if (values.block ==1){
+		if (values.block ==1) {
 			picture.feedback.item.1 = ("mushrooms2.png")
-		} else if (values.block == 2 && values.block < 3){
+		} else if (values.block == 2 && values.block < 3) {
 			picture.feedback.item.1 = ("mushrooms1.png")
-		} else if (values.block == 3 && values.block < 4){
+		} else if (values.block == 3 && values.block < 4) {
 			picture.feedback.item.1 = ("mushrooms3.png")
 		}
 	} else {
@@ -638,7 +648,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 		values.inc_rg = NULL;
 		values.Earnings = 0;
 		values.totalEarnings = values.totalEarnings + values.Earnings;
-		picture.feedback.item.1 = "timeout.png"		
+		picture.feedback.item.1 = "timeout.png"
 	}
 ]
 / stimulustimes = [
@@ -705,22 +715,46 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	}
 	values.deg_index_att = replace(1,30,60,90,120);
 	values.deg_index_era = replace(160,190,210,240,270);
-	
-
-	if (values.block==2){
+	if (values.block==2) {
 		picture.planet.item.1 = ("exoplanet-2896662_1920.png");
 		picture.frozenShip.item.1 = ("585f94c8cb11b227491c3586.png");
 		picture.animatedCircle.item.1 = ("585f94c8cb11b227491c3586.png");
-	} else if (values.block==3){
+	} else if (values.block==3) {
 		picture.planet.item.1 = ("purple-sphere-7346837_1920.png");
 		picture.frozenShip.item.1 = ("585f94d8cb11b227491c3588.png");
 		picture.animatedCircle.item.1 = ("585f94d8cb11b227491c3588.png");
-	} else if (values.block==1){
+	} else if (values.block==1) {
 		picture.planet.item.1 = ("planet-1138237_1280.png");
 		picture.frozenShip.item.1 = ("585f94c1cb11b227491c3585.png");
 		picture.animatedCircle.item.1 = ("585f94c1cb11b227491c3585.png");
 	}
-	
+	// need to prepopulate values for this trial into a list with a random selection mode
+	list.curr_values_temp.reset();
+	list.curr_RT_temp.reset();
+	while (list.curr_RTs.itemcount < 360){
+		list.curr_values_temp.appenditem(list.values.nextvalue);
+		list.curr_RT_temp.appenditem(list.RT.nextvalue);
+	};
+	list.era_values.reset();
+	values.i = 0;
+	while (values.i < list.curr_values_temp.itemcount) {
+		list.curr_values_temp.nextvalue;
+		list.curr_RT_temp.nextvalue;
+		if (list.curr_values_temp.currentvalue < list.curr_values_temp.median) {
+			list.lower_half.appenditem(list.curr_values_temp.currentvalue);
+		} else if (list.curr_values_temp.currentvalue > list.curr_values_temp.median) {
+			list.upper_half.appenditem(list.curr_values_temp.currentvalue);
+		}
+		values.i += 1;
+	};
+	values.lower_quartile = list.lower_half.median;
+	values.upper_quartile = list.upper_half.median;
+	while (list.era_values.itemcount < 1){
+		list.curr_values_temp.nextvalue;
+		if (list.curr_values_temp.currentvalue >= values.lower_quartile && list.curr_values_temp.currentvalue <= values.upper_quartile) {
+			list.era_values.appenditem(list.curr_values.currentvalue);
+		}
+	};
 ]
 / branch = [
 	list.blocklist.nextvalue;
@@ -730,9 +764,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	1 = list.triallist;
 ]
 / onblockend = [
-	// now we can remove the current stimuli from the list of possibilities for the next block
-	list.degrees_era.removeitem(values.deg_index_era)
-	list.degrees_att.removeitem(values.deg_index_att)
+
 ]
 
 / stop = [
