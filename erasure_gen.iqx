@@ -104,7 +104,7 @@
 </list>
 
 <list curr_values_temp>
-/ selectionmode = random
+/ selectionmode = values.curr_values_temp_index;
 </list>
 
 <list curr_RT_temp>
@@ -197,7 +197,7 @@
 
 / lower_quartile = NULL;
 / upper_quartile = NULL;
-
+/ curr_values_temp_index = NULL;
 </values>
 
 <data>
@@ -329,7 +329,7 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 <picture timeout>
 / items = ("timeout.png")
 / position = (50%, 50%)
-/ size = (35%, 35%)
+/ size = (10%, 10%)
 / erase = true(white)
 </picture>
 
@@ -358,14 +358,17 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 	values.trial +=1;
 	values.run_trial +=1;
 	values.index +=1;
-	list.curr_values.reset();
-	list.curr_RTs.reset();
-	list.curr_trials.reset();
-	while (list.curr_RTs.itemcount < 360){
-		list.curr_values.appenditem(list.values.nextvalue);
-		list.curr_RTs.appenditem(list.RT.nextvalue);
-		list.curr_trials.appenditem(list.trial.nextvalue);
-	};
+	// if run_trial == 1 then we've alraedy iterated through values, RT, trial during the erasure generation algorithm
+	if (values.run_trial > 1){
+		list.curr_values.reset();
+		list.curr_RTs.reset();
+		list.curr_trials.reset();
+		while (list.curr_RTs.itemcount < 360){
+			list.curr_values.appenditem(list.values.nextvalue);
+			list.curr_RTs.appenditem(list.RT.nextvalue);
+			list.curr_trials.appenditem(list.trial.nextvalue);
+		};
+	}
 	values.rt_shifted = NULL;
 	values.pos_shifted = NULL;
 	values.ev = NULL;
@@ -561,7 +564,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 ]
 
 / stimulustimes = [
-	0 = animatedCircle, stim, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+	0 = animatedCircle, stim, center, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 		dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 		dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 		dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
@@ -731,13 +734,19 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	// need to prepopulate values for this trial into a list with a random selection mode
 	list.curr_values_temp.reset();
 	list.curr_RT_temp.reset();
+	
 	while (list.curr_RTs.itemcount < 360){
+		list.curr_values.appenditem(list.values.nextvalue);
+		list.curr_RTs.appenditem(list.RT.nextvalue);
+		list.curr_trials.appenditem(list.trial.nextvalue);
 		list.curr_values_temp.appenditem(list.values.nextvalue);
 		list.curr_RT_temp.appenditem(list.RT.nextvalue);
 	};
 	list.era_values.reset();
 	values.i = 0;
-	while (values.i < list.curr_values_temp.itemcount) {
+	values.curr_values_temp_index = 0;
+	while (values.i < 360) {
+		values.curr_values_temp_index += 1;
 		list.curr_values_temp.nextvalue;
 		list.curr_RT_temp.nextvalue;
 		if (list.curr_values_temp.currentvalue < list.curr_values_temp.median) {
@@ -750,6 +759,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	values.lower_quartile = list.lower_half.median;
 	values.upper_quartile = list.upper_half.median;
 	while (list.era_values.itemcount < 1){
+		values.curr_values_temp_index = rand(1, list.curr_values_temp.itemcount);
 		list.curr_values_temp.nextvalue;
 		if (list.curr_values_temp.currentvalue >= values.lower_quartile && list.curr_values_temp.currentvalue <= values.upper_quartile) {
 			list.era_values.appenditem(list.curr_values.currentvalue);
