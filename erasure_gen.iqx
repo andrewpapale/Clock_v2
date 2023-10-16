@@ -822,9 +822,9 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 				list.era_RTs.removeitem(list.era_RTs.currentindex);
 				list.era_values.removeitem(list.era_values.currentindex);
 			}
-			j +=1;
+			values.j +=1;
 		};
-		k +=1;
+		values.k +=1;
 	};
 	
 	values.erasure_index = round(rand(1, list.era_values.itemcount));
@@ -849,15 +849,15 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	while (values.k < list.degrees_used_att.itemcount || k < 360) {
 		list.degrees_used_att.nextvalue;
 		list.degrees_used_att.nextindex;
-		while (values.k < list.degrees_att.itemcount || k < 360){
+		while (values.j < list.degrees_att.itemcount || k < 360){
 			values.deg_index_att += 1;
 			list.degrees_att.nextvalue;
 			if (list.degrees_att.currentvalue == list.degrees_used_att.currentvalue){
 				list.degrees_att.removeitem(list.degrees_att.currentindex);
 			}
-			j += 1;
+			values.j += 1;
 		};
-		k += 1;
+		values.k += 1;
 	};
 ]
 / branch = [
