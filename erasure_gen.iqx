@@ -376,7 +376,7 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 // items = ("att=<%list.degrees_att.itemcount%>,era=<%list.degrees_era.itemcount%>, used=<%list.degrees_used.itemcount%>")
 // items = ("<%list.sorted_values.items.1%> <%list.sorted_values.items.2%> <%list.sorted_values.items.3%> <%list.sorted_values.items.4%> <%list.sorted_values.items.5%>")
 // items = ("<%list.available_seg.items.1%> <%list.available_seg.items.2%> <%list.available_seg.items.3%> <%list.available_seg.items.4%> <%list.available_seg.items.5%>")
-/ items = ("ERA_RT=<%values.erasure_value%> RT=<%list.curr_RTs.items.1%> trial=<%list.curr_trials.items.1%> value=<%list.curr_values.items.1%>")
+/ items = ("du_att=<%list.degrees_used_att.itemcount%> RT=<%list.curr_RTs.items.1%> trial=<%list.curr_trials.items.1%> value=<%list.curr_values.items.1%>")
 / position = (50%, 50%)
 </text>
 
@@ -833,6 +833,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	// RT index is same length as degrees index
 	values.deg_index_era = values.erasure_RT;
 	list.degrees_era.nextvalue;
+	list.degrees_era.nextindex;
 	// now remove current erasure degree from degrees_era, degrees_att, save into degrees used
 	list.degrees_used.appenditem(list.degrees_era.currentindex);
 	
@@ -852,6 +853,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 		while (values.j < list.degrees_att.itemcount){
 			values.deg_index_att += 1;
 			list.degrees_att.nextvalue;
+			list.degrees_att.nextindex;
 			if (list.degrees_att.currentvalue == list.degrees_used_att.currentvalue){
 				list.degrees_att.removeitem(list.degrees_att.currentindex);
 			}
@@ -859,8 +861,6 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 		};
 		values.k += 1;
 	};
-	values.deg_index_era = values.erasure_RT;
-	list.degrees_era.nextvalue;
 	values.deg_index_att = round(rand(1, list.degrees_att.itemcount));
 	list.degrees_att.nextvalue;
 ]
