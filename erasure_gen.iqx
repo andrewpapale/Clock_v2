@@ -445,13 +445,13 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 		values.n_curr_block = values.timeout_trials;
 	}
 	if (values.generate_new_erasure==TRUE) {
-		if (values.n_no_erasure + values.n_timeout < values.require_no_erasure && values.n_attention < values.require_attention && values.n_erasure < values.require_erasure) {
+		if (values.n_no_erasure < values.require_no_erasure && values.n_attention < values.require_attention && values.n_erasure < values.require_erasure) {
 			values.block_type = noreplace("erasure","attention","no_erasure");
 		} else if (values.n_no_erasure >= values.require_no_erasure && values.n_attention < values.require_attention && values.n_erasure < values.require_erasure) {
 			values.block_type = noreplace("erasure","attention");
-		} else if (values.n_no_erasure + values.n_timeout < values.require_no_erasure && values.n_attention >= values.require_attention && values.n_erasure < values.require_erasure) {
+		} else if (values.n_no_erasure < values.require_no_erasure && values.n_attention >= values.require_attention && values.n_erasure < values.require_erasure) {
 			values.block_type = noreplace("erasure","no_erasure");
-		} else if (values.n_no_erasure + values.n_timeout < values.require_no_erasure && values.n_attention < values.require_attention && values.n_erasure >= values.require_erasure) {
+		} else if (values.n_no_erasure < values.require_no_erasure && values.n_attention < values.require_attention && values.n_erasure >= values.require_erasure) {
 			values.block_type = noreplace("attention","no_erasure");
 		} else if (values.n_no_erasure >= values.require_no_erasure && values.n_attention >= values.require_attention && values.n_erasure < values.require_erasure) {
 			values.block_type = "erasure";
@@ -463,7 +463,7 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 			values.n_clicks = NULL;
 			values.has_erasure = FALSE;
 			values.choose_stim = NULL;
-			values.n_curr_block = values.require_no_erasure - values.n_timeout - values.n_no_erasure;
+			values.n_curr_block = values.require_no_erasure - values.n_no_erasure;
 		} else if (values.block_type == "attention") {
 			picture.stim.item.1 = ("fog0.png");
 			values.has_erasure = TRUE;
