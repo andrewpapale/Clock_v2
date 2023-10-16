@@ -217,7 +217,7 @@
 
 <data>
 / columns = (build, computer.platform, computer.touch, date, time, subject, group, script.sessionid, blockcode, blocknum,values.block,values.n_blocks,
-trialcode,latency,values.n_trials, values.block_length, values.best, values.lower_quartile,values.upper_quartile,list.curr_values_temp.median, values.i, values.j,list.curr_values_temp.currentvalue,
+trialcode,latency,values.n_trials, values.block_length, values.best, values.lower_quartile,values.upper_quartile,list.curr_values_temp.media,
 values.trial, values.run_trial,values.block_type,
 list.triallist.currentindex, values.startPos, values.pos_shifted, values.rt_shifted, values.rt_index, list.curr_values.currentvalue, values.mag, values.ev, values.rng, values.inc, values.inc_rg, values.stim_center_deg, values.choose_stim,values.run_trial_dum, values.n_attention,values.n_erasure,values.n_no_erasure,values.n_clicks,
 values.require_attention,values.require_no_erasure,values.require_erasure,values.timeouts_remain, values.timeout_block, values.generate_new_erasure, values.n_curr_block,list.degrees_att.currentvalue,list.degrees_era.currentvalue)
@@ -354,7 +354,7 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 // items = ("att=<%list.degrees_att.itemcount%>,era=<%list.degrees_era.itemcount%>, used=<%list.degrees_used.itemcount%>")
 // items = ("<%list.sorted_values.items.1%> <%list.sorted_values.items.2%> <%list.sorted_values.items.3%> <%list.sorted_values.items.4%> <%list.sorted_values.items.5%>")
 // items = ("<%list.available_seg.items.1%> <%list.available_seg.items.2%> <%list.available_seg.items.3%> <%list.available_seg.items.4%> <%list.available_seg.items.5%>")
-/ items = ("ERA_Val=<%list.upper_half.itemcount%> RT=<%list.curr_RTs.items.1%> trial=<%list.curr_trials.items.1%> value=<%list.curr_values.items.1%>")
+/ items = ("ERA_Val=<%list.era_values.currentvalue%> RT=<%list.curr_RTs.items.1%> trial=<%list.curr_trials.items.1%> value=<%list.curr_values.items.1%>")
 / position = (50%, 50%)
 </text>
 
@@ -783,6 +783,11 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 		}
 		values.j += 1;
 	};
+	
+	list.era_values.nextvalue; // this will be the value of the erasure
+	
+	
+	
 ]
 / branch = [
 	list.blocklist.nextvalue;
