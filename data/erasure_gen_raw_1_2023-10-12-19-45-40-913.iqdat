@@ -1,5 +1,0 @@
-build	computer.platform	computer.touch	date	time	subject	group	sessionid	blockcode	blocknum	block	n_blocks	trialcode	latency	n_trials	block_length	best	trial	run_trial	block_type	list.triallist.currentindex	startPos	pos_shifted	rt_shifted	rt_index	list.curr_values.nextvalue	mag	ev	rng	inc	inc_rg	stim_center_deg	choose_stim	run_trial_dum	n_attention	n_erasure	n_no_erasure	n_clicks	require_attention	require_no_erasure	require_erasure	timeouts_remain	timeout_block	generate_new_erasure	n_curr_block	list.degrees_att.currentvalue	list.degrees_era.currentvalue
-6.6.1	mac	0	2023-10-12	15:45:40	1	1	1	experiment	1	1	3	ITI	480	45	15	6	1	1	erasure	1	0					0					329	0	1	0	0	0	0	4	6	5	1	0	1	5		239
-6.6.1	mac	0	2023-10-12	15:45:40	1	1	1	experiment	1	1	3	preFreeze	690	45	15	6	1	1	erasure	1	0					0					329	0	1	0	0	0	0	4	6	5	1	0	1	5		239
-6.6.1	mac	0	2023-10-12	15:45:40	1	1	1	experiment	1	1	3	clock	348	45	15	6	1	1	erasure	1	30					0					329	0	1	0	0	0	0	4	6	5	1	0	1	5		239
-6.6.1	mac	0	2023-10-12	15:45:40	1	1	1	experiment	1	1	3	ISI	380	45	15	6	1	1	erasure	1	30					0					329	0	1	0	0	0	0	4	6	5	1	0	1	5		239
