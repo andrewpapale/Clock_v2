@@ -89,28 +89,43 @@
 </list>
 
 <list lower_half>
+/ selectionrate = always
+/ selectionmode = sequence
 </list>
 
 <list upper_half>
+/ selectionrate = always
+/ selectionmode = sequence
 </list>
 
 <list curr_values>
+/ selectionrate = always
+/ selectionmode = sequence
 </list>
 
 <list curr_RTs>
+/ selectionrate = always
+/ selectionmode = sequence
 </list>
 
 <list curr_trials>
+/ selectionrate = always
+/ selectionmode = sequence
 </list>
 
 <list curr_values_temp>
-/ selectionmode = values.curr_values_temp_index;
+/ selectionrate = always
+/ selectionmode = sequence
 </list>
 
 <list curr_RT_temp>
+/ selectionrate = always
+/ selectionmode = sequence
 </list>
 
 <list era_values>
+/ selectionrate = always
+/ selectionmode = random
 </list>
 
 <list best>
@@ -194,17 +209,17 @@
 
 / rt_index = NULL;
 / i = NULL;
+/ j = NULL;
 
 / lower_quartile = NULL;
 / upper_quartile = NULL;
-/ curr_values_temp_index = NULL;
 </values>
 
 <data>
 / columns = (build, computer.platform, computer.touch, date, time, subject, group, script.sessionid, blockcode, blocknum,values.block,values.n_blocks,
-trialcode,latency,values.n_trials, values.block_length, values.best, values.lower_quartile,values.upper_quartile,
+trialcode,latency,values.n_trials, values.block_length, values.best, values.lower_quartile,values.upper_quartile,list.curr_values_temp.median, values.i, values.j,list.curr_values_temp.currentvalue,
 values.trial, values.run_trial,values.block_type,
-list.triallist.currentindex, values.startPos, values.pos_shifted, values.rt_shifted, values.rt_index, list.curr_values.nextvalue, values.mag, values.ev, values.rng, values.inc, values.inc_rg, values.stim_center_deg, values.choose_stim,values.run_trial_dum, values.n_attention,values.n_erasure,values.n_no_erasure,values.n_clicks,
+list.triallist.currentindex, values.startPos, values.pos_shifted, values.rt_shifted, values.rt_index, list.curr_values.currentvalue, values.mag, values.ev, values.rng, values.inc, values.inc_rg, values.stim_center_deg, values.choose_stim,values.run_trial_dum, values.n_attention,values.n_erasure,values.n_no_erasure,values.n_clicks,
 values.require_attention,values.require_no_erasure,values.require_erasure,values.timeouts_remain, values.timeout_block, values.generate_new_erasure, values.n_curr_block,list.degrees_att.currentvalue,list.degrees_era.currentvalue)
 </data>
 
@@ -339,7 +354,7 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 // items = ("att=<%list.degrees_att.itemcount%>,era=<%list.degrees_era.itemcount%>, used=<%list.degrees_used.itemcount%>")
 // items = ("<%list.sorted_values.items.1%> <%list.sorted_values.items.2%> <%list.sorted_values.items.3%> <%list.sorted_values.items.4%> <%list.sorted_values.items.5%>")
 // items = ("<%list.available_seg.items.1%> <%list.available_seg.items.2%> <%list.available_seg.items.3%> <%list.available_seg.items.4%> <%list.available_seg.items.5%>")
-/ items = ("ERA_Val=<%list.era_values.items.1%> RT=<%list.curr_RTs.items.1%> trial=<%list.curr_trials.items.1%> value=<%list.curr_values.items.1%>")
+/ items = ("ERA_Val=<%list.upper_half.itemcount%> RT=<%list.curr_RTs.items.1%> trial=<%list.curr_trials.items.1%> value=<%list.curr_values.items.1%>")
 / position = (50%, 50%)
 </text>
 
@@ -735,35 +750,38 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	list.curr_values_temp.reset();
 	list.curr_RT_temp.reset();
 	
-	while (list.curr_RTs.itemcount < 360){
-		list.curr_values.appenditem(list.values.nextvalue);
-		list.curr_RTs.appenditem(list.RT.nextvalue);
-		list.curr_trials.appenditem(list.trial.nextvalue);
-		list.curr_values_temp.appenditem(list.values.nextvalue);
-		list.curr_RT_temp.appenditem(list.RT.nextvalue);
+	while (list.curr_values_temp.itemcount < 360){
+		list.values.nextvalue;
+		list.RT.nextvalue;
+		list.trial.nextvalue;
+		list.curr_values.appenditem(list.values.currentvalue);
+		list.curr_RTs.appenditem(list.RT.currentvalue);
+		list.curr_trials.appenditem(list.trial.currentvalue);
+		list.curr_values_temp.appenditem(list.values.currentvalue);
+		list.curr_RT_temp.appenditem(list.RT.currentvalue);
 	};
-	list.era_values.reset();
 	values.i = 0;
-	values.curr_values_temp_index = 0;
-	while (values.i < 360) {
-		values.curr_values_temp_index += 1;
+	list.lower_half.reset();
+	list.upper_half.reset();
+	while (values.i < list.curr_values_temp.itemcount) {
 		list.curr_values_temp.nextvalue;
-		list.curr_RT_temp.nextvalue;
-		if (list.curr_values_temp.currentvalue < list.curr_values_temp.median) {
+		if (list.curr_values_temp.currentvalue < list.curr_values.median) {
 			list.lower_half.appenditem(list.curr_values_temp.currentvalue);
-		} else if (list.curr_values_temp.currentvalue > list.curr_values_temp.median) {
+		} else if (list.curr_values_temp.currentvalue > list.curr_values.median) {
 			list.upper_half.appenditem(list.curr_values_temp.currentvalue);
 		}
 		values.i += 1;
 	};
 	values.lower_quartile = list.lower_half.median;
 	values.upper_quartile = list.upper_half.median;
-	while (list.era_values.itemcount < 1){
-		values.curr_values_temp_index = rand(1, list.curr_values_temp.itemcount);
+	list.era_values.reset();
+	values.j = 0;
+	while (values.j < list.curr_values_temp.itemcount){
 		list.curr_values_temp.nextvalue;
 		if (list.curr_values_temp.currentvalue >= values.lower_quartile && list.curr_values_temp.currentvalue <= values.upper_quartile) {
-			list.era_values.appenditem(list.curr_values.currentvalue);
+			list.era_values.appenditem(list.curr_values_temp.currentvalue);
 		}
+		values.j += 1;
 	};
 ]
 / branch = [
