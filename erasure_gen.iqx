@@ -159,7 +159,7 @@
 / erase_prop = 0.33333;
 / attention_prop = 0.33333;
 / no_erasure_prop = 1 - values.erase_prop - values.attention_prop;
-/ block_length = 10;
+/ block_length = 3;
 / block_length_original = values.block_length;
 / disappear_clicks = 2;
 / timeout_trials = 1;
@@ -502,6 +502,7 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 / ontrialend = [
 ]
 / trialduration = list.ITI.nextvalue;
+/ recorddata = false;
 / branch = [
 	trial.preFreeze;
 ]
@@ -585,6 +586,7 @@ dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
 dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 ]
 / timeout = list.preClockFreeze.nextvalue;
+/ recorddata = false
 / branch = [
 	return trial.clock;
 ]
@@ -612,6 +614,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 / validresponse = (" ") 
 / inputdevice = keyboard
 / responseinterrupt = immediate
+/ recorddata = false
 / branch = [
 	return trial.ISI;
 ]
@@ -701,7 +704,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 ]
 / trialduration = 1000
 // correctresponse = (next)
-/ recorddata = true
+/ recorddata = false
 / ontrialend = [
 	if (values.block_type != "no_erasure") {
 		// to account for 90 degree counterclockwise rotation so 12 o'clock is zero
@@ -877,6 +880,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 / onblockend = [
 
 ]
+/ recorddata = true
 
 / stop = [
 	values.run_trial_dum > values.block_length;
