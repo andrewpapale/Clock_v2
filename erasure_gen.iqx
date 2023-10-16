@@ -161,7 +161,7 @@
 / erase_prop = 0.33333;
 / attention_prop = 0.33333;
 / no_erasure_prop = 1 - values.erase_prop - values.attention_prop;
-/ block_length = 15;
+/ block_length = 10;
 / block_length_original = values.block_length;
 / disappear_clicks = 2;
 / timeout_trials = 1;
@@ -376,7 +376,7 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 // items = ("att=<%list.degrees_att.itemcount%>,era=<%list.degrees_era.itemcount%>, used=<%list.degrees_used.itemcount%>")
 // items = ("<%list.sorted_values.items.1%> <%list.sorted_values.items.2%> <%list.sorted_values.items.3%> <%list.sorted_values.items.4%> <%list.sorted_values.items.5%>")
 // items = ("<%list.available_seg.items.1%> <%list.available_seg.items.2%> <%list.available_seg.items.3%> <%list.available_seg.items.4%> <%list.available_seg.items.5%>")
-/ items = ("du_att=<%list.degrees_used_att.itemcount%> RT=<%list.curr_RTs.items.1%> trial=<%list.curr_trials.items.1%> value=<%list.curr_values.items.1%>")
+/ items = ("eidx=<%list.degrees_era.nextvalue%> RT=<%list.curr_RTs.items.1%> trial=<%list.curr_trials.items.1%> value=<%list.curr_values.items.1%>")
 / position = (50%, 50%)
 </text>
 
@@ -396,16 +396,14 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 	values.run_trial +=1;
 	values.index +=1;
 	// if run_trial == 1 then we've alraedy iterated through values, RT, trial during the erasure generation algorithm
-	if (values.run_trial > 1){
-		list.curr_values.reset();
-		list.curr_RTs.reset();
-		list.curr_trials.reset();
-		while (list.curr_RTs.itemcount < 360){
-			list.curr_values.appenditem(list.values.nextvalue);
-			list.curr_RTs.appenditem(list.RT.nextvalue);
-			list.curr_trials.appenditem(list.trial.nextvalue);
-		};
-	}
+	list.curr_values.reset();
+	list.curr_RTs.reset();
+	list.curr_trials.reset();
+	while (list.curr_RTs.itemcount < 360){
+		list.curr_values.appenditem(list.values.nextvalue);
+		list.curr_RTs.appenditem(list.RT.nextvalue);
+		list.curr_trials.appenditem(list.trial.nextvalue);
+	};
 	values.rt_shifted = NULL;
 	values.pos_shifted = NULL;
 	values.ev = NULL;
@@ -425,9 +423,10 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 	}
 	if (values.n_curr_block <= 0 && values.block_type == "no_erasure") {
 		values.generate_new_erasure = TRUE;
-	} else if (values.n_curr_block <= 0) {
+	}
+	if (values.n_curr_block <= 0 && (values.block_type == "erasure" || values.block_type == "attention")) {
 		// need to insert a timeout block here too
-		values.timeout_block == TRUE;
+		values.timeout_block = TRUE;
 		values.generate_new_erasure = FALSE;
 	}
 	if (values.run_trial == 1 && values.block != 1 && values.block_type != "no_erasure") {
@@ -446,13 +445,13 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 		values.n_curr_block = values.timeout_trials;
 	}
 	if (values.generate_new_erasure==TRUE) {
-		if (values.n_no_erasure < values.require_no_erasure && values.n_attention < values.require_attention && values.n_erasure < values.require_erasure) {
+		if (values.n_no_erasure + values.n_timeout < values.require_no_erasure && values.n_attention < values.require_attention && values.n_erasure < values.require_erasure) {
 			values.block_type = noreplace("erasure","attention","no_erasure");
 		} else if (values.n_no_erasure >= values.require_no_erasure && values.n_attention < values.require_attention && values.n_erasure < values.require_erasure) {
 			values.block_type = noreplace("erasure","attention");
-		} else if (values.n_no_erasure < values.require_no_erasure && values.n_attention >= values.require_attention && values.n_erasure < values.require_erasure) {
+		} else if (values.n_no_erasure + values.n_timeout < values.require_no_erasure && values.n_attention >= values.require_attention && values.n_erasure < values.require_erasure) {
 			values.block_type = noreplace("erasure","no_erasure");
-		} else if (values.n_no_erasure < values.require_no_erasure && values.n_attention < values.require_attention && values.n_erasure >= values.require_erasure) {
+		} else if (values.n_no_erasure + values.n_timeout < values.require_no_erasure && values.n_attention < values.require_attention && values.n_erasure >= values.require_erasure) {
 			values.block_type = noreplace("attention","no_erasure");
 		} else if (values.n_no_erasure >= values.require_no_erasure && values.n_attention >= values.require_attention && values.n_erasure < values.require_erasure) {
 			values.block_type = "erasure";
@@ -464,7 +463,7 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 			values.n_clicks = NULL;
 			values.has_erasure = FALSE;
 			values.choose_stim = NULL;
-			values.n_curr_block = values.require_no_erasure - values.n_timeout;
+			values.n_curr_block = values.require_no_erasure - values.n_timeout - values.n_no_erasure;
 		} else if (values.block_type == "attention") {
 			picture.stim.item.1 = ("fog0.png");
 			values.has_erasure = TRUE;
@@ -472,10 +471,10 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 			values.n_curr_block = values.require_attention - values.n_attention;
 			values.choose_stim = 0;
 			// now we have to convert pos_shifted into 'screen' coordinates which the stimuli are on
-			picture.stim.hposition = expressions.centerx + cos(rad(list.degrees_att.currentvalue))*expressions.radius_px;
-			picture.stim.vposition = expressions.centery + sin(rad(list.degrees_att.currentvalue))*expressions.radius_px;
-			picture.stim.rotation = list.degrees_att.currentvalue - 270;
-			values.stim_center_deg = mod(list.degrees_att.currentvalue + 90,360);
+			picture.stim.hposition = expressions.centerx + cos(rad(list.degrees_att.nextvalue))*expressions.radius_px;
+			picture.stim.vposition = expressions.centery + sin(rad(list.degrees_att.nextvalue))*expressions.radius_px;
+			picture.stim.rotation = list.degrees_att.nextvalue - 270;
+			values.stim_center_deg = mod(list.degrees_att.nextvalue + 90,360);
 		} else if (values.block_type == "erasure") {
 			picture.stim.item.1 = ("wind0.png");
 			values.has_erasure = TRUE;
@@ -483,10 +482,10 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 			values.n_curr_block = values.require_erasure - values.n_erasure;
 			values.choose_stim = 0;
 			// now we have to convert pos_shifted into 'screen' coordinates which the stimuli are on
-			picture.stim.hposition = expressions.centerx + cos(rad(list.degrees_era.currentvalue))*expressions.radius_px;
-			picture.stim.vposition = expressions.centery + sin(rad(list.degrees_era.currentvalue))*expressions.radius_px;
-			picture.stim.rotation = list.degrees_era.currentvalue - 270;
-			values.stim_center_deg = mod(list.degrees_era.currentvalue + 90,360);
+			picture.stim.hposition = expressions.centerx + cos(rad(list.degrees_era.nextvalue))*expressions.radius_px;
+			picture.stim.vposition = expressions.centery + sin(rad(list.degrees_era.nextvalue))*expressions.radius_px;
+			picture.stim.rotation = list.degrees_era.nextvalue - 270;
+			values.stim_center_deg = mod(list.degrees_era.nextvalue + 90,360);
 		}
 	}
 ]
@@ -822,7 +821,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 				list.era_values.removeitem(list.era_values.currentindex);
 			}
 			values.j +=1;
-		};
+		}; 
 		values.k +=1;
 	};
 	// this will be the value/RT of the erasure	

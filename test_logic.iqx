@@ -6,19 +6,19 @@
 
 <block experiment>
 / trials = [
-	1 = trial;
+	1-3 = trial;
 ]
 </block>
 
 <trial trial>
 / ontrialbegin = [
-	values.i = 0;
-	if (values.i > list.test.itemcount){
-		values.answer = "greater than";
-	} else if (values.i < list.test.itemcount){
-		values.answer = "less than"
-	} else if (values.i == list.test.itemcount){
-		values.answer = "equal to"
+	values.block_type = noreplace("erasure","attention","no_erasure");
+	if (values.block_type == "erasure"){
+		values.answer = "erasure";
+	} else if (values.block_type == "attention"){
+		values.answer = "attention"
+	} else if (values.block_type == "no_erasure"){
+		values.answer = "no_erasure"
 	}
 ]
 
@@ -34,6 +34,7 @@
 <values>
 / i = NULL;
 / answer = NULL;
+/ block_type = NULL;
 </values>
 
 <list test>
