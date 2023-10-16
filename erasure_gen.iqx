@@ -810,9 +810,9 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	values.k = 0;
 	values.j = 0;
 	values.erasure_index = 0;
-	while (values.k < list.degrees_used.itemcount || values.k < 360){
+	while (values.k <= list.degrees_used.itemcount){
 		list.degrees_used.nextvalue;
-		while (values.j < list.era_RTs.itemcount || values.k < 360){
+		while (values.j < list.era_RTs.itemcount){
 			values.erasure_index += 1;
 			list.era_RTs.nextvalue;
 			list.era_values.nextvalue;
@@ -846,10 +846,10 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	values.j = 0;
 	values.k = 0;
 	values.deg_index_att = 0;
-	while (values.k < list.degrees_used_att.itemcount || values.k < 360) {
+	while (values.k <= list.degrees_used_att.itemcount) {
 		list.degrees_used_att.nextvalue;
 		list.degrees_used_att.nextindex;
-		while (values.j < list.degrees_att.itemcount || values.k < 360){
+		while (values.j < list.degrees_att.itemcount){
 			values.deg_index_att += 1;
 			list.degrees_att.nextvalue;
 			if (list.degrees_att.currentvalue == list.degrees_used_att.currentvalue){

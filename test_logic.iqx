@@ -1,0 +1,42 @@
+﻿<expt exp1>
+/ blocks = [
+	1 = experiment;
+]
+</expt>
+
+<block experiment>
+/ trials = [
+	1 = trial;
+]
+</block>
+
+<trial trial>
+/ ontrialbegin = [
+	values.i = 0;
+	if (values.i > list.test.itemcount){
+		values.answer = "greater than";
+	} else if (values.i < list.test.itemcount){
+		values.answer = "less than"
+	} else if (values.i == list.test.itemcount){
+		values.answer = "equal to"
+	}
+]
+
+/ stimulusframes = [1 = test]
+/ validresponse = (" ")
+</trial>
+
+<text test>
+/ position = (50%, 50%)
+/ items = ("<%values.answer%>")
+</text>
+
+<values>
+/ i = NULL;
+/ answer = NULL;
+</values>
+
+<list test>
+/ selectionrate = always
+/ selectionmode = sequence
+</list>
