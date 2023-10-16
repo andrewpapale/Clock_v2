@@ -242,7 +242,7 @@
 <data>
 / columns = (build, computer.platform, computer.touch, date, time, subject, group, script.sessionid, blockcode, blocknum,values.block,values.n_blocks,
 trialcode,latency,values.n_trials, values.block_length, values.best, values.lower_quartile,values.upper_quartile,list.curr_values_temp.median, values.erasure_index,values.erasure_RT,values.erasure_value,values.erasure_degrees,
-values.trial, list.curr_trials.items.1,list.curr_trials.items.360,list.curr_trials.currentvalue, values.run_trial,values.block_type,
+values.trial, values.master_idx,list.curr_trials.items.1,list.curr_trials.items.360,list.curr_trials.currentvalue, values.run_trial,values.block_type,
 list.triallist.currentindex, values.startPos, values.pos_shifted, values.rt_shifted, values.rt_index, list.curr_values.currentvalue, values.mag, values.ev, values.rng, values.inc, values.inc_rg, values.stim_center_deg, values.choose_stim,values.run_trial_dum, values.n_attention,values.n_erasure,values.n_no_erasure,values.n_clicks,
 values.require_attention,values.require_no_erasure,values.require_erasure,values.timeouts_remain, values.timeout_block, values.generate_new_erasure, values.n_curr_block,list.degrees_att.currentvalue,list.degrees_era.currentvalue)
 </data>
@@ -783,8 +783,8 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 		list.curr_values_temp.appenditem(list.values.currentvalue);
 		list.curr_RT_temp.appenditem(list.RT.currentvalue);
 	};
-	
-	values.master_idx = 1 + 360*values.block - 360;
+	// rewind the master index for trial/RT/values
+	values.master_idx = values.master_idx - 360; 
 	
 	values.i = 0;
 	list.lower_half.reset();
