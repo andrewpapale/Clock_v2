@@ -818,7 +818,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 			list.era_values.nextvalue;
 			list.era_RTs.nextindex;
 			list.era_values.nextindex;
-			if (list.era_RTs.currentvalue >= list.degrees_used.currentvalue - 30 && list.era_Rts.currentvalue <= list.degrees_used.currentvalue + 30){
+			if (list.era_RTs.currentvalue >= list.degrees_used.currentvalue - 30 && list.era_RTs.currentvalue <= list.degrees_used.currentvalue + 30){
 				list.era_RTs.removeitem(list.era_RTs.currentindex);
 				list.era_values.removeitem(list.era_values.currentindex);
 			}
