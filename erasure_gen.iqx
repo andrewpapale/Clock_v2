@@ -472,10 +472,10 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 			values.n_curr_block = values.require_attention - values.n_attention;
 			values.choose_stim = 0;
 			// now we have to convert pos_shifted into 'screen' coordinates which the stimuli are on
-			picture.stim.hposition = expressions.centerx + cos(rad(list.degrees_att.nextvalue))*expressions.radius_px;
-			picture.stim.vposition = expressions.centery + sin(rad(list.degrees_att.nextvalue))*expressions.radius_px;
-			picture.stim.rotation = list.degrees_att.nextvalue - 270;
-			values.stim_center_deg = mod(list.degrees_att.nextvalue + 90,360);
+			picture.stim.hposition = expressions.centerx + cos(rad(list.degrees_att.currentvalue))*expressions.radius_px;
+			picture.stim.vposition = expressions.centery + sin(rad(list.degrees_att.currentvalue))*expressions.radius_px;
+			picture.stim.rotation = list.degrees_att.currentvalue - 270;
+			values.stim_center_deg = mod(list.degrees_att.currentvalue + 90,360);
 		} else if (values.block_type == "erasure") {
 			picture.stim.item.1 = ("wind0.png");
 			values.has_erasure = TRUE;
@@ -483,10 +483,10 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 			values.n_curr_block = values.require_erasure - values.n_erasure;
 			values.choose_stim = 0;
 			// now we have to convert pos_shifted into 'screen' coordinates which the stimuli are on
-			picture.stim.hposition = expressions.centerx + cos(rad(list.degrees_era.nextvalue))*expressions.radius_px;
-			picture.stim.vposition = expressions.centery + sin(rad(list.degrees_era.nextvalue))*expressions.radius_px;
-			picture.stim.rotation = list.degrees_era.nextvalue - 270;
-			values.stim_center_deg = mod(list.degrees_era.nextvalue + 90,360);
+			picture.stim.hposition = expressions.centerx + cos(rad(list.degrees_era.currentvalue))*expressions.radius_px;
+			picture.stim.vposition = expressions.centery + sin(rad(list.degrees_era.currentvalue))*expressions.radius_px;
+			picture.stim.rotation = list.degrees_era.currentvalue - 270;
+			values.stim_center_deg = mod(list.degrees_era.currentvalue + 90,360);
 		}
 	}
 ]
@@ -831,7 +831,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	values.erasure_value = list.era_values.nextvalue;
 	values.erasure_RT = list.era_RTs.nextvalue;
 	// RT index is same length as degrees index
-	values.erasure_RT = values.deg_index_era;
+	values.deg_index_era = values.erasure_RT;
 	list.degrees_era.nextvalue;
 	// now remove current erasure degree from degrees_era, degrees_att, save into degrees used
 	list.degrees_used.appenditem(list.degrees_era.currentindex);
@@ -859,6 +859,10 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 		};
 		values.k += 1;
 	};
+	values.deg_index_era = values.erasure_RT;
+	list.degrees_era.nextvalue;
+	values.deg_index_att = round(rand(1, list.degrees_att.itemcount));
+	list.degrees_att.nextvalue;
 ]
 / branch = [
 	list.blocklist.nextvalue;
