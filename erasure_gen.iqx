@@ -34,8 +34,13 @@
 
 <list degrees_used>
 / items = ()
-/ selectionrate = trial
-/ selectionmode = values.last_deg_index;
+/ selectionrate = always
+/ selectionmode = sequence
+</list>
+
+<list degrees_used_att>
+/ selectionrate = always
+/ selectionmode = sequence
 </list>
 
 <list triallist>
@@ -125,7 +130,18 @@
 
 <list era_values>
 / selectionrate = always
-/ selectionmode = random
+/ selectionmode = values.erasure_index;
+</list>
+
+<list era_RTs>
+/ selectionrate = always
+/ selectionmode = values.erasure_index;
+</list>
+
+<list span_60degrees>
+/ items = (-30,-29,-28,-27,-26,-25,-24,-23,-22,-21,-20,-19,-18,-17,-16,-15,-14,-13,-12,-11,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30)
+/ selectionrate = always
+/ selectionmode = sequence
 </list>
 
 <list best>
@@ -137,7 +153,6 @@
 <values>
 / deg_index_att = NULL;
 / deg_index_era = NULL;
-/ last_deg_index = NULL;
 / rng = NULL;
 / trial = 0;
 / run_trial = 0;
@@ -210,14 +225,21 @@
 / rt_index = NULL;
 / i = NULL;
 / j = NULL;
+/ k = NULL;
 
 / lower_quartile = NULL;
 / upper_quartile = NULL;
+
+/ erasure_value = NULL;
+/ erasure_RT = NULL;
+/ erasure_index = NULL;
+/ erasure_degrees = NULL;
+
 </values>
 
 <data>
 / columns = (build, computer.platform, computer.touch, date, time, subject, group, script.sessionid, blockcode, blocknum,values.block,values.n_blocks,
-trialcode,latency,values.n_trials, values.block_length, values.best, values.lower_quartile,values.upper_quartile,list.curr_values_temp.media,
+trialcode,latency,values.n_trials, values.block_length, values.best, values.lower_quartile,values.upper_quartile,list.curr_values_temp.median, values.erasure_index,values.erasure_RT,values.erasure_value,values.erasure_degrees,
 values.trial, values.run_trial,values.block_type,
 list.triallist.currentindex, values.startPos, values.pos_shifted, values.rt_shifted, values.rt_index, list.curr_values.currentvalue, values.mag, values.ev, values.rng, values.inc, values.inc_rg, values.stim_center_deg, values.choose_stim,values.run_trial_dum, values.n_attention,values.n_erasure,values.n_no_erasure,values.n_clicks,
 values.require_attention,values.require_no_erasure,values.require_erasure,values.timeouts_remain, values.timeout_block, values.generate_new_erasure, values.n_curr_block,list.degrees_att.currentvalue,list.degrees_era.currentvalue)
@@ -354,7 +376,7 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 // items = ("att=<%list.degrees_att.itemcount%>,era=<%list.degrees_era.itemcount%>, used=<%list.degrees_used.itemcount%>")
 // items = ("<%list.sorted_values.items.1%> <%list.sorted_values.items.2%> <%list.sorted_values.items.3%> <%list.sorted_values.items.4%> <%list.sorted_values.items.5%>")
 // items = ("<%list.available_seg.items.1%> <%list.available_seg.items.2%> <%list.available_seg.items.3%> <%list.available_seg.items.4%> <%list.available_seg.items.5%>")
-/ items = ("ERA_Val=<%list.era_values.currentvalue%> RT=<%list.curr_RTs.items.1%> trial=<%list.curr_trials.items.1%> value=<%list.curr_values.items.1%>")
+/ items = ("ERA_RT=<%values.erasure_value%> RT=<%list.curr_RTs.items.1%> trial=<%list.curr_trials.items.1%> value=<%list.curr_values.items.1%>")
 / position = (50%, 50%)
 </text>
 
@@ -731,8 +753,6 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 		values.n_curr_block = NULL;
 		values.n_timeout = 0;
 	}
-	values.deg_index_att = replace(1,30,60,90,120);
-	values.deg_index_era = replace(160,190,210,240,270);
 	if (values.block==2) {
 		picture.planet.item.1 = ("exoplanet-2896662_1920.png");
 		picture.frozenShip.item.1 = ("585f94c8cb11b227491c3586.png");
@@ -778,16 +798,67 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	values.j = 0;
 	while (values.j < list.curr_values_temp.itemcount){
 		list.curr_values_temp.nextvalue;
+		list.curr_RT_temp.nextvalue;
 		if (list.curr_values_temp.currentvalue >= values.lower_quartile && list.curr_values_temp.currentvalue <= values.upper_quartile) {
 			list.era_values.appenditem(list.curr_values_temp.currentvalue);
+			list.era_RTs.appenditem(list.curr_RT_temp.currentvalue);
 		}
 		values.j += 1;
 	};
+	// now we have to remove +/- 30 degrees of prior erasure from era_RTs and era_values
+	// this will be the value/RT of the erasure	
+	values.k = 0;
+	values.j = 0;
+	values.erasure_index = 0;
+	while (values.k < list.degrees_used.itemcount || k < 360){
+		list.degrees_used.nextvalue;
+		while (values.j < list.era_RTs.itemcount || k < 360){
+			values.erasure_index += 1;
+			list.era_RTs.nextvalue;
+			list.era_values.nextvalue;
+			list.era_RTs.nextindex;
+			list.era_values.nextindex;
+			if (list.era_RTs.currentvalue >= list.degrees_used.currentvalue - 30 && list.era_Rts.currentvalue <= list.degrees_sed.currentvalue + 30){
+				list.era_RTs.removeitem(list.era_RTs.currentindex);
+				list.era_values.removeitem(list.era_values.currentindex);
+			}
+			j +=1;
+		};
+		k +=1;
+	};
 	
-	list.era_values.nextvalue; // this will be the value of the erasure
+	values.erasure_index = round(rand(1, list.era_values.itemcount));
+	values.erasure_value = list.era_values.nextvalue;
+	values.erasure_RT = list.era_RTs.nextvalue;
+	// RT index is same length as degrees index
+	values.erasure_RT = values.deg_index_era;
+	list.degrees_era.nextvalue;
+	// now remove current erasure degree from degrees_era, degrees_att, save into degrees used
+	list.degrees_used.appenditem(list.degrees_era.currentindex);
 	
+	values.i = 0;
+	while (values.i < list.span_60degrees.itemcount){	
+		list.span_60degrees.nextvalue;
+		list.degrees_used_att.appenditem(list.degrees_era.currentvalue + list.span_60degrees.currentvalue);
+		values.i += 1;
+	};
 	
-	
+	values.j = 0;
+	values.k = 0;
+	values.deg_index_att = 0;
+	while (values.k < list.degrees_used_att.itemcount || k < 360) {
+		list.degrees_used_att.nextvalue;
+		list.degrees_used_att.nextindex;
+		while (values.k < list.degrees_att.itemcount || k < 360){
+			values.deg_index_att += 1;
+			list.degrees_att.nextvalue;
+			if (list.degrees_att.currentvalue == list.degrees_used_att.currentvalue){
+				list.degrees_att.removeitem(list.degrees_att.currentindex);
+			}
+			j += 1;
+		};
+		k += 1;
+	};
 ]
 / branch = [
 	list.blocklist.nextvalue;
