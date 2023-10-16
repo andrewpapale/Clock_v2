@@ -813,10 +813,10 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	};
 	// now we have to remove +/- 30 degrees of prior erasure from era_RTs and era_values
 	values.k = 0;
-	values.j = 0;
-	values.erasure_index = 0;
 	while (values.k <= list.degrees_used.itemcount){
 		list.degrees_used.nextvalue;
+		values.j = 0;
+		values.erasure_index = 0;
 		while (values.j < list.era_RTs.itemcount){
 			values.erasure_index += 1;
 			list.era_RTs.nextvalue;
