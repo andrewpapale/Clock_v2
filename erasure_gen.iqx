@@ -806,7 +806,6 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 		values.j += 1;
 	};
 	// now we have to remove +/- 30 degrees of prior erasure from era_RTs and era_values
-	// this will be the value/RT of the erasure	
 	values.k = 0;
 	values.j = 0;
 	values.erasure_index = 0;
@@ -826,11 +825,11 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 		};
 		values.k +=1;
 	};
-	
+	// this will be the value/RT of the erasure	
 	values.erasure_index = round(rand(1, list.era_values.itemcount));
 	values.erasure_value = list.era_values.nextvalue;
 	values.erasure_RT = list.era_RTs.nextvalue;
-	// RT index is same length as degrees index
+	// RT index is same length as number of values in era_RTs (360)
 	values.deg_index_era = values.erasure_RT;
 	list.degrees_era.nextvalue;
 	list.degrees_era.nextindex;
