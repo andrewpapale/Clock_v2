@@ -124,6 +124,16 @@
 / selectionmode = sequence
 </list>
 
+<list curr_values_temp>
+/ selectionrate = always
+/ selectionmode = values.erasure_index2;
+</list>
+
+<list curr_RT_temp>
+/ selectionrate = always
+/ selectionmode = values.erasure_index2;
+</list>
+
 <list era_values>
 / selectionrate = always
 / selectionmode = values.erasure_index;
@@ -144,6 +154,34 @@
 / items = (values.rem0, values.rem1, values.rem2, values.rem3, values.rem4, values.rem5)
 / poolsize = 6
 / selectionrate = always
+</list>
+
+<list erasure1>
+/ selectionrate = always
+</list>
+
+<list a>
+</list>
+
+<list b>
+</list>
+
+<list d>
+</list>
+
+<list alpha>
+</list>
+
+<list c>
+</list>
+
+<list l>
+</list>
+
+<list mu>
+</list>
+
+<list z>
 </list>
 
 <values>
@@ -229,6 +267,7 @@
 / erasure_value = NULL;
 / erasure_RT = NULL;
 / erasure_index = NULL;
+/ erasure_index2 = NULL;  // this is used to control the index of list curr_values_temp2 and list curr_RT_temp2 for erasure generation
 / erasure_degrees = NULL;
 / attention_degrees = NULL;
 
@@ -397,11 +436,19 @@ values.timeouts_remain, values.timeout_block, values.generate_new_erasure, value
 	list.curr_values.reset();
 	list.curr_RTs.reset();
 	list.curr_trials.reset();
+	
+	// now actually implement erasure, to do this we will replace <list values> at index values.erasure_RT with value values.erasure_value
+	// then linear interpolation between endpoints, this will also need to 'flex'
+	values.i = 0;
 	while (list.curr_RTs.itemcount < 360){
 		values.master_idx += 1;
-		list.curr_values.appenditem(list.values.nextvalue);
+		if (values.i == values.erasure_RT - 15){
+		} else {
+			list.curr_values.appenditem(list.values.nextvalue);
+		}
 		list.curr_RTs.appenditem(list.RT.nextvalue);
 		list.curr_trials.appenditem(list.trial.nextvalue);
+		values.i += 1;
 	};
 	values.rt_shifted = NULL;
 	values.pos_shifted = NULL;
@@ -859,6 +906,8 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 		list.curr_trials.appenditem(list.trial.currentvalue);
 		list.curr_values_temp.appenditem(list.values.currentvalue);
 		list.curr_RT_temp.appenditem(list.RT.currentvalue);
+		list.curr_values_temp2.appenditem(list.values.currentvalue);
+		list.curr_RT_temp2.appenditem(list.RT.currentvalue);
 	};
 	// rewind the master index for trial/RT/values
 	values.master_idx = values.master_idx - 360; 
@@ -959,6 +1008,12 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 	};
 	
 	
+	// cubic spline interpolation method 
+	// https://en.wikipedia.org/w/index.php?title=Spline_%28mathematics%29&oldid=288288033#Algorithm_for_computing_natural_cubic_splines
+	values.j = 0;
+	while (values.j < 5){
+		
+	};
 	
 	shape.dot1.erase = false;
 	shape.dot2.erase = false;

@@ -1,0 +1,78 @@
+﻿<expt exp1>
+/ blocks = [1 = experiment]
+</expt>
+
+<block experiment>
+/ ontrialbegin = [
+	// implement spline algorithm
+	
+	
+]
+/ trials = [
+	1-10 = plotvalues;
+]
+</block>
+
+<trial plotvalues>
+/ stimulusframes = [1=test,values_text;]
+/ validresponse = (" ")
+
+
+</trial>
+
+<text test>
+/ items = ("<%list.values.itemcount%>")
+/ size = (50%,50%)
+</text>
+
+<text values_text>
+/ items = ("<%list.values.items.1%>,<%list.values.items.2%>,<%list.values.items.3%>,<%list.values.items.4%>,<%list.values.items.5%>,<%list.values.items.6%>,<%list.values.items.7%>,<%list.values.items.8%>,<%list.values.items.9%>,<%list.values.items.10%>,<%list.values.items.11%>,<%list.values.items.12%>,<%list.values.items.13%>,<%list.values.items.14%>,<%list.values.items.15%>,<%list.values.items.16%>,<%list.values.items.17%>,<%list.values.items.18%>,<%list.values.items.19%>,<%list.values.items.20%>,<%list.values.items.21%>,<%list.values.items.22%>,<%list.values.items.23%>,<%list.values.items.24%>,<%list.values.items.25%>,<%list.values.items.26%>,<%list.values.items.27%>,<%list.values.items.28%>,<%list.values.items.29%>,<%list.values.items.30%>,<%list.values.items.31%>,<%list.values.items.32%>,<%list.values.items.33%>,<%list.values.items.34%>,<%list.values.items.35%>,<%list.values.items.36%>,<%list.values.items.37%>,<%list.values.items.38%>,<%list.values.items.39%>,<%list.values.items.40%>,<%list.values.items.41%>,<%list.values.items.42%>,<%list.values.items.43%>,<%list.values.items.44%>,<%list.values.items.45%>,<%list.values.items.46%>,<%list.values.items.47%>,<%list.values.items.48%>,<%list.values.items.49%>,<%list.values.items.50%>,<%list.values.items.51%>,<%list.values.items.52%>,<%list.values.items.53%>,<%list.values.items.54%>,<%list.values.items.55%>,<%list.values.items.56%>,<%list.values.items.57%>,<%list.values.items.58%>,<%list.values.items.59%>,<%list.values.items.60%>")
+</text>
+
+<values>
+/ x2 = 50;
+/ index = NULL;
+/ index2 = 30; // index to replace values with spline through x2
+</values>
+
+<list spline1>
+</list>
+
+<list values>
+/ items = (10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10)
+/ selectionrate = always
+/ selectionmode = values.index;
+</list>
+
+<list index>
+/ items = (1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60)
+/ selectionrate = always
+/ selectionmode = values.index2;
+</list>
+
+<list a>
+</list>
+
+<list b>
+</list>
+
+<list d>
+</list>
+
+<list h>
+</list>
+
+<list c>
+</list>
+
+<list alpha>
+</list>
+
+<list l>
+</list>
+
+<list mu>
+</list>
+
+<list z>
+</list>
