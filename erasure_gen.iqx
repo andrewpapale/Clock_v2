@@ -238,8 +238,8 @@
 
 <data>
 / columns = (build, computer.platform, computer.touch, date, time, subject, group, script.sessionid, blockcode, blocknum,values.block,values.n_blocks,
-trialcode,latency,values.deg_index_era, values.deg_index_att, list.era_RTs.currentvalue,list.era_values.currentvalue,list.era_RTs.nextvalue,list.era_values.nextvalue,list.era_RTs.nextindex,list.era_values.nextindex,list.era_values.itemcount, list.era_RTs.itemcount,list.degrees_era.itemcount, list.degrees_used.itemcount, list.degrees_att.itemcount, list.degrees_used_att.itemcount, list.degrees_era.items.1, list.degrees_era.maximum, list.degrees_era.median,values.n_trials, values.block_length, values.best, values.lower_quartile,values.upper_quartile,list.curr_values_temp.median, values.erasure_index,values.erasure_RT,values.erasure_value,values.erasure_degrees,
-values.trial, values.master_idx,list.curr_trials.items.1,list.curr_trials.items.360,list.curr_trials.currentvalue, values.run_trial,values.block_type,
+trialcode,latency,values.deg_index_era, values.deg_index_att, values.n_trials, values.block_length, values.best, values.lower_quartile,values.upper_quartile, values.erasure_index,values.erasure_RT,values.erasure_value,
+values.trial, values.master_idx, values.run_trial,values.block_type,
 list.triallist.currentindex, values.startPos, values.pos_shifted, values.rt_shifted, values.rt_index, list.curr_values.currentvalue, values.mag, values.ev, values.rng, values.inc, values.inc_rg, values.stim_center_deg, values.choose_stim,values.run_trial_dum, values.n_attention,values.n_erasure,values.n_no_erasure,values.n_clicks,
 values.require_attention,values.require_no_erasure,values.require_erasure,values.timeouts_remain, values.timeout_block, values.generate_new_erasure, values.n_curr_block,list.degrees_att.currentvalue,list.degrees_era.currentvalue)
 </data>
