@@ -232,16 +232,17 @@
 / erasure_RT = NULL;
 / erasure_index = NULL;
 / erasure_degrees = NULL;
+/ attention_degrees = NULL;
 
 / master_idx = NULL;
 </values>
 
 <data>
 / columns = (build, computer.platform, computer.touch, date, time, subject, group, script.sessionid, blockcode, blocknum,values.block,values.n_blocks,
-trialcode,latency,values.deg_index_era, values.deg_index_att, values.n_trials, values.block_length, values.best, values.lower_quartile,values.upper_quartile, values.erasure_index,values.erasure_RT,values.erasure_value,
-values.trial, values.master_idx, values.run_trial,values.block_type,
-list.triallist.currentindex, values.startPos, values.pos_shifted, values.rt_shifted, values.rt_index, list.curr_values.currentvalue, values.mag, values.ev, values.rng, values.inc, values.inc_rg, values.stim_center_deg, values.choose_stim,values.run_trial_dum, values.n_attention,values.n_erasure,values.n_no_erasure,values.n_clicks,
-values.require_attention,values.require_no_erasure,values.require_erasure,values.timeouts_remain, values.timeout_block, values.generate_new_erasure, values.n_curr_block,list.degrees_att.currentvalue,list.degrees_era.currentvalue)
+trialcode,latency,values.deg_index_era, values.deg_index_att, values.n_trials, values.block_length, values.best, values.lower_quartile,values.upper_quartile, values.erasure_degrees, values.erasure_index,values.erasure_RT,values.erasure_value,values.attention_degrees,
+values.trial, values.master_idx, values.run_trial,values.block_type, values.startPos, values.pos_shifted, values.rt_shifted, values.rt_index, values.mag, values.ev, values.rng, values.inc, values.inc_rg, values.stim_center_deg, values.choose_stim, 
+values.n_attention,values.n_erasure,values.n_no_erasure,values.n_clicks,
+values.timeouts_remain, values.timeout_block, values.generate_new_erasure, values.n_curr_block)
 </data>
 
 <picture animatedCircle>
@@ -410,6 +411,8 @@ values.require_attention,values.require_no_erasure,values.require_erasure,values
 	values.rng = NULL;
 	values.inc = NULL;
 	values.inc_rg = NULL;
+	values.erasure_degrees = list.degrees_era.nextvalue;
+	values.attention_degrees = list.degrees_att.nextvalue;
 	// dynamically account for stimulus erasure choice
 	if (values.n_clicks >= values.total_clicks) {
 		values.timeout_block = TRUE;
@@ -740,7 +743,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	values.run_trial_dum = 1;
 	values.run_trial = 0;
 	values.require_erasure = ceil(values.block_length*values.erase_prop);
-	values.require_attention = floor(values.block_length*values.attention_prop);
+	values.require_attention = round(values.block_length*values.attention_prop);
 	values.require_no_erasure = values.block_length - values.require_attention - values.require_erasure;
 	values.n_attention = 0;
 	values.n_erasure = 0;
@@ -836,7 +839,8 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	list.era_RTs.nextindex;
 	values.erasure_value = list.era_values.nextvalue;
 	values.erasure_RT = list.era_RTs.nextvalue;
-	// RT index is same length as number of values in era_RTs (360)
+	// this works because erasure_RT values come from era_RTs, a list with elements from 1:360, indicating an index that can also be used for degrees, as long as degrees_era is a list from 1:360 (which it should always be)
+	// note do NOT append or remove items from degrees_era
 	values.deg_index_era = values.erasure_RT;
 	list.degrees_era.nextindex;
 	// now remove current erasure degree from degrees_era, degrees_att, save into degrees used
@@ -866,6 +870,19 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	};
 	values.deg_index_att = round(rand(1, list.degrees_att.itemcount));
 	list.degrees_att.nextindex;
+	
+	// now we need to add back the degrees_att from degrees_used_att and remove block N-2'nd degrees_used to pool for erasures
+	if (list.degrees_used.itemcount > 1){
+		// remove the first item from the list, allow re-erasure of erasure from N-2'nd block
+		list.degrees_used.removeitem(1);
+	}
+	values.i = 1;
+	while (list.degrees_used_att.itemcount > 31){
+		// removing i'th item from degrees_used_att means that the 1'st item in the list will change on each loop iteration
+		list.degrees_att.appenditem(list.degrees_used_att.item(1));
+		list.degrees_used_att.removeitem(values.i);
+		values.i += 1;
+	};
 ]
 / branch = [
 	list.blocklist.nextvalue;
