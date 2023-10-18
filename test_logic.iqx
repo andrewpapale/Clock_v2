@@ -28,7 +28,7 @@
 
 <text test>
 / position = (50%, 50%)
-/ items = ("<%values.answer%>")
+/ items = ("<%list.test.itemcount==0%>")
 </text>
 
 <values>
