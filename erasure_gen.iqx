@@ -119,7 +119,7 @@
 / selectionmode = values.index_temp;
 </list>
 
-<list curr_RT_temp>
+<list curr_RTs_temp>
 / selectionrate = always
 / selectionmode = values.index_temp;
 </list>
@@ -243,19 +243,22 @@
 / master_idx = NULL;
 
 / temp_index = NULL;
-/ predone = NULL;
-/ postdone = NULL;
-
-/ minidx = NULL;
-/ maxidx = NULL;
-/ startidx = NULL;
-/ stopidx = NULL;
+/ slopeL = NULL;
+/ slopeR = NULL;
+/ x0 = NULL;
+/ x1 = NULL;
+/ y0 = NULL;
+/ y1 = NULL;
+/ fillright = NULL;
 </values>
 
 <data>
 / columns = (build, computer.platform, computer.touch, date, time, subject, group, script.sessionid, blockcode, blocknum,values.block,values.n_blocks,list.degrees_used.itemcount,list.degrees_used_att.itemcount,
-trialcode,latency,values.deg_index_era, values.deg_index_att, values.n_trials, values.block_length, values.best, values.lower_quartile,values.upper_quartile, values.erasure_degrees, values.erasure_index,values.erasure_RT,values.erasure_value,values.attention_degrees,
-values.trial, values.master_idx, values.run_trial,values.block_type, values.startPos, values.pos_shifted, values.rt_shifted, values.rt_index, values.mag, values.ev, values.rng, values.inc, values.inc_rg, values.stim_center_deg, values.choose_stim, 
+trialcode,latency,values.deg_index_era, values.deg_index_att, values.n_trials, values.block_length, values.best, values.lower_quartile,values.upper_quartile, values.erasure_degrees, values.erasure_index,values.erasure_RT,values.erasure_value, list.erasure.itemcount,values.slopeL, values.slopeR, 
+list.erasure.item(1),list.erasure.item(2),list.erasure.item(3),list.erasure.item(4),list.erasure.item(5),list.erasure.item(6),list.erasure.item(7),list.erasure.item(8),list.erasure.item(9),list.erasure.item(10),list.erasure.item(11),list.erasure.item(12),list.erasure.item(13),list.erasure.item(14),
+list.erasure.item(15),list.erasure.item(16),list.erasure.item(17),list.erasure.item(18),list.erasure.item(19),list.erasure.item(20),list.erasure.item(21),list.erasure.item(22),list.erasure.item(23),list.erasure.item(24),list.erasure.item(25),list.erasure.item(26),list.erasure.item(27),list.erasure.item(28),list.erasure.item(29),list.erasure.item(30),list.erasure.item(31),
+
+values.attention_degrees,values.trial, values.master_idx, values.run_trial,values.block_type, values.startPos, values.pos_shifted, values.rt_shifted, values.rt_index, values.mag, values.ev, values.rng, values.inc, values.inc_rg, values.stim_center_deg, values.choose_stim, 
 values.n_attention,values.n_erasure,values.n_no_erasure,values.n_clicks,
 values.timeouts_remain, values.timeout_block, values.generate_new_erasure, values.n_curr_block)
 </data>
@@ -420,10 +423,7 @@ values.timeouts_remain, values.timeout_block, values.generate_new_erasure, value
 	values.i = 0;
 	while (list.curr_RTs.itemcount < 360){
 		values.master_idx += 1;
-		if (values.i == values.erasure_RT - 15){
-		} else {
-			list.curr_values.appenditem(list.values.nextvalue);
-		}
+		list.curr_values.appenditem(list.values.nextvalue);
 		list.curr_RTs.appenditem(list.RT.nextvalue);
 		list.curr_trials.appenditem(list.trial.nextvalue);
 		values.i += 1;
@@ -873,7 +873,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 	}
 	// need to prepopulate values for this trial into a list with a random selection mode
 	list.curr_values.reset();
-	list.curr_RT.reset();
+	list.curr_RTs.reset();
 	while (list.curr_values.itemcount < 360){
 		values.master_idx += 1;
 		list.values.nextvalue;
@@ -905,10 +905,10 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 	values.j = 0;
 	while (values.j < list.curr_values.itemcount){
 		list.curr_values.nextvalue;
-		list.curr_RT.nextvalue;
+		list.curr_RTs.nextvalue;
 		if (list.curr_values.currentvalue >= values.lower_quartile && list.curr_values.currentvalue <= values.upper_quartile) {
 			list.era_values.appenditem(list.curr_values.currentvalue);
-			list.era_RTs.appenditem(list.curr_RT.currentvalue);
+			list.era_RTs.appenditem(list.curr_RTs.currentvalue);
 		}
 		values.j += 1;
 	};
