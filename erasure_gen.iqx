@@ -116,12 +116,12 @@
 
 <list curr_values_temp>
 / selectionrate = always
-/ selectionmode = values.index_temp;
+/ selectionmode = values.temp_index;
 </list>
 
 <list curr_RTs_temp>
 / selectionrate = always
-/ selectionmode = values.index_temp;
+/ selectionmode = values.temp_index;
 </list>
 
 <list era_values>
@@ -527,7 +527,7 @@ values.timeouts_remain, values.timeout_block, values.generate_new_erasure, value
 / ontrialend = [
 ]
 / trialduration = list.ITI.nextvalue;
-/ recorddata = true
+/ recorddata = false
 / branch = [
 	trial.preFreeze;
 ]
@@ -743,11 +743,11 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 ]
 / trialduration = 1000
 // correctresponse = (next)
-/ recorddata = false
+/ recorddata = true
 / ontrialend = [
 	if (values.block_type != "no_erasure") {
 		// to account for 90 degree counterclockwise rotation so 12 o'clock is zero
-		if (values.pos_shifted >= values.stim_center_deg- 15 && values.pos_shifted <= values.stim_center_deg + 15) {
+		if (values.pos_shifted >= max(mod(values.stim_center_deg - 15, 360),1) && values.pos_shifted <= max(mod(values.stim_center_deg + 15, 360),1)) {
 			// 15 + 15 = 30 degrees of arc
 			values.choose_stim = TRUE;
 			values.n_clicks +=1;
@@ -874,6 +874,8 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 	// need to prepopulate values for this trial into a list with a random selection mode
 	list.curr_values.reset();
 	list.curr_RTs.reset();
+	list.curr_values_temp.reset();
+	list.curr_RTs_temp.reset();
 	while (list.curr_values.itemcount < 360){
 		values.master_idx += 1;
 		list.values.nextvalue;
@@ -882,6 +884,8 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 		list.curr_values.appenditem(list.values.currentvalue);
 		list.curr_RTs.appenditem(list.RT.currentvalue);
 		list.curr_trials.appenditem(list.trial.currentvalue);
+		list.curr_values_temp.appenditem(list.values.currentvalue);
+		list.curr_RTs_temp.appenditem(list.RT.currentvalue);
 	};
 	// rewind the master index for trial/RT/values
 	values.master_idx = values.master_idx - 360; 
@@ -890,7 +894,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 	list.lower_half.reset();
 	list.upper_half.reset();
 	while (values.i < list.curr_values.itemcount) {
-		list.curr_values_temp.nextvalue;
+		list.curr_values.nextvalue;
 		if (list.curr_values.currentvalue < list.curr_values.median) {
 			list.lower_half.appenditem(list.curr_values_temp.currentvalue);
 		} else if (list.curr_values.currentvalue > list.curr_values.median) {
@@ -922,7 +926,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 			values.erasure_index += 1;
 			list.era_RTs.nextindex;
 			list.era_values.nextindex;
-			if (list.era_RTs.nextvalue >= list.degrees_used.currentvalue - 15 && list.era_RTs.nextvalue <= list.degrees_used.currentvalue + 15){
+			if (list.era_RTs.nextvalue >= max(mod(list.degrees_used.currentvalue - 15, 360),1) && list.era_RTs.nextvalue <= max(mod(list.degrees_used.currentvalue + 15, 360),1)){
 				list.era_RTs.removeitem(list.era_RTs.currentindex);
 				list.era_values.removeitem(list.era_values.currentindex);
 			}
@@ -983,7 +987,6 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 	
 	
 	// linear interpolation between two known points: https://en.wikipedia.org/wiki/Linear_interpolation
-	values.k = 0;
 	values.temp_index = 0;
 	values.slopeL = NULL;
 	values.slopeR = NULL;
@@ -992,6 +995,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 	values.x1 = NULL;
 	values.y1 = NULL;
 	values.fillright = FALSE;
+	list.erasure.reset();
 	while (list.erasure.itemcount < 31){
 		if (list.erasure.itemcount == 0){
 		// left most point, with clockwise rotation
@@ -1021,10 +1025,11 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 			values.slopeR = (values.y1 - values.erasure_value)/(values.x1 - values.erasure_RT);
 			values.temp_index = values.erasure_RT;
 		} else if (list.erasure.itemcount > 15 && values.fillright == TRUE){
+			// fill in right half of erasure
 			values.temp_index = max(mod(values.temp_index + 1, 360), 1);
 			list.curr_values_temp.nextindex;
 			list.curr_RTs_temp.nextindex;
-			list.erasure.appenditem(values.y1 + (list.curr_RTs_temp.currentvalue - values.erasure_RT) * values.slopeR);
+			list.erasure.appenditem(values.erasure_value + (list.curr_RTs_temp.currentvalue - values.erasure_RT) * values.slopeR);
 		}
 	};
 	
