@@ -191,12 +191,24 @@
 	// parabolic fit y = a(x - h)^2 + k, where vertex = (h,k)
 	values.temp_index = values.left_index;
 	list.curr_values_temp.nextvalue;
-	values.a_left = 
+	values.a_left = list.curr_values_temp.currentvalue / (pow((values.left_distance - values.erasure_RT),2) + values.erasure_value);
+	values.temp_index = values.right_index;
+	list.curr_values_temp.nextvalue;
+	values.a_right = list.curr_values_temp.currentvalue / (pow(values.right_distance, values.erasure_RT),2) + values.erasure_value);
 	list.erasure.reset();
+	values.j = 0;
 	while (list.erasure.itemcount < 31){
 		values.erasure_index2 = 1;
 		list.erasure_RTs.nextvalue;
-		
+		if (list.erasure.itemcount < 16){
+			list.erasure.appenditem(values.a_left * pow(values.left_distance - values.j, 2) + values.erasure_value);
+			values.j += 1;
+		} else if (list.erasure.itemcount == 16){
+			list.erasure.appenditem(values.erasure_value);
+			values.j = 0;
+		} else if (list.erasure.itemcount > 16){
+			
+		}
 	};
 
 	values.elapsedtime = script.elapsedtime - values.starttime;	
