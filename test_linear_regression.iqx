@@ -135,56 +135,71 @@
 		values.i += 1;
 	};
 	
-	
-	// linear interpolation between two known points: https://en.wikipedia.org/wiki/Linear_interpolation
 	values.temp_index = 0;
-	values.slopeL = NULL;
-	values.slopeR = NULL;
-	values.x0 = NULL;
-	values.y0 = NULL;
-	values.x1 = NULL;
-	values.y1 = NULL;
-	values.fillright = FALSE;
+	list.erasure_RTs.reset();
+	// generate sequence of indices to map onto erasure
+	if (values.erasure_RT > 345){
+		values.right_index = max(mod(values.erasure_RT + 15, 360), 1);
+		values.left_index = values.erasure_RT - 15; // this will be sequential and distance is equal
+		values.right_distance = values.right_index + 360 - values.erasure_RT; // this is necessary to get the right equation for the parabola
+		values.left_distance = 15;
+		// piecewise (x - 15 : x), (x: 360), (1: x + 15)
+		values.i = 0;
+		if (list.erasure_RTs.itemcount <= 15){
+			list.erasure_RTs.appenditem(values.left_index + values.i);
+			values.i += 1;
+		} else if (list.erasure_RTs.itemcount > 16 && values.i <= 360){
+			values.i = values.erasure_RT;
+			list.erasure_RTs.appenditem(values.i);
+			values.i +=1;
+		} else if (values.i > 360){
+			values.i = 1;
+			list.erasure_RTs.appenditem(values.i);
+			values.i += 1;
+		}
+	} else if (values.erasure_RT < 16){
+		values.right_index = values.erasure_RT + 15; // this will be sequential
+		values.left_index = max(mod(values.erasure_RT - 15, 360), 1);
+		values.right_distance = 15;
+		values.left_distance = 360 - values.left_index + values.erasure_RT; // this is necessary to get the right equation for the parabola
+		values.i = 0;
+		while (list.erasure_RTs.itemcount < 31){
+			// piecewise (left_index : 360), (1 : x + 15)
+			if (values.i <= (360 - values.left_index)){
+				list.erasure_RTs.appenditem(values.left_index + values.i);
+			}
+			if (values.i > (360 - values.left_index)){
+				values.i = 1;
+				list.erasure_RTs.appenditem(values.i) // sequential from 1... x + 15
+				values.i +=1;
+			}
+			values.i += 1;
+		};
+	} else { 
+		values.right_index = values.erasure_RT + 15;
+		values.left_index = values.erasure_RT - 15;
+		values.right_distance = 15;
+		values.left_distance = 15;
+		values.i = 0;
+		while (list.erasure_RTs.itemcount < 31){
+			// sequential x - 15 : x + 15
+			list.erasure_RTs.appenditem(values.left_index - 15 + values.i);
+			values.i += 1;
+		};
+	}
+	
+	// parabolic fit y = a(x - h)^2 + k, where vertex = (h,k)
+	values.temp_index = values.left_index;
+	list.curr_values_temp.nextvalue;
+	values.a_left = 
 	list.erasure.reset();
 	while (list.erasure.itemcount < 31){
-		if (list.erasure.itemcount == 0){
-		// left most point, with clockwise rotation
-			values.temp_index = max(mod(values.erasure_RT - 15, 360),1);
-			list.curr_values_temp.nextindex;
-			list.curr_RTs_temp.nextindex;
-			values.y0 = list.curr_values_temp.currentvalue;
-			values.x0 = (list.curr_RTs_temp.currentvalue + values.segadd);
-			values.slopeL = (values.erasure_value - values.y0)/(values.erasure_RT - values.x0 + 0.01);
-			list.erasure.appenditem(list.curr_values_temp.currentvalue);
-		} else if (list.erasure.itemcount < 15 && list.erasure.itemcount > 0){
-			// fill in left half of erasure
-			values.temp_index = max(mod(values.temp_index + 1, 360),1);
-			list.curr_values_temp.nextindex;
-			list.curr_RTs_temp.nextindex;
-			list.erasure.appenditem(values.y0 + (list.curr_RTs_temp.currentvalue - values.x0) * values.slopeL);	
-		} else if (list.erasure.itemcount == 15){
-			// fill in midpoint
-			values.temp_index = values.erasure_RT;
-			list.erasure.appenditem(values.erasure_value);
-		} else if (list.erasure.itemcount > 15 && values.fillright == FALSE){
-			// jump to right most point, do not append erasure list
-			values.fillright = TRUE;
-			values.temp_index = max(mod(values.temp_index + 15, 360), 1);
-			values.segadd = 0;
-			values.y1 = list.curr_values_temp.currentvalue;
-			values.x1 = list.curr_RTs_temp.currentvalue + values.segadd;
-			values.slopeR = (values.y1 - values.erasure_value)/(values.x1 - values.erasure_RT + 0.01);
-			values.temp_index = values.erasure_RT;
-		} else if (list.erasure.itemcount > 15 && values.fillright == TRUE){
-			// fill in right half of erasure
-			values.temp_index = max(mod(values.temp_index + 1, 360), 1);
-			list.curr_values_temp.nextindex;
-			list.curr_RTs_temp.nextindex;
-			list.erasure.appenditem(values.erasure_value + (list.curr_RTs_temp.currentvalue - values.erasure_RT) * values.slopeR);
-		}
+		values.erasure_index2 = 1;
+		list.erasure_RTs.nextvalue;
+		
 	};
-	
-	values.elapsedtime = script.elapsedtime - values.starttime;
+
+	values.elapsedtime = script.elapsedtime - values.starttime;	
 	
 ]
 
@@ -418,6 +433,11 @@ list.erasure.item(15),list.erasure.item(16),list.erasure.item(17),list.erasure.i
 </list>
 
 <list erasure>
+/ selectionrate = always
+/ selectionmode = values.erasure_index2;
+</list>
+
+<list erasure_RTs>
 / selectionrate = always
 / selectionmode = values.erasure_index2;
 </list>
