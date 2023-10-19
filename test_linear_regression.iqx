@@ -1,6 +1,6 @@
 ﻿<expt exp1>
 / blocks = [
-	1-100 = experiment;
+	1-345 = experiment;
 ]
 </expt>
 
@@ -60,25 +60,23 @@
 	values.k = 0;
 	while (values.k < list.degrees_used.itemcount){
 		list.degrees_used.nextvalue;
-		values.rempre = mod(list.degrees_used.currentvalue - 15,360);
-		values.rempost = mod(list.degrees_used.currentvalue + 15,360);	
 		values.j = 0;
 		values.erasure_index = 0;
-		while (values.j < list.era_RTs.itemcount){
+		while (values.j <= list.era_RTs.itemcount){
 			values.erasure_index += 1;
 			list.era_RTs.nextindex;
 			list.era_values.nextindex;
-			if (list.era_RTs.nextvalue >= mod(list.degrees_used.currentvalue - 15,360) && list.era_RTs.nextvalue <= mod(list.degrees_used.currentvalue + 15,360)){
+			if (list.era_RTs.nextvalue >= list.degrees_used.currentvalue && list.era_RTs.nextvalue <= list.degrees_used.currentvalue){
 				list.era_RTs.removeitem(list.era_RTs.currentindex);
 				list.era_values.removeitem(list.era_values.currentindex);
 			}
-			if (values.rempre > 345 && list.era_RTs.nextvalue > 345){
+			if (list.degrees_used.currentvalue < 16 && list.era_RTs.nextvalue < 16){
 				list.era_RTs.removeitem(list.era_RTs.currentindex);
-				list.era_values.removeitem(list.era_RTs.currentindex);
+				list.era_values.removeitem(list.era_values.currentindex);
 			}
-			if (values.rempost < 15 && list.era_RTs.nextvalue < 15){
+			if (list.degrees_used.currentvalue > 345 && list.era_RTs.nextvalue > 345){
 				list.era_RTs.removeitem(list.era_RTs.currentindex);
-				list.era_values.removeitem(list.era_RTs.currentindex);
+				list.era_values.removeitem(list.era_values.currentindex);
 			}
 			values.j +=1;
 		}; 
