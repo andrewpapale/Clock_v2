@@ -1,6 +1,6 @@
 ﻿<expt exp1>
 / blocks = [
-	1-100 = experiment;
+	1-345 = experiment;
 ]
 </expt>
 
@@ -153,8 +153,8 @@
 			list.curr_values_temp.nextindex;
 			list.curr_RTs_temp.nextindex;
 			values.y0 = list.curr_values_temp.currentvalue;
-			values.x0 = list.curr_RTs_temp.currentvalue;
-			values.slopeL = (values.erasure_value - values.y0)/(values.erasure_RT - values.x0);
+			values.x0 = (list.curr_RTs_temp.currentvalue + values.segadd);
+			values.slopeL = (values.erasure_value - values.y0)/(values.erasure_RT - values.x0 + 0.01);
 			list.erasure.appenditem(list.curr_values_temp.currentvalue);
 		} else if (list.erasure.itemcount < 15 && list.erasure.itemcount > 0){
 			// fill in left half of erasure
@@ -170,9 +170,10 @@
 			// jump to right most point, do not append erasure list
 			values.fillright = TRUE;
 			values.temp_index = max(mod(values.temp_index + 15, 360), 1);
+			values.segadd = 0;
 			values.y1 = list.curr_values_temp.currentvalue;
-			values.x1 = list.curr_RTs_temp.currentvalue;
-			values.slopeR = (values.y1 - values.erasure_value)/(values.x1 - values.erasure_RT);
+			values.x1 = list.curr_RTs_temp.currentvalue + values.segadd;
+			values.slopeR = (values.y1 - values.erasure_value)/(values.x1 - values.erasure_RT + 0.01);
 			values.temp_index = values.erasure_RT;
 		} else if (list.erasure.itemcount > 15 && values.fillright == TRUE){
 			// fill in right half of erasure
@@ -329,6 +330,7 @@ list.erasure.item(15),list.erasure.item(16),list.erasure.item(17),list.erasure.i
 / y0 = NULL;
 / y1 = NULL;
 / fillright = NULL;
+/ segadd = NULL;
 
 / starttime = NULL;
 / elapsedtime = NULL;
