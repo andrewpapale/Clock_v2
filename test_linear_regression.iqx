@@ -56,32 +56,7 @@
 		}
 		values.j += 1;
 	};
-	// now we have to remove +/- 15 degrees of prior erasure from era_RTs and era_values
-	values.k = 0;
-	while (values.k < list.degrees_used.itemcount){
-		list.degrees_used.nextvalue;
-		values.j = 0;
-		values.erasure_index = 0;
-		while (values.j <= list.era_RTs.itemcount){
-			values.erasure_index += 1;
-			list.era_RTs.nextindex;
-			list.era_values.nextindex;
-			if (list.era_RTs.nextvalue >= list.degrees_used.currentvalue && list.era_RTs.nextvalue <= list.degrees_used.currentvalue){
-				list.era_RTs.removeitem(list.era_RTs.currentindex);
-				list.era_values.removeitem(list.era_values.currentindex);
-			}
-			if (list.degrees_used.currentvalue < 16 && list.era_RTs.nextvalue < 16){
-				list.era_RTs.removeitem(list.era_RTs.currentindex);
-				list.era_values.removeitem(list.era_values.currentindex);
-			}
-			if (list.degrees_used.currentvalue > 345 && list.era_RTs.nextvalue > 345){
-				list.era_RTs.removeitem(list.era_RTs.currentindex);
-				list.era_values.removeitem(list.era_values.currentindex);
-			}
-			values.j +=1;
-		}; 
-		values.k +=1;
-	};
+
 	// this will be the value/RT of the erasure	
 	values.erasure_index = round(rand(1, list.era_values.itemcount));
 	list.era_values.nextindex;
@@ -187,11 +162,23 @@
 	
 	// parabolic fit y = a(x - h)^2 + k, where vertex = (h,k)
 	values.temp_index = values.left_index;
-	list.curr_values_temp.nextvalue;
-	values.a_left = list.curr_values_temp.currentvalue / (pow(values.left_distance,2) + values.erasure_value);
+	list.curr_values_temp.nextindex;
+	values.left_bound = list.curr_values_temp.nextvalue;
+	values.a_left = (list.curr_values_temp.nextvalue - values.erasure_value) / pow(values.left_distance,2);
 	values.temp_index = values.right_index;
-	list.curr_values_temp.nextvalue;
-	values.a_right = list.curr_values_temp.currentvalue / (pow(values.right_distance,2) + values.erasure_value);
+	list.curr_values_temp.nextindex;
+	values.right_bound = list.curr_values_temp.nextvalue;
+	values.a_right = (list.curr_values_temp.nextvalue - values.erasure_value)  / pow(values.right_distance,2);
+	
+	values.j = 1;
+	list.what_was_erased.reset();
+	while (values.j < 32){
+		values.temp_index = list.erasure_RTs.item(values.j);
+		list.curr_values_temp.nextindex;
+		list.what_was_erased.appenditem(list.curr_values_temp.nextvalue);
+		values.j += 1;
+	};
+	
 	list.erasure.reset();
 	values.j = 0;
 	while (list.erasure.itemcount < 31){
@@ -241,9 +228,11 @@
 </trial>
 
 <data>
-/ columns = (values.starttime, values.elapsedtime, list.curr_values.median,values.lower_quartile,values.upper_quartile, values.erasure_degrees, values.erasure_index,values.erasure_RT,values.erasure_value, list.erasure.itemcount,values.a_left, values.a_right, 
+/ columns = (values.starttime, values.elapsedtime, list.curr_values.median,values.lower_quartile,values.upper_quartile, values.erasure_degrees, values.erasure_index,values.erasure_RT,values.erasure_value, list.erasure.itemcount,values.left_bound, values.right_bound, values.a_left, values.a_right, 
 list.erasure.item(1),list.erasure.item(2),list.erasure.item(3),list.erasure.item(4),list.erasure.item(5),list.erasure.item(6),list.erasure.item(7),list.erasure.item(8),list.erasure.item(9),list.erasure.item(10),list.erasure.item(11),list.erasure.item(12),list.erasure.item(13),list.erasure.item(14),
 list.erasure.item(15),list.erasure.item(16),list.erasure.item(17),list.erasure.item(18),list.erasure.item(19),list.erasure.item(20),list.erasure.item(21),list.erasure.item(22),list.erasure.item(23),list.erasure.item(24),list.erasure.item(25),list.erasure.item(26),list.erasure.item(27),list.erasure.item(28),list.erasure.item(29),list.erasure.item(30),list.erasure.item(31),
+list.what_was_erased.item(1),list.erasure.item(2),list.what_was_erased.item(3),list.what_was_erased.item(4),list.what_was_erased.item(5),list.what_was_erased.item(6),list.what_was_erased.item(7),list.what_was_erased.item(8),list.what_was_erased.item(9),list.what_was_erased.item(10),list.what_was_erased.item(11),list.what_was_erased.item(12),list.what_was_erased.item(13),list.what_was_erased.item(14),
+list.what_was_erased.item(15),list.what_was_erased.item(16),list.what_was_erased.item(17),list.what_was_erased.item(18),list.what_was_erased.item(19),list.what_was_erased.item(20),list.what_was_erased.item(21),list.what_was_erased.item(22),list.what_was_erased.item(23),list.what_was_erased.item(24),list.what_was_erased.item(25),list.what_was_erased.item(26),list.what_was_erased.item(27),list.what_was_erased.item(28),list.what_was_erased.item(29),list.what_was_erased.item(30),list.what_was_erased.item(31)
 )
 
 </data>
@@ -352,10 +341,16 @@ list.erasure.item(15),list.erasure.item(16),list.erasure.item(17),list.erasure.i
 / left_distance = NULL;
 / a_right = NULL;
 / a_left = NULL;
+/ left_bound = NULL;
+/ right_bound = NULL;
 
 / starttime = NULL;
 / elapsedtime = NULL;
 </values>
+
+<list what_was_erased>
+/ selectionrate = always
+</list>
 
 
 <list degrees_att>
