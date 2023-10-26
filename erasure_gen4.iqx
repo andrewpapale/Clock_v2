@@ -1,0 +1,1642 @@
+﻿<defaults>
+/ canvasaspectratio = (4,4)
+/ minimumversion = "6.0.0.0"
+/ inputdevice = keyboard
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 0)
+/ txbgcolor = white
+/ txcolor = (0, 0, 0)
+</defaults>
+
+<parameters>
+/ randStart = TRUE;
+/ circleproportion = 0.33
+/ clockdotSize = 2%
+/ attentional_control = "wind";
+/ local_uncertainty = "cloud";
+</parameters>
+
+<values>
+/ deg_index_att = NULL;
+/ deg_index_era = NULL;
+/ rng = NULL;
+/ trial = 0;
+/ run_trial = 0;
+/ run_trial_dum = 0; // dummy counter to avoid extra ITI at the end of blocks
+/ stim_idx = NULL;
+/ erase_prop = 0.33333;
+/ attention_prop = 0.33333;
+/ no_erasure_prop = 1 - values.erase_prop - values.attention_prop;
+/ block_length = 3;
+/ block_length_original = values.block_length;
+/ disappear_clicks = 2;
+/ timeout_trials = 1;
+/ n_trials = 45;
+/ n_blocks = floor(values.n_trials / values.block_length)
+/ block_type = NULL;
+/ block = 0;
+/ timeout = 6500; // timeout trials, when the ship runs out of fuel you get 0 mushrooms, in ms
+/ time_per_revolution = 5000; // how many ms does it take to go 360 degrees around the circle
+/ gamma = values.time_per_revolution/100; // conversion factor for computing rt_shifted (circle position is in units of 0-100)
+/ circle_x = 0%;
+/ circle_y = 0%;
+/ freq = 0.7;
+/ conversion = 0.03 / 100;  // cents / number of mushrooms
+/ totalEarnings = 0;
+/ Earnings = NULL;
+/ rt_shifted = 0;
+/ pos_shifted = 0;
+/ design_file_index = 0;
+/ gauss_sd = 0.001;
+/ mag = 0;
+/ ev = 0;
+/ inc = 0;
+/ inc_rg = 0;
+/ n_revolutions = 0;
+/ startPos = 0;
+/ choose_stim = NULL;
+/ stim_center_deg = NULL;
+/ rem0 = NULL;
+/ rem1 = NULL;
+/ rem2 = NULL;
+/ rem3 = NULL;
+/ rem4 = NULL;
+/ rem5 = NULL;
+/ best = NULL;
+/ last_block_flag = FALSE;
+/ min_rem = NULL;
+/ has_erasure = NULL;
+/ generate_new_erasure = NULL;
+/ total_clicks = 2;
+/ n_clicks = NULL;
+/ timeout_block = FALSE;
+/ timeouts_remain = 1;
+/ end_block = NULL;
+/ require_attention = NULL;
+/ require_erasure = NULL;
+/ require_no_erasure = NULL;
+/ n_attention = NULL;
+/ n_erasure = NULL;
+/ n_no_erasure = NULL;
+/ n_curr_block = NULL;
+/ n_timeout = NULL;
+
+/ trial_index = 1;
+/ index = 0;
+/ degrees_erasure_index = 0;
+/ values_erasure_index = 0;
+/ curr_val_era = NULL;
+/ curr_index_era = NULL;
+
+
+
+</values>
+
+<data>
+/ columns = (build, computer.platform, computer.touch, date, time, subject, group, script.sessionid, blockcode, blocknum,values.block,values.n_blocks,list.degrees_used.itemcount,list.degrees_used_att.itemcount,
+trialcode,latency,values.deg_index_era, values.deg_index_att, values.n_trials, values.block_length,
+values.attention_degrees,values.trial, values.master_idx, values.run_trial,values.block_type, values.startPos, values.pos_shifted, values.rt_shifted, values.rt_index, values.mag, values.ev, values.rng, values.inc, values.inc_rg, values.stim_center_deg, values.choose_stim, 
+values.n_attention,values.n_erasure,values.n_no_erasure,values.n_clicks,
+values.timeouts_remain, values.timeout_block, values.generate_new_erasure, values.n_curr_block)
+</data>
+
+<picture animatedCircle>
+/ items = ("blank.png")
+/ size = (12%, 0.1px*display.canvaswidth)
+/ animation = circle(values.time_per_revolution,-1,values.startPos,50%,50%,expressions.radius_px)
+/ erase = false
+</picture>
+
+<picture frozenShip>
+/ items = ("blank.png")
+/ erase = true(white)
+/ size = (12%, 0.1px*display.canvaswidth)
+</picture>
+
+<picture shuttle1>
+/ items = ("585f94c1cb11b227491c3585.png")
+/ erase = true(white)
+/ size = (12%, 0.1px*display.canvaswidth)
+</picture>
+
+<picture shuttle2>
+/ items = ("585f94d8cb11b227491c3588.png")
+/ erase = true(white)
+/ size = (12%, 0.1px*display.canvaswidth)
+</picture>
+
+<picture shuttle3>
+/ items = ("585f94c8cb11b227491c3586.png")
+/ erase = true(white)
+/ size = (12%, 0.1px*display.canvaswidth)
+</picture>
+
+<picture fixationCross>
+/ items = ("fixationCross.png")
+/ position = (50%, 50%)
+/ size = (7%, 7%)
+/ erase = true(white)
+</picture>
+
+<picture stim>
+/ items = ("fog0.png")
+/ hposition = expressions.centerx + expressions.widthchange_angle270
+/ vposition = expressions.centery + expressions.heightchange_angle270
+/ size = (18%, 18%)
+/ erase = true(white)
+</picture>
+
+<picture blank>
+/ items = ("blank.png")
+/ hposition = expressions.centerx + expressions.widthchange_angle270
+/ vposition = expressions.centery + expressions.heightchange_angle270
+/ size = (18%, 18%)
+/ erase = true(white)
+</picture>
+
+<picture wind>
+/ items = ("wind0.png")
+/ hposition = expressions.centerx + expressions.widthchange_angle270
+/ vposition = expressions.centery + expressions.heightchange_angle270
+/ size = (18%, 18%)
+/ erase = true(white)
+</picture>
+
+<picture planet>
+/ items = ("blank.png")
+/ position = (50%, 50%)
+/ size = (35%,35%)
+/ erase = true(white)
+</picture>
+
+<picture feedback>
+/ items = ("blank.png")
+/ position = (50%, 50%)
+/ size = (75%, 75%)
+/ erase = true(white)
+</picture>
+
+<picture mushrooms1>
+/ items = ("mushrooms1.png")
+/ position = (50%, 50%)
+/ size = (50%, 50%)
+/ erase = true(white)
+</picture>
+
+<picture mushrooms2>
+/ items = ("mushrooms2.png")
+/ position = (50%, 50%)
+/ size = (50%, 50%)
+/ erase = true(white)
+</picture>
+
+<picture mushrooms3>
+/ items = ("mushrooms3.png")
+/ position = (50%, 50%)
+/ size = (50%, 50%)
+/ erase = true(white)
+</picture>
+
+<picture planet1>
+/ items = ("purple-sphere-7346837_1920.png")
+/ position = (50%, 50%)
+/ size = (50%, 50%)
+/ erase = true(white)
+</picture>
+
+<picture planet2>
+/ items = ("exoplanet-2896662_1920.png")
+/ position = (50%, 50%)
+/ size = (50%, 50%)
+/ erase = true(white)
+</picture>
+
+<picture planet3>
+/ items = ("planet-1138237_1280.png")
+/ position = (50%, 50%)
+/ size = (50%, 50%)
+/ erase = true(white)
+</picture>
+
+<picture timeout>
+/ items = ("timeout.png")
+/ position = (50%, 50%)
+/ size = (10%, 10%)
+/ erase = true(white)
+</picture>
+
+<text center>
+// items = ("center = <%values.stim_center_deg%>, pos_sh = <%values.pos_shifted%> choose = <%values.choose_stim%>")
+// items = ("best = <%values.best%>, <%values.rem0%> <%values.rem1%> <%values.rem2%> <%values.rem3%> <%values.rem4%> <%values.rem5%>")
+// items = ("att=<%list.degrees_att.itemcount%>,era=<%list.degrees_era.itemcount%>, used=<%list.degrees_used.itemcount%>")
+// items = ("<%list.sorted_values.items.1%> <%list.sorted_values.items.2%> <%list.sorted_values.items.3%> <%list.sorted_values.items.4%> <%list.sorted_values.items.5%>")
+// items = ("<%list.available_seg.items.1%> <%list.available_seg.items.2%> <%list.available_seg.items.3%> <%list.available_seg.items.4%> <%list.available_seg.items.5%>")
+/ items = ("eidx=<%list.degrees_era.nextvalue%> RT=<%list.curr_RTs.items.1%> trial=<%list.curr_trials.items.1%> value=<%list.curr_values.items.1%>")
+/ position = (50%, 50%)
+</text>
+
+<text feedback1>
+// items = ("You got <% values.inc_rg %> mushroom(s)")
+/ items = ("<%values.inc_rg%>")
+/ fontstyle = ("Arial", 50%, false, false, false, false, 5, 238)
+/ txbgcolor = (transparent)
+/ position = (50%, 50%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<trial ITI>
+/ ontrialbegin = [
+	values.trial +=1;
+	values.run_trial +=1;
+	values.index +=1;
+	list.curr_values.reset();
+	values.i = 0;
+	while (list.curr_values.itemcount < 360){
+		values.master_idx += 1;
+		list.curr_values.appenditem(list.values.nextvalue);
+	};
+	values.rt_shifted = NULL;
+	values.pos_shifted = NULL;
+	values.ev = NULL;
+	values.rng = NULL;
+	values.inc = NULL;
+	values.inc_rg = NULL;
+	values.erasure_degrees = list.degrees_era.nextvalue;
+	values.attention_degrees = list.degrees_att.nextvalue;
+	// dynamically account for stimulus erasure choice
+	if (values.n_clicks >= values.total_clicks) {
+		values.timeout_block = TRUE;
+		values.n_clicks = NULL;
+		// current block automatically ends
+	}
+	if (values.timeouts_remain<=0) {
+		values.timeout_block = FALSE;
+		values.generate_new_erasure = TRUE;
+		values.timeouts_remain = values.timeout_trials;
+	}
+	if (values.n_curr_block <= 0 && values.block_type == "no_erasure") {
+		values.generate_new_erasure = TRUE;
+	}
+	if (values.n_curr_block <= 0 && (values.block_type == "erasure" || values.block_type == "attention")) {
+		// need to insert a timeout block here too
+		values.timeout_block = TRUE;
+		values.generate_new_erasure = FALSE;
+	}
+	if (values.run_trial == 1 && values.block != 1 && values.block_type != "no_erasure") {
+		// if on trial 1 of block N, and last block was not an erasure, generate timeout block, then generate new erasure
+		values.timeout_block = TRUE;
+		values.generate_new_erasure = FALSE;
+	}
+	if (values.timeout_block==TRUE) {
+		// decrement timeouts trials remaining by 1 if in timeout block
+		values.timeouts_remain -= 1;
+		values.block_type = "no_erasure";
+		picture.stim.items.1 = ("blank.png");
+		values.has_erasure = FALSE;
+		values.choose_stim = NULL;
+		values.n_timeout +=1;
+		values.n_curr_block = values.timeout_trials;
+	}
+	if (values.generate_new_erasure==TRUE) {
+		if (values.n_no_erasure < values.require_no_erasure && values.n_attention < values.require_attention && values.n_erasure < values.require_erasure) {
+			values.block_type = noreplace("erasure","attention","no_erasure");
+		} else if (values.n_no_erasure >= values.require_no_erasure && values.n_attention < values.require_attention && values.n_erasure < values.require_erasure) {
+			values.block_type = noreplace("erasure","attention");
+		} else if (values.n_no_erasure < values.require_no_erasure && values.n_attention >= values.require_attention && values.n_erasure < values.require_erasure) {
+			values.block_type = noreplace("erasure","no_erasure");
+		} else if (values.n_no_erasure < values.require_no_erasure && values.n_attention < values.require_attention && values.n_erasure >= values.require_erasure) {
+			values.block_type = noreplace("attention","no_erasure");
+		} else if (values.n_no_erasure >= values.require_no_erasure && values.n_attention >= values.require_attention && values.n_erasure < values.require_erasure) {
+			values.block_type = "erasure";
+		} else if (values.n_no_erasure >= values.require_no_erasure && values.n_attention < values.require_attention && values.n_erasure >= values.require_erasure) {
+			values.block_type = "attention";
+		}
+		if (values.block_type == "no_erasure") {
+			picture.stim.items.1 = ("blank.png");
+			values.n_clicks = NULL;
+			values.has_erasure = FALSE;
+			values.choose_stim = NULL;
+			values.n_curr_block = values.require_no_erasure - values.n_no_erasure;
+		} else if (values.block_type == "attention") {
+			picture.stim.item.1 = ("fog0.png");
+			values.has_erasure = TRUE;
+			values.n_clicks = 0;
+			values.n_curr_block = values.require_attention - values.n_attention;
+			values.choose_stim = 0;
+			// now we have to convert pos_shifted into 'screen' coordinates which the stimuli are on
+			picture.stim.hposition = expressions.centerx + cos(rad(list.degrees_att.nextvalue))*expressions.radius_px;
+			picture.stim.vposition = expressions.centery + sin(rad(list.degrees_att.nextvalue))*expressions.radius_px;
+			picture.stim.rotation = list.degrees_att.nextvalue - 270;
+			values.stim_center_deg = mod(list.degrees_att.nextvalue + 90,360);
+		} else if (values.block_type == "erasure") {
+			picture.stim.item.1 = ("wind0.png");
+			values.has_erasure = TRUE;
+			values.n_clicks = 0;
+			values.n_curr_block = values.require_erasure - values.n_erasure;
+			values.choose_stim = 0;
+			// now we have to convert pos_shifted into 'screen' coordinates which the stimuli are on
+			picture.stim.hposition = expressions.centerx + cos(rad(list.degrees_era.nextvalue))*expressions.radius_px;
+			picture.stim.vposition = expressions.centery + sin(rad(list.degrees_era.nextvalue))*expressions.radius_px;
+			picture.stim.rotation = list.degrees_era.nextvalue - 270;
+			values.stim_center_deg = mod(list.degrees_era.nextvalue + 90,360);
+		}
+	}
+]
+
+/ stimulustimes = [
+	0 = fixationCross, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+		dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+		dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+		dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+		dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+		dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
+]
+/ ontrialend = [
+]
+/ trialduration = list.ITI.nextvalue;
+/ recorddata = false
+/ branch = [
+	trial.preFreeze;
+]
+/ ontrialend = [
+]
+
+
+</trial>
+
+<trial preFreeze>
+/ ontrialbegin = [
+	picture.planet.erase = false;
+	picture.stim.erase = false;
+	picture.frozenShip.erase = true;
+	if (parameters.randStart==TRUE) {
+		values.startPos =  round(rand(0, 100));
+	}
+	if (values.startPos > 0 && values.startPos < 25){
+		picture.frozenShip.hposition = 1px * (expressions.centerx + cos(rad(-90*values.startPos/25))*expressions.radius_px);
+		picture.frozenShip.vposition = 1px * (expressions.centery + sin(rad(90*values.startPos/25))*expressions.radius_px);
+	} else if ((values.startPos > 25 && values.startPos < 75) || (values.startPos > 75 && values.startPos < 100)){
+		picture.frozenShip.hposition = 1px * (expressions.centerx + cos(rad(-90*values.startPos/25))*expressions.radius_px);
+		picture.frozenShip.vposition = 1px * (expressions.centery + sin(rad(90*values.startPos/25))*expressions.radius_px);		
+	} else if (values.startPos == 0){
+		picture.frozenShip.hposition = 1px * (expressions.centerx + cos(rad(values.startPos))*expressions.radius_px);
+		picture.frozenShip.vposition = 1px * (expressions.centery + sin(rad(values.startPos))*expressions.radius_px);		
+	} else if (values.startPos == 100){
+		picture.frozenShip.hposition = 1px * (expressions.centerx + cos(rad(0))*expressions.radius_px);
+		picture.frozenShip.vposition = 1px * (expressions.centery + sin(rad(0))*expressions.radius_px);			
+	} else if (values.startPos == 25 || values.startPos == 75){
+		picture.frozenShip.hposition = 1px * (expressions.centerx + cos(rad(90*values.startPos/25))*expressions.radius_px);
+		picture.frozenShip.vposition = 1px * (expressions.centery + sin(rad(90*values.startPos/25))*expressions.radius_px);	
+	}
+]
+
+/ stimulustimes = [ 0 = planet, center, stim, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip;
+]
+/ timeout = list.preClockFreeze.nextvalue;
+/ recorddata = false
+/ branch = [
+	return trial.clock;
+]
+
+</trial>
+
+<trial clock>
+/ ontrialbegin = [
+	values.n_revolutions = 0;
+	picture.animatedCircle.erase = false;
+]
+
+/ stimulustimes = [
+	0 = animatedCircle, stim, center, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+		dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+		dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+		dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+		dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+		dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
+	2 = animatedCircle;
+]
+/ timeout = values.timeout;
+/ validresponse = (" ") 
+/ inputdevice = keyboard
+/ responseinterrupt = immediate
+/ recorddata = false
+/ branch = [
+	return trial.ISI;
+]
+/ ontrialend = [
+	values.circle_x = picture.animatedCircle.xpct;
+	values.circle_y = picture.animatedCircle.ypct;
+	values.n_revolutions = ipart(script.elapsedtime - picture.animatedCircle.timestamp/values.time_per_revolution);
+]
+</trial>
+
+<trial ISI>
+/ ontrialbegin = [
+	picture.frozenShip.xpct = values.circle_x;
+	picture.frozenShip.ypct = values.circle_y;
+	picture.planet.erase = true;
+	picture.stim.erase = true;
+	shape.dot1.erase = true;
+	shape.dot2.erase = true;
+	shape.dot3.erase = true;
+	shape.dot4.erase = true;
+	shape.dot5.erase = true;
+	shape.dot6.erase = true;
+	shape.dot7.erase = true;
+	shape.dot8.erase = true;
+	shape.dot9.erase = true;
+	shape.dot10.erase = true;
+	shape.dot11.erase = true;
+	shape.dot12.erase = true;
+	shape.dot13.erase = true;
+	shape.dot14.erase = true;
+	shape.dot15.erase = true;
+	shape.dot16.erase = true;
+	shape.dot17.erase = true;
+	shape.dot18.erase = true;
+	shape.dot19.erase = true;
+	shape.dot20.erase = true;
+	shape.dot21.erase = true;
+	shape.dot22.erase = true;
+	shape.dot23.erase = true;
+	shape.dot24.erase = true;
+	shape.dot25.erase = true;
+	shape.dot26.erase = true;
+	shape.dot27.erase = true;
+	shape.dot28.erase = true;
+	shape.dot29.erase = true;
+	shape.dot30.erase = true;
+	shape.dot31.erase = true;
+	shape.dot32.erase = true;
+	shape.dot33.erase = true;
+	shape.dot34.erase = true;
+	shape.dot35.erase = true;
+	shape.dot36.erase = true;
+	shape.dot37.erase = true;
+	shape.dot38.erase = true;
+	shape.dot39.erase = true;
+	shape.dot40.erase = true;
+	shape.dot41.erase = true;
+	shape.dot42.erase = true;
+	shape.dot43.erase = true;
+	shape.dot44.erase = true;
+	shape.dot45.erase = true;
+	shape.dot46.erase = true;
+	shape.dot47.erase = true;
+	shape.dot48.erase = true;
+	shape.dot49.erase = true;
+	shape.dot50.erase = true;
+	shape.dot51.erase = true;
+	shape.dot52.erase = true;
+	shape.dot53.erase = true;
+	shape.dot54.erase = true;
+	shape.dot55.erase = true;
+	shape.dot56.erase = true;
+	shape.dot57.erase = true;
+	shape.dot58.erase = true;
+	shape.dot59.erase = true;
+	shape.dot60.erase = true;
+]
+/ stimulustimes = [0 = stim, planet, center, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip;
+]
+/ timeout = list.ISI.nextvalue;
+/ branch = [
+	return trial.feedback;
+]
+</trial>
+
+<trial feedback>
+/ ontrialbegin = [
+	if (values.startPos >= 0 && values.startPos < 75) {
+		// shift 0 from 3 o'clock to 12 o'clock
+		values.rt_shifted = mod(values.gamma*(values.startPos+25)+trial.clock.latency,values.time_per_revolution);
+	} else if (values.startPos >= 75) {
+		values.rt_shifted = mod(values.gamma*(values.startPos-75)+trial.clock.latency,values.time_per_revolution);
+	}
+	values.pos_shifted = values.rt_shifted*360/values.time_per_revolution;
+	// 5000 / 360 RT segments gives 14ms RT bins, conveniently, 1 degree / segment so the index for the value = the degree of the position selected
+	values.rt_index = round(values.pos_shifted);
+	values.mag = list.curr_values.item(values.rt_index);
+	values.ev = values.mag * values.freq;
+	values.rng = rand(0,1);
+	if (values.freq >= values.rng) {
+		values.inc = values.mag;
+	} else {
+		values.inc = 10;
+	}
+	if (trial.clock.latency < values.timeout) {
+		values.inc_rg = round(randgaussian(values.inc, values.gauss_sd*values.inc));
+		if (values.inc_rg < values.inc - 1.5*values.gauss_sd*values.inc) {
+			values.inc_rg = round(values.inc - 1.5*values.gauss_sd*values.inc);
+		} else if (values.inc_rg > values.inc + 1.5*values.gauss_sd*values.inc) {
+			values.inc_rg = round(values.inc + 1.5*values.gauss_sd*values.inc);
+		}
+		if (values.inc_rg < 10) {
+			values.inc_rg = 10;
+		}
+		if (values.inc_rg > 150) {
+			values.inc_rg = 150;
+		}
+		values.Earnings = values.inc_rg*values.conversion;
+		values.totalEarnings = values.totalEarnings + values.Earnings;
+		if (values.block ==1) {
+			picture.feedback.item.1 = ("mushrooms2.png")
+		} else if (values.block == 2 && values.block < 3) {
+			picture.feedback.item.1 = ("mushrooms1.png")
+		} else if (values.block == 3 && values.block < 4) {
+			picture.feedback.item.1 = ("mushrooms3.png")
+		}
+	} else {
+		values.inc = 0;
+		values.inc_rg = NULL;
+		values.Earnings = 0;
+		values.totalEarnings = values.totalEarnings + values.Earnings;
+		picture.feedback.item.1 = "timeout.png"
+	}
+	
+]
+/ stimulustimes = [
+	0 = feedback, text.feedback1;
+]
+/ trialduration = 1000
+// correctresponse = (next)
+/ recorddata = true
+/ ontrialend = [
+	if (values.block_type != "no_erasure") {
+		// to account for 90 degree counterclockwise rotation so 12 o'clock is zero
+		if (values.pos_shifted >= max(mod(values.stim_center_deg - 15, 360),1) && values.pos_shifted <= max(mod(values.stim_center_deg + 15, 360),1)) {
+			// 15 + 15 = 30 degrees of arc
+			values.choose_stim = TRUE;
+			values.n_clicks +=1;
+		} else {
+			values.choose_stim = FALSE;
+		}
+	}
+	if (values.block_type == "erasure") {
+		values.n_erasure += 1;
+	}
+	if (values.block_type == "attention") {
+		values.n_attention += 1;
+	}
+	if (values.block_type == "no_erasure") {
+		values.n_no_erasure +=1;
+	}
+	if (values.generate_new_erasure==TRUE) {
+		values.generate_new_erasure = FALSE;
+	}
+	values.n_curr_block -= 1;
+	values.run_trial_dum  += 1;
+	
+	shape.dot1.erase = false;
+	shape.dot2.erase = false;
+	shape.dot3.erase = false;
+	shape.dot4.erase = false;
+	shape.dot5.erase = false;
+	shape.dot6.erase = false;
+	shape.dot7.erase = false;
+	shape.dot8.erase = false;
+	shape.dot9.erase = false;
+	shape.dot10.erase = false;
+	shape.dot11.erase = false;
+	shape.dot12.erase = false;
+	shape.dot13.erase = false;
+	shape.dot14.erase = false;
+	shape.dot15.erase = false;
+	shape.dot16.erase = false;
+	shape.dot17.erase = false;
+	shape.dot18.erase = false;
+	shape.dot19.erase = false;
+	shape.dot20.erase = false;
+	shape.dot21.erase = false;
+	shape.dot22.erase = false;
+	shape.dot23.erase = false;
+	shape.dot24.erase = false;
+	shape.dot25.erase = false;
+	shape.dot26.erase = false;
+	shape.dot27.erase = false;
+	shape.dot28.erase = false;
+	shape.dot29.erase = false;
+	shape.dot30.erase = false;
+	shape.dot31.erase = false;
+	shape.dot32.erase = false;
+	shape.dot33.erase = false;
+	shape.dot34.erase = false;
+	shape.dot35.erase = false;
+	shape.dot36.erase = false;
+	shape.dot37.erase = false;
+	shape.dot38.erase = false;
+	shape.dot39.erase = false;
+	shape.dot40.erase = false;
+	shape.dot41.erase = false;
+	shape.dot42.erase = false;
+	shape.dot43.erase = false;
+	shape.dot44.erase = false;
+	shape.dot45.erase = false;
+	shape.dot46.erase = false;
+	shape.dot47.erase = false;
+	shape.dot48.erase = false;
+	shape.dot49.erase = false;
+	shape.dot50.erase = false;
+	shape.dot51.erase = false;
+	shape.dot52.erase = false;
+	shape.dot53.erase = false;
+	shape.dot54.erase = false;
+	shape.dot55.erase = false;
+	shape.dot56.erase = false;
+	shape.dot57.erase = false;
+	shape.dot58.erase = false;
+	shape.dot59.erase = false;
+	shape.dot60.erase = false;
+	
+]
+/ branch = [
+	list.triallist.nextvalue;
+]
+</trial>
+
+<block experiment>
+/ onblockbegin = [
+	values.run_trial_dum = 1;
+	values.run_trial = 0;
+	values.require_erasure = ceil(values.block_length*values.erase_prop);
+	values.require_attention = round(values.block_length*values.attention_prop);
+	values.require_no_erasure = values.block_length - values.require_attention - values.require_erasure;
+	values.n_attention = 0;
+	values.n_erasure = 0;
+	values.n_no_erasure = 0;
+	values.n_clicks = NULL;
+	// reset run_trial on each block
+	list.triallist.poolsize = values.block_length;
+	values.block +=1;
+	if (values.block==1) {
+		values.timeout_block = FALSE;
+		values.generate_new_erasure = TRUE;
+		values.n_curr_block = NULL;
+		values.n_timeout = 0;
+		values.master_idx = 0;
+	}
+	if (values.block==2) {
+		picture.planet.item.1 = ("exoplanet-2896662_1920.png");
+		picture.frozenShip.item.1 = ("585f94c8cb11b227491c3586.png");
+		picture.animatedCircle.item.1 = ("585f94c8cb11b227491c3586.png");
+	} else if (values.block==3) {
+		picture.planet.item.1 = ("purple-sphere-7346837_1920.png");
+		picture.frozenShip.item.1 = ("585f94d8cb11b227491c3588.png");
+		picture.animatedCircle.item.1 = ("585f94d8cb11b227491c3588.png");
+	} else if (values.block==1) {
+		picture.planet.item.1 = ("planet-1138237_1280.png");
+		picture.frozenShip.item.1 = ("585f94c1cb11b227491c3585.png");
+		picture.animatedCircle.item.1 = ("585f94c1cb11b227491c3585.png");
+	}
+	
+	
+	shape.dot1.erase = false;
+	shape.dot2.erase = false;
+	shape.dot3.erase = false;
+	shape.dot4.erase = false;
+	shape.dot5.erase = false;
+	shape.dot6.erase = false;
+	shape.dot7.erase = false;
+	shape.dot8.erase = false;
+	shape.dot9.erase = false;
+	shape.dot10.erase = false;
+	shape.dot11.erase = false;
+	shape.dot12.erase = false;
+	shape.dot13.erase = false;
+	shape.dot14.erase = false;
+	shape.dot15.erase = false;
+	shape.dot16.erase = false;
+	shape.dot17.erase = false;
+	shape.dot18.erase = false;
+	shape.dot19.erase = false;
+	shape.dot20.erase = false;
+	shape.dot21.erase = false;
+	shape.dot22.erase = false;
+	shape.dot23.erase = false;
+	shape.dot24.erase = false;
+	shape.dot25.erase = false;
+	shape.dot26.erase = false;
+	shape.dot27.erase = false;
+	shape.dot28.erase = false;
+	shape.dot29.erase = false;
+	shape.dot30.erase = false;
+	shape.dot31.erase = false;
+	shape.dot32.erase = false;
+	shape.dot33.erase = false;
+	shape.dot34.erase = false;
+	shape.dot35.erase = false;
+	shape.dot36.erase = false;
+	shape.dot37.erase = false;
+	shape.dot38.erase = false;
+	shape.dot39.erase = false;
+	shape.dot40.erase = false;
+	shape.dot41.erase = false;
+	shape.dot42.erase = false;
+	shape.dot43.erase = false;
+	shape.dot44.erase = false;
+	shape.dot45.erase = false;
+	shape.dot46.erase = false;
+	shape.dot47.erase = false;
+	shape.dot48.erase = false;
+	shape.dot49.erase = false;
+	shape.dot50.erase = false;
+	shape.dot51.erase = false;
+	shape.dot52.erase = false;
+	shape.dot53.erase = false;
+	shape.dot54.erase = false;
+	shape.dot55.erase = false;
+	shape.dot56.erase = false;
+	shape.dot57.erase = false;
+	shape.dot58.erase = false;
+	shape.dot59.erase = false;
+	shape.dot60.erase = false;
+	
+]
+/ branch = [
+	list.blocklist.nextvalue;
+]
+
+/ trials = [
+	1 = list.triallist;
+]
+/ onblockend = [
+
+]
+/ stop = [
+	values.run_trial_dum > values.block_length;
+]
+
+</block>
+
+<expt main1>
+/ onexptbegin = [
+
+]
+
+/ blocks = [
+	1-3 = experiment;
+]
+
+</expt>
+
+
+
+<expressions> // useful not to compute positions for dots on every trial to save compute time
+/ centerx = 0.5*display.canvaswidth
+/ centery = 0.5*display.canvasheight
+/ radius_px = parameters.circleproportion * display.canvasheight
+/ radians_angle6 = rad(6)
+/ radians_angle12 = rad(12)
+/ radians_angle18 = rad(18)
+/ radians_angle24 = rad(24)
+/ radians_angle30 = rad(30)
+/ radians_angle36 = rad(36)
+/ radians_angle42 = rad(42)
+/ radians_angle48 = rad(48)
+/ radians_angle54 = rad(54)
+/ radians_angle60 = rad(60)
+/ radians_angle66 = rad(66)
+/ radians_angle72 = rad(72)
+/ radians_angle78 = rad(78)
+/ radians_angle84 = rad(84)
+/ radians_angle90 = rad(90)
+/ radians_angle96 = rad(96)
+/ radians_angle102 = rad(102)
+/ radians_angle108 = rad(108)
+/ radians_angle114 = rad(114)
+/ radians_angle120 = rad(120)
+/ radians_angle126 = rad(126)
+/ radians_angle132 = rad(132)
+/ radians_angle138 = rad(138)
+/ radians_angle144 = rad(144)
+/ radians_angle150 = rad(150)
+/ radians_angle156 = rad(156)
+/ radians_angle162 = rad(162)
+/ radians_angle168 = rad(168)
+/ radians_angle174 = rad(174)
+/ radians_angle180 = rad(180)
+/ radians_angle186 = rad(186)
+/ radians_angle192 = rad(192)
+/ radians_angle198 = rad(198)
+/ radians_angle204 = rad(204)
+/ radians_angle210 = rad(210)
+/ radians_angle216 = rad(216)
+/ radians_angle222 = rad(222)
+/ radians_angle228 = rad(228)
+/ radians_angle234 = rad(234)
+/ radians_angle240 = rad(240)
+/ radians_angle246 = rad(246)
+/ radians_angle252 = rad(252)
+/ radians_angle258 = rad(258)
+/ radians_angle264 = rad(264)
+/ radians_angle270 = rad(270)
+/ radians_angle276 = rad(276)
+/ radians_angle282 = rad(282)
+/ radians_angle288 = rad(288)
+/ radians_angle294 = rad(294)
+/ radians_angle300 = rad(300)
+/ radians_angle306 = rad(306)
+/ radians_angle312 = rad(312)
+/ radians_angle318 = rad(318)
+/ radians_angle324 = rad(324)
+/ radians_angle330 = rad(330)
+/ radians_angle336 = rad(336)
+/ radians_angle342 = rad(342)
+/ radians_angle348 = rad(348)
+/ radians_angle354 = rad(354)
+/ heightchange_angle6 = sin(expressions.Radians_angle6) * expressions.radius_px
+/ widthchange_angle6 = cos(expressions.Radians_angle6) * expressions.radius_px
+/ heightchange_angle12 = sin(expressions.Radians_angle12) * expressions.radius_px
+/ widthchange_angle12 = cos(expressions.Radians_angle12) * expressions.radius_px
+/ heightchange_angle18 = sin(expressions.Radians_angle18) * expressions.radius_px
+/ widthchange_angle18 = cos(expressions.Radians_angle18) * expressions.radius_px
+/ heightchange_angle24 = sin(expressions.Radians_angle24) * expressions.radius_px
+/ widthchange_angle24 = cos(expressions.Radians_angle24) * expressions.radius_px
+/ heightchange_angle30 = sin(expressions.Radians_angle30) * expressions.radius_px
+/ widthchange_angle30 = cos(expressions.Radians_angle30) * expressions.radius_px
+/ heightchange_angle36 = sin(expressions.Radians_angle36) * expressions.radius_px
+/ widthchange_angle36 = cos(expressions.Radians_angle36) * expressions.radius_px
+/ heightchange_angle42 = sin(expressions.Radians_angle42) * expressions.radius_px
+/ widthchange_angle42 = cos(expressions.Radians_angle42) * expressions.radius_px
+/ heightchange_angle48 = sin(expressions.Radians_angle48) * expressions.radius_px
+/ widthchange_angle48 = cos(expressions.Radians_angle48) * expressions.radius_px
+/ heightchange_angle54 = sin(expressions.Radians_angle54) * expressions.radius_px
+/ widthchange_angle54 = cos(expressions.Radians_angle54) * expressions.radius_px
+/ heightchange_angle60 = sin(expressions.Radians_angle60) * expressions.radius_px
+/ widthchange_angle60 = cos(expressions.Radians_angle60) * expressions.radius_px
+/ heightchange_angle66 = sin(expressions.Radians_angle66) * expressions.radius_px
+/ widthchange_angle66 = cos(expressions.Radians_angle66) * expressions.radius_px
+/ heightchange_angle72 = sin(expressions.Radians_angle72) * expressions.radius_px
+/ widthchange_angle72 = cos(expressions.Radians_angle72) * expressions.radius_px
+/ heightchange_angle78 = sin(expressions.Radians_angle78) * expressions.radius_px
+/ widthchange_angle78 = cos(expressions.Radians_angle78) * expressions.radius_px
+/ heightchange_angle84 = sin(expressions.Radians_angle84) * expressions.radius_px
+/ widthchange_angle84 = cos(expressions.Radians_angle84) * expressions.radius_px
+/ heightchange_angle90 = sin(expressions.Radians_angle90) * expressions.radius_px
+/ widthchange_angle90 = cos(expressions.Radians_angle90) * expressions.radius_px
+/ heightchange_angle96 = sin(expressions.Radians_angle96) * expressions.radius_px
+/ widthchange_angle96 = cos(expressions.Radians_angle96) * expressions.radius_px
+/ heightchange_angle102 = sin(expressions.Radians_angle102) * expressions.radius_px
+/ widthchange_angle102 = cos(expressions.Radians_angle102) * expressions.radius_px
+/ heightchange_angle108 = sin(expressions.Radians_angle108) * expressions.radius_px
+/ widthchange_angle108 = cos(expressions.Radians_angle108) * expressions.radius_px
+/ heightchange_angle114 = sin(expressions.Radians_angle114) * expressions.radius_px
+/ widthchange_angle114 = cos(expressions.Radians_angle114) * expressions.radius_px
+/ heightchange_angle120 = sin(expressions.Radians_angle120) * expressions.radius_px
+/ widthchange_angle120 = cos(expressions.Radians_angle120) * expressions.radius_px
+/ heightchange_angle126 = sin(expressions.Radians_angle126) * expressions.radius_px
+/ widthchange_angle126 = cos(expressions.Radians_angle126) * expressions.radius_px
+/ heightchange_angle132 = sin(expressions.Radians_angle132) * expressions.radius_px
+/ widthchange_angle132 = cos(expressions.Radians_angle132) * expressions.radius_px
+/ heightchange_angle138 = sin(expressions.Radians_angle138) * expressions.radius_px
+/ widthchange_angle138 = cos(expressions.Radians_angle138) * expressions.radius_px
+/ heightchange_angle144 = sin(expressions.Radians_angle144) * expressions.radius_px
+/ widthchange_angle144 = cos(expressions.Radians_angle144) * expressions.radius_px
+/ heightchange_angle150 = sin(expressions.Radians_angle150) * expressions.radius_px
+/ widthchange_angle150 = cos(expressions.Radians_angle150) * expressions.radius_px
+/ heightchange_angle156 = sin(expressions.Radians_angle156) * expressions.radius_px
+/ widthchange_angle156 = cos(expressions.Radians_angle156) * expressions.radius_px
+/ heightchange_angle162 = sin(expressions.Radians_angle162) * expressions.radius_px
+/ widthchange_angle162 = cos(expressions.Radians_angle162) * expressions.radius_px
+/ heightchange_angle168 = sin(expressions.Radians_angle168) * expressions.radius_px
+/ widthchange_angle168 = cos(expressions.Radians_angle168) * expressions.radius_px
+/ heightchange_angle174 = sin(expressions.Radians_angle174) * expressions.radius_px
+/ widthchange_angle174 = cos(expressions.Radians_angle174) * expressions.radius_px
+/ heightchange_angle180 = sin(expressions.Radians_angle180) * expressions.radius_px
+/ widthchange_angle180 = cos(expressions.Radians_angle180) * expressions.radius_px
+/ heightchange_angle186 = sin(expressions.Radians_angle186) * expressions.radius_px
+/ widthchange_angle186 = cos(expressions.Radians_angle186) * expressions.radius_px
+/ heightchange_angle192 = sin(expressions.Radians_angle192) * expressions.radius_px
+/ widthchange_angle192 = cos(expressions.Radians_angle192) * expressions.radius_px
+/ heightchange_angle198 = sin(expressions.Radians_angle198) * expressions.radius_px
+/ widthchange_angle198 = cos(expressions.Radians_angle198) * expressions.radius_px
+/ heightchange_angle204 = sin(expressions.Radians_angle204) * expressions.radius_px
+/ widthchange_angle204 = cos(expressions.Radians_angle204) * expressions.radius_px
+/ heightchange_angle210 = sin(expressions.Radians_angle210) * expressions.radius_px
+/ widthchange_angle210 = cos(expressions.Radians_angle210) * expressions.radius_px
+/ heightchange_angle216 = sin(expressions.Radians_angle216) * expressions.radius_px
+/ widthchange_angle216 = cos(expressions.Radians_angle216) * expressions.radius_px
+/ heightchange_angle222 = sin(expressions.Radians_angle222) * expressions.radius_px
+/ widthchange_angle222 = cos(expressions.Radians_angle222) * expressions.radius_px
+/ heightchange_angle228 = sin(expressions.Radians_angle228) * expressions.radius_px
+/ widthchange_angle228 = cos(expressions.Radians_angle228) * expressions.radius_px
+/ heightchange_angle234 = sin(expressions.Radians_angle234) * expressions.radius_px
+/ widthchange_angle234 = cos(expressions.Radians_angle234) * expressions.radius_px
+/ heightchange_angle240 = sin(expressions.Radians_angle240) * expressions.radius_px
+/ widthchange_angle240 = cos(expressions.Radians_angle240) * expressions.radius_px
+/ heightchange_angle246 = sin(expressions.Radians_angle246) * expressions.radius_px
+/ widthchange_angle246 = cos(expressions.Radians_angle246) * expressions.radius_px
+/ heightchange_angle252 = sin(expressions.Radians_angle252) * expressions.radius_px
+/ widthchange_angle252 = cos(expressions.Radians_angle252) * expressions.radius_px
+/ heightchange_angle258 = sin(expressions.Radians_angle258) * expressions.radius_px
+/ widthchange_angle258 = cos(expressions.Radians_angle258) * expressions.radius_px
+/ heightchange_angle264 = sin(expressions.Radians_angle264) * expressions.radius_px
+/ widthchange_angle264 = cos(expressions.Radians_angle264) * expressions.radius_px
+/ heightchange_angle270 = sin(expressions.Radians_angle270) * expressions.radius_px
+/ widthchange_angle270 = cos(expressions.Radians_angle270) * expressions.radius_px
+/ heightchange_angle276 = sin(expressions.Radians_angle276) * expressions.radius_px
+/ widthchange_angle276 = cos(expressions.Radians_angle276) * expressions.radius_px
+/ heightchange_angle282 = sin(expressions.Radians_angle282) * expressions.radius_px
+/ widthchange_angle282 = cos(expressions.Radians_angle282) * expressions.radius_px
+/ heightchange_angle288 = sin(expressions.Radians_angle288) * expressions.radius_px
+/ widthchange_angle288 = cos(expressions.Radians_angle288) * expressions.radius_px
+/ heightchange_angle294 = sin(expressions.Radians_angle294) * expressions.radius_px
+/ widthchange_angle294 = cos(expressions.Radians_angle294) * expressions.radius_px
+/ heightchange_angle300 = sin(expressions.Radians_angle300) * expressions.radius_px
+/ widthchange_angle300 = cos(expressions.Radians_angle300) * expressions.radius_px
+/ heightchange_angle306 = sin(expressions.Radians_angle306) * expressions.radius_px
+/ widthchange_angle306 = cos(expressions.Radians_angle306) * expressions.radius_px
+/ heightchange_angle312 = sin(expressions.Radians_angle312) * expressions.radius_px
+/ widthchange_angle312 = cos(expressions.Radians_angle312) * expressions.radius_px
+/ heightchange_angle318 = sin(expressions.Radians_angle318) * expressions.radius_px
+/ widthchange_angle318 = cos(expressions.Radians_angle318) * expressions.radius_px
+/ heightchange_angle324 = sin(expressions.Radians_angle324) * expressions.radius_px
+/ widthchange_angle324 = cos(expressions.Radians_angle324) * expressions.radius_px
+/ heightchange_angle330 = sin(expressions.Radians_angle330) * expressions.radius_px
+/ widthchange_angle330 = cos(expressions.Radians_angle330) * expressions.radius_px
+/ heightchange_angle336 = sin(expressions.Radians_angle336) * expressions.radius_px
+/ widthchange_angle336 = cos(expressions.Radians_angle336) * expressions.radius_px
+/ heightchange_angle342 = sin(expressions.Radians_angle342) * expressions.radius_px
+/ widthchange_angle342 = cos(expressions.Radians_angle342) * expressions.radius_px
+/ heightchange_angle348 = sin(expressions.Radians_angle348) * expressions.radius_px
+/ widthchange_angle348 = cos(expressions.Radians_angle348) * expressions.radius_px
+/ heightchange_angle354 = sin(expressions.Radians_angle354) * expressions.radius_px
+/ widthchange_angle354 = cos(expressions.Radians_angle354) * expressions.radius_px
+/ heightchange_angle0 = 0
+/ widthchange_angle0 = expressions.radius_px
+
+</expressions>
+
+<shape dot1>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle276)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle276)
+/ erase = true(white)
+</shape>
+ 
+<shape dot2>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*3,255/61*3,255/61*3)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle282)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle282)
+/ erase = true(white)
+</shape>
+ 
+<shape dot3>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*4,255/61*4,255/61*4)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle288)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle288)
+/ erase = true(white)
+</shape>
+ 
+<shape dot4>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*5,255/61*5,255/61*5)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle294)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle294)
+/ erase = true(white)
+</shape>
+ 
+<shape dot5>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*6,255/61*6,255/61*6)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle300)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle300)
+/ erase = true(white)
+</shape>
+ 
+<shape dot6>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*7,255/61*7,255/61*7)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle306)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle306)
+/ erase = true(white)
+</shape>
+ 
+<shape dot7>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*8,255/61*8,255/61*8)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle312)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle312)
+/ erase = true(white)
+</shape>
+ 
+<shape dot8>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*9,255/61*9,255/61*9)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle318)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle318)
+/ erase = true(white)
+</shape>
+ 
+<shape dot9>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*10,255/61*10,255/61*10)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle324)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle324)
+/ erase = true(white)
+</shape>
+ 
+<shape dot10>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*11,255/61*11,255/61*11)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle330)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle330)
+/ erase = true(white)
+</shape>
+ 
+<shape dot11>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*12,255/61*12,255/61*12)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle336)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle336)
+/ erase = true(white)
+</shape>
+ 
+<shape dot12>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*13,255/61*13,255/61*13)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle342)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle342)
+/ erase = true(white)
+</shape>
+ 
+<shape dot13>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*14,255/61*14,255/61*14)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle348)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle348)
+/ erase = true(white)
+</shape>
+ 
+<shape dot14>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*15,255/61*15,255/61*15)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle354)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle354)
+/ erase = true(white)
+</shape>
+ 
+<shape dot15>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*16,255/61*16,255/61*16)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle0)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle0)
+/ erase = true(white)
+</shape>
+
+<shape dot16>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*17,255/61*17,255/61*17)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle6)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle6)
+/ erase = true(white)
+</shape>
+ 
+<shape dot17>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*18,255/61*18,255/61*18)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle12)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle12)
+/ erase = true(white)
+</shape>
+ 
+<shape dot18>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*19,255/61*19,255/61*19)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle18)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle18)
+/ erase = true(white)
+</shape>
+ 
+<shape dot19>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*19,255/61*19,255/61*19)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle24)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle24)
+/ erase = true(white)
+</shape>
+ 
+<shape dot20>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*20,255/61*20,255/61*20)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle30)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle30)
+/ erase = true(white)
+</shape>
+ 
+<shape dot21>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*21,255/61*21,255/61*21)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle36)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle36)
+/ erase = true(white)
+</shape>
+ 
+<shape dot22>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*22,255/61*22,255/61*22)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle42)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle42)
+/ erase = true(white)
+</shape>
+ 
+<shape dot23>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*23,255/61*23,255/61*23)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle48)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle48)
+/ erase = true(white)
+</shape>
+ 
+<shape dot24>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*24,255/61*24,255/61*24)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle54)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle54)
+/ erase = true(white)
+</shape>
+ 
+<shape dot25>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*25,255/61*25,255/61*25)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle60)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle60)
+/ erase = true(white)
+</shape>
+ 
+<shape dot26>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*26,255/61*26,255/61*26)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle66)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle66)
+/ erase = true(white)
+</shape>
+ 
+<shape dot27>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*27,255/61*27,255/61*27)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle72)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle72)
+/ erase = true(white)
+</shape>
+ 
+<shape dot28>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*28,255/61*28,255/61*28)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle78)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle78)
+/ erase = true(white)
+</shape>
+ 
+<shape dot29>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*29,255/61*29,255/61*29)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle84)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle84)
+/ erase = true(white)
+</shape>
+ 
+<shape dot30>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*30,255/61*30,255/61*30)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle90)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle90)
+/ erase = true(white)
+</shape>
+ 
+<shape dot31>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*31,255/61*31,255/61*31)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle96)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle96)
+/ erase = true(white)
+</shape>
+ 
+<shape dot32>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*32,255/61*32,255/61*32)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle102)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle102)
+/ erase = true(white)
+</shape>
+ 
+<shape dot33>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*33,255/61*33,255/61*33)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle108)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle108)
+/ erase = true(white)
+</shape>
+ 
+<shape dot34>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*34,255/61*34,255/61*34)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle114)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle114)
+/ erase = true(white)
+</shape>
+ 
+<shape dot35>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*35,255/61*35,255/61*35)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle120)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle120)
+/ erase = true(white)
+</shape>
+ 
+<shape dot36>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*36,255/61*36,255/61*36)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle126)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle126)
+/ erase = true(white)
+</shape>
+ 
+<shape dot37>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*37,255/61*37,255/61*37)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle132)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle132)
+/ erase = true(white)
+</shape>
+ 
+<shape dot38>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*38,255/61*38,255/61*38)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle138)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle138)
+/ erase = true(white)
+</shape>
+ 
+<shape dot39>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*39,255/61*39,255/61*39)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle144)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle144)
+/ erase = true(white)
+</shape>
+ 
+<shape dot40>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*40,255/61*40,255/61*40)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle150)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle150)
+/ erase = true(white)
+</shape>
+ 
+<shape dot41>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*41,255/61*41,255/61*41)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle156)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle156)
+/ erase = true(white)
+</shape>
+ 
+<shape dot42>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*42,255/61*42,255/61*42)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle162)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle162)
+/ erase = true(white)
+</shape>
+ 
+<shape dot43>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*43,255/61*43,255/61*43)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle168)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle168)
+/ erase = true(white)
+</shape>
+ 
+<shape dot44>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*44,255/61*44,255/61*44)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle174)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle174)
+/ erase = true(white)
+</shape>
+ 
+<shape dot45>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*45,255/61*45,255/61*45)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle180)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle180)
+/ erase = true(white)
+</shape>
+ 
+<shape dot46>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*46,255/61*46,255/61*46)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle186)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle186)
+/ erase = true(white)
+</shape>
+ 
+<shape dot47>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*47,255/61*47,255/61*47)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle192)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle192)
+/ erase = true(white)
+</shape>
+ 
+<shape dot48>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*48,255/61*48,255/61*48)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle198)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle198)
+/ erase = true(white)
+</shape>
+ 
+<shape dot49>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*49,255/61*49,255/61*49)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle204)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle204)
+/ erase = true(white)
+</shape>
+ 
+<shape dot50>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*50,255/61*50,255/61*50)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle210)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle210)
+/ erase = true(white)
+</shape>
+ 
+<shape dot51>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*51,255/61*51,255/61*51)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle216)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle216)
+/ erase = true(white)
+</shape>
+ 
+<shape dot52>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*52,255/61*52,255/61*52)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle222)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle222)
+/ erase = true(white)
+</shape>
+ 
+<shape dot53>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*53,255/61*53,255/61*53)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle228)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle228)
+/ erase = true(white)
+</shape>
+ 
+<shape dot54>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*54,255/61*54,255/61*54)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle234)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle234)
+/ erase = true(white)
+</shape>
+ 
+<shape dot55>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*55,255/61*55,255/61*55)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle240)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle240)
+/ erase = true(white)
+</shape>
+ 
+<shape dot56>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*56,255/61*56,255/61*56)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle246)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle246)
+/ erase = true(white)
+</shape>
+ 
+<shape dot57>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*57,255/61*57,255/61*57)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle252)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle252)
+/ erase = true(white)
+</shape>
+ 
+<shape dot58>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*58,255/61*58,255/61*58)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle258)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle258)
+/ erase = true(white)
+</shape>
+ 
+<shape dot59>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*59,255/61*59,255/61*59)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle264)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle264)
+/ erase = true(white)
+</shape>
+ 
+<shape dot60>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*60,255/61*60,255/61*60)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle270)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle270)
+/ erase = true(white)
+</shape>
+
+<list degrees_att>
+/ items = (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320, 321, 322, 323, 324, 325, 326, 327, 328, 329, 330, 331, 332, 333, 334, 335, 336, 337, 338, 339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 359)
+/ selectionrate = always
+/ selectionmode = values.deg_index_att;
+</list>
+
+<list degrees_era>
+/ items = (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320, 321, 322, 323, 324, 325, 326, 327, 328, 329, 330, 331, 332, 333, 334, 335, 336, 337, 338, 339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 359)
+/ selectionrate = always
+/ selectionmode = values.deg_index_era;
+</list>
+
+<list degrees_used>
+/ items = ()
+/ selectionrate = always
+/ selectionmode = sequence
+</list>
+
+<list degrees_used_att>
+/ selectionrate = always
+/ selectionmode = sequence
+</list>
+
+<list triallist>
+/ items = (trial.ITI)
+/ poolsize = values.block_length;
+/ selectionrate = trial
+/ selectionmode = sequence
+</list>
+
+<list blocklist>
+/ items = (block.experiment)
+/ poolsize = values.n_blocks;
+/ selectionmode = sequence
+</list>
+
+<list ITI>
+/ items = ( 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250, 260, 270, 280, 290, 300, 310, 320, 330, 340, 350, 360, 370, 380, 390, 400, 410, 420, 430, 440, 450, 460, 470, 480, 490, 500)
+/ poolsize = 41
+/ selectionmode = random
+</list>
+
+<list ISI>
+/ items = (200,210,220,230,240,250,260,270,280,290,300,310,320,330,340,350,360,370,380,390,400,410,420,430,440,450,460,470,480,490,500,510,520,530,540,550,560,570,580,590,600)
+/ poolsize = 41
+/ selectionmode = random
+</list>
+
+
+<list preClockFreeze>
+/ items = (500, 510, 520, 530, 540, 550, 560, 570, 580, 590, 600, 610, 620, 630, 640, 650, 660, 670, 680, 690, 700)
+/ poolsize = 21
+/ selectionmode = random
+</list>
+
+<list curr_RTs>
+/ selectionrate = always
+/ selectionmode = sequence
+</list>
+
+<list curr_trials>
+/ selectionrate = always
+/ selectionmode = sequence
+</list>
