@@ -150,10 +150,21 @@
 <list y_test>
 </list>
 
+<list x_final>
+/ selectionmode = sequence
+</list>
+
+<list y_final>
+/ selectionmode = sequence
+</list>
+
 <values>
 / x = null
 / y = null
 / master_idx = null
+/ x_final = null
+/ y_final = null
+/ yindex = null
 </values>
 
 <block exampleBlock>
@@ -161,7 +172,7 @@
 	expressions.createTestVector; // call the test vector generation routine
     expressions.createSpline; // call the spline construction routine 
 ]
-/ trials = [1=interpolateSpline]
+/ trials = [1=interpolateSpline; 2=constructValueVector; 3=getValueVector]
 </block>
 
 // pass x values to the interpolation routine, get interpolated y values
@@ -172,6 +183,7 @@
     list.y_test.setitem(values.y, list.x_test.currentindex); // add interpolated y to the test vector
 ]
 / trialduration = 0
+/ recorddata = false
 / branch = [
     if (list.x_test.selectedcount < list.x_test.itemcount) {    // run as often as we have x values in our test vector
         return trial.interpolateSpline;                         // this is just for ease of data output and plotting, it's not a problem to 
@@ -179,7 +191,42 @@
 ]
 </trial>
 
+<trial constructValueVector>
+/ ontrialbegin = [
+	values.master_idx = 0;
+	values.yindex = 0;
+	while (list.x_final.itemcount < 360){
+			values.master_idx += 1;
+			list.x_final.appenditem(list.RT.nextvalue);
+			if (values.master_idx < 150 - 15 || values.master_idx > 150 + 15){
+				list.y_final.appenditem(list.values.nextvalue);
+			} else if (values.master_idx >= 150 - 15 && values.master_idx <= 150 + 15){
+				values.yindex += 1;
+				list.y_final.appenditem(list.y_test.item(values.yindex));
+			} else if (values.master_idx > 150 + 15){
+				list.y_final.appenditem(list.values.nextvalue);
+			}
+	};
+]
+/ trialduration = 0
+/ recorddata = false
+</trial>
+
+<trial getValueVector>
+/ ontrialbegin = [
+	values.x_final = list.x_final.nextvalue;
+	values.y_final = list.y_final.nextvalue;
+]
+/ trialduration = 0
+/ recorddata = true
+/ branch = [
+    if (list.x_final.selectedcount < list.x_final.itemcount) {    
+        return trial.getValueVector;                         
+    };   
+]
+</trial>
+
 <data>
-/ columns = (trialnum values.x values.y) // write out x and y one value pair per row for easy plotting
+/ columns = (trialnum values.x_final values.y_final) // write out x and y one value pair per row for easy plotting
 / separatefiles = true
 </data>
