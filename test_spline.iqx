@@ -1,140 +1,185 @@
-﻿<expt exp1>
-/ blocks = [1 = experiment]
-</expt>
+﻿
+<usermanual>
+    For background see:
+    Press et al., Numerical Recipes in C: The Art of Scientific Computing, 2nd Ed. (1992), 
+    Chapter 3.3 Cubic Spline Interpolation, pg. 113 - 116.
+</usermanual>
 
-<block experiment>
-/ ontrialbegin = [
-	// implement spline algorithm: https://en.wikipedia.org/w/index.php?title=Spline_%28mathematics%29&oldid=288288033#Algorithm_for_computing_natural_cubic_splines
-	// y values
-	values.i = 0;
-	while (list.a.itemcount < 3){
-		values.i += 1;
-		if (values.i==1){
-			values.index = values.index2 - 15;
-			list.values.nextindex;
-			list.a.appenditem(list.values.currentvalue);
-		} else if (values.i==2){
-			list.a.appenditem(values.x2);
-		} else if (values.i==3){
-			values.index = values.index2 + 15;
-			list.values.nextindex;
-			list.a.appenditem(list.values.currentvalue);
+// input: parameter space to construct the splines over
+// x values must be in ascending order, x values must be unique
+<list x>
+// items = (-10, -6.5, -3.5, -1.5, -0.2, 0, 1, 3.5, 5, 6.5, 10, 15, 20, 23, 30) // x values of 1st example input space 
+// items = (-10, -6.5, -3.5, 0, 3.5, 6.5, 10) // x values of 2nd example input space 
+// items = (-1.5, -0.2, 1.0, 5.0, 10.0, 15.0, 20.0) // x values of 3rd example input space 
+</list>
+<list y>
+// items = (0, 0.1, -0.1, -1.2, 0, -0.4, 0.5, -0.1, 0.1, 0, 2, 1, 5, 3, -1) // y values of 1st example input space 
+// items = (0, 0.1, -0.1, 1, -0.1, 0.1, 0) // y values of 2nd example input space 
+// items = (-1.2, 0.0, 0.5, 1.0, 1.2, 2.0, 1.0) // y values of 3rd example input space 
+</list>
+
+<include>
+/ file = "values-5888.txt"
+</include>
+
+<include>
+/ file = "RTs-5888.txt"
+</include>
+
+// temp storage
+<list u>
+</list>
+// output y of 2nd derivative
+<list y2> 
+</list>
+
+<expressions>
+// constructs the cubic splines over the input parameter space
+/ createSpline = {
+    list.y2.reset();
+    list.u.reset();
+    var n = list.x.itemcount;
+    // setting up the vectors with n items
+    var i = 1;
+    while (i <= n) {
+        list.y2.appenditem(null);
+        list.u.appenditem(null);
+        i += 1;
+    };
+    i = 1;
+    // natural boundary condition on leftmost point
+    list.y2.setitem(0.0, i);
+    list.u.setitem(0.0, i);
+    // decomposition
+    i = 2;
+    while (i <= n-1) {
+        //sig=(x[i]-x[i-1])/(x[i+1]-x[i-1]);
+        var sig = (list.x.item(i) - list.x.item(i-1)) / (list.x.item(i+1) - list.x.item(i-1));
+        //p=sig*y2[i-1]+2.0
+        var p = sig * list.y2.item(i-1) + 2.0;
+        //y2[i]=(sig-1.0)/p;
+        var y2i = (sig - 1.0) / p;
+        list.y2.setitem(y2i, i);
+        //u[i]=(y[i+1]-y[i])/(x[i+1]-x[i]) - (y[i]-y[i-1])/(x[i]-x[i-1]);
+        var ui = (list.y.item(i+1) - list.y.item(i)) / (list.x.item(i+1) - list.x.item(i)) - (list.y.item(i) - list.y.item(i-1)) / (list.x.item(i) - list.x.item(i-1));
+        list.u.setitem(ui, i);
+        //u[i]=(6.0*u[i]/(x[i+1]-x[i-1])-sig*u[i-1])/p;
+        ui = (6.0 * list.u.item(i) / (list.x.item(i+1) - list.x.item(i-1)) - sig * list.u.item(i-1)) / p;
+        list.u.setitem(ui, i);
+        i += 1;
+    };
+    // natural boundary condition on rightmost point
+    var qn = 0.0;
+    var un = 0.0;
+    //y2[n]=(un-qn*u[n-1])/(qn*y2[n-1]+1.0);
+    var y2n = (un - qn * list.u.item(n-1)) / (qn * list.y2.item(n-1) + 1.0);
+    list.y2.setitem(y2n, n);
+    // backsubstitution
+    var k = n-1;
+    while (k >= 1) {
+        //y2[k]=y2[k]*y2[k+1]+u[k];
+        var y2k = list.y2.item(k) * list.y2.item(k+1) + list.u.item(k);
+        list.y2.setitem(y2k, k);
+        k -= 1;
+    };
+};
+
+// sets up a test vector of x values in the range x1 to xn
+/ createTestVector = {
+	values.master_idx = 0;
+	while (values.master_idx < 360){
+		values.master_idx += 1;
+		list.RT.nextindex;
+		list.values.nextindex;
+		if (values.master_idx == 150 -15){
+			list.y.appenditem(list.values.currentvalue);
+			list.x.appenditem(list.RT.currentvalue);
+		} else if (values.master_idx == 150){	
+			list.y.appenditem(50);
+			list.x.appenditem(list.RT.currentvalue);
+		} else if (values.master_idx == 150 + 15) {
+			list.y.appenditem(list.values.currentvalue);
+			list.x.appenditem(list.RT.currentvalue);
+		} else {
 		}
 	};
-	//set x_i+1 - x_i
-	values.i = 0;
-	while (list.h.itemcount < 2){
-		values.i += 1;
-		if (values.i==1){
-			values.index = values.index2 - 15;
-			list.values.nextindex;
-			list.h.appenditem(values.index2 - values.index);
-		} else if (values.i==2){
-			values.index = values.index2 + 15;
-			list.values.nextindex;
-			list.h.appenditem(values.index2 - values.index);
-		}
-	};
-	// set alpha = (3/h_i)*(a_(i+1) - a_i)) - (3/h_(i-1))*(a_i - a_(i-1))
-	values.alpha = ((3/list.h.item(2))*(list.a.item(3)-list.a.item(2)) - (3/list.h.item(1)*(list.a.item(2)-list.a.item(1))));
-	
-	list.l.appenditem(1);
-	list.mu.appenditem(0);
-	list.z.appenditem(0);
-	values.i = 1; // to generalize would need a while loop here for i = 1..(n - 1), but n = 2 splines, so (n - 1) = 1
-	list.l.appenditem(2*((values.index2 + 15) - (values.index2 - 15)) - list.h.item(values.i)*list.mu.item(values.i));
-	list.mu.appenditem = (list.h.item(values.i)/list.l.item(1));
-	list.z.appenditem = ((values.alpha - list.h.item(values.i)*list.z.item(values.i))/list.l.item(values.i));
-	list.l.appenditem(1);
-	list.z.appenditem(1);
-	list.c.appenditem(1);
-	
-	values.j = 1;
-	while (values.j > 0){
-		list.c.appenditem(list.z.item(values.j) - list.mu.item(values.j)*list.c.item(values.j));
-		list.b.appenditem(((list.a.item(values.j + 1) - list.a.item(values.j))/list.h.item(values.j)) - (list.h.item(values.j)*(list.c.item(values.j + 1) + 2*list.c.item(values.j)))/3);
-		list.d.appenditem((list.c.item(values.j + 1) - list.c.item(values.j))/(3*list.h.item(values.j)));
-		values.j -= 1;
-	};
 	
 	
-	values.j = 0;
-	while (values.j < 31){
-		values.j += 1;
-		list.spline1.appenditem(list.a.item(1) + list.b.item(1)*(list.)
-]
-/ trials = [
-	1 = plotvalues;
-]
-</block>
+    var x1 = list.x.item(1);
+    var xn = list.x.item(list.x.itemcount);
+    var x =  x1;
+    // set up a test vector of x values in range x1 to xn
+    while (x <= xn) {
+        list.x_test.appenditem(x);
+        list.y_test.appenditem(null);
+        x += 1; // decrease for denser sampling (more points), increase for sparser sampling (fewer points)
+    };
+};
 
-<trial plotvalues>
-/ stimulusframes = [1=test,values_text;]
-/ validresponse = (" ")
+// given an x value, finds the insertion point and returns interpolated y value
+/ interpolateSpline = {
+    // bisect
+    var x = values.x;
+    var n = list.x.itemcount;
+    var klo = 1;
+    var khi = n;
+    while (khi - klo > 1) {
+        var k = floor((khi + klo) / 2); // same as right bit shift
+        if (list.x.item(k) > x) {
+            khi = k;
+        } else {
+            klo = k;
+        };
+    };
+    var h = list.x.item(khi) - list.x.item(klo);
+    //a=(xa[khi]-x)/h;
+    var a = (list.x.item(khi) - x) / h;
+    //b=(x-xa[klo])/h;
+    var b = (x - list.x.item(klo)) / h;
+    // calculate interpolated y
+    // y=a*ya[klo]+b*ya[khi]+((a*a*a-a)*y2a[klo]+(b*b*b-b)*y2a[khi])*(h*h)/6.0
+    var y = a * list.y.item(klo) + b * list.y.item(khi) + ((a*a*a - a) * list.y2.item(klo) + (b*b*b - b) * list.y2.item(khi)) * (h*h) / 6.0;
+    return y;
+};
+</expressions>
 
-
-</trial>
-
-<text test>
-/ items = ("<%list.d.items.1%>")
-/ size = (50%,50%)
-</text>
-
-
-<text values_text>
-/ items = ("<%list.values.items.1%>,<%list.values.items.2%>,<%list.values.items.3%>,<%list.values.items.4%>,<%list.values.items.5%>,<%list.values.items.6%>,<%list.values.items.7%>,<%list.values.items.8%>,<%list.values.items.9%>,<%list.values.items.10%>,<%list.values.items.11%>,<%list.values.items.12%>,<%list.values.items.13%>,<%list.values.items.14%>,<%list.values.items.15%>,<%list.values.items.16%>,<%list.values.items.17%>,<%list.values.items.18%>,<%list.values.items.19%>,<%list.values.items.20%>,<%list.values.items.21%>,<%list.values.items.22%>,<%list.values.items.23%>,<%list.values.items.24%>,<%list.values.items.25%>,<%list.values.items.26%>,<%list.values.items.27%>,<%list.values.items.28%>,<%list.values.items.29%>,<%list.values.items.30%>,<%list.values.items.31%>,<%list.values.items.32%>,<%list.values.items.33%>,<%list.values.items.34%>,<%list.values.items.35%>,<%list.values.items.36%>,<%list.values.items.37%>,<%list.values.items.38%>,<%list.values.items.39%>,<%list.values.items.40%>,<%list.values.items.41%>,<%list.values.items.42%>,<%list.values.items.43%>,<%list.values.items.44%>,<%list.values.items.45%>,<%list.values.items.46%>,<%list.values.items.47%>,<%list.values.items.48%>,<%list.values.items.49%>,<%list.values.items.50%>,<%list.values.items.51%>,<%list.values.items.52%>,<%list.values.items.53%>,<%list.values.items.54%>,<%list.values.items.55%>,<%list.values.items.56%>,<%list.values.items.57%>,<%list.values.items.58%>,<%list.values.items.59%>,<%list.values.items.60%>")
-</text>
+// test vectors holding interpolated x / y values
+<list x_test> 
+/ selectionmode = sequence
+</list>
+<list y_test>
+</list>
 
 <values>
-/ x2 = 50;
-/ index = NULL;
-/ index2 = 30; // index to replace values with spline through x2
-/ i = NULL;
-/ j = NULL;
-/ a_index = NULL;
-/ h_index = NULL;
-/ alpha = NULL;
+/ x = null
+/ y = null
+/ master_idx = null
 </values>
 
-<list spline1>
-</list>
+<block exampleBlock>
+/ onblockbegin = [
+	expressions.createTestVector; // call the test vector generation routine
+    expressions.createSpline; // call the spline construction routine 
+]
+/ trials = [1=interpolateSpline]
+</block>
 
-<list values>
-/ items = (10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10)
-/ selectionrate = always
-/ selectionmode = values.index;
-</list>
+// pass x values to the interpolation routine, get interpolated y values
+<trial interpolateSpline>
+/ ontrialbegin = [
+    values.x = list.x_test.nextvalue; // get our x value
+    values.y = expressions.interpolateSpline; // get our interpolated y value
+    list.y_test.setitem(values.y, list.x_test.currentindex); // add interpolated y to the test vector
+]
+/ trialduration = 0
+/ branch = [
+    if (list.x_test.selectedcount < list.x_test.itemcount) {    // run as often as we have x values in our test vector
+        return trial.interpolateSpline;                         // this is just for ease of data output and plotting, it's not a problem to 
+    };                                                            // wrap everything in a single while() loop
+]
+</trial>
 
-<list index>
-/ items = (1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60)
-/ selectionrate = always
-/ selectionmode = values.index2;
-</list>
-
-<list a>
-/ selectionrate = always
-/ selectionmode = values.a_index;
-</list>
-
-<list b>
-</list>
-
-<list d>
-</list>
-
-<list h>
-/ selectionrate = always
-/ selectionmode = values.h_index;
-</list>
-
-<list c>
-</list>
-
-<list l>
-</list>
-
-<list mu>
-</list>
-
-<list z>
-</list>
+<data>
+/ columns = (trialnum values.x values.y) // write out x and y one value pair per row for easy plotting
+/ separatefiles = true
+</data>

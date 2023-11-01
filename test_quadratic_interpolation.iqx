@@ -1,6 +1,6 @@
 ﻿<expt exp1>
 / blocks = [
-	1-10 = experiment;
+	1-300 = experiment;
 ]
 </expt>
 
@@ -445,4 +445,12 @@
 
 <include>
 / file = "trials-5888.txt"
+</include>
+
+<include>
+/ file = "trial_type-5888.txt"
+</include>
+
+<include>
+/ file = "era_loc-5888.txt"
 </include>
