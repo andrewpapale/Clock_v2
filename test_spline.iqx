@@ -273,6 +273,8 @@
 / left_index = NULL;
 / right_index = NULL;
 / final_idx = null;
+
+/ original_value = null
 </values>
 
 <block exampleBlock>
@@ -403,12 +405,26 @@
 		}
 		values.j += 1;
 	};
-	// this will be the value/RT of the erasure	
-	values.erasure_index = round(rand(1, list.era_values.itemcount));
-	list.era_values.nextindex;
-	list.era_RTs.nextindex;
-	values.erasure_value = list.era_values.nextvalue;
+	// this will be the value/RT of the erasure
+
+	values.erasure_index = round(rand(1, list.era_RTs.itemcount));
 	values.erasure_RT = list.era_RTs.nextvalue;
+	
+	// now erasure value could still be equal to the original value, test this
+	
+	values.k = 0;
+	values.erasure_index = 0;
+	values.original_value = list.curr_values.item(values.erasure_RT);
+	while (values.k < list.era_values.itemcount){
+		values.erasure_index +=1;
+		if (values.original_value <= list.era_values.nextvalue + 20 || values.original_value >= list.era_values.nextvalue - 20){
+			list.era_values.removeitem(values.erasure_index);
+		}	
+		values.k += 1;
+	};
+	values.erasure_index = round(rand(1, list.era_values.itemcount));
+	values.erasure_value = list.era_values.nextvalue;
+	
 	// this works because erasure_RT values come from era_RTs, a list with elements from 1:360, indicating an index that can also be used for degrees, as long as degrees_era is a list from 1:360 (which it should always be)
 	// note do NOT append or remove items from degrees_era
 	values.deg_index_era = values.erasure_RT;
