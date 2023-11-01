@@ -331,7 +331,6 @@
 <trial constructValueVector>
 / ontrialbegin = [
 		values.master_idx += 1;
-		values.final_idx += 1;
 		list.x_final.appenditem(list.RT.nextvalue);
 		if (values.master_idx < 150 - 15){
 			list.y_final.appenditem(list.values.nextvalue);
@@ -488,6 +487,6 @@
 </trial>
 
 <data>
-/ columns = (trialnum values.master_idx, values.final_idx, values.yindex, list.x_final.nextindex, list.x_final.nextvalue,list.y_final.nextindex,list.y_final.nextvalue) // write out x and y one value pair per row for easy plotting
+/ columns = (trialnum values.x_final values.y_final) // write out x and y one value pair per row for easy plotting
 / separatefiles = true
 </data>
