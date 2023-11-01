@@ -87,10 +87,10 @@
 // sets up a test vector of x values in the range x1 to xn
 / createTestVector = {
 
-	values.left_index = 150-15;
-	values.right_index = 150+15;
-	values.erasure_RT = 150;
-	values.erasure_value = 50;
+	//values.left_index = 30-15;
+	//values.right_index = 30+15;
+	//values.erasure_RT = 30;
+	//values.erasure_value = 10;
 	values.master_idx = 0;
 	while (values.master_idx < 360){
 		values.master_idx += 1;
@@ -212,16 +212,6 @@
 / selectionmode = sequence
 </list>
 
-<list curr_values_temp>
-/ selectionrate = always
-/ selectionmode = values.temp_index;
-</list>
-
-<list curr_RTs_temp>
-/ selectionrate = always
-/ selectionmode = values.temp_index;
-</list>
-
 <list era_values>
 / selectionrate = always
 / selectionmode = values.erasure_index;
@@ -286,16 +276,26 @@
 </values>
 
 <block exampleBlock>
+/ trials = [1=getErasure; 2=constructSpline; 3=interpolateSpline; 4=resetCounters; 5=constructValueVector; 6=resetCounters; 7=getValueVector]
 / onblockbegin = [
-	expressions.createTestVector;
+	values.master_idx = 0;
+]
+
+// trials = [1=getErasure;]
+</block>
+
+<trial constructSpline>
+/ ontrialbegin = [
+		expressions.createTestVector;
 	// call the test vector generation routine
     expressions.createSpline;
 	// call the spline construction routine
-
-	values.final_idx = 0;
 ]
-/ trials = [1=interpolateSpline; 2=resetCounters; 3=constructValueVector; 4=resetCounters; 5=getValueVector]
-</block>
+/ trialduration = 0
+/ recorddata = false
+
+
+</trial>
 
 // pass x values to the interpolation routine, get interpolated y values
 <trial interpolateSpline>
@@ -332,12 +332,12 @@
 / ontrialbegin = [
 		values.master_idx += 1;
 		list.x_final.appenditem(list.RT.nextvalue);
-		if (values.master_idx < 150 - 15){
+		if (values.master_idx < values.erasure_RT - 15){
 			list.y_final.appenditem(list.values.nextvalue);
-		} else if (values.master_idx >= 150 - 15 && values.master_idx <= 150 + 15){
+		} else if (values.master_idx >= values.erasure_RT - 15 && values.master_idx <= values.erasure_RT + 15){
 			values.yindex += 1;
 			list.y_final.appenditem(list.y_test.item(values.yindex));
-		} else if (values.master_idx > 150 + 15){
+		} else if (values.master_idx > values.erasure_RT + 15){
 			list.y_final.appenditem(list.values.nextvalue);
 		}
 ]
@@ -370,16 +370,10 @@
 	// need to prepopulate values for this trial into a list with a random selection mode
 	list.curr_values.reset();
 	list.curr_RTs.reset();
-	list.curr_values_temp.reset();
-	list.curr_RTs_temp.reset();
 	while (list.curr_values.itemcount < 360){
 		values.master_idx += 1;
-		list.values.nextvalue;
-		list.RT.nextvalue;
-		list.curr_values.appenditem(list.values.currentvalue);
-		list.curr_RTs.appenditem(list.RT.currentvalue);
-		list.curr_values_temp.appenditem(list.values.currentvalue);
-		list.curr_RTs_temp.appenditem(list.RT.currentvalue);
+		list.curr_values.appenditem(list.values.nextvalue);
+		list.curr_RTs.appenditem(list.RT.nextvalue);
 	};
 	// rewind the master index for trial/RT/values
 	values.master_idx = values.master_idx - 360;
@@ -389,7 +383,7 @@
 	while (values.i < list.curr_values.itemcount) {
 		list.curr_values.nextvalue;
 		if (list.curr_values.currentvalue < list.curr_values.median) {
-			list.lower_half.appenditem(list.curr_values_temp.currentvalue);
+			list.lower_half.appenditem(list.curr_values.currentvalue);
 		} else if (list.curr_values.currentvalue > list.curr_values.median) {
 			list.upper_half.appenditem(list.curr_values.currentvalue);
 		}
@@ -487,6 +481,7 @@
 </trial>
 
 <data>
-/ columns = (trialnum values.x_final values.y_final) // write out x and y one value pair per row for easy plotting
+/ columns = (trialnum values.x_final values.y_final, values.erasure_RT, values.erasure_value) // write out x and y one value pair per row for easy plotting
+// columns = (values.erasure_RT,values.erasure_value,values.right_index,values.left_index,values.lower_quartile,values.upper_quartile,list.curr_values.item(1),list.curr_values.itemcount)
 / separatefiles = true
 </data>
