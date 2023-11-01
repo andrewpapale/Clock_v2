@@ -157,11 +157,11 @@
 </list>
 
 <list x_final>
-/ selectionmode = sequence
+/ selectionmode = values.final_idx;
 </list>
 
 <list y_final>
-/ selectionmode = sequence
+/ selectionmode = values.final_idx;
 </list>
 
 <list degrees_att>
@@ -282,6 +282,7 @@
 
 / left_index = NULL;
 / right_index = NULL;
+/ final_idx = null;
 </values>
 
 <block exampleBlock>
@@ -289,9 +290,11 @@
 	expressions.createTestVector;
 	// call the test vector generation routine
     expressions.createSpline;
-	// call the spline construction routine 
+	// call the spline construction routine
+
+	values.final_idx = 0;
 ]
-/ trials = [1=interpolateSpline]
+/ trials = [1=interpolateSpline; 2=resetCounters; 3=constructValueVector; 4=resetCounters; 5=getValueVector]
 </block>
 
 // pass x values to the interpolation routine, get interpolated y values
@@ -305,44 +308,52 @@
 	// add interpolated y to the test vector
 ]
 / trialduration = 0
-/ recorddata = true
+/ recorddata = false
 / branch = [
 	if (list.x_test.selectedcount < list.x_test.itemcount) {
 		// run as often as we have x values in our test vector
         return trial.interpolateSpline;
-		// this is just for ease of data output and plotting, it's not a problem to
+		// this is just for ease of data output and plotting, it's not a problem to wrap everything in a single while() loop
 	};
-	// wrap everything in a single while() loop
 ]
 </trial>
 
-<trial constructValueVector>
+<trial resetCounters>
 / ontrialbegin = [
 	values.master_idx = 0;
-	values.erasure_index2 = 1;
-	values.yindex = 1;
-	while (list.x_final.itemcount < 360){
-		values.master_idx += 1;
-		list.x_final.appenditem(list.RT.nextvalue);
-		if (values.master_idx < list.erasure_RTs.item(1) && values.erasure_RT > 15) {
-			list.y_final.appenditem(list.values.nextvalue);
-		} else if (values.master_idx >= list.erasure_RTs.min && values.master_idx <= list.erasure_RTs.max && values.erasure_RT > 15 && values.erasure_RT < 346) {
-			values.yindex = list.erasure_RTs.indexof(values.master_idx, 1);
-			list.y_final.appenditem(list.y_test.item(values.yindex));
-		} else if ((values.erasure_RT <= 15 || values.erasure_RT >= 346) && (values.master_idx <= list.erasure_RTs.item(1) || values.master_idx >= list.erasure_RTs.item(list.erasure_RTs.itemcount))){
-				values.yindex = list.erasure_RTs.indexof(values.master_idx, 1);
-				list.y_final.appenditem(list.y_test.item(values.yindex));		
-		} else if (values.master_idx > list.erasure_RTs.max) {
-			list.y_final.appenditem(list.values.nextvalue);
-		}
-	};
+	values.final_idx = 0;
+	values.yindex = 0;
 ]
 / trialduration = 0
 / recorddata = false
 </trial>
 
+<trial constructValueVector>
+/ ontrialbegin = [
+		values.master_idx += 1;
+		values.final_idx += 1;
+		list.x_final.appenditem(list.RT.nextvalue);
+		if (values.master_idx < 150 - 15){
+			list.y_final.appenditem(list.values.nextvalue);
+		} else if (values.master_idx >= 150 - 15 && values.master_idx <= 150 + 15){
+			values.yindex += 1;
+			list.y_final.appenditem(list.y_test.item(values.yindex));
+		} else if (values.master_idx > 150 + 15){
+			list.y_final.appenditem(list.values.nextvalue);
+		}
+]
+/ trialduration = 0
+/ recorddata = false
+/ branch = [
+	if (list.x_final.itemcount < 360) {
+		return trial.constructValueVector;
+	};
+]
+</trial>
+
 <trial getValueVector>
 / ontrialbegin = [
+	values.final_idx += 1;
 	values.x_final = list.x_final.nextvalue;
 	values.y_final = list.y_final.nextvalue;
 ]
@@ -477,6 +488,6 @@
 </trial>
 
 <data>
-/ columns = (trialnum values.x values.y) // write out x and y one value pair per row for easy plotting
+/ columns = (trialnum values.master_idx, values.final_idx, values.yindex, list.x_final.nextindex, list.x_final.nextvalue,list.y_final.nextindex,list.y_final.nextvalue) // write out x and y one value pair per row for easy plotting
 / separatefiles = true
 </data>
