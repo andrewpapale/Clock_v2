@@ -87,9 +87,9 @@
 // sets up a test vector of x values in the range x1 to xn
 / createTestVector = {
 	values.erasure_value = 50;
-	values.erasure_RT = 15;
-	values.left_index = 360;
-	values.right_index = 30;
+	values.erasure_RT = 5;
+	values.left_index = 350;
+	values.right_index = 20;
 	values.master_idx = values.left_index;
 	list.values.nextindex;
 	list.y.appenditem(list.values.currentvalue);
@@ -343,7 +343,7 @@
 		} else if (values.erasure_RT <= 15){
 			// erasure will start at early indices, and finish at the end
 			if (values.master_idx == 1){
-				values.yindex = mod(abs(values.erasure_RT - 15), 360) + 2;
+				values.yindex = abs(values.erasure_RT - 15) + 2;
 				list.y_final.appenditem(list.y_test.item(values.yindex));
 			} else if (values.master_idx <= values.right_index){
 				values.yindex += 1;
