@@ -88,22 +88,18 @@
 / createTestVector = {
 	values.erasure_value = 50;
 	values.erasure_RT = 5;
-	values.left_index = 20;
-	values.right_index = 350;
-	values.master_idx = 0;
-	while (values.master_idx < 360){
-		values.master_idx += 1;
-		list.RT.nextindex;
-		list.values.nextindex;
-		if (values.master_idx == values.left_index){
-			list.y.appenditem(list.values.currentvalue);
-		} else if (values.master_idx == values.erasure_RT){	
-			list.y.appenditem(values.erasure_value);
-		} else if (values.master_idx == values.right_index) {
-			list.y.appenditem(list.values.currentvalue);
-		} else {
-		}
-	};
+	values.left_index = 350;
+	values.right_index = 20;
+	values.master_idx = values.left_index;
+	list.values.nextindex;
+	list.y.appenditem(list.values.currentvalue);
+	values.master_idx = values.erasure_RT;
+	list.values.nextindex;
+	list.y.appenditem(values.erasure_value);
+	values.master_idx = values.right_index;
+	list.values.nextindex;
+	list.y.appenditem(list.values.currentvalue);
+	
 	values.i = 1;
 	while (list.x.itemcount < list.y.itemcount){
 		list.x.appenditem(values.i);
@@ -334,7 +330,6 @@
 <trial constructValueVector>
 / ontrialbegin = [
 		values.master_idx += 1;
-		values.yindex = 0;
 		list.x_final.appenditem(list.RT.nextvalue);
 		if (values.erasure_RT > 15 && values.erasure_RT < 346){
 			if (values.master_idx < values.erasure_RT - 15){
@@ -347,13 +342,19 @@
 			}
 		} else if (values.erasure_RT <= 15){
 			// erasure will start at early indices, and finish at the end
-			if (values.master_idx <= values.left_index){
-
+			if (values.master_idx == 1){
+				values.yindex = mod(abs(values.erasure_RT - 15), 360) + 2;
 				list.y_final.appenditem(list.y_test.item(values.yindex));
-			} else if (values.master_idx > values.erasure_RT && values.master_idx < values.right_index){
+			} else if (values.master_idx <= values.right_index){
+				values.yindex += 1;
+				list.y_final.appenditem(list.y_test.item(values.yindex));
+			} else if (values.master_idx < values.left_index){
 				list.y_final.appenditem(list.values.nextvalue);
-			} else if (values.master_idx > values.right_index){
-			
+			} else if (values.master_idx == values.left_index){
+				values.yindex = list.y_test.itemcount;
+				list.y_final.appenditem(list.y_test.item(values.yindex));
+			} else if (values.master_idx > values.left_index){
+				values.yindex -= 1;
 				list.y_final.appenditem(list.y_test.item(values.yindex));
 			}
 		}
@@ -512,7 +513,9 @@
 </trial>
 
 <data>
-/ columns = (trialnum values.x_final values.y_final, values.erasure_RT, values.erasure_value, values.left_index,values.right_index) // write out x and y one value pair per row for easy plotting
+// columns = (trialnum values.x_final values.y_final, values.erasure_RT, values.erasure_value, values.left_index,values.right_index) // write out x and y one value pair per row for easy plotting
 // columns = (values.erasure_RT,values.erasure_value,values.right_index,values.left_index,values.lower_quartile,values.upper_quartile,list.curr_values.item(1),list.curr_values.itemcount)
+/ columns = (values.yindex, values.master_idx, values.x_final,values.y_final)
+// columns = (values.x, values.y)
 / separatefiles = true
 </data>
