@@ -87,9 +87,9 @@
 // sets up a test vector of x values in the range x1 to xn
 / createTestVector = {
 	values.erasure_value = 50;
-	values.erasure_RT = 5;
-	values.left_index = 350;
-	values.right_index = 20;
+	values.erasure_RT = 15;
+	values.left_index = 360;
+	values.right_index = 30;
 	values.master_idx = values.left_index;
 	list.values.nextindex;
 	list.y.appenditem(list.values.currentvalue);
