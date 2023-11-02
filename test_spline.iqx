@@ -86,11 +86,10 @@
 
 // sets up a test vector of x values in the range x1 to xn
 / createTestVector = {
-
-	//values.left_index = 30-15;
-	//values.right_index = 30+15;
-	//values.erasure_RT = 30;
-	//values.erasure_value = 10;
+	values.erasure_value = 50;
+	values.erasure_RT = 5;
+	values.left_index = 20;
+	values.right_index = 350;
 	values.master_idx = 0;
 	while (values.master_idx < 360){
 		values.master_idx += 1;
@@ -234,6 +233,7 @@
 </list>
 
 <list erasure_RTs>
+/ items = (20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,360,359,358,357,356,355,354,353,352,351,350)
 / selectionrate = always
 / selectionmode = values.erasure_index2;
 </list>
@@ -278,7 +278,8 @@
 </values>
 
 <block exampleBlock>
-/ trials = [1=getErasure; 2=constructSpline; 3=interpolateSpline; 4=resetCounters; 5=constructValueVector; 6=resetCounters; 7=getValueVector]
+// trials = [1=getErasure; 2=constructSpline; 3=interpolateSpline; 4=resetCounters; 5=constructValueVector; 6=resetCounters; 7=getValueVector]
+/ trials = [1=constructSpline; 2=interpolateSpline; 3=resetCounters; 4=constructValueVector; 5=resetCounters; 6=getValueVector]
 / onblockbegin = [
 	values.master_idx = 0;
 ]
@@ -333,14 +334,28 @@
 <trial constructValueVector>
 / ontrialbegin = [
 		values.master_idx += 1;
+		values.yindex = 0;
 		list.x_final.appenditem(list.RT.nextvalue);
-		if (values.master_idx < values.erasure_RT - 15){
-			list.y_final.appenditem(list.values.nextvalue);
-		} else if (values.master_idx >= values.erasure_RT - 15 && values.master_idx <= values.erasure_RT + 15){
-			values.yindex += 1;
-			list.y_final.appenditem(list.y_test.item(values.yindex));
-		} else if (values.master_idx > values.erasure_RT + 15){
-			list.y_final.appenditem(list.values.nextvalue);
+		if (values.erasure_RT > 15 && values.erasure_RT < 346){
+			if (values.master_idx < values.erasure_RT - 15){
+				list.y_final.appenditem(list.values.nextvalue);
+			} else if (values.master_idx >= values.erasure_RT - 15 && values.master_idx <= values.erasure_RT + 15){
+				values.yindex += 1;
+				list.y_final.appenditem(list.y_test.item(values.yindex));
+			} else if (values.master_idx > values.erasure_RT + 15){
+				list.y_final.appenditem(list.values.nextvalue);
+			}
+		} else if (values.erasure_RT <= 15){
+			// erasure will start at early indices, and finish at the end
+			if (values.master_idx <= values.left_index){
+
+				list.y_final.appenditem(list.y_test.item(values.yindex));
+			} else if (values.master_idx > values.erasure_RT && values.master_idx < values.right_index){
+				list.y_final.appenditem(list.values.nextvalue);
+			} else if (values.master_idx > values.right_index){
+			
+				list.y_final.appenditem(list.y_test.item(values.yindex));
+			}
 		}
 ]
 / trialduration = 0
@@ -497,7 +512,7 @@
 </trial>
 
 <data>
-/ columns = (trialnum values.x_final values.y_final, values.erasure_RT, values.erasure_value) // write out x and y one value pair per row for easy plotting
+/ columns = (trialnum values.x_final values.y_final, values.erasure_RT, values.erasure_value, values.left_index,values.right_index) // write out x and y one value pair per row for easy plotting
 // columns = (values.erasure_RT,values.erasure_value,values.right_index,values.left_index,values.lower_quartile,values.upper_quartile,list.curr_values.item(1),list.curr_values.itemcount)
 / separatefiles = true
 </data>
