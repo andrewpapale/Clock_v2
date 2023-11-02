@@ -385,7 +385,7 @@
 
 <trial getErasure>
 / ontrialbegin = [
-	// need to prepopulate values for this trial into a list with a random selection mode
+	// need to prepopulate values for this trial into a list
 	list.curr_values.reset();
 	list.curr_RTs.reset();
 	values.current_idx = 0;
