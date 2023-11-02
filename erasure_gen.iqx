@@ -225,10 +225,27 @@
 / curr_val_era = NULL;
 / curr_index_era = NULL;
 
+/ x = null
+/ y = null
+/ master_idx = null
+/ current_idx = null
+/ x_final = null
+/ y_final = null
+/ yindex = null
+/ trial_index = 1;
+/ index = 0;
+/ degrees_erasure_index = 0;
+/ values_erasure_index = 0;
+/ curr_val_era = NULL;
+/ curr_index_era = NULL;
+
 / rt_index = NULL;
 / i = NULL;
 / j = NULL;
 / k = NULL;
+
+/ deg_index_era = NULL;
+/ temp_index = NULL;
 
 / lower_quartile = NULL;
 / upper_quartile = NULL;
@@ -240,24 +257,16 @@
 / attention_degrees = NULL;
 / erasure_index2 = NULL;
 
-/ master_idx = NULL;
+/ left_index = NULL;
+/ right_index = NULL;
+/ final_idx = null;
 
-/ temp_index = NULL;
-/ slopeL = NULL;
-/ slopeR = NULL;
-/ x0 = NULL;
-/ x1 = NULL;
-/ y0 = NULL;
-/ y1 = NULL;
-/ fillright = NULL;
+/ original_value = null
 </values>
 
 <data>
 / columns = (build, computer.platform, computer.touch, date, time, subject, group, script.sessionid, blockcode, blocknum,values.block,values.n_blocks,list.degrees_used.itemcount,list.degrees_used_att.itemcount,
-trialcode,latency,values.deg_index_era, values.deg_index_att, values.n_trials, values.block_length, values.best, values.lower_quartile,values.upper_quartile, values.erasure_degrees, values.erasure_index,values.erasure_RT,values.erasure_value, list.erasure.itemcount,values.slopeL, values.slopeR, 
-list.erasure.item(1),list.erasure.item(2),list.erasure.item(3),list.erasure.item(4),list.erasure.item(5),list.erasure.item(6),list.erasure.item(7),list.erasure.item(8),list.erasure.item(9),list.erasure.item(10),list.erasure.item(11),list.erasure.item(12),list.erasure.item(13),list.erasure.item(14),
-list.erasure.item(15),list.erasure.item(16),list.erasure.item(17),list.erasure.item(18),list.erasure.item(19),list.erasure.item(20),list.erasure.item(21),list.erasure.item(22),list.erasure.item(23),list.erasure.item(24),list.erasure.item(25),list.erasure.item(26),list.erasure.item(27),list.erasure.item(28),list.erasure.item(29),list.erasure.item(30),list.erasure.item(31),
-
+trialcode,latency,values.deg_index_era, values.deg_index_att, values.n_trials, values.block_length, values.best, values.lower_quartile,values.upper_quartile, values.erasure_degrees, values.erasure_index,values.erasure_RT,values.erasure_value,
 values.attention_degrees,values.trial, values.master_idx, values.run_trial,values.block_type, values.startPos, values.pos_shifted, values.rt_shifted, values.rt_index, values.mag, values.ev, values.rng, values.inc, values.inc_rg, values.stim_center_deg, values.choose_stim, 
 values.n_attention,values.n_erasure,values.n_no_erasure,values.n_clicks,
 values.timeouts_remain, values.timeout_block, values.generate_new_erasure, values.n_curr_block)
@@ -871,32 +880,28 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 		picture.frozenShip.item.1 = ("585f94c1cb11b227491c3585.png");
 		picture.animatedCircle.item.1 = ("585f94c1cb11b227491c3585.png");
 	}
-	// need to prepopulate values for this trial into a list with a random selection mode
+	
+		// need to prepopulate values for this trial into a list
 	list.curr_values.reset();
 	list.curr_RTs.reset();
-	list.curr_values_temp.reset();
-	list.curr_RTs_temp.reset();
+	values.current_idx = 0;
 	while (list.curr_values.itemcount < 360){
 		values.master_idx += 1;
-		list.values.nextvalue;
-		list.RT.nextvalue;
-		list.trial.nextvalue;
-		list.curr_values.appenditem(list.values.currentvalue);
-		list.curr_RTs.appenditem(list.RT.currentvalue);
-		list.curr_trials.appenditem(list.trial.currentvalue);
-		list.curr_values_temp.appenditem(list.values.currentvalue);
-		list.curr_RTs_temp.appenditem(list.RT.currentvalue);
+		values.current_idx +=1;
+		list.curr_values.appenditem(list.values.nextvalue);
+		list.curr_RTs.appenditem(list.RT.nextvalue);
 	};
 	// rewind the master index for trial/RT/values
-	values.master_idx = values.master_idx - 360; 
-	
+	values.master_idx = values.master_idx - 360;
 	values.i = 0;
 	list.lower_half.reset();
 	list.upper_half.reset();
+	values.current_idx = 0;
 	while (values.i < list.curr_values.itemcount) {
+		values.current_idx +=1;
 		list.curr_values.nextvalue;
 		if (list.curr_values.currentvalue < list.curr_values.median) {
-			list.lower_half.appenditem(list.curr_values_temp.currentvalue);
+			list.lower_half.appenditem(list.curr_values.currentvalue);
 		} else if (list.curr_values.currentvalue > list.curr_values.median) {
 			list.upper_half.appenditem(list.curr_values.currentvalue);
 		}
@@ -907,7 +912,9 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 	list.era_values.reset();
 	list.era_RTs.reset();
 	values.j = 0;
+	values.current_idx = 0;
 	while (values.j < list.curr_values.itemcount){
+		values.current_idx += 1;
 		list.curr_values.nextvalue;
 		list.curr_RTs.nextvalue;
 		if (list.curr_values.currentvalue >= values.lower_quartile && list.curr_values.currentvalue <= values.upper_quartile) {
@@ -916,122 +923,99 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 		}
 		values.j += 1;
 	};
-	// now we have to remove +/- 15 degrees of prior erasure from era_RTs and era_values
-	values.k = 0;
-	while (values.k <= list.degrees_used.itemcount){
-		list.degrees_used.nextvalue;
-		values.j = 0;
-		values.erasure_index = 0;
-		while (values.j < list.era_RTs.itemcount){
-			values.erasure_index += 1;
-			list.era_RTs.nextindex;
-			list.era_values.nextindex;
-			if (list.era_RTs.nextvalue >= max(mod(list.degrees_used.currentvalue - 15, 360),1) && list.era_RTs.nextvalue <= max(mod(list.degrees_used.currentvalue + 15, 360),1)){
-				list.era_RTs.removeitem(list.era_RTs.currentindex);
-				list.era_values.removeitem(list.era_values.currentindex);
-			}
-			values.j +=1;
-		}; 
-		values.k +=1;
-	};
-	// this will be the value/RT of the erasure	
-	values.erasure_index = round(rand(1, list.era_values.itemcount));
-	list.era_values.nextindex;
-	list.era_RTs.nextindex;
-	values.erasure_value = list.era_values.nextvalue;
+	// this will be the value/RT of the erasure
+
+	values.erasure_index = round(rand(1, list.era_RTs.itemcount));
 	values.erasure_RT = list.era_RTs.nextvalue;
+	
+	// now erasure value could still be equal to the original value, test this
+	
+	values.k = 0;
+	values.erasure_index = 0;
+	values.original_value = list.curr_values.item(values.erasure_RT);
+	while (values.k < list.era_values.itemcount){
+		values.erasure_index +=1;
+		if (values.original_value <= list.era_values.nextvalue + 20 || values.original_value >= list.era_values.nextvalue - 20){
+			list.era_values.removeitem(values.erasure_index);
+		}	
+		values.k += 1;
+	};
+	values.erasure_index = round(rand(1, list.era_values.itemcount));
+	values.erasure_value = list.era_values.nextvalue;
+	
 	// this works because erasure_RT values come from era_RTs, a list with elements from 1:360, indicating an index that can also be used for degrees, as long as degrees_era is a list from 1:360 (which it should always be)
 	// note do NOT append or remove items from degrees_era
 	values.deg_index_era = values.erasure_RT;
 	list.degrees_era.nextindex;
 	// now remove current erasure degree from degrees_era, degrees_att, save into degrees used
 	list.degrees_used.appenditem(list.degrees_era.nextvalue);
-	
-	values.i = 0;
-	while (values.i < list.span_30degrees.itemcount){	
-		list.span_30degrees.nextvalue;
-		list.degrees_used_att.appenditem(list.degrees_era.currentvalue + list.span_30degrees.currentvalue);
-		values.i += 1;
-	};
-	
-	values.j = 0;
-	values.k = 0;
-	values.deg_index_att = 0;
-	while (values.k <= list.degrees_used_att.itemcount) {
-		list.degrees_used_att.nextindex;
-		while (values.j < list.degrees_att.itemcount){
-			values.deg_index_att += 1;
-			list.degrees_att.nextindex;
-			if (list.degrees_att.currentvalue == list.degrees_used_att.currentvalue){
-				list.degrees_att.removeitem(list.degrees_att.currentindex);
-			}
-			values.j += 1;
-		};
-		values.k += 1;
-	};
-	values.deg_index_att = round(rand(1, list.degrees_att.itemcount));
-	list.degrees_att.nextindex;
-	
 	// now we need to add back the degrees_att from degrees_used_att and remove block N-2'nd degrees_used to pool for erasures
-	if (list.degrees_used.itemcount > 1){
+	if (list.degrees_used.itemcount > 1) {
 		// remove the first item from the list, allow re-erasure of erasure from N-2'nd block
 		list.degrees_used.removeitem(1);
 	}
-	values.i = 1;
-	while (list.degrees_used_att.itemcount > 31){
-		// removing i'th item from degrees_used_att means that the 1'st item in the list will change on each loop iteration
-		list.degrees_att.appenditem(list.degrees_used_att.item(1));
-		list.degrees_used_att.removeitem(values.i);
-		values.i += 1;
-	};
 	
-	
-	// linear interpolation between two known points: https://en.wikipedia.org/wiki/Linear_interpolation
 	values.temp_index = 0;
-	values.slopeL = NULL;
-	values.slopeR = NULL;
-	values.x0 = NULL;
-	values.y0 = NULL;
-	values.x1 = NULL;
-	values.y1 = NULL;
-	values.fillright = FALSE;
-	list.erasure.reset();
-	while (list.erasure.itemcount < 31){
-		if (list.erasure.itemcount == 0){
-		// left most point, with clockwise rotation
-			values.temp_index = max(mod(values.erasure_RT - 15, 360),1);
-			list.curr_values_temp.nextindex;
-			list.curr_RTs_temp.nextindex;
-			values.y0 = list.curr_values_temp.currentvalue;
-			values.x0 = list.curr_RTs_temp.currentvalue;
-			values.slopeL = (values.erasure_value - values.y0)/(values.erasure_RT - values.x0);
-			list.erasure.appenditem(list.curr_values_temp.currentvalue);
-		} else if (list.erasure.itemcount < 15 && list.erasure.itemcount > 0){
-			// fill in left half of erasure
-			values.temp_index = max(mod(values.temp_index + 1, 360),1);
-			list.curr_values_temp.nextindex;
-			list.curr_RTs_temp.nextindex;
-			list.erasure.appenditem(values.y0 + (list.curr_RTs_temp.currentvalue - values.x0) * values.slopeL);	
-		} else if (list.erasure.itemcount == 15){
-			// fill in midpoint
-			values.temp_index = values.erasure_RT;
-			list.erasure.appenditem(values.erasure_value);
-		} else if (list.erasure.itemcount > 15 && values.fillright == FALSE){
-			// jump to right most point, do not append erasure list
-			values.fillright = TRUE;
-			values.temp_index = max(mod(values.temp_index + 15, 360), 1);
-			values.y1 = list.curr_values_temp.currentvalue;
-			values.x1 = list.curr_RTs_temp.currentvalue;
-			values.slopeR = (values.y1 - values.erasure_value)/(values.x1 - values.erasure_RT);
-			values.temp_index = values.erasure_RT;
-		} else if (list.erasure.itemcount > 15 && values.fillright == TRUE){
-			// fill in right half of erasure
-			values.temp_index = max(mod(values.temp_index + 1, 360), 1);
-			list.curr_values_temp.nextindex;
-			list.curr_RTs_temp.nextindex;
-			list.erasure.appenditem(values.erasure_value + (list.curr_RTs_temp.currentvalue - values.erasure_RT) * values.slopeR);
+	list.erasure_RTs.reset();
+	// generate sequence of indices to map onto erasure
+	values.i = 0;
+	while (list.erasure_RTs.itemcount < 31){
+		if (values.erasure_RT > 345) {
+			if (values.erasure_RT == 360){
+				values.right_index = 16;
+			} else {
+				values.right_index = mod(values.erasure_RT + 15, 360);
+			}
+			values.left_index = values.erasure_RT - 15;
+			// this will be sequential and distance is equal
+			// piecewise (x - 15 : x), (x: 360), (1: x + 15)
+			if (list.erasure_RTs.itemcount <= 15) {
+				list.erasure_RTs.appenditem(values.left_index + values.i);
+				values.i += 1;
+			} else if (list.erasure_RTs.itemcount == 16) {
+				values.i = values.erasure_RT;
+				list.erasure_RTs.appenditem(values.i);
+			} else if (list.erasure_RTs.itemcount > 16 && values.i < 360) {
+				values.i +=1;
+				// last i = erasure_RT
+				list.erasure_RTs.appenditem(values.i);
+			} else if (values.i == 360){
+				list.erasure_RTs.appenditem(values.i);
+				values.i = 1;
+			} else if (values.i > 360) {
+				list.erasure_RTs.appenditem(values.i);
+				values.i += 1;
+			}
+		} else if (values.erasure_RT < 16) {
+			values.right_index = values.erasure_RT + 15;
+			// this will be sequential
+			values.left_index = 360 + values.erasure_RT - 15;
+			// piecewise (left_index : 360), (1 : x + 15)
+			if (list.erasure_RTs.itemcount < values.left_index){
+				list.erasure_RTs.appenditem(values.left_index + values.i); // 3,2,1,...
+				values.i -= 1;
+			} else if (list.erasure_RTs.itemcount == values.left_index){
+				list.erasure_RTs.appenditem(values.left_index);
+				values.i = 360;
+			} else if (list.erasure_RTs.itemcount > values.left_index){ // 360, 359, 358,... 
+				list.erasure_RTs.appenditem(values.i);
+				values.i -=1;
+			}
+			
+		} else {
+			values.right_index = values.erasure_RT + 15;
+			values.left_index = values.erasure_RT - 15;
+			// sequential x - 15 : x + 15
+			list.erasure_RTs.appenditem(values.erasure_RT - 15 + values.i);
+			values.i += 1;
 		}
 	};
+	
+	
+	
+	
+	
+
 	
 	shape.dot1.erase = false;
 	shape.dot2.erase = false;
