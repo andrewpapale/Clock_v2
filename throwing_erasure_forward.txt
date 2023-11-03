@@ -1,0 +1,82 @@
+		// now we have to throw the erasure forward into all future trials, accounting for the flex
+		values.current_master = values.master_idx;
+		// keep track of current index
+		values.trials_remaining = round(list.values.itemcount/360 - values.trial);
+		// shouldn't need to round but just being safe
+		// while loop over trials
+		values.k = 1;
+		while (values.k == 1){
+			values.k = 2;
+			list.curr_values.reset();
+			while (list.curr_values.itemcount < 360){
+				values.master_idx += 1;
+				list.curr_values.appenditem(list.values.nextvalue);
+			};
+			// very important to rewind as we will need to append on the current trial
+			values.master_idx = values.master_idx - 360; 
+			list.y_final.reset();
+			list.x_test.reset();
+			list.y_test.reset();
+			expressions.createTestVector;
+			// call the test vector generation routine
+			expressions.createSpline;
+			// call the spline construction routine
+			values.i = 0;
+			while(values.i < list.x.itemcount){
+				values.x = list.x_test.nextvalue;
+				// get our x value
+				values.y = expressions.interpolateSpline;
+				// get our interpolated y value
+				list.y_test.setitem(values.y, list.x_test.currentindex);
+				// add interpolated y to the test vector
+			};
+			// construct value vector for the current trial
+			values.current_idx = 0;
+			values.yindex = 0;
+			while (list.y_final.itemcount < 360){
+					values.current_idx += 1;
+					if (values.erasure_RT > 15 && values.erasure_RT < 346) {
+						if (values.current_idx < values.erasure_RT - 15) {
+							list.y_final.appenditem(list.curr_values.nextvalue);
+						} else if (values.current_idx >= values.erasure_RT - 15 && values.current_idx <= values.erasure_RT + 15) {
+							values.yindex += 1;
+							list.y_final.appenditem(list.y_test.item(values.yindex));
+						} else if (values.current_idx > values.erasure_RT + 15) {
+							list.y_final.appenditem(list.curr_values.nextvalue);
+						}
+					} else if (values.erasure_RT <= 15 || values.erasure_RT >= 345) {
+						// erasure will start at early indices, and finish at the end
+						if (values.current_idx == 1 && values.erasure_RT <= 15) {
+							values.yindex = abs(values.erasure_RT - 15) + 2;
+						} else if (values.current_idx == 1 && values.erasure_RT >= 345) {
+							values.yindex = 360 - values.erasure_RT + 15 + 2;
+							list.y_final.appenditem(list.y_test.item(values.yindex));
+						} else if (values.current_idx <= values.right_index) {
+							values.yindex += 1;
+							list.y_final.appenditem(list.y_test.item(values.yindex));
+						} else if (values.current_idx < values.left_index) {
+							list.y_final.appenditem(list.curr_values.nextvalue);
+						} else if (values.current_idx == values.left_index) {
+							values.yindex = 1;
+							list.y_final.appenditem(list.y_test.item(values.yindex));
+						} else if (values.current_idx > values.left_index) {
+							values.yindex += 1;
+							list.y_final.appenditem(list.y_test.item(values.yindex));
+						}
+					}
+				};
+			
+			// append yfinal onto values list
+			values.k = 1;
+			values.current_idx = 1;
+			while (values.k < 360){
+					list.values.removeitem(values.master_idx)
+					list.values.appenditem(list.y_final.currentvalue);
+					values.current_idx += 1;
+					values.master_idx += 1;
+			}
+			
+			values.trials_remaining -=1;
+		};
+	values.master_idx = values.current_master;
+	// reset master index

@@ -524,7 +524,7 @@
 <data>
 // columns = (trialnum values.x_final values.y_final, values.erasure_RT, values.erasure_value, values.left_index,values.right_index) // write out x and y one value pair per row for easy plotting
 // columns = (values.erasure_RT,values.erasure_value,values.right_index,values.left_index,values.lower_quartile,values.upper_quartile,list.curr_values.item(1),list.curr_values.itemcount)
-/ columns = (values.current_idx, values.x_final,values.y_final, values.left_index,values.right_index,values.erasure_RT,values.erasure_value)
+/ columns = (values.final_idx, values.x_final,values.y_final, values.left_index,values.right_index,values.erasure_RT,values.erasure_value)
 // columns = (values.x, values.y,list.y.item(1),list.y.item(2),list.y.item(3),values.current_idx,values.left_index,values.right_index)
 // columns = (values.yindex,values.current_idx, values.erasure_RT)
 / separatefiles = true
