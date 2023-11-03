@@ -342,27 +342,6 @@
 / n_curr_block = NULL;
 / n_timeout = NULL;
 
-/ trial_index = 1;
-/ index = 0;
-/ degrees_erasure_index = 0;
-/ values_erasure_index = 0;
-/ curr_val_era = NULL;
-/ curr_index_era = NULL;
-
-/ x = null
-/ y = null
-/ master_idx = null
-/ current_idx = null
-/ x_final = null
-/ y_final = null
-/ yindex = null
-/ trial_index = 1;
-/ index = 0;
-/ degrees_erasure_index = 0;
-/ values_erasure_index = 0;
-/ curr_val_era = NULL;
-/ curr_index_era = NULL;
-
 / x = null
 / y = null
 / master_idx = null
@@ -382,7 +361,6 @@
 / j = NULL;
 / k = NULL;
 
-/ deg_index_era = NULL;
 / temp_index = NULL;
 
 / lower_quartile = NULL;
@@ -401,6 +379,8 @@
 
 / original_value = null
 / current_master = null
+
+/ trials_remaining = null
 </values>
 
 <data>
@@ -564,7 +544,6 @@ values.timeouts_remain, values.timeout_block, values.generate_new_erasure, value
 	// if run_trial == 1 then we've alraedy iterated through values, RT, trial during the erasure generation algorithm
 	list.curr_values.reset();
 	list.curr_RTs.reset();
-	list.curr_trials.reset();
 	// now actually implement erasure, to do this we will replace <list values> at index values.erasure_RT with value values.erasure_value
 	// then linear interpolation between endpoints, this will also need to 'flex'
 	values.i = 0;
@@ -572,7 +551,6 @@ values.timeouts_remain, values.timeout_block, values.generate_new_erasure, value
 		values.master_idx += 1;
 		list.curr_values.appenditem(list.values.nextvalue);
 		list.curr_RTs.appenditem(list.RT.nextvalue);
-		list.curr_trials.appenditem(list.trial.nextvalue);
 		values.i += 1;
 	};
 	values.rt_shifted = NULL;
@@ -732,7 +710,7 @@ values.timeouts_remain, values.timeout_block, values.generate_new_erasure, value
 				list.curr_values.appenditem(list.values.nextvalue);
 			};
 			// very important to rewind as we will need to append on the current trial
-			values.master = values.master - 360; 
+			values.master_idx = values.master_idx - 360; 
 			expressions.createTestVector;
 			// call the test vector generation routine
 			expressions.createSpline;
@@ -781,11 +759,17 @@ values.timeouts_remain, values.timeout_block, values.generate_new_erasure, value
 				};
 			
 			// append yfinal onto values list
-			
+			values.k = 1;
+			values.current_idx = 1;
+			while (values.k < 360){
+					list.values.removeitem(values.master_idx)
+					list.values.appenditem(list.y_final.currentvalue);
+					values.current_idx += 1;
+					values.master_idx += 1;
+			}
 			
 			values.trials_remaining -=1;
 		};
-	}
 	values.master_idx = values.current_master;
 	// reset master index
 	}
