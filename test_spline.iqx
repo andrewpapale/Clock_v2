@@ -147,6 +147,8 @@
 / selectionmode = sequence
 </list>
 <list y_test>
+/ selectionrate = always
+/ selectionmode = values.yindex;
 </list>
 
 <list x_final>
@@ -364,6 +366,8 @@
 / branch = [
 	if (list.x_final.itemcount < 360) {
 		return trial.constructValueVector;
+	} else {
+		return trial.getValueVector;
 	};
 ]
 </trial>
