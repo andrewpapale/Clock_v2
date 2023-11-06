@@ -223,10 +223,6 @@
 / selectionmode = sequence
 </list>
 
-<list erasure>
-/ selectionrate = always
-/ selectionmode = values.erasure_index2;
-</list>
 
 <list erasure_RTs>
 / selectionrate = always
@@ -271,6 +267,7 @@
 / final_idx = null;
 
 / original_value = null
+/ era_index_out = null
 </values>
 
 <block exampleBlock>
@@ -329,45 +326,43 @@
 
 <trial constructValueVector>
 / ontrialbegin = [
-		values.current_idx += 1;
-		list.x_final.appenditem(list.curr_RTs.nextvalue);
-		if (values.erasure_RT > 15 && values.erasure_RT < 346){
-			if (values.current_idx < values.erasure_RT - 15){
-				list.y_final.appenditem(list.curr_values.nextvalue);
-			} else if (values.current_idx >= values.erasure_RT - 15 && values.current_idx <= values.erasure_RT + 15){
-				values.yindex += 1;
-				list.y_final.appenditem(list.y_test.item(values.yindex));
-			} else if (values.current_idx > values.erasure_RT + 15){
-				list.y_final.appenditem(list.curr_values.nextvalue);
-			}
-		} else if (values.erasure_RT <= 15 || values.erasure_RT >= 345){
-			// erasure will start at early indices, and finish at the end
-			if (values.current_idx == 1 && values.erasure_RT <= 15){
-				values.yindex = abs(values.erasure_RT - 15) + 2;
-			} else if (values.current_idx == 1 && values.erasure_RT >= 345){
-				values.yindex = 360 - values.erasure_RT + 15 + 2;
-				list.y_final.appenditem(list.y_test.item(values.yindex));
-			} else if (values.current_idx <= values.right_index){
-				values.yindex += 1;
-				list.y_final.appenditem(list.y_test.item(values.yindex));
-			} else if (values.current_idx < values.left_index){
-				list.y_final.appenditem(list.curr_values.nextvalue);
-			} else if (values.current_idx == values.left_index){
-				values.yindex = 1;
-				list.y_final.appenditem(list.y_test.item(values.yindex));
-			} else if (values.current_idx > values.left_index){
-				values.yindex += 1;
-				list.y_final.appenditem(list.y_test.item(values.yindex));
-			}
-		} 
+	values.current_idx += 1;
+	list.x_final.appenditem(list.curr_RTs.nextvalue);
+	if (values.erasure_RT > 15 && values.erasure_RT < 346) {
+		if (values.current_idx < values.erasure_RT - 15) {
+			list.y_final.appenditem(list.curr_values.nextvalue);
+		} else if (values.current_idx >= values.erasure_RT - 15 && values.current_idx <= values.erasure_RT + 15) {
+			values.yindex += 1;
+			list.y_final.appenditem(list.y_test.item(values.yindex));
+		} else if (values.current_idx > values.erasure_RT + 15) {
+			list.y_final.appenditem(list.curr_values.nextvalue);
+		}
+	} else if (values.erasure_RT <= 15 || values.erasure_RT >= 345) {
+		// erasure will start at early indices, and finish at the end
+		if (values.current_idx == 1 && values.erasure_RT <= 15) {
+			values.yindex = abs(values.erasure_RT - 15) + 2;
+		} else if (values.current_idx == 1 && values.erasure_RT >= 345) {
+			values.yindex = 360 - values.erasure_RT + 15 + 2;
+			list.y_final.appenditem(list.y_test.item(values.yindex));
+		} else if (values.current_idx <= values.right_index) {
+			values.yindex += 1;
+			list.y_final.appenditem(list.y_test.item(values.yindex));
+		} else if (values.current_idx < values.left_index) {
+			list.y_final.appenditem(list.curr_values.nextvalue);
+		} else if (values.current_idx == values.left_index) {
+			values.yindex = 1;
+			list.y_final.appenditem(list.y_test.item(values.yindex));
+		} else if (values.current_idx > values.left_index) {
+			values.yindex += 1;
+			list.y_final.appenditem(list.y_test.item(values.yindex));
+		}
+	}
 ]
 / trialduration = 0
 / recorddata = false
 / branch = [
 	if (list.x_final.itemcount < 360) {
 		return trial.constructValueVector;
-	} else {
-		return trial.getValueVector;
 	};
 ]
 </trial>
@@ -379,12 +374,35 @@
 	values.y_final = list.y_final.nextvalue;
 ]
 / trialduration = 0
-/ recorddata = true
+/ recorddata = false
 / branch = [
 	if (list.x_final.selectedcount < list.x_final.itemcount) {
 		return trial.getValueVector;
+	} else if (list.x_final.selectedcount == list.x_final.itemcount){
+		return trial.getErasureIndices;
 	};
 ]
+/ ontrialend = [
+	if (list.x_final.selectedcount ==  list.x_final.itemcount){
+		values.erasure_index2 = 0;
+	}
+]
+
+</trial>
+
+<trial getErasureIndices>
+/ ontrialbegin = [
+	values.erasure_index2 +=1;
+	values.era_index_out = list.erasure_RTs.nextvalue;
+]
+/ trialduration = 0
+/ recorddata = true
+/ branch = [
+	if (list.erasure_RTs.selectedcount < list.erasure_RTs.itemcount){
+		return trial.getErasureIndices;
+	}
+]
+
 </trial>
 
 <trial getErasure>
@@ -435,22 +453,13 @@
 
 	values.erasure_index = round(rand(1, list.era_RTs.itemcount));
 	values.erasure_RT = list.era_RTs.nextvalue;
-	
 	// now erasure value could still be equal to the original value, test this
 	
 	values.k = 0;
 	values.erasure_index = 0;
 	values.original_value = list.curr_values.item(values.erasure_RT);
-	while (values.k < list.era_values.itemcount){
-		values.erasure_index +=1;
-		if (values.original_value <= list.era_values.nextvalue + 20 || values.original_value >= list.era_values.nextvalue - 20){
-			list.era_values.removeitem(values.erasure_index);
-		}	
-		values.k += 1;
-	};
 	values.erasure_index = round(rand(1, list.era_values.itemcount));
 	values.erasure_value = list.era_values.nextvalue;
-	
 	// this works because erasure_RT values come from era_RTs, a list with elements from 1:360, indicating an index that can also be used for degrees, as long as degrees_era is a list from 1:360 (which it should always be)
 	// note do NOT append or remove items from degrees_era
 	values.deg_index_era = values.erasure_RT;
@@ -463,10 +472,12 @@
 		list.degrees_used.removeitem(1);
 	}
 	
+	
 	values.temp_index = 0;
 	list.erasure_RTs.reset();
 	// generate sequence of indices to map onto erasure
 	values.i = 0;
+	values.j = 1;
 	while (list.erasure_RTs.itemcount < 31){
 		if (values.erasure_RT > 345) {
 			if (values.erasure_RT == 360){
@@ -477,37 +488,32 @@
 			values.left_index = values.erasure_RT - 15;
 			// this will be sequential and distance is equal
 			// piecewise (x - 15 : x), (x: 360), (1: x + 15)
-			if (list.erasure_RTs.itemcount <= 15) {
-				list.erasure_RTs.appenditem(values.left_index + values.i);
+			if (list.erasure_RTs.itemcount == 0){
+				values.i = values.left_index;
+				list.erasure_RTs.appenditem(values.i);
+			}
+			if (values.i < 360){
 				values.i += 1;
-			} else if (list.erasure_RTs.itemcount == 16) {
-				values.i = values.erasure_RT;
 				list.erasure_RTs.appenditem(values.i);
-			} else if (list.erasure_RTs.itemcount > 16 && values.i < 360) {
-				values.i +=1;
-				// last i = erasure_RT
-				list.erasure_RTs.appenditem(values.i);
-			} else if (values.i == 360){
-				list.erasure_RTs.appenditem(values.i);
-				values.i = 1;
-			} else if (values.i > 360) {
-				list.erasure_RTs.appenditem(values.i);
-				values.i += 1;
+			} else {
+				list.erasure_RTs.appenditem(values.j);
+				values.j += 1;
 			}
 		} else if (values.erasure_RT < 16) {
 			values.right_index = values.erasure_RT + 15;
 			// this will be sequential
 			values.left_index = 360 + values.erasure_RT - 15;
-			// piecewise (left_index : 360), (1 : x + 15)
-			if (list.erasure_RTs.itemcount < values.left_index){
-				list.erasure_RTs.appenditem(values.left_index + values.i); // 3,2,1,...
-				values.i -= 1;
-			} else if (list.erasure_RTs.itemcount == values.left_index){
-				list.erasure_RTs.appenditem(values.left_index);
-				values.i = 360;
-			} else if (list.erasure_RTs.itemcount > values.left_index){ // 360, 359, 358,... 
+			if (list.erasure_RTs.itemcount == 0){
+				values.i = values.left_index;
 				list.erasure_RTs.appenditem(values.i);
-				values.i -=1;
+			}
+			// piecewise (left_index : 360), (1 : x + 15)
+			if (values.i < 360){
+				values.i += 1;
+				list.erasure_RTs.appenditem(values.i);
+			} else {
+				list.erasure_RTs.appenditem(values.j);
+				values.j += 1;
 			}
 			
 		} else {
@@ -518,7 +524,6 @@
 			values.i += 1;
 		}
 	};
-	
 ]
 / trialduration = 0
 / recorddata = false
@@ -528,8 +533,9 @@
 <data>
 // columns = (trialnum values.x_final values.y_final, values.erasure_RT, values.erasure_value, values.left_index,values.right_index) // write out x and y one value pair per row for easy plotting
 // columns = (values.erasure_RT,values.erasure_value,values.right_index,values.left_index,values.lower_quartile,values.upper_quartile,list.curr_values.item(1),list.curr_values.itemcount)
-/ columns = (values.final_idx, values.x_final,values.y_final, values.left_index,values.right_index,values.erasure_RT,values.erasure_value)
+// columns = (values.master_idx,values.final_idx, values.x_final,values.y_final, values.left_index,values.right_index,values.erasure_RT,values.erasure_value)
 // columns = (values.x, values.y,list.y.item(1),list.y.item(2),list.y.item(3),values.current_idx,values.left_index,values.right_index)
 // columns = (values.yindex,values.current_idx, values.erasure_RT)
+/ columns = (values.left_index,values.right_index,values.erasure_RT, values.era_index_out)
 / separatefiles = true
 </data>

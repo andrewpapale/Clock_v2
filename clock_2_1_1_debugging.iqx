@@ -793,15 +793,12 @@
 
 <trial getValueVector2>
 / ontrialbegin = [
-	values.final_idx += 1;
-	values.x_final = list.x_final.nextvalue;
-	values.y_final = list.y_final.nextvalue;
 ]
 / trialduration = 0
 / recorddata = false
 / branch = [
 	if (values.spline_trialCount <= 100) {
-		return trial.getSplinesFutureTrials;
+		return trial.pasteValuesFutureTrials;
 	} else if (values.spline_trialCount > 100){
 		return trial.test;
 	};
@@ -809,7 +806,8 @@
 / ontrialend = [
 	if (values.spline_trialCount <= 100) {
 		values.spline_trialCount += 1;
-		values.etime = script.elapsedtime - values.starttime;
+		list.x_final.reset();
+		list.y_final.reset();
 	} else if (values.spline_trialCount > 100){
 		values.master_idx = values.current_master;
 	}
@@ -823,19 +821,20 @@
 	values.y_final = list.y_final.nextvalue;
 ]
 / trialduration = 0
-/ recorddata = false
+/ recorddata = true
 / branch = [
 	if (list.x_final.selectedcount < list.x_final.itemcount) {
 		return trial.getValueVector;
 	} else if (list.x_final.selectedcount == list.x_final.itemcount && values.spline_trialCount < 100) {
-		return trial.getSplinesFutureTrials;
+		return trial.pasteValuesFutureTrials;
 	} else if (values.spline_trialCount >= 100){
 		return trial.test;
 	};
 ]
 / ontrialend = [
 	if (list.x_final.selectedcount == list.x_final.itemcount) {
-		values.spline_trialCount += 1;
+		list.x_final.reset();
+		list.y_final.reset();
 		values.etime = script.elapsedtime - values.starttime;
 	} else if (values.spline_trialCount > 100){
 		values.master_idx = values.current_master;
@@ -844,8 +843,9 @@
 
 </trial>
 
-<trial getSplinesFutureTrials>
+<trial pasteValuesFutureTrials>
 / ontrialbegin = [
+	values.starttime = script.elapsedtime;
 	// go into future trials (right now just do trial N+1)
 	list.curr_values.reset();
 	list.curr_RTs.reset();
@@ -857,9 +857,16 @@
 	};
 ]
 / trialduration = 0
-/ recorddata = false
+/ recorddata = true
 / branch = [
-	return trial.constructSpline;
+	return trial.constructValueVector;
+]
+/ ontrialend = [
+	values.spline_trialCount += 1;
+	values.current_idx = 0;
+	values.final_idx = 0;
+	values.yindex = 0;
+	values.etime = script.elapsedtime - values.starttime;
 ]
 
 </trial>
@@ -1171,8 +1178,6 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 
 <block experiment>
 / onblockbegin = [
-	
-	values.starttime = script.elapsedtime;
 
 	values.run_trial_dum = 1;
 	values.run_trial = 0;
