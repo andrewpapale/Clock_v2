@@ -1252,20 +1252,57 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 		list.degrees_used.removeitem(1);
 	}
 	
-	if (values.erasure_RT > 345) {
-		if (values.erasure_RT == 360) {
-			values.right_index = 16;
+	values.temp_index = 0;
+	list.erasure_RTs.reset();
+	// generate sequence of indices to map onto erasure
+	values.i = 0;
+	values.j = 1;
+	while (list.erasure_RTs.itemcount < 31){
+		if (values.erasure_RT > 345) {
+			if (values.erasure_RT == 360){
+				values.right_index = 16;
+			} else {
+				values.right_index = mod(values.erasure_RT + 15, 360);
+			}
+			values.left_index = values.erasure_RT - 15;
+			// this will be sequential and distance is equal
+			// piecewise (x - 15 : x), (x: 360), (1: x + 15)
+			if (list.erasure_RTs.itemcount == 0){
+				values.i = values.left_index;
+				list.erasure_RTs.appenditem(values.i);
+			}
+			if (values.i < 360){
+				values.i += 1;
+				list.erasure_RTs.appenditem(values.i);
+			} else {
+				list.erasure_RTs.appenditem(values.j);
+				values.j += 1;
+			}
+		} else if (values.erasure_RT < 16) {
+			values.right_index = values.erasure_RT + 15;
+			// this will be sequential
+			values.left_index = 360 + values.erasure_RT - 15;
+			if (list.erasure_RTs.itemcount == 0){
+				values.i = values.left_index;
+				list.erasure_RTs.appenditem(values.i);
+			}
+			// piecewise (left_index : 360), (1 : x + 15)
+			if (values.i < 360){
+				values.i += 1;
+				list.erasure_RTs.appenditem(values.i);
+			} else {
+				list.erasure_RTs.appenditem(values.j);
+				values.j += 1;
+			}
+			
 		} else {
-			values.right_index = mod(values.erasure_RT + 15, 360);
+			values.right_index = values.erasure_RT + 15;
+			values.left_index = values.erasure_RT - 15;
+			// sequential x - 15 : x + 15
+			list.erasure_RTs.appenditem(values.erasure_RT - 15 + values.i);
+			values.i += 1;
 		}
-		values.left_index = values.erasure_RT - 15;
-	} else if (values.erasure_RT < 16) {
-		values.right_index = values.erasure_RT + 15;
-		values.left_index = 360 + values.erasure_RT - 15;
-	} else {
-		values.right_index = values.erasure_RT + 15;
-		values.left_index = values.erasure_RT - 15;
-	}
+	};
 	
 	shape.dot1.erase = false;
 	shape.dot2.erase = false;
