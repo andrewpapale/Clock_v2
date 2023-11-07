@@ -268,11 +268,14 @@
 
 / original_value = null
 / era_index_out = null
+
+/ y0 = null
 </values>
 
 <block exampleBlock>
-/ trials = [1=getErasure; 2=constructSpline; 3=interpolateSpline; 4=resetCounters; 5=constructValueVector2; 6=resetCounters; 7=getValueVector]
-// trials = [1=constructSpline; 2=interpolateSpline; 3=resetCounters; 4=constructValueVector; 5=resetCounters; 6=getValueVector]
+// trials = [1=getErasure; 2=constructSpline; 3=interpolateSpline; 4=resetCounters; 5=constructValueVector2; 6=resetCounters; 7=getValueVector]
+/ trials = [1=getErasure;2=constructSpline; 3=interpolateSpline; 4=resetCounters; 5=constructValueVector2; 6=resetCounters; 7=getValueVector]
+// trials = [1=getErasure;2=constructSpline;3=interpolateSpline;4=resetCounters;5=getValueVector]
 / onblockbegin = [
 	values.master_idx = 0;
 ]
@@ -376,7 +379,7 @@
 	list.curr_values.removeitem(list.erasure_RTs.nextvalue);
 	list.curr_RTs.removeitem(list.erasure_RTs.nextvalue);
 	values.yindex +=1;
-	list.curr_values.insertitem(list.y_test.item(values.yindex), list.curr_RTs.nextvalue);
+	list.curr_values.insertitem(list.y_test.item(values.yindex), list.erasure_RTs.nextvalue);
 	list.curr_RTs.insertitem(list.erasure_RTs.nextvalue, list.erasure_RTs.nextvalue);
 ]
 / trialduration = 0
@@ -387,7 +390,7 @@
 	}
 ]
 / ontrialend = [
-	if (list.erasure_RTs.selectedcount < list.erasure_RTs.itemcount){
+	if (list.erasure_RTs.selectedcount == list.erasure_RTs.itemcount){
 		values.current_idx = 0;
 	}
 ]
@@ -403,15 +406,17 @@
 / trialduration = 0
 / recorddata = true
 / branch = [
-	if (values.current_idx < list.curr_RTs.itemcount) {
+	if (values.current_idx < 360) {
 		return trial.getValueVector;
-	} else if (values.current_idx == list.curr_RTs.itemcount){
+	} else if (values.current_idx == 360){
 		return trial.getErasureIndices;
 	};
 ]
 / ontrialend = [
 	if (list.curr_RTs.selectedcount ==  list.curr_RTs.itemcount){
 		values.erasure_index2 = 0;
+		values.yindex = 31;
+		
 	}
 ]
 
@@ -421,6 +426,8 @@
 / ontrialbegin = [
 	values.erasure_index2 +=1;
 	values.era_index_out = list.erasure_RTs.nextvalue;
+	values.y0 = list.y_test.item(values.yindex);
+	values.yindex -= 1;
 ]
 / trialduration = 0
 / recorddata = false
@@ -499,6 +506,7 @@
 		list.degrees_used.removeitem(1);
 	}
 	
+	values.erasure_RT = 355;
 	
 	values.temp_index = 0;
 	list.erasure_RTs.reset();
@@ -560,9 +568,9 @@
 <data>
 // columns = (trialnum values.x_final values.y_final, values.erasure_RT, values.erasure_value, values.left_index,values.right_index) // write out x and y one value pair per row for easy plotting
 // columns = (values.erasure_RT,values.erasure_value,values.right_index,values.left_index,values.lower_quartile,values.upper_quartile,list.curr_values.item(1),list.curr_values.itemcount)
-/ columns = (values.master_idx,values.final_idx, values.x_final,values.y_final,values.left_index,values.right_index,values.erasure_RT,values.erasure_value)
+/ columns = (values.master_idx,values.current_idx, values.x_final,values.y_final,values.erasure_RT,values.erasure_value)
 // columns = (values.x, values.y,list.y.item(1),list.y.item(2),list.y.item(3),values.current_idx,values.left_index,values.right_index)
 // columns = (values.yindex,values.current_idx, values.erasure_RT)
-// columns = (values.left_index,values.right_index,values.erasure_RT, values.era_index_out)
+// columns = (values.yindex,values.y0, values.era_index_out)
 / separatefiles = true
 </data>
