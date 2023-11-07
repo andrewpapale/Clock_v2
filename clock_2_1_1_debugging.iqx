@@ -21,118 +21,6 @@
     Chapter 3.3 Cubic Spline Interpolation, pg. 113 - 116.
 </usermanual>
 
-<expressions>
-// constructs the cubic splines over the input parameter space
-/ createSpline = {
-    list.y2.reset();
-    list.u.reset();
-    var n = list.x.itemcount;
-    // setting up the vectors with n items
-    var i = 1;
-    while (i <= n) {
-        list.y2.appenditem(null);
-        list.u.appenditem(null);
-        i += 1;
-    };
-    i = 1;
-    // natural boundary condition on leftmost point
-    list.y2.setitem(0.0, i);
-    list.u.setitem(0.0, i);
-    // decomposition
-    i = 2;
-    while (i <= n-1) {
-        //sig=(x[i]-x[i-1])/(x[i+1]-x[i-1]);
-        var sig = (list.x.item(i) - list.x.item(i-1)) / (list.x.item(i+1) - list.x.item(i-1));
-        //p=sig*y2[i-1]+2.0
-        var p = sig * list.y2.item(i-1) + 2.0;
-        //y2[i]=(sig-1.0)/p;
-        var y2i = (sig - 1.0) / p;
-        list.y2.setitem(y2i, i);
-        //u[i]=(y[i+1]-y[i])/(x[i+1]-x[i]) - (y[i]-y[i-1])/(x[i]-x[i-1]);
-        var ui = (list.y.item(i+1) - list.y.item(i)) / (list.x.item(i+1) - list.x.item(i)) - (list.y.item(i) - list.y.item(i-1)) / (list.x.item(i) - list.x.item(i-1));
-        list.u.setitem(ui, i);
-        //u[i]=(6.0*u[i]/(x[i+1]-x[i-1])-sig*u[i-1])/p;
-        ui = (6.0 * list.u.item(i) / (list.x.item(i+1) - list.x.item(i-1)) - sig * list.u.item(i-1)) / p;
-        list.u.setitem(ui, i);
-        i += 1;
-    };
-    // natural boundary condition on rightmost point
-    var qn = 0.0;
-    var un = 0.0;
-    //y2[n]=(un-qn*u[n-1])/(qn*y2[n-1]+1.0);
-    var y2n = (un - qn * list.u.item(n-1)) / (qn * list.y2.item(n-1) + 1.0);
-    list.y2.setitem(y2n, n);
-    // backsubstitution
-    var k = n-1;
-    while (k >= 1) {
-        //y2[k]=y2[k]*y2[k+1]+u[k];
-        var y2k = list.y2.item(k) * list.y2.item(k+1) + list.u.item(k);
-        list.y2.setitem(y2k, k);
-        k -= 1;
-    };
-};
-
-// sets up a test vector of x values in the range x1 to xn
-/ createTestVector = {
-	//values.erasure_value = 50;
-	//values.erasure_RT = 350;
-	//values.left_index = 335;
-	//values.right_index = 5;
-	list.x.reset();
-	list.y.reset();
-	
-	values.current_idx = values.left_index;
-	list.curr_values.nextindex;
-	list.y.appenditem(list.curr_values.nextvalue);
-	list.y.appenditem(values.erasure_value);
-	values.current_idx = values.right_index;
-	list.curr_values.nextindex;
-	list.y.appenditem(list.curr_values.nextvalue);
-	
-	values.i = 1;
-	while (list.x.itemcount < list.y.itemcount){
-		list.x.appenditem(values.i);
-		values.i += 15;
-	};
-	
-    var x1 = list.x.item(1);
-    var xn = list.x.item(list.x.itemcount);
-    var x =  x1;
-    // set up a test vector of x values in range x1 to xn
-    while (x <= xn) {
-        list.x_test.appenditem(x);
-        list.y_test.appenditem(null);
-        x += 1; // decrease for denser sampling (more points), increase for sparser sampling (fewer points)
-    };
-};
-
-
-// given an x value, finds the insertion point and returns interpolated y value
-/ interpolateSpline = {
-    // bisect
-    var x = values.x;
-    var n = list.x.itemcount;
-    var klo = 1;
-    var khi = n;
-    while (khi - klo > 1) {
-        var k = floor((khi + klo) / 2); // same as right bit shift
-        if (list.x.item(k) > x) {
-            khi = k;
-        } else {
-            klo = k;
-        };
-    };
-    var h = list.x.item(khi) - list.x.item(klo);
-    //a=(xa[khi]-x)/h;
-    var a = (list.x.item(khi) - x) / h;
-    //b=(x-xa[klo])/h;
-    var b = (x - list.x.item(klo)) / h;
-    // calculate interpolated y
-    // y=a*ya[klo]+b*ya[khi]+((a*a*a-a)*y2a[klo]+(b*b*b-b)*y2a[khi])*(h*h)/6.0
-    var y = a * list.y.item(klo) + b * list.y.item(khi) + ((a*a*a - a) * list.y2.item(klo) + (b*b*b - b) * list.y2.item(khi)) * (h*h) / 6.0;
-    return y;
-};
-</expressions>
 
 // input: parameter space to construct the splines over
 // x values must be in ascending order, x values must be unique
@@ -282,7 +170,8 @@
 </list>
 
 <list erasure_RTs>
-
+/ selectionrate = always
+/ selectionmode = values.erasure_index2;
 </list>
 
 
@@ -400,7 +289,8 @@
 </values>
 
 <data>
-/ columns = (values.starttime, values.etime, values.spline_trialCount,values.master_idx,values.x_final,values.y_final, values.final_idx, values.erasure_RT,values.erasure_value,values.original_value)
+/ columns = (values.starttime, values.etime, values.spline_trialCount,values.master_idx,values.x_final,values.y_final, values.yindex,values.final_idx, values.erasure_RT,values.erasure_value,values.original_value)
+// columns = (values.yindex,list.erasure_RTs.nextvalue,list.curr_RTs.nextvalue,list.curr_values.nextvalue,list.y_test.item(values.yindex))
 </data>
 
 <picture animatedCircle>
@@ -699,7 +589,7 @@
 / trialduration = 0
 / recorddata = false
 / branch = [
-	trial.interpolateSpline;
+	return trial.interpolateSpline;
 ]
 
 </trial>
@@ -722,17 +612,23 @@
         return trial.interpolateSpline;
 		// this is just for ease of data output and plotting, it's not a problem to wrap everything in a single while() loop
 	} else {
-		return trial.constructValueVector2;
+		return trial.resetCounters;
 	};
 ]
-/ ontrialend = [
-	if (list.x_test.selectedcount == list.x_test.itemcount){
-		values.current_idx = 0;
-		values.final_idx = 0;
-		values.yindex = 0;
-		list.x_final.reset();
-		list.y_final.reset();
-	}
+</trial>
+
+<trial resetCounters>
+/ ontrialbegin = [
+	values.current_idx = 0;
+	values.final_idx = 0;
+	values.yindex = 0;
+	values.current_idx = 0;
+	values.erasure_index2 = 0;
+]
+/ trialduration = 0
+/ recorddata = false
+/ branch = [
+	return trial.constructValueVector2;
 ]
 </trial>
 
@@ -753,12 +649,47 @@
 	if (list.erasure_RTs.selectedcount < list.erasure_RTs.itemcount){
 		return trial.constructValueVector2;
 	} else {
-		return trial.getValueVector2;
+		return trial.resetCounters2;
 	}
 ]
+
+</trial>
+
+<trial resetCounters2>
+/ ontrialbegin = [
+	values.current_idx = 0;
+	values.final_idx = 0;
+	values.yindex = 0;
+	values.current_idx = 0;
+	values.erasure_index2 = 0;
+]
+/ trialduration = 0
+/ recorddata = false
+/ branch = [
+	return trial.getValueVector;
+]
+</trial>
+
+<trial getValueVector>
+/ ontrialbegin = [
+	values.current_idx += 1;
+	values.x_final = list.curr_RTs.nextvalue;
+	values.y_final = list.curr_values.nextvalue;
+]
+/ trialduration = 0
+/ recorddata = true
+/ branch = [
+	if (values.current_idx < 360) {
+		return trial.getValueVector;
+	} else if (values.current_idx == 360){
+		return trial.getValueVector2;
+	};
+]
 / ontrialend = [
-	if (list.erasure_RTs.selectedcount == list.erasure_RTs.itemcount){
-		values.current_idx = 0;
+	if (list.curr_RTs.selectedcount ==  list.curr_RTs.itemcount){
+		values.erasure_index2 = 0;
+		values.yindex = 31;
+		
 	}
 ]
 
@@ -771,18 +702,16 @@
 / trialduration = 0
 / recorddata = false
 / branch = [
-	if (values.spline_trialCount <= 300) {
+	if (values.spline_trialCount <= 100) {
 		return trial.pasteValuesFutureTrials;
-	} else if (values.spline_trialCount > 300){
+	} else if (values.spline_trialCount > 100){
 		return trial.test;
 	};
 ]
 / ontrialend = [
-	if (values.spline_trialCount <= 300) {
+	if (values.spline_trialCount <= 100) {
 		values.spline_trialCount += 1;
-		list.curr_values.reset();
-		list.curr_RTs.reset();
-	} else if (values.spline_trialCount > 300){
+	} else if (values.spline_trialCount > 100){
 		values.master_idx = values.current_master;
 	}
 ]
@@ -792,6 +721,8 @@
 <trial pasteValuesFutureTrials>
 / ontrialbegin = [
 	// go into future trials (right now just do trial N+1)
+	list.curr_RTs.reset();
+	list.curr_values.reset();
 	while (list.curr_values.itemcount < 360){
 		values.master_idx += 1;
 		values.current_idx +=1;
@@ -800,9 +731,9 @@
 	};
 ]
 / trialduration = 0
-/ recorddata = true
+/ recorddata = false
 / branch = [
-	return trial.constructValueVector2;
+	return trial.interpolateSpline;
 ]
 / ontrialend = [
 	values.current_idx = 0;
@@ -1156,8 +1087,8 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 		list.curr_values.appenditem(list.values.nextvalue);
 		list.curr_RTs.appenditem(list.RT.nextvalue);
 	};
+	// rewind the master index for trial/RT/values
 	values.master_idx = values.master_idx - 360;
-
 	values.i = 0;
 	list.lower_half.reset();
 	list.upper_half.reset();
@@ -1192,22 +1123,13 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 
 	values.erasure_index = round(rand(1, list.era_RTs.itemcount));
 	values.erasure_RT = list.era_RTs.nextvalue;
-	
 	// now erasure value could still be equal to the original value, test this
 	
 	values.k = 0;
 	values.erasure_index = 0;
 	values.original_value = list.curr_values.item(values.erasure_RT);
-	while (values.k < list.era_values.itemcount){
-		values.erasure_index +=1;
-		if (values.original_value <= list.era_values.nextvalue + 20 || values.original_value >= list.era_values.nextvalue - 20){
-			list.era_values.removeitem(values.erasure_index);
-		}	
-		values.k += 1;
-	};
 	values.erasure_index = round(rand(1, list.era_values.itemcount));
 	values.erasure_value = list.era_values.nextvalue;
-	
 	// this works because erasure_RT values come from era_RTs, a list with elements from 1:360, indicating an index that can also be used for degrees, as long as degrees_era is a list from 1:360 (which it should always be)
 	// note do NOT append or remove items from degrees_era
 	values.deg_index_era = values.erasure_RT;
@@ -1219,6 +1141,8 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 		// remove the first item from the list, allow re-erasure of erasure from N-2'nd block
 		list.degrees_used.removeitem(1);
 	}
+	
+	values.erasure_RT = 30;
 	
 	values.temp_index = 0;
 	list.erasure_RTs.reset();
@@ -1572,6 +1496,114 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 / widthchange_angle354 = cos(expressions.Radians_angle354) * expressions.radius_px
 / heightchange_angle0 = 0
 / widthchange_angle0 = expressions.radius_px
+
+// constructs the cubic splines over the input parameter space
+/ createSpline = {
+    list.y2.reset();
+    list.u.reset();
+    var n = list.x.itemcount;
+    // setting up the vectors with n items
+    var i = 1;
+    while (i <= n) {
+        list.y2.appenditem(null);
+        list.u.appenditem(null);
+        i += 1;
+    };
+    i = 1;
+    // natural boundary condition on leftmost point
+    list.y2.setitem(0.0, i);
+    list.u.setitem(0.0, i);
+    // decomposition
+    i = 2;
+    while (i <= n-1) {
+        //sig=(x[i]-x[i-1])/(x[i+1]-x[i-1]);
+        var sig = (list.x.item(i) - list.x.item(i-1)) / (list.x.item(i+1) - list.x.item(i-1));
+        //p=sig*y2[i-1]+2.0
+        var p = sig * list.y2.item(i-1) + 2.0;
+        //y2[i]=(sig-1.0)/p;
+        var y2i = (sig - 1.0) / p;
+        list.y2.setitem(y2i, i);
+        //u[i]=(y[i+1]-y[i])/(x[i+1]-x[i]) - (y[i]-y[i-1])/(x[i]-x[i-1]);
+        var ui = (list.y.item(i+1) - list.y.item(i)) / (list.x.item(i+1) - list.x.item(i)) - (list.y.item(i) - list.y.item(i-1)) / (list.x.item(i) - list.x.item(i-1));
+        list.u.setitem(ui, i);
+        //u[i]=(6.0*u[i]/(x[i+1]-x[i-1])-sig*u[i-1])/p;
+        ui = (6.0 * list.u.item(i) / (list.x.item(i+1) - list.x.item(i-1)) - sig * list.u.item(i-1)) / p;
+        list.u.setitem(ui, i);
+        i += 1;
+    };
+    // natural boundary condition on rightmost point
+    var qn = 0.0;
+    var un = 0.0;
+    //y2[n]=(un-qn*u[n-1])/(qn*y2[n-1]+1.0);
+    var y2n = (un - qn * list.u.item(n-1)) / (qn * list.y2.item(n-1) + 1.0);
+    list.y2.setitem(y2n, n);
+    // backsubstitution
+    var k = n-1;
+    while (k >= 1) {
+        //y2[k]=y2[k]*y2[k+1]+u[k];
+        var y2k = list.y2.item(k) * list.y2.item(k+1) + list.u.item(k);
+        list.y2.setitem(y2k, k);
+        k -= 1;
+    };
+};
+
+// sets up a test vector of x values in the range x1 to xn
+/ createTestVector = {
+	//values.erasure_value = 50;
+	//values.erasure_RT = 350;
+	//values.left_index = 335;
+	//values.right_index = 5;
+	values.current_idx = values.left_index;
+	list.curr_values.nextindex;
+	list.y.appenditem(list.curr_values.nextvalue);
+	list.y.appenditem(values.erasure_value);
+	values.current_idx = values.right_index;
+	list.curr_values.nextindex;
+	list.y.appenditem(list.curr_values.nextvalue);
+	
+	values.i = 1;
+	while (list.x.itemcount < list.y.itemcount){
+		list.x.appenditem(values.i);
+		values.i += 15;
+	};
+	
+    var x1 = list.x.item(1);
+    var xn = list.x.item(list.x.itemcount);
+    var x =  x1;
+    // set up a test vector of x values in range x1 to xn
+    while (x <= xn) {
+        list.x_test.appenditem(x);
+        list.y_test.appenditem(null);
+        x += 1; // decrease for denser sampling (more points), increase for sparser sampling (fewer points)
+    };
+};
+
+// given an x value, finds the insertion point and returns interpolated y value
+/ interpolateSpline = {
+    // bisect
+    var x = values.x;
+    var n = list.x.itemcount;
+    var klo = 1;
+    var khi = n;
+    while (khi - klo > 1) {
+        var k = floor((khi + klo) / 2); // same as right bit shift
+        if (list.x.item(k) > x) {
+            khi = k;
+        } else {
+            klo = k;
+        };
+    };
+    var h = list.x.item(khi) - list.x.item(klo);
+    //a=(xa[khi]-x)/h;
+    var a = (list.x.item(khi) - x) / h;
+    //b=(x-xa[klo])/h;
+    var b = (x - list.x.item(klo)) / h;
+    // calculate interpolated y
+    // y=a*ya[klo]+b*ya[khi]+((a*a*a-a)*y2a[klo]+(b*b*b-b)*y2a[khi])*(h*h)/6.0
+    var y = a * list.y.item(klo) + b * list.y.item(khi) + ((a*a*a - a) * list.y2.item(klo) + (b*b*b - b) * list.y2.item(khi)) * (h*h) / 6.0;
+    return y;
+};
+</expressions>
 
 </expressions>
 
