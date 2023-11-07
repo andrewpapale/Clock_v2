@@ -283,13 +283,13 @@
 / x0 = null
 / y0 = null
 
-/ spline_trialCount = null
+/ trialCount = null
 / etime = null
 / starttime = null
 </values>
 
 <data>
-/ columns = (values.starttime, values.etime, values.spline_trialCount,values.master_idx,values.x_final,values.y_final, values.yindex,values.final_idx, values.erasure_RT,values.erasure_value,values.original_value)
+/ columns = (values.starttime, values.etime, values.trialCount,values.master_idx,values.x_final,values.y_final, values.yindex,values.final_idx, values.erasure_RT,values.erasure_value,values.original_value)
 // columns = (values.yindex,list.erasure_RTs.nextvalue,list.curr_RTs.nextvalue,list.curr_values.nextvalue,list.y_test.item(values.yindex))
 </data>
 
@@ -448,12 +448,11 @@
 	list.curr_RTs.reset();
 	// now actually implement erasure, to do this we will replace <list values> at index values.erasure_RT with value values.erasure_value
 	// then linear interpolation between endpoints, this will also need to 'flex'
-	values.i = 0;
 	while (list.curr_RTs.itemcount < 360){
 		values.master_idx += 1;
+		values.current_idx += 1;
 		list.curr_values.appenditem(list.values.nextvalue);
 		list.curr_RTs.appenditem(list.RT.nextvalue);
-		values.i += 1;
 	};
 	values.rt_shifted = NULL;
 	values.pos_shifted = NULL;
@@ -545,7 +544,7 @@
 	
 	values.block_type = "erasure";
 	values.generate_new_erasure = TRUE;
-		
+	values.trialCount = 1;	
 ]
 
 / stimulustimes = [
@@ -569,12 +568,7 @@
 	}
 ]
 / ontrialend = [
-	if (values.generate_new_erasure == TRUE && values.block_type == "erasure") {
-		values.spline_trialCount = 0;
-		values.current_master = values.master_idx;
-	} else {
-		values.spline_trialCount = null;
-	}
+
 ]
 
 </trial>
@@ -620,9 +614,7 @@
 <trial resetCounters>
 / ontrialbegin = [
 	values.current_idx = 0;
-	values.final_idx = 0;
 	values.yindex = 0;
-	values.current_idx = 0;
 	values.erasure_index2 = 0;
 ]
 / trialduration = 0
@@ -646,7 +638,7 @@
 / trialduration = 0
 / recorddata = false
 / branch = [
-	if (list.erasure_RTs.selectedcount < list.erasure_RTs.itemcount){
+	if (values.yindex < 31){
 		return trial.constructValueVector2;
 	} else {
 		return trial.resetCounters2;
@@ -658,10 +650,6 @@
 <trial resetCounters2>
 / ontrialbegin = [
 	values.current_idx = 0;
-	values.final_idx = 0;
-	values.yindex = 0;
-	values.current_idx = 0;
-	values.erasure_index2 = 0;
 ]
 / trialduration = 0
 / recorddata = false
@@ -681,49 +669,33 @@
 / branch = [
 	if (values.current_idx < 360) {
 		return trial.getValueVector;
-	} else if (values.current_idx == 360){
-		return trial.getValueVector2;
+	} else if (values.current_idx == 360 && values.trialCount < 100){
+		values.trialCount +=1;
+		return trial.resetCounters3;
 	};
 ]
 / ontrialend = [
-	if (list.curr_RTs.selectedcount ==  list.curr_RTs.itemcount){
-		values.erasure_index2 = 0;
-		values.yindex = 31;
-		
-	}
 ]
 
 </trial>
 
-
-<trial getValueVector2>
+<trial resetCounters3>
 / ontrialbegin = [
+	values.current_idx = 0;
 ]
 / trialduration = 0
 / recorddata = false
 / branch = [
-	if (values.spline_trialCount <= 100) {
-		return trial.pasteValuesFutureTrials;
-	} else if (values.spline_trialCount > 100){
-		return trial.test;
-	};
-]
-/ ontrialend = [
-	if (values.spline_trialCount <= 100) {
-		values.spline_trialCount += 1;
-	} else if (values.spline_trialCount > 100){
-		values.master_idx = values.current_master;
-	}
+	return trial.fastIterateTest;
 ]
 </trial>
 
-
-<trial pasteValuesFutureTrials>
+// this is only for testing, we are going to look at the flex and drift of the erasures for future trials
+<trial fastIterateTest>
 / ontrialbegin = [
-	// go into future trials (right now just do trial N+1)
 	list.curr_RTs.reset();
 	list.curr_values.reset();
-	while (list.curr_values.itemcount < 360){
+	while (list.curr_RTs.itemcount < 360){
 		values.master_idx += 1;
 		values.current_idx +=1;
 		list.curr_values.appenditem(list.values.nextvalue);
@@ -733,16 +705,13 @@
 / trialduration = 0
 / recorddata = false
 / branch = [
-	return trial.interpolateSpline;
-]
-/ ontrialend = [
-	values.current_idx = 0;
-	values.final_idx = 0;
-	values.yindex = 0;
-	values.etime = script.elapsedtime - values.starttime;
+	// this will loop through the trials in the future
+	trial.resetCounters; 
 ]
 
 </trial>
+
+
 
 <trial test>
 / ontrialbegin = [
