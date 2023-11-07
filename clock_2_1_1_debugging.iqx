@@ -734,7 +734,6 @@
 		list.y_final.reset();
 	}
 ]
-
 </trial>
 
 
@@ -772,57 +771,27 @@
 / trialduration = 0
 / recorddata = false
 / branch = [
-	if (values.spline_trialCount <= 100) {
+	if (values.spline_trialCount <= 300) {
 		return trial.pasteValuesFutureTrials;
-	} else if (values.spline_trialCount > 100){
+	} else if (values.spline_trialCount > 300){
 		return trial.test;
 	};
 ]
 / ontrialend = [
-	if (values.spline_trialCount <= 100) {
+	if (values.spline_trialCount <= 300) {
 		values.spline_trialCount += 1;
-		list.x_final.reset();
-		list.y_final.reset();
-	} else if (values.spline_trialCount > 100){
+		list.curr_values.reset();
+		list.curr_RTs.reset();
+	} else if (values.spline_trialCount > 300){
 		values.master_idx = values.current_master;
 	}
 ]
 </trial>
 
-<trial getValueVector>
-/ ontrialbegin = [
-	values.final_idx += 1;
-	values.x_final = list.x_final.nextvalue;
-	values.y_final = list.y_final.nextvalue;
-]
-/ trialduration = 0
-/ recorddata = true
-/ branch = [
-	if (list.x_final.selectedcount < list.x_final.itemcount) {
-		return trial.getValueVector;
-	} else if (list.x_final.selectedcount == list.x_final.itemcount && values.spline_trialCount < 100) {
-		return trial.pasteValuesFutureTrials;
-	} else if (values.spline_trialCount >= 100){
-		return trial.test;
-	};
-]
-/ ontrialend = [
-	if (list.x_final.selectedcount == list.x_final.itemcount) {
-		list.x_final.reset();
-		list.y_final.reset();
-		values.etime = script.elapsedtime - values.starttime;
-	} else if (values.spline_trialCount > 100){
-		values.master_idx = values.current_master;
-	}
-]
-
-</trial>
 
 <trial pasteValuesFutureTrials>
 / ontrialbegin = [
 	// go into future trials (right now just do trial N+1)
-	list.curr_values.reset();
-	list.curr_RTs.reset();
 	while (list.curr_values.itemcount < 360){
 		values.master_idx += 1;
 		values.current_idx +=1;
@@ -836,7 +805,6 @@
 	return trial.constructValueVector2;
 ]
 / ontrialend = [
-	values.spline_trialCount += 1;
 	values.current_idx = 0;
 	values.final_idx = 0;
 	values.yindex = 0;
@@ -849,7 +817,7 @@
 / ontrialbegin = [
 	values.etime = script.elapsedtime - values.starttime;
 ]
-/ recorddata = true
+/ recorddata = false
 / trialduration = 0
 </trial>
 
