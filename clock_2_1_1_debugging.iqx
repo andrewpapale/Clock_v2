@@ -722,7 +722,7 @@
         return trial.interpolateSpline;
 		// this is just for ease of data output and plotting, it's not a problem to wrap everything in a single while() loop
 	} else {
-		return trial.constructValueVector;
+		return trial.constructValueVector2;
 	};
 ]
 / ontrialend = [
@@ -738,58 +738,33 @@
 </trial>
 
 
-<trial constructValueVector>
+// loop over only erasure indices
+<trial constructValueVector2>
 / ontrialbegin = [
-		values.current_idx += 1;
-		list.x_final.appenditem(list.curr_RTs.nextvalue);
-		if (values.erasure_RT > 15 && values.erasure_RT < 346){
-			if (values.current_idx < values.erasure_RT - 15){
-				list.y_final.appenditem(list.curr_values.nextvalue);
-			} else if (values.current_idx >= values.erasure_RT - 15 && values.current_idx <= values.erasure_RT + 15){
-				values.yindex += 1;
-				list.y_final.appenditem(list.y_test.item(values.yindex));
-			} else if (values.current_idx > values.erasure_RT + 15){
-				list.y_final.appenditem(list.curr_values.nextvalue);
-			}
-		} else if (values.erasure_RT <= 15 || values.erasure_RT >= 345){
-			// erasure will start at early indices, and finish at the end
-			if (values.current_idx == 1 && values.erasure_RT <= 15){
-				values.yindex = abs(values.erasure_RT - 15) + 2;
-			} else if (values.current_idx == 1 && values.erasure_RT >= 345){
-				values.yindex = 360 - values.erasure_RT + 15 + 2;
-				list.y_final.appenditem(list.y_test.item(values.yindex));
-			} else if (values.current_idx <= values.right_index){
-				values.yindex += 1;
-				list.y_final.appenditem(list.y_test.item(values.yindex));
-			} else if (values.current_idx < values.left_index){
-				list.y_final.appenditem(list.curr_values.nextvalue);
-			} else if (values.current_idx == values.left_index){
-				values.yindex = 1;
-				list.y_final.appenditem(list.y_test.item(values.yindex));
-			} else if (values.current_idx > values.left_index){
-				values.yindex += 1;
-				list.y_final.appenditem(list.y_test.item(values.yindex));
-			}
-		} 
+	values.erasure_index2 += 1;
+	list.curr_values.removeitem(list.erasure_RTs.nextvalue);
+	list.curr_RTs.removeitem(list.erasure_RTs.nextvalue);
+	values.yindex +=1;
+	list.curr_values.insertitem(list.y_test.item(values.yindex), list.erasure_RTs.nextvalue);
+	list.curr_RTs.insertitem(list.erasure_RTs.nextvalue, list.erasure_RTs.nextvalue);
 ]
 / trialduration = 0
 / recorddata = false
 / branch = [
-	if (list.x_final.itemcount < 360) {
-		return trial.constructValueVector;
+	if (list.erasure_RTs.selectedcount < list.erasure_RTs.itemcount){
+		return trial.constructValueVector2;
 	} else {
 		return trial.getValueVector2;
-	};
+	}
 ]
 / ontrialend = [
-	if (list.x_final.itemcount == 360){
+	if (list.erasure_RTs.selectedcount == list.erasure_RTs.itemcount){
 		values.current_idx = 0;
-		values.final_idx = 0;
-		values.yindex = 0;
 	}
 ]
 
 </trial>
+
 
 <trial getValueVector2>
 / ontrialbegin = [
@@ -845,7 +820,6 @@
 
 <trial pasteValuesFutureTrials>
 / ontrialbegin = [
-	values.starttime = script.elapsedtime;
 	// go into future trials (right now just do trial N+1)
 	list.curr_values.reset();
 	list.curr_RTs.reset();
@@ -859,7 +833,7 @@
 / trialduration = 0
 / recorddata = true
 / branch = [
-	return trial.constructValueVector;
+	return trial.constructValueVector2;
 ]
 / ontrialend = [
 	values.spline_trialCount += 1;
@@ -1178,7 +1152,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 
 <block experiment>
 / onblockbegin = [
-
+	values.starttime = script.elapsedtime;
 	values.run_trial_dum = 1;
 	values.run_trial = 0;
 	values.require_erasure = ceil(values.block_length*values.erase_prop);
