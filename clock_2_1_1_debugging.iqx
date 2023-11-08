@@ -49,6 +49,10 @@
 / file = "spread-2455.txt"
 </include>
 
+<include>
+/ file = "drift_vector-2455.txt"
+</include>
+
 // test vectors holding interpolated x / y values
 <list x_test> 
 / selectionmode = sequence
@@ -555,7 +559,7 @@
 		}
 	}
 	
-	
+	// temporary just for testing!
 	values.block_type = "erasure";
 	values.generate_new_erasure = TRUE;
 	values.trialCount = 1;	
@@ -1601,7 +1605,6 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 };
 </expressions>
 
-</expressions>
 
 <shape dot1>
 / shape = circle
