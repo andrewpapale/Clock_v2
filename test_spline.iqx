@@ -392,6 +392,9 @@
 / ontrialend = [
 	if (list.erasure_RTs.selectedcount == list.erasure_RTs.itemcount){
 		values.current_idx = 0;
+		values.current_idx = 0;
+		values.final_idx = 0;
+		values.yindex = 0;
 	}
 ]
 

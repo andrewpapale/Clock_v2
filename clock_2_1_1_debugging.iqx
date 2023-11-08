@@ -38,11 +38,15 @@
 </list>
 
 <include>
-/ file = "values-5888.txt"
+/ file = "values-2455.txt"
 </include>
 
 <include>
-/ file = "RTs-5888.txt"
+/ file = "RTs-2455.txt"
+</include>
+
+<include>
+/ file = "spread-2455.txt"
 </include>
 
 // test vectors holding interpolated x / y values
@@ -175,6 +179,8 @@
 </list>
 
 
+
+
 <values>
 / deg_index_att = NULL;
 / deg_index_era = NULL;
@@ -286,11 +292,19 @@
 / trialCount = null
 / etime = null
 / starttime = null
+
+/ item_to_insert = null
+/ to_l = null
+/ to_h = null
+/ curr_mean = null
+/ curr_max = null
+/ curr_min = null
+/ grand_mean = null
 </values>
 
 <data>
-/ columns = (values.starttime, values.etime, values.trialCount,values.master_idx,values.x_final,values.y_final, values.yindex,values.final_idx, values.erasure_RT,values.erasure_value,values.original_value)
-// columns = (values.yindex,list.erasure_RTs.nextvalue,list.curr_RTs.nextvalue,list.curr_values.nextvalue,list.y_test.item(values.yindex))
+/ columns = (values.starttime, values.etime, values.trialCount,values.master_idx,values.to_h,values.to_l, values.curr_max,values.curr_min,values.curr_mean, list.spread.nextvalue, values.x_final,values.y_final, values.yindex,values.final_idx, values.erasure_RT,values.erasure_value,values.original_value)
+// columns = (values.yindex,list.erasure_RTs.nextvalue,list.curr_RTs.nextvalue,list.curr_values.nextvalue,list.y_test.item(values.yindex), list.spread.nextvalue)
 </data>
 
 <picture animatedCircle>
@@ -628,11 +642,23 @@
 // loop over only erasure indices
 <trial constructValueVector2>
 / ontrialbegin = [
+	if (values.yindex ==0){
+		values.curr_mean = list.curr_values.mean;
+		values.curr_max = list.y_test.maximum;
+		values.curr_min = list.y_test.minimum;
+		values.to_l = list.curr_values.minimum;
+		values.to_h = list.curr_values.maximum;
+	}
 	values.erasure_index2 += 1;
 	list.curr_values.removeitem(list.erasure_RTs.nextvalue);
 	list.curr_RTs.removeitem(list.erasure_RTs.nextvalue);
 	values.yindex +=1;
-	list.curr_values.insertitem(list.y_test.item(values.yindex), list.erasure_RTs.nextvalue);
+	values.item_to_insert = ((list.y_test.item(values.yindex) - values.curr_min)/(values.curr_max - values.curr_min)) * (values.to_h - values.to_l) + values.to_l;
+	values.item_to_insert = values.item_to_insert + (values.curr_mean - list.y_test.mean);
+	if (values.item_to_insert <= 0){
+		values.item_to_insert = 1;
+	}
+	list.curr_values.insertitem(values.item_to_insert, list.erasure_RTs.nextvalue);
 	list.curr_RTs.insertitem(list.erasure_RTs.nextvalue, list.erasure_RTs.nextvalue);
 ]
 / trialduration = 0
@@ -1245,6 +1271,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 <expt main1>
 / onexptbegin = [
 	// algorithm to generate erasure blocks (from clock2_troll_world.R)
+	values.grand_mean = list.values.mean;
 	list.blocklist.trialsize = values.n_blocks;
 	list.blocklist.nextvalue;
 	values.rem0 = mod(values.n_trials / values.block_length - 0, 3);
