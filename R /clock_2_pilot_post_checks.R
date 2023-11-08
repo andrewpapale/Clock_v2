@@ -53,15 +53,18 @@ library(dplyr)
 library(stringr)
 library(psych)
 library(chemometrics)
+library(ggplot2)
+
+'%!in%' <- Negate('%in%')
 
 #path to skinner
 #change onedrive_path for local skinner location
 #onedrive_path='/Users/andypapale/Library/CloudStorage/OneDrive-UniversityofPittsburgh/Documents - DNPLskinner/skinner/'
 onedrive_path='/Users/laurataglioni/University of Pittsburgh/DNPLskinner - Documents/skinner/'
-data_path=paste0(onedrive_path,'data/prolific/clock_v2_pilot/pilot_v3_03_07-31-23/')
+data_path=paste0(onedrive_path,'data/prolific/clock_v2_pilot/pilot_v4_Mushrooms_09-22-23/')
 
 #read in prolific export file
-export_file=read.csv(paste0(data_path, 'additional/prolific_export/prolific_export_64c538de486f9bccff1386f2.csv')) #add demographic file from prolific once data is collected
+export_file=read.csv(paste0(data_path, 'additional/prolific_export/prolific_export_64fa168dab0fdf66fcddd026.csv')) #add demographic file from prolific once data is collected
 prolific_IDs=export_file$Participant.id
 
 #clean names and create variables to identify participants who were particularly slow (over 40 min) or did not get completion code to check on later
@@ -77,14 +80,17 @@ prolific_data$slow <- ifelse(prolific_data$time_taken_min>55, ">55 MIN", "ok")
 prolific_data <- prolific_data %>% select(prolific_id, code, slow, everything())
 prolific_data <- prolific_data %>% select(-c(code))
 
+#for now, just want subjects awaiting review, not those that returned the submission
+prolific_data <- prolific_data %>% filter(status == "AWAITING REVIEW")
+
 #preprocess new raw behavioral data
 subjs_raw_done=c(dir(paste0(data_path,'processed')))
-completed_prolific=export_file$Participant.id
+completed_prolific=prolific_data$prolific_id
 raw_todo_files=dir(paste0(data_path,'raw/'))
 for (b in 1:length(raw_todo_files)) {
   in_behav=read.csv(paste0(data_path,'raw/', raw_todo_files[b]), na.strings=c("","NA"))
   in_subjs=unique(in_behav$subject)
-  new_subjs=in_subjs[!(in_subjs %in% subjs_raw_done) & (in_subjs %in% completed_prolific)]
+  new_subjs=in_subjs[!(in_subjs %in% subjs_raw_done) & (in_subjs %in% completed_prolific)] #excluding participants who are not awaiting review on Prolific
   if (length(new_subjs)>0) {
     for (n in 1:length(new_subjs)) {
       subjID=new_subjs[n]
@@ -105,8 +111,13 @@ for (b in 1:length(raw_todo_files)) {
 
 #merge data for later analysis/more preproc + extract and calculate needed variables for prolific approvals and bonus payments
 processed_subjects=dir(paste0(data_path,'processed'))
+setdiff(completed_prolific, processed_subjects) #in the export file but no raw data
+setdiff(completed_prolific, processed_subjects) #have raw data but not awaiting review on Prolific
 processed_subjects=processed_subjects[!(grepl('all_processed',processed_subjects,
                                               fixed=TRUE))]
+
+
+#combine all processed subjects into a single df and select relevant variables
 rm(all_data)
 for (f in 1:length(processed_subjects)) {
   task_file=dir(paste0(data_path,'processed/',processed_subjects[f]),fixed('clock_pilot'))
@@ -122,6 +133,8 @@ for (f in 1:length(processed_subjects)) {
   }
 }
 
+length(unique(all_data$subject))
+
 #calculate "cutoff" point for fast responses and for bonuses
 #latency first
 fast_latency <- mean(all_data$latency, trim = 0.1)-(sd_trim(all_data$latency, trim = 0.1, const=F)*1.75)
@@ -135,16 +148,16 @@ describe(all_data$latency)
 median(all_data$latency, trim = 0.2)
 mean(all_data$latency)-sd(all_data$latency)
 mean(all_data$latency, trim = 0.1)
-mean(all_data$latency)
-sd(all_data$latency)
 
-#only assign bonuses to participants who met basic check of earnings greater than mean minus 2.5 standard deviations of total earnings in sample
+#set a cutoff of minimum earnings for bonus payments
 all_tails <- all_data %>% group_by(subject) %>% slice(tail(row_number(), 1))
-bonus_cutoff <- mean(all_tails$totalEarnings)-(2.5*sd(all_tails$totalEarnings))
-#for checking (also look at fast trials and slow runs in processed sub_info for these subjects)
+bonus_cutoff <- mean(all_tails$totalEarnings, na.rm=T)-(2*sd(all_tails$totalEarnings, na.rm=T))
+#take a look at total earnings
 describe(all_tails$totalEarnings)
 ggplot(all_tails, aes(x=totalEarnings)) + geom_histogram()
-sum(all_tails$totalEarnings<bonus_cutoff)
+sum(all_tails$totalEarnings<bonus_cutoff, na.rm=T)
+
+#only assign bonuses to participants who met basic check of earnings greater than mean minus 2 standard deviations of total earnings in sample
 no_bonus_subs <- all_tails %>% filter(totalEarnings<bonus_cutoff)
 
 for (f in 1:length(processed_subjects)) {
@@ -159,8 +172,8 @@ for (f in 1:length(processed_subjects)) {
   main_data$n_too_fast=sum(main_data$too_fast==1)
   main_data$totalEarnings=as.numeric(main_data$totalEarnings)
   tails <- main_data %>% tail(1) %>% select(subject, date, group, sessionid, blocknum, attentional_control, local_uncertainty, list.rt_0.currentindex, totalPoints, ntrials, totalEarnings, n_timeout, n_too_fast)
-  tails$task <- ifelse(tails$blocknum==9, "Yes", "NO: DID NOT COMPLETE 8 BLOCKS")
-  tails$bonus <- ifelse(tails$task=="Yes" & tails$totalEarnings > bonus_cutoff, max(tails$totalEarnings)/200, NA) #100 seems pretty high for bonus payments...? - change to 1000? or 500? pts already receive an hourly rate so bonus payments are typically $1-$5
+  tails$task <- ifelse(tails$blocknum==12, "Yes", "NO: DID NOT COMPLETE 8 BLOCKS")
+  tails$bonus <- ifelse(tails$task=="Yes" & tails$totalEarnings > bonus_cutoff, tails$totalEarnings, NA) #100 seems pretty high for bonus payments...? - change to 1000? or 500? pts already receive an hourly rate so bonus payments are typically $1-$5
   tails$bonus <- round(tails$bonus, digits=2)
   colnames(tails) <- c("subject", "date", "group", "sessionid", "blocks_n", "attentional_control", "local_uncertainty", "list.rt_0", "points", "ntrials", "tot_earnings", "n_timeouts", "n_fast_trials", "task", "bonus")
   if (exists("processed_sub_info")) {
@@ -176,36 +189,124 @@ prolific_data <- prolific_data %>% filter(prolific_id %in% processed_subjects)
 prolific_summary <- left_join(processed_sub_info, prolific_data, by='prolific_id')
 prolific_summary <- prolific_summary %>% select(prolific_id, date, blocks_n, tot_earnings, time_taken_min, n_timeouts, n_fast_trials, slow, task, bonus) 
 
+#combine raw data files and export for Andrew
+raw_1 <- read.csv(paste0(data_path,'raw/', raw_todo_files[1]), dec=".", na.strings=c("","NA"))
+raw_2 <- read.csv(paste0(data_path,'raw/', raw_todo_files[2]), na.strings=c("","NA"))
+raw_data_bind <- rbind(raw_1, raw_2)
+raw_3 <- read.csv(paste0(data_path,'raw/', raw_todo_files[3]), na.strings=c("","NA"))
+raw_data_all <- rbind(raw_data_bind, raw_3)
+raw_data_awaiting <- raw_data_all %>% filter(subject %in% completed_prolific)
+length(unique(raw_data_awaiting$subject)) #check N
+write.csv(raw_data_awaiting, paste0(data_path, 'raw/raw_data_all_9-24.csv'), row.names=FALSE, na="")
+
+#exclude subjects with bug
+bug_subs <- all_tails %>% filter(is.na(totalEarnings))
+bug_ids <- bug_subs$subject
+raw_data_good <- raw_data_awaiting %>% filter(subject %!in% bug_ids)
+length(unique(raw_data_good$subject)) #check N
+write.csv(raw_data_good, paste0(data_path, 'raw/raw_data_good_9-24.csv'), row.names=FALSE, na="")
+
 #check if questionnaires were completed
-pid_raw=read.csv(paste0(data_path, 'other_data/questionnaires/pid5/raw_data/papalea_prosper_pid5_survey_pid5_2308022125.csv'), row.names = NULL)
-ipip_raw=read.csv(paste0(data_path, 'other_data/questionnaires/ipip_120/raw_data/papalea_prosper_ipip_120_survey_ipip_neo_120_2307282140.csv'))
+pid_raw_files=dir(paste0(data_path,'other_data/questionnaires/pid5/raw/'))
+pid_raw=read.csv(paste0(data_path, 'other_data/questionnaires/pid5/raw/', pid_raw_files), 
+                 dec=".", na.strings=c("","NA"), row.names = NULL)
+pid_raw <- pid_raw %>% filter(subject %in% completed_prolific)
+
+ipip_raw_files=dir(paste0(data_path,'other_data/questionnaires/ipip_120/raw/'))
+ipip_raw1=read.csv(paste0(data_path, 'other_data/questionnaires/ipip_120/raw/', 
+                          ipip_raw_files[1]), 
+                   dec=".", na.strings=c("","NA"), row.names = NULL)
+ipip_raw2=read.csv(paste0(data_path, 'other_data/questionnaires/ipip_120/raw/', 
+                          ipip_raw_files[2]), 
+                   dec=".", na.strings=c("","NA"), row.names = NULL)
+ipip_raw <- rbind(ipip_raw1, ipip_raw2)
+ipip_raw <- ipip_raw %>% filter(subject %in% completed_prolific)
+
 pid_id <- pid_raw$subject
 ipip_id <- ipip_raw$subject
 
-setdiff(prolific_summary$prolific_id, pid_raw$subject)
+pid_missing_data <- pid_raw %>% filter(if_any(everything(), is.na))
+pid_missing_data_id <- pid_missing_data$subject
+ipip_missing_data <- ipip_raw %>% filter(if_any(everything(), is.na))
+ipip_missing_data_id <- ipip_missing_data$subject
 
-prolific_summary$pid <- ifelse(prolific_summary$prolific_id %in% pid_id, "Yes", "MISSING")
-prolific_summary$ipip <- ifelse(prolific_summary$prolific_id %in% ipip_id, "Yes", "MISSING")
+ipip_id[duplicated(ipip_id)]
+ipip_raw$subject[duplicated(ipip_raw$subject), ]
+
+ipip_raw[ipip_raw$id %in% n_occur$Var1[n_occur$Freq > 1],]
+
+prolific_summary$pid <- ifelse(prolific_summary$prolific_id %in% pid_id 
+                               & prolific_summary$prolific_id %!in% pid_missing_data_id, 
+                               "Yes", "MISSING")
+prolific_summary$ipip <- ifelse(prolific_summary$prolific_id %in% ipip_id
+                                & prolific_summary$prolific_id %!in% ipip_missing_data_id, 
+                                "Yes", "MISSING")
+x <- prolific_summary %>% select(prolific_id, bonus, pid, ipip)
+y <- x %>% filter(pid=="MISSING" | ipip == "MISSING")
+
+pdf_questionnaires = c("6074b929f753216d88c77e88", "5a188836087f2e0001eaf744", "5adef850eb60400001539109", "5d5d431608a4b10016285091", "63584536ee0bf772659d84d4", "6272f2124c61474d78e12c09", "5eb080ccaf87d11143472477")
+##remove these from missing list, then use missing IDs to exclude bonuses
+
 prolific_summary$tot_earnings <- as.numeric(prolific_summary$tot_earnings)
-prolific_summary$earnings_compared <- ifelse(prolific_summary$tot_earnings<(mean(prolific_summary$tot_earnings) - sd(prolific_summary$tot_earnings)), paste0("less than tot_earnings mean - 2 SD (mean =", mean(prolific_summary$tot_earnings), "1 SD = ", sd(prolific_summary$tot_earnings), ")"), "> mean - 2sd")
+prolific_summary$earnings_compared <- ifelse(prolific_summary$tot_earnings<(mean(prolific_summary$tot_earnings) - (2*sd(prolific_summary$tot_earnings))), paste0("less than tot_earnings mean - 2 SD (mean =", mean(prolific_summary$tot_earnings), "1 SD = ", sd(prolific_summary$tot_earnings), ")"), "> mean - 2sd")
 
-pid_scored=read.csv(paste0(data_path, 'other_data/questionnaires/pid5/scored/papalea_prosper_pid5_summary_2307282145.csv'))
-ipip_scored=read.csv(paste0(data_path, 'other_data/questionnaires/ipip_120/scored/papalea_prosper_ipip_120_summary_2307282140.csv'))
+pid_scored=read.csv(paste0(data_path, 'other_data/questionnaires/pid5/scored/papalea_prosper_pid5_summary_2308151527.csv'))
+ipip_scored=read.csv(paste0(data_path, 'other_data/questionnaires/ipip_120/scored/papalea_prosper_ipip_120_summary_2308151530.csv'))
+
+setdiff(prolific_summary$prolific_id, pid_scored$subject)
+setdiff(prolific_summary$prolific_id, ipip_scored$subject)
+
+setdiff(pid_scored$subject, prolific_summary$prolific_id)
+setdiff(ipip_scored$subject, prolific_summary$prolific_id)
 
 pid_domains <- pid_scored %>% select(subjectid, pid5_neg_aff, pid5_detach, pid5_antag, pid5_disinhib, pid5_psycho)
 ipip_domains <- ipip_scored %>% select(subjectid, ipipneo120_a, ipipneo120_c, ipipneo120_e, ipipneo120_o, ipipneo120_n)
 domains_combined <- full_join(pid_domains, ipip_domains, by="subjectid") %>% select(subjectid, ipipneo120_a, pid5_antag, ipipneo120_c, pid5_disinhib, ipipneo120_e, pid5_detach, ipipneo120_o, pid5_psycho, ipipneo120_n, pid5_neg_aff)
 
 prolific_summary$approve <- ifelse(prolific_summary$task=="Yes", "Yes", "No")
-prolific_summary$bonus <- ifelse(prolific_summary$pid=="MISSING" & prolific_summary$ipip=="MISSING", NA, prolific_summary$bonus)
+prolific_summary[prolific_summary$prolific_id=='62dc597fd77d6332766c29a4', "pid"] <- "Yes"
+prolific_summary[prolific_summary$prolific_id=='6074b929f753216d88c77e88', "pid"] <- "Yes"
+prolific_summary[prolific_summary$prolific_id=='5a188836087f2e0001eaf744', "pid"] <- "Yes"
+prolific_summary[prolific_summary$prolific_id=='5adef850eb60400001539109', "pid"] <- "Yes"
+prolific_summary[prolific_summary$prolific_id=='5d5d431608a4b10016285091', "pid"] <- "Yes"
+prolific_summary[prolific_summary$prolific_id=='63584536ee0bf772659d84d4', "pid"] <- "Yes"
+prolific_summary[prolific_summary$prolific_id=='6272f2124c61474d78e12c09', "pid"] <- "Yes"
+prolific_summary[prolific_summary$prolific_id=='5eb080ccaf87d11143472477', "pid"] <- "Yes"
 
-exclude_bonus <- c("63627698dc63a02b1783c8e9")
+prolific_summary[prolific_summary$prolific_id=='62dc597fd77d6332766c29a4', "ipip"] <- "Yes"
+prolific_summary[prolific_summary$prolific_id=='6074b929f753216d88c77e88', "ipip"] <- "Yes"
+prolific_summary[prolific_summary$prolific_id=='5a188836087f2e0001eaf744', "ipip"] <- "Yes"
+prolific_summary[prolific_summary$prolific_id=='5adef850eb60400001539109', "ipip"] <- "Yes"
+prolific_summary[prolific_summary$prolific_id=='5d5d431608a4b10016285091', "ipip"] <- "Yes"
+prolific_summary[prolific_summary$prolific_id=='63584536ee0bf772659d84d4', "ipip"] <- "Yes"
+prolific_summary[prolific_summary$prolific_id=='6272f2124c61474d78e12c09', "ipip"] <- "Yes"
+prolific_summary[prolific_summary$prolific_id=='5eb080ccaf87d11143472477', "ipip"] <- "Yes"
+
+missing_quest <- prolific_summary %>% filter(pid == "MISSING" | ipip == "MISSING")
+
+prolific_summary$bonus <- ifelse(prolific_summary$pid=="MISSING" | prolific_summary$ipip=="MISSING", NA, prolific_summary$bonus)
+
+prolific_summary[prolific_summary$prolific_id=='5bca67940f10750001d75f9f', "bonus"] <- "4.48"
+prolific_summary[prolific_summary$prolific_id=='5ff797c6f67a7d494f65298e', "bonus"] <- "5.76"
+prolific_summary[prolific_summary$prolific_id=='6018716ed4f78810e4763ecb', "bonus"] <- "6.42"
+prolific_summary[prolific_summary$prolific_id=='6088c08b5db0d7af3daf4b69', "bonus"] <- "6.51"
+prolific_summary[prolific_summary$prolific_id=='60fc2ec58ad0da367daee3c1', "bonus"] <- "4.75"
+prolific_summary[prolific_summary$prolific_id=='6113a1bd2592fc45dff695a2', "bonus"] <- "6.10"
+prolific_summary[prolific_summary$prolific_id=='6163d3ea0d13c617bb46c99b', "bonus"] <- "5.92"
+prolific_summary[prolific_summary$prolific_id=='62e1e3f92efe886934aebdc4', "bonus"] <- "4.71"
+prolific_summary[prolific_summary$prolific_id=='6361aa16033183864bbffb72', "bonus"] <- "2.69"
+prolific_summary[prolific_summary$prolific_id=='650b695bf3b3d34f9c461926', "bonus"] <- "6.53"
+
+exclude_bonus <- c("")
 
 #upload to sharepoint
 write.csv(all_data,file=paste0(data_path,'processed/all_processed_data_',
                                Sys.Date(),'.csv'), row.names = F)
 write.csv(prolific_summary,file=paste0(data_path,'additional/processed_subject_info_',
                                 Sys.Date(),'.csv'), row.names = F)
+prolific_summary$bonus <- as.numeric(prolific_summary$bonus)
+sum(prolific_summary$bonus, na.rm=T)
+describe(prolific_summary$bonus)
 
 #get bonus formatting for bulk payment on prolific
 approve_subjects <- prolific_summary %>% filter(approve=="Yes")
@@ -219,7 +320,13 @@ write.table(bonuses, file = paste0(data_path, 'admin/bonuses.txt'), sep = "\t", 
 write.table(approvals, file = paste0(data_path, 'admin/approvals.txt'), sep = ", ", row.names = F, col.names = F, quote = FALSE)
 
 
-consent <- read.csv(paste0(data_path, 'other_data/consent/papalea_prosper_instruct_consent_raw_2307032055.csv'))
+consent <- read.csv(paste0(data_path, 'other_data/consent/papalea_prosper_instruct_consent_raw_2308031728.csv'))
 consent[duplicated(consent$subject), ]
 consent$subject[duplicated(consent$subject) | duplicated(consent$subject, fromLast=TRUE)]
 n_occur[n_occur$Freq > 1,]
+setdiff(consent$subject, prolific_summary$prolific_id)
+
+
+earn <- all_tails %>% select(subject, totalEarnings)
+no_earn <- all_tails %>% filter(is.na(totalEarnings)| totalEarnings==0)
+no_earn_id <- no_earn$subject

@@ -1,0 +1,18 @@
+﻿Created June 2023
+IRB approval date: 2/24/2023
+
+<batch all>
+/ groups = (1 of 1)
+/ groupassignment = random
+/ file = "instruct_consent.iqx"
+/ file = "eeg_clock_v2_0_4.iqx"
+/ file = "IPIP_120_v2.iqx"
+/ file = "pid5_v2.iqx"
+</batch>
+First file name: "instruct_consent.iqx" (murshroom) OR "instruct_consent_trolls.iqx" (trolls)
+
+<summarydata>
+/ columns = (script.subjectid, values.completed, script.startdate, 
+script.starttime, script.elapsedtime)
+/ separatefiles = true
+</summarydata>

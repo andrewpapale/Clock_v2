@@ -1,0 +1,1384 @@
+﻿05/05/2023, Laura Taglioni
+IPIP-NEO 120
+
+Page 1 - Question # 1-30
+<radiobuttons ipipneo120_1_n_n1_s>
+/ caption = "I worry about things."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_2_e_e1_s>
+/ caption = "I make friends easily."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_3_o_o1_s>
+/ caption = "I have a vivid imagination."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_4_a_a1_s>
+/ caption = "I trust others."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_5_c_c1_s>
+/ caption = "I complete tasks successfully."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_6_n_n2_s>
+/ caption = "I get angry easily."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_7_e_e2_s>
+/ caption = "I love large parties."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_8_o_o2_s>
+/ caption = "8. I see beauty in things that others might not notice."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_9_a_a2_r>
+/ caption = "I use flattery to get ahead."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_10_c_c2_s>
+/ caption = "I like order."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_11_n_n3_s>
+/ caption = "I often feel blue."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_12_e_e3_s>
+/ caption = "I take charge."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_13_o_o3_s>
+/ caption = "I experience my emotions intensely."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_14_a_a3_s>
+/ caption = "I make people feel welcome."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_15_c_c3_s>
+/ caption = "I keep my promises."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_16_n_n4_s>
+/ caption = "I find it difficult to approach others."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_17_e_e4_s>
+/ caption = "I am always busy."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_18_o_o4_r>
+/ caption = "I prefer to stick with things that i know."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_19_a_a4_r>
+/ caption = "I love a good fight."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_20_c_c4_s>
+/ caption = "I work hard."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_21_n_n5_s>
+/ caption = "I often eat too much."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_22_e_e5_s>
+/ caption = "I love excitement."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_23_o_o5_r>
+/ caption = "I am not interested in abstract ideas."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_24_a_a5_r>
+/ caption = "I believe that i am better than others."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_25_c_c5_s>
+/ caption = "I start tasks right away."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_26_n_n6_s>
+/ caption = "I feel that I'm unable to deal with things."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_27_e_e6_s>
+/ caption = "I radiate joy."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_28_o_o6_s>
+/ caption = "I tend to vote for liberal political candidates."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_29_a_a6_s>
+/ caption = "I sympathize with the homeless."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_30_c_c6_r>
+/ caption = "I jump into things without thinking."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+Page 2 - Question # 31-60
+<radiobuttons ipipneo120_31_n_n1_s>
+/ caption = "I fear for the worst."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_32_e_e1_s>
+/ caption = "I warm up quickly to others."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_33_o_o1_s>
+/ caption = "I enjoy wild flights of fantasy."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_34_a_a1_s>
+/ caption = "I believe that others have good intentions."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_35_c_c1_s>
+/ caption = "I excel in what i do."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_36_n_n2_s>
+/ caption = "I get irritated easily."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_37_e_e2_s>
+/ caption = "I talk to a lot of different people at parties."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_38_o_o2_r>
+/ caption = "I do not like art."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_39_a_a2_r>
+/ caption = "I know how to get around the rules."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_40_c_c2_s>
+/ caption = "I like to tidy up."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_41_n_n3_s>
+/ caption = "I dislike myself."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_42_e_e3_s>
+/ caption = "I try to lead others."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_43_o_o3_r>
+/ caption = "I seldom get emotional."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_44_a_a3_s>
+/ caption = "I love to help others."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_45_c_c3_s>
+/ caption = "I tell the truth."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_46_n_n4_s>
+/ caption = "I am easily intimidated."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_47_e_e4_s>
+/ caption = "I am always on the go."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_48_o_o4_r>
+/ caption = "I dislike changes."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_49_a_a4_r>
+/ caption = "I yell at people."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_50_c_c4_s>
+/ caption = "I do more than what's expected of me."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_51_n_n5_s>
+/ caption = "I go on binges."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_52_e_e5_s>
+/ caption = "I seek adventure."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_53_o_o5_r>
+/ caption = "I avoid philosophical discussions."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_54_a_a5_r>
+/ caption = "I think highly of myself."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_55_c_c5_r>
+/ caption = "I find it difficult to get down to work."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_56_n_n6_r>
+/ caption = "I remain calm under pressure."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_57_e_e6_s>
+/ caption = "I have a lot of fun."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_58_o_o6_r>
+/ caption = "I believe in one true religion."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_59_a_a6_s>
+/ caption = "I feel sympathy for those who are worse off than myself."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_60_c_c6_r>
+/ caption = "I make rash decisions."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+Page 3 - Question # 61-90
+<radiobuttons ipipneo120_61_n_n1_s>
+/ caption = "I am afraid of many things."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_62_e_e1_s>
+/ caption = "I feel comfortable around people."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_63_o_o1_s>
+/ caption = "I love to daydream."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_64_a_a1_s>
+/ caption = "I trust what people say."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_65_c_c1_s>
+/ caption = "I handle tasks smoothly."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_66_n_n2_s>
+/ caption = "I lose my temper."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_67_e_e2_r>
+/ caption = "I don't like crowded events. "
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_68_o_o2_r>
+/ caption = "I do not like poetry."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_69_a_a2_r>
+/ caption = "I cheat to get ahead."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_70_c_c2_r>
+/ caption = "I leave a mess in my room."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_71_n_n3_s>
+/ caption = "I am often down in the dumps."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_72_e_e3_s>
+/ caption = "I take control of things."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_73_o_o3_r>
+/ caption = "I am not easily affected by my emotions."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_74_a_a3_s>
+/ caption = "I am concerned about others."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_75_c_c3_r>
+/ caption = "I break my promises."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_76_n_n4_r>
+/ caption = "I am not embarrassed easily."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_77_e_e4_s>
+/ caption = "I do a lot in my spare time."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_78_o_o4_r>
+/ caption = "I don't like the idea of change."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_79_a_a4_r>
+/ caption = "I insult people."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_80_c_c4_s>
+/ caption = "I set high standards for myself and others."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_81_n_n5_r>
+/ caption = "I rarely overindulge."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_82_e_e5_s>
+/ caption = "I love action."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_83_o_o5_r>
+/ caption = "I have difficulty understanding abstract ideas."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_84_a_a5_r>
+/ caption = "I have a high opinion of myself."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_85_c_c5_r>
+/ caption = "I need a push to get started."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_86_n_n6_r>
+/ caption = "I know how to cope."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_87_e_e6_s>
+/ caption = "I love life."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_88_o_o6_r>
+/ caption = "I tend to vote for conservative political candidates."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_89_a_a6_s>
+/ caption = "I suffer from others' sorrows."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_90_c_c6_r>
+/ caption = "I rush into things."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+Page 4 - Question # 91-120
+<radiobuttons ipipneo120_91_n_n1_s>
+/ caption = "I get stressed out easily."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_92_e_e1_s>
+/ caption = "I act comfortably with others."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_93_o_o1_s>
+/ caption = "I like to get lost in thought."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_94_a_a1_r>
+/ caption = "I distrust people."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_95_c_c1_s>
+/ caption = "I know how to get things done."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_96_n_n2_r>
+/ caption = "I rarely get irritated."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_97_e_e2_r>
+/ caption = "I avoid crowds."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_98_o_o2_r>
+/ caption = "I do not enjoy going to art museums."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_99_a_a2_r>
+/ caption = "I take advantage of others."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_100_c_c2_r>
+/ caption = "I leave my belongings around."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_101_n_n3_s>
+/ caption = "I have a low opinion of myself."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_102_e_e3_r>
+/ caption = "I wait for others to lead the way."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_103_o_o3_r>
+/ caption = "I experience very few emotional highs and lows."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_104_a_a3_r>
+/ caption = "I turn my back on others."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_105_c_c3_r>
+/ caption = "I get others to do my duties."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_106_n_n4_r>
+/ caption = "I am able to stand up for myself."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_107_e_e4_s>
+/ caption = "I can manage many things at the same time."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_108_o_o4_r>
+/ caption = "I am attached to conventional ways."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_109_a_a4_r>
+/ caption = "I get back at others."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_110_c_c4_r>
+/ caption = "I am not highly motivated to succeed."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_111_n_n5_r>
+/ caption = "I am able to control my cravings."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_112_e_e5_s>
+/ caption = "I enjoy being reckless."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_113_o_o5_r>
+/ caption = "I am not interested in theoretical discussions."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_114_a_a5_r>
+/ caption = "I make myself the center of attention."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_115_c_c5_r>
+/ caption = "I have difficulty starting tasks."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_116_n_n6_r>
+/ caption = "I am calm even in tense situations."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_117_e_e6_s>
+/ caption = "I laugh aloud."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("1", "2", "3", "4", "5")
+</radiobuttons>
+
+<radiobuttons ipipneo120_118_o_o6_r>
+/ caption = "I like to stand during the national anthem."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_119_a_a6_r>
+/ caption = "I am not interested in other people's problems."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+<radiobuttons ipipneo120_120_c_c6_r>
+/ caption = "I act without thinking."
+/ options = ("Very Inaccurate",
+"Moderately Inaccurate",
+"Neither Accurate Nor Inaccurate",
+"Moderately Accurate", 
+"Very Accurate")
+/ optionvalues = ("5", "4", "3", "2", "1")
+</radiobuttons>
+
+
+<survey IPIP_NEO_120>
+/ pages = [1=start;
+2=q1_30;
+3=q31_60;
+4=q61_90;
+5=q91_120;
+6=end]
+/ responsefontstyle = ("Arial", 18, false, false, false, false, 5, 0)
+/ itemfontstyle = ("Arial", 18, false, false, false, false, 5, 0)
+/ itemspacing = 10%
+/ showpagenumbers = false
+/ finishlabel = "Next Survey"
+/ navigationbuttonfontstyle = ("Arial", 16, false, false, false, false, 5, 0)
+/ navigationbuttonsize = (20, 10)
+</survey>
+
+Caption pages for instrucions at the start and thank you message at the end
+<caption s0>
+/ caption = "Instructions: "
+/ fontstyle = ("Arial", 18, false, false, true, false, 5, 0)
+/ position = (14%, 15%)
+</caption>
+
+<caption s1>
+/ caption = "The following pages contain phrases describing people's behaviors. 
+Please use the rating scale next to each phrase to describe 
+how accurately each statement describes you."
+/ fontstyle = ("Arial", 18, false, false, false, false, 5, 0)
+/ position = (14%, 20%)
+</caption>
+
+<caption s2>
+/ caption = "Describe yourself as you generally are now, not as you wish to be in the future. "
+/ fontstyle = ("Arial", 18, true, false, false, false, 5, 0)
+/ position = (14%, 30%)
+</caption>
+
+<caption s3>
+/ caption = "Describe yourself as you honestly see yourself, in relation to other 
+people you know of the same sex as you are, and roughly your same age. 
+So that you can describe yourself in an honest manner, your responses 
+will be kept in absolute confidence. "
+/ fontstyle = ("Arial", 18, false, false, false, false, 5, 0)
+/ position = (14%, 40%)
+</caption>
+
+<caption s4>
+/ caption = "Please read each statement carefully, and then click the circle  
+that corresponds to the accuracy of the statement."
+/ fontstyle = ("Arial", 18, true, false, false, false, 5, 0)
+/ position = (14%, 60%)
+</caption>
+
+<caption e>
+/ caption = "Thank you for completing this survey!"
+/ position = (20%, 45%)
+</caption>
+
+
+<surveypage start>
+/ questions = [1=s0; 2=s1; 3=s2; 4=s3; 5=s4; ]
+</surveypage>
+
+<surveypage q1_30>
+/ questions = [1=ipipneo120_1_n_n1_s; 2=ipipneo120_2_e_e1_s; 3=ipipneo120_3_o_o1_s; 
+4=ipipneo120_4_a_a1_s; 5=ipipneo120_5_c_c1_s; 6=ipipneo120_6_n_n2_s; 
+7=ipipneo120_7_e_e2_s; 8=ipipneo120_8_o_o2_s; 9=ipipneo120_9_a_a2_r; 
+10=ipipneo120_10_c_c2_s; 11=ipipneo120_11_n_n3_s; 12=ipipneo120_12_e_e3_s; 
+13=ipipneo120_13_o_o3_s; 14=ipipneo120_14_a_a3_s; 15=ipipneo120_15_c_c3_s; 
+16=ipipneo120_16_n_n4_s; 17=ipipneo120_17_e_e4_s; 18=ipipneo120_18_o_o4_r; 
+19=ipipneo120_19_a_a4_r; 20=ipipneo120_20_c_c4_s; 21=ipipneo120_21_n_n5_s; 
+22=ipipneo120_22_e_e5_s; 23=ipipneo120_23_o_o5_r; 24=ipipneo120_24_a_a5_r; 
+25=ipipneo120_25_c_c5_s; 26=ipipneo120_26_n_n6_s; 27=ipipneo120_27_e_e6_s; 
+28=ipipneo120_28_o_o6_s; 29=ipipneo120_29_a_a6_s; 30=ipipneo120_30_c_c6_r; ]
+</surveypage>
+
+<surveypage q31_60>
+/ questions = [
+1=ipipneo120_31_n_n1_s; 2=ipipneo120_32_e_e1_s; 3=ipipneo120_33_o_o1_s; 
+4=ipipneo120_34_a_a1_s; 5=ipipneo120_35_c_c1_s; 6=ipipneo120_36_n_n2_s; 
+7=ipipneo120_37_e_e2_s; 8=ipipneo120_38_o_o2_r; 9=ipipneo120_39_a_a2_r; 
+10=ipipneo120_40_c_c2_s; 11=ipipneo120_41_n_n3_s; 12=ipipneo120_42_e_e3_s; 
+13=ipipneo120_43_o_o3_r; 14=ipipneo120_44_a_a3_s; 15=ipipneo120_45_c_c3_s; 
+16=ipipneo120_46_n_n4_s; 17=ipipneo120_47_e_e4_s; 18=ipipneo120_48_o_o4_r; 
+19=ipipneo120_49_a_a4_r; 20=ipipneo120_50_c_c4_s; 21=ipipneo120_51_n_n5_s; 
+22=ipipneo120_52_e_e5_s; 23=ipipneo120_53_o_o5_r; 24=ipipneo120_54_a_a5_r; 
+25=ipipneo120_55_c_c5_r; 26=ipipneo120_56_n_n6_r; 27=ipipneo120_57_e_e6_s; 
+28=ipipneo120_58_o_o6_r; 29=ipipneo120_59_a_a6_s; 30=ipipneo120_60_c_c6_r; ]
+</surveypage>
+
+<surveypage q61_90>
+/ questions = [
+1=ipipneo120_61_n_n1_s; 2=ipipneo120_62_e_e1_s; 3=ipipneo120_63_o_o1_s; 
+4=ipipneo120_64_a_a1_s; 5=ipipneo120_65_c_c1_s; 6=ipipneo120_66_n_n2_s; 
+7=ipipneo120_67_e_e2_r; 8=ipipneo120_68_o_o2_r; 9=ipipneo120_69_a_a2_r; 
+10=ipipneo120_70_c_c2_r; 11=ipipneo120_71_n_n3_s; 12=ipipneo120_72_e_e3_s; 
+13=ipipneo120_73_o_o3_r; 14=ipipneo120_74_a_a3_s; 15=ipipneo120_75_c_c3_r; 
+16=ipipneo120_76_n_n4_r; 17=ipipneo120_77_e_e4_s; 18=ipipneo120_78_o_o4_r; 
+19=ipipneo120_79_a_a4_r; 20=ipipneo120_80_c_c4_s; 21=ipipneo120_81_n_n5_r; 
+22=ipipneo120_82_e_e5_s; 23=ipipneo120_83_o_o5_r; 24=ipipneo120_84_a_a5_r; 
+25=ipipneo120_85_c_c5_r; 26=ipipneo120_86_n_n6_r; 27=ipipneo120_87_e_e6_s; 
+28=ipipneo120_88_o_o6_r; 29=ipipneo120_89_a_a6_s; 30=ipipneo120_90_c_c6_r; ]
+</surveypage>
+
+<surveypage q91_120>
+/ questions = [
+1=ipipneo120_91_n_n1_s; 2=ipipneo120_92_e_e1_s; 3=ipipneo120_93_o_o1_s; 
+4=ipipneo120_94_a_a1_r; 5=ipipneo120_95_c_c1_s; 6=ipipneo120_96_n_n2_r; 
+7=ipipneo120_97_e_e2_r; 8=ipipneo120_98_o_o2_r; 9=ipipneo120_99_a_a2_r; 
+10=ipipneo120_100_c_c2_r; 11=ipipneo120_101_n_n3_s; 12=ipipneo120_102_e_e3_r; 
+13=ipipneo120_103_o_o3_r; 14=ipipneo120_104_a_a3_r; 15=ipipneo120_105_c_c3_r; 
+16=ipipneo120_106_n_n4_r; 17=ipipneo120_107_e_e4_s; 18=ipipneo120_108_o_o4_r; 
+19=ipipneo120_109_a_a4_r; 20=ipipneo120_110_c_c4_r; 21=ipipneo120_111_n_n5_r; 
+22=ipipneo120_112_e_e5_s; 23=ipipneo120_113_o_o5_r; 24=ipipneo120_114_a_a5_r; 
+25=ipipneo120_115_c_c5_r; 26=ipipneo120_116_n_n6_r; 27=ipipneo120_117_e_e6_s; 
+28=ipipneo120_118_o_o6_r; 29=ipipneo120_119_a_a6_r; 30=ipipneo120_120_c_c6_r; ]
+</surveypage>
+
+<surveypage end>
+/ questions = [1=e]
+</surveypage>
+
+<expressions>
+/ ipipneo120_a1 = radiobuttons.ipipneo120_4_a_a1_s.response + radiobuttons.ipipneo120_34_a_a1_s.response + radiobuttons.ipipneo120_64_a_a1_s.response + radiobuttons.ipipneo120_94_a_a1_r.response
+/ ipipneo120_a2 = radiobuttons.ipipneo120_9_a_a2_r.response + radiobuttons.ipipneo120_39_a_a2_r.response + radiobuttons.ipipneo120_69_a_a2_r.response + radiobuttons.ipipneo120_99_a_a2_r.response
+/ ipipneo120_a3 = radiobuttons.ipipneo120_14_a_a3_s.response + radiobuttons.ipipneo120_44_a_a3_s.response + radiobuttons.ipipneo120_74_a_a3_s.response + radiobuttons.ipipneo120_104_a_a3_r.response
+/ ipipneo120_a4 = radiobuttons.ipipneo120_19_a_a4_r.response + radiobuttons.ipipneo120_49_a_a4_r.response + radiobuttons.ipipneo120_79_a_a4_r.response + radiobuttons.ipipneo120_109_a_a4_r.response
+/ ipipneo120_a5 = radiobuttons.ipipneo120_24_a_a5_r.response + radiobuttons.ipipneo120_54_a_a5_r.response + radiobuttons.ipipneo120_84_a_a5_r.response + radiobuttons.ipipneo120_114_a_a5_r.response
+/ ipipneo120_a6 = radiobuttons.ipipneo120_29_a_a6_s.response + radiobuttons.ipipneo120_59_a_a6_s.response + radiobuttons.ipipneo120_89_a_a6_s.response + radiobuttons.ipipneo120_119_a_a6_r.response
+/ ipipneo120_c1 = radiobuttons.ipipneo120_5_c_c1_s.response + radiobuttons.ipipneo120_35_c_c1_s.response + radiobuttons.ipipneo120_65_c_c1_s.response + radiobuttons.ipipneo120_95_c_c1_s.response
+/ ipipneo120_c2 = radiobuttons.ipipneo120_10_c_c2_s.response + radiobuttons.ipipneo120_40_c_c2_s.response + radiobuttons.ipipneo120_70_c_c2_r.response + radiobuttons.ipipneo120_100_c_c2_r.response
+/ ipipneo120_c3 = radiobuttons.ipipneo120_15_c_c3_s.response + radiobuttons.ipipneo120_45_c_c3_s.response + radiobuttons.ipipneo120_75_c_c3_r.response + radiobuttons.ipipneo120_105_c_c3_r.response
+/ ipipneo120_c4 = radiobuttons.ipipneo120_20_c_c4_s.response + radiobuttons.ipipneo120_50_c_c4_s.response + radiobuttons.ipipneo120_80_c_c4_s.response + radiobuttons.ipipneo120_110_c_c4_r.response
+/ ipipneo120_c5 = radiobuttons.ipipneo120_25_c_c5_s.response + radiobuttons.ipipneo120_55_c_c5_r.response + radiobuttons.ipipneo120_85_c_c5_r.response + radiobuttons.ipipneo120_115_c_c5_r.response
+/ ipipneo120_c6 = radiobuttons.ipipneo120_30_c_c6_r.response + radiobuttons.ipipneo120_60_c_c6_r.response + radiobuttons.ipipneo120_90_c_c6_r.response + radiobuttons.ipipneo120_120_c_c6_r.response
+/ ipipneo120_e1 = radiobuttons.ipipneo120_2_e_e1_s.response + radiobuttons.ipipneo120_32_e_e1_s.response + radiobuttons.ipipneo120_62_e_e1_s.response + radiobuttons.ipipneo120_92_e_e1_s.response
+/ ipipneo120_e2 = radiobuttons.ipipneo120_7_e_e2_s.response + radiobuttons.ipipneo120_37_e_e2_s.response + radiobuttons.ipipneo120_67_e_e2_r.response + radiobuttons.ipipneo120_97_e_e2_r.response
+/ ipipneo120_e3 = radiobuttons.ipipneo120_12_e_e3_s.response + radiobuttons.ipipneo120_42_e_e3_s.response + radiobuttons.ipipneo120_72_e_e3_s.response + radiobuttons.ipipneo120_102_e_e3_r.response
+/ ipipneo120_e4 = radiobuttons.ipipneo120_17_e_e4_s.response + radiobuttons.ipipneo120_47_e_e4_s.response + radiobuttons.ipipneo120_77_e_e4_s.response + radiobuttons.ipipneo120_107_e_e4_s.response
+/ ipipneo120_e5 = radiobuttons.ipipneo120_22_e_e5_s.response + radiobuttons.ipipneo120_52_e_e5_s.response + radiobuttons.ipipneo120_82_e_e5_s.response + radiobuttons.ipipneo120_112_e_e5_s.response
+/ ipipneo120_e6 = radiobuttons.ipipneo120_27_e_e6_s.response + radiobuttons.ipipneo120_57_e_e6_s.response + radiobuttons.ipipneo120_87_e_e6_s.response + radiobuttons.ipipneo120_117_e_e6_s.response
+/ ipipneo120_o1 = radiobuttons.ipipneo120_3_o_o1_s.response + radiobuttons.ipipneo120_33_o_o1_s.response + radiobuttons.ipipneo120_63_o_o1_s.response + radiobuttons.ipipneo120_93_o_o1_s.response
+/ ipipneo120_o2 = radiobuttons.ipipneo120_8_o_o2_s.response + radiobuttons.ipipneo120_38_o_o2_r.response + radiobuttons.ipipneo120_68_o_o2_r.response + radiobuttons.ipipneo120_98_o_o2_r.response
+/ ipipneo120_o3 = radiobuttons.ipipneo120_13_o_o3_s.response + radiobuttons.ipipneo120_43_o_o3_r.response + radiobuttons.ipipneo120_73_o_o3_r.response + radiobuttons.ipipneo120_103_o_o3_r.response
+/ ipipneo120_o4 = radiobuttons.ipipneo120_18_o_o4_r.response + radiobuttons.ipipneo120_48_o_o4_r.response + radiobuttons.ipipneo120_78_o_o4_r.response + radiobuttons.ipipneo120_108_o_o4_r.response
+/ ipipneo120_o5 = radiobuttons.ipipneo120_23_o_o5_r.response + radiobuttons.ipipneo120_53_o_o5_r.response + radiobuttons.ipipneo120_83_o_o5_r.response + radiobuttons.ipipneo120_113_o_o5_r.response
+/ ipipneo120_o6 = radiobuttons.ipipneo120_28_o_o6_s.response + radiobuttons.ipipneo120_58_o_o6_r.response + radiobuttons.ipipneo120_88_o_o6_r.response + radiobuttons.ipipneo120_118_o_o6_r.response
+/ ipipneo120_n1 = radiobuttons.ipipneo120_1_n_n1_s.response + radiobuttons.ipipneo120_31_n_n1_s.response + radiobuttons.ipipneo120_61_n_n1_s.response + radiobuttons.ipipneo120_91_n_n1_s.response
+/ ipipneo120_n2 = radiobuttons.ipipneo120_6_n_n2_s.response + radiobuttons.ipipneo120_36_n_n2_s.response + radiobuttons.ipipneo120_66_n_n2_s.response + radiobuttons.ipipneo120_96_n_n2_r.response
+/ ipipneo120_n3 = radiobuttons.ipipneo120_11_n_n3_s.response + radiobuttons.ipipneo120_41_n_n3_s.response + radiobuttons.ipipneo120_71_n_n3_s.response + radiobuttons.ipipneo120_101_n_n3_s.response
+/ ipipneo120_n4 = radiobuttons.ipipneo120_16_n_n4_s.response + radiobuttons.ipipneo120_46_n_n4_s.response + radiobuttons.ipipneo120_76_n_n4_r.response + radiobuttons.ipipneo120_106_n_n4_r.response
+/ ipipneo120_n5 = radiobuttons.ipipneo120_21_n_n5_s.response + radiobuttons.ipipneo120_51_n_n5_s.response + radiobuttons.ipipneo120_81_n_n5_r.response + radiobuttons.ipipneo120_111_n_n5_r.response
+/ ipipneo120_n6 = radiobuttons.ipipneo120_26_n_n6_s.response + radiobuttons.ipipneo120_56_n_n6_r.response + radiobuttons.ipipneo120_86_n_n6_r.response + radiobuttons.ipipneo120_116_n_n6_r.response
+/ ipipneo120_a = radiobuttons.ipipneo120_4_a_a1_s.response + radiobuttons.ipipneo120_9_a_a2_r.response + radiobuttons.ipipneo120_14_a_a3_s.response + radiobuttons.ipipneo120_19_a_a4_r.response + radiobuttons.ipipneo120_24_a_a5_r.response + radiobuttons.ipipneo120_29_a_a6_s.response + radiobuttons.ipipneo120_34_a_a1_s.response + radiobuttons.ipipneo120_39_a_a2_r.response + radiobuttons.ipipneo120_44_a_a3_s.response + radiobuttons.ipipneo120_49_a_a4_r.response + radiobuttons.ipipneo120_54_a_a5_r.response + radiobuttons.ipipneo120_59_a_a6_s.response + radiobuttons.ipipneo120_64_a_a1_s.response + radiobuttons.ipipneo120_69_a_a2_r.response + radiobuttons.ipipneo120_74_a_a3_s.response + radiobuttons.ipipneo120_79_a_a4_r.response + radiobuttons.ipipneo120_84_a_a5_r.response + radiobuttons.ipipneo120_89_a_a6_s.response + radiobuttons.ipipneo120_94_a_a1_r.response + radiobuttons.ipipneo120_99_a_a2_r.response + radiobuttons.ipipneo120_104_a_a3_r.response + radiobuttons.ipipneo120_109_a_a4_r.response + radiobuttons.ipipneo120_114_a_a5_r.response + radiobuttons.ipipneo120_119_a_a6_r.response
+/ ipipneo120_c = radiobuttons.ipipneo120_5_c_c1_s.response + radiobuttons.ipipneo120_10_c_c2_s.response + radiobuttons.ipipneo120_15_c_c3_s.response + radiobuttons.ipipneo120_20_c_c4_s.response + radiobuttons.ipipneo120_25_c_c5_s.response + radiobuttons.ipipneo120_30_c_c6_r.response + radiobuttons.ipipneo120_35_c_c1_s.response + radiobuttons.ipipneo120_40_c_c2_s.response + radiobuttons.ipipneo120_45_c_c3_s.response + radiobuttons.ipipneo120_50_c_c4_s.response + radiobuttons.ipipneo120_55_c_c5_r.response + radiobuttons.ipipneo120_60_c_c6_r.response + radiobuttons.ipipneo120_65_c_c1_s.response + radiobuttons.ipipneo120_70_c_c2_r.response + radiobuttons.ipipneo120_75_c_c3_r.response + radiobuttons.ipipneo120_80_c_c4_s.response + radiobuttons.ipipneo120_85_c_c5_r.response + radiobuttons.ipipneo120_90_c_c6_r.response + radiobuttons.ipipneo120_95_c_c1_s.response + radiobuttons.ipipneo120_100_c_c2_r.response + radiobuttons.ipipneo120_105_c_c3_r.response + radiobuttons.ipipneo120_110_c_c4_r.response + radiobuttons.ipipneo120_115_c_c5_r.response + radiobuttons.ipipneo120_120_c_c6_r.response
+/ ipipneo120_e = radiobuttons.ipipneo120_2_e_e1_s.response + radiobuttons.ipipneo120_7_e_e2_s.response + radiobuttons.ipipneo120_12_e_e3_s.response + radiobuttons.ipipneo120_17_e_e4_s.response + radiobuttons.ipipneo120_22_e_e5_s.response + radiobuttons.ipipneo120_27_e_e6_s.response + radiobuttons.ipipneo120_32_e_e1_s.response + radiobuttons.ipipneo120_37_e_e2_s.response + radiobuttons.ipipneo120_42_e_e3_s.response + radiobuttons.ipipneo120_47_e_e4_s.response + radiobuttons.ipipneo120_52_e_e5_s.response + radiobuttons.ipipneo120_57_e_e6_s.response + radiobuttons.ipipneo120_62_e_e1_s.response + radiobuttons.ipipneo120_67_e_e2_r.response + radiobuttons.ipipneo120_72_e_e3_s.response + radiobuttons.ipipneo120_77_e_e4_s.response + radiobuttons.ipipneo120_82_e_e5_s.response + radiobuttons.ipipneo120_87_e_e6_s.response + radiobuttons.ipipneo120_92_e_e1_s.response + radiobuttons.ipipneo120_97_e_e2_r.response + radiobuttons.ipipneo120_102_e_e3_r.response + radiobuttons.ipipneo120_107_e_e4_s.response + radiobuttons.ipipneo120_112_e_e5_s.response + radiobuttons.ipipneo120_117_e_e6_s.response
+/ ipipneo120_o = radiobuttons.ipipneo120_3_o_o1_s.response + radiobuttons.ipipneo120_8_o_o2_s.response + radiobuttons.ipipneo120_13_o_o3_s.response + radiobuttons.ipipneo120_18_o_o4_r.response + radiobuttons.ipipneo120_23_o_o5_r.response + radiobuttons.ipipneo120_28_o_o6_s.response + radiobuttons.ipipneo120_33_o_o1_s.response + radiobuttons.ipipneo120_38_o_o2_r.response + radiobuttons.ipipneo120_43_o_o3_r.response + radiobuttons.ipipneo120_48_o_o4_r.response + radiobuttons.ipipneo120_53_o_o5_r.response + radiobuttons.ipipneo120_58_o_o6_r.response + radiobuttons.ipipneo120_63_o_o1_s.response + radiobuttons.ipipneo120_68_o_o2_r.response + radiobuttons.ipipneo120_73_o_o3_r.response + radiobuttons.ipipneo120_78_o_o4_r.response + radiobuttons.ipipneo120_83_o_o5_r.response + radiobuttons.ipipneo120_88_o_o6_r.response + radiobuttons.ipipneo120_93_o_o1_s.response + radiobuttons.ipipneo120_98_o_o2_r.response + radiobuttons.ipipneo120_103_o_o3_r.response + radiobuttons.ipipneo120_108_o_o4_r.response + radiobuttons.ipipneo120_113_o_o5_r.response + radiobuttons.ipipneo120_118_o_o6_r.response
+/ ipipneo120_n = radiobuttons.ipipneo120_1_n_n1_s.response + radiobuttons.ipipneo120_6_n_n2_s.response + radiobuttons.ipipneo120_11_n_n3_s.response + radiobuttons.ipipneo120_16_n_n4_s.response + radiobuttons.ipipneo120_21_n_n5_s.response + radiobuttons.ipipneo120_26_n_n6_s.response + radiobuttons.ipipneo120_31_n_n1_s.response + radiobuttons.ipipneo120_36_n_n2_s.response + radiobuttons.ipipneo120_41_n_n3_s.response + radiobuttons.ipipneo120_46_n_n4_s.response + radiobuttons.ipipneo120_51_n_n5_s.response + radiobuttons.ipipneo120_56_n_n6_r.response + radiobuttons.ipipneo120_61_n_n1_s.response + radiobuttons.ipipneo120_66_n_n2_s.response + radiobuttons.ipipneo120_71_n_n3_s.response + radiobuttons.ipipneo120_76_n_n4_r.response + radiobuttons.ipipneo120_81_n_n5_r.response + radiobuttons.ipipneo120_86_n_n6_r.response + radiobuttons.ipipneo120_91_n_n1_s.response + radiobuttons.ipipneo120_96_n_n2_r.response + radiobuttons.ipipneo120_101_n_n3_s.response + radiobuttons.ipipneo120_106_n_n4_r.response + radiobuttons.ipipneo120_111_n_n5_r.response + radiobuttons.ipipneo120_116_n_n6_r.response
+</expressions>
+
+<summarydata>
+/ columns = (script.subjectid, script.startdate, script.starttime, 
+expressions.ipipneo120_a1, expressions.ipipneo120_a2, expressions.ipipneo120_a3, 
+expressions.ipipneo120_a4, expressions.ipipneo120_a5, expressions.ipipneo120_a6,
+expressions.ipipneo120_c1, expressions.ipipneo120_c2, expressions.ipipneo120_c3, 
+expressions.ipipneo120_c4, expressions.ipipneo120_c5, expressions.ipipneo120_c6,
+expressions.ipipneo120_e1, expressions.ipipneo120_e2, expressions.ipipneo120_e3, 
+expressions.ipipneo120_e4, expressions.ipipneo120_e5, expressions.ipipneo120_e6,
+expressions.ipipneo120_o1, expressions.ipipneo120_o2, expressions.ipipneo120_o3, 
+expressions.ipipneo120_o4, expressions.ipipneo120_o5, expressions.ipipneo120_o6,
+expressions.ipipneo120_n1, expressions.ipipneo120_n2, expressions.ipipneo120_n3, 
+expressions.ipipneo120_n4, expressions.ipipneo120_n5, expressions.ipipneo120_n6,
+expressions.ipipneo120_a, expressions.ipipneo120_c, expressions.ipipneo120_e, 
+expressions.ipipneo120_o, expressions.ipipneo120_n)
+</summarydata>
+

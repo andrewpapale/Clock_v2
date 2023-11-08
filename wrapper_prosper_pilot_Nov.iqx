@@ -1,0 +1,16 @@
+﻿Created November 2023
+IRB approval date: 2/24/2023
+
+<batch all>
+/ groups = (1 of 1)
+/ groupassignment = random
+/ file = "instruct_consent_task_only.iqx"
+/ file = "eeg_clock_v2_0_4.iqx"
+</batch>
+change file name as needed
+
+<summarydata>
+/ columns = (script.subjectid, values.completed, script.startdate, 
+script.starttime, script.elapsedtime)
+/ separatefiles = true
+</summarydata>

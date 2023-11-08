@@ -1,0 +1,15 @@
+﻿Created June 2023
+IRB approval date: 2/24/2023
+
+<batch all>
+/ groups = (1 of 1)
+/ groupassignment = random
+/ file = "IPIP_120_large.iqx"
+/ file = "pid5_large.iqx"
+</batch>
+
+<summarydata>
+/ columns = (script.subjectid, values.completed, script.startdate, 
+script.starttime, script.elapsedtime)
+/ separatefiles = true
+</summarydata>
