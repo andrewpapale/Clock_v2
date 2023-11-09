@@ -304,6 +304,7 @@
 / curr_max = null
 / curr_min = null
 / grand_mean = null
+/ current_erasure = null
 </values>
 
 <data>
@@ -562,7 +563,7 @@
 	// temporary just for testing!
 	values.block_type = "erasure";
 	values.generate_new_erasure = TRUE;
-	values.trialCount = 1;	
+	values.trialCount = 1;
 ]
 
 / stimulustimes = [
@@ -646,19 +647,11 @@
 // loop over only erasure indices
 <trial constructValueVector2>
 / ontrialbegin = [
-	if (values.yindex ==0){
-		values.curr_mean = list.curr_values.mean;
-		values.curr_max = list.y_test.maximum;
-		values.curr_min = list.y_test.minimum;
-		values.to_l = list.curr_values.minimum;
-		values.to_h = list.curr_values.maximum;
-	}
 	values.erasure_index2 += 1;
 	list.curr_values.removeitem(list.erasure_RTs.nextvalue);
 	list.curr_RTs.removeitem(list.erasure_RTs.nextvalue);
 	values.yindex +=1;
-	values.item_to_insert = ((list.y_test.item(values.yindex) - values.curr_min)/(values.curr_max - values.curr_min)) * (values.to_h - values.to_l) + values.to_l;
-	values.item_to_insert = values.item_to_insert + (values.curr_mean - list.y_test.mean);
+	values.item_to_insert = list.y_test.item(values.yindex);
 	if (values.item_to_insert <= 0){
 		values.item_to_insert = 1;
 	}
@@ -723,6 +716,12 @@
 // this is only for testing, we are going to look at the flex and drift of the erasures for future trials
 <trial fastIterateTest>
 / ontrialbegin = [
+	if (values.trialCount==1){
+		values.current_erasure = values.erasure_value;
+	}
+	values.curr_mean = list.curr_values.mean;
+	values.curr_max = list.curr_values.maximum;
+	values.curr_min = list.curr_values.minimum;
 	list.curr_RTs.reset();
 	list.curr_values.reset();
 	while (list.curr_RTs.itemcount < 360){
@@ -731,12 +730,15 @@
 		list.curr_values.appenditem(list.values.nextvalue);
 		list.curr_RTs.appenditem(list.RT.nextvalue);
 	};
+	values.to_l = list.curr_values.minimum;
+	values.to_h = list.curr_values.maximum;
+	values.erasure_value = ((values.current_erasure - values.curr_min)/(values.curr_max - values.curr_min)) * (values.to_h - values.to_l) + values.to_l;
 ]
 / trialduration = 0
 / recorddata = false
 / branch = [
 	// this will loop through the trials in the future
-	trial.resetCounters; 
+	trial.constructSpline; 
 ]
 
 </trial>
@@ -1141,7 +1143,11 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 		list.degrees_used.removeitem(1);
 	}
 	
+	// just for testing!!
 	values.erasure_RT = 30;
+	values.erasure_value = 120;
+
+
 	
 	values.temp_index = 0;
 	list.erasure_RTs.reset();
