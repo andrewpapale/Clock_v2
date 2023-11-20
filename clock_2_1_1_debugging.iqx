@@ -305,6 +305,7 @@
 / curr_min = null
 / grand_mean = null
 / current_erasure = null
+/ current_trial = null
 </values>
 
 <data>
@@ -592,6 +593,7 @@
 		values.current_erasure = values.erasure_value;
 		values.curr_max = list.curr_values.maximum;
 		values.curr_min = list.curr_values.minimum;
+		values.current_trial = 0;
 	}
 ]
 
@@ -699,6 +701,7 @@
 		return trial.getValueVector;
 	} else if (values.current_idx == 360 && values.trialCount < 50){
 		values.trialCount +=1;
+		values.current_trial +=1;
 		return trial.resetCounters3;
 	};
 ]
@@ -733,6 +736,14 @@
 	values.to_h = list.curr_values.maximum;
 	values.erasure_value = ((values.current_erasure - values.curr_min)/(values.curr_max - values.curr_min)) * (values.to_h - values.to_l) + values.to_l;
 	
+	if (values.current_trial > 10){
+		values.current_idx = values.erasure_RT;
+		values.erasure_value = (values.erasure_value + values.current_trial * list.curr_values.nextvalue) / (values.current_trial + 1);
+	}
+	
+	/////////////////////////////////////////////////////////////////////////
+	// if we decide to implement drift in erasures, it will occur here  /////
+	////////////////////////////////////////////////////////////////////////
 	values.temp_index = 0;
 	list.erasure_RTs.reset();
 	// generate sequence of indices to map onto erasure
