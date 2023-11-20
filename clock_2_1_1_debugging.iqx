@@ -50,7 +50,7 @@
 </include>
 
 <include>
-/ file = "drift_vector-2455.txt"
+/ file = "era_loc-2455.txt"
 </include>
 
 // test vectors holding interpolated x / y values
@@ -68,6 +68,12 @@
 
 <list y_final>
 / selectionmode = values.final_idx;
+</list>
+
+<list trial_type>
+/ items = ("attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure")
+/ selectionrate = always
+/ selectionmode = values.trialCount;
 </list>
 
 <list degrees_att>
@@ -311,7 +317,6 @@
 <data>
 / columns = (values.starttime, values.etime, values.trialCount,values.master_idx,values.to_h,values.to_l, values.curr_max,values.curr_min,values.curr_mean, list.spread.nextvalue, values.x_final,values.y_final, values.yindex,values.final_idx, values.erasure_RT,values.erasure_value,values.original_value)
 // columns = (values.yindex,list.erasure_RTs.nextvalue,list.curr_RTs.nextvalue,list.curr_values.nextvalue,list.y_test.item(values.yindex), list.spread.nextvalue)
-// columns = (values.trialCount,values.erasure_value)
 </data>
 
 <picture animatedCircle>
@@ -699,7 +704,7 @@
 / branch = [
 	if (values.current_idx < 360) {
 		return trial.getValueVector;
-	} else if (values.current_idx == 360 && values.trialCount < 50){
+	} else if (values.current_idx == 360 && values.trialCount < 100){
 		values.trialCount +=1;
 		values.current_trial +=1;
 		return trial.resetCounters3;
@@ -799,7 +804,6 @@
 	list.y.reset();
 	list.x_test.reset();
 	list.y_test.reset();
-	
 ]
 / trialduration = 0
 / recorddata = false
