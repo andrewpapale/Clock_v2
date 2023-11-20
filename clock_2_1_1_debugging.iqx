@@ -312,6 +312,10 @@
 / grand_mean = null
 / current_erasure = null
 / current_trial = null
+
+/ smooth_kernel1 = null
+/ smooth_kernel2 = null
+/ smooth_kernel3 = null
 </values>
 
 <data>
@@ -742,8 +746,13 @@
 	values.erasure_value = ((values.current_erasure - values.curr_min)/(values.curr_max - values.curr_min)) * (values.to_h - values.to_l) + values.to_l;
 	
 	if (values.current_trial > 10){
+		values.current_idx = values.right_index;
+		values.smooth_kernel1 = list.curr_values.nextvalue;
+		values.current_idx = values.left_index;
+		values.smooth_kernel2 = list.curr_values.nextvalue;
 		values.current_idx = values.erasure_RT;
-		values.erasure_value = (values.erasure_value + values.current_trial * list.curr_values.nextvalue) / (values.current_trial + 1);
+		values.smooth_kernel3 = list.curr_values.nextvalue;
+		values.erasure_value = (values.erasure_value + values.smooth_kernel1 + values.smooth_kernel2 + values.smooth_kernel3)/4;
 	}
 	
 	/////////////////////////////////////////////////////////////////////////
@@ -1215,8 +1224,8 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 	}
 	
 	// just for testing!!
-	values.erasure_RT = 30;
-	values.erasure_value = 120;
+	values.erasure_RT = 220;
+	values.erasure_value = 20;
 
 
 	
