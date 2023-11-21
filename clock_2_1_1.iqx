@@ -52,13 +52,19 @@
 <list era_loc>
 / items = (102,21,34,254,23,109,268,45,274,113,279,49,224,280,237,234,106,91,219,38,75,279,237,64,82,87,101,227,114,251)
 / selectionrate = always
-/ selectionmode = values.era_loc_index;
+/ selectionmode = values.era_index;
 </list>
 
 <list att_loc>
 / items = (232,96,280,239,235,270,286,96,54,234)
 / selectionrate = always
-/ selectionmode = values.att_loc_index;
+/ selectionmode = values.att_index;
+</list>
+
+<list era_val>
+/ items = (20,120,20,120,20,120,20,120,20,120,20,120,20,120,20,120,20,120,20,120,20,120,20,120,20,120,20,120,20,120)
+/ selectionrate = always
+/ selectionmode = values.era_index;
 </list>
 
 // test vectors holding interpolated x / y values
@@ -313,8 +319,8 @@
 / smooth_kernel2 = null
 / smooth_kernel3 = null
 
-/ era_loc_index = null
-/ att_loc_index = null
+/ era_index = null
+/ att_index = null
 
 / run_length = 100;
 / block_trial = null
@@ -327,7 +333,7 @@
 / columns = (build, computer.platform, computer.touch, date, time, subject, group, script.sessionid, blockcode, blocknum,
 trialcode, list.ITI.currentvalue, list.preClockFreeze.currentvalue, latency, list.ISI.currentvalue, 
 values.block, values.trialCount, values.trial, values.run_trial,values.block_trial,values.block_type, values.last_block_type,
-values.generate_new_erasure,values.trial_since_erasure_gen,values.deg_index_att, values.deg_index_era, list.era_loc.currentvalue,list.att_loc.currentvalue)
+values.generate_new_erasure,values.trial_since_erasure_gen,values.deg_index_att, values.deg_index_era, values.att_index, values.era_index, list.era_loc.currentvalue,list.att_loc.currentvalue)
 </data>
 
 <picture animatedCircle>
@@ -461,7 +467,7 @@ values.generate_new_erasure,values.trial_since_erasure_gen,values.deg_index_att,
 // items = ("att=<%list.degrees_att.itemcount%>,era=<%list.degrees_era.itemcount%>, used=<%list.degrees_used.itemcount%>")
 // items = ("<%list.sorted_values.items.1%> <%list.sorted_values.items.2%> <%list.sorted_values.items.3%> <%list.sorted_values.items.4%> <%list.sorted_values.items.5%>")
 // items = ("<%list.available_seg.items.1%> <%list.available_seg.items.2%> <%list.available_seg.items.3%> <%list.available_seg.items.4%> <%list.available_seg.items.5%>")
-/ items = ("att_loc=<%list.att_loc.nextvalue%> att_loc_index=<%values.att_loc_index%> trial=<%list.curr_trials.items.1%> value=<%list.curr_values.items.1%>")
+/ items = ("att_loc=<%list.att_loc.nextvalue%> att_index=<%values.att_index%> trial=<%list.curr_trials.items.1%> value=<%list.curr_values.items.1%>")
 / position = (50%, 50%)
 </text>
 
@@ -490,6 +496,15 @@ values.generate_new_erasure,values.trial_since_erasure_gen,values.deg_index_att,
 	values.rng = NULL;
 	values.inc = NULL;
 	values.inc_rg = NULL;
+	
+	// iterate values for next trial
+	list.curr_values.reset();
+	list.curr_RTs.reset();
+	while (list.curr_RTs.itemcount < 360){
+		values.master_idx += 1;
+		list.curr_values.appenditem(list.values.nextvalue);
+		list.curr_RTs.appenditem(list.RT.nextvalue);
+	};
 
 	// fixed from seed 2455 right now, blocks of 10, returns "no erasure", "erasure", or "attention"
 	values.block_type = list.block_type.nextvalue;
@@ -537,7 +552,7 @@ values.generate_new_erasure,values.trial_since_erasure_gen,values.deg_index_att,
 		values.n_clicks = 0;
 		values.choose_stim = 0;
 		if (values.block_trial == 1){
-			values.att_loc_index += 1;
+			values.att_index += 1;
 			list.att_loc.nextvalue;
 		}
 		// now we have to convert pos_shifted into 'screen' coordinates which the stimuli are on
@@ -552,8 +567,9 @@ values.generate_new_erasure,values.trial_since_erasure_gen,values.deg_index_att,
 	if (values.block_type == "erasure" && values.generate_new_erasure==TRUE) {
 		values.n_clicks = 0;
 		values.choose_stim = 0;
-		values.curr_index_era += 1;
-		
+		values.era_index += 1;
+		values.erasure_value = list.era_val.nextvalue;
+		values.erasure_RT = list.era_loc.nextvalue;
 		// now we have to convert pos_shifted into 'screen' coordinates which the stimuli are on
 		picture.stim.hposition = expressions.centerx + cos(rad(list.era_loc.nextvalue))*expressions.radius_px;
 		picture.stim.vposition = expressions.centery + sin(rad(list.era_loc.nextvalue))*expressions.radius_px;
@@ -609,19 +625,11 @@ values.generate_new_erasure,values.trial_since_erasure_gen,values.deg_index_att,
 				values.right_index = values.erasure_RT + 15;
 				values.left_index = values.erasure_RT - 15;
 				// sequential x - 15 : x + 15
-			list.erasure_RTs.appenditem(values.erasure_RT - 15 + values.i);
+				list.erasure_RTs.appenditem(values.erasure_RT - 15 + values.i);
 				values.i += 1;
 			}
 		};
 	}
-	list.curr_values.reset();
-	list.curr_RTs.reset();
-	while (list.curr_RTs.itemcount < 360){
-		values.master_idx += 1;
-		values.current_idx += 1;
-		list.curr_values.appenditem(list.values.nextvalue);
-		list.curr_RTs.appenditem(list.RT.nextvalue);
-	};
 	if (values.trial_since_erasure_gen <= 20 && values.trial_since_erasure_gen > 1) {
 		values.to_l = list.curr_values.minimum;
 		values.to_h = list.curr_values.maximum;
@@ -1194,8 +1202,8 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 	values.n_curr_block = NULL;
 	values.n_timeout = 0;
 	values.master_idx = 0;
-	values.att_loc_index = 1;
-	values.era_loc_index = 1;
+	values.att_index = 0;
+	values.era_index = 0;
 	list.triallist.poolsize = values.run_length;
 ]
 
