@@ -49,9 +49,17 @@
 / file = "spread-2455.txt"
 </include>
 
-<include>
-/ file = "era_loc-2455.txt"
-</include>
+<list era_loc>
+/ items = (102,21,34,254,23,109,268,45,274,113,279,49,224,280,237,234,106,91,219,38,75,279,237,64,82,87,101,227,114,251)
+/ selectionrate = always
+/ selectionmode = values.era_loc_index;
+</list>
+
+<list att_loc>
+/ items = (232,96,280,239,235,270,286,96,54,234)
+/ selectionrate = always
+/ selectionmode = values.att_loc_index;
+</list>
 
 // test vectors holding interpolated x / y values
 <list x_test> 
@@ -73,7 +81,7 @@
 <list trial_type>
 / items = ("attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure")
 / selectionrate = always
-/ selectionmode = values.trialCount;
+/ selectionmode = values.trial;
 </list>
 
 <list degrees_att>
@@ -316,6 +324,9 @@
 / smooth_kernel1 = null
 / smooth_kernel2 = null
 / smooth_kernel3 = null
+
+/ era_loc_index = null
+/ att_loc_index = null
 </values>
 
 <data>
@@ -470,20 +481,63 @@
 
 <trial ITI>
 / ontrialbegin = [
+
 	values.trial +=1;
+
+	list.erasure_RTs.reset();
+	// generate sequence of indices to map onto erasure
+	values.i = 0;
+	values.j = 1;
+	while (list.erasure_RTs.itemcount < 31){
+		if (values.erasure_RT > 345) {
+			if (values.erasure_RT == 360){
+				values.right_index = 16;
+			} else {
+				values.right_index = mod(values.erasure_RT + 15, 360);
+			}
+			values.left_index = values.erasure_RT - 15;
+			// this will be sequential and distance is equal
+			// piecewise (x - 15 : x), (x: 360), (1: x + 15)
+			if (list.erasure_RTs.itemcount == 0){
+				values.i = values.left_index;
+				list.erasure_RTs.appenditem(values.i);
+			}
+			if (values.i < 360){
+				values.i += 1;
+				list.erasure_RTs.appenditem(values.i);
+			} else {
+				list.erasure_RTs.appenditem(values.j);
+				values.j += 1;
+			}
+		} else if (values.erasure_RT < 16) {
+			values.right_index = values.erasure_RT + 15;
+			// this will be sequential
+			values.left_index = 360 + values.erasure_RT - 15;
+			if (list.erasure_RTs.itemcount == 0){
+				values.i = values.left_index;
+				list.erasure_RTs.appenditem(values.i);
+			}
+			// piecewise (left_index : 360), (1 : x + 15)
+			if (values.i < 360){
+				values.i += 1;
+				list.erasure_RTs.appenditem(values.i);
+			} else {
+				list.erasure_RTs.appenditem(values.j);
+				values.j += 1;
+			}
+			
+		} else {
+			values.right_index = values.erasure_RT + 15;
+			values.left_index = values.erasure_RT - 15;
+			// sequential x - 15 : x + 15
+			list.erasure_RTs.appenditem(values.erasure_RT - 15 + values.i);
+			values.i += 1;
+		}
+	};
+
 	values.run_trial +=1;
 	values.index +=1;
-	// if run_trial == 1 then we've alraedy iterated through values, RT, trial during the erasure generation algorithm
-	list.curr_values.reset();
-	list.curr_RTs.reset();
-	// now actually implement erasure, to do this we will replace <list values> at index values.erasure_RT with value values.erasure_value
-	// then linear interpolation between endpoints, this will also need to 'flex'
-	while (list.curr_RTs.itemcount < 360){
-		values.master_idx += 1;
-		values.current_idx += 1;
-		list.curr_values.appenditem(list.values.nextvalue);
-		list.curr_RTs.appenditem(list.RT.nextvalue);
-	};
+
 	values.rt_shifted = NULL;
 	values.pos_shifted = NULL;
 	values.ev = NULL;
@@ -492,8 +546,9 @@
 	values.inc_rg = NULL;
 	values.erasure_degrees = list.degrees_era.nextvalue;
 	values.attention_degrees = list.degrees_att.nextvalue;
+	values.trial_type = list.trial_type.nextvalue;
 	// dynamically account for stimulus erasure choice
-	if (values.n_clicks >= values.total_clicks) {
+	if (values.trial_type =="erasure" && values.n_clicks >= values.total_clicks) {
 		values.timeout_block = TRUE;
 		values.n_clicks = NULL;
 		// current block automatically ends
@@ -506,11 +561,7 @@
 	if (values.n_curr_block <= 0 && values.block_type == "no_erasure") {
 		values.generate_new_erasure = TRUE;
 	}
-	if (values.n_curr_block <= 0 && (values.block_type == "erasure" || values.block_type == "attention")) {
-		// need to insert a timeout block here too
-		values.timeout_block = TRUE;
-		values.generate_new_erasure = FALSE;
-	}
+
 	if (values.run_trial == 1 && values.block != 1 && values.block_type != "no_erasure") {
 		// if on trial 1 of block N, and last block was not an erasure, generate timeout block, then generate new erasure
 		values.timeout_block = TRUE;
@@ -526,31 +577,18 @@
 		values.n_timeout +=1;
 		values.n_curr_block = values.timeout_trials;
 	}
-	if (values.generate_new_erasure==TRUE) {
-		if (values.n_no_erasure < values.require_no_erasure && values.n_attention < values.require_attention && values.n_erasure < values.require_erasure) {
-			values.block_type = noreplace("erasure","attention","no_erasure");
-		} else if (values.n_no_erasure >= values.require_no_erasure && values.n_attention < values.require_attention && values.n_erasure < values.require_erasure) {
-			values.block_type = noreplace("erasure","attention");
-		} else if (values.n_no_erasure < values.require_no_erasure && values.n_attention >= values.require_attention && values.n_erasure < values.require_erasure) {
-			values.block_type = noreplace("erasure","no_erasure");
-		} else if (values.n_no_erasure < values.require_no_erasure && values.n_attention < values.require_attention && values.n_erasure >= values.require_erasure) {
-			values.block_type = noreplace("attention","no_erasure");
-		} else if (values.n_no_erasure >= values.require_no_erasure && values.n_attention >= values.require_attention && values.n_erasure < values.require_erasure) {
-			values.block_type = "erasure";
-		} else if (values.n_no_erasure >= values.require_no_erasure && values.n_attention < values.require_attention && values.n_erasure >= values.require_erasure) {
-			values.block_type = "attention";
-		}
+	
 		if (values.block_type == "no_erasure") {
 			picture.stim.items.1 = ("blank.png");
 			values.n_clicks = NULL;
 			values.has_erasure = FALSE;
 			values.choose_stim = NULL;
-			values.n_curr_block = values.require_no_erasure - values.n_no_erasure;
+			values.n_curr_block = 10;
 		} else if (values.block_type == "attention") {
 			picture.stim.item.1 = ("fog0.png");
 			values.has_erasure = TRUE;
 			values.n_clicks = 0;
-			values.n_curr_block = values.require_attention - values.n_attention;
+			values.n_curr_block = 10;
 			values.choose_stim = 0;
 			// now we have to convert pos_shifted into 'screen' coordinates which the stimuli are on
 			picture.stim.hposition = expressions.centerx + cos(rad(list.degrees_att.nextvalue))*expressions.radius_px;
@@ -560,21 +598,58 @@
 		} else if (values.block_type == "erasure") {
 			picture.stim.item.1 = ("wind0.png");
 			values.has_erasure = TRUE;
+			values.n_curr_block = 10;
+		}
+	
+	
+		if (values.block_type == "erasure" && values.generate_new_erasure==TRUE){
 			values.n_clicks = 0;
-			values.n_curr_block = values.require_erasure - values.n_erasure;
 			values.choose_stim = 0;
 			// now we have to convert pos_shifted into 'screen' coordinates which the stimuli are on
 			picture.stim.hposition = expressions.centerx + cos(rad(list.degrees_era.nextvalue))*expressions.radius_px;
 			picture.stim.vposition = expressions.centery + sin(rad(list.degrees_era.nextvalue))*expressions.radius_px;
 			picture.stim.rotation = list.degrees_era.nextvalue - 270;
 			values.stim_center_deg = mod(list.degrees_era.nextvalue + 90,360);
+			values.current_erasure = values.erasure_value;
+			values.curr_max = list.curr_values.maximum;
+			values.curr_min = list.curr_values.minimum;
+			values.current_trial = 1;
+		}
+		
+	list.curr_values.reset();
+	list.curr_RTs.reset();
+	while (list.curr_RTs.itemcount < 360){
+		values.master_idx += 1;
+		values.current_idx += 1;
+		list.curr_values.appenditem(list.values.nextvalue);
+		list.curr_RTs.appenditem(list.RT.nextvalue);
+	};
+	
+	
+	if (values.current_trial <= 20 && values.current_trial > 1){
+		list.curr_RTs.reset();
+		list.curr_values.reset();
+		while (list.curr_RTs.itemcount < 360){
+			values.master_idx += 1;
+			values.current_idx +=1;
+			list.curr_values.appenditem(list.values.nextvalue);
+			list.curr_RTs.appenditem(list.RT.nextvalue);
+		};
+		values.to_l = list.curr_values.minimum;
+		values.to_h = list.curr_values.maximum;
+		values.erasure_value = ((values.current_erasure - values.curr_min)/(values.curr_max - values.curr_min)) * (values.to_h - values.to_l) + values.to_l;
+	
+		if (values.current_trial > 10){
+			values.current_idx = values.right_index;
+			values.smooth_kernel1 = list.curr_values.nextvalue;
+			values.current_idx = values.left_index;
+			values.smooth_kernel2 = list.curr_values.nextvalue;
+			values.current_idx = values.erasure_RT;
+			values.smooth_kernel3 = list.curr_values.nextvalue;
+			values.erasure_value = (values.erasure_value + values.smooth_kernel1 + values.smooth_kernel2 + values.smooth_kernel3)/4;
 		}
 	}
 	
-	// temporary just for testing!
-	values.block_type = "erasure";
-	values.generate_new_erasure = TRUE;
-	values.trialCount = 1;
 ]
 
 / stimulustimes = [
@@ -587,23 +662,16 @@
 ]
 / ontrialend = [
 ]
-// trialduration = list.ITI.nextvalue;
-/ trialduration = 0
+/ trialduration = list.ITI.nextvalue;
 / recorddata = false
 / branch = [
-	if (values.generate_new_erasure == TRUE && values.block_type == "erasure") {
+	if (values.block_type == "erasure" || values.current_trial <= 20) {
 		return trial.constructSpline;
 	} else {
 		return trial.preFreeze;
 	}
 ]
 / ontrialend = [
-	if (values.generate_new_erasure == TRUE && values.block_type == "erasure") {
-		values.current_erasure = values.erasure_value;
-		values.curr_max = list.curr_values.maximum;
-		values.curr_min = list.curr_values.minimum;
-		values.current_trial = 0;
-	}
 ]
 
 </trial>
@@ -722,93 +790,6 @@
 <trial resetCounters3>
 / ontrialbegin = [
 	values.current_idx = 0;
-]
-/ trialduration = 0
-/ recorddata = false
-/ branch = [
-	return trial.fastIterateTest;
-]
-</trial>
-
-// this is only for testing, we are going to look at the flex and drift of the erasures for future trials
-<trial fastIterateTest>
-/ ontrialbegin = [
-	list.curr_RTs.reset();
-	list.curr_values.reset();
-	while (list.curr_RTs.itemcount < 360){
-		values.master_idx += 1;
-		values.current_idx +=1;
-		list.curr_values.appenditem(list.values.nextvalue);
-		list.curr_RTs.appenditem(list.RT.nextvalue);
-	};
-	values.to_l = list.curr_values.minimum;
-	values.to_h = list.curr_values.maximum;
-	values.erasure_value = ((values.current_erasure - values.curr_min)/(values.curr_max - values.curr_min)) * (values.to_h - values.to_l) + values.to_l;
-	
-	if (values.current_trial > 10){
-		values.current_idx = values.right_index;
-		values.smooth_kernel1 = list.curr_values.nextvalue;
-		values.current_idx = values.left_index;
-		values.smooth_kernel2 = list.curr_values.nextvalue;
-		values.current_idx = values.erasure_RT;
-		values.smooth_kernel3 = list.curr_values.nextvalue;
-		values.erasure_value = (values.erasure_value + values.smooth_kernel1 + values.smooth_kernel2 + values.smooth_kernel3)/4;
-	}
-	
-	/////////////////////////////////////////////////////////////////////////
-	// if we decide to implement drift in erasures, it will occur here  /////
-	////////////////////////////////////////////////////////////////////////
-	values.temp_index = 0;
-	list.erasure_RTs.reset();
-	// generate sequence of indices to map onto erasure
-	values.i = 0;
-	values.j = 1;
-	while (list.erasure_RTs.itemcount < 31){
-		if (values.erasure_RT > 345) {
-			if (values.erasure_RT == 360){
-				values.right_index = 16;
-			} else {
-				values.right_index = mod(values.erasure_RT + 15, 360);
-			}
-			values.left_index = values.erasure_RT - 15;
-			// this will be sequential and distance is equal
-			// piecewise (x - 15 : x), (x: 360), (1: x + 15)
-			if (list.erasure_RTs.itemcount == 0){
-				values.i = values.left_index;
-				list.erasure_RTs.appenditem(values.i);
-			}
-			if (values.i < 360){
-				values.i += 1;
-				list.erasure_RTs.appenditem(values.i);
-			} else {
-				list.erasure_RTs.appenditem(values.j);
-				values.j += 1;
-			}
-		} else if (values.erasure_RT < 16) {
-			values.right_index = values.erasure_RT + 15;
-			// this will be sequential
-			values.left_index = 360 + values.erasure_RT - 15;
-			if (list.erasure_RTs.itemcount == 0){
-				values.i = values.left_index;
-				list.erasure_RTs.appenditem(values.i);
-			}
-			// piecewise (left_index : 360), (1 : x + 15)
-			if (values.i < 360){
-				values.i += 1;
-				list.erasure_RTs.appenditem(values.i);
-			} else {
-				list.erasure_RTs.appenditem(values.j);
-				values.j += 1;
-			}
-			
-		} else {
-			values.right_index = values.erasure_RT + 15;
-			values.left_index = values.erasure_RT - 15;
-			// sequential x - 15 : x + 15
-			list.erasure_RTs.appenditem(values.erasure_RT - 15 + values.i);
-			values.i += 1;
-		}
-	};
 	list.x.reset();
 	list.y.reset();
 	list.x_test.reset();
@@ -817,21 +798,10 @@
 / trialduration = 0
 / recorddata = false
 / branch = [
-	// this will loop through the trials in the future
-	trial.constructSpline; 
+	return trial.preFreeze;
 ]
-
 </trial>
 
-
-
-<trial test>
-/ ontrialbegin = [
-	values.etime = script.elapsedtime - values.starttime;
-]
-/ recorddata = false
-/ trialduration = 0
-</trial>
 
 <trial preFreeze>
 / ontrialbegin = [
@@ -1158,128 +1128,6 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 		picture.frozenShip.item.1 = ("585f94c1cb11b227491c3585.png");
 		picture.animatedCircle.item.1 = ("585f94c1cb11b227491c3585.png");
 	}
-		// need to prepopulate values for this trial into a list
-	list.curr_values.reset();
-	list.curr_RTs.reset();
-	values.current_idx = 0;
-	while (list.curr_values.itemcount < 360){
-		values.master_idx += 1;
-		values.current_idx +=1;
-		list.curr_values.appenditem(list.values.nextvalue);
-		list.curr_RTs.appenditem(list.RT.nextvalue);
-	};
-	// rewind the master index for trial/RT/values
-	values.master_idx = values.master_idx - 360;
-	values.i = 0;
-	list.lower_half.reset();
-	list.upper_half.reset();
-	values.current_idx = 0;
-	while (values.i < list.curr_values.itemcount) {
-		values.current_idx +=1;
-		list.curr_values.nextvalue;
-		if (list.curr_values.currentvalue < list.curr_values.median) {
-			list.lower_half.appenditem(list.curr_values.currentvalue);
-		} else if (list.curr_values.currentvalue > list.curr_values.median) {
-			list.upper_half.appenditem(list.curr_values.currentvalue);
-		}
-		values.i += 1;
-	};
-	values.lower_quartile = list.lower_half.median;
-	values.upper_quartile = list.upper_half.median;
-	list.era_values.reset();
-	list.era_RTs.reset();
-	values.j = 0;
-	values.current_idx = 0;
-	while (values.j < list.curr_values.itemcount){
-		values.current_idx += 1;
-		list.curr_values.nextvalue;
-		list.curr_RTs.nextvalue;
-		if (list.curr_values.currentvalue >= values.lower_quartile && list.curr_values.currentvalue <= values.upper_quartile) {
-			list.era_values.appenditem(list.curr_values.currentvalue);
-			list.era_RTs.appenditem(list.curr_RTs.currentvalue);
-		}
-		values.j += 1;
-	};
-	// this will be the value/RT of the erasure
-
-	values.erasure_index = round(rand(1, list.era_RTs.itemcount));
-	values.erasure_RT = list.era_RTs.nextvalue;
-	// now erasure value could still be equal to the original value, test this
-	
-	values.k = 0;
-	values.erasure_index = 0;
-	values.original_value = list.curr_values.item(values.erasure_RT);
-	values.erasure_index = round(rand(1, list.era_values.itemcount));
-	values.erasure_value = list.era_values.nextvalue;
-	// this works because erasure_RT values come from era_RTs, a list with elements from 1:360, indicating an index that can also be used for degrees, as long as degrees_era is a list from 1:360 (which it should always be)
-	// note do NOT append or remove items from degrees_era
-	values.deg_index_era = values.erasure_RT;
-	list.degrees_era.nextindex;
-	// now remove current erasure degree from degrees_era, degrees_att, save into degrees used
-	list.degrees_used.appenditem(list.degrees_era.nextvalue);
-	// now we need to add back the degrees_att from degrees_used_att and remove block N-2'nd degrees_used to pool for erasures
-	if (list.degrees_used.itemcount > 1) {
-		// remove the first item from the list, allow re-erasure of erasure from N-2'nd block
-		list.degrees_used.removeitem(1);
-	}
-	
-	// just for testing!!
-	values.erasure_RT = list.era_loc.nextvalue;
-	values.erasure_value = 20;
-
-
-	
-	values.temp_index = 0;
-	list.erasure_RTs.reset();
-	// generate sequence of indices to map onto erasure
-	values.i = 0;
-	values.j = 1;
-	while (list.erasure_RTs.itemcount < 31){
-		if (values.erasure_RT > 345) {
-			if (values.erasure_RT == 360){
-				values.right_index = 16;
-			} else {
-				values.right_index = mod(values.erasure_RT + 15, 360);
-			}
-			values.left_index = values.erasure_RT - 15;
-			// this will be sequential and distance is equal
-			// piecewise (x - 15 : x), (x: 360), (1: x + 15)
-			if (list.erasure_RTs.itemcount == 0){
-				values.i = values.left_index;
-				list.erasure_RTs.appenditem(values.i);
-			}
-			if (values.i < 360){
-				values.i += 1;
-				list.erasure_RTs.appenditem(values.i);
-			} else {
-				list.erasure_RTs.appenditem(values.j);
-				values.j += 1;
-			}
-		} else if (values.erasure_RT < 16) {
-			values.right_index = values.erasure_RT + 15;
-			// this will be sequential
-			values.left_index = 360 + values.erasure_RT - 15;
-			if (list.erasure_RTs.itemcount == 0){
-				values.i = values.left_index;
-				list.erasure_RTs.appenditem(values.i);
-			}
-			// piecewise (left_index : 360), (1 : x + 15)
-			if (values.i < 360){
-				values.i += 1;
-				list.erasure_RTs.appenditem(values.i);
-			} else {
-				list.erasure_RTs.appenditem(values.j);
-				values.j += 1;
-			}
-			
-		} else {
-			values.right_index = values.erasure_RT + 15;
-			values.left_index = values.erasure_RT - 15;
-			// sequential x - 15 : x + 15
-			list.erasure_RTs.appenditem(values.erasure_RT - 15 + values.i);
-			values.i += 1;
-		}
-	};
 	
 	shape.dot1.erase = false;
 	shape.dot2.erase = false;
@@ -1364,25 +1212,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 	values.grand_mean = list.values.mean;
 	list.blocklist.trialsize = values.n_blocks;
 	list.blocklist.nextvalue;
-	values.rem0 = mod(values.n_trials / values.block_length - 0, 3);
-	values.rem1 = mod(values.n_trials / values.block_length - 1, 3);
-	values.rem2 = mod(values.n_trials / values.block_length - 2, 3);
-	values.rem3 = mod(values.n_trials / values.block_length - 3, 3);
-	values.rem4 = mod(values.n_trials / values.block_length - 4, 3);
-	values.rem5 = mod(values.n_trials / values.block_length - 5, 3);
-	list.best.nextvalue;
-	values.best = -1;
-	values.min_rem = NULL;
-	// https://forums.millisecond.com/Topic35675.aspx?Update=1
-	values.min_rem = list.best.minimum;
-	if (values.best==-1) {
-		values.best = list.best.indexof(values.min_rem);
-	}
-	if (values.min_rem > 0) {
-		values.block_length = values.block_length_original  - values.best + 1;
-	}
-	values.n_blocks = floor(values.n_trials / values.block_length);
-	
+	values.n_blocks = 30;
 	values.timeout_block = FALSE;
 	values.generate_new_erasure = TRUE;
 	values.n_curr_block = NULL;
