@@ -331,13 +331,14 @@
 <data>
 // columns = (values.starttime, values.etime, values.trialCount,values.master_idx,values.to_h,values.to_l, values.curr_max,values.curr_min,values.curr_mean, list.spread.nextvalue, values.x_final,values.y_final, values.yindex,values.final_idx, values.erasure_RT,values.erasure_value,values.original_value)
 // columns = (values.yindex,list.erasure_RTs.nextvalue,list.curr_RTs.nextvalue,list.curr_values.nextvalue,list.y_test.item(values.yindex), list.spread.nextvalue)
-/ columns = (build, computer.platform, computer.touch, date, time, subject, group, script.sessionid, blockcode, blocknum,
-trialcode, list.ITI.currentvalue, list.preClockFreeze.currentvalue, latency, list.ISI.currentvalue, 
-values.block, values.trialCount, values.trial, values.run_trial,values.block_trial,values.block_type, values.trial_type, values.last_block_type,
-values.generate_new_erasure,values.trial_since_erasure_gen,values.deg_index_att, values.deg_index_era, values.att_index, values.era_index, 
-list.era_loc.currentvalue, values.has_erasure,list.att_loc.currentvalue, values.n_clicks, values.timeout_block,values.timeouts_remain,values.stim_center_deg,
-values.startPos,values.pos_shifted,values.rt_shifted,values.mag, values.inc_rg, values.inc, values.rng, values.freq, values.choose_stim,values.erasure_value, values.erasure_RT,
-values.right_index,values.left_index)
+// columns = (build, computer.platform, computer.touch, date, time, subject, group, script.sessionid, blockcode, blocknum,
+//trialcode, list.ITI.currentvalue, list.preClockFreeze.currentvalue, latency, list.ISI.currentvalue, 
+////values.block, values.trialCount, values.trial, values.run_trial,values.block_trial,values.block_type, values.trial_type, values.last_block_type,
+//values.generate_new_erasure,values.trial_since_erasure_gen,values.deg_index_att, values.deg_index_era, values.att_index, values.era_index, 
+//list.era_loc.currentvalue, values.has_erasure,list.att_loc.currentvalue, values.n_clicks, values.timeout_block,values.timeouts_remain,values.stim_center_deg,
+//values.startPos,values.pos_shifted,values.rt_shifted,values.mag, values.inc_rg, values.inc, values.rng, values.freq, values.choose_stim,values.erasure_value, values.erasure_RT,
+//values.right_index,values.left_index)
+/ columns = (values.trial, values.x_final, values.y_final)
 </data>
 
 <picture animatedCircle>
@@ -562,7 +563,7 @@ values.right_index,values.left_index)
 		values.choose_stim = NULL;
 	} else if (values.trial_type == "attention") {
 		picture.stim.item.1 = ("fog0.png");
-		values.has_erasure = TRUE;
+		values.has_erasure = FALSE;
 		values.n_clicks = 0;
 		values.choose_stim = 0;
 		if (values.block_trial == 1){
@@ -678,7 +679,7 @@ values.right_index,values.left_index)
 // trialduration = list.ITI.nextvalue;
 / trialduration = 0
 
-/ recorddata = true
+/ recorddata = false
 / branch = [
 	if (values.block_type == "erasure" || values.trial_since_erasure_gen <= 20) {
 		return trial.constructSpline;
@@ -776,7 +777,7 @@ values.right_index,values.left_index)
 / trialduration = 0
 / recorddata = false
 / branch = [
-	return trial.preFreeze;
+	return trial.getValueVector;
 ]
 </trial>
 
@@ -791,9 +792,7 @@ values.right_index,values.left_index)
 / branch = [
 	if (values.current_idx < 360) {
 		return trial.getValueVector;
-	} else if (values.current_idx == 360 && values.trialCount < 100) {
-		values.trialCount +=1;
-		values.trial_since_erasure_gen +=1;
+	} else {
 		return trial.resetCounters3;
 	};
 ]
@@ -853,7 +852,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 ]
 // timeout = list.preClockFreeze.nextvalue;
 / timeout = 0
-/ recorddata = true
+/ recorddata = false
 / branch = [
 	return trial.clock;
 ]
@@ -879,7 +878,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 / validresponse = (" ") 
 / inputdevice = keyboard
 / responseinterrupt = immediate
-/ recorddata = true
+/ recorddata = false
 / branch = [
 	return trial.ISI;
 ]
@@ -966,6 +965,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 ]
 // timeout = list.ISI.nextvalue;
 / timeout = 0
+/ recorddata = false
 / branch = [
 	return trial.feedback;
 ]
@@ -982,7 +982,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 	values.pos_shifted = values.rt_shifted*360/values.time_per_revolution;
 	// 5000 / 360 RT segments gives 14ms RT bins, conveniently, 1 degree / segment so the index for the value = the degree of the position selected
 	values.rt_index = round(values.pos_shifted);
-	values.mag = list.y_final.item(values.rt_index);
+	values.mag = list.curr_values.item(values.rt_index);
 	values.ev = values.mag * values.freq;
 	values.rng = rand(0,1);
 	if (values.freq >= values.rng) {
@@ -1026,7 +1026,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 // trialduration = 1000
 / trialduration = 0
 // correctresponse = (next)
-/ recorddata = true
+/ recorddata = false
 / ontrialend = [
 	
 	values.trialCount += 1;
