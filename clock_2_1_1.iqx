@@ -211,6 +211,7 @@
 / n_trials = 45;
 / n_blocks = floor(values.n_trials / values.block_length)
 / block_type = NULL;
+/ trial_type = null;
 / block = 0;
 / timeout = 6500; // timeout trials, when the ship runs out of fuel you get 0 mushrooms, in ms
 / time_per_revolution = 5000; // how many ms does it take to go 360 degrees around the circle
@@ -332,10 +333,11 @@
 // columns = (values.yindex,list.erasure_RTs.nextvalue,list.curr_RTs.nextvalue,list.curr_values.nextvalue,list.y_test.item(values.yindex), list.spread.nextvalue)
 / columns = (build, computer.platform, computer.touch, date, time, subject, group, script.sessionid, blockcode, blocknum,
 trialcode, list.ITI.currentvalue, list.preClockFreeze.currentvalue, latency, list.ISI.currentvalue, 
-values.block, values.trialCount, values.trial, values.run_trial,values.block_trial,values.block_type, values.last_block_type,
+values.block, values.trialCount, values.trial, values.run_trial,values.block_trial,values.block_type, values.trial_type, values.last_block_type,
 values.generate_new_erasure,values.trial_since_erasure_gen,values.deg_index_att, values.deg_index_era, values.att_index, values.era_index, 
 list.era_loc.currentvalue, values.has_erasure,list.att_loc.currentvalue, values.n_clicks, values.timeout_block,values.timeouts_remain,values.stim_center_deg,
-values.startPos,values.pos_shifted,values.rt_shifted,values.mag, values.inc_rg, values.inc, values.rng, values.freq, values.choose_stim,values.erasure_value, values.erasure_RT)
+values.startPos,values.pos_shifted,values.rt_shifted,values.mag, values.inc_rg, values.inc, values.rng, values.freq, values.choose_stim,values.erasure_value, values.erasure_RT,
+values.right_index,values.left_index)
 </data>
 
 <picture animatedCircle>
@@ -535,18 +537,30 @@ values.startPos,values.pos_shifted,values.rt_shifted,values.mag, values.inc_rg, 
 	if (values.timeout_block==TRUE) {
 		// decrement timeouts trials remaining by 1 if in timeout block
 		values.timeouts_remain -= 1;
-		values.block_type = "no_erasure";
+		values.trial_type = "no erasure";
 		picture.stim.items.1 = ("blank.png");
 		values.has_erasure = FALSE;
 		values.choose_stim = NULL;
 		values.n_timeout +=1;
 	}
-	if (values.block_type == "no_erasure") {
+	
+	if (values.block_type == "attention" || values.block_type == "no erasure"){
+		values.trial_type = values.block_type;
+	} else if (values.block_type == "erasure"){
+		if (values.timeout_block == TRUE){
+			values.trial_type = "no erasure";
+		} else {
+			values.trial_type = "erasure";
+		}
+	}
+	
+	
+	if (values.trial_type == "no erasure") {
 		picture.stim.items.1 = ("blank.png");
 		values.n_clicks = NULL;
 		values.has_erasure = FALSE;
 		values.choose_stim = NULL;
-	} else if (values.block_type == "attention") {
+	} else if (values.trial_type == "attention") {
 		picture.stim.item.1 = ("fog0.png");
 		values.has_erasure = TRUE;
 		values.n_clicks = 0;
@@ -559,11 +573,11 @@ values.startPos,values.pos_shifted,values.rt_shifted,values.mag, values.inc_rg, 
 		picture.stim.vposition = expressions.centery + sin(rad(list.att_loc.nextvalue))*expressions.radius_px;
 		picture.stim.rotation = list.att_loc.nextvalue - 270;
 		values.stim_center_deg = mod(list.att_loc.nextvalue + 90,360);
-	} else if (values.block_type == "erasure") {
+	} else if (values.trial_type == "erasure") {
 		picture.stim.item.1 = ("wind0.png");
 		values.has_erasure = TRUE;
 	}
-	if (values.block_type == "erasure" && values.generate_new_erasure==TRUE) {
+	if (values.trial_type == "erasure" && values.generate_new_erasure==TRUE) {
 		values.n_clicks = 0;
 		values.choose_stim = 0;
 		values.era_index += 1;
@@ -1017,7 +1031,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 	
 	values.trialCount += 1;
 
-	if (values.block_type != "no_erasure") {
+	if (values.trial_type != "no erasure") {
 		// to account for 90 degree counterclockwise rotation so 12 o'clock is zero
 		if (values.pos_shifted >= max(mod(values.stim_center_deg - 15, 360),1) && values.pos_shifted <= max(mod(values.stim_center_deg + 15, 360),1)) {
 			// 15 + 15 = 30 degrees of arc
@@ -1027,20 +1041,11 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 			values.choose_stim = FALSE;
 		}
 	}
-	if (values.block_type == "erasure") {
-		values.n_erasure += 1;
-	}
-	if (values.block_type == "attention") {
-		values.n_attention += 1;
-	}
-	if (values.block_type == "no_erasure") {
-		values.n_no_erasure +=1;
-	}
+
 	if (values.generate_new_erasure==TRUE) {
 		values.generate_new_erasure = FALSE;
 	}
-	values.n_curr_block -= 1;
-	values.run_trial_dum  += 1;
+
 	shape.dot1.erase = false;
 	shape.dot2.erase = false;
 	shape.dot3.erase = false;
