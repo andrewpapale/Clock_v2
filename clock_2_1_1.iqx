@@ -552,7 +552,7 @@ values.generate_new_erasure,values.trial_since_erasure_gen,values.deg_index_att,
 	if (values.block_type == "erasure" && values.generate_new_erasure==TRUE) {
 		values.n_clicks = 0;
 		values.choose_stim = 0;
-		values.era_loc_index += 1;
+		values.curr_index_era += 1;
 		
 		// now we have to convert pos_shifted into 'screen' coordinates which the stimuli are on
 		picture.stim.hposition = expressions.centerx + cos(rad(list.era_loc.nextvalue))*expressions.radius_px;
