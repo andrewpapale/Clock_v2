@@ -307,7 +307,7 @@
 / curr_min = null
 / grand_mean = null
 / current_erasure = null
-/ current_trial = null
+/ trial_since_erasure_gen = null
 
 / smooth_kernel1 = null
 / smooth_kernel2 = null
@@ -322,8 +322,12 @@
 </values>
 
 <data>
-/ columns = (values.starttime, values.etime, values.trialCount,values.master_idx,values.to_h,values.to_l, values.curr_max,values.curr_min,values.curr_mean, list.spread.nextvalue, values.x_final,values.y_final, values.yindex,values.final_idx, values.erasure_RT,values.erasure_value,values.original_value)
+// columns = (values.starttime, values.etime, values.trialCount,values.master_idx,values.to_h,values.to_l, values.curr_max,values.curr_min,values.curr_mean, list.spread.nextvalue, values.x_final,values.y_final, values.yindex,values.final_idx, values.erasure_RT,values.erasure_value,values.original_value)
 // columns = (values.yindex,list.erasure_RTs.nextvalue,list.curr_RTs.nextvalue,list.curr_values.nextvalue,list.y_test.item(values.yindex), list.spread.nextvalue)
+/ columns = (build, computer.platform, computer.touch, date, time, subject, group, script.sessionid, blockcode, blocknum,
+trialcode, list.ITI.currentvalue, list.preClockFreeze.currentvalue, latency, list.ISI.currentvalue, 
+values.block, values.trialCount, values.trial, values.run_trial,values.block_trial,values.block_type, values.last_block_type,
+values.generate_new_erasure,values.trial_since_erasure_gen,values.deg_index_att, values.deg_index_era, list.era_loc.currentvalue,list.att_loc.currentvalue)
 </data>
 
 <picture animatedCircle>
@@ -490,12 +494,15 @@
 	// fixed from seed 2455 right now, blocks of 10, returns "no erasure", "erasure", or "attention"
 	values.block_type = list.block_type.nextvalue;
 	
-	if (values.last_block_type != values.block_type){
+	if (values.last_block_type != values.block_type || values.trial ==1){
 		values.block_trial = 1;
 	} else {
 		values.block_trial += 1;
 	}
-	
+	// generate new erasure on first trial of erasure block
+	if (values.block_type == "erasure" && values.block_trial == 1){
+		values.generate_new_erasure = TRUE;
+	}
 	// dynamically account for stimulus erasure choice
 	if (values.block_type =="erasure" && values.n_clicks >= values.total_clicks) {
 		values.timeout_block = TRUE;
@@ -545,7 +552,6 @@
 	if (values.block_type == "erasure" && values.generate_new_erasure==TRUE) {
 		values.n_clicks = 0;
 		values.choose_stim = 0;
-		
 		values.era_loc_index += 1;
 		
 		// now we have to convert pos_shifted into 'screen' coordinates which the stimuli are on
@@ -556,7 +562,7 @@
 		values.current_erasure = values.erasure_value;
 		values.curr_max = list.curr_values.maximum;
 		values.curr_min = list.curr_values.minimum;
-		values.current_trial = 1;
+		values.trial_since_erasure_gen = 1;
 		
 		list.erasure_RTs.reset();
 		// generate sequence of indices to map onto erasure
@@ -616,11 +622,11 @@
 		list.curr_values.appenditem(list.values.nextvalue);
 		list.curr_RTs.appenditem(list.RT.nextvalue);
 	};
-	if (values.current_trial <= 20 && values.current_trial > 1) {
+	if (values.trial_since_erasure_gen <= 20 && values.trial_since_erasure_gen > 1) {
 		values.to_l = list.curr_values.minimum;
 		values.to_h = list.curr_values.maximum;
 		values.erasure_value = ((values.current_erasure - values.curr_min)/(values.curr_max - values.curr_min)) * (values.to_h - values.to_l) + values.to_l;
-		if (values.current_trial > 10) {
+		if (values.trial_since_erasure_gen > 10) {
 			values.current_idx = values.right_index;
 			values.smooth_kernel1 = list.curr_values.nextvalue;
 			values.current_idx = values.left_index;
@@ -629,6 +635,12 @@
 			values.smooth_kernel3 = list.curr_values.nextvalue;
 			values.erasure_value = (values.erasure_value + values.smooth_kernel1 + values.smooth_kernel2 + values.smooth_kernel3)/4;
 		}
+	}
+	
+	if (values.trial_since_erasure_gen > 1 && values.trial_since_erasure_gen <= 20){
+		values.trial_since_erasure_gen += 1;
+	} else if (values.trial_since_erasure_gen > 20) {
+		values.trial_since_erasure_gen = null;
 	}
 ]
 
@@ -642,10 +654,12 @@
 ]
 / ontrialend = [
 ]
-/ trialduration = list.ITI.nextvalue;
-/ recorddata = false
+// trialduration = list.ITI.nextvalue;
+/ trialduration = 0
+
+/ recorddata = true
 / branch = [
-	if (values.block_type == "erasure" || values.current_trial <= 20) {
+	if (values.block_type == "erasure" || values.trial_since_erasure_gen <= 20) {
 		return trial.constructSpline;
 	} else {
 		return trial.preFreeze;
@@ -741,7 +755,7 @@
 / trialduration = 0
 / recorddata = false
 / branch = [
-	return trial.getValueVector;
+	return trial.preFreeze;
 ]
 </trial>
 
@@ -758,7 +772,7 @@
 		return trial.getValueVector;
 	} else if (values.current_idx == 360 && values.trialCount < 100) {
 		values.trialCount +=1;
-		values.current_trial +=1;
+		values.trial_since_erasure_gen +=1;
 		return trial.resetCounters3;
 	};
 ]
@@ -816,8 +830,9 @@ dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
 dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
 dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip;
 ]
-/ timeout = list.preClockFreeze.nextvalue;
-/ recorddata = false
+// timeout = list.preClockFreeze.nextvalue;
+/ timeout = 0
+/ recorddata = true
 / branch = [
 	return trial.clock;
 ]
@@ -928,7 +943,8 @@ dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
 dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
 dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip;
 ]
-/ timeout = list.ISI.nextvalue;
+// timeout = list.ISI.nextvalue;
+/ timeout = 0
 / branch = [
 	return trial.feedback;
 ]
@@ -986,7 +1002,8 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 / stimulustimes = [
 	0 = feedback, text.feedback1;
 ]
-/ trialduration = 1000
+// trialduration = 1000
+/ trialduration = 0
 // correctresponse = (next)
 / recorddata = true
 / ontrialend = [
