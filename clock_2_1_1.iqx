@@ -467,7 +467,7 @@ values.generate_new_erasure,values.trial_since_erasure_gen,values.deg_index_att,
 // items = ("att=<%list.degrees_att.itemcount%>,era=<%list.degrees_era.itemcount%>, used=<%list.degrees_used.itemcount%>")
 // items = ("<%list.sorted_values.items.1%> <%list.sorted_values.items.2%> <%list.sorted_values.items.3%> <%list.sorted_values.items.4%> <%list.sorted_values.items.5%>")
 // items = ("<%list.available_seg.items.1%> <%list.available_seg.items.2%> <%list.available_seg.items.3%> <%list.available_seg.items.4%> <%list.available_seg.items.5%>")
-/ items = ("att_loc=<%list.att_loc.nextvalue%> att_index=<%values.att_index%> trial=<%list.curr_trials.items.1%> value=<%list.curr_values.items.1%>")
+/ items = ("era_loc=<%list.era_loc.nextvalue%> era_index=<%values.era_index%> att_loc=<%list.att_loc.nextvalue%> att_index=<%values.att_index%> nTO=<%values.timeouts_remain%>")
 / position = (50%, 50%)
 </text>
 
@@ -483,11 +483,10 @@ values.generate_new_erasure,values.trial_since_erasure_gen,values.deg_index_att,
 
 <trial ITI>
 / ontrialbegin = [
+	values.trial +=1;
 	if (values.trial > 1){
 		values.last_block_type = values.block_type;
 	}
-	
-	values.trial +=1;
 	values.run_trial +=1;
 	values.index +=1;
 	values.rt_shifted = NULL;
@@ -509,9 +508,9 @@ values.generate_new_erasure,values.trial_since_erasure_gen,values.deg_index_att,
 	// fixed from seed 2455 right now, blocks of 10, returns "no erasure", "erasure", or "attention"
 	values.block_type = list.block_type.nextvalue;
 	
-	if (values.last_block_type != values.block_type || values.trial ==1){
+	if (values.last_block_type != values.block_type || values.trial == 1){
 		values.block_trial = 1;
-	} else {
+	} else if (values.trial != 1) {
 		values.block_trial += 1;
 	}
 	// generate new erasure on first trial of erasure block
@@ -553,7 +552,6 @@ values.generate_new_erasure,values.trial_since_erasure_gen,values.deg_index_att,
 		values.choose_stim = 0;
 		if (values.block_trial == 1){
 			values.att_index += 1;
-			list.att_loc.nextvalue;
 		}
 		// now we have to convert pos_shifted into 'screen' coordinates which the stimuli are on
 		picture.stim.hposition = expressions.centerx + cos(rad(list.att_loc.nextvalue))*expressions.radius_px;
@@ -1015,6 +1013,9 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 // correctresponse = (next)
 / recorddata = true
 / ontrialend = [
+	
+	values.trialCount += 1;
+
 	if (values.block_type != "no_erasure") {
 		// to account for 90 degree counterclockwise rotation so 12 o'clock is zero
 		if (values.pos_shifted >= max(mod(values.stim_center_deg - 15, 360),1) && values.pos_shifted <= max(mod(values.stim_center_deg + 15, 360),1)) {
@@ -1108,6 +1109,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 <block experiment>
 / onblockbegin = [
 	values.starttime = script.elapsedtime;
+	values.trialCount = 1;
 	values.run_trial = 0;
 	values.n_clicks = NULL;
 	values.block +=1;
@@ -1189,6 +1191,10 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 / trials = [
 	1 = list.triallist;
 ]
+/ stop = [
+	values.trialCount > values.run_length;
+]
+
 / onblockend = [
 
 ]
