@@ -317,6 +317,8 @@
 / att_loc_index = null
 
 / run_length = 100;
+/ block_trial = null
+/ last_block_type = null
 </values>
 
 <data>
@@ -471,6 +473,10 @@
 
 <trial ITI>
 / ontrialbegin = [
+	if (values.trial > 1){
+		values.last_block_type = values.block_type;
+	}
+	
 	values.trial +=1;
 	values.run_trial +=1;
 	values.index +=1;
@@ -483,6 +489,12 @@
 
 	// fixed from seed 2455 right now, blocks of 10, returns "no erasure", "erasure", or "attention"
 	values.block_type = list.block_type.nextvalue;
+	
+	if (values.last_block_type != values.block_type){
+		values.block_trial = 1;
+	} else {
+		values.block_trial += 1;
+	}
 	
 	// dynamically account for stimulus erasure choice
 	if (values.block_type =="erasure" && values.n_clicks >= values.total_clicks) {
@@ -517,7 +529,7 @@
 		values.has_erasure = TRUE;
 		values.n_clicks = 0;
 		values.choose_stim = 0;
-		if (values.run_trial == 1){
+		if (values.block_trial == 1){
 			values.att_loc_index += 1;
 			list.att_loc.nextvalue;
 		}
