@@ -207,7 +207,7 @@
 / block_length = 3;
 / block_length_original = values.block_length;
 / disappear_clicks = 2;
-/ timeout_trials = 1;
+/ timeout_trials = 2;
 / n_trials = 45;
 / n_blocks = floor(values.n_trials / values.block_length)
 / block_type = NULL;
@@ -333,7 +333,9 @@
 / columns = (build, computer.platform, computer.touch, date, time, subject, group, script.sessionid, blockcode, blocknum,
 trialcode, list.ITI.currentvalue, list.preClockFreeze.currentvalue, latency, list.ISI.currentvalue, 
 values.block, values.trialCount, values.trial, values.run_trial,values.block_trial,values.block_type, values.last_block_type,
-values.generate_new_erasure,values.trial_since_erasure_gen,values.deg_index_att, values.deg_index_era, values.att_index, values.era_index, list.era_loc.currentvalue,list.att_loc.currentvalue)
+values.generate_new_erasure,values.trial_since_erasure_gen,values.deg_index_att, values.deg_index_era, values.att_index, values.era_index, 
+list.era_loc.currentvalue, values.has_erasure,list.att_loc.currentvalue, values.n_clicks, values.timeout_block,values.timeouts_remain,values.stim_center_deg,
+values.startPos,values.pos_shifted,values.rt_shifted,values.mag, values.inc_rg, values.inc, values.rng, values.freq, values.choose_stim,values.erasure_value, values.erasure_RT)
 </data>
 
 <picture animatedCircle>
@@ -538,7 +540,6 @@ values.generate_new_erasure,values.trial_since_erasure_gen,values.deg_index_att,
 		values.has_erasure = FALSE;
 		values.choose_stim = NULL;
 		values.n_timeout +=1;
-		values.n_curr_block = values.timeout_trials;
 	}
 	if (values.block_type == "no_erasure") {
 		picture.stim.items.1 = ("blank.png");
@@ -864,7 +865,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 / validresponse = (" ") 
 / inputdevice = keyboard
 / responseinterrupt = immediate
-/ recorddata = false
+/ recorddata = true
 / branch = [
 	return trial.ISI;
 ]
@@ -1210,6 +1211,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 	values.master_idx = 0;
 	values.att_index = 0;
 	values.era_index = 0;
+	values.timeouts_remain = values.timeout_trials;
 	list.triallist.poolsize = values.run_length;
 ]
 
