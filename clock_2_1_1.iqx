@@ -644,7 +644,7 @@
 			}
 		};
 	}
-	if (values.trial_since_erasure_gen <= 20 && values.trial_since_erasure_gen > 1) {
+	if (values.trial_since_erasure_gen <= 15 && values.trial_since_erasure_gen > 1) {
 		values.to_l = list.curr_values.minimum;
 		values.to_h = list.curr_values.maximum;
 		values.erasure_value = ((values.current_erasure - values.curr_min)/(values.curr_max - values.curr_min)) * (values.to_h - values.to_l) + values.to_l;
@@ -659,9 +659,9 @@
 		}
 	}
 	
-	if (values.trial_since_erasure_gen > 1 && values.trial_since_erasure_gen <= 20){
+	if (values.trial_since_erasure_gen > 1 && values.trial_since_erasure_gen <= 15){
 		values.trial_since_erasure_gen += 1;
-	} else if (values.trial_since_erasure_gen > 20) {
+	} else if (values.trial_since_erasure_gen > 15) {
 		values.trial_since_erasure_gen = null;
 	}
 ]
@@ -684,7 +684,7 @@
 	if (values.block_type == "erasure" || values.trial_since_erasure_gen <= 20) {
 		return trial.constructSpline;
 	} else {
-		return trial.preFreeze;
+		return trial.resetCounters2;
 	}
 ]
 / ontrialend = [
