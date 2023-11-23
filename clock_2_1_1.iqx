@@ -332,14 +332,14 @@
 <data>
 // columns = (values.starttime, values.etime, values.trialCount,values.master_idx,values.to_h,values.to_l, values.curr_max,values.curr_min,values.curr_mean, list.spread.nextvalue, values.x_final,values.y_final, values.yindex,values.final_idx, values.erasure_RT,values.erasure_value,values.original_value)
 // columns = (values.yindex,list.erasure_RTs.nextvalue,list.curr_RTs.nextvalue,list.curr_values.nextvalue,list.y_test.item(values.yindex), list.spread.nextvalue)
-// columns = (build, computer.platform, computer.touch, date, time, subject, group, script.sessionid, blockcode, blocknum,
-//trialcode, list.ITI.currentvalue, list.preClockFreeze.currentvalue, latency, list.ISI.currentvalue, 
-////values.block, values.trialCount, values.trial, values.run_trial,values.block_trial,values.block_type, values.trial_type, values.last_block_type,
-//values.generate_new_erasure,values.trial_since_erasure_gen,values.deg_index_att, values.deg_index_era, values.att_index, values.era_index, 
-//list.era_loc.currentvalue, values.has_erasure,list.att_loc.currentvalue, values.n_clicks, values.timeout_block,values.timeouts_remain,values.stim_center_deg,
-//values.startPos,values.pos_shifted,values.rt_shifted,values.mag, values.inc_rg, values.inc, values.rng, values.freq, values.choose_stim,values.erasure_value, values.erasure_RT,
-//values.right_index,values.left_index)
-/ columns = (values.trial, values.x_final, values.y_final,values.trial_since_erasure_gen,values.era_index,list.era_loc.nextvalue, values.erasure_blocks)
+/ columns = (build, computer.platform, computer.touch, date, time, subject, group, script.sessionid, blockcode, blocknum,
+trialcode, list.ITI.currentvalue, list.preClockFreeze.currentvalue, latency, list.ISI.currentvalue, 
+values.block, values.trialCount, values.trial, values.run_trial,values.block_trial,values.block_type, values.trial_type, values.last_block_type,
+values.generate_new_erasure,values.trial_since_erasure_gen,values.deg_index_att, values.deg_index_era, values.att_index, values.era_index, 
+list.era_loc.currentvalue, values.has_erasure,list.att_loc.currentvalue, values.n_clicks, values.timeout_block,values.timeouts_remain,values.stim_center_deg,
+values.startPos,values.pos_shifted,values.rt_shifted,values.mag, values.inc_rg, values.inc, values.rng, values.freq, values.choose_stim,values.erasure_value, values.erasure_RT,
+values.right_index,values.left_index,
+values.trial, values.x_final, values.y_final,values.trial_since_erasure_gen,values.era_index,list.era_loc.nextvalue, values.erasure_blocks)
 </data>
 
 <picture animatedCircle>
@@ -687,8 +687,7 @@
 ]
 / ontrialend = [
 ]
-// trialduration = list.ITI.nextvalue;
-/ trialduration = 0
+/ trialduration = list.ITI.nextvalue;
 
 / recorddata = false
 / branch = [
@@ -775,7 +774,7 @@
 	if (values.yindex < 31) {
 		return trial.constructValueVector2;
 	} else {
-		return trial.resetCounters2;
+		return trial.resetCounters3;
 	}
 ]
 
@@ -854,15 +853,14 @@
 	}
 ]
 
-/ stimulustimes = [ 0 = planet, center, stim, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+/ stimulustimes = [ 0 = planet, stim, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
 dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
 dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip;
 ]
-// timeout = list.preClockFreeze.nextvalue;
-/ timeout = 0
+/ timeout = list.preClockFreeze.nextvalue;
 / recorddata = false
 / branch = [
 	return trial.clock;
@@ -877,7 +875,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 ]
 
 / stimulustimes = [
-	0 = animatedCircle, stim, center, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+	0 = animatedCircle, stim, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 		dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 		dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 		dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
@@ -889,7 +887,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 / validresponse = (" ") 
 / inputdevice = keyboard
 / responseinterrupt = immediate
-/ recorddata = false
+/ recorddata = true
 / branch = [
 	return trial.ISI;
 ]
@@ -967,15 +965,14 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 	shape.dot59.erase = true;
 	shape.dot60.erase = true;
 ]
-/ stimulustimes = [0 = stim, planet, center, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+/ stimulustimes = [0 = stim, planet, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
 dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
 dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip;
 ]
-// timeout = list.ISI.nextvalue;
-/ timeout = 0
+/ timeout = list.ISI.nextvalue;
 / recorddata = false
 / branch = [
 	return trial.feedback;
@@ -1034,10 +1031,9 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 / stimulustimes = [
 	0 = feedback, text.feedback1;
 ]
-// trialduration = 1000
-/ trialduration = 0
+/ trialduration = 1000
 // correctresponse = (next)
-/ recorddata = false
+/ recorddata = true
 / ontrialend = [
 	
 	values.trialCount += 1;
