@@ -694,7 +694,7 @@ values.trial, values.x_final, values.y_final,values.trial_since_erasure_gen,valu
 	if (values.block_type == "erasure" || values.trial_since_erasure_gen <= 20) {
 		return trial.constructSpline;
 	} else {
-		return trial.resetCounters2;
+		return trial.resetCounters3;
 	}
 ]
 / ontrialend = [
