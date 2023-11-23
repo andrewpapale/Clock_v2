@@ -338,7 +338,7 @@
 //list.era_loc.currentvalue, values.has_erasure,list.att_loc.currentvalue, values.n_clicks, values.timeout_block,values.timeouts_remain,values.stim_center_deg,
 //values.startPos,values.pos_shifted,values.rt_shifted,values.mag, values.inc_rg, values.inc, values.rng, values.freq, values.choose_stim,values.erasure_value, values.erasure_RT,
 //values.right_index,values.left_index)
-/ columns = (values.trial, values.x_final, values.y_final)
+/ columns = (values.trial, values.x_final, values.y_final,values.trial_since_erasure_gen)
 </data>
 
 <picture animatedCircle>
@@ -592,7 +592,7 @@
 		values.current_erasure = values.erasure_value;
 		values.curr_max = list.curr_values.maximum;
 		values.curr_min = list.curr_values.minimum;
-		values.trial_since_erasure_gen = 1;
+		values.trial_since_erasure_gen = 0;
 		
 		list.erasure_RTs.reset();
 		// generate sequence of indices to map onto erasure
@@ -647,19 +647,21 @@
 	if (values.trial_since_erasure_gen <= 15 && values.trial_since_erasure_gen > 1) {
 		values.to_l = list.curr_values.minimum;
 		values.to_h = list.curr_values.maximum;
-		values.erasure_value = ((values.current_erasure - values.curr_min)/(values.curr_max - values.curr_min)) * (values.to_h - values.to_l) + values.to_l;
-		if (values.trial_since_erasure_gen > 10) {
+		if (values.trial_since_erasure_gen <= 10){
+			values.erasure_value = ((values.current_erasure - values.curr_min)/(values.curr_max - values.curr_min)) * (values.to_h - values.to_l) + values.to_l;
+		} else if (values.trial_since_erasure_gen > 10) {
 			values.current_idx = values.right_index;
 			values.smooth_kernel1 = list.curr_values.nextvalue;
 			values.current_idx = values.left_index;
 			values.smooth_kernel2 = list.curr_values.nextvalue;
 			values.current_idx = values.erasure_RT;
 			values.smooth_kernel3 = list.curr_values.nextvalue;
-			values.erasure_value = (values.erasure_value + values.smooth_kernel1 + values.smooth_kernel2 + values.smooth_kernel3)/4;
+			values.erasure_value = (values.smooth_kernel2 + values.erasure_value)/2;
+			//values.erasure_value = ((values.erasure_value - values.curr_min)/(values.curr_max - values.curr_min)) * (values.to_h - values.to_l) + values.to_l;	
 		}
 	}
 	
-	if (values.trial_since_erasure_gen > 1 && values.trial_since_erasure_gen <= 15){
+	if (values.trial_since_erasure_gen <= 15){
 		values.trial_since_erasure_gen += 1;
 	} else if (values.trial_since_erasure_gen > 15) {
 		values.trial_since_erasure_gen = null;
