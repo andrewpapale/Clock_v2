@@ -323,7 +323,7 @@
 / era_index = null
 / att_index = null
 
-/ run_length = 100;
+/ run_length = 80;
 / block_trial = null
 / last_block_type = null
 / erasure_blocks = null
@@ -411,10 +411,17 @@ values.trial, values.x_final, values.y_final,values.trial_since_erasure_gen,valu
 / erase = true(white)
 </picture>
 
-<picture feedback>
+<picture feedback2>
 / items = ("blank.png")
-/ position = (50%, 50%)
-/ size = (75%, 75%)
+/ position = (15%, 50%)
+/ size = (60%, 60%)
+/ erase = true(white)
+</picture>
+
+<picture feedback3>
+/ items = ("blank.png")
+/ position = (85%, 50%)
+/ size = (60%, 60%)
 / erase = true(white)
 </picture>
 
@@ -467,6 +474,58 @@ values.trial, values.x_final, values.y_final,values.trial_since_erasure_gen,valu
 / erase = true(white)
 </picture>
 
+<picture sampleMushroomL>
+/ items = ("mushrooms1.png")
+/ position = (20%, 80%)
+/ size = (35%, 35%)
+/ erase = true(white)
+</picture>
+
+<picture sampleMushroomR>
+/ items = ("mushrooms1.png")
+/ position = (80%, 80%)
+/ size = (35%, 35%)
+/ erase = true(white)
+</picture>
+
+<picture sampleAttentionL>
+/ items = ("wind0.png")
+/ position = (20%, 80%)
+/ size = (35%, 35%)
+/ erase = true(white)
+</picture>
+
+<picture sampleAttentionR>
+/ items = ("wind0.png")
+/ position = (80%, 80%)
+/ size = (35%, 35%)
+/ erase = true(white)
+</picture>
+
+<text three>
+/ items = ("3")
+/ fontstyle = ("Arial", 50%, false, false, false, false, 5, 238)
+/ position = (50%, 50%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<text two>
+/ items = ("2")
+/ fontstyle = ("Arial", 50%, false, false, false, false, 5, 238)
+/ position = (50%, 50%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<text one>
+/ items = ("1")
+/ fontstyle = ("Arial", 50%, false, false, false, false, 5, 238)
+/ position = (50%, 50%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
 <text center>
 // items = ("center = <%values.stim_center_deg%>, pos_sh = <%values.pos_shifted%> choose = <%values.choose_stim%>")
 // items = ("best = <%values.best%>, <%values.rem0%> <%values.rem1%> <%values.rem2%> <%values.rem3%> <%values.rem4%> <%values.rem5%>")
@@ -480,12 +539,625 @@ values.trial, values.x_final, values.y_final,values.trial_since_erasure_gen,valu
 <text feedback1>
 // items = ("You got <% values.inc_rg %> mushroom(s)")
 / items = ("<%values.inc_rg%>")
-/ fontstyle = ("Arial", 50%, false, false, false, false, 5, 238)
+/ fontstyle = ("Arial", 35%, false, false, false, false, 5, 238)
 / txbgcolor = (transparent)
 / position = (50%, 50%)
 / vjustify = center
 / hjustify = left
 </text>
+
+<text testSubject>
+/ items = ("<%script.subjectid%>")
+/ erase = false
+/ position = (40%,60%)
+</text>
+
+
+<text goodJob>
+/ items = ("Good Job!")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
+/ position = (50%, 45%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<text instructions1>
+/ items = instructions1
+/ select = 1
+/ position = (50%, 35%)
+/ fontstyle = ("Arial", 2%)
+/ size = (90%, 90%)
+/ hjustify = left
+/ valign = top
+</text>
+
+<item instructions1>
+/ 1 = "In this game, you are picking mushrooms on a far away planet.
+       
+Your spacecraft will orbit the planet, and you can land it at any point by pressing the spacebar.
+      
+If you stop in a good location, you will find more mushrooms. Every 100 mushrooms is worth 3 cents.
+      
+The goal of this game is to get the most mushrooms.
+
+You will get about 380 tries to land your spacecraft with two 1 minute breaks around trials 130 and 250. 
+
+The game takes about 25-30 minutes and there are some questions at the end."
+</item>
+
+<text instructions2>
+/ items = ("Press the spacebar to land the spacecraft.
+This is just for practice.")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
+/ position = (50%, 45%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<text instructions3>
+/ items = ("Sometimes <%text.local_uncertainty.item.1%> will appear.
+If you land the spacecraft on the location of the <%text.local_uncertainty.item.2%>, 
+the conditions will change in that location ONLY. That is, the number 
+of mushrooms you will earn by landing on the area covered by the <%text.local_uncertainty.item.2%> 
+will be different from what you previously learned about that location. 
+However, all other locations around the planet will remain the same, 
+and the location covered by the <%text.local_uncertainty.item.2%> will revert back to what you 
+originally learned once the <%text.local_uncertainty.item.2%> disappears.")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
+/ position = (50%, 45%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<text instructions4>
+/ items = ("Try to land the spacecraft
+on the <%text.local_uncertainty.item.2%>.")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
+/ position = (50%, 45%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<text instructions5>
+/ items = ("When <%text.attentional_control.item.1%> appears,
+it has no effect on the number of mushrooms
+anywhere on the planet.")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
+/ position = (50%, 45%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<text instructions6>
+/ items = ("Now you will play for real mushrooms 
+(ahem...money!). 
+Get ready!")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
+/ position = (50%, 45%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<text local_uncertainty>
+/ items = ("","")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
+/ position = (50%, 45%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<text attentional_control>
+/ items = ("","")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
+/ position = (50%, 45%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<text next>
+/ items = ("Next")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 0)
+/ position = (50%, 75%)
+/ size = (25%, 15%)
+/ vjustify = center
+/ txbgcolor = gainsboro
+/ txcolor = black
+</text>
+
+<text true_box>
+/ items = ("True")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 0)
+/ position = (75%, 75%)
+/ size = (25%, 15%)
+/ vjustify = center
+/ txbgcolor = gainsboro
+/ txcolor = black
+</text>
+
+<text false_box>
+/ items = ("False")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 0)
+/ position = (25%, 75%)
+/ size = (25%, 15%)
+/ vjustify = center
+/ txbgcolor = gainsboro
+/ txcolor = black
+</text>
+
+<text payment>
+/ items = ("You won a total of $ <%values.totalEarnings%> dollars.
+Thank you for playing!")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
+/ position = (50%, 45%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<text instructions2_5>
+/ items = ("If you don't respond
+in 6.5s, you will run out of fuel
+and get no mushrooms")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
+/ position = (50%, 45%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<text spacebardisabled>
+/ items = ("response disabled, sorry!")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
+/ position = (50%, 65%)
+/ vjustify = center
+/ hjustify = left
+/ erase = true(white)
+</text>
+
+<text instructions5_1>
+/ items = ("Please check your understanding by answering the following question: 
+What do you think happens when you land on the <%text.local_uncertainty.items.2%>?
+
+The number of mushrooms...")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
+/ position = (50%, 45%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<text instructions5_2>
+/ items = ("Please check your understanding by answering the following question: 
+What do you think happens when you land on the <%text.attentional_control.items.2%>?
+
+The number of mushrooms...")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
+/ position = (50%, 45%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<text instructions5_3>
+/ items = ("To review, you will have to learn about which 
+locations earn you the greatest number of mushrooms by experience.
+ 
+At certain points throughout the game, you might see clouds or wind 
+around your planet. Remember these 2 things:
+
+(1) <%text.attentional_control.items.1%> has no effect on the number 
+of mushrooms you earn, so you should continue to search 
+for the location that you think will earn you the most mushrooms.
+
+(2) <%text.local_uncertainty.items.1%> affects the local conditions 
+in that area of the planet, so if you choose to land on the <%text.local_uncertainty.items.2%>, 
+the number of mushrooms you will earn there will change. 
+However, conditions will remain the same throughout the rest 
+of the planet, and the location affected by the <%text.local_uncertainty.items.2%>
+will also revert back to normal once the <%text.local_uncertainty.items.2%> disappears.
+")
+/ fontstyle = ("Arial", 2.5%, false, false, false, false, 5, 238)
+/ position = (50%, 40%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<text local_box>
+/ items = ("only on that part of the planet changes")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 0)
+/ position = (10%, 75%)
+/ size = (20%, 20%)
+/ vjustify = center
+/ txbgcolor = gainsboro
+/ txcolor = black
+</text>
+
+<text global_box>
+/ items = ("all over the entire planet changes")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 0)
+/ position = (35%, 75%)
+/ size = (20%, 20%)
+/ vjustify = center
+/ txbgcolor = gainsboro
+/ txcolor = black
+</text>
+
+<text nothing_box>
+/ items = ("does not change anywhere")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 0)
+/ position = (60%, 75%)
+/ size = (20%, 20%)
+/ vjustify = center
+/ txbgcolor = gainsboro
+/ txcolor = black
+</text>
+
+<text increase_box>
+/ items = ("will always increase")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 0)
+/ position = (85%, 75%)
+/ size = (20%, 20%)
+/ vjustify = center
+/ txbgcolor = gainsboro
+/ txcolor = black
+</text>
+
+<trial instructions1>
+/ stimulusframes = [1=instructions1, sampleMushroomL, sampleMushroomR, next]
+/ validresponse = (next) 
+/ inputdevice = mouse
+</trial>
+
+<trial displayGoodJob>
+/ stimulusframes = [1=goodJob, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, next]
+/ validresponse = (" ")
+</trial>
+
+<trial instructions2>
+/ stimulustimes = [0=instructions2, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
+
+1000 = instructions2, animatedCircle, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60]
+
+/ inputdevice = mouse
+/ beginresponsetime = 1000
+/ validresponse = (next) 
+/ recorddata = FALSE
+/ branch = [
+	return trial.displayGoodJob;
+]
+</trial>
+
+< trial instructions2_5>
+
+/ stimulustimes = [0=instructions2_5, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
+
+1000 = instructions2_5, animatedCircle, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
+
+1500 = spacebardisabled, animatedCircle, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
+
+2000 = animatedCircle, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
+
+2500 = spacebardisabled, animatedCircle, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
+]
+/ timeout = 7500
+/ recorddata = FALSE
+/ branch = [
+	return trial.feedback2_5;
+]
+</trial>
+
+<trial feedback2_5>
+/ ontrialbegin = [
+	picture.feedback2.item.1 = "timeout.png";
+	picture.feedback2.hposition = 50%;
+	values.Earnings = 0;
+	values.inc_rg = 0;
+]
+
+/ stimulusframes = [
+	1=picture.feedback2;
+]
+/ trialduration = 3000
+</trial>
+
+<trial instructions3>
+/ stimulusframes = [1=instructions3, next]
+/ validresponse = ("2")
+/ branch = [
+	trial.instructions4;
+]
+</trial>
+
+<text sampleResponse>
+/ items = (" ")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
+/ position = (50%, 50%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<trial instructions4>
+/ ontrialbegin = [
+	if (parameters.local_uncertainty=="cloud") {
+		picture.stim.item.1 = "fog0.png";
+	} else if (parameters.local_uncertainty=="wind") {
+		picture.stim.item.1 = "wind0.png";
+	}
+	// now we have to convert pos_shifted into 'screen' coordinates which the stimuli are on
+	picture.stim.hposition = expressions.centerx + cos(rad(120))*expressions.radius_px;
+	picture.stim.vposition = expressions.centery + sin(rad(120))*expressions.radius_px;
+	picture.stim.rotation = 120 - 270;
+	values.stim_center_deg = mod(120 + 90,360);
+	values.startPos = 75;
+]
+
+/ stimulustimes = [0=instructions4, stim, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
+
+1000 = instructions4, animatedCircle, stim, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60
+]
+
+/ inputdevice = keyboard
+/ beginresponsetime = 1000
+/ validresponse = ("2") 
+/ responseinterrupt = immediate
+/ branch = [
+	return trial.sampleResponse;
+]
+</trial>
+
+<trial sampleResponse>
+/ ontrialbegin = [
+	if (values.startPos >= 0 && values.startPos < 75) {
+		values.rt_shifted = mod(values.gamma*(values.startPos+25)+trial.instructions4.latency,values.time_per_revolution);
+	} else if (values.startPos >= 75) {
+		values.rt_shifted = mod(values.gamma*(values.startPos-75)+trial.instructions4.latency,values.time_per_revolution);
+	}
+	if (values.pos_shifted >= max(mod(values.stim_center_deg - 15, 360),1) && values.pos_shifted <= max(mod(values.stim_center_deg + 15, 360),1)) {
+		text.sampleResponse.items.1 = "Good Job!"
+	} else {
+		text.sampleResponse.items.1 = "Try Again!"
+	}
+]
+/ stimulustimes = [0=sampleResponse, stim, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
+]
+/ timeout = 3000
+/ branch = [ 
+	if (values.pos_shifted >= max(mod(values.stim_center_deg - 15, 360),1) && values.pos_shifted <= max(mod(values.stim_center_deg + 15, 360),1)) {
+		trial.instructions5;
+	} else {
+		trial.instructions4;
+	}
+]
+</trial>
+
+<trial instructions5>
+/ ontrialbegin = [
+	if (parameters.attentional_control=="cloud") {
+		picture.sampleAttentionR.item.1 = "fog0.png";
+		picture.sampleAttentionL.item.1 = "fog0.png";
+	} else if (parameters.attentional_control=="wind") {
+		picture.sampleAttentionR.item.1 = "wind0.png";
+		picture.sampleAttentionL.item.1 = "wind0.png";
+	}
+]
+/ stimulusframes = [1=instructions5, sampleAttentionR, sampleAttentionL, next]
+/ validresponse = ("2")
+/ branch = [
+	trial.instructions5_1;
+]
+</trial>
+
+<trial instructions5_1>
+/ ontrialbegin = [
+	if (parameters.local_uncertainty=="cloud") {
+		picture.stim.item.1 = "fog0.png";
+	} else if (parameters.local_uncertainty=="wind") {
+		picture.stim.item.1 = "wind0.png";
+	}
+	
+]
+
+/ stimulusframes = [1=instructions5_1, stim, local_box, global_box, nothing_box, increase_box]
+/ inputdevice =  keyboard
+/ validresponse = ("2","3","4","5")
+/ recorddata = TRUE
+/ branch = [
+	trial.dummytrial;
+]
+</trial>
+
+<trial instructions5_3>
+/ stimulusframes = [
+	1=instructions5_3, next
+]
+/ validresponse = ("2")
+/ branch = [
+	trial.instructions6;
+]
+
+</trial>
+
+<trial dummytrial>
+/ trialduration = 100;
+/ branch = [
+	if (trial.instructions5_1.response=="3") {
+		trial.posfeedback1;
+	} else if (trial.instructions5_1.response!="3") {
+		trial.negfeedback1;
+	}
+]
+</trial>
+
+<trial dummytrial1>
+/ trialduration = 100;
+/ branch = [
+	if (trial.instructions5_2.response!="5") {
+		trial.negfeedback2;
+	} else if (trial.instructions5_2.response=="5") {
+		trial.posfeedback2;
+	}
+]
+</trial>
+
+
+<text posfeedback1>
+/ items = ("Correct! if you land on the <%text.local_uncertainty.items.2%>,
+the number of mushrooms only on that part of the planet 
+will change. The number of mushrooms everywhere else 
+on the planet will stay the same.")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
+/ position = (50%, 45%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<trial posfeedback1>
+/ stimulusframes = [1=posfeedback1, next]
+/ validresponse = ("2")
+/ branch = [
+	trial.instructions5_2;
+]
+</trial>
+
+<text negfeedback1>
+/ items = ("Incorrect, if you land on the <%text.local_uncertainty.items.2%>, 
+the number of mushrooms only on that part of the planet 
+will change from what you experienced before.  
+The number of mushrooms everywhere else on
+the planet will stay the same.")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
+/ position = (50%, 45%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<trial negfeedback1>
+/ stimulusframes = [1=negfeedback1, next]
+/ validresponse = ("2")
+/ branch = [
+	trial.instructions3;
+]
+</trial>
+
+<text posfeedback2>
+/ items = ("Correct! if you land on the <%text.attentional_control.items.2%>,
+this has absolutely no effect on the 
+number of mushrooms anywhere on the planet.")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
+/ position = (50%, 45%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<trial posfeedback2>
+/ stimulusframes = [1=posfeedback2, next]
+/ validresponse = ("2")
+/ branch = [
+	trial.instructions5_3;
+]
+</trial>
+
+<text negfeedback2>
+/ items = ("Incorrect, if you land on the <%text.attentional_control.items.2%>,
+this has absolutely no effect on the 
+number of mushrooms anywhere on the planet.")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
+/ position = (50%, 45%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<trial negfeedback2>
+/ stimulusframes = [1=negfeedback2, next]
+/ validresponse = ("2")
+/ branch = [
+	trial.instructions3;
+]
+</trial>
+
+<trial instructions5_2>
+/ ontrialbegin = [
+	if (parameters.attentional_control=="cloud") {
+		picture.stim.item.1 = "fog0.png";
+	} else if (parameters.attentional_control=="wind") {
+		picture.stim.item.1 = "wind0.png";
+	}
+	
+	
+]
+
+/ stimulusframes = [1=instructions5_2, stim, local_box, global_box, nothing_box, increase_box]
+/ inputdevice = keyboard
+/ validresponse = ("2","3","4","5")
+/ recorddata = TRUE
+/ branch = [
+	trial.dummytrial1;
+]
+</trial>
+
+<trial instructions6>
+/ stimulusframes = [1=instructions6, next]
+/ validresponse = ("2")
+/ branch = [
+	return trial.countdown;
+]
+</trial>
+
+<trial countdown>
+/ stimulustimes = [0=three;1000=two;2000=one]
+/ timeout = 3000
+</trial>
 
 <trial ITI>
 / ontrialbegin = [
@@ -1014,24 +1686,29 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 		values.Earnings = values.inc_rg*values.conversion;
 		values.totalEarnings = values.totalEarnings + values.Earnings;
 		if (values.block ==1) {
-			picture.feedback.item.1 = ("mushrooms2.png")
+			picture.feedback2.item.1 = ("mushrooms2.png");
+			picture.feedback3.item.1 = ("mushrooms2.png");
 		} else if (values.block == 2 && values.block < 3) {
-			picture.feedback.item.1 = ("mushrooms1.png")
+			picture.feedback2.item.1 = ("mushrooms1.png");
+			picture.feedback3.item.1 = ("mushrooms1.png");
 		} else if (values.block == 3 && values.block < 4) {
-			picture.feedback.item.1 = ("mushrooms3.png")
+			picture.feedback2.item.1 = ("mushrooms3.png");
+			picture.feedback3.item.1 = ("mushrooms3.png");
 		}
 	} else {
 		values.inc = 0;
 		values.inc_rg = NULL;
 		values.Earnings = 0;
 		values.totalEarnings = values.totalEarnings + values.Earnings;
-		picture.feedback.item.1 = "timeout.png"
+		picture.feedback2.item.1 = ("timeout.png");
+		picture.feedback2.hposition = 50%;
+		picture.feedback3.item.1 = ("blank.png");
 	}
 ]
 / stimulustimes = [
-	0 = feedback, text.feedback1;
+	0 = feedback3, feedback2, text.feedback1;
 ]
-/ trialduration = 1000
+/ trialduration = 700
 // correctresponse = (next)
 / recorddata = true
 / ontrialend = [
@@ -1118,6 +1795,104 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 	list.triallist.nextvalue;
 ]
 </trial>
+
+<block scanner_sync>
+/ recorddata = true
+/ trials = [
+	1 = scanner_sync;
+]
+</block>
+
+<trial scanner_sync>
+/ recorddata = true
+/ stimulustimes = [0 = text.waiting]
+/ inputdevice = keyboard
+/ validresponse = ("=")
+</trial>
+
+<text waiting>
+/ items = ("Waiting for scanner trigger +=")
+/ erase = true(white)
+/ position = (50%, 50%) 
+</text>
+
+<clock breaktimer>
+/ format = "mm:ss"
+/ mode = timer
+/ erase = true(white)
+/ monitor = 1
+/ position = (50%, 50%)
+/ resetrate = block
+/ timeout = 60000
+/ txbgcolor = white
+/ txcolor = black
+</clock>
+
+<text breaktext>
+/ position = (50%, 40%)
+/ erase = true(white)
+/ items = ("Please relax for 1 minute")
+</text>
+
+
+<trial break>
+/ recorddata = false
+/ stimulustimes = [0 = dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, breaktext, breaktimer;
+]
+/ timeout = 60000;
+/ recorddata = false
+</trial>
+
+<text presscont>
+/ txcolor = black
+/ position = (50%, 50%)
+/ items = ("Press the space bar to continue")
+</text>
+
+<trial presscont>
+/ recorddata = true
+/ stimulustimes = [0 = dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
+]
+/ inputdevice = keyboard
+/ beginresponsetime = 0
+/ recorddata = false
+/ validresponse = ("2") 
+/ responseinterrupt = immediate
+</trial>
+
+<trial endscreen>
+/ ontrialbegin = [
+	values.mag = NULL;
+	values.freq = NULL;
+	values.ev = NULL;
+	values.inc = NULL;
+	values.rng = NULL;
+	values.Earnings = NULL;
+]
+
+/ stimulusframes = [
+	1=payment
+]
+/ timeout = 5000
+</trial>
+
+<block instructions> 
+/ trials = [1=instructions1, instructions2, instructions2_5, instructions3]
+</block>
+
+<block break>
+/ trials = [1=break; 2=presscont;]
+</block>
 
 <block experiment>
 / onblockbegin = [
@@ -1214,6 +1989,12 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 
 </block>
 
+<block endscreen>
+/ trials = [
+	1=endscreen;
+]
+</block>
+
 <expt main1>
 / onexptbegin = [
 	values.timeout_block = FALSE;
@@ -1229,7 +2010,13 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 ]
 
 / blocks = [
-	1 = experiment;
+	1=instructions; 
+	2=experiment; 
+	3=break; 
+	4=experiment; 
+	5=break; 
+	6=experiment; 
+	7=endscreen;
 ]
 
 </expt>
