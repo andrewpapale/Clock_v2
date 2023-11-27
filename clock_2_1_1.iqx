@@ -11,8 +11,8 @@
 / randStart = TRUE;
 / circleproportion = 0.33
 / clockdotSize = 2%
-/ attentional_control = "wind";
-/ local_uncertainty = "cloud";
+/ attentional_control = null;
+/ local_uncertainty = null;
 </parameters>
 
 <usermanual>
@@ -942,9 +942,9 @@ dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
 dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60
 ]
 
-/ inputdevice = keyboard
 / beginresponsetime = 1000
-/ validresponse = ("2") 
+/ validresponse = (next) 
+/ inputdevice = mouse
 / responseinterrupt = immediate
 / branch = [
 	return trial.sampleResponse;
@@ -992,7 +992,8 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	}
 ]
 / stimulusframes = [1=instructions5, sampleAttentionR, sampleAttentionL, next]
-/ validresponse = ("2")
+/ validresponse = (next)
+/ inputdevice = mouse
 / branch = [
 	trial.instructions5_1;
 ]
@@ -1009,8 +1010,8 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 ]
 
 / stimulusframes = [1=instructions5_1, stim, local_box, global_box, nothing_box, increase_box]
-/ inputdevice =  keyboard
-/ validresponse = ("2","3","4","5")
+/ inputdevice = mouse
+/ validresponse = (local_box,global_box,nothing_box,increase_box)
 / recorddata = TRUE
 / branch = [
 	trial.dummytrial;
@@ -1021,7 +1022,8 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 / stimulusframes = [
 	1=instructions5_3, next
 ]
-/ validresponse = ("2")
+/ validresponse = (next) 
+/ inputdevice = mouse
 / branch = [
 	trial.instructions6;
 ]
@@ -1031,9 +1033,9 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 <trial dummytrial>
 / trialduration = 100;
 / branch = [
-	if (trial.instructions5_1.response=="3") {
+	if (trial.instructions5_1.response=="local_box") {
 		trial.posfeedback1;
-	} else if (trial.instructions5_1.response!="3") {
+	} else if (trial.instructions5_1.response!="local_box") {
 		trial.negfeedback1;
 	}
 ]
@@ -1042,9 +1044,9 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 <trial dummytrial1>
 / trialduration = 100;
 / branch = [
-	if (trial.instructions5_2.response!="5") {
+	if (trial.instructions5_2.response!="nothing_box") {
 		trial.negfeedback2;
-	} else if (trial.instructions5_2.response=="5") {
+	} else if (trial.instructions5_2.response=="nothing_box") {
 		trial.posfeedback2;
 	}
 ]
@@ -1064,7 +1066,8 @@ on the planet will stay the same.")
 
 <trial posfeedback1>
 / stimulusframes = [1=posfeedback1, next]
-/ validresponse = ("2")
+/ validresponse = (next) 
+/ inputdevice = mouse
 / branch = [
 	trial.instructions5_2;
 ]
@@ -1084,7 +1087,8 @@ the planet will stay the same.")
 
 <trial negfeedback1>
 / stimulusframes = [1=negfeedback1, next]
-/ validresponse = ("2")
+/ validresponse = (next) 
+/ inputdevice = mouse
 / branch = [
 	trial.instructions3;
 ]
@@ -1120,7 +1124,8 @@ number of mushrooms anywhere on the planet.")
 
 <trial negfeedback2>
 / stimulusframes = [1=negfeedback2, next]
-/ validresponse = ("2")
+/ validresponse = (next) 
+/ inputdevice = mouse
 / branch = [
 	trial.instructions3;
 ]
@@ -1138,8 +1143,8 @@ number of mushrooms anywhere on the planet.")
 ]
 
 / stimulusframes = [1=instructions5_2, stim, local_box, global_box, nothing_box, increase_box]
-/ inputdevice = keyboard
-/ validresponse = ("2","3","4","5")
+/ inputdevice = mouse
+/ validresponse = (local_box,global_box,nothing_box,increase_box)
 / recorddata = TRUE
 / branch = [
 	trial.dummytrial1;
@@ -2007,6 +2012,27 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 	values.erasure_blocks = 0;
 	values.timeouts_remain = values.timeout_trials;
 	list.triallist.poolsize = values.run_length;
+	
+	if (script.groupid < 2) {
+		parameters.attentional_control = "cloud";
+		parameters.local_uncertainty = "wind";
+		text.attentional_control.item.1 = "a cloud";
+		text.attentional_control.item.2 = "cloud";
+		text.local_uncertainty.item.1 = "wind";
+		text.local_uncertainty.item.2 = "wind";
+		picture.attention.item.1 = "fog0.png";
+		picture.unc_att.item.1 = "wind0.png";
+	} else if (script.groupid >= 2) {
+		parameters.attentional_control = "wind";
+		parameters.local_uncertainty = "cloud";
+		text.attentional_control.item.1 = "wind";
+		text.attentional_control.item.2 = "wind";
+		text.local_uncertainty.item.1 = "a cloud";
+		text.local_uncertainty.item.2 = "cloud";
+		picture.attention.item.1 = "wind0.png";
+		picture.unc_att.item.1 = "fog0.png";
+	}
+	
 ]
 
 / blocks = [
