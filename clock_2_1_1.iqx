@@ -1959,7 +1959,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / inputdevice = keyboard
 / beginresponsetime = 0
 / recorddata = false
-/ validresponse = ("2") 
+/ validresponse = (" ") 
 / responseinterrupt = immediate
 </trial>
 
