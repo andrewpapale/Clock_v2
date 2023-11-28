@@ -1746,6 +1746,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 
 <trial feedback>
 / ontrialbegin = [
+	picture.feedback2.hposition = 15%;
 	if (values.startPos >= 0 && values.startPos < 75) {
 		// shift 0 from 3 o'clock to 12 o'clock
 		values.rt_shifted = mod(values.gamma*(values.startPos+25)+trial.clock.latency,values.time_per_revolution);
@@ -1810,7 +1811,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 
 	if (values.trial_type != "no erasure") {
 		// to account for 90 degree counterclockwise rotation so 12 o'clock is zero
-		if (values.pos_shifted >= max(mod(values.stim_center_deg - 15, 360),1) && values.pos_shifted <= max(mod(values.stim_center_deg + 15, 360),1)) {
+		if (values.pos_shifted >= values.left_index && values.pos_shifted <= values.right_index) {
 			// 15 + 15 = 30 degrees of arc
 			values.choose_stim = TRUE;
 			values.n_clicks +=1;
