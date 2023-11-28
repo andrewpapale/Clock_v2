@@ -327,6 +327,9 @@
 / block_trial = null
 / last_block_type = null
 / erasure_blocks = null
+
+/ stim_left_deg = null
+/ stim_right_deg = null
 </values>
 
 <data>
@@ -1415,6 +1418,21 @@ number of mushrooms anywhere on the planet.")
 				values.i += 1;
 			}
 		};
+		
+		if (values.stim_center_deg > 345){
+			if (values.stim_center_deg==360){
+				values.stim_right_deg = 16;
+			} else {
+				values.stim_right_deg = mod(values.stim_center_deg + 15, 360);
+			}
+			values.stim_left_deg = values.stim_center_deg - 15;
+		} else if (values.stim_center_deg < 16){
+			values.stim_right_deg = values.stim_center_deg + 15;
+			values.stim_left_deg = 360 + values.stim_center_deg - 15;
+		} else {
+			values.stim_right_deg = values.stim_center_deg + 15;
+			values.stim_left_deg = values.stim_center_deg - 15;
+		}
 	}
 	if (values.trial_since_erasure_gen <= 15 && values.trial_since_erasure_gen > 1) {
 		values.to_l = list.curr_values.minimum;
@@ -1811,8 +1829,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 
 	if (values.trial_type != "no erasure") {
 		// to account for 90 degree counterclockwise rotation so 12 o'clock is zero
-		if (values.pos_shifted >= values.left_index && values.pos_shifted <= values.right_index) {
-			// 15 + 15 = 30 degrees of arc
+		if (values.pos_shifted <= values.stim_right_deg && values.pos_shifted >= values.stim_left_deg) {
 			values.choose_stim = TRUE;
 			values.n_clicks +=1;
 		} else {
