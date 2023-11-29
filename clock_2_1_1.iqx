@@ -341,7 +341,7 @@ values.block, values.trialCount, values.trial, values.run_trial,values.block_tri
 values.generate_new_erasure,values.trial_since_erasure_gen,values.deg_index_att, values.deg_index_era, values.att_index, values.era_index, 
 list.era_loc.currentvalue, values.has_erasure,list.att_loc.currentvalue, values.n_clicks, values.timeout_block,values.timeouts_remain,values.stim_center_deg,
 values.startPos,values.pos_shifted,values.rt_shifted,values.mag, values.inc_rg, values.inc, values.rng, values.freq, values.choose_stim,values.erasure_value, values.erasure_RT,
-values.right_index,values.left_index,
+values.right_index,values.left_index, values.stim_left_deg, values.stim_right_deg,
 values.trial, values.x_final, values.y_final,values.trial_since_erasure_gen,values.era_index,list.era_loc.nextvalue, values.erasure_blocks)
 </data>
 
@@ -1418,21 +1418,6 @@ number of mushrooms anywhere on the planet.")
 				values.i += 1;
 			}
 		};
-		
-		if (values.stim_center_deg > 345){
-			if (values.stim_center_deg==360){
-				values.stim_right_deg = 16;
-			} else {
-				values.stim_right_deg = mod(values.stim_center_deg + 15, 360);
-			}
-			values.stim_left_deg = values.stim_center_deg - 15;
-		} else if (values.stim_center_deg < 16){
-			values.stim_right_deg = values.stim_center_deg + 15;
-			values.stim_left_deg = 360 + values.stim_center_deg - 15;
-		} else {
-			values.stim_right_deg = values.stim_center_deg + 15;
-			values.stim_left_deg = values.stim_center_deg - 15;
-		}
 	}
 	if (values.trial_since_erasure_gen <= 15 && values.trial_since_erasure_gen > 1) {
 		values.to_l = list.curr_values.minimum;
@@ -1451,6 +1436,21 @@ number of mushrooms anywhere on the planet.")
 			values.erasure_value = (values.smooth_kernel2 + values.erasure_value)/2;
 			//values.erasure_value = ((values.erasure_value - values.curr_min)/(values.curr_max - values.curr_min)) * (values.to_h - values.to_l) + values.to_l;	
 		}
+	}
+	
+	if (values.stim_center_deg > 345){
+		if (values.stim_center_deg==360){
+			values.stim_right_deg = 16;
+		} else {
+			values.stim_right_deg = mod(values.stim_center_deg + 15, 360);
+		}
+		values.stim_left_deg = values.stim_center_deg - 15;
+	} else if (values.stim_center_deg < 16){
+		values.stim_right_deg = values.stim_center_deg + 15;
+		values.stim_left_deg = 360 + values.stim_center_deg - 15;
+	} else {
+		values.stim_right_deg = values.stim_center_deg + 15;
+		values.stim_left_deg = values.stim_center_deg - 15;
 	}
 	
 	if (values.trial_since_erasure_gen <= 15){
@@ -1774,6 +1774,9 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 	values.pos_shifted = values.rt_shifted*360/values.time_per_revolution;
 	// 5000 / 360 RT segments gives 14ms RT bins, conveniently, 1 degree / segment so the index for the value = the degree of the position selected
 	values.rt_index = round(values.pos_shifted);
+	if (values.rt_index == 0){
+			values.rt_index = 1;
+	}
 	values.mag = list.curr_values.item(values.rt_index);
 	values.ev = values.mag * values.freq;
 	values.rng = rand(0,1);
@@ -1828,14 +1831,22 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 	values.trialCount += 1;
 
 	if (values.trial_type != "no erasure") {
-		// to account for 90 degree counterclockwise rotation so 12 o'clock is zero
-		if (values.pos_shifted <= values.stim_right_deg && values.pos_shifted >= values.stim_left_deg) {
-			values.choose_stim = TRUE;
-			values.n_clicks +=1;
-		} else {
-			values.choose_stim = FALSE;
+		if (values.stim_center_deg > 16 && values.stim_center_deg < 345){
+			if (values.pos_shifted <= values.stim_right_deg && values.pos_shifted >= values.stim_left_deg) {
+				values.choose_stim = TRUE;
+				values.n_clicks +=1;
+			} else {
+				values.choose_stim = FALSE;
+			}
+		} else if (values.stim_center_deg <= 16 || values.stim_center_deg >= 345){
+			if (values.pos_shifted <= values.stim_right_deg || values.pos_shifted >= values.stim_left_deg) {
+				values.choose_stim = TRUE;
+				values.n_clicks +=1;
+			} else {
+				values.choose_stim = FALSE;
+			}
 		}
-	}
+	}		
 
 	if (values.generate_new_erasure==TRUE) {
 		values.generate_new_erasure = FALSE;
@@ -2145,13 +2156,13 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 ]
 
 / blocks = [
-	1=instructions; 
-	2=experiment; 
-	3=break; 
-	4=experiment; 
-	5=break; 
-	6=experiment; 
-	7=endscreen;
+	//1=instructions; 
+	1=experiment; 
+	//3=break; 
+	//4=experiment; 
+	//5=break; 
+	//6=experiment; 
+	//7=endscreen;
 ]
 
 </expt>
