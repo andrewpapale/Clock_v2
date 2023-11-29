@@ -108,12 +108,6 @@
 / selectionmode = sequence
 </list>
 
-<list blocklist>
-/ items = (block.experiment)
-/ poolsize = values.n_blocks;
-/ selectionmode = sequence
-</list>
-
 <list ITI>
 / items = ( 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250, 260, 270, 280, 290, 300, 310, 320, 330, 340, 350, 360, 370, 380, 390, 400, 410, 420, 430, 440, 450, 460, 470, 480, 490, 500)
 / poolsize = 41
@@ -200,16 +194,7 @@
 / trial = 0;
 / run_trial = 0;
 / run_trial_dum = 0; // dummy counter to avoid extra ITI at the end of blocks
-/ stim_idx = NULL;
-/ erase_prop = 0.33333;
-/ attention_prop = 0.33333;
-/ no_erasure_prop = 1 - values.erase_prop - values.attention_prop;
-/ block_length = 3;
-/ block_length_original = values.block_length;
-/ disappear_clicks = 2;
-/ timeout_trials = 2;
-/ n_trials = 45;
-/ n_blocks = floor(values.n_trials / values.block_length)
+
 / block_type = NULL;
 / trial_type = null;
 / block = 0;
@@ -234,15 +219,7 @@
 / startPos = 0;
 / choose_stim = NULL;
 / stim_center_deg = NULL;
-/ rem0 = NULL;
-/ rem1 = NULL;
-/ rem2 = NULL;
-/ rem3 = NULL;
-/ rem4 = NULL;
-/ rem5 = NULL;
-/ best = NULL;
-/ last_block_flag = FALSE;
-/ min_rem = NULL;
+
 / has_erasure = NULL;
 / generate_new_erasure = NULL;
 / total_clicks = 2;
@@ -323,7 +300,7 @@
 / era_index = null
 / att_index = null
 
-/ run_length = 80;
+/ run_length = 100;
 / block_trial = null
 / last_block_type = null
 / erasure_blocks = null
@@ -342,7 +319,7 @@ values.generate_new_erasure,values.trial_since_erasure_gen,values.deg_index_att,
 list.era_loc.currentvalue, values.has_erasure,list.att_loc.currentvalue, values.n_clicks, values.timeout_block,values.timeouts_remain,values.stim_center_deg,
 values.startPos,values.pos_shifted,values.rt_shifted,values.mag, values.inc_rg, values.inc, values.rng, values.freq, values.choose_stim,values.erasure_value, values.erasure_RT,
 values.right_index,values.left_index, values.stim_left_deg, values.stim_right_deg,
-values.trial, values.x_final, values.y_final,values.trial_since_erasure_gen,values.era_index,list.era_loc.nextvalue, values.erasure_blocks)
+values.trial,values.erasure_blocks,parameters.attentional_control,parameters.local_uncertainty,picture.planet.item.1,picture.animatedCircle.item.1,picture.feedback2.items.1)
 </data>
 
 <picture animatedCircle>
@@ -2030,15 +2007,15 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 	values.run_trial = 0;
 	values.n_clicks = NULL;
 	values.block +=1;
-	if (values.block==2) {
+	if (values.block==1) {
 		picture.planet.item.1 = ("exoplanet-2896662_1920.png");
 		picture.frozenShip.item.1 = ("585f94c8cb11b227491c3586.png");
 		picture.animatedCircle.item.1 = ("585f94c8cb11b227491c3586.png");
-	} else if (values.block==3) {
+	} else if (values.block==2) {
 		picture.planet.item.1 = ("purple-sphere-7346837_1920.png");
 		picture.frozenShip.item.1 = ("585f94d8cb11b227491c3588.png");
 		picture.animatedCircle.item.1 = ("585f94d8cb11b227491c3588.png");
-	} else if (values.block==1) {
+	} else if (values.block==3) {
 		picture.planet.item.1 = ("planet-1138237_1280.png");
 		picture.frozenShip.item.1 = ("585f94c1cb11b227491c3585.png");
 		picture.animatedCircle.item.1 = ("585f94c1cb11b227491c3585.png");
