@@ -3,7 +3,7 @@
 / minimumversion = "6.0.0.0"
 / inputdevice = keyboard
 / fontstyle = ("Arial", 3%, false, false, false, false, 5, 0)
-/ txbgcolor = white
+/ txbgcolor = (128,128,128)
 / txcolor = (0, 0, 0)
 / screencolor = (128,128,128)
 </defaults>
@@ -14,6 +14,7 @@
 / clockdotSize = 2%
 / attentional_control = null;
 / local_uncertainty = null;
+/ seed = 2455;
 </parameters>
 
 <usermanual>
@@ -309,8 +310,6 @@
 / stim_left_deg = null
 / stim_right_deg = null
 
-/ earnings = null
-/ total_earnings = null
 </values>
 
 <data>
@@ -320,10 +319,10 @@
 trialcode, list.ITI.currentvalue, list.preClockFreeze.currentvalue, latency, list.ISI.currentvalue, 
 values.block, values.trialCount, values.trial, values.run_trial,values.block_trial,values.block_type, values.trial_type, values.last_block_type,
 values.generate_new_erasure,values.trial_since_erasure_gen,values.deg_index_att, values.deg_index_era, values.att_index, values.era_index, 
-list.era_loc.currentvalue, values.has_erasure,list.att_loc.currentvalue, values.n_clicks, values.timeout_block,values.timeouts_remain,values.stim_center_deg,
+parameters.seed, list.era_loc.currentvalue, values.has_erasure,list.att_loc.currentvalue, values.n_clicks, values.timeout_block,values.timeouts_remain,values.stim_center_deg,
 values.startPos,values.pos_shifted,values.rt_shifted,values.mag, values.inc_rg, values.inc, values.rng, values.freq, values.choose_stim,values.erasure_value, values.erasure_RT,
 values.right_index,values.left_index, values.stim_left_deg, values.stim_right_deg,
-values.trial,values.erasure_blocks,parameters.attentional_control,parameters.local_uncertainty,picture.planet.item.1,picture.animatedCircle.item.1,picture.feedback2.items.1)
+values.trial,values.erasure_blocks,parameters.attentional_control,parameters.local_uncertainty,picture.planet.item.1,picture.animatedCircle.item.1,picture.feedback2.items.1,values.Earnings, values.totalEarnings)
 </data>
 
 <picture animatedCircle>
@@ -398,35 +397,35 @@ values.trial,values.erasure_blocks,parameters.attentional_control,parameters.loc
 <picture feedback2>
 / items = ("blank.png")
 / position = (15%, 50%)
-/ size = (60%, 60%)
+/ size = (40%, 40%)
 / erase = true(128,128,128)
 </picture>
 
 <picture feedback3>
 / items = ("blank.png")
 / position = (85%, 50%)
-/ size = (60%, 60%)
+/ size = (40%, 40%)
 / erase = true(128,128,128)
 </picture>
 
 <picture mushrooms1>
 / items = ("Mushroom1A.png")
 / position = (50%, 50%)
-/ size = (50%, 50%)
+/ size = (40%, 40%)
 / erase = true(128,128,128)
 </picture>
 
 <picture mushrooms2>
 / items = ("Mushroom2A.png")
 / position = (50%, 50%)
-/ size = (50%, 50%)
+/ size = (40%, 40%)
 / erase = true(128,128,128)
 </picture>
 
 <picture mushrooms3>
 / items = ("Mushroom3A.png")
 / position = (50%, 50%)
-/ size = (50%, 50%)
+/ size = (40%, 40%)
 / erase = true(128,128,128)
 </picture>
 
@@ -1784,10 +1783,10 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 		if (values.block ==1) {
 			picture.feedback2.item.1 = ("Mushroom1A.png");
 			picture.feedback3.item.1 = ("Mushroom1A.png");
-		} else if (values.block == 2 && values.block < 3) {
+		} else if (values.block == 2) {
 			picture.feedback2.item.1 = ("Mushroom2A.png");
 			picture.feedback3.item.1 = ("Mushroom2A.png");
-		} else if (values.block == 3 && values.block < 4) {
+		} else if (values.block == 3) {
 			picture.feedback2.item.1 = ("Mushroom3A.png");
 			picture.feedback3.item.1 = ("Mushroom3A.png");
 		}
@@ -2137,13 +2136,13 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 ]
 
 / blocks = [
-	//1=instructions; 
-	1=experiment; 
-	//3=break; 
-	//4=experiment; 
-	//5=break; 
-	//6=experiment; 
-	//7=endscreen;
+	1=instructions; 
+	2=experiment; 
+	3=break; 
+	4=experiment; 
+	5=break; 
+	6=experiment; 
+	7=endscreen;
 ]
 
 </expt>
