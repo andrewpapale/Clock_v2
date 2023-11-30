@@ -308,6 +308,9 @@
 
 / stim_left_deg = null
 / stim_right_deg = null
+
+/ earnings = null
+/ total_earnings = null
 </values>
 
 <data>
