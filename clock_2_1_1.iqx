@@ -5,6 +5,7 @@
 / fontstyle = ("Arial", 3%, false, false, false, false, 5, 0)
 / txbgcolor = white
 / txcolor = (0, 0, 0)
+/ screencolor = (128,128,128)
 </defaults>
 
 <parameters>
@@ -331,25 +332,25 @@ values.trial,values.erasure_blocks,parameters.attentional_control,parameters.loc
 
 <picture frozenShip>
 / items = ("blank.png")
-/ erase = true(white)
+/ erase = true(128,128,128)
 / size = (12%, 0.1px*display.canvaswidth)
 </picture>
 
 <picture shuttle1>
-/ items = ("585f94c1cb11b227491c3585.png")
-/ erase = true(white)
+/ items = ("Ship1A.png")
+/ erase = true(128,128,128)
 / size = (12%, 0.1px*display.canvaswidth)
 </picture>
 
 <picture shuttle2>
-/ items = ("585f94d8cb11b227491c3588.png")
-/ erase = true(white)
+/ items = ("Ship2A.png")
+/ erase = true(128,128,128)
 / size = (12%, 0.1px*display.canvaswidth)
 </picture>
 
 <picture shuttle3>
-/ items = ("585f94c8cb11b227491c3586.png")
-/ erase = true(white)
+/ items = ("Ship3A.png")
+/ erase = true(128,128,128)
 / size = (12%, 0.1px*display.canvaswidth)
 </picture>
 
@@ -357,7 +358,7 @@ values.trial,values.erasure_blocks,parameters.attentional_control,parameters.loc
 / items = ("fixationCross.png")
 / position = (50%, 50%)
 / size = (7%, 7%)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </picture>
 
 <picture stim>
@@ -365,7 +366,7 @@ values.trial,values.erasure_blocks,parameters.attentional_control,parameters.loc
 / hposition = expressions.centerx + expressions.widthchange_angle270
 / vposition = expressions.centery + expressions.heightchange_angle270
 / size = (18%, 18%)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </picture>
 
 <picture blank>
@@ -373,7 +374,7 @@ values.trial,values.erasure_blocks,parameters.attentional_control,parameters.loc
 / hposition = expressions.centerx + expressions.widthchange_angle270
 / vposition = expressions.centery + expressions.heightchange_angle270
 / size = (18%, 18%)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </picture>
 
 <picture wind>
@@ -381,105 +382,105 @@ values.trial,values.erasure_blocks,parameters.attentional_control,parameters.loc
 / hposition = expressions.centerx + expressions.widthchange_angle270
 / vposition = expressions.centery + expressions.heightchange_angle270
 / size = (18%, 18%)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </picture>
 
 <picture planet>
 / items = ("blank.png")
 / position = (50%, 50%)
 / size = (35%,35%)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </picture>
 
 <picture feedback2>
 / items = ("blank.png")
 / position = (15%, 50%)
 / size = (60%, 60%)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </picture>
 
 <picture feedback3>
 / items = ("blank.png")
 / position = (85%, 50%)
 / size = (60%, 60%)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </picture>
 
 <picture mushrooms1>
-/ items = ("mushrooms1.png")
+/ items = ("Mushroom1A.png")
 / position = (50%, 50%)
 / size = (50%, 50%)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </picture>
 
 <picture mushrooms2>
-/ items = ("mushrooms2.png")
+/ items = ("Mushroom2A.png")
 / position = (50%, 50%)
 / size = (50%, 50%)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </picture>
 
 <picture mushrooms3>
-/ items = ("mushrooms3.png")
+/ items = ("Mushroom3A.png")
 / position = (50%, 50%)
 / size = (50%, 50%)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </picture>
 
 <picture planet1>
-/ items = ("purple-sphere-7346837_1920.png")
+/ items = ("Planet1A.png")
 / position = (50%, 50%)
 / size = (50%, 50%)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </picture>
 
 <picture planet2>
-/ items = ("exoplanet-2896662_1920.png")
+/ items = ("Planet2A.png")
 / position = (50%, 50%)
 / size = (50%, 50%)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </picture>
 
 <picture planet3>
-/ items = ("planet-1138237_1280.png")
+/ items = ("Planet3A.png")
 / position = (50%, 50%)
 / size = (50%, 50%)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </picture>
 
 <picture timeout>
 / items = ("timeout.png")
 / position = (50%, 50%)
 / size = (10%, 10%)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </picture>
 
 <picture sampleMushroomL>
-/ items = ("mushrooms1.png")
+/ items = ("Mushroom1A.png")
 / position = (20%, 80%)
 / size = (35%, 35%)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </picture>
 
 <picture sampleMushroomR>
-/ items = ("mushrooms1.png")
+/ items = ("Mushroom1A.png")
 / position = (80%, 80%)
 / size = (35%, 35%)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </picture>
 
 <picture sampleAttentionL>
 / items = ("wind0.png")
 / position = (20%, 80%)
 / size = (35%, 35%)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </picture>
 
 <picture sampleAttentionR>
 / items = ("wind0.png")
 / position = (80%, 80%)
 / size = (35%, 35%)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </picture>
 
 <text three>
@@ -586,7 +587,7 @@ Your spacecraft will orbit the planet, and you can land it at any point by press
 <item instructions1_2>
 / 1 = "The goal of this game is to get the most mushrooms.
 
-The game takes about 25-30 minutes, there are breaks 1/3 and 2/3 of the way through, and there are some questions at the end."
+The game takes about 25-30 minutes, there are breaks 1/3 and 2/3 of the way through."
 
 </item>
 
@@ -726,7 +727,7 @@ and get no mushrooms")
 / position = (50%, 65%)
 / vjustify = center
 / hjustify = left
-/ erase = true(white)
+/ erase = true(128,128,128)
 </text>
 
 <text instructions5_1>
@@ -1778,14 +1779,14 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 		values.Earnings = values.inc_rg*values.conversion;
 		values.totalEarnings = values.totalEarnings + values.Earnings;
 		if (values.block ==1) {
-			picture.feedback2.item.1 = ("mushrooms2.png");
-			picture.feedback3.item.1 = ("mushrooms2.png");
+			picture.feedback2.item.1 = ("Mushroom1A.png");
+			picture.feedback3.item.1 = ("Mushroom1A.png");
 		} else if (values.block == 2 && values.block < 3) {
-			picture.feedback2.item.1 = ("mushrooms1.png");
-			picture.feedback3.item.1 = ("mushrooms1.png");
+			picture.feedback2.item.1 = ("Mushroom2A.png");
+			picture.feedback3.item.1 = ("Mushroom2A.png");
 		} else if (values.block == 3 && values.block < 4) {
-			picture.feedback2.item.1 = ("mushrooms3.png");
-			picture.feedback3.item.1 = ("mushrooms3.png");
+			picture.feedback2.item.1 = ("Mushroom3A.png");
+			picture.feedback3.item.1 = ("Mushroom3A.png");
 		}
 	} else {
 		values.inc = 0;
@@ -1911,14 +1912,14 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 
 <text waiting>
 / items = ("Waiting for scanner trigger +=")
-/ erase = true(white)
+/ erase = true(128,128,128)
 / position = (50%, 50%) 
 </text>
 
 <clock breaktimer>
 / format = "mm:ss"
 / mode = timer
-/ erase = true(white)
+/ erase = true(128,128,128)
 / monitor = 1
 / position = (50%, 50%)
 / resetrate = block
@@ -1929,7 +1930,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 
 <text breaktext>
 / position = (50%, 40%)
-/ erase = true(white)
+/ erase = true(128,128,128)
 / items = ("Please relax for 1 minute")
 </text>
 
@@ -1987,9 +1988,9 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 
 <block instructions> 
 / onblockbegin = [
-	picture.planet.item.1 = ("exoplanet-2896662_1920.png");
-	picture.frozenShip.item.1 = ("585f94c8cb11b227491c3586.png");
-	picture.animatedCircle.item.1 = ("585f94c8cb11b227491c3586.png");
+	picture.planet.item.1 = ("Planet1A.png");
+	picture.frozenShip.item.1 = ("Ship1A.png");
+	picture.animatedCircle.item.1 = ("Ship1A.png");
 ]
 
 / trials = [1=instructions1, instructions2, instructions2_1, instructions2_5, instructions3]
@@ -2008,17 +2009,17 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 	values.n_clicks = NULL;
 	values.block +=1;
 	if (values.block==1) {
-		picture.planet.item.1 = ("exoplanet-2896662_1920.png");
-		picture.frozenShip.item.1 = ("585f94c8cb11b227491c3586.png");
-		picture.animatedCircle.item.1 = ("585f94c8cb11b227491c3586.png");
+		picture.planet.item.1 = ("Planet1A.png");
+		picture.frozenShip.item.1 = ("Ship1A.png");
+		picture.animatedCircle.item.1 = ("Ship1A.png");
 	} else if (values.block==2) {
-		picture.planet.item.1 = ("purple-sphere-7346837_1920.png");
-		picture.frozenShip.item.1 = ("585f94d8cb11b227491c3588.png");
-		picture.animatedCircle.item.1 = ("585f94d8cb11b227491c3588.png");
+		picture.planet.item.1 = ("Planet2A.png");
+		picture.frozenShip.item.1 = ("Ship2A.png");
+		picture.animatedCircle.item.1 = ("Ship2A.png");
 	} else if (values.block==3) {
-		picture.planet.item.1 = ("planet-1138237_1280.png");
-		picture.frozenShip.item.1 = ("585f94c1cb11b227491c3585.png");
-		picture.animatedCircle.item.1 = ("585f94c1cb11b227491c3585.png");
+		picture.planet.item.1 = ("Planet3A.png");
+		picture.frozenShip.item.1 = ("Ship3A.png");
+		picture.animatedCircle.item.1 = ("Ship3A.png");
 	}
 	shape.dot1.erase = false;
 	shape.dot2.erase = false;
@@ -2445,7 +2446,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle276)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle276)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot2>
@@ -2455,7 +2456,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle282)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle282)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot3>
@@ -2465,7 +2466,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle288)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle288)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot4>
@@ -2475,7 +2476,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle294)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle294)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot5>
@@ -2485,7 +2486,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle300)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle300)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot6>
@@ -2495,7 +2496,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle306)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle306)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot7>
@@ -2505,7 +2506,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle312)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle312)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot8>
@@ -2515,7 +2516,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle318)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle318)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot9>
@@ -2525,7 +2526,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle324)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle324)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot10>
@@ -2535,7 +2536,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle330)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle330)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot11>
@@ -2545,7 +2546,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle336)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle336)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot12>
@@ -2555,7 +2556,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle342)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle342)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot13>
@@ -2565,7 +2566,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle348)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle348)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot14>
@@ -2575,7 +2576,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle354)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle354)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot15>
@@ -2585,7 +2586,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle0)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle0)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
 
 <shape dot16>
@@ -2595,7 +2596,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle6)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle6)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot17>
@@ -2605,7 +2606,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle12)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle12)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot18>
@@ -2615,7 +2616,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle18)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle18)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot19>
@@ -2625,7 +2626,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle24)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle24)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot20>
@@ -2635,7 +2636,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle30)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle30)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot21>
@@ -2645,7 +2646,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle36)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle36)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot22>
@@ -2655,7 +2656,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle42)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle42)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot23>
@@ -2665,7 +2666,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle48)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle48)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot24>
@@ -2675,7 +2676,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle54)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle54)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot25>
@@ -2685,7 +2686,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle60)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle60)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot26>
@@ -2695,7 +2696,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle66)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle66)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot27>
@@ -2705,7 +2706,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle72)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle72)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot28>
@@ -2715,7 +2716,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle78)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle78)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot29>
@@ -2725,7 +2726,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle84)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle84)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot30>
@@ -2735,7 +2736,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle90)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle90)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot31>
@@ -2745,7 +2746,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle96)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle96)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot32>
@@ -2755,7 +2756,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle102)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle102)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot33>
@@ -2765,7 +2766,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle108)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle108)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot34>
@@ -2775,7 +2776,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle114)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle114)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot35>
@@ -2785,7 +2786,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle120)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle120)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot36>
@@ -2795,7 +2796,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle126)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle126)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot37>
@@ -2805,7 +2806,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle132)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle132)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot38>
@@ -2815,7 +2816,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle138)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle138)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot39>
@@ -2825,7 +2826,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle144)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle144)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot40>
@@ -2835,7 +2836,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle150)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle150)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot41>
@@ -2845,7 +2846,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle156)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle156)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot42>
@@ -2855,7 +2856,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle162)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle162)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot43>
@@ -2865,7 +2866,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle168)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle168)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot44>
@@ -2875,7 +2876,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle174)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle174)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot45>
@@ -2885,7 +2886,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle180)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle180)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot46>
@@ -2895,7 +2896,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle186)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle186)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot47>
@@ -2905,7 +2906,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle192)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle192)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot48>
@@ -2915,7 +2916,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle198)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle198)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot49>
@@ -2925,7 +2926,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle204)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle204)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot50>
@@ -2935,7 +2936,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle210)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle210)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot51>
@@ -2945,7 +2946,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle216)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle216)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot52>
@@ -2955,7 +2956,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle222)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle222)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot53>
@@ -2965,7 +2966,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle228)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle228)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot54>
@@ -2975,7 +2976,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle234)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle234)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot55>
@@ -2985,7 +2986,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle240)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle240)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot56>
@@ -2995,7 +2996,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle246)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle246)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot57>
@@ -3005,7 +3006,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle252)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle252)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot58>
@@ -3015,7 +3016,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle258)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle258)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot59>
@@ -3025,7 +3026,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle264)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle264)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
  
 <shape dot60>
@@ -3035,5 +3036,5 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / color = (255/61*2,255/61*2,255/61*2)
 / hposition = 1px * (expressions.centerx + expressions.widthchange_angle270)
 / vposition = 1px * (expressions.centery + expressions.heightchange_angle270)
-/ erase = true(white)
+/ erase = true(128,128,128)
 </shape>
