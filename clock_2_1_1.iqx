@@ -584,7 +584,7 @@ Your spacecraft will orbit the planet, and you can land it at any point by press
 <text instructions1_2>
 / items = instructions1_2
 / select = 1
-/ position = (50%, 25%)
+/ position = (50%, 15%)
 / fontstyle = ("Arial", 5%)
 / size = (90%, 90%)
 / hjustify = left
@@ -593,8 +593,8 @@ Your spacecraft will orbit the planet, and you can land it at any point by press
 
 <item instructions1_2>
 / 1 = "The goal of this game is to get the most mushrooms.
-
-The game takes about 25-30 minutes, there are breaks 1/3 and 2/3 of the way through."
+The game takes about 25-30 minutes, there are breaks 1/3 and 2/3 of the way through where you will travel to a new planet.
+Regardless of the planet you are exploring, your goal is to get the most mushrooms."
 
 </item>
 
