@@ -14,7 +14,7 @@
 / clockdotSize = 2%
 / attentional_control = null;
 / local_uncertainty = null;
-/ seed = 2455;
+/ seed = 6820;
 </parameters>
 
 <usermanual>
@@ -40,35 +40,37 @@
 </list>
 
 <include>
-/ file = "values-2455.txt"
-// file = "values-6820.txt"
+// file = "values-2455.txt"
+/ file = "values-6820.txt"
 </include>
 
 <include>
-/ file = "RTs-2455.txt"
-// file = "RTs-6820.txt"
+// file = "RTs-2455.txt"
+/ file = "RTs-6820.txt"
 </include>
 
 <include>
-/ file = "spread-2455.txt"
-// file = "spread-6820.txt"
+// file = "spread-2455.txt"
+/ file = "spread-6820.txt"
 </include>
 
 <list era_loc>
-/ items = (102,21,34,254,23,109,268,45,274,113,279,49,224,280,237,234,106,91,219,38,75,279,237,64,82,87,101,227,114,251) // seed 2455
-// items = 
+// items = (102,21,34,254,23,109,268,45,274,113,279,49,224,280,237,234,106,91,219,38,75,279,237,64,82,87,101,227,114,251) // seed 2455
+/ items = (133,174,300,133,183,280,314,168,147,294,129,182,117,330,158,150,172,170,150,341,111,179,135,327,192,176,341,322) // seed 6820
 / selectionrate = always
 / selectionmode = values.era_index;
 </list>
 
 <list att_loc>
-/ items = (232,96,280,239,235,270,286,96,54,234)
+// items = (232,96,280,239,235,270,286,96,54,234)
+/ items = (158,122,173,145,311,298,327,165,180,132) 
 / selectionrate = always
 / selectionmode = values.att_index;
 </list>
 
 <list era_val>
-/ items = (45,22,33,168,42,10,76,141,61,38,22,28,95,129,56,3,114,75,173,1,13,74,40,14,99,99,92,15,59,42)
+// items = (45,22,33,168,42,10,76,141,61,38,22,28,95,129,56,3,114,75,173,1,13,74,40,14,99,99,92,15,59,42) // seed 2455
+/ items = (24,10,51,25,1,65,116,1,4,1,194,122,148,49,149,102,70,38,137,90,103,3,23,1,134,110,2,12) // seed 6820
 / selectionrate = always
 / selectionmode = values.era_index;
 </list>
@@ -91,10 +93,15 @@
 </list>
 
 <list block_type>
-/ items = ("attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure")
+// seed 2455
+// items = ("attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure")
+// seed 6820
+/ items = ("no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure")
 / selectionrate = always
 / selectionmode = values.trial;
 </list>
+
+
 
 <list degrees_used>
 / items = ()
@@ -1271,7 +1278,32 @@ number of mushrooms anywhere on the planet.")
 		values.erasure_blocks +=1;
 		// arithmetic sequence mapping 1,2,3,4,... --> 0,3,6,12,...
 		// only want to set the starting index at the beginning of each erasure_block
-		values.era_index = values.erasure_blocks + 2*(values.erasure_blocks - 1) - 1;
+		if (parameters.seed !=6820){
+			values.era_index = values.erasure_blocks + 2*(values.erasure_blocks - 1) - 1;
+		} else {
+			// this does not work if there are two erasure blocks in a row, because you only get 5 instead of 6 erasures
+			if (values.erasure_blocks==1){
+				values.era_index = 1;
+			} else if  (values.erasure_blocks==2){
+				values.era_index = 4;
+			} else if  (values.erasure_blocks==3){
+				values.era_index = 7;
+			} else if  (values.erasure_blocks==4){
+				values.era_index = 10;
+			} else if  (values.erasure_blocks==5){
+				values.era_index = 13;
+			} else if  (values.erasure_blocks==6){
+				values.era_index = 15;
+			} else if  (values.erasure_blocks==7){
+				values.era_index = 18;
+			} else if  (values.erasure_blocks==8){
+				values.era_index = 21;
+			} else if  (values.erasure_blocks==9){
+				values.era_index = 24;
+			} else if  (values.erasure_blocks==10){
+				values.era_index = 27;
+			}
+		}
 	}
 	if (values.last_block_type != values.block_type || values.trial == 1){
 		values.block_trial = 1;
