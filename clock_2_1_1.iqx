@@ -41,18 +41,22 @@
 
 <include>
 / file = "values-2455.txt"
+// file = "values-6820.txt"
 </include>
 
 <include>
 / file = "RTs-2455.txt"
+// file = "RTs-6820.txt"
 </include>
 
 <include>
 / file = "spread-2455.txt"
+// file = "spread-6820.txt"
 </include>
 
 <list era_loc>
-/ items = (102,21,34,254,23,109,268,45,274,113,279,49,224,280,237,234,106,91,219,38,75,279,237,64,82,87,101,227,114,251)
+/ items = (102,21,34,254,23,109,268,45,274,113,279,49,224,280,237,234,106,91,219,38,75,279,237,64,82,87,101,227,114,251) // seed 2455
+// items = 
 / selectionrate = always
 / selectionmode = values.era_index;
 </list>
@@ -227,7 +231,8 @@
 / total_clicks = 2;
 / n_clicks = NULL;
 / timeout_block = FALSE;
-/ timeouts_remain = 1;
+/ timeouts_remain = null;
+/ timeout_trials = 2;
 / end_block = NULL;
 / require_attention = NULL;
 / require_erasure = NULL;
@@ -322,7 +327,7 @@ values.generate_new_erasure,values.trial_since_erasure_gen,values.deg_index_att,
 parameters.seed, list.era_loc.currentvalue, values.has_erasure,list.att_loc.currentvalue, values.n_clicks, values.timeout_block,values.timeouts_remain,values.stim_center_deg,
 values.startPos,values.pos_shifted,values.rt_shifted,values.mag, values.inc_rg, values.inc, values.rng, values.freq, values.choose_stim,values.erasure_value, values.erasure_RT,
 values.right_index,values.left_index, values.stim_left_deg, values.stim_right_deg,
-values.trial,values.erasure_blocks,parameters.attentional_control,parameters.local_uncertainty,picture.planet.item.1,picture.animatedCircle.item.1,picture.feedback2.items.1,values.Earnings, values.totalEarnings)
+values.trial,values.erasure_blocks,parameters.attentional_control,parameters.local_uncertainty,picture.planet.item.1,picture.animatedCircle.item.1,picture.feedback2.items.1,picture.stim.item.1,values.Earnings, values.totalEarnings)
 </data>
 
 <picture animatedCircle>
@@ -1290,6 +1295,10 @@ number of mushrooms anywhere on the planet.")
 		// reset timeouts remaining to 2
 		values.timeouts_remain = values.timeout_trials;
 	}
+	if (values.block_type != "erasure"){
+		values.timeout_block = FALSE;
+		
+	}
 	if (values.timeout_block==TRUE) {
 		// decrement timeouts trials remaining by 1 if in timeout block
 		values.timeouts_remain -= 1;
@@ -1299,7 +1308,6 @@ number of mushrooms anywhere on the planet.")
 		values.choose_stim = NULL;
 		values.n_timeout +=1;
 	}
-	
 	if (values.block_type == "attention" || values.block_type == "no erasure"){
 		values.trial_type = values.block_type;
 	} else if (values.block_type == "erasure"){
@@ -1317,7 +1325,11 @@ number of mushrooms anywhere on the planet.")
 		values.has_erasure = FALSE;
 		values.choose_stim = NULL;
 	} else if (values.trial_type == "attention") {
-		picture.stim.item.1 = ("fog0.png");
+		if (parameters.attentional_control=="cloud") {
+			picture.stim.item.1 = "fog0.png";
+		} else if (parameters.attentional_control=="wind") {
+			picture.stim.item.1 = "wind0.png";
+		}
 		values.has_erasure = FALSE;
 		values.n_clicks = 0;
 		values.choose_stim = 0;
@@ -1330,7 +1342,11 @@ number of mushrooms anywhere on the planet.")
 		picture.stim.rotation = list.att_loc.nextvalue - 270;
 		values.stim_center_deg = mod(list.att_loc.nextvalue + 90,360);
 	} else if (values.trial_type == "erasure") {
-		picture.stim.item.1 = ("wind0.png");
+		if (parameters.local_uncertainty=="cloud") {
+			picture.stim.item.1 = "fog0.png";
+		} else if (parameters.local_uncertainty=="wind") {
+			picture.stim.item.1 = "wind0.png";
+		}
 		values.has_erasure = TRUE;
 	}
 	if (values.trial_type == "erasure" && values.generate_new_erasure==TRUE) {
@@ -2104,6 +2120,91 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 ]
 </block>
 
+**************************************************************************************************************
+**************************************************************************************************************
+	QUESTIONAIRRE
+**************************************************************************************************************
+**************************************************************************************************************
+
+<parameters>
+/ pageinstructions = "Please answer the following 2 questions:"
+</parameters>
+
+
+<surveypage FCQ_S1>
+/ caption = "<%parameters.pageinstructions%>"
+/ questions = [1 = qUncertainty, qAttnControl]
+</surveypage>
+
+
+<radiobuttons qUncertainty>
+/ caption = "1. When landing on the <%text.local_uncertainty.items.2%> what did you expect to happen?  ~n The number of mushrooms..."
+/ options = ("will always decrease","will ~n not change ~n anywhere","all over ~n the planet ~n changes","changes only ~n on that part ~n of the planet")
+/ optionvalues = ("1", "2", "3","4")
+/ size = (500,20)
+/ required = true
+/ orientation = horizontalequal
+</radiobuttons>
+
+<radiobuttons qAttnControl>
+/ caption = "2. When landing on the <%text.attentional_control.items.2%> what did you expect to happen? ~n The number of mushrooms..."
+/ options = ("will always decrease","will ~n not change ~n anywhere","all over ~n the planet ~n changes","changes only ~n on that part ~n of the planet")
+/ optionvalues = ("1", "2","3","4")
+/ size = (500,20)
+/ required = true
+/ orientation = horizontalequal
+</radiobuttons>
+
+
+<survey questionnaire>
+/ pages = [
+	1 = FCQ_S1, openended; 
+]
+/ screencapture = false
+/ fontstyle = ("Arial", 2.5%, false, false, false, false, 5, 1)
+/ subcaptionfontstyle = ("Arial", 1.5%, false, false, false, false, 5, 1)
+/ itemfontstyle = ("Arial", 2.5%, true, false, false, false, 5, 1)
+/ responsefontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/ txcolor = (0, 0, 0)
+/ showpagenumbers = false
+/ showquestionnumbers = false
+/ showpagenumbers = false
+/ showquestionnumbers = false
+/ navigationbuttonfontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
+/ navigationbuttonsize = (15%, 5%)
+/ backbuttonposition = (20%, 90%)
+/ nextbuttonposition = (70%, 90%)
+/ finishlabel = "Finish"
+</survey>
+
+
+<textbox openended>
+/ caption = "What strategies did you use in the game?
+What was your understanding of the effect the wind and cloud
+had on the number of mushrooms?
+Any additional comments about your experience with the task?
+Please press enter at the end of the box to continue viewing
+what you are writing (otherwise the text will not be visible)"
+/ mask = ^[a-zA-Z\s0-9.,!@#$%^&*()`~;:'\n]+$
+/ required = TRUE
+/ multiline = TRUE
+/ textboxsize = (200,50)
+
+</textbox>
+
+<surveypage openended>
+/ questions = [
+	1=openended
+]
+
+</surveypage>
+
+<block openended>
+/ trials = [
+	1 = openended
+]
+</block>
+
 <expt main1>
 / onexptbegin = [
 	values.timeout_block = FALSE;
@@ -2143,6 +2244,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 	5=break; 
 	6=experiment; 
 	7=endscreen;
+	8=questionnaire;
 ]
 
 </expt>
