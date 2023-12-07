@@ -1,0 +1,56 @@
+﻿<batch>
+/ groups = (1 of 10)
+/ file = "clock_2_1_1_seed_152.iqx"
+</batch>
+
+<batch>
+/ groups = (2 of 10)
+/ file = "clock_2_1_1_seed_1464.iqx"
+</batch>
+
+<batch>
+/ groups = (3 of 10)
+/ file = "clock_2_1_1_seed_1752.iqx"
+</batch>
+
+<batch>
+/ groups = (4 of 10)
+/ file = "clock_2_1_1_seed_2534.iqx"
+</batch>
+
+<batch>
+/ groups = (5 of 10)
+/ file = "clock_2_1_1_seed_868.iqx"
+</batch>
+
+<batch>
+/ groups = (6 of 10)
+/ file = "clock_2_1_1_seed_4938.iqx"
+</batch>
+
+<batch>
+/ groups = (7 of 10)
+/ file = "clock_2_1_1_seed_5094.iqx"
+</batch>
+
+<batch>
+/ groups = (8 of 10)
+/ file = "clock_2_1_1_seed_5173.iqx"
+</batch>
+
+<batch>
+/ groups = (9 of 10)
+/ file = "clock_2_1_1_seed_5815.iqx"
+</batch>
+
+<batch>
+/ groups = (10 of 10)
+/ file = "clock_2_1_1_seed_6520.iqx"
+</batch>
+
+<summarydata>
+/ columns = (script.subjectid, values.completed, script.startdate, 
+script.starttime, script.elapsedtime)
+/ separatefiles = true
+</summarydata>
+

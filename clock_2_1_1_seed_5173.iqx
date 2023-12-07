@@ -1,0 +1,3130 @@
+﻿<defaults>
+/ canvasaspectratio = (4,4)
+/ minimumversion = "6.0.0.0"
+/ inputdevice = keyboard
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 0)
+/ txbgcolor = (128,128,128)
+/ txcolor = (0, 0, 0)
+/ screencolor = (128,128,128)
+</defaults>
+
+<parameters>
+/ randStart = TRUE;
+/ circleproportion = 0.33
+/ clockdotSize = 2%
+/ attentional_control = null;
+/ local_uncertainty = null;
+/ seed = 5173;
+</parameters>
+
+<usermanual>
+    For background see:
+    Press et al., Numerical Recipes in C: The Art of Scientific Computing, 2nd Ed. (1992), 
+    Chapter 3.3 Cubic Spline Interpolation, pg. 113 - 116.
+</usermanual>
+
+
+// input: parameter space to construct the splines over
+// x values must be in ascending order, x values must be unique
+<list x> 
+</list>
+
+<list y>
+</list>
+
+// temp storage
+<list u>
+</list>
+// output y of 2nd derivative
+<list y2> 
+</list>
+
+<include>
+/ file = "values-5173.txt"
+</include>
+
+<include>
+/ file = "RTs-5173.txt"
+</include>
+
+<include>
+/ file = "att_loc-5173.txt"
+</include>
+
+<include>
+/ file = "era_loc-5173.txt"
+</include>
+
+<include>
+/ file = "era_val-5173.txt"
+</include>
+
+// test vectors holding interpolated x / y values
+<list x_test> 
+/ selectionmode = sequence
+</list>
+<list y_test>
+/ selectionrate = always
+/ selectionmode = values.yindex;
+</list>
+
+<list x_final>
+/ selectionmode = values.final_idx;
+</list>
+
+<list y_final>
+/ selectionmode = values.final_idx;
+</list>
+
+<list block_type>
+/ items = ("attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure")
+/ selectionrate = always
+/ selectionmode = values.trial;
+</list>
+
+<list degrees_used>
+/ items = ()
+/ selectionrate = always
+/ selectionmode = sequence
+</list>
+
+<list degrees_used_att>
+/ selectionrate = always
+/ selectionmode = sequence
+</list>
+
+<list triallist>
+/ items = (trial.ITI)
+/ poolsize = values.run_length;
+/ selectionrate = trial
+/ selectionmode = sequence
+</list>
+
+<list ITI>
+/ items = ( 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250, 260, 270, 280, 290, 300, 310, 320, 330, 340, 350, 360, 370, 380, 390, 400, 410, 420, 430, 440, 450, 460, 470, 480, 490, 500)
+/ poolsize = 41
+/ selectionmode = random
+</list>
+
+<list ISI>
+/ items = (200,210,220,230,240,250,260,270,280,290,300,310,320,330,340,350,360,370,380,390,400,410,420,430,440,450,460,470,480,490,500,510,520,530,540,550,560,570,580,590,600)
+/ poolsize = 41
+/ selectionmode = random
+</list>
+
+
+<list preClockFreeze>
+/ items = (500, 510, 520, 530, 540, 550, 560, 570, 580, 590, 600, 610, 620, 630, 640, 650, 660, 670, 680, 690, 700)
+/ poolsize = 21
+/ selectionmode = random
+</list>
+
+<list lower_half>
+/ selectionrate = always
+/ selectionmode = sequence
+</list>
+
+<list upper_half>
+/ selectionrate = always
+/ selectionmode = sequence
+</list>
+
+<list curr_values>
+/ selectionrate = always
+/ selectionmode = values.current_idx;
+</list>
+
+<list curr_RTs>
+/ selectionrate = always
+/ selectionmode = values.current_idx;
+</list>
+
+<list curr_trials>
+/ selectionrate = always
+/ selectionmode = sequence
+</list>
+
+<list era_values>
+/ selectionrate = always
+/ selectionmode = values.erasure_index;
+</list>
+
+<list era_RTs>
+/ selectionrate = always
+/ selectionmode = values.erasure_index;
+</list>
+
+<list span_30degrees>
+/ items = (-15,-14,-13,-12,-11,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15)
+/ selectionrate = always
+/ selectionmode = sequence
+</list>
+
+<list best>
+/ items = (values.rem0, values.rem1, values.rem2, values.rem3, values.rem4, values.rem5)
+/ poolsize = 6
+/ selectionrate = always
+</list>
+
+<list curr_values_temp>
+/ selectionrate = always
+/ selectionmode = sequence
+</list>
+
+<list erasure_RTs>
+/ selectionrate = always
+/ selectionmode = values.erasure_index2;
+</list>
+
+
+
+
+<values>
+/ deg_index_att = NULL;
+/ deg_index_era = NULL;
+/ rng = NULL;
+/ trial = 0;
+/ run_trial = 0;
+/ run_trial_dum = 0; // dummy counter to avoid extra ITI at the end of blocks
+
+/ block_type = NULL;
+/ trial_type = null;
+/ block = 0;
+/ timeout = 6500; // timeout trials, when the ship runs out of fuel you get 0 mushrooms, in ms
+/ time_per_revolution = 5000; // how many ms does it take to go 360 degrees around the circle
+/ gamma = values.time_per_revolution/100; // conversion factor for computing rt_shifted (circle position is in units of 0-100)
+/ circle_x = 0%;
+/ circle_y = 0%;
+/ freq = 0.7;
+/ conversion = 0.03 / 100;  // cents / number of mushrooms
+/ totalEarnings = 0;
+/ Earnings = NULL;
+/ rt_shifted = 0;
+/ pos_shifted = 0;
+/ design_file_index = 0;
+/ gauss_sd = 0.001;
+/ mag = 0;
+/ ev = 0;
+/ inc = 0;
+/ inc_rg = 0;
+/ n_revolutions = 0;
+/ startPos = 0;
+/ choose_stim = NULL;
+/ stim_center_deg = NULL;
+
+/ has_erasure = NULL;
+/ generate_new_erasure = NULL;
+/ total_clicks = 2;
+/ n_clicks = NULL;
+/ timeout_block = FALSE;
+/ timeouts_remain = null;
+/ timeout_trials = 2;
+/ end_block = NULL;
+/ require_attention = NULL;
+/ require_erasure = NULL;
+/ require_no_erasure = NULL;
+/ n_attention = NULL;
+/ n_erasure = NULL;
+/ n_no_erasure = NULL;
+/ n_curr_block = NULL;
+/ n_timeout = NULL;
+
+/ x = null
+/ y = null
+/ master_idx = null
+/ current_idx = null
+/ x_final = null
+/ y_final = null
+/ yindex = null
+/ trial_index = 1;
+/ index = 0;
+/ degrees_erasure_index = 0;
+/ values_erasure_index = 0;
+/ curr_val_era = NULL;
+/ curr_index_era = NULL;
+
+/ rt_index = NULL;
+/ i = NULL;
+/ j = NULL;
+/ k = NULL;
+
+/ temp_index = NULL;
+
+/ lower_quartile = NULL;
+/ upper_quartile = NULL;
+
+/ erasure_value = NULL;
+/ erasure_RT = NULL;
+/ erasure_index = NULL;
+/ erasure_degrees = NULL;
+/ attention_degrees = NULL;
+/ erasure_index2 = NULL;
+
+/ left_index = NULL;
+/ right_index = NULL;
+/ final_idx = null;
+
+/ original_value = null
+/ current_master = null
+
+/ trials_remaining = null
+
+/ x0 = null
+/ y0 = null
+
+/ trialCount = null
+/ etime = null
+/ starttime = null
+
+/ item_to_insert = null
+/ to_l = null
+/ to_h = null
+/ curr_mean = null
+/ curr_max = null
+/ curr_min = null
+/ grand_mean = null
+/ current_erasure = null
+/ trial_since_erasure_gen = null
+
+/ smooth_kernel1 = null
+/ smooth_kernel2 = null
+/ smooth_kernel3 = null
+
+/ era_index = null
+/ att_index = null
+
+/ run_length = 100;
+/ block_trial = null
+/ last_block_type = null
+/ erasure_blocks = null
+
+/ stim_left_deg = null
+/ stim_right_deg = null
+
+</values>
+
+<data>
+// columns = (values.starttime, values.etime, values.trialCount,values.master_idx,values.to_h,values.to_l, values.curr_max,values.curr_min,values.curr_mean, list.spread.nextvalue, values.x_final,values.y_final, values.yindex,values.final_idx, values.erasure_RT,values.erasure_value,values.original_value)
+// columns = (values.yindex,list.erasure_RTs.nextvalue,list.curr_RTs.nextvalue,list.curr_values.nextvalue,list.y_test.item(values.yindex), list.spread.nextvalue)
+/ columns = (build, computer.platform, computer.touch, date, time, subject, group, script.sessionid, blockcode, blocknum,
+trialcode, list.ITI.currentvalue, list.preClockFreeze.currentvalue, latency, list.ISI.currentvalue, 
+values.block, values.trialCount, values.trial, values.run_trial,values.block_trial,values.block_type, values.trial_type, values.last_block_type,
+values.generate_new_erasure,values.trial_since_erasure_gen,values.deg_index_att, values.deg_index_era, values.att_index, values.era_index, 
+parameters.seed, list.era_loc.currentvalue, values.has_erasure,list.att_loc.currentvalue, values.n_clicks, values.timeout_block,values.timeouts_remain,values.stim_center_deg,
+values.startPos,values.pos_shifted,values.rt_shifted,values.mag, values.inc_rg, values.inc, values.rng, values.freq, values.choose_stim,values.erasure_value, values.erasure_RT,
+values.right_index,values.left_index, values.stim_left_deg, values.stim_right_deg,
+values.trial,values.erasure_blocks,parameters.attentional_control,parameters.local_uncertainty,picture.planet.item.1,picture.animatedCircle.item.1,picture.feedback2.items.1,picture.stim.item.1,values.Earnings, values.totalEarnings)
+</data>
+
+<picture animatedCircle>
+/ items = ("blank.png")
+/ size = (12%, 0.1px*display.canvaswidth)
+/ animation = circle(values.time_per_revolution,-1,values.startPos,50%,50%,expressions.radius_px)
+/ erase = false
+</picture>
+
+<picture frozenShip>
+/ items = ("blank.png")
+/ erase = true(128,128,128)
+/ size = (12%, 0.1px*display.canvaswidth)
+</picture>
+
+<picture shuttle1>
+/ items = ("Ship1A.png")
+/ erase = true(128,128,128)
+/ size = (12%, 0.1px*display.canvaswidth)
+</picture>
+
+<picture shuttle2>
+/ items = ("Ship2A.png")
+/ erase = true(128,128,128)
+/ size = (12%, 0.1px*display.canvaswidth)
+</picture>
+
+<picture shuttle3>
+/ items = ("Ship3A.png")
+/ erase = true(128,128,128)
+/ size = (12%, 0.1px*display.canvaswidth)
+</picture>
+
+<picture fixationCross>
+/ items = ("fixationCross.png")
+/ position = (50%, 50%)
+/ size = (7%, 7%)
+/ erase = true(128,128,128)
+</picture>
+
+<picture stim>
+/ items = ("fog0.png")
+/ hposition = expressions.centerx + expressions.widthchange_angle270
+/ vposition = expressions.centery + expressions.heightchange_angle270
+/ size = (18%, 18%)
+/ erase = true(128,128,128)
+</picture>
+
+<picture blank>
+/ items = ("blank.png")
+/ hposition = expressions.centerx + expressions.widthchange_angle270
+/ vposition = expressions.centery + expressions.heightchange_angle270
+/ size = (18%, 18%)
+/ erase = true(128,128,128)
+</picture>
+
+<picture wind>
+/ items = ("wind0.png")
+/ hposition = expressions.centerx + expressions.widthchange_angle270
+/ vposition = expressions.centery + expressions.heightchange_angle270
+/ size = (18%, 18%)
+/ erase = true(128,128,128)
+</picture>
+
+<picture planet>
+/ items = ("blank.png")
+/ position = (50%, 50%)
+/ size = (35%,35%)
+/ erase = true(128,128,128)
+</picture>
+
+<picture feedback2>
+/ items = ("blank.png")
+/ position = (15%, 50%)
+/ size = (40%, 40%)
+/ erase = true(128,128,128)
+</picture>
+
+<picture feedback3>
+/ items = ("blank.png")
+/ position = (85%, 50%)
+/ size = (40%, 40%)
+/ erase = true(128,128,128)
+</picture>
+
+<picture mushrooms1>
+/ items = ("Mushroom1A.png")
+/ position = (50%, 50%)
+/ size = (40%, 40%)
+/ erase = true(128,128,128)
+</picture>
+
+<picture mushrooms2>
+/ items = ("Mushroom2A.png")
+/ position = (50%, 50%)
+/ size = (40%, 40%)
+/ erase = true(128,128,128)
+</picture>
+
+<picture mushrooms3>
+/ items = ("Mushroom3A.png")
+/ position = (50%, 50%)
+/ size = (40%, 40%)
+/ erase = true(128,128,128)
+</picture>
+
+<picture planet1>
+/ items = ("Planet1A.png")
+/ position = (50%, 50%)
+/ size = (50%, 50%)
+/ erase = true(128,128,128)
+</picture>
+
+<picture planet2>
+/ items = ("Planet2A.png")
+/ position = (50%, 50%)
+/ size = (50%, 50%)
+/ erase = true(128,128,128)
+</picture>
+
+<picture planet3>
+/ items = ("Planet3A.png")
+/ position = (50%, 50%)
+/ size = (50%, 50%)
+/ erase = true(128,128,128)
+</picture>
+
+<picture timeout>
+/ items = ("timeout.png")
+/ position = (50%, 50%)
+/ size = (10%, 10%)
+/ erase = true(128,128,128)
+</picture>
+
+<picture sampleMushroomL>
+/ items = ("Mushroom1A.png")
+/ position = (20%, 80%)
+/ size = (35%, 35%)
+/ erase = true(128,128,128)
+</picture>
+
+<picture sampleMushroomR>
+/ items = ("Mushroom1A.png")
+/ position = (80%, 80%)
+/ size = (35%, 35%)
+/ erase = true(128,128,128)
+</picture>
+
+<picture sampleAttentionL>
+/ items = ("wind0.png")
+/ position = (20%, 80%)
+/ size = (35%, 35%)
+/ erase = true(128,128,128)
+</picture>
+
+<picture sampleAttentionR>
+/ items = ("wind0.png")
+/ position = (80%, 80%)
+/ size = (35%, 35%)
+/ erase = true(128,128,128)
+</picture>
+
+<text three>
+/ items = ("3")
+/ fontstyle = ("Arial", 50%, false, false, false, false, 5, 238)
+/ position = (50%, 50%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<text two>
+/ items = ("2")
+/ fontstyle = ("Arial", 50%, false, false, false, false, 5, 238)
+/ position = (50%, 50%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<text one>
+/ items = ("1")
+/ fontstyle = ("Arial", 50%, false, false, false, false, 5, 238)
+/ position = (50%, 50%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<text center>
+// items = ("center = <%values.stim_center_deg%>, pos_sh = <%values.pos_shifted%> choose = <%values.choose_stim%>")
+// items = ("best = <%values.best%>, <%values.rem0%> <%values.rem1%> <%values.rem2%> <%values.rem3%> <%values.rem4%> <%values.rem5%>")
+// items = ("att=<%list.degrees_att.itemcount%>,era=<%list.degrees_era.itemcount%>, used=<%list.degrees_used.itemcount%>")
+// items = ("<%list.sorted_values.items.1%> <%list.sorted_values.items.2%> <%list.sorted_values.items.3%> <%list.sorted_values.items.4%> <%list.sorted_values.items.5%>")
+// items = ("<%list.available_seg.items.1%> <%list.available_seg.items.2%> <%list.available_seg.items.3%> <%list.available_seg.items.4%> <%list.available_seg.items.5%>")
+/ items = ("era_loc=<%list.era_loc.nextvalue%> era_index=<%values.era_index%> att_loc=<%list.att_loc.nextvalue%> att_index=<%values.att_index%> nTO=<%values.timeouts_remain%>")
+/ position = (50%, 50%)
+</text>
+
+<text feedback1>
+// items = ("You got <% values.inc_rg %> mushroom(s)")
+/ items = ("<%values.inc_rg%>")
+/ fontstyle = ("Arial", 35%, false, false, false, false, 5, 238)
+/ txbgcolor = (transparent)
+/ position = (50%, 50%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<text testSubject>
+/ items = ("<%script.subjectid%>")
+/ erase = false
+/ position = (40%,60%)
+</text>
+
+
+<text goodJob>
+/ items = ("Good Job!")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
+/ position = (50%, 45%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<text instructions1>
+/ items = instructions1
+/ select = 1
+/ position = (50%, 30%)
+/ fontstyle = ("Arial", 5%)
+/ size = (90%, 90%)
+/ hjustify = left
+/ valign = top
+</text>
+
+<item instructions1>
+/ 1 = "In this game, you are picking mushrooms on a far away planet.
+       
+Your spacecraft will orbit the planet, and you can land it at any point by pressing the spacebar."
+     
+</item>
+
+<text instructions1_1>
+/ items = instructions1_1
+/ select = 1
+/ position = (50%, 30%)
+/ fontstyle = ("Arial", 5%)
+/ size = (90%, 90%)
+/ hjustify = left
+/ valign = top
+</text>
+
+<item instructions1_1>
+/ 1 = "If you stop in a good location, you will find more mushrooms. Every 100 mushrooms is worth 3 cents."
+     
+</item>
+
+<text instructions1_2>
+/ items = instructions1_2
+/ select = 1
+/ position = (50%, 25%)
+/ fontstyle = ("Arial", 5%)
+/ size = (90%, 90%)
+/ hjustify = left
+/ valign = top
+</text>
+
+<item instructions1_2>
+/ 1 = "The goal of this game is to get the most mushrooms.
+
+The game takes about 25-30 minutes, there are breaks 1/3 and 2/3 of the way through."
+
+</item>
+
+<text instructions2>
+/ items = ("Press the spacebar to land the spacecraft.
+This is just for practice.")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
+/ position = (50%, 45%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<text instructions2_1>
+/ items = ("Press the spacebar to land the spacecraft
+again. This is just for practice.")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
+/ position = (50%, 45%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<text instructions3>
+/ items = ("Sometimes <%text.local_uncertainty.item.1%> will appear.
+If you land the spacecraft on the <%text.local_uncertainty.item.2%>, 
+the conditions will change in that location ONLY. 
+That is, the number of mushrooms you will earn 
+by landing on the <%text.local_uncertainty.item.2%> will be 
+different from what you previously learned about 
+that location. However, all other locations 
+around the planet will remain the same, and the 
+location covered by the <%text.local_uncertainty.item.2%> 
+will revert back to what you originally learned 
+once the <%text.local_uncertainty.item.2%> disappears.")
+/ fontstyle = ("Arial", 4%, false, false, false, false, 5, 238)
+/ position = (52%, 35%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<text instructions4>
+/ items = ("Try to land the spacecraft
+on the <%text.local_uncertainty.item.2%>.")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
+/ position = (50%, 45%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<text instructions5>
+/ items = ("When <%text.attentional_control.item.1%> appears,
+it has no effect on the number of mushrooms
+anywhere on the planet.")
+/ fontstyle = ("Arial", 5%, false, false, false, false, 5, 238)
+/ position = (50%, 45%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<text instructions6>
+/ items = ("Now you will play for real 
+mushrooms (and money).  
+Get ready!")
+/ fontstyle = ("Arial", 5%, false, false, false, false, 5, 238)
+/ position = (50%, 45%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<text local_uncertainty>
+/ items = ("","")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
+/ position = (50%, 45%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<text attentional_control>
+/ items = ("","")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
+/ position = (50%, 45%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<text next>
+/ items = ("Next")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 0)
+/ position = (50%, 75%)
+/ size = (25%, 15%)
+/ vjustify = center
+/ txbgcolor = gainsboro
+/ txcolor = black
+</text>
+
+<text true_box>
+/ items = ("True")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 0)
+/ position = (75%, 75%)
+/ size = (25%, 15%)
+/ vjustify = center
+/ txbgcolor = gainsboro
+/ txcolor = black
+</text>
+
+<text false_box>
+/ items = ("False")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 0)
+/ position = (25%, 75%)
+/ size = (25%, 15%)
+/ vjustify = center
+/ txbgcolor = gainsboro
+/ txcolor = black
+</text>
+
+<text payment>
+/ items = ("You won a total of $ <%values.totalEarnings%> dollars.
+Thank you for playing!")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
+/ position = (50%, 45%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<text instructions2_5>
+/ items = ("If you don't respond
+in 6.5s, you will run out of fuel
+and get no mushrooms")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
+/ position = (50%, 45%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<text spacebardisabled>
+/ items = ("response disabled, sorry!")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
+/ position = (50%, 65%)
+/ vjustify = center
+/ hjustify = left
+/ erase = true(128,128,128)
+</text>
+
+<text instructions5_1>
+/ items = ("Please check your understanding by answering the following question: 
+What do you think happens when you land on the <%text.local_uncertainty.items.2%>?
+
+The number of mushrooms...")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
+/ position = (50%, 45%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<text instructions5_2>
+/ items = ("Please check your understanding by answering the following question: 
+What do you think happens when you land on the <%text.attentional_control.items.2%>?
+
+The number of mushrooms...")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
+/ position = (50%, 45%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<text instructions5_3>
+/ items = ("To review, you will have to 
+learn about which locations earn you the
+greatest number of mushrooms by experience.
+ 
+At certain points throughout the game, 
+you will see clouds or wind 
+around your planet.
+")
+/ fontstyle = ("Arial", 4%, false, false, false, false, 5, 238)
+/ position = (50%, 40%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<text local_box>
+/ items = ("only on that part of the planet changes")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 0)
+/ position = (10%, 75%)
+/ size = (20%, 20%)
+/ vjustify = center
+/ txbgcolor = gainsboro
+/ txcolor = black
+</text>
+
+<text global_box>
+/ items = ("all over the entire planet changes")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 0)
+/ position = (35%, 75%)
+/ size = (20%, 20%)
+/ vjustify = center
+/ txbgcolor = gainsboro
+/ txcolor = black
+</text>
+
+<text nothing_box>
+/ items = ("does not change anywhere")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 0)
+/ position = (60%, 75%)
+/ size = (20%, 20%)
+/ vjustify = center
+/ txbgcolor = gainsboro
+/ txcolor = black
+</text>
+
+<text increase_box>
+/ items = ("will always increase")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 0)
+/ position = (85%, 75%)
+/ size = (20%, 20%)
+/ vjustify = center
+/ txbgcolor = gainsboro
+/ txcolor = black
+</text>
+
+<trial instructions1>
+/ stimulusframes = [1=instructions1, sampleMushroomL, sampleMushroomR, next]
+/ validresponse = (next) 
+/ inputdevice = mouse
+/ branch = [
+	return trial.instructions1_1;
+]
+</trial>
+
+<trial instructions1_1>
+/ stimulusframes = [1=instructions1_1, sampleMushroomL, sampleMushroomR, next]
+/ validresponse = (next) 
+/ inputdevice = mouse
+/ branch = [
+	return trial.instructions1_2;
+]	
+</trial>
+
+<trial instructions1_2>
+/ stimulusframes = [1=instructions1_2, sampleMushroomL, sampleMushroomR, next]
+/ validresponse = (next) 
+/ inputdevice = mouse
+/ branch = [
+]	
+</trial>
+
+
+<trial displayGoodJob>
+/ stimulusframes = [1=goodJob, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, next]
+/ validresponse = (next)
+/ inputdevice = mouse
+</trial>
+
+<trial instructions2_1>
+/ ontrialbegin = [
+	values.n_revolutions = 0;
+	picture.animatedCircle.erase = false;
+]
+/ stimulustimes = [0=instructions2_1, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
+
+1000 = instructions2_1, animatedCircle, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60]
+
+/ beginresponsetime = 1000
+/ validresponse = (" ") 
+/ recorddata = FALSE
+/ branch = [
+	return trial.displayGoodJob;
+]
+</trial>
+
+<trial instructions2>
+/ ontrialbegin = [
+	values.n_revolutions = 0;
+	picture.animatedCircle.erase = false;
+]
+/ stimulustimes = [0=instructions2, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
+
+1000 = instructions2, animatedCircle, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60]
+
+/ beginresponsetime = 1000
+/ validresponse = (" ") 
+/ recorddata = FALSE
+/ branch = [
+	return trial.displayGoodJob;
+]
+</trial>
+
+< trial instructions2_5>
+
+/ stimulustimes = [0=instructions2_5, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
+
+1000 = instructions2_5, animatedCircle, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
+
+1500 = spacebardisabled, animatedCircle, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
+
+2000 = animatedCircle, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
+
+2500 = spacebardisabled, animatedCircle, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
+]
+/ timeout = 7500
+/ recorddata = FALSE
+/ branch = [
+	return trial.feedback2_5;
+]
+</trial>
+
+<trial feedback2_5>
+/ ontrialbegin = [
+	picture.feedback2.item.1 = "timeout.png";
+	picture.feedback2.hposition = 50%;
+	values.Earnings = 0;
+	values.inc_rg = 0;
+]
+
+/ stimulusframes = [
+	1=picture.feedback2;
+]
+/ trialduration = 3000
+</trial>
+
+<trial instructions3>
+/ stimulusframes = [1=instructions3, next]
+/ validresponse = (next)
+/ inputdevice = mouse
+/ branch = [
+	trial.instructions4;
+]
+</trial>
+
+<text sampleResponse>
+/ items = (" ")
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
+/ position = (50%, 50%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<trial instructions4>
+/ ontrialbegin = [
+	if (parameters.local_uncertainty=="cloud") {
+		picture.stim.item.1 = "fog0.png";
+	} else if (parameters.local_uncertainty=="wind") {
+		picture.stim.item.1 = "wind0.png";
+	}
+	// now we have to convert pos_shifted into 'screen' coordinates which the stimuli are on
+	picture.stim.hposition = expressions.centerx + cos(rad(120))*expressions.radius_px;
+	picture.stim.vposition = expressions.centery + sin(rad(120))*expressions.radius_px;
+	picture.stim.rotation = 120 - 270;
+	values.stim_center_deg = mod(120 + 90,360);
+	values.startPos = 75;
+]
+
+/ stimulustimes = [0=instructions4, stim, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
+
+1000 = instructions4, animatedCircle, stim, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60
+]
+
+/ beginresponsetime = 1000
+/ validresponse = (" ") 
+/ responseinterrupt = immediate
+/ branch = [
+	return trial.sampleResponse;
+]
+/ ontrialend = [
+	values.n_revolutions = ipart(script.elapsedtime - picture.animatedCircle.timestamp/values.time_per_revolution);
+]
+
+</trial>
+
+<trial sampleResponse>
+/ ontrialbegin = [
+	if (values.startPos >= 0 && values.startPos < 75) {
+		values.rt_shifted = mod(values.gamma*(values.startPos+25)+trial.instructions4.latency,values.time_per_revolution);
+	} else if (values.startPos >= 75) {
+		values.rt_shifted = mod(values.gamma*(values.startPos-75)+trial.instructions4.latency,values.time_per_revolution);
+	}
+	values.pos_shifted = values.rt_shifted*360/values.time_per_revolution;
+	if (values.pos_shifted >= max(mod(values.stim_center_deg - 15, 360),1) && values.pos_shifted <= max(mod(values.stim_center_deg + 15, 360),1)) {
+		text.sampleResponse.items.1 = "Good Job!"
+	} else {
+		text.sampleResponse.items.1 = "Try Again!"
+	}
+]
+/ stimulustimes = [0=sampleResponse, stim, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
+]
+/ timeout = 3000
+/ branch = [ 
+	if (values.pos_shifted >= max(mod(values.stim_center_deg - 15, 360),1) && values.pos_shifted <= max(mod(values.stim_center_deg + 15, 360),1)) {
+		trial.instructions5;
+	} else {
+		trial.instructions4;
+	}
+]
+</trial>
+
+<trial instructions5>
+/ ontrialbegin = [
+	if (parameters.attentional_control=="cloud") {
+		picture.sampleAttentionR.item.1 = "fog0.png";
+		picture.sampleAttentionL.item.1 = "fog0.png";
+	} else if (parameters.attentional_control=="wind") {
+		picture.sampleAttentionR.item.1 = "wind0.png";
+		picture.sampleAttentionL.item.1 = "wind0.png";
+	}
+]
+/ stimulusframes = [1=instructions5, sampleAttentionR, sampleAttentionL, next]
+/ validresponse = (next)
+/ inputdevice = mouse
+/ branch = [
+	trial.instructions5_1;
+]
+</trial>
+
+<trial instructions5_1>
+/ ontrialbegin = [
+	if (parameters.local_uncertainty=="cloud") {
+		picture.stim.item.1 = "fog0.png";
+	} else if (parameters.local_uncertainty=="wind") {
+		picture.stim.item.1 = "wind0.png";
+	}
+	
+]
+
+/ stimulusframes = [1=instructions5_1, stim, local_box, global_box, nothing_box, increase_box]
+/ inputdevice = mouse
+/ validresponse = (local_box,global_box,nothing_box,increase_box)
+/ recorddata = TRUE
+/ branch = [
+	trial.dummytrial;
+]
+</trial>
+
+<trial instructions5_3>
+/ stimulusframes = [
+	1=instructions5_3, next
+]
+/ validresponse = (next) 
+/ inputdevice = mouse
+/ branch = [
+	trial.instructions6;
+]
+
+</trial>
+
+<trial dummytrial>
+/ trialduration = 100;
+/ branch = [
+	if (trial.instructions5_1.response=="local_box") {
+		trial.posfeedback1;
+	} else if (trial.instructions5_1.response!="local_box") {
+		trial.negfeedback1;
+	}
+]
+</trial>
+
+<trial dummytrial1>
+/ trialduration = 100;
+/ branch = [
+	if (trial.instructions5_2.response!="nothing_box") {
+		trial.negfeedback2;
+	} else if (trial.instructions5_2.response=="nothing_box") {
+		trial.posfeedback2;
+	}
+]
+</trial>
+
+
+<text posfeedback1>
+/ items = ("Correct! if you land on the <%text.local_uncertainty.items.2%>,
+the number of mushrooms only on that part of the 
+planet will change. The number of mushrooms 
+everywhere else on the planet will stay the same.")
+/ fontstyle = ("Arial", 4%, false, false, false, false, 5, 238)
+/ position = (51%, 45%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<trial posfeedback1>
+/ stimulusframes = [1=posfeedback1, next]
+/ validresponse = (next) 
+/ inputdevice = mouse
+/ branch = [
+	trial.instructions5_2;
+]
+</trial>
+
+<text negfeedback1>
+/ items = ("Incorrect, if you land on the <%text.local_uncertainty.items.2%>, 
+the number of mushrooms only on that part of the 
+planet will change from what you experienced 
+before. The number of mushrooms everywhere else 
+on the planet will stay the same.")
+/ fontstyle = ("Arial", 3.5%, false, false, false, false, 5, 238)
+/ position = (51%, 45%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<trial negfeedback1>
+/ stimulusframes = [1=negfeedback1, next]
+/ validresponse = (next) 
+/ inputdevice = mouse
+/ branch = [
+	trial.instructions3;
+]
+</trial>
+
+<text posfeedback2>
+/ items = ("Correct! if you land on the <%text.attentional_control.items.2%>,
+this has absolutely no effect on the 
+number of mushrooms anywhere 
+on the planet.")
+/ fontstyle = ("Arial", 5%, false, false, false, false, 5, 238)
+/ position = (50%, 45%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<trial posfeedback2>
+/ stimulusframes = [1=posfeedback2, next]
+/ validresponse = (next) 
+/ inputdevice = mouse
+/ branch = [
+	trial.instructions5_3;
+]
+</trial>
+
+<text negfeedback2>
+/ items = ("Incorrect, if you land on the <%text.attentional_control.items.2%>,
+this has absolutely no effect on the 
+number of mushrooms anywhere on the planet.")
+/ fontstyle = ("Arial", 4%, false, false, false, false, 5, 238)
+/ position = (50%, 45%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<trial negfeedback2>
+/ stimulusframes = [1=negfeedback2, next]
+/ validresponse = (next) 
+/ inputdevice = mouse
+/ branch = [
+	trial.instructions3;
+]
+</trial>
+
+<trial instructions5_2>
+/ ontrialbegin = [
+	if (parameters.attentional_control=="cloud") {
+		picture.stim.item.1 = "fog0.png";
+	} else if (parameters.attentional_control=="wind") {
+		picture.stim.item.1 = "wind0.png";
+	}
+	
+	
+]
+
+/ stimulusframes = [1=instructions5_2, stim, local_box, global_box, nothing_box, increase_box]
+/ inputdevice = mouse
+/ validresponse = (local_box,global_box,nothing_box,increase_box)
+/ recorddata = TRUE
+/ branch = [
+	trial.dummytrial1;
+]
+</trial>
+
+<trial instructions6>
+/ stimulusframes = [1=instructions6, next]
+/ inputdevice = mouse
+/ validresponse = (next)
+/ branch = [
+	return trial.countdown;
+]
+</trial>
+
+<trial countdown>
+/ stimulustimes = [0=three;1000=two;2000=one]
+/ timeout = 3000
+</trial>
+
+<trial ITI>
+/ ontrialbegin = [
+	values.trial +=1;
+	if (values.trial > 1){
+		values.last_block_type = values.block_type;
+	}
+	values.run_trial +=1;
+	values.index +=1;
+	values.rt_shifted = NULL;
+	values.pos_shifted = NULL;
+	values.ev = NULL;
+	values.rng = NULL;
+	values.inc = NULL;
+	values.inc_rg = NULL;
+	
+	// iterate values for next trial
+	list.curr_values.reset();
+	list.curr_RTs.reset();
+	while (list.curr_RTs.itemcount < 360){
+		values.master_idx += 1;
+		list.curr_values.appenditem(list.values.nextvalue);
+		list.curr_RTs.appenditem(list.RT.nextvalue);
+	};
+
+	// fixed from seed 2455 right now, blocks of 10, returns "no erasure", "erasure", or "attention"
+	values.block_type = list.block_type.nextvalue;
+	
+	if (values.block_type == "erasure" && values.last_block_type != "erasure"){
+		values.erasure_blocks +=1;
+		// arithmetic sequence mapping 1,2,3,4,... --> 0,3,6,12,...
+		// only want to set the starting index at the beginning of each erasure_block
+		values.era_index = values.erasure_blocks + 2*(values.erasure_blocks - 1) - 1;
+	}
+	if (values.last_block_type != values.block_type || values.trial == 1){
+		values.block_trial = 1;
+	} else if (values.trial != 1) {
+		values.block_trial += 1;
+	}
+	// generate new erasure on first trial of erasure block
+	if (values.block_type == "erasure" && values.block_trial == 1){
+		values.generate_new_erasure = TRUE;
+	}
+	// dynamically account for stimulus erasure choice
+	if (values.block_type =="erasure" && values.n_clicks >= values.total_clicks) {
+		values.timeout_block = TRUE;
+		values.n_clicks = NULL;
+		// current block automatically ends
+	}
+	// this will come into play to dynamically generate new erasures during erasure blocks
+	if (values.timeouts_remain<=0) {
+		values.timeout_block = FALSE;
+		values.generate_new_erasure = TRUE;
+		// reset timeouts remaining to 2
+		values.timeouts_remain = values.timeout_trials;
+	}
+	if (values.block_type != "erasure"){
+		values.timeout_block = FALSE;
+		
+	}
+	if (values.timeout_block==TRUE) {
+		// decrement timeouts trials remaining by 1 if in timeout block
+		values.timeouts_remain -= 1;
+		values.trial_type = "no erasure";
+		picture.stim.items.1 = ("blank.png");
+		values.has_erasure = FALSE;
+		values.choose_stim = NULL;
+		values.n_timeout +=1;
+	}
+	if (values.block_type == "attention" || values.block_type == "no erasure"){
+		values.trial_type = values.block_type;
+	} else if (values.block_type == "erasure"){
+		if (values.timeout_block == TRUE){
+			values.trial_type = "no erasure";
+		} else {
+			values.trial_type = "erasure";
+		}
+	}
+	
+	
+	if (values.trial_type == "no erasure") {
+		picture.stim.items.1 = ("blank.png");
+		values.n_clicks = NULL;
+		values.has_erasure = FALSE;
+		values.choose_stim = NULL;
+	} else if (values.trial_type == "attention") {
+		if (parameters.attentional_control=="cloud") {
+			picture.stim.item.1 = "fog0.png";
+		} else if (parameters.attentional_control=="wind") {
+			picture.stim.item.1 = "wind0.png";
+		}
+		values.has_erasure = FALSE;
+		values.n_clicks = 0;
+		values.choose_stim = 0;
+		if (values.block_trial == 1){
+			values.att_index += 1;
+		}
+		// now we have to convert pos_shifted into 'screen' coordinates which the stimuli are on
+		picture.stim.hposition = expressions.centerx + cos(rad(list.att_loc.nextvalue))*expressions.radius_px;
+		picture.stim.vposition = expressions.centery + sin(rad(list.att_loc.nextvalue))*expressions.radius_px;
+		picture.stim.rotation = list.att_loc.nextvalue - 270;
+		values.stim_center_deg = mod(list.att_loc.nextvalue + 90,360);
+	} else if (values.trial_type == "erasure") {
+		if (parameters.local_uncertainty=="cloud") {
+			picture.stim.item.1 = "fog0.png";
+		} else if (parameters.local_uncertainty=="wind") {
+			picture.stim.item.1 = "wind0.png";
+		}
+		values.has_erasure = TRUE;
+	}
+	if (values.trial_type == "erasure" && values.generate_new_erasure==TRUE) {
+		values.n_clicks = 0;
+		values.choose_stim = 0;
+		values.era_index += 1;
+		values.erasure_value = list.era_val.nextvalue;
+		values.erasure_RT = list.era_loc.nextvalue;
+		// now we have to convert pos_shifted into 'screen' coordinates which the stimuli are on
+		picture.stim.hposition = expressions.centerx + cos(rad(list.era_loc.nextvalue))*expressions.radius_px;
+		picture.stim.vposition = expressions.centery + sin(rad(list.era_loc.nextvalue))*expressions.radius_px;
+		picture.stim.rotation = list.era_loc.nextvalue - 270;
+		values.stim_center_deg = mod(list.era_loc.nextvalue + 90,360);
+		values.current_erasure = values.erasure_value;
+		values.curr_max = list.curr_values.maximum;
+		values.curr_min = list.curr_values.minimum;
+		values.trial_since_erasure_gen = 0;
+		
+		list.erasure_RTs.reset();
+		// generate sequence of indices to map onto erasure
+		values.i = 0;
+		values.j = 1;
+		while (list.erasure_RTs.itemcount < 31){
+			if (values.erasure_RT > 345) {
+				if (values.erasure_RT == 360) {
+					values.right_index = 16;
+				} else {
+					values.right_index = mod(values.erasure_RT + 15, 360);
+				}
+				values.left_index = values.erasure_RT - 15;
+				// this will be sequential and distance is equal
+			// piecewise (x - 15 : x), (x: 360), (1: x + 15)
+				if (list.erasure_RTs.itemcount == 0) {
+					values.i = values.left_index;
+					list.erasure_RTs.appenditem(values.i);
+				}
+				if (values.i < 360) {
+					values.i += 1;
+					list.erasure_RTs.appenditem(values.i);
+				} else {
+					list.erasure_RTs.appenditem(values.j);
+					values.j += 1;
+				}
+			} else if (values.erasure_RT < 16) {
+				values.right_index = values.erasure_RT + 15;
+				// this will be sequential
+				values.left_index = 360 + values.erasure_RT - 15;
+				if (list.erasure_RTs.itemcount == 0) {
+					values.i = values.left_index;
+					list.erasure_RTs.appenditem(values.i);
+				}
+				// piecewise (left_index : 360), (1 : x + 15)
+				if (values.i < 360) {
+					values.i += 1;
+					list.erasure_RTs.appenditem(values.i);
+				} else {
+					list.erasure_RTs.appenditem(values.j);
+					values.j += 1;
+				}
+			} else {
+				values.right_index = values.erasure_RT + 15;
+				values.left_index = values.erasure_RT - 15;
+				// sequential x - 15 : x + 15
+				list.erasure_RTs.appenditem(values.erasure_RT - 15 + values.i);
+				values.i += 1;
+			}
+		};
+	}
+	if (values.trial_since_erasure_gen <= 15 && values.trial_since_erasure_gen > 1) {
+		values.to_l = list.curr_values.minimum;
+		values.to_h = list.curr_values.maximum;
+		if (values.trial_since_erasure_gen <= 10){
+			// flex
+			values.erasure_value = ((values.current_erasure - values.curr_min)/(values.curr_max - values.curr_min)) * (values.to_h - values.to_l) + values.to_l;
+		} else if (values.trial_since_erasure_gen > 10) {
+			values.current_idx = values.right_index;
+			values.smooth_kernel1 = list.curr_values.nextvalue;
+			values.current_idx = values.left_index;
+			values.smooth_kernel2 = list.curr_values.nextvalue;
+			values.current_idx = values.erasure_RT;
+			values.smooth_kernel3 = list.curr_values.nextvalue;
+			// no flex, just smooth
+			values.erasure_value = (values.smooth_kernel2 + values.erasure_value)/2;
+			//values.erasure_value = ((values.erasure_value - values.curr_min)/(values.curr_max - values.curr_min)) * (values.to_h - values.to_l) + values.to_l;	
+		}
+	}
+	
+	if (values.stim_center_deg > 345){
+		if (values.stim_center_deg==360){
+			values.stim_right_deg = 16;
+		} else {
+			values.stim_right_deg = mod(values.stim_center_deg + 15, 360);
+		}
+		values.stim_left_deg = values.stim_center_deg - 15;
+	} else if (values.stim_center_deg < 16){
+		values.stim_right_deg = values.stim_center_deg + 15;
+		values.stim_left_deg = 360 + values.stim_center_deg - 15;
+	} else {
+		values.stim_right_deg = values.stim_center_deg + 15;
+		values.stim_left_deg = values.stim_center_deg - 15;
+	}
+	
+	if (values.trial_since_erasure_gen <= 15){
+		values.trial_since_erasure_gen += 1;
+	} else if (values.trial_since_erasure_gen > 15) {
+		values.trial_since_erasure_gen = null;
+	}
+]
+
+/ stimulustimes = [
+	0 = fixationCross, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+		dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+		dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+		dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+		dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+		dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
+]
+/ ontrialend = [
+]
+/ trialduration = list.ITI.nextvalue;
+
+/ recorddata = false
+/ branch = [
+	if (values.block_type == "erasure" || values.trial_since_erasure_gen <= 20) {
+		return trial.constructSpline;
+	} else {
+		return trial.resetCounters3;
+	}
+]
+/ ontrialend = [
+]
+
+</trial>
+
+<trial constructSpline>
+/ ontrialbegin = [
+	expressions.createTestVector;
+	// call the test vector generation routine
+    expressions.createSpline;
+	// call the spline construction routine
+]
+/ trialduration = 0
+/ recorddata = false
+/ branch = [
+	return trial.interpolateSpline;
+]
+
+</trial>
+
+// pass x values to the interpolation routine, get interpolated y values
+<trial interpolateSpline>
+/ ontrialbegin = [
+	values.x = list.x_test.nextvalue;
+	// get our x value
+    values.y = expressions.interpolateSpline;
+	// get our interpolated y value
+    list.y_test.setitem(values.y, list.x_test.currentindex);
+	// add interpolated y to the test vector
+]
+/ trialduration = 0
+/ recorddata = false
+/ branch = [
+	if (list.x_test.selectedcount < list.x_test.itemcount) {
+		// run as often as we have x values in our test vector
+        return trial.interpolateSpline;
+		// this is just for ease of data output and plotting, it's not a problem to wrap everything in a single while() loop
+	} else {
+		return trial.resetCounters;
+	};
+]
+</trial>
+
+<trial resetCounters>
+/ ontrialbegin = [
+	values.current_idx = 0;
+	values.yindex = 0;
+	values.erasure_index2 = 0;
+]
+/ trialduration = 0
+/ recorddata = false
+/ branch = [
+	return trial.constructValueVector2;
+]
+</trial>
+
+
+// loop over only erasure indices
+<trial constructValueVector2>
+/ ontrialbegin = [
+	values.erasure_index2 += 1;
+	list.curr_values.removeitem(list.erasure_RTs.nextvalue);
+	list.curr_RTs.removeitem(list.erasure_RTs.nextvalue);
+	values.yindex +=1;
+	values.item_to_insert = list.y_test.item(values.yindex);
+	if (values.item_to_insert <= 0) {
+		values.item_to_insert = 1;
+	}
+	list.curr_values.insertitem(values.item_to_insert, list.erasure_RTs.nextvalue);
+	list.curr_RTs.insertitem(list.erasure_RTs.nextvalue, list.erasure_RTs.nextvalue);
+]
+/ trialduration = 0
+/ recorddata = false
+/ branch = [
+	if (values.yindex < 31) {
+		return trial.constructValueVector2;
+	} else {
+		return trial.resetCounters3;
+	}
+]
+
+</trial>
+
+<trial resetCounters2>
+/ ontrialbegin = [
+	values.current_idx = 0;
+]
+/ trialduration = 0
+/ recorddata = false
+/ branch = [
+	return trial.getValueVector;
+]
+</trial>
+
+<trial getValueVector>
+/ ontrialbegin = [
+	values.current_idx += 1;
+	values.x_final = list.curr_RTs.nextvalue;
+	values.y_final = list.curr_values.nextvalue;
+]
+/ trialduration = 0
+/ recorddata = true
+/ branch = [
+	if (values.current_idx < 360) {
+		return trial.getValueVector;
+	} else {
+		return trial.resetCounters3;
+	};
+]
+/ ontrialend = [
+]
+
+</trial>
+
+<trial resetCounters3>
+/ ontrialbegin = [
+	values.current_idx = 0;
+	list.x.reset();
+	list.y.reset();
+	list.x_test.reset();
+	list.y_test.reset();
+]
+/ trialduration = 0
+/ recorddata = false
+/ branch = [
+	return trial.preFreeze;
+]
+</trial>
+
+
+<trial preFreeze>
+/ ontrialbegin = [
+	picture.planet.erase = false;
+	picture.stim.erase = false;
+	picture.frozenShip.erase = true;
+	if (parameters.randStart==TRUE) {
+		values.startPos =  round(rand(0, 100));
+	}
+	if (values.startPos > 0 && values.startPos < 25) {
+		picture.frozenShip.hposition = 1px * (expressions.centerx + cos(rad(-90*values.startPos/25))*expressions.radius_px);
+		picture.frozenShip.vposition = 1px * (expressions.centery + sin(rad(90*values.startPos/25))*expressions.radius_px);
+	} else if ((values.startPos > 25 && values.startPos < 75) || (values.startPos > 75 && values.startPos < 100)) {
+		picture.frozenShip.hposition = 1px * (expressions.centerx + cos(rad(-90*values.startPos/25))*expressions.radius_px);
+		picture.frozenShip.vposition = 1px * (expressions.centery + sin(rad(90*values.startPos/25))*expressions.radius_px);
+	} else if (values.startPos == 0) {
+		picture.frozenShip.hposition = 1px * (expressions.centerx + cos(rad(values.startPos))*expressions.radius_px);
+		picture.frozenShip.vposition = 1px * (expressions.centery + sin(rad(values.startPos))*expressions.radius_px);
+	} else if (values.startPos == 100) {
+		picture.frozenShip.hposition = 1px * (expressions.centerx + cos(rad(0))*expressions.radius_px);
+		picture.frozenShip.vposition = 1px * (expressions.centery + sin(rad(0))*expressions.radius_px);
+	} else if (values.startPos == 25 || values.startPos == 75) {
+		picture.frozenShip.hposition = 1px * (expressions.centerx + cos(rad(90*values.startPos/25))*expressions.radius_px);
+		picture.frozenShip.vposition = 1px * (expressions.centery + sin(rad(90*values.startPos/25))*expressions.radius_px);
+	}
+]
+
+/ stimulustimes = [ 0 = planet, stim, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip;
+]
+/ timeout = list.preClockFreeze.nextvalue;
+/ recorddata = false
+/ branch = [
+	return trial.clock;
+]
+
+</trial>
+
+<trial clock>
+/ ontrialbegin = [
+	values.n_revolutions = 0;
+	picture.animatedCircle.erase = false;
+]
+
+/ stimulustimes = [
+	0 = animatedCircle, stim, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+		dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+		dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+		dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+		dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+		dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
+	2 = animatedCircle;
+]
+/ timeout = values.timeout;
+/ validresponse = (" ") 
+/ inputdevice = keyboard
+/ responseinterrupt = immediate
+/ recorddata = true
+/ branch = [
+	return trial.ISI;
+]
+/ ontrialend = [
+	values.circle_x = picture.animatedCircle.xpct;
+	values.circle_y = picture.animatedCircle.ypct;
+	values.n_revolutions = ipart(script.elapsedtime - picture.animatedCircle.timestamp/values.time_per_revolution);
+]
+</trial>
+
+<trial ISI>
+/ ontrialbegin = [
+	picture.frozenShip.xpct = values.circle_x;
+	picture.frozenShip.ypct = values.circle_y;
+	picture.planet.erase = true;
+	picture.stim.erase = true;
+	shape.dot1.erase = true;
+	shape.dot2.erase = true;
+	shape.dot3.erase = true;
+	shape.dot4.erase = true;
+	shape.dot5.erase = true;
+	shape.dot6.erase = true;
+	shape.dot7.erase = true;
+	shape.dot8.erase = true;
+	shape.dot9.erase = true;
+	shape.dot10.erase = true;
+	shape.dot11.erase = true;
+	shape.dot12.erase = true;
+	shape.dot13.erase = true;
+	shape.dot14.erase = true;
+	shape.dot15.erase = true;
+	shape.dot16.erase = true;
+	shape.dot17.erase = true;
+	shape.dot18.erase = true;
+	shape.dot19.erase = true;
+	shape.dot20.erase = true;
+	shape.dot21.erase = true;
+	shape.dot22.erase = true;
+	shape.dot23.erase = true;
+	shape.dot24.erase = true;
+	shape.dot25.erase = true;
+	shape.dot26.erase = true;
+	shape.dot27.erase = true;
+	shape.dot28.erase = true;
+	shape.dot29.erase = true;
+	shape.dot30.erase = true;
+	shape.dot31.erase = true;
+	shape.dot32.erase = true;
+	shape.dot33.erase = true;
+	shape.dot34.erase = true;
+	shape.dot35.erase = true;
+	shape.dot36.erase = true;
+	shape.dot37.erase = true;
+	shape.dot38.erase = true;
+	shape.dot39.erase = true;
+	shape.dot40.erase = true;
+	shape.dot41.erase = true;
+	shape.dot42.erase = true;
+	shape.dot43.erase = true;
+	shape.dot44.erase = true;
+	shape.dot45.erase = true;
+	shape.dot46.erase = true;
+	shape.dot47.erase = true;
+	shape.dot48.erase = true;
+	shape.dot49.erase = true;
+	shape.dot50.erase = true;
+	shape.dot51.erase = true;
+	shape.dot52.erase = true;
+	shape.dot53.erase = true;
+	shape.dot54.erase = true;
+	shape.dot55.erase = true;
+	shape.dot56.erase = true;
+	shape.dot57.erase = true;
+	shape.dot58.erase = true;
+	shape.dot59.erase = true;
+	shape.dot60.erase = true;
+]
+/ stimulustimes = [0 = stim, planet, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip;
+]
+/ timeout = list.ISI.nextvalue;
+/ recorddata = false
+/ branch = [
+	return trial.feedback;
+]
+</trial>
+
+<trial feedback>
+/ ontrialbegin = [
+	picture.feedback2.hposition = 15%;
+	if (values.startPos >= 0 && values.startPos < 75) {
+		// shift 0 from 3 o'clock to 12 o'clock
+		values.rt_shifted = mod(values.gamma*(values.startPos+25)+trial.clock.latency,values.time_per_revolution);
+	} else if (values.startPos >= 75) {
+		values.rt_shifted = mod(values.gamma*(values.startPos-75)+trial.clock.latency,values.time_per_revolution);
+	}
+	values.pos_shifted = values.rt_shifted*360/values.time_per_revolution;
+	// 5000 / 360 RT segments gives 14ms RT bins, conveniently, 1 degree / segment so the index for the value = the degree of the position selected
+	values.rt_index = round(values.pos_shifted);
+	if (values.rt_index == 0){
+			values.rt_index = 1;
+	}
+	values.mag = list.curr_values.item(values.rt_index);
+	values.ev = values.mag * values.freq;
+	values.rng = rand(0,1);
+	if (values.freq >= values.rng) {
+		values.inc = values.mag;
+	} else {
+		values.inc = 10;
+	}
+	if (trial.clock.latency < values.timeout) {
+		values.inc_rg = round(randgaussian(values.inc, values.gauss_sd*values.inc));
+		if (values.inc_rg < values.inc - 1.5*values.gauss_sd*values.inc) {
+			values.inc_rg = round(values.inc - 1.5*values.gauss_sd*values.inc);
+		} else if (values.inc_rg > values.inc + 1.5*values.gauss_sd*values.inc) {
+			values.inc_rg = round(values.inc + 1.5*values.gauss_sd*values.inc);
+		}
+		if (values.inc_rg < 10) {
+			values.inc_rg = 10;
+		}
+		if (values.inc_rg > 150) {
+			values.inc_rg = 150;
+		}
+		values.Earnings = values.inc_rg*values.conversion;
+		values.totalEarnings = values.totalEarnings + values.Earnings;
+		if (values.block ==1) {
+			picture.feedback2.item.1 = ("Mushroom1A.png");
+			picture.feedback3.item.1 = ("Mushroom1A.png");
+		} else if (values.block == 2) {
+			picture.feedback2.item.1 = ("Mushroom2A.png");
+			picture.feedback3.item.1 = ("Mushroom2A.png");
+		} else if (values.block == 3) {
+			picture.feedback2.item.1 = ("Mushroom3A.png");
+			picture.feedback3.item.1 = ("Mushroom3A.png");
+		}
+	} else {
+		values.inc = 0;
+		values.inc_rg = NULL;
+		values.Earnings = 0;
+		values.totalEarnings = values.totalEarnings + values.Earnings;
+		picture.feedback2.item.1 = ("timeout.png");
+		picture.feedback2.hposition = 50%;
+		picture.feedback3.item.1 = ("blank.png");
+	}
+]
+/ stimulustimes = [
+	0 = feedback3, feedback2, text.feedback1;
+]
+/ trialduration = 700
+// correctresponse = (next)
+/ recorddata = true
+/ ontrialend = [
+	
+	values.trialCount += 1;
+
+	if (values.trial_type != "no erasure") {
+		if (values.stim_center_deg > 16 && values.stim_center_deg < 345){
+			if (values.pos_shifted <= values.stim_right_deg && values.pos_shifted >= values.stim_left_deg) {
+				values.choose_stim = TRUE;
+				values.n_clicks +=1;
+			} else {
+				values.choose_stim = FALSE;
+			}
+		} else if (values.stim_center_deg <= 16 || values.stim_center_deg >= 345){
+			if (values.pos_shifted <= values.stim_right_deg || values.pos_shifted >= values.stim_left_deg) {
+				values.choose_stim = TRUE;
+				values.n_clicks +=1;
+			} else {
+				values.choose_stim = FALSE;
+			}
+		}
+	}		
+
+	if (values.generate_new_erasure==TRUE) {
+		values.generate_new_erasure = FALSE;
+	}
+
+	shape.dot1.erase = false;
+	shape.dot2.erase = false;
+	shape.dot3.erase = false;
+	shape.dot4.erase = false;
+	shape.dot5.erase = false;
+	shape.dot6.erase = false;
+	shape.dot7.erase = false;
+	shape.dot8.erase = false;
+	shape.dot9.erase = false;
+	shape.dot10.erase = false;
+	shape.dot11.erase = false;
+	shape.dot12.erase = false;
+	shape.dot13.erase = false;
+	shape.dot14.erase = false;
+	shape.dot15.erase = false;
+	shape.dot16.erase = false;
+	shape.dot17.erase = false;
+	shape.dot18.erase = false;
+	shape.dot19.erase = false;
+	shape.dot20.erase = false;
+	shape.dot21.erase = false;
+	shape.dot22.erase = false;
+	shape.dot23.erase = false;
+	shape.dot24.erase = false;
+	shape.dot25.erase = false;
+	shape.dot26.erase = false;
+	shape.dot27.erase = false;
+	shape.dot28.erase = false;
+	shape.dot29.erase = false;
+	shape.dot30.erase = false;
+	shape.dot31.erase = false;
+	shape.dot32.erase = false;
+	shape.dot33.erase = false;
+	shape.dot34.erase = false;
+	shape.dot35.erase = false;
+	shape.dot36.erase = false;
+	shape.dot37.erase = false;
+	shape.dot38.erase = false;
+	shape.dot39.erase = false;
+	shape.dot40.erase = false;
+	shape.dot41.erase = false;
+	shape.dot42.erase = false;
+	shape.dot43.erase = false;
+	shape.dot44.erase = false;
+	shape.dot45.erase = false;
+	shape.dot46.erase = false;
+	shape.dot47.erase = false;
+	shape.dot48.erase = false;
+	shape.dot49.erase = false;
+	shape.dot50.erase = false;
+	shape.dot51.erase = false;
+	shape.dot52.erase = false;
+	shape.dot53.erase = false;
+	shape.dot54.erase = false;
+	shape.dot55.erase = false;
+	shape.dot56.erase = false;
+	shape.dot57.erase = false;
+	shape.dot58.erase = false;
+	shape.dot59.erase = false;
+	shape.dot60.erase = false;
+]
+/ branch = [
+	list.triallist.nextvalue;
+]
+</trial>
+
+<block scanner_sync>
+/ recorddata = true
+/ trials = [
+	1 = scanner_sync;
+]
+</block>
+
+<trial scanner_sync>
+/ recorddata = true
+/ stimulustimes = [0 = text.waiting]
+/ inputdevice = keyboard
+/ validresponse = ("=")
+</trial>
+
+<text waiting>
+/ items = ("Waiting for scanner trigger +=")
+/ erase = true(128,128,128)
+/ position = (50%, 50%) 
+</text>
+
+<clock breaktimer>
+/ format = "mm:ss"
+/ mode = timer
+/ erase = true(128,128,128)
+/ monitor = 1
+/ position = (50%, 50%)
+/ resetrate = block
+/ timeout = 60000
+/ txbgcolor = white
+/ txcolor = black
+</clock>
+
+<text breaktext>
+/ position = (50%, 40%)
+/ erase = true(128,128,128)
+/ items = ("Please relax for 1 minute")
+</text>
+
+
+<trial break>
+/ recorddata = false
+/ stimulustimes = [0 = dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, breaktext, breaktimer;
+]
+/ timeout = 60000;
+/ recorddata = false
+</trial>
+
+<text presscont>
+/ txcolor = black
+/ position = (50%, 50%)
+/ items = ("Press the space bar to continue")
+</text>
+
+<trial presscont>
+/ recorddata = true
+/ stimulustimes = [0 = dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
+]
+/ inputdevice = keyboard
+/ beginresponsetime = 0
+/ recorddata = false
+/ validresponse = (" ") 
+/ responseinterrupt = immediate
+</trial>
+
+<trial endscreen>
+/ ontrialbegin = [
+	values.mag = NULL;
+	values.freq = NULL;
+	values.ev = NULL;
+	values.inc = NULL;
+	values.rng = NULL;
+	values.Earnings = NULL;
+]
+
+/ stimulusframes = [
+	1=payment
+]
+/ timeout = 5000
+</trial>
+
+<block instructions> 
+/ onblockbegin = [
+	picture.planet.item.1 = ("Planet1A.png");
+	picture.frozenShip.item.1 = ("Ship1A.png");
+	picture.animatedCircle.item.1 = ("Ship1A.png");
+]
+
+/ trials = [1=instructions1, instructions2, instructions2_1, instructions2_5, instructions3]
+
+</block>
+
+<block break>
+/ trials = [1=break; 2=presscont;]
+</block>
+
+<block experiment>
+/ onblockbegin = [
+	values.starttime = script.elapsedtime;
+	values.trialCount = 1;
+	values.run_trial = 0;
+	values.n_clicks = NULL;
+	values.block +=1;
+	if (values.block==1) {
+		picture.planet.item.1 = ("Planet1A.png");
+		picture.frozenShip.item.1 = ("Ship1A.png");
+		picture.animatedCircle.item.1 = ("Ship1A.png");
+	} else if (values.block==2) {
+		picture.planet.item.1 = ("Planet2A.png");
+		picture.frozenShip.item.1 = ("Ship2A.png");
+		picture.animatedCircle.item.1 = ("Ship2A.png");
+	} else if (values.block==3) {
+		picture.planet.item.1 = ("Planet3A.png");
+		picture.frozenShip.item.1 = ("Ship3A.png");
+		picture.animatedCircle.item.1 = ("Ship3A.png");
+	}
+	shape.dot1.erase = false;
+	shape.dot2.erase = false;
+	shape.dot3.erase = false;
+	shape.dot4.erase = false;
+	shape.dot5.erase = false;
+	shape.dot6.erase = false;
+	shape.dot7.erase = false;
+	shape.dot8.erase = false;
+	shape.dot9.erase = false;
+	shape.dot10.erase = false;
+	shape.dot11.erase = false;
+	shape.dot12.erase = false;
+	shape.dot13.erase = false;
+	shape.dot14.erase = false;
+	shape.dot15.erase = false;
+	shape.dot16.erase = false;
+	shape.dot17.erase = false;
+	shape.dot18.erase = false;
+	shape.dot19.erase = false;
+	shape.dot20.erase = false;
+	shape.dot21.erase = false;
+	shape.dot22.erase = false;
+	shape.dot23.erase = false;
+	shape.dot24.erase = false;
+	shape.dot25.erase = false;
+	shape.dot26.erase = false;
+	shape.dot27.erase = false;
+	shape.dot28.erase = false;
+	shape.dot29.erase = false;
+	shape.dot30.erase = false;
+	shape.dot31.erase = false;
+	shape.dot32.erase = false;
+	shape.dot33.erase = false;
+	shape.dot34.erase = false;
+	shape.dot35.erase = false;
+	shape.dot36.erase = false;
+	shape.dot37.erase = false;
+	shape.dot38.erase = false;
+	shape.dot39.erase = false;
+	shape.dot40.erase = false;
+	shape.dot41.erase = false;
+	shape.dot42.erase = false;
+	shape.dot43.erase = false;
+	shape.dot44.erase = false;
+	shape.dot45.erase = false;
+	shape.dot46.erase = false;
+	shape.dot47.erase = false;
+	shape.dot48.erase = false;
+	shape.dot49.erase = false;
+	shape.dot50.erase = false;
+	shape.dot51.erase = false;
+	shape.dot52.erase = false;
+	shape.dot53.erase = false;
+	shape.dot54.erase = false;
+	shape.dot55.erase = false;
+	shape.dot56.erase = false;
+	shape.dot57.erase = false;
+	shape.dot58.erase = false;
+	shape.dot59.erase = false;
+	shape.dot60.erase = false;
+]
+
+/ trials = [
+	1 = list.triallist;
+]
+/ stop = [
+	values.trialCount > values.run_length;
+]
+
+/ onblockend = [
+
+]
+
+</block>
+
+<block endscreen>
+/ trials = [
+	1=endscreen;
+]
+</block>
+
+**************************************************************************************************************
+**************************************************************************************************************
+	QUESTIONAIRRE
+**************************************************************************************************************
+**************************************************************************************************************
+
+<parameters>
+/ pageinstructions = "Please answer the following 2 questions:"
+</parameters>
+
+
+<surveypage FCQ_S1>
+/ caption = "<%parameters.pageinstructions%>"
+/ questions = [1 = qUncertainty, qAttnControl]
+</surveypage>
+
+
+<radiobuttons qUncertainty>
+/ caption = "1. When landing on the <%text.local_uncertainty.items.2%> what did you expect to happen?  ~n The number of mushrooms..."
+/ options = ("will always decrease","will ~n not change ~n anywhere","all over ~n the planet ~n changes","changes only ~n on that part ~n of the planet")
+/ optionvalues = ("1", "2", "3","4")
+/ size = (500,20)
+/ required = true
+/ orientation = horizontalequal
+</radiobuttons>
+
+<radiobuttons qAttnControl>
+/ caption = "2. When landing on the <%text.attentional_control.items.2%> what did you expect to happen? ~n The number of mushrooms..."
+/ options = ("will always decrease","will ~n not change ~n anywhere","all over ~n the planet ~n changes","changes only ~n on that part ~n of the planet")
+/ optionvalues = ("1", "2","3","4")
+/ size = (500,20)
+/ required = true
+/ orientation = horizontalequal
+</radiobuttons>
+
+
+<survey questionnaire>
+/ pages = [
+	1 = FCQ_S1, openended; 
+]
+/ screencapture = false
+/ fontstyle = ("Arial", 2.5%, false, false, false, false, 5, 1)
+/ subcaptionfontstyle = ("Arial", 1.5%, false, false, false, false, 5, 1)
+/ itemfontstyle = ("Arial", 2.5%, true, false, false, false, 5, 1)
+/ responsefontstyle = ("Arial", 2%, false, false, false, false, 5, 1)
+/ txcolor = (0, 0, 0)
+/ showpagenumbers = false
+/ showquestionnumbers = false
+/ showpagenumbers = false
+/ showquestionnumbers = false
+/ navigationbuttonfontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
+/ navigationbuttonsize = (15%, 5%)
+/ backbuttonposition = (20%, 90%)
+/ nextbuttonposition = (70%, 90%)
+/ finishlabel = "Finish"
+</survey>
+
+
+<textbox openended>
+/ caption = "What strategies did you use in the game?
+What was your understanding of the effect the wind and cloud
+had on the number of mushrooms?
+Any additional comments about your experience with the task?
+Please press enter at the end of the box to continue viewing
+what you are writing (otherwise the text will not be visible)"
+/ mask = ^[a-zA-Z\s0-9.,!@#$%^&*()`~;:'\n]+$
+/ required = TRUE
+/ multiline = TRUE
+/ textboxsize = (200,50)
+
+</textbox>
+
+<surveypage openended>
+/ questions = [
+	1=openended
+]
+
+</surveypage>
+
+<block openended>
+/ trials = [
+	1 = openended
+]
+</block>
+
+<expt main1>
+/ onexptbegin = [
+	values.timeout_block = FALSE;
+	values.generate_new_erasure = TRUE;
+	values.n_curr_block = NULL;
+	values.n_timeout = 0;
+	values.master_idx = 0;
+	values.att_index = 0;
+	values.era_index = 0;
+	values.erasure_blocks = 0;
+	values.timeouts_remain = values.timeout_trials;
+	list.triallist.poolsize = values.run_length;
+	
+	if (script.groupid < 2) {
+		parameters.attentional_control = "cloud";
+		parameters.local_uncertainty = "wind";
+		text.attentional_control.item.1 = "a cloud";
+		text.attentional_control.item.2 = "cloud";
+		text.local_uncertainty.item.1 = "wind";
+		text.local_uncertainty.item.2 = "wind";
+	} else if (script.groupid >= 2) {
+		parameters.attentional_control = "wind";
+		parameters.local_uncertainty = "cloud";
+		text.attentional_control.item.1 = "wind";
+		text.attentional_control.item.2 = "wind";
+		text.local_uncertainty.item.1 = "a cloud";
+		text.local_uncertainty.item.2 = "cloud";
+	}
+	
+]
+
+/ blocks = [
+	1=instructions; 
+	2=experiment; 
+	3=break; 
+	4=experiment; 
+	5=break; 
+	6=experiment; 
+	7=endscreen;
+	8=questionnaire;
+]
+
+</expt>
+
+
+
+<expressions> // useful not to compute positions for dots on every trial to save compute time
+/ centerx = 0.5*display.canvaswidth
+/ centery = 0.5*display.canvasheight
+/ radius_px = parameters.circleproportion * display.canvasheight
+/ radians_angle6 = rad(6)
+/ radians_angle12 = rad(12)
+/ radians_angle18 = rad(18)
+/ radians_angle24 = rad(24)
+/ radians_angle30 = rad(30)
+/ radians_angle36 = rad(36)
+/ radians_angle42 = rad(42)
+/ radians_angle48 = rad(48)
+/ radians_angle54 = rad(54)
+/ radians_angle60 = rad(60)
+/ radians_angle66 = rad(66)
+/ radians_angle72 = rad(72)
+/ radians_angle78 = rad(78)
+/ radians_angle84 = rad(84)
+/ radians_angle90 = rad(90)
+/ radians_angle96 = rad(96)
+/ radians_angle102 = rad(102)
+/ radians_angle108 = rad(108)
+/ radians_angle114 = rad(114)
+/ radians_angle120 = rad(120)
+/ radians_angle126 = rad(126)
+/ radians_angle132 = rad(132)
+/ radians_angle138 = rad(138)
+/ radians_angle144 = rad(144)
+/ radians_angle150 = rad(150)
+/ radians_angle156 = rad(156)
+/ radians_angle162 = rad(162)
+/ radians_angle168 = rad(168)
+/ radians_angle174 = rad(174)
+/ radians_angle180 = rad(180)
+/ radians_angle186 = rad(186)
+/ radians_angle192 = rad(192)
+/ radians_angle198 = rad(198)
+/ radians_angle204 = rad(204)
+/ radians_angle210 = rad(210)
+/ radians_angle216 = rad(216)
+/ radians_angle222 = rad(222)
+/ radians_angle228 = rad(228)
+/ radians_angle234 = rad(234)
+/ radians_angle240 = rad(240)
+/ radians_angle246 = rad(246)
+/ radians_angle252 = rad(252)
+/ radians_angle258 = rad(258)
+/ radians_angle264 = rad(264)
+/ radians_angle270 = rad(270)
+/ radians_angle276 = rad(276)
+/ radians_angle282 = rad(282)
+/ radians_angle288 = rad(288)
+/ radians_angle294 = rad(294)
+/ radians_angle300 = rad(300)
+/ radians_angle306 = rad(306)
+/ radians_angle312 = rad(312)
+/ radians_angle318 = rad(318)
+/ radians_angle324 = rad(324)
+/ radians_angle330 = rad(330)
+/ radians_angle336 = rad(336)
+/ radians_angle342 = rad(342)
+/ radians_angle348 = rad(348)
+/ radians_angle354 = rad(354)
+/ heightchange_angle6 = sin(expressions.Radians_angle6) * expressions.radius_px
+/ widthchange_angle6 = cos(expressions.Radians_angle6) * expressions.radius_px
+/ heightchange_angle12 = sin(expressions.Radians_angle12) * expressions.radius_px
+/ widthchange_angle12 = cos(expressions.Radians_angle12) * expressions.radius_px
+/ heightchange_angle18 = sin(expressions.Radians_angle18) * expressions.radius_px
+/ widthchange_angle18 = cos(expressions.Radians_angle18) * expressions.radius_px
+/ heightchange_angle24 = sin(expressions.Radians_angle24) * expressions.radius_px
+/ widthchange_angle24 = cos(expressions.Radians_angle24) * expressions.radius_px
+/ heightchange_angle30 = sin(expressions.Radians_angle30) * expressions.radius_px
+/ widthchange_angle30 = cos(expressions.Radians_angle30) * expressions.radius_px
+/ heightchange_angle36 = sin(expressions.Radians_angle36) * expressions.radius_px
+/ widthchange_angle36 = cos(expressions.Radians_angle36) * expressions.radius_px
+/ heightchange_angle42 = sin(expressions.Radians_angle42) * expressions.radius_px
+/ widthchange_angle42 = cos(expressions.Radians_angle42) * expressions.radius_px
+/ heightchange_angle48 = sin(expressions.Radians_angle48) * expressions.radius_px
+/ widthchange_angle48 = cos(expressions.Radians_angle48) * expressions.radius_px
+/ heightchange_angle54 = sin(expressions.Radians_angle54) * expressions.radius_px
+/ widthchange_angle54 = cos(expressions.Radians_angle54) * expressions.radius_px
+/ heightchange_angle60 = sin(expressions.Radians_angle60) * expressions.radius_px
+/ widthchange_angle60 = cos(expressions.Radians_angle60) * expressions.radius_px
+/ heightchange_angle66 = sin(expressions.Radians_angle66) * expressions.radius_px
+/ widthchange_angle66 = cos(expressions.Radians_angle66) * expressions.radius_px
+/ heightchange_angle72 = sin(expressions.Radians_angle72) * expressions.radius_px
+/ widthchange_angle72 = cos(expressions.Radians_angle72) * expressions.radius_px
+/ heightchange_angle78 = sin(expressions.Radians_angle78) * expressions.radius_px
+/ widthchange_angle78 = cos(expressions.Radians_angle78) * expressions.radius_px
+/ heightchange_angle84 = sin(expressions.Radians_angle84) * expressions.radius_px
+/ widthchange_angle84 = cos(expressions.Radians_angle84) * expressions.radius_px
+/ heightchange_angle90 = sin(expressions.Radians_angle90) * expressions.radius_px
+/ widthchange_angle90 = cos(expressions.Radians_angle90) * expressions.radius_px
+/ heightchange_angle96 = sin(expressions.Radians_angle96) * expressions.radius_px
+/ widthchange_angle96 = cos(expressions.Radians_angle96) * expressions.radius_px
+/ heightchange_angle102 = sin(expressions.Radians_angle102) * expressions.radius_px
+/ widthchange_angle102 = cos(expressions.Radians_angle102) * expressions.radius_px
+/ heightchange_angle108 = sin(expressions.Radians_angle108) * expressions.radius_px
+/ widthchange_angle108 = cos(expressions.Radians_angle108) * expressions.radius_px
+/ heightchange_angle114 = sin(expressions.Radians_angle114) * expressions.radius_px
+/ widthchange_angle114 = cos(expressions.Radians_angle114) * expressions.radius_px
+/ heightchange_angle120 = sin(expressions.Radians_angle120) * expressions.radius_px
+/ widthchange_angle120 = cos(expressions.Radians_angle120) * expressions.radius_px
+/ heightchange_angle126 = sin(expressions.Radians_angle126) * expressions.radius_px
+/ widthchange_angle126 = cos(expressions.Radians_angle126) * expressions.radius_px
+/ heightchange_angle132 = sin(expressions.Radians_angle132) * expressions.radius_px
+/ widthchange_angle132 = cos(expressions.Radians_angle132) * expressions.radius_px
+/ heightchange_angle138 = sin(expressions.Radians_angle138) * expressions.radius_px
+/ widthchange_angle138 = cos(expressions.Radians_angle138) * expressions.radius_px
+/ heightchange_angle144 = sin(expressions.Radians_angle144) * expressions.radius_px
+/ widthchange_angle144 = cos(expressions.Radians_angle144) * expressions.radius_px
+/ heightchange_angle150 = sin(expressions.Radians_angle150) * expressions.radius_px
+/ widthchange_angle150 = cos(expressions.Radians_angle150) * expressions.radius_px
+/ heightchange_angle156 = sin(expressions.Radians_angle156) * expressions.radius_px
+/ widthchange_angle156 = cos(expressions.Radians_angle156) * expressions.radius_px
+/ heightchange_angle162 = sin(expressions.Radians_angle162) * expressions.radius_px
+/ widthchange_angle162 = cos(expressions.Radians_angle162) * expressions.radius_px
+/ heightchange_angle168 = sin(expressions.Radians_angle168) * expressions.radius_px
+/ widthchange_angle168 = cos(expressions.Radians_angle168) * expressions.radius_px
+/ heightchange_angle174 = sin(expressions.Radians_angle174) * expressions.radius_px
+/ widthchange_angle174 = cos(expressions.Radians_angle174) * expressions.radius_px
+/ heightchange_angle180 = sin(expressions.Radians_angle180) * expressions.radius_px
+/ widthchange_angle180 = cos(expressions.Radians_angle180) * expressions.radius_px
+/ heightchange_angle186 = sin(expressions.Radians_angle186) * expressions.radius_px
+/ widthchange_angle186 = cos(expressions.Radians_angle186) * expressions.radius_px
+/ heightchange_angle192 = sin(expressions.Radians_angle192) * expressions.radius_px
+/ widthchange_angle192 = cos(expressions.Radians_angle192) * expressions.radius_px
+/ heightchange_angle198 = sin(expressions.Radians_angle198) * expressions.radius_px
+/ widthchange_angle198 = cos(expressions.Radians_angle198) * expressions.radius_px
+/ heightchange_angle204 = sin(expressions.Radians_angle204) * expressions.radius_px
+/ widthchange_angle204 = cos(expressions.Radians_angle204) * expressions.radius_px
+/ heightchange_angle210 = sin(expressions.Radians_angle210) * expressions.radius_px
+/ widthchange_angle210 = cos(expressions.Radians_angle210) * expressions.radius_px
+/ heightchange_angle216 = sin(expressions.Radians_angle216) * expressions.radius_px
+/ widthchange_angle216 = cos(expressions.Radians_angle216) * expressions.radius_px
+/ heightchange_angle222 = sin(expressions.Radians_angle222) * expressions.radius_px
+/ widthchange_angle222 = cos(expressions.Radians_angle222) * expressions.radius_px
+/ heightchange_angle228 = sin(expressions.Radians_angle228) * expressions.radius_px
+/ widthchange_angle228 = cos(expressions.Radians_angle228) * expressions.radius_px
+/ heightchange_angle234 = sin(expressions.Radians_angle234) * expressions.radius_px
+/ widthchange_angle234 = cos(expressions.Radians_angle234) * expressions.radius_px
+/ heightchange_angle240 = sin(expressions.Radians_angle240) * expressions.radius_px
+/ widthchange_angle240 = cos(expressions.Radians_angle240) * expressions.radius_px
+/ heightchange_angle246 = sin(expressions.Radians_angle246) * expressions.radius_px
+/ widthchange_angle246 = cos(expressions.Radians_angle246) * expressions.radius_px
+/ heightchange_angle252 = sin(expressions.Radians_angle252) * expressions.radius_px
+/ widthchange_angle252 = cos(expressions.Radians_angle252) * expressions.radius_px
+/ heightchange_angle258 = sin(expressions.Radians_angle258) * expressions.radius_px
+/ widthchange_angle258 = cos(expressions.Radians_angle258) * expressions.radius_px
+/ heightchange_angle264 = sin(expressions.Radians_angle264) * expressions.radius_px
+/ widthchange_angle264 = cos(expressions.Radians_angle264) * expressions.radius_px
+/ heightchange_angle270 = sin(expressions.Radians_angle270) * expressions.radius_px
+/ widthchange_angle270 = cos(expressions.Radians_angle270) * expressions.radius_px
+/ heightchange_angle276 = sin(expressions.Radians_angle276) * expressions.radius_px
+/ widthchange_angle276 = cos(expressions.Radians_angle276) * expressions.radius_px
+/ heightchange_angle282 = sin(expressions.Radians_angle282) * expressions.radius_px
+/ widthchange_angle282 = cos(expressions.Radians_angle282) * expressions.radius_px
+/ heightchange_angle288 = sin(expressions.Radians_angle288) * expressions.radius_px
+/ widthchange_angle288 = cos(expressions.Radians_angle288) * expressions.radius_px
+/ heightchange_angle294 = sin(expressions.Radians_angle294) * expressions.radius_px
+/ widthchange_angle294 = cos(expressions.Radians_angle294) * expressions.radius_px
+/ heightchange_angle300 = sin(expressions.Radians_angle300) * expressions.radius_px
+/ widthchange_angle300 = cos(expressions.Radians_angle300) * expressions.radius_px
+/ heightchange_angle306 = sin(expressions.Radians_angle306) * expressions.radius_px
+/ widthchange_angle306 = cos(expressions.Radians_angle306) * expressions.radius_px
+/ heightchange_angle312 = sin(expressions.Radians_angle312) * expressions.radius_px
+/ widthchange_angle312 = cos(expressions.Radians_angle312) * expressions.radius_px
+/ heightchange_angle318 = sin(expressions.Radians_angle318) * expressions.radius_px
+/ widthchange_angle318 = cos(expressions.Radians_angle318) * expressions.radius_px
+/ heightchange_angle324 = sin(expressions.Radians_angle324) * expressions.radius_px
+/ widthchange_angle324 = cos(expressions.Radians_angle324) * expressions.radius_px
+/ heightchange_angle330 = sin(expressions.Radians_angle330) * expressions.radius_px
+/ widthchange_angle330 = cos(expressions.Radians_angle330) * expressions.radius_px
+/ heightchange_angle336 = sin(expressions.Radians_angle336) * expressions.radius_px
+/ widthchange_angle336 = cos(expressions.Radians_angle336) * expressions.radius_px
+/ heightchange_angle342 = sin(expressions.Radians_angle342) * expressions.radius_px
+/ widthchange_angle342 = cos(expressions.Radians_angle342) * expressions.radius_px
+/ heightchange_angle348 = sin(expressions.Radians_angle348) * expressions.radius_px
+/ widthchange_angle348 = cos(expressions.Radians_angle348) * expressions.radius_px
+/ heightchange_angle354 = sin(expressions.Radians_angle354) * expressions.radius_px
+/ widthchange_angle354 = cos(expressions.Radians_angle354) * expressions.radius_px
+/ heightchange_angle0 = 0
+/ widthchange_angle0 = expressions.radius_px
+
+// constructs the cubic splines over the input parameter space
+/ createSpline = {
+    list.y2.reset();
+    list.u.reset();
+    var n = list.x.itemcount;
+    // setting up the vectors with n items
+    var i = 1;
+    while (i <= n) {
+        list.y2.appenditem(null);
+        list.u.appenditem(null);
+        i += 1;
+    };
+    i = 1;
+    // natural boundary condition on leftmost point
+    list.y2.setitem(0.0, i);
+    list.u.setitem(0.0, i);
+    // decomposition
+    i = 2;
+    while (i <= n-1) {
+        //sig=(x[i]-x[i-1])/(x[i+1]-x[i-1]);
+        var sig = (list.x.item(i) - list.x.item(i-1)) / (list.x.item(i+1) - list.x.item(i-1));
+        //p=sig*y2[i-1]+2.0
+        var p = sig * list.y2.item(i-1) + 2.0;
+        //y2[i]=(sig-1.0)/p;
+        var y2i = (sig - 1.0) / p;
+        list.y2.setitem(y2i, i);
+        //u[i]=(y[i+1]-y[i])/(x[i+1]-x[i]) - (y[i]-y[i-1])/(x[i]-x[i-1]);
+        var ui = (list.y.item(i+1) - list.y.item(i)) / (list.x.item(i+1) - list.x.item(i)) - (list.y.item(i) - list.y.item(i-1)) / (list.x.item(i) - list.x.item(i-1));
+        list.u.setitem(ui, i);
+        //u[i]=(6.0*u[i]/(x[i+1]-x[i-1])-sig*u[i-1])/p;
+        ui = (6.0 * list.u.item(i) / (list.x.item(i+1) - list.x.item(i-1)) - sig * list.u.item(i-1)) / p;
+        list.u.setitem(ui, i);
+        i += 1;
+    };
+    // natural boundary condition on rightmost point
+    var qn = 0.0;
+    var un = 0.0;
+    //y2[n]=(un-qn*u[n-1])/(qn*y2[n-1]+1.0);
+    var y2n = (un - qn * list.u.item(n-1)) / (qn * list.y2.item(n-1) + 1.0);
+    list.y2.setitem(y2n, n);
+    // backsubstitution
+    var k = n-1;
+    while (k >= 1) {
+        //y2[k]=y2[k]*y2[k+1]+u[k];
+        var y2k = list.y2.item(k) * list.y2.item(k+1) + list.u.item(k);
+        list.y2.setitem(y2k, k);
+        k -= 1;
+    };
+};
+
+// sets up a test vector of x values in the range x1 to xn
+/ createTestVector = {
+	//values.erasure_value = 50;
+	//values.erasure_RT = 350;
+	//values.left_index = 335;
+	//values.right_index = 5;
+	values.current_idx = values.left_index;
+	list.curr_values.nextindex;
+	list.y.appenditem(list.curr_values.nextvalue);
+	list.y.appenditem(values.erasure_value);
+	values.current_idx = values.right_index;
+	list.curr_values.nextindex;
+	list.y.appenditem(list.curr_values.nextvalue);
+	
+	values.i = 1;
+	while (list.x.itemcount < list.y.itemcount){
+		list.x.appenditem(values.i);
+		values.i += 15;
+	};
+	
+    var x1 = list.x.item(1);
+    var xn = list.x.item(list.x.itemcount);
+    var x =  x1;
+    // set up a test vector of x values in range x1 to xn
+    while (x <= xn) {
+        list.x_test.appenditem(x);
+        list.y_test.appenditem(null);
+        x += 1; // decrease for denser sampling (more points), increase for sparser sampling (fewer points)
+    };
+};
+
+// given an x value, finds the insertion point and returns interpolated y value
+/ interpolateSpline = {
+    // bisect
+    var x = values.x;
+    var n = list.x.itemcount;
+    var klo = 1;
+    var khi = n;
+    while (khi - klo > 1) {
+        var k = floor((khi + klo) / 2); // same as right bit shift
+        if (list.x.item(k) > x) {
+            khi = k;
+        } else {
+            klo = k;
+        };
+    };
+    var h = list.x.item(khi) - list.x.item(klo);
+    //a=(xa[khi]-x)/h;
+    var a = (list.x.item(khi) - x) / h;
+    //b=(x-xa[klo])/h;
+    var b = (x - list.x.item(klo)) / h;
+    // calculate interpolated y
+    // y=a*ya[klo]+b*ya[khi]+((a*a*a-a)*y2a[klo]+(b*b*b-b)*y2a[khi])*(h*h)/6.0
+    var y = a * list.y.item(klo) + b * list.y.item(khi) + ((a*a*a - a) * list.y2.item(klo) + (b*b*b - b) * list.y2.item(khi)) * (h*h) / 6.0;
+    return y;
+};
+</expressions>
+
+
+<shape dot1>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle276)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle276)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot2>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*3,255/61*3,255/61*3)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle282)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle282)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot3>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*4,255/61*4,255/61*4)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle288)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle288)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot4>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*5,255/61*5,255/61*5)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle294)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle294)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot5>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*6,255/61*6,255/61*6)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle300)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle300)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot6>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*7,255/61*7,255/61*7)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle306)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle306)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot7>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*8,255/61*8,255/61*8)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle312)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle312)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot8>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*9,255/61*9,255/61*9)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle318)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle318)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot9>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*10,255/61*10,255/61*10)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle324)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle324)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot10>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*11,255/61*11,255/61*11)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle330)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle330)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot11>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*12,255/61*12,255/61*12)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle336)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle336)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot12>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*13,255/61*13,255/61*13)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle342)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle342)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot13>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*14,255/61*14,255/61*14)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle348)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle348)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot14>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*15,255/61*15,255/61*15)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle354)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle354)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot15>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*16,255/61*16,255/61*16)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle0)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle0)
+/ erase = true(128,128,128)
+</shape>
+
+<shape dot16>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*17,255/61*17,255/61*17)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle6)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle6)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot17>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*18,255/61*18,255/61*18)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle12)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle12)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot18>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*19,255/61*19,255/61*19)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle18)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle18)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot19>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*19,255/61*19,255/61*19)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle24)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle24)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot20>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*20,255/61*20,255/61*20)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle30)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle30)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot21>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*21,255/61*21,255/61*21)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle36)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle36)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot22>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*22,255/61*22,255/61*22)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle42)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle42)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot23>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*23,255/61*23,255/61*23)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle48)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle48)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot24>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*24,255/61*24,255/61*24)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle54)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle54)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot25>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*25,255/61*25,255/61*25)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle60)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle60)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot26>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*26,255/61*26,255/61*26)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle66)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle66)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot27>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*27,255/61*27,255/61*27)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle72)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle72)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot28>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*28,255/61*28,255/61*28)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle78)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle78)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot29>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*29,255/61*29,255/61*29)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle84)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle84)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot30>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*30,255/61*30,255/61*30)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle90)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle90)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot31>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*31,255/61*31,255/61*31)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle96)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle96)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot32>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*32,255/61*32,255/61*32)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle102)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle102)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot33>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*33,255/61*33,255/61*33)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle108)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle108)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot34>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*34,255/61*34,255/61*34)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle114)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle114)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot35>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*35,255/61*35,255/61*35)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle120)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle120)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot36>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*36,255/61*36,255/61*36)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle126)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle126)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot37>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*37,255/61*37,255/61*37)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle132)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle132)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot38>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*38,255/61*38,255/61*38)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle138)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle138)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot39>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*39,255/61*39,255/61*39)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle144)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle144)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot40>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*40,255/61*40,255/61*40)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle150)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle150)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot41>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*41,255/61*41,255/61*41)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle156)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle156)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot42>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*42,255/61*42,255/61*42)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle162)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle162)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot43>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*43,255/61*43,255/61*43)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle168)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle168)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot44>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*44,255/61*44,255/61*44)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle174)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle174)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot45>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*45,255/61*45,255/61*45)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle180)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle180)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot46>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*46,255/61*46,255/61*46)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle186)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle186)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot47>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*47,255/61*47,255/61*47)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle192)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle192)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot48>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*48,255/61*48,255/61*48)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle198)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle198)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot49>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*49,255/61*49,255/61*49)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle204)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle204)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot50>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*50,255/61*50,255/61*50)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle210)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle210)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot51>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*51,255/61*51,255/61*51)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle216)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle216)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot52>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*52,255/61*52,255/61*52)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle222)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle222)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot53>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*53,255/61*53,255/61*53)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle228)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle228)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot54>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*54,255/61*54,255/61*54)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle234)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle234)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot55>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*55,255/61*55,255/61*55)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle240)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle240)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot56>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*56,255/61*56,255/61*56)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle246)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle246)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot57>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*57,255/61*57,255/61*57)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle252)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle252)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot58>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*58,255/61*58,255/61*58)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle258)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle258)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot59>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*59,255/61*59,255/61*59)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle264)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle264)
+/ erase = true(128,128,128)
+</shape>
+ 
+<shape dot60>
+/ shape = circle
+/ size = (parameters.clockdotSize, parameters.clockdotSize)
+// color = (255/61*60,255/61*60,255/61*60)
+/ color = (255/61*2,255/61*2,255/61*2)
+/ hposition = 1px * (expressions.centerx + expressions.widthchange_angle270)
+/ vposition = 1px * (expressions.centery + expressions.heightchange_angle270)
+/ erase = true(128,128,128)
+</shape>
