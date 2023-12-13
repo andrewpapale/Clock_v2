@@ -1774,8 +1774,8 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 		if (values.inc_rg < 10) {
 			values.inc_rg = 10;
 		}
-		if (values.inc_rg > 150) {
-			values.inc_rg = 150;
+		if (values.inc_rg > 200) {
+			values.inc_rg = 200;
 		}
 		values.Earnings = values.inc_rg*values.conversion;
 		values.totalEarnings = values.totalEarnings + values.Earnings;
