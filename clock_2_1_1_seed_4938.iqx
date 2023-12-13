@@ -1250,10 +1250,23 @@ number of mushrooms anywhere on the planet.")
 
 	// fixed from seed 2455 right now, blocks of 10, returns "no erasure", "erasure", or "attention"
 	values.block_type = list.block_type.nextvalue;
-	
+	if (mod(values.trial, 10) == 1) {
+		values.block_trial = 1;
+	} else {
+		values.block_trial += 1;
+	}	
 
-		if (values.seed == 4938){
-		if (values.trial == 11 || values.trial == 41 || values.trial == 71 || values.trial == 111 || values.trial == 121 || || values.trial == 161 || values.trial == 201 || values.trial == 231 || values.trial == 251 || values.trial == 271){
+	if (values.block_type=="attention" || values.block_type=="no erasure") {
+		values.trial_type = values.block_type;
+	} else if (values.block_type=="erasure") {
+		if (values.timeout_block == TRUE) {
+			values.trial_type = "no erasure";
+		} else {
+			values.trial_type = "erasure";
+		}
+	}
+	if (values.seed == 4938){
+		if (values.trial == 11 || values.trial == 41 || values.trial == 71 || values.trial == 111 || values.trial == 121 || values.trial == 161 || values.trial == 201 || values.trial == 231 || values.trial == 251 || values.trial == 271){
 			values.erasure_blocks += 1;
 		}
 		if (values.trial == 11){
@@ -1288,13 +1301,8 @@ number of mushrooms anywhere on the planet.")
 		}
 	}
 	
-	if (mod(values.trial,10) == 1){
-		values.block_trial = 1;
-	} else {
-		values.block_trial += 1;
-	}
 	// generate new erasure on first trial of erasure block
-	if (values.block_type == "erasure" && values.block_trial == 1){
+	if (values.block_type == "erasure" && values.block_trial == 1) {
 		values.generate_new_erasure = TRUE;
 	}
 	// dynamically account for stimulus erasure choice
@@ -1310,9 +1318,8 @@ number of mushrooms anywhere on the planet.")
 		// reset timeouts remaining to 2
 		values.timeouts_remain = values.timeout_trials;
 	}
-	if (values.block_type != "erasure"){
+	if (values.block_type!="erasure") {
 		values.timeout_block = FALSE;
-		
 	}
 	if (values.timeout_block==TRUE) {
 		// decrement timeouts trials remaining by 1 if in timeout block
@@ -1323,23 +1330,12 @@ number of mushrooms anywhere on the planet.")
 		values.choose_stim = NULL;
 		values.n_timeout +=1;
 	}
-	if (values.block_type == "attention" || values.block_type == "no erasure"){
-		values.trial_type = values.block_type;
-	} else if (values.block_type == "erasure"){
-		if (values.timeout_block == TRUE){
-			values.trial_type = "no erasure";
-		} else {
-			values.trial_type = "erasure";
-		}
-	}
-	
-	
-	if (values.trial_type == "no erasure") {
+	if (values.trial_type=="no erasure") {
 		picture.stim.items.1 = ("blank.png");
 		values.n_clicks = NULL;
 		values.has_erasure = FALSE;
 		values.choose_stim = NULL;
-	} else if (values.trial_type == "attention") {
+	} else if (values.trial_type =="attention") {
 		if (parameters.attentional_control=="cloud") {
 			picture.stim.item.1 = "fog0.png";
 		} else if (parameters.attentional_control=="wind") {
@@ -1348,7 +1344,7 @@ number of mushrooms anywhere on the planet.")
 		values.has_erasure = FALSE;
 		values.n_clicks = 0;
 		values.choose_stim = 0;
-		if (values.block_trial == 1){
+		if (values.block_trial == 1) {
 			values.att_index += 1;
 		}
 		// now we have to convert pos_shifted into 'screen' coordinates which the stimuli are on
@@ -1356,7 +1352,7 @@ number of mushrooms anywhere on the planet.")
 		picture.stim.vposition = expressions.centery + sin(rad(list.att_loc.nextvalue))*expressions.radius_px;
 		picture.stim.rotation = list.att_loc.nextvalue - 270;
 		values.stim_center_deg = mod(list.att_loc.nextvalue + 90,360);
-	} else if (values.trial_type == "erasure") {
+	} else if (values.trial_type=="erasure") {
 		if (parameters.local_uncertainty=="cloud") {
 			picture.stim.item.1 = "fog0.png";
 		} else if (parameters.local_uncertainty=="wind") {

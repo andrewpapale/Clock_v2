@@ -1250,18 +1250,18 @@ number of mushrooms anywhere on the planet.")
 
 	// fixed from seed 2455 right now, blocks of 10, returns "no erasure", "erasure", or "attention"
 	values.block_type = list.block_type.nextvalue;
-	
+	if (mod(values.trial, 10) == 1) {
+		values.block_trial = 1;
+	} else {
+		values.block_trial += 1;
+	}
 	if (values.block_type == "erasure" && values.last_block_type != "erasure"){
 		values.erasure_blocks +=1;
 		// arithmetic sequence mapping 1,2,3,4,... --> 0,3,6,12,...
 		// only want to set the starting index at the beginning of each erasure_block
 		values.era_index = values.erasure_blocks + 2*(values.erasure_blocks - 1) - 1;
 	}
-	if (mod(values.trial,10) ==0){
-		values.block_trial = 1;
-	} else {
-		values.block_trial += 1;
-	}
+
 	// generate new erasure on first trial of erasure block
 	if (values.block_type == "erasure" && values.block_trial == 1){
 		values.generate_new_erasure = TRUE;

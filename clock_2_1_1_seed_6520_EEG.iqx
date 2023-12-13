@@ -1275,8 +1275,20 @@ number of mushrooms anywhere on the planet.")
 
 	// fixed from seed 2455 right now, blocks of 10, returns "no erasure", "erasure", or "attention"
 	values.block_type = list.block_type.nextvalue;
-	
-
+	if (mod(values.trial, 10) == 1){
+		values.block_trial = 1;
+	} else {
+		values.block_trial += 1;
+	}
+	if (values.block_type == "attention" || values.block_type == "no erasure"){
+		values.trial_type = values.block_type;
+	} else if (values.block_type == "erasure"){
+		if (values.timeout_block == TRUE){
+			values.trial_type = "no erasure";
+		} else {
+			values.trial_type = "erasure";
+		}
+	}
 	// should always be true for this script
 	if (values.seed == 6520){
 		if (values.trial == 21 || values.trial == 51 || values.trial == 61 || values.trial == 111 || values.trial == 141 || || values.trial == 151 || values.trial == 181 || values.trial == 211 || values.trial == 261 || values.trial == 291){
@@ -1314,11 +1326,6 @@ number of mushrooms anywhere on the planet.")
 		}
 	}
 	
-	if (mod(values.trial,10) == 1){
-		values.block_trial = 1;
-	} else {
-		values.block_trial += 1;
-	}
 	// generate new erasure on first trial of erasure block
 	if (values.block_type == "erasure" && values.block_trial == 1){
 		values.generate_new_erasure = TRUE;
@@ -1348,15 +1355,6 @@ number of mushrooms anywhere on the planet.")
 		values.has_erasure = FALSE;
 		values.choose_stim = NULL;
 		values.n_timeout +=1;
-	}
-	if (values.block_type == "attention" || values.block_type == "no erasure"){
-		values.trial_type = values.block_type;
-	} else if (values.block_type == "erasure"){
-		if (values.timeout_block == TRUE){
-			values.trial_type = "no erasure";
-		} else {
-			values.trial_type = "erasure";
-		}
 	}
 	
 	
