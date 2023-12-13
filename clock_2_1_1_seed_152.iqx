@@ -60,7 +60,7 @@
 </include>
 
 <include>
-/ file = "trial_type-152.txt"
+/ file = "block_type-152.txt"
 </include>
 
 // test vectors holding interpolated x / y values
@@ -78,12 +78,6 @@
 
 <list y_final>
 / selectionmode = values.final_idx;
-</list>
-
-<list block_type>
-/ items = ("attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure")
-/ selectionrate = always
-/ selectionmode = values.trial;
 </list>
 
 <list degrees_used>

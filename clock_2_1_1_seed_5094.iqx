@@ -60,7 +60,7 @@
 </include>
 
 <include>
-/ file = "trial_type-5094.txt"
+/ file = "block_type-5094.txt"
 </include>
 
 // test vectors holding interpolated x / y values
