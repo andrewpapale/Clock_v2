@@ -59,6 +59,10 @@
 / file = "era_val-5815.txt"
 </include>
 
+<include>
+/ file = "trial_type-5815.txt"
+</include>
+
 // test vectors holding interpolated x / y values
 <list x_test> 
 / selectionmode = sequence
@@ -74,12 +78,6 @@
 
 <list y_final>
 / selectionmode = values.final_idx;
-</list>
-
-<list block_type>
-/ items = ("attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","erasure","attention","attention","attention","attention","attention","attention","attention","attention","attention","attention","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure","no erasure")
-/ selectionrate = always
-/ selectionmode = values.trial;
 </list>
 
 <list degrees_used>
@@ -1646,7 +1644,6 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 		dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
 		dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
 		dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
-	2 = animatedCircle;
 ]
 / timeout = values.timeout;
 / validresponse = (" ") 
