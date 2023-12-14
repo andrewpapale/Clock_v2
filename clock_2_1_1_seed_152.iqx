@@ -307,7 +307,7 @@
 / columns = (build, computer.platform, computer.touch, date, time, subject, group, script.sessionid, blockcode, blocknum,
 trialcode, list.ITI.currentvalue, list.preClockFreeze.currentvalue, latency, list.ISI.currentvalue, 
 values.block, values.trialCount, values.trial, values.run_trial,values.block_trial,values.block_type, values.trial_type, values.last_block_type,
-values.generate_new_erasure,values.trial_since_erasure_gen,values.deg_index_att, values.deg_index_era, values.att_index, values.era_index, 
+values.generate_new_erasure,values.trial_since_erasure_gen,values.att_index, values.era_index, 
 parameters.seed, list.era_loc.currentvalue, values.has_erasure,list.att_loc.currentvalue, values.n_clicks, values.timeout_block,values.timeouts_remain,values.stim_center_deg,
 values.startPos,values.pos_shifted,values.rt_shifted,values.mag, values.inc_rg, values.inc, values.rng, values.freq, values.choose_stim,values.erasure_value, values.erasure_RT,
 values.right_index,values.left_index, values.stim_left_deg, values.stim_right_deg,
@@ -474,6 +474,20 @@ values.trial,values.erasure_blocks,parameters.attentional_control,parameters.loc
 / erase = true(128,128,128)
 </picture>
 
+<picture sampleErasureL>
+/ items = ("wind0.png")
+/ position = (20%, 80%)
+/ size = (35%, 35%)
+/ erase = true(128,128,128)
+</picture>
+
+<picture sampleErasureR>
+/ items = ("wind0.png")
+/ position = (80%, 80%)
+/ size = (35%, 35%)
+/ erase = true(128,128,128)
+</picture>
+
 <text three>
 / items = ("3")
 / fontstyle = ("Arial", 50%, false, false, false, false, 5, 238)
@@ -553,7 +567,7 @@ Your spacecraft will orbit the planet, and you can land it at any point by press
 <text instructions1_1>
 / items = instructions1_1
 / select = 1
-/ position = (50%, 30%)
+/ position = (50%, 20%)
 / fontstyle = ("Arial", 5%)
 / size = (90%, 90%)
 / hjustify = left
@@ -561,8 +575,9 @@ Your spacecraft will orbit the planet, and you can land it at any point by press
 </text>
 
 <item instructions1_1>
-/ 1 = "If you stop in a good location, you will find more mushrooms. Every 100 mushrooms is worth 3 cents."
-     
+/ 1 = "If you stop in a good location, you will find more mushrooms. Every 100 mushrooms is worth 3 cents.
+
+At times the game will change. Try responding at different times in order to learn how to get the most points."    
 </item>
 
 <text instructions1_2>
@@ -612,6 +627,33 @@ around the planet will remain the same, and the
 location covered by the <%text.local_uncertainty.item.2%> 
 will revert back to what you originally learned 
 once the <%text.local_uncertainty.item.2%> disappears.")
+/ fontstyle = ("Arial", 4%, false, false, false, false, 5, 238)
+/ position = (52%, 35%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<text reminder1>
+/ items = ("Remember...If you land the spacecraft on the 
+<%text.local_uncertainty.item.2%>, the conditions 
+will change in that location ONLY. That is, the number 
+of mushrooms you will earn by landing on the <%text.local_uncertainty.item.2%> 
+will be different from what you previously learned 
+about that location. However, all other locations 
+around the planet will remain the same, and the 
+location covered by the <%text.local_uncertainty.item.2%> 
+will revert back to what you originally learned 
+once the <%text.local_uncertainty.item.2%> disappears.")
+/ fontstyle = ("Arial", 4%, false, false, false, false, 5, 238)
+/ position = (52%, 35%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<text reminder2>
+/ items = ("Remember...When <%text.attentional_control.item.1%> appears,
+it has no effect on the number of mushrooms
+anywhere on the planet.")
 / fontstyle = ("Arial", 4%, false, false, false, false, 5, 238)
 / position = (52%, 35%)
 / vjustify = center
@@ -955,6 +997,37 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 / branch = [
 	trial.instructions4;
 ]
+</trial>
+
+<trial reminder1>
+/ ontrialbegin = [
+	if (parameters.local_uncertainty=="cloud") {
+		picture.sampleErasureR.item.1 = "fog0.png";
+		picture.sampleErasureL.item.1 = "fog0.png";
+	} else if (parameters.local_uncertainty=="wind") {
+		picture.sampleErasureR.item.1 = "wind0.png";
+		picture.sampleErasureL.item.1 = "wind0.png";
+	}
+]
+
+/ stimulusframes = [1=reminder1, sampleErasureR, sampleErasureL, next]
+/ validresponse = (next)
+/ inputdevice = mouse
+</trial>
+
+<trial reminder2>
+/ ontrialbegin = [
+	if (parameters.attentional_control=="cloud") {
+		picture.sampleAttentionR.item.1 = "fog0.png";
+		picture.sampleAttentionL.item.1 = "fog0.png";
+	} else if (parameters.attentional_control=="wind") {
+		picture.sampleAttentionR.item.1 = "wind0.png";
+		picture.sampleAttentionL.item.1 = "wind0.png";
+	}
+]
+/ stimulusframes = [1=reminder2, sampleAttentionR, sampleAttentionL, next]
+/ validresponse = (next)
+/ inputdevice = mouse
 </trial>
 
 <text sampleResponse>
@@ -1932,7 +2005,8 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 <text breaktext>
 / position = (50%, 40%)
 / erase = true(128,128,128)
-/ items = ("Please relax for 1 minute")
+/ items = ("Please relax for 1 minute.
+Your spaceship is traveling to a new planet.")
 </text>
 
 
@@ -1999,7 +2073,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 </block>
 
 <block break>
-/ trials = [1=break; 2=presscont;]
+/ trials = [1=break; 2=reminder1; 3=reminder2; 4=presscont;]
 </block>
 
 <block experiment>
@@ -2220,14 +2294,7 @@ what you are writing (otherwise the text will not be visible)"
 ]
 
 / blocks = [
-	1=instructions; 
-	2=experiment; 
-	3=break; 
-	4=experiment; 
-	5=break; 
-	6=experiment; 
-	7=endscreen;
-	8=questionnaire;
+	1=instructions; 2=experiment; 3=break; 4=experiment; 5=break; 6=experiment; 7=endscreen; 8=questionnaire;
 ]
 
 </expt>

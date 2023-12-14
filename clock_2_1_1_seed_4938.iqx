@@ -307,7 +307,7 @@
 / columns = (build, computer.platform, computer.touch, date, time, subject, group, script.sessionid, blockcode, blocknum,
 trialcode, list.ITI.currentvalue, list.preClockFreeze.currentvalue, latency, list.ISI.currentvalue, 
 values.block, values.trialCount, values.trial, values.run_trial,values.block_trial,values.block_type, values.trial_type, values.last_block_type,
-values.generate_new_erasure,values.trial_since_erasure_gen,values.deg_index_att, values.deg_index_era, values.att_index, values.era_index, 
+values.generate_new_erasure,values.trial_since_erasure_gen,values.att_index, values.era_index, 
 parameters.seed, list.era_loc.currentvalue, values.has_erasure,list.att_loc.currentvalue, values.n_clicks, values.timeout_block,values.timeouts_remain,values.stim_center_deg,
 values.startPos,values.pos_shifted,values.rt_shifted,values.mag, values.inc_rg, values.inc, values.rng, values.freq, values.choose_stim,values.erasure_value, values.erasure_RT,
 values.right_index,values.left_index, values.stim_left_deg, values.stim_right_deg,
@@ -474,6 +474,20 @@ values.trial,values.erasure_blocks,parameters.attentional_control,parameters.loc
 / erase = true(128,128,128)
 </picture>
 
+<picture sampleErasureL>
+/ items = ("wind0.png")
+/ position = (20%, 80%)
+/ size = (35%, 35%)
+/ erase = true(128,128,128)
+</picture>
+
+<picture sampleErasureR>
+/ items = ("wind0.png")
+/ position = (80%, 80%)
+/ size = (35%, 35%)
+/ erase = true(128,128,128)
+</picture>
+
 <text three>
 / items = ("3")
 / fontstyle = ("Arial", 50%, false, false, false, false, 5, 238)
@@ -553,7 +567,7 @@ Your spacecraft will orbit the planet, and you can land it at any point by press
 <text instructions1_1>
 / items = instructions1_1
 / select = 1
-/ position = (50%, 30%)
+/ position = (50%, 20%)
 / fontstyle = ("Arial", 5%)
 / size = (90%, 90%)
 / hjustify = left
@@ -561,8 +575,9 @@ Your spacecraft will orbit the planet, and you can land it at any point by press
 </text>
 
 <item instructions1_1>
-/ 1 = "If you stop in a good location, you will find more mushrooms. Every 100 mushrooms is worth 3 cents."
-     
+/ 1 = "If you stop in a good location, you will find more mushrooms. Every 100 mushrooms is worth 3 cents.
+
+At times the game will change. Try responding at different times in order to learn how to get the most points."    
 </item>
 
 <text instructions1_2>
@@ -612,6 +627,33 @@ around the planet will remain the same, and the
 location covered by the <%text.local_uncertainty.item.2%> 
 will revert back to what you originally learned 
 once the <%text.local_uncertainty.item.2%> disappears.")
+/ fontstyle = ("Arial", 4%, false, false, false, false, 5, 238)
+/ position = (52%, 35%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<text reminder1>
+/ items = ("Remember...If you land the spacecraft on the 
+<%text.local_uncertainty.item.2%>, the conditions 
+will change in that location ONLY. That is, the number 
+of mushrooms you will earn by landing on the <%text.local_uncertainty.item.2%> 
+will be different from what you previously learned 
+about that location. However, all other locations 
+around the planet will remain the same, and the 
+location covered by the <%text.local_uncertainty.item.2%> 
+will revert back to what you originally learned 
+once the <%text.local_uncertainty.item.2%> disappears.")
+/ fontstyle = ("Arial", 4%, false, false, false, false, 5, 238)
+/ position = (52%, 35%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<text reminder2>
+/ items = ("Remember...When <%text.attentional_control.item.1%> appears,
+it has no effect on the number of mushrooms
+anywhere on the planet.")
 / fontstyle = ("Arial", 4%, false, false, false, false, 5, 238)
 / position = (52%, 35%)
 / vjustify = center
@@ -957,6 +999,37 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 ]
 </trial>
 
+<trial reminder1>
+/ ontrialbegin = [
+	if (parameters.local_uncertainty=="cloud") {
+		picture.sampleErasureR.item.1 = "fog0.png";
+		picture.sampleErasureL.item.1 = "fog0.png";
+	} else if (parameters.local_uncertainty=="wind") {
+		picture.sampleErasureR.item.1 = "wind0.png";
+		picture.sampleErasureL.item.1 = "wind0.png";
+	}
+]
+
+/ stimulusframes = [1=reminder1, sampleErasureR, sampleErasureL, next]
+/ validresponse = (next)
+/ inputdevice = mouse
+</trial>
+
+<trial reminder2>
+/ ontrialbegin = [
+	if (parameters.attentional_control=="cloud") {
+		picture.sampleAttentionR.item.1 = "fog0.png";
+		picture.sampleAttentionL.item.1 = "fog0.png";
+	} else if (parameters.attentional_control=="wind") {
+		picture.sampleAttentionR.item.1 = "wind0.png";
+		picture.sampleAttentionL.item.1 = "wind0.png";
+	}
+]
+/ stimulusframes = [1=reminder2, sampleAttentionR, sampleAttentionL, next]
+/ validresponse = (next)
+/ inputdevice = mouse
+</trial>
+
 <text sampleResponse>
 / items = (" ")
 / fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
@@ -1029,7 +1102,7 @@ dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
 dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 ]
 / timeout = 3000
-/ branch = [ 
+/ branch = [
 	if (values.pos_shifted >= max(mod(values.stim_center_deg - 15, 360),1) && values.pos_shifted <= max(mod(values.stim_center_deg + 15, 360),1)) {
 		trial.instructions5;
 	} else {
@@ -1063,7 +1136,6 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	} else if (parameters.local_uncertainty=="wind") {
 		picture.stim.item.1 = "wind0.png";
 	}
-	
 ]
 
 / stimulusframes = [1=instructions5_1, stim, local_box, global_box, nothing_box, increase_box]
@@ -1197,8 +1269,6 @@ number of mushrooms anywhere on the planet.")
 	} else if (parameters.attentional_control=="wind") {
 		picture.stim.item.1 = "wind0.png";
 	}
-	
-	
 ]
 
 / stimulusframes = [1=instructions5_2, stim, local_box, global_box, nothing_box, increase_box]
@@ -1227,7 +1297,7 @@ number of mushrooms anywhere on the planet.")
 <trial ITI>
 / ontrialbegin = [
 	values.trial +=1;
-	if (values.trial > 1){
+	if (values.trial > 1) {
 		values.last_block_type = values.block_type;
 	}
 	values.run_trial +=1;
@@ -1238,7 +1308,6 @@ number of mushrooms anywhere on the planet.")
 	values.rng = NULL;
 	values.inc = NULL;
 	values.inc_rg = NULL;
-	
 	// iterate values for next trial
 	list.curr_values.reset();
 	list.curr_RTs.reset();
@@ -1247,60 +1316,44 @@ number of mushrooms anywhere on the planet.")
 		list.curr_values.appenditem(list.values.nextvalue);
 		list.curr_RTs.appenditem(list.RT.nextvalue);
 	};
-
 	// fixed from seed 2455 right now, blocks of 10, returns "no erasure", "erasure", or "attention"
 	values.block_type = list.block_type.nextvalue;
 	if (mod(values.trial, 10) == 1) {
 		values.block_trial = 1;
 	} else {
 		values.block_trial += 1;
-	}	
-
-	if (values.block_type=="attention" || values.block_type=="no erasure") {
-		values.trial_type = values.block_type;
-	} else if (values.block_type=="erasure") {
-		if (values.timeout_block == TRUE) {
-			values.trial_type = "no erasure";
-		} else {
-			values.trial_type = "erasure";
-		}
 	}
-	if (values.seed == 4938){
-		if (values.trial == 11 || values.trial == 41 || values.trial == 71 || values.trial == 111 || values.trial == 121 || values.trial == 161 || values.trial == 201 || values.trial == 231 || values.trial == 251 || values.trial == 271){
-			values.erasure_blocks += 1;
-		}
-		if (values.trial == 11){
-			values.era_index = 0;
-		}
-		if (values.trial == 41){
-			values.era_index = 3;
-		}
-		if (values.trial == 71){
-			values.era_index = 6;
-		}
-		if (values.trial == 111){
-			values.era_index = 9;
-		}
-		if (values.trial == 121){
-			values.era_index = 12;
-		}
-		if (values.trial == 161){
-			values.era_index = 14;
-		}
-		if (values.trial == 201){
-			values.era_index = 17;
-		}
-		if (values.trial == 231){
-			values.era_index = 20;
-		}
-		if (values.trial == 251){
-			values.era_index = 23;
-		}
-		if (values.trial == 271){
-			values.era_index = 26;
-		}
+	if (values.trial == 11) {
+		values.era_index = 0;
+		values.erasure_blocks +=1;
+	} else if (values.trial == 41) {
+		values.era_index = 3;
+		values.erasure_blocks +=1;
+	} else if (values.trial == 71) {
+		values.era_index = 6;
+		values.erasure_blocks +=1;
+	} else if (values.trial == 111) {
+		values.era_index = 9;
+		values.erasure_blocks +=1;
+	} else if (values.trial == 121) {
+		values.era_index = 12;
+		values.erasure_blocks +=1;
+	} else if (values.trial == 161) {
+		values.era_index = 14;
+		values.erasure_blocks +=1;
+	} else if (values.trial == 201) {
+		values.era_index = 17;
+		values.erasure_blocks +=1;
+	} else if (values.trial == 231) {
+		values.era_index = 20;
+		values.erasure_blocks +=1;
+	} else if (values.trial == 251) {
+		values.era_index = 23;
+		values.erasure_blocks +=1;
+	} else if (values.trial == 271) {
+		values.era_index = 26;
+		values.erasure_blocks +=1;
 	}
-	
 	// generate new erasure on first trial of erasure block
 	if (values.block_type == "erasure" && values.block_trial == 1) {
 		values.generate_new_erasure = TRUE;
@@ -1329,6 +1382,15 @@ number of mushrooms anywhere on the planet.")
 		values.has_erasure = FALSE;
 		values.choose_stim = NULL;
 		values.n_timeout +=1;
+	}
+	if (values.block_type=="attention" || values.block_type=="no erasure") {
+		values.trial_type = values.block_type;
+	} else if (values.block_type=="erasure") {
+		if (values.timeout_block == TRUE) {
+			values.trial_type = "no erasure";
+		} else {
+			values.trial_type = "erasure";
+		}
 	}
 	if (values.trial_type=="no erasure") {
 		picture.stim.items.1 = ("blank.png");
@@ -1375,7 +1437,6 @@ number of mushrooms anywhere on the planet.")
 		values.curr_max = list.curr_values.maximum;
 		values.curr_min = list.curr_values.minimum;
 		values.trial_since_erasure_gen = 0;
-		
 		list.erasure_RTs.reset();
 		// generate sequence of indices to map onto erasure
 		values.i = 0;
@@ -1429,7 +1490,7 @@ number of mushrooms anywhere on the planet.")
 	if (values.trial_since_erasure_gen <= 15 && values.trial_since_erasure_gen > 1) {
 		values.to_l = list.curr_values.minimum;
 		values.to_h = list.curr_values.maximum;
-		if (values.trial_since_erasure_gen <= 10){
+		if (values.trial_since_erasure_gen <= 10) {
 			// flex
 			values.erasure_value = ((values.current_erasure - values.curr_min)/(values.curr_max - values.curr_min)) * (values.to_h - values.to_l) + values.to_l;
 		} else if (values.trial_since_erasure_gen > 10) {
@@ -1441,26 +1502,24 @@ number of mushrooms anywhere on the planet.")
 			values.smooth_kernel3 = list.curr_values.nextvalue;
 			// no flex, just smooth
 			values.erasure_value = (values.smooth_kernel2 + values.erasure_value)/2;
-			//values.erasure_value = ((values.erasure_value - values.curr_min)/(values.curr_max - values.curr_min)) * (values.to_h - values.to_l) + values.to_l;	
+			//values.erasure_value = ((values.erasure_value - values.curr_min)/(values.curr_max - values.curr_min)) * (values.to_h - values.to_l) + values.to_l;
 		}
 	}
-	
-	if (values.stim_center_deg > 345){
-		if (values.stim_center_deg==360){
+	if (values.stim_center_deg > 345) {
+		if (values.stim_center_deg==360) {
 			values.stim_right_deg = 16;
 		} else {
 			values.stim_right_deg = mod(values.stim_center_deg + 15, 360);
 		}
 		values.stim_left_deg = values.stim_center_deg - 15;
-	} else if (values.stim_center_deg < 16){
+	} else if (values.stim_center_deg < 16) {
 		values.stim_right_deg = values.stim_center_deg + 15;
 		values.stim_left_deg = 360 + values.stim_center_deg - 15;
 	} else {
 		values.stim_right_deg = values.stim_center_deg + 15;
 		values.stim_left_deg = values.stim_center_deg - 15;
 	}
-	
-	if (values.trial_since_erasure_gen <= 15){
+	if (values.trial_since_erasure_gen <= 15) {
 		values.trial_since_erasure_gen += 1;
 	} else if (values.trial_since_erasure_gen > 15) {
 		values.trial_since_erasure_gen = null;
@@ -1780,8 +1839,8 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 	values.pos_shifted = values.rt_shifted*360/values.time_per_revolution;
 	// 5000 / 360 RT segments gives 14ms RT bins, conveniently, 1 degree / segment so the index for the value = the degree of the position selected
 	values.rt_index = round(values.pos_shifted);
-	if (values.rt_index == 0){
-			values.rt_index = 1;
+	if (values.rt_index == 0) {
+		values.rt_index = 1;
 	}
 	values.mag = list.curr_values.item(values.rt_index);
 	values.ev = values.mag * values.freq;
@@ -1833,18 +1892,16 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 // correctresponse = (next)
 / recorddata = true
 / ontrialend = [
-	
 	values.trialCount += 1;
-
 	if (values.trial_type != "no erasure") {
-		if (values.stim_center_deg > 16 && values.stim_center_deg < 345){
+		if (values.stim_center_deg > 16 && values.stim_center_deg < 345) {
 			if (values.pos_shifted <= values.stim_right_deg && values.pos_shifted >= values.stim_left_deg) {
 				values.choose_stim = TRUE;
 				values.n_clicks +=1;
 			} else {
 				values.choose_stim = FALSE;
 			}
-		} else if (values.stim_center_deg <= 16 || values.stim_center_deg >= 345){
+		} else if (values.stim_center_deg <= 16 || values.stim_center_deg >= 345) {
 			if (values.pos_shifted <= values.stim_right_deg || values.pos_shifted >= values.stim_left_deg) {
 				values.choose_stim = TRUE;
 				values.n_clicks +=1;
@@ -1852,12 +1909,10 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 				values.choose_stim = FALSE;
 			}
 		}
-	}		
-
+	}
 	if (values.generate_new_erasure==TRUE) {
 		values.generate_new_erasure = FALSE;
 	}
-
 	shape.dot1.erase = false;
 	shape.dot2.erase = false;
 	shape.dot3.erase = false;
@@ -1959,7 +2014,8 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 <text breaktext>
 / position = (50%, 40%)
 / erase = true(128,128,128)
-/ items = ("Please relax for 1 minute")
+/ items = ("Please relax for 1 minute.
+Your spaceship is traveling to a new planet.")
 </text>
 
 
@@ -2026,7 +2082,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 </block>
 
 <block break>
-/ trials = [1=break; 2=presscont;]
+/ trials = [1=break; 2=reminder1; 3=reminder2; 4=presscont;]
 </block>
 
 <block experiment>
@@ -2227,7 +2283,6 @@ what you are writing (otherwise the text will not be visible)"
 	values.erasure_blocks = 0;
 	values.timeouts_remain = values.timeout_trials;
 	list.triallist.poolsize = values.run_length;
-	
 	if (script.groupid < 2) {
 		parameters.attentional_control = "cloud";
 		parameters.local_uncertainty = "wind";
@@ -2243,18 +2298,10 @@ what you are writing (otherwise the text will not be visible)"
 		text.local_uncertainty.item.1 = "a cloud";
 		text.local_uncertainty.item.2 = "cloud";
 	}
-	
 ]
 
 / blocks = [
-	1=instructions; 
-	2=experiment; 
-	3=break; 
-	4=experiment; 
-	5=break; 
-	6=experiment; 
-	7=endscreen;
-	8=questionnaire;
+	1=instructions; 2=experiment; 3=break; 4=experiment; 5=break; 6=experiment; 7=endscreen; 8=questionnaire;
 ]
 
 </expt>
