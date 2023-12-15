@@ -2275,14 +2275,14 @@ what you are writing (otherwise the text will not be visible)"
 	values.timeouts_remain = values.timeout_trials;
 	list.triallist.poolsize = values.run_length;
 	
-	if (script.groupid < 2) {
+	if (mod(script.groupid, 2) == 0) {
 		parameters.attentional_control = "cloud";
 		parameters.local_uncertainty = "wind";
 		text.attentional_control.item.1 = "a cloud";
 		text.attentional_control.item.2 = "cloud";
 		text.local_uncertainty.item.1 = "wind";
 		text.local_uncertainty.item.2 = "wind";
-	} else if (script.groupid >= 2) {
+	} else {
 		parameters.attentional_control = "wind";
 		parameters.local_uncertainty = "cloud";
 		text.attentional_control.item.1 = "wind";
