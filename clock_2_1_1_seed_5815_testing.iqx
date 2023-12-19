@@ -63,18 +63,6 @@
 / file = "block_type-5815.txt"
 </include>
 
-<include>
-/ file = "ITI.txt"
-</include>
-
-<include>
-/ file = "ISI.txt"
-</include>
-
-<include>
-/ file = "preClockFreeze.txt"
-</include>
-
 // test vectors holding interpolated x / y values
 <list x_test> 
 / selectionmode = sequence
@@ -108,6 +96,25 @@
 / poolsize = values.run_length;
 / selectionrate = trial
 / selectionmode = sequence
+</list>
+
+<list ITI>
+/ items = ( 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250, 260, 270, 280, 290, 300, 310, 320, 330, 340, 350, 360, 370, 380, 390, 400, 410, 420, 430, 440, 450, 460, 470, 480, 490, 500)
+/ poolsize = 41
+/ selectionmode = random
+</list>
+
+<list ISI>
+/ items = (200,210,220,230,240,250,260,270,280,290,300,310,320,330,340,350,360,370,380,390,400,410,420,430,440,450,460,470,480,490,500,510,520,530,540,550,560,570,580,590,600)
+/ poolsize = 41
+/ selectionmode = random
+</list>
+
+
+<list preClockFreeze>
+/ items = (500, 510, 520, 530, 540, 550, 560, 570, 580, 590, 600, 610, 620, 630, 640, 650, 660, 670, 680, 690, 700)
+/ poolsize = 21
+/ selectionmode = random
 </list>
 
 <list lower_half>
@@ -284,7 +291,7 @@
 / era_index = null
 / att_index = null
 
-/ run_length = 80;
+/ run_length = 100;
 / block_trial = null
 / last_block_type = null
 / erasure_blocks = null
@@ -553,7 +560,7 @@ values.trial,values.erasure_blocks,parameters.attentional_control,parameters.loc
 <item instructions1>
 / 1 = "In this game, you are picking mushrooms on a far away planet.
        
-Your spacecraft will orbit the planet, and you can land it at any point by pressing your right index finger."
+Your spacecraft will orbit the planet, and you can land it at any point by pressing the spacebar."
      
 </item>
 
@@ -591,8 +598,7 @@ The game takes about 25-30 minutes, there are breaks 1/3 and 2/3 of the way thro
 </item>
 
 <text instructions2>
-/ items = ("Press your right index finger 
-to land the spacecraft.
+/ items = ("Press the spacebar to land the spacecraft.
 This is just for practice.")
 / fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
 / position = (50%, 45%)
@@ -601,8 +607,7 @@ This is just for practice.")
 </text>
 
 <text instructions2_1>
-/ items = ("Press your right index finger 
-to land the spacecraft
+/ items = ("Press the spacebar to land the spacecraft
 again. This is just for practice.")
 / fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
 / position = (50%, 45%)
@@ -620,7 +625,8 @@ different from what you previously learned about
 that location. However, all other locations 
 around the planet will remain the same, and the 
 location covered by the <%text.local_uncertainty.item.2%> 
-will change again once the <%text.local_uncertainty.item.2%> disappears.")
+will revert back to what you originally learned 
+once the <%text.local_uncertainty.item.2%> disappears.")
 / fontstyle = ("Arial", 4%, false, false, false, false, 5, 238)
 / position = (52%, 35%)
 / vjustify = center
@@ -836,8 +842,8 @@ around your planet.
 
 <trial instructions1>
 / stimulusframes = [1=instructions1, sampleMushroomL, sampleMushroomR, next]
-/ validresponse = ("2") 
-/ inputdevice = keyboard
+/ validresponse = (next) 
+/ inputdevice = mouse
 / branch = [
 	return trial.instructions1_1;
 ]
@@ -845,8 +851,8 @@ around your planet.
 
 <trial instructions1_1>
 / stimulusframes = [1=instructions1_1, sampleMushroomL, sampleMushroomR, next]
-/ validresponse = ("2") 
-/ inputdevice = keyboard
+/ validresponse = (next) 
+/ inputdevice = mouse
 / branch = [
 	return trial.instructions1_2;
 ]	
@@ -854,8 +860,8 @@ around your planet.
 
 <trial instructions1_2>
 / stimulusframes = [1=instructions1_2, sampleMushroomL, sampleMushroomR, next]
-/ validresponse = ("2") 
-/ inputdevice = keyboard
+/ validresponse = (next) 
+/ inputdevice = mouse
 / branch = [
 ]	
 </trial>
@@ -868,8 +874,8 @@ dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
 dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
 dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, next]
-/ validresponse = ("2") 
-/ inputdevice = keyboard
+/ validresponse = (next)
+/ inputdevice = mouse
 </trial>
 
 <trial instructions2_1>
@@ -892,7 +898,7 @@ dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
 dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60]
 
 / beginresponsetime = 1000
-/ validresponse = ("2") 
+/ validresponse = (" ") 
 / recorddata = FALSE
 / branch = [
 	return trial.displayGoodJob;
@@ -919,7 +925,7 @@ dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
 dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60]
 
 / beginresponsetime = 1000
-/ validresponse = ("2") 
+/ validresponse = (" ") 
 / recorddata = FALSE
 / branch = [
 	return trial.displayGoodJob;
@@ -986,8 +992,8 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 
 <trial instructions3>
 / stimulusframes = [1=instructions3, next]
-/ validresponse = ("2") 
-/ inputdevice = keyboard
+/ validresponse = (next)
+/ inputdevice = mouse
 / branch = [
 	trial.instructions4;
 ]
@@ -1005,8 +1011,8 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 ]
 
 / stimulusframes = [1=reminder1, sampleErasureR, sampleErasureL, next]
-/ validresponse = ("2") 
-/ inputdevice = keyboard
+/ validresponse = (next)
+/ inputdevice = mouse
 </trial>
 
 <trial reminder2>
@@ -1020,8 +1026,8 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	}
 ]
 / stimulusframes = [1=reminder2, sampleAttentionR, sampleAttentionL, next]
-/ validresponse = ("2") 
-/ inputdevice = keyboard
+/ validresponse = (next)
+/ inputdevice = mouse
 </trial>
 
 <text sampleResponse>
@@ -1063,7 +1069,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60
 ]
 
 / beginresponsetime = 1000
-/ validresponse = ("2") 
+/ validresponse = (" ") 
 / responseinterrupt = immediate
 / branch = [
 	return trial.sampleResponse;
@@ -1116,8 +1122,8 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 	}
 ]
 / stimulusframes = [1=instructions5, sampleAttentionR, sampleAttentionL, next]
-/ validresponse = ("2") 
-/ inputdevice = keyboard
+/ validresponse = (next)
+/ inputdevice = mouse
 / branch = [
 	trial.instructions5_1;
 ]
@@ -1134,8 +1140,8 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 ]
 
 / stimulusframes = [1=instructions5_1, stim, local_box, global_box, nothing_box, increase_box]
-/ inputdevice = keyboard
-/ validresponse = ("2","3","4","5")
+/ inputdevice = mouse
+/ validresponse = (local_box,global_box,nothing_box,increase_box)
 / recorddata = TRUE
 / branch = [
 	trial.dummytrial;
@@ -1146,8 +1152,8 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 / stimulusframes = [
 	1=instructions5_3, next
 ]
-/ validresponse = ("2") 
-/ inputdevice = keyboard
+/ validresponse = (next) 
+/ inputdevice = mouse
 / branch = [
 	trial.instructions6;
 ]
@@ -1157,9 +1163,9 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 <trial dummytrial>
 / trialduration = 100;
 / branch = [
-	if (trial.instructions5_1.response=="3") {
+	if (trial.instructions5_1.response=="local_box") {
 		trial.posfeedback1;
-	} else if (trial.instructions5_1.response!="3") {
+	} else if (trial.instructions5_1.response!="local_box") {
 		trial.negfeedback1;
 	}
 ]
@@ -1168,9 +1174,9 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 <trial dummytrial1>
 / trialduration = 100;
 / branch = [
-	if (trial.instructions5_2.response!="5") {
+	if (trial.instructions5_2.response!="nothing_box") {
 		trial.negfeedback2;
-	} else if (trial.instructions5_2.response=="5") {
+	} else if (trial.instructions5_2.response=="nothing_box") {
 		trial.posfeedback2;
 	}
 ]
@@ -1190,8 +1196,8 @@ everywhere else on the planet will stay the same.")
 
 <trial posfeedback1>
 / stimulusframes = [1=posfeedback1, next]
-/ validresponse = ("2") 
-/ inputdevice = keyboard
+/ validresponse = (next) 
+/ inputdevice = mouse
 / branch = [
 	trial.instructions5_2;
 ]
@@ -1211,8 +1217,8 @@ on the planet will stay the same.")
 
 <trial negfeedback1>
 / stimulusframes = [1=negfeedback1, next]
-/ validresponse = ("2")
-/ inputdevice = keyboard
+/ validresponse = (next) 
+/ inputdevice = mouse
 / branch = [
 	trial.instructions3;
 ]
@@ -1231,8 +1237,8 @@ on the planet.")
 
 <trial posfeedback2>
 / stimulusframes = [1=posfeedback2, next]
-/ validresponse = ("2") 
-/ inputdevice = keyboard
+/ validresponse = (next) 
+/ inputdevice = mouse
 / branch = [
 	trial.instructions5_3;
 ]
@@ -1250,8 +1256,8 @@ number of mushrooms anywhere on the planet.")
 
 <trial negfeedback2>
 / stimulusframes = [1=negfeedback2, next]
-/ validresponse = ("2")
-/ inputdevice = keyboard
+/ validresponse = (next) 
+/ inputdevice = mouse
 / branch = [
 	trial.instructions3;
 ]
@@ -1269,8 +1275,8 @@ number of mushrooms anywhere on the planet.")
 ]
 
 / stimulusframes = [1=instructions5_2, stim, local_box, global_box, nothing_box, increase_box]
-/ inputdevice = keyboard
-/ validresponse = ("2","3","4","5")
+/ inputdevice = mouse
+/ validresponse = (local_box,global_box,nothing_box,increase_box)
 / recorddata = TRUE
 / branch = [
 	trial.dummytrial1;
@@ -1279,8 +1285,8 @@ number of mushrooms anywhere on the planet.")
 
 <trial instructions6>
 / stimulusframes = [1=instructions6, next]
-/ inputdevice = keyboard
-/ validresponse = ("2")
+/ inputdevice = mouse
+/ validresponse = (next)
 / branch = [
 	return trial.countdown;
 ]
@@ -1711,7 +1717,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 		dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 ]
 / timeout = values.timeout;
-/ validresponse = ("2")
+/ validresponse = (" ") 
 / inputdevice = keyboard
 / responseinterrupt = immediate
 / recorddata = true
@@ -2289,7 +2295,7 @@ what you are writing (otherwise the text will not be visible)"
 
 / blocks = [
 	//1=instructions; 2=experiment; 3=break; 4=experiment; 5=break; 6=experiment; 7=endscreen; 8=questionnaire;
-	1 = instructions; 2 = scanner_sync; 3 = experiment; 4 = break;  5 = scanner_sync; 6 = experiment; 7 = break; 8 = scanner_sync; 9 = experiment; 10 = endscreen;
+	1 = experiment; 2=experiment; 3 = experiment;
 ]
 
 </expt>
