@@ -1317,7 +1317,7 @@ number of mushrooms anywhere on the planet.")
 		list.curr_values.appenditem(list.values.nextvalue);
 		list.curr_RTs.appenditem(list.RT.nextvalue);
 	};
-	// fixed from seed 2455 right now, blocks of 10, returns "no erasure", "erasure", or "attention"
+	
 	values.block_type = list.block_type.nextvalue;
 	if (mod(values.trial, 10) == 1) {
 		values.block_trial = 1;
