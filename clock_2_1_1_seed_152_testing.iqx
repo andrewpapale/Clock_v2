@@ -63,6 +63,10 @@
 / file = "block_type-152.txt"
 </include>
 
+<include>
+/ file = "spread-152.txt"
+</include>
+
 // test vectors holding interpolated x / y values
 <list x_test> 
 / selectionmode = sequence
@@ -278,6 +282,7 @@
 / to_l = null
 / to_h = null
 / curr_mean = null
+/ new_mean = null
 / curr_max = null
 / curr_min = null
 / grand_mean = null
@@ -309,7 +314,7 @@ trialcode, list.ITI.currentvalue, list.preClockFreeze.currentvalue, latency, lis
 values.block, values.trialCount, values.trial, values.run_trial,values.block_trial,values.block_type, values.trial_type, values.last_block_type,
 values.generate_new_erasure,values.trial_since_erasure_gen,values.att_index, values.era_index, values.x_final, values.y_final,
 parameters.seed, list.era_loc.currentvalue, values.has_erasure,list.att_loc.currentvalue, values.n_clicks, values.timeout_block,values.timeouts_remain,values.stim_center_deg,
-values.startPos,values.pos_shifted,values.rt_shifted,values.mag, values.inc_rg, values.inc, values.rng, values.freq, values.choose_stim,values.erasure_value, values.current_erasure, values.curr_min,values.curr_max, values.to_h, values.to_l, values.smooth_kernel2,values.rt_index,values.erasure_RT,
+values.startPos,values.pos_shifted,values.rt_shifted,values.mag, values.inc_rg, values.inc, values.rng, values.freq, values.choose_stim,values.erasure_value, values.current_erasure, values.curr_min,list.spread.nextvalue, values.curr_mean,values.curr_max, values.new_mean, values.to_h, values.to_l, values.smooth_kernel2,values.rt_index,values.erasure_RT,
 values.right_index,values.left_index, values.stim_left_deg, values.stim_right_deg,
 values.trial,values.erasure_blocks,parameters.attentional_control,parameters.local_uncertainty,picture.planet.item.1,picture.animatedCircle.item.1,picture.feedback2.items.1,picture.stim.item.1,values.Earnings, values.totalEarnings)
 </data>
@@ -1312,6 +1317,10 @@ number of mushrooms anywhere on the planet.")
 	values.inc = NULL;
 	values.inc_rg = NULL;
 	
+	values.curr_min = list.curr_values.minimum;
+	values.curr_max = list.curr_values.maximum;
+	values.curr_mean = list.curr_values.mean;
+	
 	// iterate values for next trial
 	list.curr_values.reset();
 	list.curr_RTs.reset();
@@ -1495,12 +1504,15 @@ number of mushrooms anywhere on the planet.")
 			}
 		};
 	}
-	if (values.trial_since_erasure_gen <= 15 && values.trial_since_erasure_gen > 1) {
-		values.to_l = list.curr_values.minimum;
-		values.to_h = list.curr_values.maximum;
+	if (values.trial_since_erasure_gen <= 15 && values.trial_since_erasure_gen > 0) {
+		
+		values.new_mean = list.curr_values.mean;
+		values.to_h =  list.curr_values.maximum;
+		values.to_l =  list.curr_values.minimum;
+
 		if (values.trial_since_erasure_gen <= 10){
 			// flex
-			values.erasure_value = ((values.current_erasure - values.curr_min)/(values.curr_max - values.curr_min)) * (values.to_h - values.to_l) + values.to_l;
+			values.erasure_value = ((values.erasure_value - values.curr_min)/(values.curr_max - values.curr_min)) * (values.to_h - values.to_l) + values.to_l;
 		} else if (values.trial_since_erasure_gen > 10) {
 			values.current_idx = values.right_index;
 			values.smooth_kernel1 = list.curr_values.nextvalue;
@@ -1511,6 +1523,9 @@ number of mushrooms anywhere on the planet.")
 			// no flex, just smooth
 			values.erasure_value = (values.smooth_kernel2 + values.erasure_value)/2;
 			//values.erasure_value = ((values.erasure_value - values.curr_min)/(values.curr_max - values.curr_min)) * (values.to_h - values.to_l) + values.to_l;	
+		}
+		if (values.erasure_value < 1){
+			values.erasure_value = 1;
 		}
 	}
 	
@@ -1550,7 +1565,7 @@ number of mushrooms anywhere on the planet.")
 
 / recorddata = false
 / branch = [
-	if (values.block_type == "erasure" || values.trial_since_erasure_gen <= 20) {
+	if (values.block_type == "erasure" || values.trial_since_erasure_gen <= 15) {
 		return trial.constructSpline;
 	} else {
 		return trial.resetCounters2; // change back to trial.resetCounters2 to stop saving value vectors

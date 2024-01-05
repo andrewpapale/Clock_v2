@@ -278,6 +278,7 @@
 / to_l = null
 / to_h = null
 / curr_mean = null
+/ new_mean = null
 / curr_max = null
 / curr_min = null
 / grand_mean = null
@@ -1312,6 +1313,10 @@ number of mushrooms anywhere on the planet.")
 	values.inc = NULL;
 	values.inc_rg = NULL;
 	
+	values.curr_min = list.curr_values.minimum;
+	values.curr_max = list.curr_values.maximum;
+	values.curr_mean = list.curr_values.mean;
+	
 	// iterate values for next trial
 	list.curr_values.reset();
 	list.curr_RTs.reset();
@@ -1495,12 +1500,15 @@ number of mushrooms anywhere on the planet.")
 			}
 		};
 	}
-	if (values.trial_since_erasure_gen <= 15 && values.trial_since_erasure_gen > 1) {
-		values.to_l = list.curr_values.minimum;
-		values.to_h = list.curr_values.maximum;
+	if (values.trial_since_erasure_gen <= 15 && values.trial_since_erasure_gen > 0) {
+		
+		values.new_mean = list.curr_values.mean;
+		values.to_h =  list.curr_values.maximum;
+		values.to_l =  list.curr_values.minimum;
+
 		if (values.trial_since_erasure_gen <= 10){
 			// flex
-			values.erasure_value = ((values.current_erasure - values.curr_min)/(values.curr_max - values.curr_min)) * (values.to_h - values.to_l) + values.to_l;
+			values.erasure_value = ((values.erasure_value - values.curr_min)/(values.curr_max - values.curr_min)) * (values.to_h - values.to_l) + values.to_l;
 		} else if (values.trial_since_erasure_gen > 10) {
 			values.current_idx = values.right_index;
 			values.smooth_kernel1 = list.curr_values.nextvalue;
@@ -1512,8 +1520,10 @@ number of mushrooms anywhere on the planet.")
 			values.erasure_value = (values.smooth_kernel2 + values.erasure_value)/2;
 			//values.erasure_value = ((values.erasure_value - values.curr_min)/(values.curr_max - values.curr_min)) * (values.to_h - values.to_l) + values.to_l;	
 		}
+		if (values.erasure_value < 1){
+			values.erasure_value = 1;
+		}
 	}
-	
 	if (values.stim_center_deg > 345){
 		if (values.stim_center_deg==360){
 			values.stim_right_deg = 16;
