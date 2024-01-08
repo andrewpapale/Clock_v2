@@ -14,7 +14,7 @@
 / clockdotSize = 2%
 / attentional_control = null;
 / local_uncertainty = null;
-/ seed = 5815;
+/ seed = 152;
 </parameters>
 
 <usermanual>
