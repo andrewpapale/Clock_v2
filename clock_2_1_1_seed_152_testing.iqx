@@ -67,6 +67,18 @@
 / file = "spread-152.txt"
 </include>
 
+<include>
+/ file = "ITI.txt"
+</include>
+
+<include>
+/ file = "ISI.txt"
+</include>
+
+<include>
+/ file = "preClockFreeze.txt"
+</include>
+
 // test vectors holding interpolated x / y values
 <list x_test> 
 / selectionmode = sequence
@@ -101,19 +113,6 @@
 / selectionrate = trial
 / selectionmode = sequence
 </list>
-
-<list ITI>
-/ items = (0.1, 0.2)
-/ poolsize = 2
-/ selectionmode = random
-</list>
-
-<list ISI>
-/ items = (0.1, 0.2)
-/ poolsize = 2
-/ selectionmode = random
-</list>
-
 
 <list preClockFreeze>
 / items = (0.1, 0.2)
@@ -1516,7 +1515,8 @@ number of mushrooms anywhere on the planet.")
 		if (values.trial_since_erasure_gen <= 10){
 			// flex
 			values.erasure_value = ((values.erasure_value - values.curr_min)/(values.curr_max - values.curr_min)) * (values.to_h - values.to_l) + values.to_l;
-		} else if (values.trial_since_erasure_gen > 10) {
+		}
+		if (values.trial_since_erasure_gen > 10) {
 			values.current_idx = values.right_index;
 			values.smooth_kernel1 = list.curr_values.nextvalue;
 			values.current_idx = values.left_index;
