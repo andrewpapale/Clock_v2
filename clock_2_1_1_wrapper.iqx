@@ -1,51 +1,121 @@
 ﻿<batch>
-/ groups = (1 of 10)
-/ file = "clock_2_1_1_seed_152.iqx"
+/ groups = (1 of 20)
+/ file = "instruct_consent_task_only.iqx"
+/ file = "clock_2_1_1_seed_152_fMRI.iqx"
 </batch>
 
 <batch>
-/ groups = (2 of 10)
-/ file = "clock_2_1_1_seed_1464.iqx"
+/ groups = (2 of 20)
+/ file = "instruct_consent_task_only.iqx"
+/ file = "clock_2_1_1_seed_1464_fMRI.iqx"
 </batch>
 
 <batch>
-/ groups = (3 of 10)
-/ file = "clock_2_1_1_seed_1752.iqx"
+/ groups = (3 of 20)
+/ file = "instruct_consent_task_only.iqx"
+/ file = "clock_2_1_1_seed_1752_fMRI.iqx"
 </batch>
 
 <batch>
-/ groups = (4 of 10)
-/ file = "clock_2_1_1_seed_2534.iqx"
+/ groups = (4 of 20)
+/ file = "instruct_consent_task_only.iqx"
+/ file = "clock_2_1_1_seed_2534_fMRI.iqx"
 </batch>
 
 <batch>
-/ groups = (5 of 10)
-/ file = "clock_2_1_1_seed_868.iqx"
+/ groups = (5 of 20)
+/ file = "instruct_consent_task_only.iqx"
+/ file = "clock_2_1_1_seed_868_fMRI.iqx"
 </batch>
 
 <batch>
-/ groups = (6 of 10)
-/ file = "clock_2_1_1_seed_4938.iqx"
+/ groups = (6 of 20)
+/ file = "instruct_consent_task_only.iqx"
+/ file = "clock_2_1_1_seed_4938_fMRI.iqx"
 </batch>
 
 <batch>
-/ groups = (7 of 10)
-/ file = "clock_2_1_1_seed_5094.iqx"
+/ groups = (7 of 20)
+/ file = "instruct_consent_task_only.iqx"
+/ file = "clock_2_1_1_seed_5094_fMRI.iqx"
 </batch>
 
 <batch>
-/ groups = (8 of 10)
-/ file = "clock_2_1_1_seed_5173.iqx"
+/ groups = (8 of 20)
+/ file = "instruct_consent_task_only.iqx"
+/ file = "clock_2_1_1_seed_5173_fMRI.iqx"
 </batch>
 
 <batch>
-/ groups = (9 of 10)
-/ file = "clock_2_1_1_seed_5815.iqx"
+/ groups = (9 of 20)
+/ file = "instruct_consent_task_only.iqx"
+/ file = "clock_2_1_1_seed_5815_fMRI.iqx"
 </batch>
 
 <batch>
-/ groups = (10 of 10)
-/ file = "clock_2_1_1_seed_6520.iqx"
+/ groups = (10 of 20)
+/ file = "instruct_consent_task_only.iqx"
+/ file = "clock_2_1_1_seed_6520_fMRI.iqx"
+</batch>
+
+<batch>
+/ groups = (20 of 20)
+/ file = "instruct_consent_task_only.iqx"
+/ file = "clock_2_1_1_seed_152_fMRI.iqx"
+</batch>
+
+<batch>
+/ groups = (19 of 20)
+/ file = "instruct_consent_task_only.iqx"
+/ file = "clock_2_1_1_seed_1464_fMRI.iqx"
+</batch>
+
+<batch>
+/ groups = (18 of 20)
+/ file = "instruct_consent_task_only.iqx"
+/ file = "clock_2_1_1_seed_1752_fMRI.iqx"
+</batch>
+
+<batch>
+/ groups = (17 of 20)
+/ file = "instruct_consent_task_only.iqx"
+/ file = "clock_2_1_1_seed_2534_fMRI.iqx"
+</batch>
+
+<batch>
+/ groups = (16 of 20)
+/ file = "instruct_consent_task_only.iqx"
+/ file = "clock_2_1_1_seed_868_fMRI.iqx"
+</batch>
+
+<batch>
+/ groups = (15 of 20)
+/ file = "instruct_consent_task_only.iqx"
+/ file = "clock_2_1_1_seed_4938_fMRI.iqx"
+</batch>
+
+<batch>
+/ groups = (14 of 20)
+/ file = "instruct_consent_task_only.iqx"
+/ file = "clock_2_1_1_seed_5094_fMRI.iqx"
+</batch>
+
+<batch>
+/ groups = (13 of 20)
+/ file = "instruct_consent_task_only.iqx"
+/ file = "clock_2_1_1_seed_5173_fMRI.iqx"
+</batch>
+
+<batch>
+/ groups = (12 of 20)
+/ file = "instruct_consent_task_only.iqx"
+/ file = "clock_2_1_1_seed_5815_fMRI.iqx"
+</batch>
+
+<batch>
+/ groups = (11 of 20)
+/ file = "instruct_consent_task_only.iqx"
+/ file = "clock_2_1_1_seed_6520_fMRI.iqx"
 </batch>
 
 <summarydata>
