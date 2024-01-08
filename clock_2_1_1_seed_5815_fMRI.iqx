@@ -1344,26 +1344,26 @@ number of mushrooms anywhere on the planet.")
 	} else if (values.trial == 81) {
 		values.era_index = 6;
 		values.erasure_blocks +=1;
-	} else if (values.trial == 101) {
+	} else if (values.trial == 91) {
 		values.era_index = 9;
 		values.erasure_blocks +=1;
-	} else if (values.trial == 141) {
-		values.era_index = 12;
+	} else if (values.trial == 131) {
+		values.era_index = 11;
 		values.erasure_blocks +=1;
-	} else if (values.trial == 171) {
-		values.era_index = 15;
+	} else if (values.trial == 161) {
+		values.era_index = 14;
 		values.erasure_blocks +=1;
-	} else if (values.trial == 191) {
-		values.era_index = 18;
+	} else if (values.trial == 181) {
+		values.era_index = 17;
 		values.erasure_blocks +=1;
 	} else if (values.trial == 221) {
-		values.era_index = 21;
+		values.era_index = 20;
 		values.erasure_blocks +=1;
-	} else if (values.trial == 251) {
-		values.era_index = 24;
+	} else if (values.trial == 241) {
+		values.era_index = 23;
 		values.erasure_blocks +=1;
-	} else if (values.trial == 291) {
-		values.era_index = 27;
+	} else if (values.trial == 271) {
+		values.era_index = 26;
 		values.erasure_blocks +=1;
 	}
 
