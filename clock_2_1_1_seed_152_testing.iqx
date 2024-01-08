@@ -1866,14 +1866,14 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 	}
 	values.pos_shifted = values.rt_shifted*360/values.time_per_revolution;
 	// 5000 / 360 RT segments gives 14ms RT bins, conveniently, 1 degree / segment so the index for the value = the degree of the position selected
-	//if (values.pos_shifted - 90 <= 0) {
-	//	values.rt_index = round(360 - abs(values.pos_shifted - 90));
-	//} else {
-	//	values.rt_index = round(mod((values.pos_shifted - 90), 360));
-	//}
-	//if (values.rt_index == 0){
-	//		values.rt_index = 1;
-	//}
+	if (values.pos_shifted - 90 <= 0) {
+		values.rt_index = round(360 - abs(values.pos_shifted - 90));
+	} else {
+		values.rt_index = round(mod((values.pos_shifted - 90), 360));
+	}
+	if (values.rt_index == 0){
+			values.rt_index = 1;
+	}
 	values.mag = list.curr_values.item(round(values.rt_index));
 	values.ev = values.mag * values.freq;
 	values.rng = rand(0,1);
@@ -1921,48 +1921,49 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 	0 = feedback3, feedback2, text.feedback1;
 ]
 / trialduration = 10
-// correctresponse = (next)
+// correctresponse = (next) // testing only
 / recorddata = true
 / ontrialend = [
 	
 	values.trialCount += 1;
-	if (values.trial_type == "erasure"){
-		values.choose_stim = TRUE;
-		values.n_clicks += 1;
-		values.n_clicks_era_only +=1;
-	}
-	//if (values.trial_type != "no erasure") {
+// testing high uncertainty condition only
+//	if (values.trial_type == "erasure"){
+//		values.choose_stim = TRUE;
+//		values.n_clicks += 1;
+//		values.n_clicks_era_only +=1;
+//	}
+	if (values.trial_type != "no erasure") {
 		
-		//if (values.stim_center_deg > 16 && values.stim_center_deg < 345){
-		//	if (values.pos_shifted <= values.stim_right_deg && values.pos_shifted >= values.stim_left_deg) {
-		//		values.choose_stim = TRUE;
-		//		values.n_clicks +=1;
-		//	} else {
-		//		values.choose_stim = FALSE;
-		//	}
-		//} else if (values.stim_center_deg <= 16 || values.stim_center_deg >= 345){
-		//	if (values.pos_shifted <= values.stim_right_deg || values.pos_shifted >= values.stim_left_deg) {
-		//		values.choose_stim = TRUE;
-		//		values.n_clicks +=1;
-		//	} else {
-		//		values.choose_stim = FALSE;
-		//	}
-		//}
-	//}		
-	//if (values.trial_type == "erasure") {
+		if (values.stim_center_deg > 16 && values.stim_center_deg < 345){
+			if (values.pos_shifted <= values.stim_right_deg && values.pos_shifted >= values.stim_left_deg) {
+				values.choose_stim = TRUE;
+				values.n_clicks +=1;
+			} else {
+				values.choose_stim = FALSE;
+			}
+		} else if (values.stim_center_deg <= 16 || values.stim_center_deg >= 345){
+			if (values.pos_shifted <= values.stim_right_deg || values.pos_shifted >= values.stim_left_deg) {
+				values.choose_stim = TRUE;
+				values.n_clicks +=1;
+			} else {
+				values.choose_stim = FALSE;
+			}
+		}
+	}		
+	if (values.trial_type == "erasure") {
 		
-		//if (values.stim_center_deg > 16 && values.stim_center_deg < 345){
-		//	if (values.pos_shifted <= values.stim_right_deg && values.pos_shifted >= values.stim_left_deg) {
-		//		values.n_clicks_era_only +=1;
-		//	} else {
-		//	}
-		//} else if (values.stim_center_deg <= 16 || values.stim_center_deg >= 345){
-		//	if (values.pos_shifted <= values.stim_right_deg || values.pos_shifted >= values.stim_left_deg) {
-		//		values.n_clicks_era_only +=1;
-		//	} else {
-		//	}
-		//}
-	//}	
+		if (values.stim_center_deg > 16 && values.stim_center_deg < 345){
+			if (values.pos_shifted <= values.stim_right_deg && values.pos_shifted >= values.stim_left_deg) {
+				values.n_clicks_era_only +=1;
+			} else {
+			}
+		} else if (values.stim_center_deg <= 16 || values.stim_center_deg >= 345){
+			if (values.pos_shifted <= values.stim_right_deg || values.pos_shifted >= values.stim_left_deg) {
+				values.n_clicks_era_only +=1;
+			} else {
+			}
+		}
+	}	
 	if (values.generate_new_erasure==TRUE) {
 		values.generate_new_erasure = FALSE;
 	}
