@@ -14,7 +14,7 @@
 / clockdotSize = 2%
 / attentional_control = null;
 / local_uncertainty = null;
-/ seed = 5815;
+/ seed = 2534;
 </parameters>
 
 <usermanual>
@@ -40,31 +40,31 @@
 </list>
 
 <include>
-/ file = "values-5815.txt"
+/ file = "values-2534.txt"
 </include>
 
 <include>
-/ file = "RTs-5815.txt"
+/ file = "RTs-2534.txt"
 </include>
 
 <include>
-/ file = "att_loc-5815.txt"
+/ file = "att_loc-2534.txt"
 </include>
 
 <include>
-/ file = "era_loc-5815.txt"
+/ file = "era_loc-2534.txt"
 </include>
 
 <include>
-/ file = "era_val-5815.txt"
+/ file = "era_val-2534.txt"
 </include>
 
 <include>
-/ file = "block_type-5815.txt"
+/ file = "block_type-2534.txt"
 </include>
 
 <include>
-/ file = "spread-5815.txt"
+/ file = "spread-2534.txt"
 </include>
 
 <include>

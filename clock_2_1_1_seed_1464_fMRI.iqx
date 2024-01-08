@@ -64,6 +64,10 @@
 </include>
 
 <include>
+/ file = "spread-1464.txt"
+</include>
+
+<include>
 / file = "ITI.txt"
 </include>
 
@@ -73,6 +77,10 @@
 
 <include>
 / file = "preClockFreeze.txt"
+</include>
+
+<include>
+/ file = "ITI_index_start.txt"
 </include>
 
 // test vectors holding interpolated x / y values
@@ -166,9 +174,6 @@
 / selectionrate = always
 / selectionmode = values.erasure_index2;
 </list>
-
-
-
 
 <values>
 / deg_index_att = NULL;
@@ -294,6 +299,8 @@
 / stim_left_deg = null
 / stim_right_deg = null
 
+/ ITI_index = list.ITI_index_start.nextvalue;
+
 </values>
 
 <data>
@@ -302,7 +309,7 @@
 / columns = (build, computer.platform, computer.touch, date, time, subject, group, script.sessionid, blockcode, blocknum,
 trialcode, list.ITI.currentvalue, list.preClockFreeze.currentvalue, latency, list.ISI.currentvalue, 
 values.block, values.trialCount, values.trial, values.run_trial,values.block_trial,values.block_type, values.trial_type, values.last_block_type,
-values.generate_new_erasure,values.trial_since_erasure_gen,values.att_index, values.era_index, values.x_final, values.y_final,
+values.generate_new_erasure,values.trial_since_erasure_gen,values.att_index, values.era_index, values.x_final, values.y_final, values.ITI_index,
 parameters.seed, list.era_loc.currentvalue, values.has_erasure,list.att_loc.currentvalue, values.n_clicks, values.n_clicks_era_only,values.timeout_block,values.timeouts_remain,values.stim_center_deg,
 values.startPos,values.pos_shifted,values.rt_shifted,values.mag, values.inc_rg, values.inc, values.rng, values.freq, values.choose_stim,values.erasure_value, values.current_erasure, values.curr_min,list.spread.nextvalue, values.curr_mean,values.curr_max, values.new_mean, values.to_h, values.to_l, values.smooth_kernel2,values.rt_index,values.erasure_RT,
 values.right_index,values.left_index, values.stim_left_deg, values.stim_right_deg,
@@ -1914,7 +1921,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 // correctresponse = (next) // testing only
 / recorddata = true
 / ontrialend = [
-	
+	values.ITI_index += 1;
 	values.trialCount += 1;
 // testing high uncertainty condition only
 //	if (values.trial_type == "erasure"){
@@ -2318,6 +2325,7 @@ what you are writing (otherwise the text will not be visible)"
 
 <expt main1>
 / onexptbegin = [
+	values.ITI_index = list.ITI_index_start.nextvalue;
 	values.timeout_block = FALSE;
 	values.generate_new_erasure = TRUE;
 	values.n_curr_block = NULL;
