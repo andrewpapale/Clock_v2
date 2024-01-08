@@ -1,5 +1,0 @@
-<list att_loc>
-/ items = (161,47,345,257,329,150,217,324,328,298)
-/ selectionrate = always
-/ selectionmode = values.att_index;
-</list>
