@@ -1757,7 +1757,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 		dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 ]
 / timeout = values.timeout;
-/ validresponse = (" ") 
+/ validresponse = ("2") 
 / inputdevice = keyboard
 / responseinterrupt = immediate
 / recorddata = true
@@ -2038,6 +2038,12 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 ]
 </block>
 
+<block presscont>
+/ trials = [
+	1 = presscont; 2=scanner_sync; 3=countdown;
+]
+</block>
+
 <trial scanner_sync>
 / recorddata = true
 / stimulustimes = [0 = text.waiting]
@@ -2133,7 +2139,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 </block>
 
 <block break>
-/ trials = [1=break; 2=reminder1; 3=reminder2; 4=presscont;]
+/ trials = [1=break; 2=reminder1; 3=reminder2; 4=presscont; 5=scanner_sync; 6=countdown;]
 </block>
 
 <block experiment>
@@ -2355,7 +2361,7 @@ what you are writing (otherwise the text will not be visible)"
 ]
 
 / blocks = [
-	1=instructions; 2=experiment; 3=break; 4=experiment; 5=break; 6=experiment; 7=endscreen; 8=questionnaire;
+	1=presscont; 2=experiment; 3=break; 4=experiment; 5=break; 6=experiment; 7=endscreen;
 	//1 = experiment; 2=experiment; 3 = experiment;
 ]
 
