@@ -1,0 +1,2121 @@
+instruct 42
+block.presscont 42
+trial.reminder1 42
+text.reminder1 135
+picture.sampleErasureR 135
+picture.sampleErasureL 135
+text.next 135
+input response 893
+trial.reminder2 894
+text.reminder2 901
+picture.sampleAttentionR 901
+picture.sampleAttentionL 901
+text.next 901
+input response 1261
+trial.presscont 1261
+shape.dot1 1286
+shape.dot2 1286
+shape.dot3 1286
+shape.dot4 1286
+shape.dot5 1286
+shape.dot6 1286
+shape.dot7 1286
+shape.dot8 1286
+shape.dot9 1286
+shape.dot10 1286
+shape.dot11 1286
+shape.dot12 1286
+shape.dot13 1286
+shape.dot14 1286
+shape.dot15 1286
+shape.dot16 1286
+shape.dot17 1286
+shape.dot18 1286
+shape.dot19 1286
+shape.dot20 1286
+shape.dot21 1286
+shape.dot22 1286
+shape.dot23 1286
+shape.dot24 1286
+shape.dot25 1286
+shape.dot26 1286
+shape.dot27 1286
+shape.dot28 1286
+shape.dot29 1286
+shape.dot30 1286
+shape.dot31 1286
+shape.dot32 1286
+shape.dot33 1286
+shape.dot34 1286
+shape.dot35 1286
+shape.dot36 1286
+shape.dot37 1286
+shape.dot38 1286
+shape.dot39 1286
+shape.dot40 1286
+shape.dot41 1286
+shape.dot42 1286
+shape.dot43 1286
+shape.dot44 1286
+shape.dot45 1286
+shape.dot46 1286
+shape.dot47 1286
+shape.dot48 1286
+shape.dot49 1286
+shape.dot50 1286
+shape.dot51 1286
+shape.dot52 1286
+shape.dot53 1286
+shape.dot54 1286
+shape.dot55 1286
+shape.dot56 1286
+shape.dot57 1286
+shape.dot58 1286
+shape.dot59 1286
+shape.dot60 1286
+text.presscont 1286
+input response 1901
+trial.scanner_sync 1902
+text.waiting 1918
+input response 2765
+trial.countdown 2766
+text.three 2784
+text.two 3784
+text.one 4784
+input response 5784
+block.experiment 5786
+trial.ITI 5786
+picture.fixationCross 5818
+shape.dot1 5818
+shape.dot2 5818
+shape.dot3 5818
+shape.dot4 5818
+shape.dot5 5818
+shape.dot6 5818
+shape.dot7 5818
+shape.dot8 5818
+shape.dot9 5818
+shape.dot10 5818
+shape.dot11 5818
+shape.dot12 5818
+shape.dot13 5818
+shape.dot14 5818
+shape.dot15 5818
+shape.dot16 5818
+shape.dot17 5818
+shape.dot18 5818
+shape.dot19 5818
+shape.dot20 5818
+shape.dot21 5818
+shape.dot22 5818
+shape.dot23 5818
+shape.dot24 5818
+shape.dot25 5818
+shape.dot26 5818
+shape.dot27 5818
+shape.dot28 5818
+shape.dot29 5818
+shape.dot30 5818
+shape.dot31 5818
+shape.dot32 5818
+shape.dot33 5818
+shape.dot34 5818
+shape.dot35 5818
+shape.dot36 5818
+shape.dot37 5818
+shape.dot38 5818
+shape.dot39 5818
+shape.dot40 5818
+shape.dot41 5818
+shape.dot42 5818
+shape.dot43 5818
+shape.dot44 5818
+shape.dot45 5818
+shape.dot46 5818
+shape.dot47 5818
+shape.dot48 5818
+shape.dot49 5818
+shape.dot50 5818
+shape.dot51 5818
+shape.dot52 5818
+shape.dot53 5818
+shape.dot54 5818
+shape.dot55 5818
+shape.dot56 5818
+shape.dot57 5818
+shape.dot58 5818
+shape.dot59 5818
+shape.dot60 5818
+input response 9243
+trial.resetCounters2 9244
+input response 9244
+trial.getValueVector 9244
+input response 9244
+trial.getValueVector 9245
+input response 9245
+trial.getValueVector 9245
+input response 9245
+trial.getValueVector 9245
+input response 9245
+trial.getValueVector 9245
+input response 9245
+trial.getValueVector 9246
+input response 9246
+trial.getValueVector 9246
+input response 9246
+trial.getValueVector 9246
+input response 9246
+trial.getValueVector 9246
+input response 9246
+trial.getValueVector 9247
+input response 9247
+trial.getValueVector 9247
+input response 9247
+trial.getValueVector 9247
+input response 9247
+trial.getValueVector 9247
+input response 9247
+trial.getValueVector 9247
+input response 9247
+trial.getValueVector 9247
+input response 9247
+trial.getValueVector 9247
+input response 9247
+trial.getValueVector 9247
+input response 9247
+trial.getValueVector 9247
+input response 9247
+trial.getValueVector 9248
+input response 9248
+trial.getValueVector 9248
+input response 9248
+trial.getValueVector 9248
+input response 9248
+trial.getValueVector 9248
+input response 9248
+trial.getValueVector 9248
+input response 9248
+trial.getValueVector 9248
+input response 9248
+trial.getValueVector 9248
+input response 9248
+trial.getValueVector 9248
+input response 9248
+trial.getValueVector 9248
+input response 9248
+trial.getValueVector 9249
+input response 9249
+trial.getValueVector 9249
+input response 9249
+trial.getValueVector 9249
+input response 9249
+trial.getValueVector 9249
+input response 9249
+trial.getValueVector 9249
+input response 9249
+trial.getValueVector 9249
+input response 9249
+trial.getValueVector 9249
+input response 9249
+trial.getValueVector 9249
+input response 9249
+trial.getValueVector 9249
+input response 9249
+trial.getValueVector 9249
+input response 9249
+trial.getValueVector 9249
+input response 9250
+trial.getValueVector 9250
+input response 9250
+trial.getValueVector 9250
+input response 9250
+trial.getValueVector 9250
+input response 9250
+trial.getValueVector 9250
+input response 9250
+trial.getValueVector 9250
+input response 9250
+trial.getValueVector 9250
+input response 9250
+trial.getValueVector 9250
+input response 9250
+trial.getValueVector 9250
+input response 9250
+trial.getValueVector 9250
+input response 9250
+trial.getValueVector 9250
+input response 9251
+trial.getValueVector 9251
+input response 9251
+trial.getValueVector 9251
+input response 9251
+trial.getValueVector 9251
+input response 9251
+trial.getValueVector 9251
+input response 9251
+trial.getValueVector 9251
+input response 9251
+trial.getValueVector 9251
+input response 9251
+trial.getValueVector 9251
+input response 9251
+trial.getValueVector 9251
+input response 9251
+trial.getValueVector 9251
+input response 9251
+trial.getValueVector 9251
+input response 9252
+trial.getValueVector 9252
+input response 9252
+trial.getValueVector 9252
+input response 9252
+trial.getValueVector 9252
+input response 9252
+trial.getValueVector 9252
+input response 9252
+trial.getValueVector 9252
+input response 9252
+trial.getValueVector 9252
+input response 9252
+trial.getValueVector 9252
+input response 9252
+trial.getValueVector 9252
+input response 9252
+trial.getValueVector 9252
+input response 9252
+trial.getValueVector 9252
+input response 9252
+trial.getValueVector 9253
+input response 9253
+trial.getValueVector 9253
+input response 9253
+trial.getValueVector 9253
+input response 9253
+trial.getValueVector 9253
+input response 9253
+trial.getValueVector 9253
+input response 9253
+trial.getValueVector 9253
+input response 9253
+trial.getValueVector 9253
+input response 9253
+trial.getValueVector 9253
+input response 9253
+trial.getValueVector 9253
+input response 9253
+trial.getValueVector 9253
+input response 9253
+trial.getValueVector 9254
+input response 9254
+trial.getValueVector 9254
+input response 9254
+trial.getValueVector 9254
+input response 9254
+trial.getValueVector 9254
+input response 9254
+trial.getValueVector 9254
+input response 9254
+trial.getValueVector 9254
+input response 9254
+trial.getValueVector 9254
+input response 9254
+trial.getValueVector 9254
+input response 9254
+trial.getValueVector 9254
+input response 9254
+trial.getValueVector 9254
+input response 9254
+trial.getValueVector 9255
+input response 9255
+trial.getValueVector 9255
+input response 9255
+trial.getValueVector 9255
+input response 9255
+trial.getValueVector 9255
+input response 9255
+trial.getValueVector 9255
+input response 9255
+trial.getValueVector 9255
+input response 9255
+trial.getValueVector 9255
+input response 9255
+trial.getValueVector 9255
+input response 9255
+trial.getValueVector 9255
+input response 9255
+trial.getValueVector 9255
+input response 9255
+trial.getValueVector 9256
+input response 9256
+trial.getValueVector 9256
+input response 9256
+trial.getValueVector 9256
+input response 9256
+trial.getValueVector 9256
+input response 9256
+trial.getValueVector 9256
+input response 9256
+trial.getValueVector 9256
+input response 9256
+trial.getValueVector 9256
+input response 9256
+trial.getValueVector 9256
+input response 9256
+trial.getValueVector 9256
+input response 9256
+trial.getValueVector 9256
+input response 9256
+trial.getValueVector 9257
+input response 9257
+trial.getValueVector 9257
+input response 9257
+trial.getValueVector 9257
+input response 9257
+trial.getValueVector 9257
+input response 9257
+trial.getValueVector 9257
+input response 9257
+trial.getValueVector 9257
+input response 9257
+trial.getValueVector 9257
+input response 9257
+trial.getValueVector 9257
+input response 9257
+trial.getValueVector 9257
+input response 9257
+trial.getValueVector 9257
+input response 9258
+trial.getValueVector 9258
+input response 9258
+trial.getValueVector 9258
+input response 9258
+trial.getValueVector 9258
+input response 9258
+trial.getValueVector 9258
+input response 9258
+trial.getValueVector 9258
+input response 9258
+trial.getValueVector 9258
+input response 9258
+trial.getValueVector 9258
+input response 9258
+trial.getValueVector 9258
+input response 9258
+trial.getValueVector 9258
+input response 9258
+trial.getValueVector 9259
+input response 9259
+trial.getValueVector 9259
+input response 9259
+trial.getValueVector 9259
+input response 9259
+trial.getValueVector 9259
+input response 9259
+trial.getValueVector 9259
+input response 9259
+trial.getValueVector 9259
+input response 9259
+trial.getValueVector 9259
+input response 9259
+trial.getValueVector 9259
+input response 9259
+trial.getValueVector 9259
+input response 9259
+trial.getValueVector 9259
+input response 9259
+trial.getValueVector 9260
+input response 9260
+trial.getValueVector 9260
+input response 9260
+trial.getValueVector 9260
+input response 9260
+trial.getValueVector 9260
+input response 9260
+trial.getValueVector 9260
+input response 9260
+trial.getValueVector 9260
+input response 9260
+trial.getValueVector 9260
+input response 9260
+trial.getValueVector 9260
+input response 9260
+trial.getValueVector 9260
+input response 9260
+trial.getValueVector 9260
+input response 9260
+trial.getValueVector 9261
+input response 9261
+trial.getValueVector 9261
+input response 9261
+trial.getValueVector 9261
+input response 9261
+trial.getValueVector 9261
+input response 9261
+trial.getValueVector 9261
+input response 9261
+trial.getValueVector 9261
+input response 9261
+trial.getValueVector 9261
+input response 9261
+trial.getValueVector 9261
+input response 9261
+trial.getValueVector 9261
+input response 9261
+trial.getValueVector 9261
+input response 9261
+trial.getValueVector 9262
+input response 9262
+trial.getValueVector 9262
+input response 9262
+trial.getValueVector 9262
+input response 9262
+trial.getValueVector 9262
+input response 9262
+trial.getValueVector 9262
+input response 9262
+trial.getValueVector 9262
+input response 9262
+trial.getValueVector 9262
+input response 9262
+trial.getValueVector 9262
+input response 9262
+trial.getValueVector 9262
+input response 9262
+trial.getValueVector 9262
+input response 9262
+trial.getValueVector 9263
+input response 9263
+trial.getValueVector 9263
+input response 9263
+trial.getValueVector 9263
+input response 9263
+trial.getValueVector 9263
+input response 9263
+trial.getValueVector 9263
+input response 9263
+trial.getValueVector 9263
+input response 9263
+trial.getValueVector 9263
+input response 9263
+trial.getValueVector 9263
+input response 9263
+trial.getValueVector 9263
+input response 9263
+trial.getValueVector 9263
+input response 9263
+trial.getValueVector 9264
+input response 9264
+trial.getValueVector 9264
+input response 9264
+trial.getValueVector 9264
+input response 9264
+trial.getValueVector 9264
+input response 9264
+trial.getValueVector 9264
+input response 9264
+trial.getValueVector 9264
+input response 9264
+trial.getValueVector 9264
+input response 9264
+trial.getValueVector 9264
+input response 9264
+trial.getValueVector 9264
+input response 9264
+trial.getValueVector 9264
+input response 9264
+trial.getValueVector 9265
+input response 9265
+trial.getValueVector 9265
+input response 9265
+trial.getValueVector 9265
+input response 9265
+trial.getValueVector 9265
+input response 9265
+trial.getValueVector 9265
+input response 9265
+trial.getValueVector 9265
+input response 9265
+trial.getValueVector 9265
+input response 9265
+trial.getValueVector 9265
+input response 9265
+trial.getValueVector 9265
+input response 9265
+trial.getValueVector 9265
+input response 9265
+trial.getValueVector 9266
+input response 9266
+trial.getValueVector 9266
+input response 9266
+trial.getValueVector 9266
+input response 9266
+trial.getValueVector 9266
+input response 9266
+trial.getValueVector 9266
+input response 9266
+trial.getValueVector 9266
+input response 9266
+trial.getValueVector 9266
+input response 9266
+trial.getValueVector 9266
+input response 9266
+trial.getValueVector 9266
+input response 9266
+trial.getValueVector 9266
+input response 9266
+trial.getValueVector 9267
+input response 9267
+trial.getValueVector 9267
+input response 9267
+trial.getValueVector 9267
+input response 9267
+trial.getValueVector 9267
+input response 9267
+trial.getValueVector 9267
+input response 9267
+trial.getValueVector 9267
+input response 9267
+trial.getValueVector 9267
+input response 9267
+trial.getValueVector 9267
+input response 9267
+trial.getValueVector 9267
+input response 9267
+trial.getValueVector 9267
+input response 9267
+trial.getValueVector 9268
+input response 9268
+trial.getValueVector 9268
+input response 9268
+trial.getValueVector 9268
+input response 9268
+trial.getValueVector 9268
+input response 9268
+trial.getValueVector 9268
+input response 9268
+trial.getValueVector 9268
+input response 9268
+trial.getValueVector 9268
+input response 9268
+trial.getValueVector 9268
+input response 9268
+trial.getValueVector 9268
+input response 9268
+trial.getValueVector 9268
+input response 9268
+trial.getValueVector 9269
+input response 9269
+trial.getValueVector 9269
+input response 9269
+trial.getValueVector 9269
+input response 9269
+trial.getValueVector 9269
+input response 9269
+trial.getValueVector 9269
+input response 9269
+trial.getValueVector 9269
+input response 9269
+trial.getValueVector 9269
+input response 9269
+trial.getValueVector 9269
+input response 9269
+trial.getValueVector 9269
+input response 9269
+trial.getValueVector 9269
+input response 9269
+trial.getValueVector 9270
+input response 9270
+trial.getValueVector 9270
+input response 9270
+trial.getValueVector 9270
+input response 9270
+trial.getValueVector 9270
+input response 9270
+trial.getValueVector 9270
+input response 9270
+trial.getValueVector 9270
+input response 9270
+trial.getValueVector 9270
+input response 9270
+trial.getValueVector 9270
+input response 9270
+trial.getValueVector 9270
+input response 9270
+trial.getValueVector 9270
+input response 9270
+trial.getValueVector 9271
+input response 9271
+trial.getValueVector 9271
+input response 9271
+trial.getValueVector 9271
+input response 9271
+trial.getValueVector 9271
+input response 9271
+trial.getValueVector 9271
+input response 9271
+trial.getValueVector 9271
+input response 9271
+trial.getValueVector 9271
+input response 9271
+trial.getValueVector 9271
+input response 9271
+trial.getValueVector 9271
+input response 9271
+trial.getValueVector 9271
+input response 9271
+trial.getValueVector 9272
+input response 9272
+trial.getValueVector 9272
+input response 9272
+trial.getValueVector 9272
+input response 9272
+trial.getValueVector 9272
+input response 9272
+trial.getValueVector 9272
+input response 9272
+trial.getValueVector 9272
+input response 9272
+trial.getValueVector 9272
+input response 9272
+trial.getValueVector 9272
+input response 9272
+trial.getValueVector 9272
+input response 9272
+trial.getValueVector 9272
+input response 9272
+trial.getValueVector 9273
+input response 9273
+trial.getValueVector 9273
+input response 9273
+trial.getValueVector 9273
+input response 9273
+trial.getValueVector 9273
+input response 9273
+trial.getValueVector 9273
+input response 9273
+trial.getValueVector 9273
+input response 9273
+trial.getValueVector 9273
+input response 9273
+trial.getValueVector 9273
+input response 9273
+trial.getValueVector 9273
+input response 9273
+trial.getValueVector 9273
+input response 9273
+trial.getValueVector 9274
+input response 9274
+trial.getValueVector 9274
+input response 9274
+trial.getValueVector 9274
+input response 9274
+trial.getValueVector 9274
+input response 9274
+trial.getValueVector 9274
+input response 9274
+trial.getValueVector 9274
+input response 9274
+trial.getValueVector 9274
+input response 9274
+trial.getValueVector 9274
+input response 9274
+trial.getValueVector 9274
+input response 9274
+trial.getValueVector 9274
+input response 9275
+trial.getValueVector 9275
+input response 9275
+trial.getValueVector 9275
+input response 9275
+trial.getValueVector 9275
+input response 9275
+trial.getValueVector 9275
+input response 9275
+trial.getValueVector 9275
+input response 9275
+trial.getValueVector 9275
+input response 9275
+trial.getValueVector 9275
+input response 9275
+trial.getValueVector 9275
+input response 9275
+trial.getValueVector 9275
+input response 9275
+trial.getValueVector 9275
+input response 9276
+trial.getValueVector 9276
+input response 9276
+trial.getValueVector 9276
+input response 9276
+trial.getValueVector 9276
+input response 9276
+trial.getValueVector 9276
+input response 9276
+trial.getValueVector 9276
+input response 9276
+trial.getValueVector 9276
+input response 9276
+trial.getValueVector 9276
+input response 9276
+trial.getValueVector 9276
+input response 9276
+trial.getValueVector 9276
+input response 9276
+trial.getValueVector 9276
+input response 9277
+trial.getValueVector 9277
+input response 9277
+trial.getValueVector 9277
+input response 9277
+trial.getValueVector 9277
+input response 9277
+trial.getValueVector 9277
+input response 9277
+trial.getValueVector 9277
+input response 9277
+trial.getValueVector 9277
+input response 9277
+trial.getValueVector 9277
+input response 9277
+trial.getValueVector 9277
+input response 9277
+trial.getValueVector 9277
+input response 9277
+trial.getValueVector 9277
+input response 9278
+trial.getValueVector 9278
+input response 9278
+trial.getValueVector 9278
+input response 9278
+trial.getValueVector 9278
+input response 9278
+trial.getValueVector 9278
+input response 9278
+trial.getValueVector 9278
+input response 9278
+trial.getValueVector 9278
+input response 9278
+trial.getValueVector 9278
+input response 9278
+trial.getValueVector 9278
+input response 9278
+trial.getValueVector 9278
+input response 9278
+trial.getValueVector 9278
+input response 9279
+trial.getValueVector 9279
+input response 9279
+trial.getValueVector 9279
+input response 9279
+trial.getValueVector 9279
+input response 9279
+trial.getValueVector 9279
+input response 9279
+trial.getValueVector 9279
+input response 9279
+trial.getValueVector 9279
+input response 9279
+trial.getValueVector 9279
+input response 9279
+trial.getValueVector 9279
+input response 9279
+trial.getValueVector 9279
+input response 9279
+trial.getValueVector 9279
+input response 9280
+trial.getValueVector 9280
+input response 9280
+trial.getValueVector 9280
+input response 9280
+trial.getValueVector 9280
+input response 9280
+trial.getValueVector 9280
+input response 9280
+trial.getValueVector 9280
+input response 9280
+trial.getValueVector 9280
+input response 9280
+trial.getValueVector 9280
+input response 9280
+trial.getValueVector 9280
+input response 9280
+trial.getValueVector 9280
+input response 9280
+trial.getValueVector 9281
+input response 9281
+trial.getValueVector 9281
+input response 9281
+trial.getValueVector 9281
+input response 9281
+trial.getValueVector 9281
+input response 9281
+trial.getValueVector 9281
+input response 9281
+trial.getValueVector 9281
+input response 9281
+trial.getValueVector 9281
+input response 9281
+trial.getValueVector 9281
+input response 9281
+trial.getValueVector 9281
+input response 9281
+trial.getValueVector 9281
+input response 9281
+trial.getValueVector 9282
+input response 9282
+trial.getValueVector 9282
+input response 9282
+trial.getValueVector 9282
+input response 9282
+trial.getValueVector 9282
+input response 9282
+trial.resetCounters3 9282
+input response 9282
+trial.preFreeze 9282
+picture.planet 9303
+picture.stim 9303
+shape.dot1 9303
+shape.dot2 9303
+shape.dot3 9303
+shape.dot4 9303
+shape.dot5 9303
+shape.dot6 9303
+shape.dot7 9303
+shape.dot8 9303
+shape.dot9 9303
+shape.dot10 9303
+shape.dot11 9303
+shape.dot12 9303
+shape.dot13 9303
+shape.dot14 9303
+shape.dot15 9303
+shape.dot16 9303
+shape.dot17 9303
+shape.dot18 9303
+shape.dot19 9303
+shape.dot20 9303
+shape.dot21 9303
+shape.dot22 9303
+shape.dot23 9303
+shape.dot24 9303
+shape.dot25 9303
+shape.dot26 9303
+shape.dot27 9303
+shape.dot28 9303
+shape.dot29 9303
+shape.dot30 9303
+shape.dot31 9303
+shape.dot32 9303
+shape.dot33 9303
+shape.dot34 9303
+shape.dot35 9303
+shape.dot36 9303
+shape.dot37 9303
+shape.dot38 9303
+shape.dot39 9303
+shape.dot40 9303
+shape.dot41 9303
+shape.dot42 9303
+shape.dot43 9303
+shape.dot44 9303
+shape.dot45 9303
+shape.dot46 9303
+shape.dot47 9303
+shape.dot48 9303
+shape.dot49 9303
+shape.dot50 9303
+shape.dot51 9303
+shape.dot52 9303
+shape.dot53 9303
+shape.dot54 9303
+shape.dot55 9303
+shape.dot56 9303
+shape.dot57 9303
+shape.dot58 9303
+shape.dot59 9303
+shape.dot60 9303
+picture.frozenShip 9303
+input response 9513
+trial.clock 9514
+picture.animatedCircle 9539
+picture.stim 9539
+shape.dot1 9539
+shape.dot2 9539
+shape.dot3 9539
+shape.dot4 9539
+shape.dot5 9539
+shape.dot6 9539
+shape.dot7 9539
+shape.dot8 9539
+shape.dot9 9539
+shape.dot10 9539
+shape.dot11 9539
+shape.dot12 9539
+shape.dot13 9539
+shape.dot14 9539
+shape.dot15 9539
+shape.dot16 9539
+shape.dot17 9539
+shape.dot18 9539
+shape.dot19 9539
+shape.dot20 9539
+shape.dot21 9539
+shape.dot22 9539
+shape.dot23 9539
+shape.dot24 9539
+shape.dot25 9539
+shape.dot26 9539
+shape.dot27 9539
+shape.dot28 9539
+shape.dot29 9539
+shape.dot30 9539
+shape.dot31 9539
+shape.dot32 9539
+shape.dot33 9539
+shape.dot34 9539
+shape.dot35 9539
+shape.dot36 9539
+shape.dot37 9539
+shape.dot38 9539
+shape.dot39 9539
+shape.dot40 9539
+shape.dot41 9539
+shape.dot42 9539
+shape.dot43 9539
+shape.dot44 9539
+shape.dot45 9539
+shape.dot46 9539
+shape.dot47 9539
+shape.dot48 9539
+shape.dot49 9539
+shape.dot50 9539
+shape.dot51 9539
+shape.dot52 9539
+shape.dot53 9539
+shape.dot54 9539
+shape.dot55 9539
+shape.dot56 9539
+shape.dot57 9539
+shape.dot58 9539
+shape.dot59 9539
+shape.dot60 9539
+input response 10413
+trial.ISI 10414
+picture.stim 10439
+picture.planet 10439
+shape.dot1 10439
+shape.dot2 10439
+shape.dot3 10439
+shape.dot4 10439
+shape.dot5 10439
+shape.dot6 10439
+shape.dot7 10439
+shape.dot8 10439
+shape.dot9 10439
+shape.dot10 10439
+shape.dot11 10439
+shape.dot12 10439
+shape.dot13 10439
+shape.dot14 10439
+shape.dot15 10439
+shape.dot16 10439
+shape.dot17 10439
+shape.dot18 10439
+shape.dot19 10439
+shape.dot20 10439
+shape.dot21 10439
+shape.dot22 10439
+shape.dot23 10439
+shape.dot24 10439
+shape.dot25 10439
+shape.dot26 10439
+shape.dot27 10439
+shape.dot28 10439
+shape.dot29 10439
+shape.dot30 10439
+shape.dot31 10439
+shape.dot32 10439
+shape.dot33 10439
+shape.dot34 10439
+shape.dot35 10439
+shape.dot36 10439
+shape.dot37 10439
+shape.dot38 10439
+shape.dot39 10439
+shape.dot40 10439
+shape.dot41 10439
+shape.dot42 10439
+shape.dot43 10439
+shape.dot44 10439
+shape.dot45 10439
+shape.dot46 10439
+shape.dot47 10439
+shape.dot48 10439
+shape.dot49 10439
+shape.dot50 10439
+shape.dot51 10439
+shape.dot52 10439
+shape.dot53 10439
+shape.dot54 10439
+shape.dot55 10439
+shape.dot56 10439
+shape.dot57 10439
+shape.dot58 10439
+shape.dot59 10439
+shape.dot60 10439
+picture.frozenShip 10439
+input response 11299
+trial.feedback 11300
+picture.feedback3 11319
+picture.feedback2 11319
+text.feedback1 11319
+input response 12004
+trial.ITI 12005
+picture.fixationCross 12020
+shape.dot1 12020
+shape.dot2 12020
+shape.dot3 12020
+shape.dot4 12020
+shape.dot5 12020
+shape.dot6 12020
+shape.dot7 12020
+shape.dot8 12020
+shape.dot9 12020
+shape.dot10 12020
+shape.dot11 12020
+shape.dot12 12020
+shape.dot13 12020
+shape.dot14 12020
+shape.dot15 12020
+shape.dot16 12020
+shape.dot17 12020
+shape.dot18 12020
+shape.dot19 12020
+shape.dot20 12020
+shape.dot21 12020
+shape.dot22 12020
+shape.dot23 12020
+shape.dot24 12020
+shape.dot25 12020
+shape.dot26 12020
+shape.dot27 12020
+shape.dot28 12020
+shape.dot29 12020
+shape.dot30 12020
+shape.dot31 12020
+shape.dot32 12020
+shape.dot33 12020
+shape.dot34 12020
+shape.dot35 12020
+shape.dot36 12020
+shape.dot37 12020
+shape.dot38 12020
+shape.dot39 12020
+shape.dot40 12020
+shape.dot41 12020
+shape.dot42 12020
+shape.dot43 12020
+shape.dot44 12020
+shape.dot45 12020
+shape.dot46 12020
+shape.dot47 12020
+shape.dot48 12020
+shape.dot49 12020
+shape.dot50 12020
+shape.dot51 12020
+shape.dot52 12020
+shape.dot53 12020
+shape.dot54 12020
+shape.dot55 12020
+shape.dot56 12020
+shape.dot57 12020
+shape.dot58 12020
+shape.dot59 12020
+shape.dot60 12020
+input response 16979
+trial.resetCounters2 16979
+input response 16979
+trial.getValueVector 16979
+input response 16980
+trial.getValueVector 16980
+input response 16980
+trial.getValueVector 16980
+input response 16980
+trial.getValueVector 16981
+input response 16981
+trial.getValueVector 16981
+input response 16981
+trial.getValueVector 16982
+input response 16982
+trial.getValueVector 16982
+input response 16982
+trial.getValueVector 16982
+input response 16982
+trial.getValueVector 16982
+input response 16982
+trial.getValueVector 16982
+input response 16983
+trial.getValueVector 16983
+input response 16983
+trial.getValueVector 16983
+input response 16983
+trial.getValueVector 16983
+input response 16983
+trial.getValueVector 16983
+input response 16983
+trial.getValueVector 16983
+input response 16983
+trial.getValueVector 16983
+input response 16983
+trial.getValueVector 16983
+input response 16983
+trial.getValueVector 16983
+input response 16983
+trial.getValueVector 16983
+input response 16983
+trial.getValueVector 16984
+input response 16984
+trial.getValueVector 16984
+input response 16984
+trial.getValueVector 16984
+input response 16984
+trial.getValueVector 16984
+input response 16984
+trial.getValueVector 16984
+input response 16984
+trial.getValueVector 16984
+input response 16984
+trial.getValueVector 16984
+input response 16984
+trial.getValueVector 16984
+input response 16984
+trial.getValueVector 16984
+input response 16984
+trial.getValueVector 16984
+input response 16984
+trial.getValueVector 16985
+input response 16985
+trial.getValueVector 16985
+input response 16985
+trial.getValueVector 16985
+input response 16985
+trial.getValueVector 16985
+input response 16985
+trial.getValueVector 16985
+input response 16985
+trial.getValueVector 16985
+input response 16985
+trial.getValueVector 16985
+input response 16985
+trial.getValueVector 16985
+input response 16985
+trial.getValueVector 16985
+input response 16985
+trial.getValueVector 16985
+input response 16985
+trial.getValueVector 16986
+input response 16986
+trial.getValueVector 16986
+input response 16986
+trial.getValueVector 16986
+input response 16986
+trial.getValueVector 16986
+input response 16986
+trial.getValueVector 16986
+input response 16986
+trial.getValueVector 16986
+input response 16986
+trial.getValueVector 16986
+input response 16986
+trial.getValueVector 16986
+input response 16986
+trial.getValueVector 16986
+input response 16986
+trial.getValueVector 16987
+input response 16987
+trial.getValueVector 16987
+input response 16987
+trial.getValueVector 16987
+input response 16987
+trial.getValueVector 16987
+input response 16987
+trial.getValueVector 16987
+input response 16987
+trial.getValueVector 16987
+input response 16987
+trial.getValueVector 16987
+input response 16987
+trial.getValueVector 16987
+input response 16987
+trial.getValueVector 16987
+input response 16987
+trial.getValueVector 16987
+input response 16987
+trial.getValueVector 16988
+input response 16988
+trial.getValueVector 16988
+input response 16988
+trial.getValueVector 16988
+input response 16988
+trial.getValueVector 16988
+input response 16988
+trial.getValueVector 16988
+input response 16988
+trial.getValueVector 16988
+input response 16988
+trial.getValueVector 16988
+input response 16988
+trial.getValueVector 16988
+input response 16988
+trial.getValueVector 16988
+input response 16988
+trial.getValueVector 16989
+input response 16989
+trial.getValueVector 16989
+input response 16989
+trial.getValueVector 16989
+input response 16989
+trial.getValueVector 16989
+input response 16989
+trial.getValueVector 16989
+input response 16989
+trial.getValueVector 16989
+input response 16989
+trial.getValueVector 16989
+input response 16989
+trial.getValueVector 16989
+input response 16989
+trial.getValueVector 16989
+input response 16989
+trial.getValueVector 16990
+input response 16990
+trial.getValueVector 16990
+input response 16990
+trial.getValueVector 16990
+input response 16990
+trial.getValueVector 16990
+input response 16990
+trial.getValueVector 16990
+input response 16990
+trial.getValueVector 16990
+input response 16990
+trial.getValueVector 16990
+input response 16990
+trial.getValueVector 16990
+input response 16990
+trial.getValueVector 16990
+input response 16990
+trial.getValueVector 16990
+input response 16990
+trial.getValueVector 16991
+input response 16991
+trial.getValueVector 16991
+input response 16991
+trial.getValueVector 16991
+input response 16991
+trial.getValueVector 16991
+input response 16991
+trial.getValueVector 16991
+input response 16991
+trial.getValueVector 16991
+input response 16991
+trial.getValueVector 16991
+input response 16991
+trial.getValueVector 16991
+input response 16991
+trial.getValueVector 16991
+input response 16991
+trial.getValueVector 16992
+input response 16992
+trial.getValueVector 16992
+input response 16992
+trial.getValueVector 16992
+input response 16992
+trial.getValueVector 16992
+input response 16992
+trial.getValueVector 16992
+input response 16992
+trial.getValueVector 16992
+input response 16992
+trial.getValueVector 16992
+input response 16992
+trial.getValueVector 16992
+input response 16992
+trial.getValueVector 16992
+input response 16992
+trial.getValueVector 16992
+input response 16992
+trial.getValueVector 16993
+input response 16993
+trial.getValueVector 16993
+input response 16993
+trial.getValueVector 16993
+input response 16993
+trial.getValueVector 16993
+input response 16993
+trial.getValueVector 16993
+input response 16993
+trial.getValueVector 16993
+input response 16993
+trial.getValueVector 16993
+input response 16993
+trial.getValueVector 16993
+input response 16993
+trial.getValueVector 16993
+input response 16993
+trial.getValueVector 16994
+input response 16994
+trial.getValueVector 16994
+input response 16994
+trial.getValueVector 16994
+input response 16994
+trial.getValueVector 16994
+input response 16994
+trial.getValueVector 16994
+input response 16994
+trial.getValueVector 16994
+input response 16994
+trial.getValueVector 16994
+input response 16994
+trial.getValueVector 16994
+input response 16994
+trial.getValueVector 16994
+input response 16994
+trial.getValueVector 16994
+input response 16994
+trial.getValueVector 16995
+input response 16995
+trial.getValueVector 16995
+input response 16995
+trial.getValueVector 16995
+input response 16995
+trial.getValueVector 16995
+input response 16995
+trial.getValueVector 16995
+input response 16995
+trial.getValueVector 16995
+input response 16995
+trial.getValueVector 16995
+input response 16995
+trial.getValueVector 16995
+input response 16995
+trial.getValueVector 16995
+input response 16995
+trial.getValueVector 16995
+input response 16995
+trial.getValueVector 16996
+input response 16996
+trial.getValueVector 16996
+input response 16996
+trial.getValueVector 16996
+input response 16996
+trial.getValueVector 16996
+input response 16996
+trial.getValueVector 16996
+input response 16996
+trial.getValueVector 16996
+input response 16996
+trial.getValueVector 16996
+input response 16996
+trial.getValueVector 16996
+input response 16996
+trial.getValueVector 16996
+input response 16996
+trial.getValueVector 16996
+input response 16997
+trial.getValueVector 16997
+input response 16997
+trial.getValueVector 16997
+input response 16997
+trial.getValueVector 16997
+input response 16997
+trial.getValueVector 16997
+input response 16997
+trial.getValueVector 16997
+input response 16997
+trial.getValueVector 16997
+input response 16997
+trial.getValueVector 16997
+input response 16997
+trial.getValueVector 16997
+input response 16997
+trial.getValueVector 16997
+input response 16997
+trial.getValueVector 16998
+input response 16998
+trial.getValueVector 16998
+input response 16998
+trial.getValueVector 16998
+input response 16998
+trial.getValueVector 16998
+input response 16998
+trial.getValueVector 16998
+input response 16998
+trial.getValueVector 16998
+input response 16998
+trial.getValueVector 16998
+input response 16998
+trial.getValueVector 16998
+input response 16998
+trial.getValueVector 16998
+input response 16998
+trial.getValueVector 16998
+input response 16999
+trial.getValueVector 16999
+input response 16999
+trial.getValueVector 16999
+input response 16999
+trial.getValueVector 16999
+input response 16999
+trial.getValueVector 16999
+input response 16999
+trial.getValueVector 16999
+input response 16999
+trial.getValueVector 16999
+input response 16999
+trial.getValueVector 16999
+input response 16999
+trial.getValueVector 16999
+input response 16999
+trial.getValueVector 16999
+input response 16999
+trial.getValueVector 17000
+input response 17000
+trial.getValueVector 17000
+input response 17000
+trial.getValueVector 17000
+input response 17000
+trial.getValueVector 17000
+input response 17000
+trial.getValueVector 17000
+input response 17000
+trial.getValueVector 17000
+input response 17000
+trial.getValueVector 17000
+input response 17000
+trial.getValueVector 17000
+input response 17000
+trial.getValueVector 17000
+input response 17000
+trial.getValueVector 17000
+input response 17000
+trial.getValueVector 17001
+input response 17001
+trial.getValueVector 17001
+input response 17001
+trial.getValueVector 17001
+input response 17001
+trial.getValueVector 17001
+input response 17001
+trial.getValueVector 17001
+input response 17001
+trial.getValueVector 17001
+input response 17001
+trial.getValueVector 17001
+input response 17001
+trial.getValueVector 17001
+input response 17001
+trial.getValueVector 17001
+input response 17001
+trial.getValueVector 17001
+input response 17001
+trial.getValueVector 17002
+input response 17002
+trial.getValueVector 17002
+input response 17002
+trial.getValueVector 17002
+input response 17002
+trial.getValueVector 17002
+input response 17002
+trial.getValueVector 17002
+input response 17002
+trial.getValueVector 17002
+input response 17002
+trial.getValueVector 17002
+input response 17002
+trial.getValueVector 17002
+input response 17002
+trial.getValueVector 17002
+input response 17002
+trial.getValueVector 17003
+input response 17003
+trial.getValueVector 17003
+input response 17003
+trial.getValueVector 17003
+input response 17003
+trial.getValueVector 17003
+input response 17003
+trial.getValueVector 17003
+input response 17003
+trial.getValueVector 17003
+input response 17003
+trial.getValueVector 17003
+input response 17003
+trial.getValueVector 17003
+input response 17003
+trial.getValueVector 17003
+input response 17003
+trial.getValueVector 17003
+input response 17003
+trial.getValueVector 17004
+input response 17004
+trial.getValueVector 17004
+input response 17004
+trial.getValueVector 17004
+input response 17004
+trial.getValueVector 17004
+input response 17004
+trial.getValueVector 17004
+input response 17004
+trial.getValueVector 17004
+input response 17004
+trial.getValueVector 17004
+input response 17004
+trial.getValueVector 17004
+input response 17004
+trial.getValueVector 17004
+input response 17004
+trial.getValueVector 17004
+input response 17004
+trial.getValueVector 17005
+input response 17005
+trial.getValueVector 17005
+input response 17005
+trial.getValueVector 17005
+input response 17005
+trial.getValueVector 17005
+input response 17005
+trial.getValueVector 17005
+input response 17005
+trial.getValueVector 17005
+input response 17005
+trial.getValueVector 17005
+input response 17005
+trial.getValueVector 17005
+input response 17005
+trial.getValueVector 17005
+input response 17005
+trial.getValueVector 17005
+input response 17006
+trial.getValueVector 17006
+input response 17006
+trial.getValueVector 17006
+input response 17006
+trial.getValueVector 17006
+input response 17006
+trial.getValueVector 17006
+input response 17006
+trial.getValueVector 17006
+input response 17006
+trial.getValueVector 17006
+input response 17006
+trial.getValueVector 17006
+input response 17006
+trial.getValueVector 17006
+input response 17006
+trial.getValueVector 17006
+input response 17006
+trial.getValueVector 17007
+input response 17007
+trial.getValueVector 17007
+input response 17007
+trial.getValueVector 17007
+input response 17007
+trial.getValueVector 17007
+input response 17007
+trial.getValueVector 17007
+input response 17007
+trial.getValueVector 17007
+input response 17007
+trial.getValueVector 17007
+input response 17007
+trial.getValueVector 17007
+input response 17007
+trial.getValueVector 17007
+input response 17007
+trial.getValueVector 17008
+input response 17008
+trial.getValueVector 17008
+input response 17008
+trial.getValueVector 17008
+input response 17008
+trial.getValueVector 17008
+input response 17008
+trial.getValueVector 17008
+input response 17008
+trial.getValueVector 17008
+input response 17008
+trial.getValueVector 17008
+input response 17008
+trial.getValueVector 17008
+input response 17008
+trial.getValueVector 17008
+input response 17008
+trial.getValueVector 17008
+input response 17008
+trial.getValueVector 17009
+input response 17009
+trial.getValueVector 17009
+input response 17009
+trial.getValueVector 17009
+input response 17009
+trial.getValueVector 17009
+input response 17009
+trial.getValueVector 17009
+input response 17009
+trial.getValueVector 17009
+input response 17009
+trial.getValueVector 17009
+input response 17009
+trial.getValueVector 17009
+input response 17009
+trial.getValueVector 17009
+input response 17009
+trial.getValueVector 17009
+input response 17009
+trial.getValueVector 17010
+input response 17010
+trial.getValueVector 17010
+input response 17010
+trial.getValueVector 17010
+input response 17010
+trial.getValueVector 17010
+input response 17010
+trial.getValueVector 17010
+input response 17010
+trial.getValueVector 17010
+input response 17010
+trial.getValueVector 17010
+input response 17010
+trial.getValueVector 17010
+input response 17010
+trial.getValueVector 17010
+input response 17010
+trial.getValueVector 17011
+input response 17011
+trial.getValueVector 17011
+input response 17011
+trial.getValueVector 17011
+input response 17011
+trial.getValueVector 17011
+input response 17011
+trial.getValueVector 17011
+input response 17011
+trial.getValueVector 17011
+input response 17011
+trial.getValueVector 17011
+input response 17011
+trial.getValueVector 17011
+input response 17011
+trial.getValueVector 17011
+input response 17011
+trial.getValueVector 17011
+input response 17012
+trial.getValueVector 17012
+input response 17012
+trial.getValueVector 17012
+input response 17012
+trial.getValueVector 17012
+input response 17012
+trial.getValueVector 17012
+input response 17012
+trial.getValueVector 17012
+input response 17012
+trial.getValueVector 17012
+input response 17012
+trial.getValueVector 17012
+input response 17012
+trial.getValueVector 17012
+input response 17012
+trial.getValueVector 17012
+input response 17012
+trial.getValueVector 17013
+input response 17013
+trial.getValueVector 17013
+input response 17013
+trial.getValueVector 17013
+input response 17013
+trial.getValueVector 17013
+input response 17013
+trial.getValueVector 17013
+input response 17013
+trial.getValueVector 17013
+input response 17013
+trial.getValueVector 17013
+input response 17013
+trial.getValueVector 17013
+input response 17013
+trial.getValueVector 17013
+input response 17013
+trial.getValueVector 17014
+input response 17014
+trial.getValueVector 17014
+input response 17014
+trial.getValueVector 17014
+input response 17014
+trial.getValueVector 17014
+input response 17014
+trial.getValueVector 17014
+input response 17014
+trial.getValueVector 17014
+input response 17014
+trial.getValueVector 17014
+input response 17014
+trial.getValueVector 17014
+input response 17014
+trial.getValueVector 17014
+input response 17014
+trial.getValueVector 17014
+input response 17014
+trial.getValueVector 17015
+input response 17015
+trial.getValueVector 17015
+input response 17015
+trial.getValueVector 17015
+input response 17015
+trial.getValueVector 17015
+input response 17015
+trial.getValueVector 17015
+input response 17015
+trial.getValueVector 17015
+input response 17015
+trial.getValueVector 17015
+input response 17015
+trial.getValueVector 17015
+input response 17015
+trial.getValueVector 17015
+input response 17015
+trial.getValueVector 17015
+input response 17016
+trial.getValueVector 17016
+input response 17016
+trial.getValueVector 17016
+input response 17016
+trial.getValueVector 17016
+input response 17016
+trial.getValueVector 17016
+input response 17016
+trial.getValueVector 17016
+input response 17016
+trial.getValueVector 17016
+input response 17016
+trial.getValueVector 17016
+input response 17016
+trial.getValueVector 17016
+input response 17016
+trial.getValueVector 17016
+input response 17016
+trial.getValueVector 17017
+input response 17017
+trial.getValueVector 17017
+input response 17017
+trial.getValueVector 17017
+input response 17017
+trial.getValueVector 17017
+input response 17017
+trial.getValueVector 17017
+input response 17017
+trial.getValueVector 17017
+input response 17017
+trial.getValueVector 17017
+input response 17017
+trial.getValueVector 17017
+input response 17017
+trial.getValueVector 17017
+input response 17017
+trial.getValueVector 17017
+input response 17017
+trial.getValueVector 17018
+input response 17018
+trial.getValueVector 17018
+input response 17018
+trial.getValueVector 17018
+input response 17018
+trial.getValueVector 17018
+input response 17018
+trial.getValueVector 17018
+input response 17018
+trial.getValueVector 17018
+input response 17018
+trial.getValueVector 17018
+input response 17018
+trial.getValueVector 17018
+input response 17018
+trial.getValueVector 17018
+input response 17018
+trial.getValueVector 17019
+input response 17019
+trial.getValueVector 17019
+input response 17019
+trial.getValueVector 17019
+input response 17019
+trial.getValueVector 17019
+input response 17019
+trial.getValueVector 17019
+input response 17019
+trial.getValueVector 17019
+input response 17019
+trial.resetCounters3 17019
+input response 17019
+trial.preFreeze 17019
+picture.planet 17036
+picture.stim 17037
+shape.dot1 17037
+shape.dot2 17037
+shape.dot3 17037
+shape.dot4 17037
+shape.dot5 17037
+shape.dot6 17037
+shape.dot7 17037
+shape.dot8 17037
+shape.dot9 17037
+shape.dot10 17037
+shape.dot11 17037
+shape.dot12 17037
+shape.dot13 17037
+shape.dot14 17037
+shape.dot15 17037
+shape.dot16 17037
+shape.dot17 17037
+shape.dot18 17037
+shape.dot19 17037
+shape.dot20 17037
+shape.dot21 17037
+shape.dot22 17037
+shape.dot23 17037
+shape.dot24 17037
+shape.dot25 17037
+shape.dot26 17037
+shape.dot27 17037
+shape.dot28 17037
+shape.dot29 17037
+shape.dot30 17037
+shape.dot31 17037
+shape.dot32 17037
+shape.dot33 17037
+shape.dot34 17037
+shape.dot35 17037
+shape.dot36 17037
+shape.dot37 17037
+shape.dot38 17037
+shape.dot39 17037
+shape.dot40 17037
+shape.dot41 17037
+shape.dot42 17037
+shape.dot43 17037
+shape.dot44 17037
+shape.dot45 17037
+shape.dot46 17037
+shape.dot47 17037
+shape.dot48 17037
+shape.dot49 17037
+shape.dot50 17037
+shape.dot51 17037
+shape.dot52 17037
+shape.dot53 17037
+shape.dot54 17037
+shape.dot55 17037
+shape.dot56 17037
+shape.dot57 17037
+shape.dot58 17037
+shape.dot59 17037
+shape.dot60 17037
+picture.frozenShip 17037
+input response 17237
+trial.clock 17237
+picture.animatedCircle 17258
+picture.stim 17258
+shape.dot1 17258
+shape.dot2 17258
+shape.dot3 17258
+shape.dot4 17258
+shape.dot5 17258
+shape.dot6 17258
+shape.dot7 17258
+shape.dot8 17258
+shape.dot9 17258
+shape.dot10 17258
+shape.dot11 17258
+shape.dot12 17258
+shape.dot13 17258
+shape.dot14 17258
+shape.dot15 17258
+shape.dot16 17258
+shape.dot17 17258
+shape.dot18 17258
+shape.dot19 17258
+shape.dot20 17258
+shape.dot21 17258
+shape.dot22 17258
+shape.dot23 17258
+shape.dot24 17258
+shape.dot25 17258
+shape.dot26 17258
+shape.dot27 17258
+shape.dot28 17258
+shape.dot29 17258
+shape.dot30 17258
+shape.dot31 17258
+shape.dot32 17258
+shape.dot33 17258
+shape.dot34 17258
+shape.dot35 17258
+shape.dot36 17258
+shape.dot37 17258
+shape.dot38 17258
+shape.dot39 17258
+shape.dot40 17258
+shape.dot41 17258
+shape.dot42 17258
+shape.dot43 17258
+shape.dot44 17258
+shape.dot45 17258
+shape.dot46 17258
+shape.dot47 17258
+shape.dot48 17258
+shape.dot49 17258
+shape.dot50 17258
+shape.dot51 17258
+shape.dot52 17258
+shape.dot53 17258
+shape.dot54 17258
+shape.dot55 17258
+shape.dot56 17258
+shape.dot57 17258
+shape.dot58 17258
+shape.dot59 17258
+shape.dot60 17258
+input response 20045
+trial.ISI 20046
+picture.stim 20075
+picture.planet 20075
+shape.dot1 20075
+shape.dot2 20075
+shape.dot3 20075
+shape.dot4 20075
+shape.dot5 20075
+shape.dot6 20075
+shape.dot7 20075
+shape.dot8 20075
+shape.dot9 20075
+shape.dot10 20075
+shape.dot11 20075
+shape.dot12 20075
+shape.dot13 20075
+shape.dot14 20075
+shape.dot15 20075
+shape.dot16 20075
+shape.dot17 20075
+shape.dot18 20075
+shape.dot19 20075
+shape.dot20 20075
+shape.dot21 20075
+shape.dot22 20075
+shape.dot23 20075
+shape.dot24 20075
+shape.dot25 20075
+shape.dot26 20075
+shape.dot27 20075
+shape.dot28 20075
+shape.dot29 20075
+shape.dot30 20075
+shape.dot31 20075
+shape.dot32 20075
+shape.dot33 20075
+shape.dot34 20075
+shape.dot35 20075
+shape.dot36 20075
+shape.dot37 20075
+shape.dot38 20075
+shape.dot39 20075
+shape.dot40 20075
+shape.dot41 20075
+shape.dot42 20075
+shape.dot43 20075
+shape.dot44 20075
+shape.dot45 20075
+shape.dot46 20075
+shape.dot47 20075
+shape.dot48 20075
+shape.dot49 20075
+shape.dot50 20075
+shape.dot51 20075
+shape.dot52 20075
+shape.dot53 20075
+shape.dot54 20075
+shape.dot55 20075
+shape.dot56 20075
+shape.dot57 20075
+shape.dot58 20075
+shape.dot59 20075
+shape.dot60 20075
+picture.frozenShip 20075
+input response 21125
+trial.feedback 21127
+picture.feedback3 21142
+picture.feedback2 21142
+text.feedback1 21142
+input response 21833
+trial.ITI 21834
+picture.fixationCross 21854
+shape.dot1 21854
+shape.dot2 21854
+shape.dot3 21854
+shape.dot4 21854
+shape.dot5 21854
+shape.dot6 21854
+shape.dot7 21854
+shape.dot8 21854
+shape.dot9 21854
+shape.dot10 21854
+shape.dot11 21854
+shape.dot12 21854
+shape.dot13 21854
+shape.dot14 21854
+shape.dot15 21854
+shape.dot16 21854
+shape.dot17 21854
+shape.dot18 21854
+shape.dot19 21854
+shape.dot20 21854
+shape.dot21 21854
+shape.dot22 21854
+shape.dot23 21854
+shape.dot24 21854
+shape.dot25 21854
+shape.dot26 21854
+shape.dot27 21854
+shape.dot28 21854
+shape.dot29 21854
+shape.dot30 21854
+shape.dot31 21854
+shape.dot32 21854
+shape.dot33 21854
+shape.dot34 21854
+shape.dot35 21854
+shape.dot36 21854
+shape.dot37 21854
+shape.dot38 21854
+shape.dot39 21854
+shape.dot40 21854
+shape.dot41 21854
+shape.dot42 21854
+shape.dot43 21854
+shape.dot44 21854
+shape.dot45 21854
+shape.dot46 21854
+shape.dot47 21854
+shape.dot48 21854
+shape.dot49 21854
+shape.dot50 21854
+shape.dot51 21854
+shape.dot52 21854
+shape.dot53 21854
+shape.dot54 21854
+shape.dot55 21854
+shape.dot56 21854
+shape.dot57 21854
+shape.dot58 21854
+shape.dot59 21854
+shape.dot60 21854
+input response 23037

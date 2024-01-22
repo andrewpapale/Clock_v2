@@ -301,6 +301,13 @@
 
 / ITI_index = list.ITI_index_start.nextvalue;
 
+/ scanner_sync = null
+/ trial_start = null
+/ freeze_start = null
+/ ISI_start = null
+/ feedback_start = null
+/ ITI_start = null
+
 </values>
 
 <data>
@@ -312,7 +319,7 @@ values.block, values.trialCount, values.trial, values.run_trial,values.block_tri
 values.generate_new_erasure,values.trial_since_erasure_gen,values.att_index, values.era_index, values.x_final, values.y_final, values.ITI_index,
 parameters.seed, list.era_loc.currentvalue, values.has_erasure,list.att_loc.currentvalue, values.n_clicks, values.n_clicks_era_only,values.timeout_block,values.timeouts_remain,values.stim_center_deg,
 values.startPos,values.pos_shifted,values.rt_shifted,values.mag, values.inc_rg, values.inc, values.rng, values.freq, values.choose_stim,values.erasure_value, values.current_erasure, values.curr_min,list.spread.nextvalue, values.curr_mean,values.curr_max, values.new_mean, values.to_h, values.to_l, values.smooth_kernel2,values.rt_index,values.erasure_RT,
-values.right_index,values.left_index, values.stim_left_deg, values.stim_right_deg,
+values.right_index,values.left_index, values.stim_left_deg, values.stim_right_deg, values.scanner_sync, values.trial_start, values.freeze_start, values.ISI_start, values.feedback_start, values.ITI_start,
 values.erasure_blocks,parameters.attentional_control,parameters.local_uncertainty,picture.planet.item.1,picture.animatedCircle.item.1,picture.feedback2.items.1,picture.stim.item.1,values.Earnings, values.totalEarnings)
 </data>
 
@@ -1301,6 +1308,7 @@ number of mushrooms anywhere on the planet.")
 
 <trial ITI>
 / ontrialbegin = [
+	values.ITI_start = script.elapsedtime;
 	values.trial +=1;
 	if (values.trial > 1){
 		values.last_block_type = values.block_type;
@@ -1725,6 +1733,8 @@ number of mushrooms anywhere on the planet.")
 		picture.frozenShip.hposition = 1px * (expressions.centerx + cos(rad(90*values.startPos/25))*expressions.radius_px);
 		picture.frozenShip.vposition = 1px * (expressions.centery + sin(rad(90*values.startPos/25))*expressions.radius_px);
 	}
+	values.freeze_start = script.elapsedtime;
+	
 ]
 
 / stimulustimes = [ 0 = planet, stim, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
@@ -1746,6 +1756,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 / ontrialbegin = [
 	values.n_revolutions = 0;
 	picture.animatedCircle.erase = false;
+	values.trial_start = script.elapsedtime;
 ]
 
 / stimulustimes = [
@@ -1837,6 +1848,8 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 	shape.dot58.erase = true;
 	shape.dot59.erase = true;
 	shape.dot60.erase = true;
+	
+	values.ISI_start = script.elapsedtime;
 ]
 / stimulustimes = [0 = stim, planet, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
@@ -1913,6 +1926,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 		picture.feedback2.hposition = 50%;
 		picture.feedback3.item.1 = ("blank.png");
 	}
+	values.feedback_start = script.elapsedtime;
 ]
 / stimulustimes = [
 	0 = feedback3, feedback2, text.feedback1;
@@ -2040,7 +2054,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 
 <block presscont>
 / trials = [
-	1 = presscont; 2=scanner_sync; 3=countdown;
+	1 =reminder1; 2=reminder2; 3=presscont; 4=scanner_sync; 5=countdown;
 ]
 </block>
 
@@ -2049,6 +2063,9 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 / stimulustimes = [0 = text.waiting]
 / inputdevice = keyboard
 / validresponse = ("=")
+/ ontrialend = [
+	values.scanner_sync = script.elapsedtime;
+]
 </trial>
 
 <text waiting>
@@ -2064,7 +2081,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 / monitor = 1
 / position = (50%, 50%)
 / resetrate = block
-/ timeout = 60000
+/ timeout = 30000
 / txbgcolor = white
 / txcolor = black
 </clock>
@@ -2072,7 +2089,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 <text breaktext>
 / position = (50%, 40%)
 / erase = true(128,128,128)
-/ items = ("Please relax for 1 minute.
+/ items = ("Please relax for 30s.
 Your spaceship is traveling to a new planet.")
 </text>
 
