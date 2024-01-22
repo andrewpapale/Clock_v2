@@ -46,7 +46,7 @@
 / port = COM4
 / items = (40)
 / subport = data
-</port><
+</port>
 
 <usermanual>
     For background see:
@@ -355,6 +355,7 @@ parameters.seed, list.era_loc.currentvalue, values.has_erasure,list.att_loc.curr
 values.startPos,values.pos_shifted,values.rt_shifted,values.mag, values.inc_rg, values.inc, values.rng, values.freq, values.choose_stim,values.erasure_value, values.current_erasure, values.curr_min,list.spread.nextvalue, values.curr_mean,values.curr_max, values.new_mean, values.to_h, values.to_l, values.smooth_kernel2,values.rt_index,values.erasure_RT,
 values.right_index,values.left_index, values.stim_left_deg, values.stim_right_deg, values.scanner_sync, values.trial_start, values.freeze_start, values.ISI_start, values.feedback_start, values.ITI_start,
 values.erasure_blocks,parameters.attentional_control,parameters.local_uncertainty,picture.planet.item.1,picture.animatedCircle.item.1,picture.feedback2.items.1,picture.stim.item.1,values.Earnings, values.totalEarnings)
+/ audit = true
 </data>
 
 <picture animatedCircle>
