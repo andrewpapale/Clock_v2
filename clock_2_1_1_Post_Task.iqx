@@ -67,21 +67,25 @@
 / file = "spread-1752.txt"
 </include>
 
-<include>
-/ file = "ITI.txt"
-</include>
+<list ITI>
+/ items = ( 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250, 260, 270, 280, 290, 300, 310, 320, 330, 340, 350, 360, 370, 380, 390, 400, 410, 420, 430, 440, 450, 460, 470, 480, 490, 500)
+/ poolsize = 41
+/ selectionmode = random
+</list>
 
-<include>
-/ file = "ISI.txt"
-</include>
+<list ISI>
+/ items = (200,210,220,230,240,250,260,270,280,290,300,310,320,330,340,350,360,370,380,390,400,410,420,430,440,450,460,470,480,490,500,510,520,530,540,550,560,570,580,590,600)
+/ poolsize = 41
+/ selectionmode = random
+</list>
 
-<include>
-/ file = "preClockFreeze.txt"
-</include>
 
-<include>
-/ file = "ITI_index_start.txt"
-</include>
+<list preClockFreeze>
+/ items = (500, 510, 520, 530, 540, 550, 560, 570, 580, 590, 600, 610, 620, 630, 640, 650, 660, 670, 680, 690, 700)
+/ poolsize = 21
+/ selectionmode = random
+</list>
+
 
 // test vectors holding interpolated x / y values
 <list x_test> 
@@ -291,7 +295,7 @@
 / era_index = null
 / att_index = null
 
-/ run_length = 80;
+/ run_length = 100;
 / block_trial = null
 / last_block_type = null
 / erasure_blocks = null
@@ -299,7 +303,7 @@
 / stim_left_deg = null
 / stim_right_deg = null
 
-/ ITI_index = list.ITI_index_start.nextvalue;
+/ ITI_index = null;
 
 / scanner_sync = null
 / trial_start = null
@@ -905,7 +909,7 @@ dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
 dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60]
 
 / beginresponsetime = 1000
-/ validresponse = ("2") 
+/ validresponse = (" ") 
 / recorddata = FALSE
 / branch = [
 	return trial.displayGoodJob;
@@ -932,7 +936,7 @@ dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
 dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60]
 
 / beginresponsetime = 1000
-/ validresponse = ("2") 
+/ validresponse = (" ") 
 / recorddata = FALSE
 / branch = [
 	return trial.displayGoodJob;
@@ -1076,7 +1080,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60
 ]
 
 / beginresponsetime = 1000
-/ validresponse = ("2") 
+/ validresponse = (" ") 
 / responseinterrupt = immediate
 / branch = [
 	return trial.sampleResponse;
@@ -1764,7 +1768,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 		dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
 ]
 / timeout = values.timeout;
-/ validresponse = ("2") 
+/ validresponse = (" ") 
 / inputdevice = keyboard
 / responseinterrupt = immediate
 / recorddata = true
@@ -1931,7 +1935,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 // correctresponse = (next) // testing only
 / recorddata = true
 / ontrialend = [
-	values.ITI_index += 1;
+	//values.ITI_index += 1;
 	values.trialCount += 1;
 // testing high uncertainty condition only
 //	if (values.trial_type == "erasure"){
@@ -2071,7 +2075,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 / monitor = 1
 / position = (50%, 50%)
 / resetrate = block
-/ timeout = 30000
+/ timeout = 120000
 / txbgcolor = white
 / txcolor = black
 </clock>
@@ -2079,7 +2083,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 <text breaktext>
 / position = (50%, 40%)
 / erase = true(128,128,128)
-/ items = ("Please relax for 30s.
+/ items = ("Please relax for two minutes.
 Your spaceship is traveling to a new planet.")
 </text>
 
@@ -2115,7 +2119,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / inputdevice = keyboard
 / beginresponsetime = 0
 / recorddata = false
-/ validresponse = ("2") 
+/ validresponse = (" ") 
 / responseinterrupt = immediate
 </trial>
 
@@ -2339,7 +2343,7 @@ what you are writing (otherwise the text will not be visible)"
 
 <expt main1>
 / onexptbegin = [
-	values.ITI_index = list.ITI_index_start.nextvalue;
+	//values.ITI_index = list.ITI_index_start.nextvalue;
 	values.timeout_block = FALSE;
 	values.generate_new_erasure = TRUE;
 	values.n_curr_block = NULL;

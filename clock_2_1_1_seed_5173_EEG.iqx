@@ -18,15 +18,15 @@
 / seed = 5173;
 </parameters>
 
-<usermanual>
-    For background see:
-    Press et al., Numerical Recipes in C: The Art of Scientific Computing, 2nd Ed. (1992), 
-    Chapter 3.3 Cubic Spline Interpolation, pg. 113 - 116.
-</usermanual>
-
 <port sendtrialstart>
 / port = COM4
 / items = (10)
+/ subport = data
+</port>
+
+<port sendprefreeze>
+/ port = COM4
+/ items = (15)
 / subport = data
 </port>
 
@@ -47,6 +47,12 @@
 / items = (40)
 / subport = data
 </port>
+
+<usermanual>
+    For background see:
+    Press et al., Numerical Recipes in C: The Art of Scientific Computing, 2nd Ed. (1992), 
+    Chapter 3.3 Cubic Spline Interpolation, pg. 113 - 116.
+</usermanual>
 
 
 // input: parameter space to construct the splines over
@@ -319,7 +325,7 @@
 / era_index = null
 / att_index = null
 
-/ run_length = 80;
+/ run_length = 100;
 / block_trial = null
 / last_block_type = null
 / erasure_blocks = null
@@ -327,7 +333,14 @@
 / stim_left_deg = null
 / stim_right_deg = null
 
-/ ITI_index = list.ITI_index_start.nextvalue;
+/ ITI_index = null;
+
+/ scanner_sync = null
+/ trial_start = null
+/ freeze_start = null
+/ ISI_start = null
+/ feedback_start = null
+/ ITI_start = null
 
 </values>
 
@@ -340,7 +353,7 @@ values.block, values.trialCount, values.trial, values.run_trial,values.block_tri
 values.generate_new_erasure,values.trial_since_erasure_gen,values.att_index, values.era_index, values.x_final, values.y_final, values.ITI_index,
 parameters.seed, list.era_loc.currentvalue, values.has_erasure,list.att_loc.currentvalue, values.n_clicks, values.n_clicks_era_only,values.timeout_block,values.timeouts_remain,values.stim_center_deg,
 values.startPos,values.pos_shifted,values.rt_shifted,values.mag, values.inc_rg, values.inc, values.rng, values.freq, values.choose_stim,values.erasure_value, values.current_erasure, values.curr_min,list.spread.nextvalue, values.curr_mean,values.curr_max, values.new_mean, values.to_h, values.to_l, values.smooth_kernel2,values.rt_index,values.erasure_RT,
-values.right_index,values.left_index, values.stim_left_deg, values.stim_right_deg,
+values.right_index,values.left_index, values.stim_left_deg, values.stim_right_deg, values.scanner_sync, values.trial_start, values.freeze_start, values.ISI_start, values.feedback_start, values.ITI_start,
 values.erasure_blocks,parameters.attentional_control,parameters.local_uncertainty,picture.planet.item.1,picture.animatedCircle.item.1,picture.feedback2.items.1,picture.stim.item.1,values.Earnings, values.totalEarnings)
 </data>
 
@@ -1329,6 +1342,7 @@ number of mushrooms anywhere on the planet.")
 
 <trial ITI>
 / ontrialbegin = [
+	values.ITI_start = script.elapsedtime;
 	values.trial +=1;
 	if (values.trial > 1){
 		values.last_block_type = values.block_type;
@@ -1753,9 +1767,10 @@ number of mushrooms anywhere on the planet.")
 		picture.frozenShip.hposition = 1px * (expressions.centerx + cos(rad(90*values.startPos/25))*expressions.radius_px);
 		picture.frozenShip.vposition = 1px * (expressions.centery + sin(rad(90*values.startPos/25))*expressions.radius_px);
 	}
+	values.freeze_start = script.elapsedtime;
 ]
 
-/ stimulustimes = [ 0 = planet, stim, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+/ stimulustimes = [ 0 = sendprefreeze, planet, stim, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
@@ -1774,6 +1789,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 / ontrialbegin = [
 	values.n_revolutions = 0;
 	picture.animatedCircle.erase = false;
+	values.trial_start = script.elapsedtime;
 ]
 
 / stimulustimes = [
@@ -1865,6 +1881,8 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 	shape.dot58.erase = true;
 	shape.dot59.erase = true;
 	shape.dot60.erase = true;
+	
+	values.ISI_start = script.elapsedtime;
 ]
 / stimulustimes = [0 = sendISI, stim, planet, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
@@ -1941,6 +1959,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 		picture.feedback2.hposition = 50%;
 		picture.feedback3.item.1 = ("blank.png");
 	}
+	values.feedback_start = script.elapsedtime;
 ]
 / stimulustimes = [
 	0 = sendfeedback, feedback3, feedback2, text.feedback1;
@@ -1949,7 +1968,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 // correctresponse = (next) // testing only
 / recorddata = true
 / ontrialend = [
-	//values.ITI_index += 1; // fmri only
+	//values.ITI_index += 1;
 	values.trialCount += 1;
 // testing high uncertainty condition only
 //	if (values.trial_type == "erasure"){
@@ -2066,11 +2085,20 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 ]
 </block>
 
+<block presscont>
+/ trials = [
+	1 =reminder1; 2=reminder2; 3=presscont; 4=scanner_sync; 5=countdown;
+]
+</block>
+
 <trial scanner_sync>
 / recorddata = true
 / stimulustimes = [0 = text.waiting]
 / inputdevice = keyboard
 / validresponse = ("=")
+/ ontrialend = [
+	values.scanner_sync = script.elapsedtime;
+]
 </trial>
 
 <text waiting>
@@ -2086,7 +2114,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 / monitor = 1
 / position = (50%, 50%)
 / resetrate = block
-/ timeout = 60000
+/ timeout = 120000
 / txbgcolor = white
 / txcolor = black
 </clock>
@@ -2094,7 +2122,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 <text breaktext>
 / position = (50%, 40%)
 / erase = true(128,128,128)
-/ items = ("Please relax for 1 minute.
+/ items = ("Please relax for two minutes.
 Your spaceship is traveling to a new planet.")
 </text>
 
@@ -2161,7 +2189,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 </block>
 
 <block break>
-/ trials = [1=break; 2=reminder1; 3=reminder2; 4=presscont;]
+/ trials = [1=break; 2=reminder1; 3=reminder2; 4=presscont; 5=scanner_sync; 6=countdown;]
 </block>
 
 <block experiment>
@@ -2353,7 +2381,7 @@ what you are writing (otherwise the text will not be visible)"
 
 <expt main1>
 / onexptbegin = [
-	//values.ITI_index = list.ITI_index_start.nextvalue; // this is for fMRI only
+	//values.ITI_index = list.ITI_index_start.nextvalue;
 	values.timeout_block = FALSE;
 	values.generate_new_erasure = TRUE;
 	values.n_curr_block = NULL;
@@ -2383,7 +2411,7 @@ what you are writing (otherwise the text will not be visible)"
 ]
 
 / blocks = [
-	1=instructions; 2=experiment; 3=break; 4=experiment; 5=break; 6=experiment; 7=endscreen; 8=questionnaire;
+	1=presscont; 2=experiment; 3=break; 4=experiment; 5=break; 6=experiment; 7=endscreen;
 	//1 = experiment; 2=experiment; 3 = experiment;
 ]
 
