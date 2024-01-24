@@ -1608,10 +1608,10 @@ number of mushrooms anywhere on the planet.")
 
 / recorddata = false
 / branch = [
-	if (values.block_type == "erasure" || values.trial_since_erasure_gen <= 15 && values.n_clicks_era_only < 2) {
+	if ((values.block_type == "erasure" || values.trial_since_erasure_gen <= 10) && values.n_clicks_era_only < 2) {
 		return trial.constructSpline;
 	} else {
-		return trial.resetCounters2; // change back to trial.resetCounters2 to stop saving value vectors
+		return trial.resetCounters3; // change back to trial.resetCounters3 to stop saving value vectors
 	}
 ]
 / ontrialend = [
@@ -1691,7 +1691,7 @@ number of mushrooms anywhere on the planet.")
 	if (values.yindex < 31) {
 		return trial.constructValueVector2;
 	} else {
-		return trial.resetCounters2;  // change back to trial.resetCounters3 to stop saving value vectors
+		return trial.resetCounters3;  // change back to trial.resetCounters3 to stop saving value vectors
 	}
 ]
 

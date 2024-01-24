@@ -67,18 +67,6 @@
 / file = "spread-152.txt"
 </include>
 
-<include>
-/ file = "ITI.txt"
-</include>
-
-<include>
-/ file = "ISI.txt"
-</include>
-
-<include>
-/ file = "preClockFreeze.txt"
-</include>
-
 // test vectors holding interpolated x / y values
 <list x_test> 
 / selectionmode = sequence
@@ -115,6 +103,18 @@
 </list>
 
 <list preClockFreeze>
+/ items = (0.1, 0.2)
+/ poolsize = 2
+/ selectionmode = random
+</list>
+
+<list ITI>
+/ items = (0.1, 0.2)
+/ poolsize = 2
+/ selectionmode = random
+</list>
+
+<list ISI>
 / items = (0.1, 0.2)
 / poolsize = 2
 / selectionmode = random
@@ -1568,10 +1568,10 @@ number of mushrooms anywhere on the planet.")
 
 / recorddata = false
 / branch = [
-	if (values.block_type == "erasure" || values.trial_since_erasure_gen <= 15 && values.n_clicks_era_only < 2) {
+	if ((values.block_type == "erasure" || values.trial_since_erasure_gen <= 10) && values.n_clicks_era_only < 2) {
 		return trial.constructSpline;
 	} else {
-		return trial.resetCounters2; // change back to trial.resetCounters2 to stop saving value vectors
+		return trial.resetCounters2; // change back to trial.resetCounters3 to stop saving value vectors
 	}
 ]
 / ontrialend = [

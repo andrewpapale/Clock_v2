@@ -214,6 +214,7 @@
 / generate_new_erasure = NULL;
 / total_clicks = 2;
 / n_clicks = NULL;
+/ n_clicks_era_only = NULL;
 / timeout_block = FALSE;
 / timeouts_remain = null;
 / timeout_trials = 2;
@@ -309,7 +310,7 @@
 trialcode, list.ITI.currentvalue, list.preClockFreeze.currentvalue, latency, list.ISI.currentvalue, 
 values.block, values.trialCount, values.trial, values.run_trial,values.block_trial,values.block_type, values.trial_type, values.last_block_type,
 values.generate_new_erasure,values.trial_since_erasure_gen,values.att_index, values.era_index, values.x_final, values.y_final,
-parameters.seed, list.era_loc.currentvalue, values.has_erasure,list.att_loc.currentvalue, values.n_clicks, values.timeout_block,values.timeouts_remain,values.stim_center_deg,
+parameters.seed, list.era_loc.currentvalue, values.has_erasure,list.att_loc.currentvalue, values.n_clicks, values.n_clicks_era_only, values.timeout_block,values.timeouts_remain,values.stim_center_deg,
 values.startPos,values.pos_shifted,values.rt_shifted,values.mag, values.inc_rg, values.inc, values.rng, values.freq, values.choose_stim,values.erasure_value, values.current_erasure, values.curr_min,values.curr_max, values.to_h, values.to_l, values.smooth_kernel2,values.rt_index,values.erasure_RT,
 values.right_index,values.left_index, values.stim_left_deg, values.stim_right_deg,
 values.trial,values.erasure_blocks,parameters.attentional_control,parameters.local_uncertainty,picture.planet.item.1,picture.animatedCircle.item.1,picture.feedback2.items.1,picture.stim.item.1,values.Earnings, values.totalEarnings)
@@ -1374,6 +1375,7 @@ number of mushrooms anywhere on the planet.")
 	if (values.block_type =="erasure" && values.n_clicks >= values.total_clicks) {
 		values.timeout_block = TRUE;
 		values.n_clicks = NULL;
+		values.n_clicks_era_only = 0;
 		// current block automatically ends
 	}
 	// this will come into play to dynamically generate new erasures during erasure blocks
@@ -1436,6 +1438,7 @@ number of mushrooms anywhere on the planet.")
 	}
 	if (values.trial_type == "erasure" && values.generate_new_erasure==TRUE) {
 		values.n_clicks = 0;
+		values.n_clicks_era_only = 0;
 		values.choose_stim = 0;
 		values.era_index += 1;
 		values.erasure_value = list.era_val.nextvalue;
@@ -1500,7 +1503,7 @@ number of mushrooms anywhere on the planet.")
 			}
 		};
 	}
-	if (values.trial_since_erasure_gen <= 15 && values.trial_since_erasure_gen > 0) {
+	if (values.trial_since_erasure_gen <= 15 && values.trial_since_erasure_gen > 0 && values.n_clicks_era_only < 2) {
 		
 		values.new_mean = list.curr_values.mean;
 		values.to_h =  list.curr_values.maximum;
@@ -1560,7 +1563,7 @@ number of mushrooms anywhere on the planet.")
 
 / recorddata = false
 / branch = [
-	if (values.block_type == "erasure" || values.trial_since_erasure_gen <= 20) {
+	if ((values.block_type == "erasure" || values.trial_since_erasure_gen <= 10) && values.n_clicks_era_only < 2) {
 		return trial.constructSpline;
 	} else {
 		return trial.resetCounters2; // change back to trial.resetCounters2 to stop saving value vectors
@@ -1939,7 +1942,21 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 		//		values.choose_stim = FALSE;
 		//	}
 		//}
-	//}		
+	//}	
+	if (values.trial_type == "erasure") {
+		
+		if (values.stim_center_deg > 16 && values.stim_center_deg < 345){
+			if (values.pos_shifted <= values.stim_right_deg && values.pos_shifted >= values.stim_left_deg) {
+				values.n_clicks_era_only +=1;
+			} else {
+			}
+		} else if (values.stim_center_deg <= 16 || values.stim_center_deg >= 345){
+			if (values.pos_shifted <= values.stim_right_deg || values.pos_shifted >= values.stim_left_deg) {
+				values.n_clicks_era_only +=1;
+			} else {
+			}
+		}
+	}	
 
 	if (values.generate_new_erasure==TRUE) {
 		values.generate_new_erasure = FALSE;
@@ -2120,6 +2137,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / onblockbegin = [
 	values.starttime = script.elapsedtime;
 	values.trialCount = 1;
+	values.n_clicks_era_only = 0;
 	values.run_trial = 0;
 	values.n_clicks = NULL;
 	values.block +=1;
