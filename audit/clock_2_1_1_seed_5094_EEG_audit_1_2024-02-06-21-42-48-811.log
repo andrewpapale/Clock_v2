@@ -1,0 +1,8 @@
+instruct 40
+block.presscont 40
+trial.reminder1 40
+text.reminder1 143
+picture.sampleErasureR 143
+picture.sampleErasureL 143
+text.next 143
+input response 1433

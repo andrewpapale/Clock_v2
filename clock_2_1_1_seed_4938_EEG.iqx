@@ -99,21 +99,21 @@
 </include>
 
 <list ITI>
-/ items = ( 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250, 260, 270, 280, 290, 300, 310, 320, 330, 340, 350, 360, 370, 380, 390, 400, 410, 420, 430, 440, 450, 460, 470, 480, 490, 500)
-/ poolsize = 41
+/ items = (99, 116, 132, 149, 166, 182, 199, 216, 232, 249, 266, 282, 299, 316, 332, 349, 366, 382, 399, 416, 432, 449, 466, 482, 499) // 60Hz
+/ poolsize = 25
 / selectionmode = random
 </list>
 
 <list ISI>
-/ items = (200,210,220,230,240,250,260,270,280,290,300,310,320,330,340,350,360,370,380,390,400,410,420,430,440,450,460,470,480,490,500,510,520,530,540,550,560,570,580,590,600)
-/ poolsize = 41
+/ items = (216, 232, 249, 266, 282, 299, 316, 332, 349, 366, 382, 399, 416, 432, 449, 466, 482, 499, 516, 532, 549, 566, 582, 599) // 60Hz
+/ poolsize = 24
 / selectionmode = random
 </list>
 
 
 <list preClockFreeze>
-/ items = (500, 510, 520, 530, 540, 550, 560, 570, 580, 590, 600, 610, 620, 630, 640, 650, 660, 670, 680, 690, 700)
-/ poolsize = 21
+/ items = (499, 516, 532, 549, 566, 582, 599, 615, 632, 649, 665, 682, 699) // 60Hz
+/ poolsize = 13
 / selectionmode = random
 </list>
 
@@ -1616,7 +1616,7 @@ number of mushrooms anywhere on the planet.")
 ]
 / ontrialend = [
 ]
-
+/ posttrialpause = 32
 </trial>
 
 <trial constructSpline>
@@ -1815,6 +1815,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 	values.circle_y = picture.animatedCircle.ypct;
 	values.n_revolutions = ipart(script.elapsedtime - picture.animatedCircle.timestamp/values.time_per_revolution);
 ]
+/ posttrialpause = 32
 </trial>
 
 <trial ISI>
@@ -1966,7 +1967,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 / stimulustimes = [
 	0 = sendfeedback, feedback3, feedback2, text.feedback1;
 ]
-/ trialduration = 700
+/ trialduration = 699
 // correctresponse = (next) // testing only
 / recorddata = true
 / ontrialend = [

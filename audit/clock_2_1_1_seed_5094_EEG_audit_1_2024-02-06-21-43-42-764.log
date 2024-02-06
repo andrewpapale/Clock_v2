@@ -1,0 +1,7632 @@
+instruct 45
+block.presscont 45
+trial.reminder1 46
+text.reminder1 129
+picture.sampleErasureR 129
+picture.sampleErasureL 129
+text.next 129
+input response 754
+trial.reminder2 756
+text.reminder2 771
+picture.sampleAttentionR 771
+picture.sampleAttentionL 771
+text.next 771
+input response 1054
+trial.presscont 1055
+shape.dot1 1088
+shape.dot2 1088
+shape.dot3 1088
+shape.dot4 1088
+shape.dot5 1088
+shape.dot6 1088
+shape.dot7 1088
+shape.dot8 1088
+shape.dot9 1088
+shape.dot10 1088
+shape.dot11 1088
+shape.dot12 1088
+shape.dot13 1088
+shape.dot14 1088
+shape.dot15 1088
+shape.dot16 1088
+shape.dot17 1088
+shape.dot18 1088
+shape.dot19 1088
+shape.dot20 1088
+shape.dot21 1088
+shape.dot22 1088
+shape.dot23 1088
+shape.dot24 1088
+shape.dot25 1088
+shape.dot26 1088
+shape.dot27 1088
+shape.dot28 1088
+shape.dot29 1088
+shape.dot30 1088
+shape.dot31 1088
+shape.dot32 1088
+shape.dot33 1088
+shape.dot34 1088
+shape.dot35 1088
+shape.dot36 1088
+shape.dot37 1088
+shape.dot38 1088
+shape.dot39 1088
+shape.dot40 1088
+shape.dot41 1088
+shape.dot42 1088
+shape.dot43 1088
+shape.dot44 1088
+shape.dot45 1088
+shape.dot46 1088
+shape.dot47 1088
+shape.dot48 1088
+shape.dot49 1088
+shape.dot50 1088
+shape.dot51 1088
+shape.dot52 1088
+shape.dot53 1088
+shape.dot54 1088
+shape.dot55 1088
+shape.dot56 1088
+shape.dot57 1088
+shape.dot58 1088
+shape.dot59 1088
+shape.dot60 1088
+text.presscont 1088
+input response 3242
+trial.scanner_sync 3244
+text.waiting 3255
+input response 4530
+trial.countdown 4532
+text.three 4537
+text.two 5537
+text.one 6537
+input response 7537
+block.experiment 7539
+trial.ITI 7539
+picture.fixationCross 7556
+shape.dot1 7556
+shape.dot2 7556
+shape.dot3 7556
+shape.dot4 7556
+shape.dot5 7556
+shape.dot6 7556
+shape.dot7 7556
+shape.dot8 7556
+shape.dot9 7556
+shape.dot10 7556
+shape.dot11 7556
+shape.dot12 7556
+shape.dot13 7556
+shape.dot14 7556
+shape.dot15 7556
+shape.dot16 7556
+shape.dot17 7556
+shape.dot18 7556
+shape.dot19 7556
+shape.dot20 7556
+shape.dot21 7556
+shape.dot22 7556
+shape.dot23 7556
+shape.dot24 7556
+shape.dot25 7556
+shape.dot26 7556
+shape.dot27 7556
+shape.dot28 7556
+shape.dot29 7556
+shape.dot30 7556
+shape.dot31 7556
+shape.dot32 7556
+shape.dot33 7556
+shape.dot34 7556
+shape.dot35 7556
+shape.dot36 7556
+shape.dot37 7556
+shape.dot38 7556
+shape.dot39 7556
+shape.dot40 7556
+shape.dot41 7556
+shape.dot42 7556
+shape.dot43 7556
+shape.dot44 7556
+shape.dot45 7556
+shape.dot46 7556
+shape.dot47 7556
+shape.dot48 7556
+shape.dot49 7556
+shape.dot50 7556
+shape.dot51 7556
+shape.dot52 7556
+shape.dot53 7556
+shape.dot54 7556
+shape.dot55 7556
+shape.dot56 7556
+shape.dot57 7556
+shape.dot58 7556
+shape.dot59 7556
+shape.dot60 7556
+input response 8037
+trial.constructSpline 8037
+input response 8038
+trial.interpolateSpline 8038
+input response 8038
+trial.interpolateSpline 8038
+input response 8038
+trial.interpolateSpline 8038
+input response 8038
+trial.interpolateSpline 8038
+input response 8038
+trial.interpolateSpline 8038
+input response 8038
+trial.interpolateSpline 8039
+input response 8039
+trial.interpolateSpline 8039
+input response 8039
+trial.interpolateSpline 8039
+input response 8039
+trial.interpolateSpline 8039
+input response 8039
+trial.interpolateSpline 8039
+input response 8039
+trial.interpolateSpline 8039
+input response 8039
+trial.interpolateSpline 8039
+input response 8039
+trial.interpolateSpline 8039
+input response 8039
+trial.interpolateSpline 8039
+input response 8039
+trial.interpolateSpline 8039
+input response 8039
+trial.interpolateSpline 8039
+input response 8039
+trial.interpolateSpline 8039
+input response 8039
+trial.interpolateSpline 8039
+input response 8039
+trial.interpolateSpline 8040
+input response 8040
+trial.interpolateSpline 8040
+input response 8040
+trial.interpolateSpline 8040
+input response 8040
+trial.interpolateSpline 8040
+input response 8040
+trial.interpolateSpline 8040
+input response 8040
+trial.interpolateSpline 8040
+input response 8040
+trial.interpolateSpline 8040
+input response 8040
+trial.interpolateSpline 8040
+input response 8040
+trial.interpolateSpline 8040
+input response 8040
+trial.interpolateSpline 8040
+input response 8040
+trial.interpolateSpline 8040
+input response 8040
+trial.interpolateSpline 8040
+input response 8040
+trial.interpolateSpline 8040
+input response 8040
+trial.resetCounters 8040
+input response 8040
+trial.constructValueVector2 8040
+input response 8040
+trial.constructValueVector2 8040
+input response 8040
+trial.constructValueVector2 8040
+input response 8040
+trial.constructValueVector2 8040
+input response 8040
+trial.constructValueVector2 8040
+input response 8040
+trial.constructValueVector2 8040
+input response 8040
+trial.constructValueVector2 8041
+input response 8041
+trial.constructValueVector2 8041
+input response 8041
+trial.constructValueVector2 8041
+input response 8041
+trial.constructValueVector2 8041
+input response 8041
+trial.constructValueVector2 8041
+input response 8041
+trial.constructValueVector2 8041
+input response 8041
+trial.constructValueVector2 8041
+input response 8041
+trial.constructValueVector2 8041
+input response 8041
+trial.constructValueVector2 8041
+input response 8041
+trial.constructValueVector2 8041
+input response 8041
+trial.constructValueVector2 8041
+input response 8041
+trial.constructValueVector2 8041
+input response 8041
+trial.constructValueVector2 8041
+input response 8041
+trial.constructValueVector2 8041
+input response 8041
+trial.constructValueVector2 8041
+input response 8041
+trial.constructValueVector2 8041
+input response 8041
+trial.constructValueVector2 8041
+input response 8041
+trial.constructValueVector2 8041
+input response 8041
+trial.constructValueVector2 8041
+input response 8041
+trial.constructValueVector2 8041
+input response 8041
+trial.constructValueVector2 8041
+input response 8041
+trial.constructValueVector2 8042
+input response 8042
+trial.constructValueVector2 8042
+input response 8042
+trial.constructValueVector2 8042
+input response 8042
+trial.constructValueVector2 8042
+input response 8042
+trial.resetCounters3 8042
+input response 8042
+trial.preFreeze 8042
+picture.planet 8072
+picture.stim 8072
+shape.dot1 8072
+shape.dot2 8072
+shape.dot3 8072
+shape.dot4 8072
+shape.dot5 8072
+shape.dot6 8072
+shape.dot7 8072
+shape.dot8 8072
+shape.dot9 8072
+shape.dot10 8072
+shape.dot11 8072
+shape.dot12 8072
+shape.dot13 8072
+shape.dot14 8072
+shape.dot15 8072
+shape.dot16 8072
+shape.dot17 8072
+shape.dot18 8072
+shape.dot19 8072
+shape.dot20 8072
+shape.dot21 8072
+shape.dot22 8072
+shape.dot23 8072
+shape.dot24 8072
+shape.dot25 8072
+shape.dot26 8072
+shape.dot27 8072
+shape.dot28 8072
+shape.dot29 8072
+shape.dot30 8072
+shape.dot31 8072
+shape.dot32 8072
+shape.dot33 8072
+shape.dot34 8072
+shape.dot35 8072
+shape.dot36 8072
+shape.dot37 8072
+shape.dot38 8072
+shape.dot39 8072
+shape.dot40 8072
+shape.dot41 8072
+shape.dot42 8072
+shape.dot43 8072
+shape.dot44 8072
+shape.dot45 8072
+shape.dot46 8072
+shape.dot47 8072
+shape.dot48 8072
+shape.dot49 8072
+shape.dot50 8072
+shape.dot51 8072
+shape.dot52 8072
+shape.dot53 8072
+shape.dot54 8072
+shape.dot55 8072
+shape.dot56 8072
+shape.dot57 8072
+shape.dot58 8072
+shape.dot59 8072
+shape.dot60 8072
+picture.frozenShip 8072
+input response 8737
+trial.clock 8738
+picture.animatedCircle 8758
+picture.stim 8758
+shape.dot1 8758
+shape.dot2 8758
+shape.dot3 8758
+shape.dot4 8758
+shape.dot5 8758
+shape.dot6 8758
+shape.dot7 8758
+shape.dot8 8758
+shape.dot9 8758
+shape.dot10 8758
+shape.dot11 8758
+shape.dot12 8758
+shape.dot13 8758
+shape.dot14 8758
+shape.dot15 8758
+shape.dot16 8758
+shape.dot17 8758
+shape.dot18 8758
+shape.dot19 8758
+shape.dot20 8758
+shape.dot21 8758
+shape.dot22 8758
+shape.dot23 8758
+shape.dot24 8758
+shape.dot25 8758
+shape.dot26 8758
+shape.dot27 8758
+shape.dot28 8758
+shape.dot29 8758
+shape.dot30 8758
+shape.dot31 8758
+shape.dot32 8758
+shape.dot33 8758
+shape.dot34 8758
+shape.dot35 8758
+shape.dot36 8758
+shape.dot37 8758
+shape.dot38 8758
+shape.dot39 8758
+shape.dot40 8758
+shape.dot41 8758
+shape.dot42 8758
+shape.dot43 8758
+shape.dot44 8759
+shape.dot45 8759
+shape.dot46 8759
+shape.dot47 8759
+shape.dot48 8759
+shape.dot49 8759
+shape.dot50 8759
+shape.dot51 8759
+shape.dot52 8759
+shape.dot53 8759
+shape.dot54 8759
+shape.dot55 8759
+shape.dot56 8759
+shape.dot57 8759
+shape.dot58 8759
+shape.dot59 8759
+shape.dot60 8759
+input response 10458
+trial.ISI 10475
+picture.stim 10499
+picture.planet 10499
+shape.dot1 10499
+shape.dot2 10499
+shape.dot3 10499
+shape.dot4 10499
+shape.dot5 10499
+shape.dot6 10499
+shape.dot7 10499
+shape.dot8 10499
+shape.dot9 10499
+shape.dot10 10499
+shape.dot11 10499
+shape.dot12 10499
+shape.dot13 10499
+shape.dot14 10499
+shape.dot15 10499
+shape.dot16 10499
+shape.dot17 10499
+shape.dot18 10499
+shape.dot19 10499
+shape.dot20 10499
+shape.dot21 10499
+shape.dot22 10499
+shape.dot23 10499
+shape.dot24 10499
+shape.dot25 10499
+shape.dot26 10499
+shape.dot27 10499
+shape.dot28 10499
+shape.dot29 10499
+shape.dot30 10499
+shape.dot31 10499
+shape.dot32 10499
+shape.dot33 10499
+shape.dot34 10499
+shape.dot35 10499
+shape.dot36 10499
+shape.dot37 10499
+shape.dot38 10499
+shape.dot39 10499
+shape.dot40 10499
+shape.dot41 10499
+shape.dot42 10499
+shape.dot43 10499
+shape.dot44 10499
+shape.dot45 10499
+shape.dot46 10499
+shape.dot47 10499
+shape.dot48 10499
+shape.dot49 10499
+shape.dot50 10499
+shape.dot51 10499
+shape.dot52 10499
+shape.dot53 10499
+shape.dot54 10499
+shape.dot55 10499
+shape.dot56 10499
+shape.dot57 10499
+shape.dot58 10499
+shape.dot59 10499
+shape.dot60 10499
+picture.frozenShip 10499
+input response 11065
+trial.feedback 11066
+picture.feedback3 11073
+picture.feedback2 11073
+text.feedback1 11073
+input response 11769
+trial.ITI 11770
+picture.fixationCross 11773
+shape.dot1 11773
+shape.dot2 11773
+shape.dot3 11773
+shape.dot4 11773
+shape.dot5 11773
+shape.dot6 11773
+shape.dot7 11773
+shape.dot8 11773
+shape.dot9 11773
+shape.dot10 11773
+shape.dot11 11773
+shape.dot12 11773
+shape.dot13 11773
+shape.dot14 11773
+shape.dot15 11773
+shape.dot16 11773
+shape.dot17 11773
+shape.dot18 11773
+shape.dot19 11773
+shape.dot20 11773
+shape.dot21 11773
+shape.dot22 11773
+shape.dot23 11773
+shape.dot24 11773
+shape.dot25 11773
+shape.dot26 11773
+shape.dot27 11773
+shape.dot28 11773
+shape.dot29 11773
+shape.dot30 11773
+shape.dot31 11773
+shape.dot32 11773
+shape.dot33 11773
+shape.dot34 11773
+shape.dot35 11773
+shape.dot36 11773
+shape.dot37 11773
+shape.dot38 11773
+shape.dot39 11773
+shape.dot40 11773
+shape.dot41 11773
+shape.dot42 11773
+shape.dot43 11773
+shape.dot44 11773
+shape.dot45 11773
+shape.dot46 11773
+shape.dot47 11773
+shape.dot48 11773
+shape.dot49 11773
+shape.dot50 11773
+shape.dot51 11773
+shape.dot52 11773
+shape.dot53 11773
+shape.dot54 11773
+shape.dot55 11773
+shape.dot56 11773
+shape.dot57 11773
+shape.dot58 11773
+shape.dot59 11773
+shape.dot60 11773
+input response 12205
+trial.constructSpline 12205
+input response 12206
+trial.interpolateSpline 12206
+input response 12206
+trial.interpolateSpline 12206
+input response 12206
+trial.interpolateSpline 12206
+input response 12206
+trial.interpolateSpline 12206
+input response 12206
+trial.interpolateSpline 12206
+input response 12206
+trial.interpolateSpline 12207
+input response 12207
+trial.interpolateSpline 12207
+input response 12207
+trial.interpolateSpline 12207
+input response 12207
+trial.interpolateSpline 12207
+input response 12207
+trial.interpolateSpline 12207
+input response 12207
+trial.interpolateSpline 12207
+input response 12207
+trial.interpolateSpline 12207
+input response 12207
+trial.interpolateSpline 12207
+input response 12207
+trial.interpolateSpline 12207
+input response 12207
+trial.interpolateSpline 12208
+input response 12208
+trial.interpolateSpline 12208
+input response 12208
+trial.interpolateSpline 12208
+input response 12208
+trial.interpolateSpline 12208
+input response 12208
+trial.interpolateSpline 12208
+input response 12208
+trial.interpolateSpline 12208
+input response 12208
+trial.interpolateSpline 12208
+input response 12208
+trial.interpolateSpline 12208
+input response 12208
+trial.interpolateSpline 12208
+input response 12208
+trial.interpolateSpline 12208
+input response 12208
+trial.interpolateSpline 12208
+input response 12208
+trial.interpolateSpline 12208
+input response 12208
+trial.interpolateSpline 12208
+input response 12208
+trial.interpolateSpline 12208
+input response 12208
+trial.interpolateSpline 12208
+input response 12208
+trial.interpolateSpline 12208
+input response 12208
+trial.interpolateSpline 12208
+input response 12208
+trial.resetCounters 12208
+input response 12208
+trial.constructValueVector2 12208
+input response 12208
+trial.constructValueVector2 12208
+input response 12208
+trial.constructValueVector2 12208
+input response 12208
+trial.constructValueVector2 12209
+input response 12209
+trial.constructValueVector2 12209
+input response 12209
+trial.constructValueVector2 12209
+input response 12209
+trial.constructValueVector2 12209
+input response 12209
+trial.constructValueVector2 12209
+input response 12209
+trial.constructValueVector2 12209
+input response 12209
+trial.constructValueVector2 12209
+input response 12209
+trial.constructValueVector2 12209
+input response 12209
+trial.constructValueVector2 12209
+input response 12209
+trial.constructValueVector2 12209
+input response 12209
+trial.constructValueVector2 12209
+input response 12209
+trial.constructValueVector2 12209
+input response 12209
+trial.constructValueVector2 12209
+input response 12209
+trial.constructValueVector2 12209
+input response 12209
+trial.constructValueVector2 12209
+input response 12209
+trial.constructValueVector2 12209
+input response 12209
+trial.constructValueVector2 12209
+input response 12209
+trial.constructValueVector2 12209
+input response 12209
+trial.constructValueVector2 12209
+input response 12209
+trial.constructValueVector2 12209
+input response 12209
+trial.constructValueVector2 12209
+input response 12210
+trial.constructValueVector2 12210
+input response 12210
+trial.constructValueVector2 12210
+input response 12210
+trial.constructValueVector2 12210
+input response 12210
+trial.constructValueVector2 12210
+input response 12210
+trial.constructValueVector2 12210
+input response 12210
+trial.constructValueVector2 12210
+input response 12210
+trial.constructValueVector2 12210
+input response 12210
+trial.resetCounters3 12210
+input response 12210
+trial.preFreeze 12210
+picture.planet 12224
+picture.stim 12224
+shape.dot1 12224
+shape.dot2 12224
+shape.dot3 12224
+shape.dot4 12224
+shape.dot5 12224
+shape.dot6 12224
+shape.dot7 12224
+shape.dot8 12224
+shape.dot9 12224
+shape.dot10 12224
+shape.dot11 12224
+shape.dot12 12224
+shape.dot13 12224
+shape.dot14 12224
+shape.dot15 12224
+shape.dot16 12224
+shape.dot17 12224
+shape.dot18 12224
+shape.dot19 12224
+shape.dot20 12224
+shape.dot21 12224
+shape.dot22 12224
+shape.dot23 12224
+shape.dot24 12224
+shape.dot25 12224
+shape.dot26 12224
+shape.dot27 12224
+shape.dot28 12224
+shape.dot29 12224
+shape.dot30 12224
+shape.dot31 12224
+shape.dot32 12224
+shape.dot33 12224
+shape.dot34 12224
+shape.dot35 12224
+shape.dot36 12224
+shape.dot37 12224
+shape.dot38 12224
+shape.dot39 12224
+shape.dot40 12224
+shape.dot41 12224
+shape.dot42 12224
+shape.dot43 12224
+shape.dot44 12224
+shape.dot45 12224
+shape.dot46 12224
+shape.dot47 12224
+shape.dot48 12224
+shape.dot49 12224
+shape.dot50 12224
+shape.dot51 12224
+shape.dot52 12224
+shape.dot53 12224
+shape.dot54 12224
+shape.dot55 12224
+shape.dot56 12224
+shape.dot57 12224
+shape.dot58 12224
+shape.dot59 12224
+shape.dot60 12224
+picture.frozenShip 12224
+input response 12873
+trial.clock 12874
+picture.animatedCircle 12891
+picture.stim 12891
+shape.dot1 12891
+shape.dot2 12891
+shape.dot3 12891
+shape.dot4 12891
+shape.dot5 12891
+shape.dot6 12891
+shape.dot7 12891
+shape.dot8 12891
+shape.dot9 12891
+shape.dot10 12891
+shape.dot11 12891
+shape.dot12 12891
+shape.dot13 12891
+shape.dot14 12891
+shape.dot15 12891
+shape.dot16 12891
+shape.dot17 12891
+shape.dot18 12891
+shape.dot19 12891
+shape.dot20 12891
+shape.dot21 12891
+shape.dot22 12891
+shape.dot23 12891
+shape.dot24 12891
+shape.dot25 12891
+shape.dot26 12891
+shape.dot27 12891
+shape.dot28 12891
+shape.dot29 12891
+shape.dot30 12891
+shape.dot31 12891
+shape.dot32 12891
+shape.dot33 12891
+shape.dot34 12891
+shape.dot35 12891
+shape.dot36 12891
+shape.dot37 12891
+shape.dot38 12891
+shape.dot39 12891
+shape.dot40 12891
+shape.dot41 12891
+shape.dot42 12891
+shape.dot43 12891
+shape.dot44 12891
+shape.dot45 12891
+shape.dot46 12891
+shape.dot47 12891
+shape.dot48 12891
+shape.dot49 12891
+shape.dot50 12891
+shape.dot51 12891
+shape.dot52 12891
+shape.dot53 12891
+shape.dot54 12891
+shape.dot55 12891
+shape.dot56 12891
+shape.dot57 12891
+shape.dot58 12891
+shape.dot59 12891
+shape.dot60 12891
+input response 14435
+trial.ISI 14451
+picture.stim 14466
+picture.planet 14466
+shape.dot1 14466
+shape.dot2 14466
+shape.dot3 14466
+shape.dot4 14466
+shape.dot5 14466
+shape.dot6 14466
+shape.dot7 14466
+shape.dot8 14466
+shape.dot9 14466
+shape.dot10 14466
+shape.dot11 14466
+shape.dot12 14466
+shape.dot13 14466
+shape.dot14 14466
+shape.dot15 14466
+shape.dot16 14466
+shape.dot17 14466
+shape.dot18 14466
+shape.dot19 14466
+shape.dot20 14466
+shape.dot21 14466
+shape.dot22 14466
+shape.dot23 14466
+shape.dot24 14466
+shape.dot25 14466
+shape.dot26 14466
+shape.dot27 14466
+shape.dot28 14466
+shape.dot29 14466
+shape.dot30 14466
+shape.dot31 14466
+shape.dot32 14466
+shape.dot33 14466
+shape.dot34 14466
+shape.dot35 14466
+shape.dot36 14466
+shape.dot37 14466
+shape.dot38 14466
+shape.dot39 14466
+shape.dot40 14466
+shape.dot41 14466
+shape.dot42 14466
+shape.dot43 14466
+shape.dot44 14466
+shape.dot45 14466
+shape.dot46 14466
+shape.dot47 14466
+shape.dot48 14466
+shape.dot49 14466
+shape.dot50 14466
+shape.dot51 14466
+shape.dot52 14466
+shape.dot53 14466
+shape.dot54 14466
+shape.dot55 14466
+shape.dot56 14466
+shape.dot57 14466
+shape.dot58 14466
+shape.dot59 14466
+shape.dot60 14466
+picture.frozenShip 14466
+input response 14765
+trial.feedback 14767
+picture.feedback3 14774
+picture.feedback2 14775
+text.feedback1 14775
+input response 15467
+trial.ITI 15468
+picture.fixationCross 15474
+shape.dot1 15474
+shape.dot2 15474
+shape.dot3 15474
+shape.dot4 15474
+shape.dot5 15474
+shape.dot6 15474
+shape.dot7 15474
+shape.dot8 15474
+shape.dot9 15474
+shape.dot10 15474
+shape.dot11 15474
+shape.dot12 15474
+shape.dot13 15474
+shape.dot14 15474
+shape.dot15 15474
+shape.dot16 15474
+shape.dot17 15474
+shape.dot18 15474
+shape.dot19 15474
+shape.dot20 15474
+shape.dot21 15474
+shape.dot22 15474
+shape.dot23 15474
+shape.dot24 15474
+shape.dot25 15474
+shape.dot26 15474
+shape.dot27 15474
+shape.dot28 15474
+shape.dot29 15474
+shape.dot30 15474
+shape.dot31 15474
+shape.dot32 15474
+shape.dot33 15474
+shape.dot34 15474
+shape.dot35 15474
+shape.dot36 15474
+shape.dot37 15474
+shape.dot38 15474
+shape.dot39 15474
+shape.dot40 15474
+shape.dot41 15474
+shape.dot42 15474
+shape.dot43 15474
+shape.dot44 15474
+shape.dot45 15474
+shape.dot46 15474
+shape.dot47 15474
+shape.dot48 15474
+shape.dot49 15474
+shape.dot50 15474
+shape.dot51 15474
+shape.dot52 15474
+shape.dot53 15474
+shape.dot54 15474
+shape.dot55 15474
+shape.dot56 15474
+shape.dot57 15474
+shape.dot58 15474
+shape.dot59 15474
+shape.dot60 15474
+input response 15819
+trial.constructSpline 15820
+input response 15820
+trial.interpolateSpline 15820
+input response 15820
+trial.interpolateSpline 15820
+input response 15820
+trial.interpolateSpline 15820
+input response 15820
+trial.interpolateSpline 15820
+input response 15820
+trial.interpolateSpline 15821
+input response 15821
+trial.interpolateSpline 15822
+input response 15822
+trial.interpolateSpline 15822
+input response 15822
+trial.interpolateSpline 15822
+input response 15822
+trial.interpolateSpline 15822
+input response 15822
+trial.interpolateSpline 15822
+input response 15822
+trial.interpolateSpline 15822
+input response 15822
+trial.interpolateSpline 15822
+input response 15822
+trial.interpolateSpline 15822
+input response 15822
+trial.interpolateSpline 15822
+input response 15822
+trial.interpolateSpline 15822
+input response 15822
+trial.interpolateSpline 15822
+input response 15822
+trial.interpolateSpline 15822
+input response 15822
+trial.interpolateSpline 15822
+input response 15822
+trial.interpolateSpline 15822
+input response 15822
+trial.interpolateSpline 15822
+input response 15822
+trial.interpolateSpline 15822
+input response 15822
+trial.interpolateSpline 15822
+input response 15822
+trial.interpolateSpline 15822
+input response 15822
+trial.interpolateSpline 15822
+input response 15822
+trial.interpolateSpline 15822
+input response 15823
+trial.interpolateSpline 15823
+input response 15823
+trial.interpolateSpline 15823
+input response 15823
+trial.interpolateSpline 15823
+input response 15823
+trial.interpolateSpline 15823
+input response 15823
+trial.interpolateSpline 15823
+input response 15823
+trial.interpolateSpline 15823
+input response 15823
+trial.resetCounters 15823
+input response 15823
+trial.constructValueVector2 15823
+input response 15823
+trial.constructValueVector2 15823
+input response 15823
+trial.constructValueVector2 15823
+input response 15823
+trial.constructValueVector2 15823
+input response 15823
+trial.constructValueVector2 15823
+input response 15823
+trial.constructValueVector2 15823
+input response 15823
+trial.constructValueVector2 15823
+input response 15823
+trial.constructValueVector2 15823
+input response 15823
+trial.constructValueVector2 15823
+input response 15823
+trial.constructValueVector2 15823
+input response 15823
+trial.constructValueVector2 15823
+input response 15823
+trial.constructValueVector2 15823
+input response 15823
+trial.constructValueVector2 15823
+input response 15823
+trial.constructValueVector2 15823
+input response 15824
+trial.constructValueVector2 15824
+input response 15824
+trial.constructValueVector2 15824
+input response 15824
+trial.constructValueVector2 15824
+input response 15824
+trial.constructValueVector2 15824
+input response 15824
+trial.constructValueVector2 15824
+input response 15824
+trial.constructValueVector2 15824
+input response 15824
+trial.constructValueVector2 15824
+input response 15824
+trial.constructValueVector2 15824
+input response 15824
+trial.constructValueVector2 15824
+input response 15824
+trial.constructValueVector2 15824
+input response 15824
+trial.constructValueVector2 15824
+input response 15824
+trial.constructValueVector2 15824
+input response 15824
+trial.constructValueVector2 15824
+input response 15824
+trial.constructValueVector2 15824
+input response 15824
+trial.constructValueVector2 15824
+input response 15824
+trial.constructValueVector2 15824
+input response 15824
+trial.constructValueVector2 15824
+input response 15824
+trial.resetCounters3 15824
+input response 15824
+trial.preFreeze 15824
+picture.planet 15842
+picture.stim 15842
+shape.dot1 15842
+shape.dot2 15842
+shape.dot3 15842
+shape.dot4 15842
+shape.dot5 15842
+shape.dot6 15842
+shape.dot7 15842
+shape.dot8 15842
+shape.dot9 15842
+shape.dot10 15842
+shape.dot11 15842
+shape.dot12 15842
+shape.dot13 15842
+shape.dot14 15842
+shape.dot15 15842
+shape.dot16 15842
+shape.dot17 15842
+shape.dot18 15842
+shape.dot19 15842
+shape.dot20 15842
+shape.dot21 15842
+shape.dot22 15842
+shape.dot23 15842
+shape.dot24 15842
+shape.dot25 15842
+shape.dot26 15842
+shape.dot27 15842
+shape.dot28 15842
+shape.dot29 15842
+shape.dot30 15842
+shape.dot31 15842
+shape.dot32 15842
+shape.dot33 15842
+shape.dot34 15842
+shape.dot35 15842
+shape.dot36 15842
+shape.dot37 15842
+shape.dot38 15842
+shape.dot39 15842
+shape.dot40 15842
+shape.dot41 15842
+shape.dot42 15842
+shape.dot43 15842
+shape.dot44 15842
+shape.dot45 15842
+shape.dot46 15842
+shape.dot47 15842
+shape.dot48 15842
+shape.dot49 15842
+shape.dot50 15842
+shape.dot51 15842
+shape.dot52 15842
+shape.dot53 15842
+shape.dot54 15842
+shape.dot55 15842
+shape.dot56 15842
+shape.dot57 15842
+shape.dot58 15842
+shape.dot59 15842
+shape.dot60 15842
+picture.frozenShip 15842
+input response 16374
+trial.clock 16374
+picture.animatedCircle 16400
+picture.stim 16400
+shape.dot1 16400
+shape.dot2 16400
+shape.dot3 16400
+shape.dot4 16400
+shape.dot5 16400
+shape.dot6 16400
+shape.dot7 16400
+shape.dot8 16400
+shape.dot9 16400
+shape.dot10 16400
+shape.dot11 16400
+shape.dot12 16400
+shape.dot13 16400
+shape.dot14 16400
+shape.dot15 16400
+shape.dot16 16400
+shape.dot17 16400
+shape.dot18 16400
+shape.dot19 16400
+shape.dot20 16400
+shape.dot21 16400
+shape.dot22 16400
+shape.dot23 16400
+shape.dot24 16400
+shape.dot25 16400
+shape.dot26 16400
+shape.dot27 16400
+shape.dot28 16400
+shape.dot29 16400
+shape.dot30 16400
+shape.dot31 16400
+shape.dot32 16400
+shape.dot33 16400
+shape.dot34 16400
+shape.dot35 16400
+shape.dot36 16400
+shape.dot37 16400
+shape.dot38 16400
+shape.dot39 16400
+shape.dot40 16400
+shape.dot41 16400
+shape.dot42 16400
+shape.dot43 16400
+shape.dot44 16400
+shape.dot45 16400
+shape.dot46 16400
+shape.dot47 16400
+shape.dot48 16400
+shape.dot49 16400
+shape.dot50 16400
+shape.dot51 16400
+shape.dot52 16400
+shape.dot53 16400
+shape.dot54 16400
+shape.dot55 16400
+shape.dot56 16400
+shape.dot57 16400
+shape.dot58 16400
+shape.dot59 16400
+shape.dot60 16400
+input response 18418
+trial.ISI 18435
+picture.stim 18468
+picture.planet 18468
+shape.dot1 18468
+shape.dot2 18468
+shape.dot3 18468
+shape.dot4 18468
+shape.dot5 18468
+shape.dot6 18468
+shape.dot7 18468
+shape.dot8 18468
+shape.dot9 18468
+shape.dot10 18468
+shape.dot11 18468
+shape.dot12 18468
+shape.dot13 18468
+shape.dot14 18468
+shape.dot15 18468
+shape.dot16 18468
+shape.dot17 18468
+shape.dot18 18468
+shape.dot19 18468
+shape.dot20 18468
+shape.dot21 18468
+shape.dot22 18468
+shape.dot23 18468
+shape.dot24 18468
+shape.dot25 18468
+shape.dot26 18468
+shape.dot27 18468
+shape.dot28 18468
+shape.dot29 18468
+shape.dot30 18468
+shape.dot31 18468
+shape.dot32 18468
+shape.dot33 18468
+shape.dot34 18468
+shape.dot35 18468
+shape.dot36 18468
+shape.dot37 18468
+shape.dot38 18468
+shape.dot39 18468
+shape.dot40 18468
+shape.dot41 18468
+shape.dot42 18468
+shape.dot43 18468
+shape.dot44 18468
+shape.dot45 18468
+shape.dot46 18468
+shape.dot47 18468
+shape.dot48 18468
+shape.dot49 18468
+shape.dot50 18468
+shape.dot51 18468
+shape.dot52 18468
+shape.dot53 18468
+shape.dot54 18468
+shape.dot55 18468
+shape.dot56 18468
+shape.dot57 18468
+shape.dot58 18468
+shape.dot59 18468
+shape.dot60 18468
+picture.frozenShip 18468
+input response 18884
+trial.feedback 18885
+picture.feedback3 18892
+picture.feedback2 18892
+text.feedback1 18892
+input response 19585
+trial.ITI 19586
+picture.fixationCross 19592
+shape.dot1 19592
+shape.dot2 19592
+shape.dot3 19592
+shape.dot4 19592
+shape.dot5 19592
+shape.dot6 19592
+shape.dot7 19592
+shape.dot8 19592
+shape.dot9 19592
+shape.dot10 19592
+shape.dot11 19592
+shape.dot12 19592
+shape.dot13 19592
+shape.dot14 19592
+shape.dot15 19592
+shape.dot16 19592
+shape.dot17 19592
+shape.dot18 19592
+shape.dot19 19592
+shape.dot20 19592
+shape.dot21 19592
+shape.dot22 19592
+shape.dot23 19592
+shape.dot24 19592
+shape.dot25 19592
+shape.dot26 19592
+shape.dot27 19592
+shape.dot28 19592
+shape.dot29 19592
+shape.dot30 19592
+shape.dot31 19592
+shape.dot32 19592
+shape.dot33 19592
+shape.dot34 19592
+shape.dot35 19592
+shape.dot36 19592
+shape.dot37 19592
+shape.dot38 19592
+shape.dot39 19592
+shape.dot40 19592
+shape.dot41 19592
+shape.dot42 19592
+shape.dot43 19592
+shape.dot44 19592
+shape.dot45 19592
+shape.dot46 19592
+shape.dot47 19592
+shape.dot48 19592
+shape.dot49 19592
+shape.dot50 19592
+shape.dot51 19592
+shape.dot52 19592
+shape.dot53 19592
+shape.dot54 19592
+shape.dot55 19592
+shape.dot56 19592
+shape.dot57 19592
+shape.dot58 19592
+shape.dot59 19592
+shape.dot60 19592
+input response 20056
+trial.constructSpline 20056
+input response 20057
+trial.interpolateSpline 20057
+input response 20057
+trial.interpolateSpline 20057
+input response 20057
+trial.interpolateSpline 20057
+input response 20057
+trial.interpolateSpline 20057
+input response 20057
+trial.interpolateSpline 20057
+input response 20057
+trial.interpolateSpline 20058
+input response 20058
+trial.interpolateSpline 20058
+input response 20058
+trial.interpolateSpline 20058
+input response 20058
+trial.interpolateSpline 20058
+input response 20058
+trial.interpolateSpline 20058
+input response 20058
+trial.interpolateSpline 20058
+input response 20059
+trial.interpolateSpline 20059
+input response 20059
+trial.interpolateSpline 20059
+input response 20059
+trial.interpolateSpline 20059
+input response 20059
+trial.interpolateSpline 20059
+input response 20059
+trial.interpolateSpline 20059
+input response 20059
+trial.interpolateSpline 20059
+input response 20059
+trial.interpolateSpline 20059
+input response 20059
+trial.interpolateSpline 20059
+input response 20059
+trial.interpolateSpline 20059
+input response 20059
+trial.interpolateSpline 20059
+input response 20059
+trial.interpolateSpline 20059
+input response 20059
+trial.interpolateSpline 20059
+input response 20059
+trial.interpolateSpline 20059
+input response 20059
+trial.interpolateSpline 20059
+input response 20059
+trial.interpolateSpline 20059
+input response 20059
+trial.interpolateSpline 20059
+input response 20059
+trial.interpolateSpline 20059
+input response 20059
+trial.interpolateSpline 20059
+input response 20059
+trial.interpolateSpline 20059
+input response 20059
+trial.interpolateSpline 20060
+input response 20060
+trial.resetCounters 20060
+input response 20060
+trial.constructValueVector2 20060
+input response 20060
+trial.constructValueVector2 20060
+input response 20060
+trial.constructValueVector2 20060
+input response 20060
+trial.constructValueVector2 20060
+input response 20060
+trial.constructValueVector2 20060
+input response 20060
+trial.constructValueVector2 20060
+input response 20060
+trial.constructValueVector2 20060
+input response 20060
+trial.constructValueVector2 20060
+input response 20060
+trial.constructValueVector2 20060
+input response 20060
+trial.constructValueVector2 20060
+input response 20060
+trial.constructValueVector2 20060
+input response 20060
+trial.constructValueVector2 20060
+input response 20060
+trial.constructValueVector2 20060
+input response 20060
+trial.constructValueVector2 20060
+input response 20060
+trial.constructValueVector2 20060
+input response 20060
+trial.constructValueVector2 20060
+input response 20060
+trial.constructValueVector2 20060
+input response 20060
+trial.constructValueVector2 20060
+input response 20060
+trial.constructValueVector2 20060
+input response 20061
+trial.constructValueVector2 20061
+input response 20061
+trial.constructValueVector2 20061
+input response 20061
+trial.constructValueVector2 20061
+input response 20061
+trial.constructValueVector2 20061
+input response 20061
+trial.constructValueVector2 20061
+input response 20061
+trial.constructValueVector2 20061
+input response 20061
+trial.constructValueVector2 20061
+input response 20061
+trial.constructValueVector2 20061
+input response 20061
+trial.constructValueVector2 20061
+input response 20061
+trial.constructValueVector2 20061
+input response 20061
+trial.constructValueVector2 20061
+input response 20061
+trial.constructValueVector2 20061
+input response 20061
+trial.resetCounters3 20061
+input response 20061
+trial.preFreeze 20061
+picture.planet 20076
+picture.stim 20076
+shape.dot1 20076
+shape.dot2 20076
+shape.dot3 20076
+shape.dot4 20076
+shape.dot5 20076
+shape.dot6 20076
+shape.dot7 20076
+shape.dot8 20076
+shape.dot9 20076
+shape.dot10 20076
+shape.dot11 20076
+shape.dot12 20076
+shape.dot13 20076
+shape.dot14 20076
+shape.dot15 20076
+shape.dot16 20076
+shape.dot17 20076
+shape.dot18 20076
+shape.dot19 20076
+shape.dot20 20076
+shape.dot21 20076
+shape.dot22 20076
+shape.dot23 20076
+shape.dot24 20076
+shape.dot25 20076
+shape.dot26 20076
+shape.dot27 20076
+shape.dot28 20076
+shape.dot29 20076
+shape.dot30 20076
+shape.dot31 20076
+shape.dot32 20076
+shape.dot33 20076
+shape.dot34 20076
+shape.dot35 20076
+shape.dot36 20076
+shape.dot37 20076
+shape.dot38 20076
+shape.dot39 20076
+shape.dot40 20076
+shape.dot41 20076
+shape.dot42 20076
+shape.dot43 20076
+shape.dot44 20076
+shape.dot45 20076
+shape.dot46 20076
+shape.dot47 20076
+shape.dot48 20076
+shape.dot49 20076
+shape.dot50 20076
+shape.dot51 20076
+shape.dot52 20076
+shape.dot53 20076
+shape.dot54 20076
+shape.dot55 20076
+shape.dot56 20076
+shape.dot57 20076
+shape.dot58 20076
+shape.dot59 20076
+shape.dot60 20076
+picture.frozenShip 20076
+input response 20592
+trial.clock 20593
+picture.animatedCircle 20609
+picture.stim 20609
+shape.dot1 20609
+shape.dot2 20609
+shape.dot3 20609
+shape.dot4 20609
+shape.dot5 20609
+shape.dot6 20609
+shape.dot7 20609
+shape.dot8 20609
+shape.dot9 20609
+shape.dot10 20609
+shape.dot11 20609
+shape.dot12 20609
+shape.dot13 20609
+shape.dot14 20609
+shape.dot15 20609
+shape.dot16 20609
+shape.dot17 20609
+shape.dot18 20609
+shape.dot19 20609
+shape.dot20 20609
+shape.dot21 20609
+shape.dot22 20609
+shape.dot23 20609
+shape.dot24 20609
+shape.dot25 20609
+shape.dot26 20609
+shape.dot27 20609
+shape.dot28 20609
+shape.dot29 20609
+shape.dot30 20609
+shape.dot31 20609
+shape.dot32 20609
+shape.dot33 20609
+shape.dot34 20609
+shape.dot35 20609
+shape.dot36 20609
+shape.dot37 20609
+shape.dot38 20609
+shape.dot39 20609
+shape.dot40 20609
+shape.dot41 20609
+shape.dot42 20609
+shape.dot43 20609
+shape.dot44 20609
+shape.dot45 20609
+shape.dot46 20609
+shape.dot47 20609
+shape.dot48 20609
+shape.dot49 20609
+shape.dot50 20609
+shape.dot51 20609
+shape.dot52 20609
+shape.dot53 20609
+shape.dot54 20609
+shape.dot55 20609
+shape.dot56 20609
+shape.dot57 20609
+shape.dot58 20609
+shape.dot59 20609
+shape.dot60 20609
+input response 22443
+trial.ISI 22459
+picture.stim 22485
+picture.planet 22485
+shape.dot1 22485
+shape.dot2 22485
+shape.dot3 22485
+shape.dot4 22485
+shape.dot5 22485
+shape.dot6 22485
+shape.dot7 22485
+shape.dot8 22485
+shape.dot9 22485
+shape.dot10 22485
+shape.dot11 22485
+shape.dot12 22485
+shape.dot13 22485
+shape.dot14 22485
+shape.dot15 22485
+shape.dot16 22485
+shape.dot17 22485
+shape.dot18 22485
+shape.dot19 22485
+shape.dot20 22485
+shape.dot21 22485
+shape.dot22 22485
+shape.dot23 22485
+shape.dot24 22485
+shape.dot25 22485
+shape.dot26 22485
+shape.dot27 22485
+shape.dot28 22485
+shape.dot29 22485
+shape.dot30 22485
+shape.dot31 22485
+shape.dot32 22485
+shape.dot33 22485
+shape.dot34 22485
+shape.dot35 22485
+shape.dot36 22485
+shape.dot37 22485
+shape.dot38 22485
+shape.dot39 22485
+shape.dot40 22485
+shape.dot41 22485
+shape.dot42 22485
+shape.dot43 22485
+shape.dot44 22485
+shape.dot45 22485
+shape.dot46 22485
+shape.dot47 22485
+shape.dot48 22485
+shape.dot49 22485
+shape.dot50 22485
+shape.dot51 22485
+shape.dot52 22485
+shape.dot53 22485
+shape.dot54 22485
+shape.dot55 22485
+shape.dot56 22485
+shape.dot57 22485
+shape.dot58 22485
+shape.dot59 22485
+shape.dot60 22485
+picture.frozenShip 22485
+input response 22801
+trial.feedback 22803
+picture.feedback3 22810
+picture.feedback2 22810
+text.feedback1 22810
+input response 23503
+trial.ITI 23504
+picture.fixationCross 23511
+shape.dot1 23511
+shape.dot2 23511
+shape.dot3 23511
+shape.dot4 23511
+shape.dot5 23511
+shape.dot6 23511
+shape.dot7 23511
+shape.dot8 23511
+shape.dot9 23511
+shape.dot10 23511
+shape.dot11 23511
+shape.dot12 23511
+shape.dot13 23511
+shape.dot14 23511
+shape.dot15 23511
+shape.dot16 23511
+shape.dot17 23511
+shape.dot18 23511
+shape.dot19 23511
+shape.dot20 23511
+shape.dot21 23511
+shape.dot22 23511
+shape.dot23 23511
+shape.dot24 23511
+shape.dot25 23511
+shape.dot26 23511
+shape.dot27 23511
+shape.dot28 23511
+shape.dot29 23511
+shape.dot30 23511
+shape.dot31 23511
+shape.dot32 23511
+shape.dot33 23511
+shape.dot34 23511
+shape.dot35 23511
+shape.dot36 23511
+shape.dot37 23511
+shape.dot38 23511
+shape.dot39 23511
+shape.dot40 23511
+shape.dot41 23511
+shape.dot42 23511
+shape.dot43 23511
+shape.dot44 23511
+shape.dot45 23511
+shape.dot46 23511
+shape.dot47 23511
+shape.dot48 23511
+shape.dot49 23511
+shape.dot50 23511
+shape.dot51 23511
+shape.dot52 23511
+shape.dot53 23511
+shape.dot54 23511
+shape.dot55 23511
+shape.dot56 23511
+shape.dot57 23511
+shape.dot58 23511
+shape.dot59 23511
+shape.dot60 23511
+input response 23724
+trial.constructSpline 23725
+input response 23725
+trial.interpolateSpline 23725
+input response 23725
+trial.interpolateSpline 23725
+input response 23725
+trial.interpolateSpline 23725
+input response 23725
+trial.interpolateSpline 23725
+input response 23725
+trial.interpolateSpline 23725
+input response 23725
+trial.interpolateSpline 23726
+input response 23726
+trial.interpolateSpline 23726
+input response 23726
+trial.interpolateSpline 23726
+input response 23726
+trial.interpolateSpline 23726
+input response 23727
+trial.interpolateSpline 23727
+input response 23727
+trial.interpolateSpline 23727
+input response 23727
+trial.interpolateSpline 23727
+input response 23727
+trial.interpolateSpline 23727
+input response 23727
+trial.interpolateSpline 23727
+input response 23727
+trial.interpolateSpline 23727
+input response 23727
+trial.interpolateSpline 23727
+input response 23727
+trial.interpolateSpline 23727
+input response 23727
+trial.interpolateSpline 23727
+input response 23727
+trial.interpolateSpline 23727
+input response 23727
+trial.interpolateSpline 23727
+input response 23727
+trial.interpolateSpline 23727
+input response 23727
+trial.interpolateSpline 23727
+input response 23727
+trial.interpolateSpline 23727
+input response 23727
+trial.interpolateSpline 23727
+input response 23727
+trial.interpolateSpline 23727
+input response 23727
+trial.interpolateSpline 23727
+input response 23727
+trial.interpolateSpline 23727
+input response 23727
+trial.interpolateSpline 23727
+input response 23727
+trial.interpolateSpline 23727
+input response 23728
+trial.interpolateSpline 23728
+input response 23728
+trial.interpolateSpline 23728
+input response 23728
+trial.resetCounters 23728
+input response 23728
+trial.constructValueVector2 23728
+input response 23728
+trial.constructValueVector2 23728
+input response 23728
+trial.constructValueVector2 23728
+input response 23728
+trial.constructValueVector2 23728
+input response 23728
+trial.constructValueVector2 23728
+input response 23728
+trial.constructValueVector2 23728
+input response 23728
+trial.constructValueVector2 23728
+input response 23728
+trial.constructValueVector2 23728
+input response 23728
+trial.constructValueVector2 23728
+input response 23728
+trial.constructValueVector2 23728
+input response 23728
+trial.constructValueVector2 23728
+input response 23728
+trial.constructValueVector2 23728
+input response 23728
+trial.constructValueVector2 23728
+input response 23728
+trial.constructValueVector2 23728
+input response 23728
+trial.constructValueVector2 23728
+input response 23728
+trial.constructValueVector2 23728
+input response 23728
+trial.constructValueVector2 23729
+input response 23729
+trial.constructValueVector2 23729
+input response 23729
+trial.constructValueVector2 23729
+input response 23729
+trial.constructValueVector2 23729
+input response 23729
+trial.constructValueVector2 23729
+input response 23729
+trial.constructValueVector2 23729
+input response 23729
+trial.constructValueVector2 23729
+input response 23729
+trial.constructValueVector2 23729
+input response 23729
+trial.constructValueVector2 23729
+input response 23729
+trial.constructValueVector2 23729
+input response 23729
+trial.constructValueVector2 23729
+input response 23729
+trial.constructValueVector2 23729
+input response 23729
+trial.constructValueVector2 23729
+input response 23729
+trial.constructValueVector2 23729
+input response 23729
+trial.constructValueVector2 23729
+input response 23729
+trial.resetCounters3 23729
+input response 23729
+trial.preFreeze 23729
+picture.planet 23744
+picture.stim 23744
+shape.dot1 23744
+shape.dot2 23744
+shape.dot3 23744
+shape.dot4 23744
+shape.dot5 23744
+shape.dot6 23744
+shape.dot7 23744
+shape.dot8 23744
+shape.dot9 23744
+shape.dot10 23744
+shape.dot11 23744
+shape.dot12 23744
+shape.dot13 23744
+shape.dot14 23744
+shape.dot15 23744
+shape.dot16 23744
+shape.dot17 23744
+shape.dot18 23744
+shape.dot19 23744
+shape.dot20 23744
+shape.dot21 23744
+shape.dot22 23744
+shape.dot23 23744
+shape.dot24 23744
+shape.dot25 23744
+shape.dot26 23744
+shape.dot27 23744
+shape.dot28 23744
+shape.dot29 23744
+shape.dot30 23744
+shape.dot31 23744
+shape.dot32 23744
+shape.dot33 23744
+shape.dot34 23744
+shape.dot35 23744
+shape.dot36 23744
+shape.dot37 23744
+shape.dot38 23744
+shape.dot39 23744
+shape.dot40 23744
+shape.dot41 23744
+shape.dot42 23744
+shape.dot43 23744
+shape.dot44 23744
+shape.dot45 23744
+shape.dot46 23744
+shape.dot47 23744
+shape.dot48 23744
+shape.dot49 23744
+shape.dot50 23744
+shape.dot51 23744
+shape.dot52 23744
+shape.dot53 23744
+shape.dot54 23744
+shape.dot55 23744
+shape.dot56 23744
+shape.dot57 23744
+shape.dot58 23744
+shape.dot59 23744
+shape.dot60 23744
+picture.frozenShip 23744
+input response 24326
+trial.clock 24327
+picture.animatedCircle 24344
+picture.stim 24344
+shape.dot1 24344
+shape.dot2 24344
+shape.dot3 24344
+shape.dot4 24344
+shape.dot5 24344
+shape.dot6 24344
+shape.dot7 24344
+shape.dot8 24344
+shape.dot9 24344
+shape.dot10 24344
+shape.dot11 24344
+shape.dot12 24344
+shape.dot13 24344
+shape.dot14 24344
+shape.dot15 24344
+shape.dot16 24344
+shape.dot17 24344
+shape.dot18 24344
+shape.dot19 24344
+shape.dot20 24344
+shape.dot21 24344
+shape.dot22 24344
+shape.dot23 24344
+shape.dot24 24344
+shape.dot25 24344
+shape.dot26 24344
+shape.dot27 24344
+shape.dot28 24344
+shape.dot29 24344
+shape.dot30 24344
+shape.dot31 24344
+shape.dot32 24344
+shape.dot33 24344
+shape.dot34 24344
+shape.dot35 24344
+shape.dot36 24344
+shape.dot37 24344
+shape.dot38 24344
+shape.dot39 24344
+shape.dot40 24344
+shape.dot41 24344
+shape.dot42 24344
+shape.dot43 24344
+shape.dot44 24344
+shape.dot45 24344
+shape.dot46 24344
+shape.dot47 24344
+shape.dot48 24344
+shape.dot49 24344
+shape.dot50 24344
+shape.dot51 24344
+shape.dot52 24344
+shape.dot53 24344
+shape.dot54 24344
+shape.dot55 24344
+shape.dot56 24344
+shape.dot57 24344
+shape.dot58 24344
+shape.dot59 24344
+shape.dot60 24344
+input response 26938
+trial.ISI 26955
+picture.stim 26970
+picture.planet 26970
+shape.dot1 26970
+shape.dot2 26970
+shape.dot3 26970
+shape.dot4 26970
+shape.dot5 26970
+shape.dot6 26970
+shape.dot7 26970
+shape.dot8 26970
+shape.dot9 26970
+shape.dot10 26970
+shape.dot11 26970
+shape.dot12 26970
+shape.dot13 26970
+shape.dot14 26970
+shape.dot15 26970
+shape.dot16 26970
+shape.dot17 26970
+shape.dot18 26970
+shape.dot19 26970
+shape.dot20 26970
+shape.dot21 26970
+shape.dot22 26970
+shape.dot23 26970
+shape.dot24 26970
+shape.dot25 26970
+shape.dot26 26970
+shape.dot27 26970
+shape.dot28 26970
+shape.dot29 26970
+shape.dot30 26970
+shape.dot31 26970
+shape.dot32 26970
+shape.dot33 26970
+shape.dot34 26970
+shape.dot35 26970
+shape.dot36 26970
+shape.dot37 26970
+shape.dot38 26970
+shape.dot39 26970
+shape.dot40 26970
+shape.dot41 26970
+shape.dot42 26970
+shape.dot43 26970
+shape.dot44 26970
+shape.dot45 26970
+shape.dot46 26970
+shape.dot47 26970
+shape.dot48 26970
+shape.dot49 26970
+shape.dot50 26970
+shape.dot51 26970
+shape.dot52 26970
+shape.dot53 26970
+shape.dot54 26970
+shape.dot55 26970
+shape.dot56 26970
+shape.dot57 26970
+shape.dot58 26970
+shape.dot59 26970
+shape.dot60 26970
+picture.frozenShip 26970
+input response 27552
+trial.feedback 27553
+picture.feedback3 27561
+picture.feedback2 27561
+text.feedback1 27561
+input response 28254
+trial.ITI 28255
+picture.fixationCross 28261
+shape.dot1 28261
+shape.dot2 28261
+shape.dot3 28261
+shape.dot4 28261
+shape.dot5 28261
+shape.dot6 28261
+shape.dot7 28261
+shape.dot8 28261
+shape.dot9 28261
+shape.dot10 28261
+shape.dot11 28261
+shape.dot12 28261
+shape.dot13 28261
+shape.dot14 28261
+shape.dot15 28261
+shape.dot16 28261
+shape.dot17 28261
+shape.dot18 28261
+shape.dot19 28261
+shape.dot20 28261
+shape.dot21 28261
+shape.dot22 28261
+shape.dot23 28261
+shape.dot24 28261
+shape.dot25 28261
+shape.dot26 28261
+shape.dot27 28261
+shape.dot28 28261
+shape.dot29 28261
+shape.dot30 28261
+shape.dot31 28261
+shape.dot32 28261
+shape.dot33 28261
+shape.dot34 28261
+shape.dot35 28261
+shape.dot36 28261
+shape.dot37 28261
+shape.dot38 28261
+shape.dot39 28261
+shape.dot40 28261
+shape.dot41 28261
+shape.dot42 28261
+shape.dot43 28261
+shape.dot44 28261
+shape.dot45 28261
+shape.dot46 28261
+shape.dot47 28261
+shape.dot48 28261
+shape.dot49 28261
+shape.dot50 28261
+shape.dot51 28261
+shape.dot52 28261
+shape.dot53 28261
+shape.dot54 28261
+shape.dot55 28261
+shape.dot56 28261
+shape.dot57 28261
+shape.dot58 28261
+shape.dot59 28261
+shape.dot60 28261
+input response 28539
+trial.constructSpline 28540
+input response 28540
+trial.interpolateSpline 28540
+input response 28540
+trial.interpolateSpline 28540
+input response 28540
+trial.interpolateSpline 28540
+input response 28540
+trial.interpolateSpline 28540
+input response 28540
+trial.interpolateSpline 28540
+input response 28540
+trial.interpolateSpline 28541
+input response 28541
+trial.interpolateSpline 28541
+input response 28542
+trial.interpolateSpline 28542
+input response 28542
+trial.interpolateSpline 28542
+input response 28542
+trial.interpolateSpline 28542
+input response 28542
+trial.interpolateSpline 28542
+input response 28542
+trial.interpolateSpline 28542
+input response 28542
+trial.interpolateSpline 28542
+input response 28542
+trial.interpolateSpline 28542
+input response 28542
+trial.interpolateSpline 28542
+input response 28542
+trial.interpolateSpline 28542
+input response 28542
+trial.interpolateSpline 28542
+input response 28542
+trial.interpolateSpline 28542
+input response 28542
+trial.interpolateSpline 28542
+input response 28542
+trial.interpolateSpline 28542
+input response 28542
+trial.interpolateSpline 28542
+input response 28542
+trial.interpolateSpline 28542
+input response 28542
+trial.interpolateSpline 28542
+input response 28542
+trial.interpolateSpline 28542
+input response 28542
+trial.interpolateSpline 28542
+input response 28542
+trial.interpolateSpline 28542
+input response 28542
+trial.interpolateSpline 28543
+input response 28543
+trial.interpolateSpline 28543
+input response 28543
+trial.interpolateSpline 28543
+input response 28543
+trial.interpolateSpline 28543
+input response 28543
+trial.interpolateSpline 28543
+input response 28543
+trial.resetCounters 28543
+input response 28543
+trial.constructValueVector2 28543
+input response 28543
+trial.constructValueVector2 28543
+input response 28543
+trial.constructValueVector2 28543
+input response 28543
+trial.constructValueVector2 28543
+input response 28543
+trial.constructValueVector2 28543
+input response 28543
+trial.constructValueVector2 28543
+input response 28543
+trial.constructValueVector2 28543
+input response 28543
+trial.constructValueVector2 28543
+input response 28543
+trial.constructValueVector2 28543
+input response 28543
+trial.constructValueVector2 28543
+input response 28543
+trial.constructValueVector2 28543
+input response 28543
+trial.constructValueVector2 28543
+input response 28543
+trial.constructValueVector2 28543
+input response 28543
+trial.constructValueVector2 28543
+input response 28543
+trial.constructValueVector2 28543
+input response 28544
+trial.constructValueVector2 28544
+input response 28544
+trial.constructValueVector2 28544
+input response 28544
+trial.constructValueVector2 28544
+input response 28544
+trial.constructValueVector2 28544
+input response 28544
+trial.constructValueVector2 28544
+input response 28544
+trial.constructValueVector2 28544
+input response 28544
+trial.constructValueVector2 28544
+input response 28544
+trial.constructValueVector2 28544
+input response 28544
+trial.constructValueVector2 28544
+input response 28544
+trial.constructValueVector2 28544
+input response 28544
+trial.constructValueVector2 28544
+input response 28544
+trial.constructValueVector2 28544
+input response 28544
+trial.constructValueVector2 28544
+input response 28544
+trial.constructValueVector2 28544
+input response 28544
+trial.constructValueVector2 28544
+input response 28544
+trial.constructValueVector2 28544
+input response 28544
+trial.resetCounters3 28544
+input response 28544
+trial.preFreeze 28544
+picture.planet 28562
+picture.stim 28562
+shape.dot1 28562
+shape.dot2 28562
+shape.dot3 28562
+shape.dot4 28562
+shape.dot5 28562
+shape.dot6 28562
+shape.dot7 28562
+shape.dot8 28562
+shape.dot9 28562
+shape.dot10 28562
+shape.dot11 28562
+shape.dot12 28562
+shape.dot13 28562
+shape.dot14 28562
+shape.dot15 28562
+shape.dot16 28562
+shape.dot17 28562
+shape.dot18 28562
+shape.dot19 28562
+shape.dot20 28562
+shape.dot21 28562
+shape.dot22 28562
+shape.dot23 28562
+shape.dot24 28562
+shape.dot25 28562
+shape.dot26 28562
+shape.dot27 28562
+shape.dot28 28562
+shape.dot29 28562
+shape.dot30 28562
+shape.dot31 28562
+shape.dot32 28562
+shape.dot33 28562
+shape.dot34 28562
+shape.dot35 28562
+shape.dot36 28562
+shape.dot37 28562
+shape.dot38 28562
+shape.dot39 28562
+shape.dot40 28562
+shape.dot41 28562
+shape.dot42 28562
+shape.dot43 28562
+shape.dot44 28562
+shape.dot45 28562
+shape.dot46 28562
+shape.dot47 28562
+shape.dot48 28562
+shape.dot49 28562
+shape.dot50 28562
+shape.dot51 28562
+shape.dot52 28562
+shape.dot53 28562
+shape.dot54 28562
+shape.dot55 28562
+shape.dot56 28562
+shape.dot57 28562
+shape.dot58 28562
+shape.dot59 28562
+shape.dot60 28562
+picture.frozenShip 28562
+input response 29161
+trial.clock 29161
+picture.animatedCircle 29178
+picture.stim 29178
+shape.dot1 29178
+shape.dot2 29178
+shape.dot3 29178
+shape.dot4 29178
+shape.dot5 29178
+shape.dot6 29178
+shape.dot7 29178
+shape.dot8 29178
+shape.dot9 29178
+shape.dot10 29178
+shape.dot11 29178
+shape.dot12 29178
+shape.dot13 29178
+shape.dot14 29178
+shape.dot15 29178
+shape.dot16 29178
+shape.dot17 29178
+shape.dot18 29178
+shape.dot19 29178
+shape.dot20 29178
+shape.dot21 29178
+shape.dot22 29178
+shape.dot23 29178
+shape.dot24 29178
+shape.dot25 29178
+shape.dot26 29178
+shape.dot27 29178
+shape.dot28 29178
+shape.dot29 29178
+shape.dot30 29178
+shape.dot31 29178
+shape.dot32 29178
+shape.dot33 29178
+shape.dot34 29178
+shape.dot35 29178
+shape.dot36 29178
+shape.dot37 29178
+shape.dot38 29178
+shape.dot39 29178
+shape.dot40 29178
+shape.dot41 29178
+shape.dot42 29178
+shape.dot43 29178
+shape.dot44 29178
+shape.dot45 29178
+shape.dot46 29178
+shape.dot47 29178
+shape.dot48 29178
+shape.dot49 29178
+shape.dot50 29178
+shape.dot51 29178
+shape.dot52 29178
+shape.dot53 29178
+shape.dot54 29178
+shape.dot55 29178
+shape.dot56 29178
+shape.dot57 29178
+shape.dot58 29178
+shape.dot59 29178
+shape.dot60 29178
+input response 31547
+trial.ISI 31563
+picture.stim 31588
+picture.planet 31588
+shape.dot1 31588
+shape.dot2 31588
+shape.dot3 31588
+shape.dot4 31588
+shape.dot5 31588
+shape.dot6 31588
+shape.dot7 31588
+shape.dot8 31588
+shape.dot9 31588
+shape.dot10 31588
+shape.dot11 31588
+shape.dot12 31588
+shape.dot13 31588
+shape.dot14 31588
+shape.dot15 31588
+shape.dot16 31588
+shape.dot17 31588
+shape.dot18 31588
+shape.dot19 31588
+shape.dot20 31588
+shape.dot21 31588
+shape.dot22 31588
+shape.dot23 31588
+shape.dot24 31588
+shape.dot25 31588
+shape.dot26 31588
+shape.dot27 31588
+shape.dot28 31588
+shape.dot29 31588
+shape.dot30 31588
+shape.dot31 31588
+shape.dot32 31588
+shape.dot33 31588
+shape.dot34 31588
+shape.dot35 31588
+shape.dot36 31588
+shape.dot37 31588
+shape.dot38 31588
+shape.dot39 31588
+shape.dot40 31588
+shape.dot41 31588
+shape.dot42 31588
+shape.dot43 31588
+shape.dot44 31588
+shape.dot45 31588
+shape.dot46 31588
+shape.dot47 31588
+shape.dot48 31588
+shape.dot49 31588
+shape.dot50 31588
+shape.dot51 31588
+shape.dot52 31588
+shape.dot53 31588
+shape.dot54 31588
+shape.dot55 31588
+shape.dot56 31588
+shape.dot57 31588
+shape.dot58 31588
+shape.dot59 31588
+shape.dot60 31588
+picture.frozenShip 31588
+input response 31837
+trial.feedback 31838
+picture.feedback3 31845
+picture.feedback2 31845
+text.feedback1 31845
+input response 32538
+trial.ITI 32539
+picture.fixationCross 32545
+shape.dot1 32545
+shape.dot2 32545
+shape.dot3 32545
+shape.dot4 32545
+shape.dot5 32545
+shape.dot6 32545
+shape.dot7 32545
+shape.dot8 32545
+shape.dot9 32545
+shape.dot10 32545
+shape.dot11 32545
+shape.dot12 32545
+shape.dot13 32545
+shape.dot14 32545
+shape.dot15 32545
+shape.dot16 32545
+shape.dot17 32545
+shape.dot18 32545
+shape.dot19 32545
+shape.dot20 32545
+shape.dot21 32545
+shape.dot22 32545
+shape.dot23 32545
+shape.dot24 32545
+shape.dot25 32545
+shape.dot26 32545
+shape.dot27 32545
+shape.dot28 32545
+shape.dot29 32545
+shape.dot30 32545
+shape.dot31 32545
+shape.dot32 32545
+shape.dot33 32545
+shape.dot34 32545
+shape.dot35 32545
+shape.dot36 32545
+shape.dot37 32545
+shape.dot38 32545
+shape.dot39 32545
+shape.dot40 32545
+shape.dot41 32545
+shape.dot42 32545
+shape.dot43 32545
+shape.dot44 32545
+shape.dot45 32545
+shape.dot46 32545
+shape.dot47 32545
+shape.dot48 32545
+shape.dot49 32545
+shape.dot50 32545
+shape.dot51 32545
+shape.dot52 32545
+shape.dot53 32545
+shape.dot54 32545
+shape.dot55 32545
+shape.dot56 32545
+shape.dot57 32545
+shape.dot58 32545
+shape.dot59 32545
+shape.dot60 32545
+input response 32992
+trial.constructSpline 32992
+input response 32992
+trial.interpolateSpline 32992
+input response 32992
+trial.interpolateSpline 32992
+input response 32992
+trial.interpolateSpline 32993
+input response 32993
+trial.interpolateSpline 32993
+input response 32993
+trial.interpolateSpline 32993
+input response 32993
+trial.interpolateSpline 32994
+input response 32994
+trial.interpolateSpline 32994
+input response 32994
+trial.interpolateSpline 32994
+input response 32994
+trial.interpolateSpline 32994
+input response 32994
+trial.interpolateSpline 32994
+input response 32994
+trial.interpolateSpline 32994
+input response 32994
+trial.interpolateSpline 32994
+input response 32994
+trial.interpolateSpline 32994
+input response 32994
+trial.interpolateSpline 32994
+input response 32994
+trial.interpolateSpline 32994
+input response 32994
+trial.interpolateSpline 32994
+input response 32994
+trial.interpolateSpline 32994
+input response 32994
+trial.interpolateSpline 32994
+input response 32994
+trial.interpolateSpline 32995
+input response 32995
+trial.interpolateSpline 32995
+input response 32995
+trial.interpolateSpline 32995
+input response 32995
+trial.interpolateSpline 32995
+input response 32995
+trial.interpolateSpline 32995
+input response 32995
+trial.interpolateSpline 32995
+input response 32995
+trial.interpolateSpline 32995
+input response 32995
+trial.interpolateSpline 32995
+input response 32995
+trial.interpolateSpline 32995
+input response 32995
+trial.interpolateSpline 32995
+input response 32995
+trial.interpolateSpline 32995
+input response 32995
+trial.interpolateSpline 32995
+input response 32995
+trial.interpolateSpline 32995
+input response 32995
+trial.resetCounters 32995
+input response 32995
+trial.constructValueVector2 32995
+input response 32995
+trial.constructValueVector2 32995
+input response 32995
+trial.constructValueVector2 32995
+input response 32995
+trial.constructValueVector2 32995
+input response 32995
+trial.constructValueVector2 32995
+input response 32996
+trial.constructValueVector2 32996
+input response 32996
+trial.constructValueVector2 32996
+input response 32996
+trial.constructValueVector2 32996
+input response 32996
+trial.constructValueVector2 32996
+input response 32996
+trial.constructValueVector2 32996
+input response 32996
+trial.constructValueVector2 32996
+input response 32996
+trial.constructValueVector2 32996
+input response 32996
+trial.constructValueVector2 32996
+input response 32996
+trial.constructValueVector2 32996
+input response 32996
+trial.constructValueVector2 32996
+input response 32996
+trial.constructValueVector2 32996
+input response 32996
+trial.constructValueVector2 32996
+input response 32996
+trial.constructValueVector2 32996
+input response 32996
+trial.constructValueVector2 32996
+input response 32996
+trial.constructValueVector2 32996
+input response 32996
+trial.constructValueVector2 32996
+input response 32996
+trial.constructValueVector2 32996
+input response 32996
+trial.constructValueVector2 32996
+input response 32996
+trial.constructValueVector2 32996
+input response 32996
+trial.constructValueVector2 32996
+input response 32997
+trial.constructValueVector2 32997
+input response 32997
+trial.constructValueVector2 32997
+input response 32997
+trial.constructValueVector2 32997
+input response 32997
+trial.constructValueVector2 32997
+input response 32997
+trial.constructValueVector2 32997
+input response 32997
+trial.constructValueVector2 32997
+input response 32997
+trial.resetCounters3 32997
+input response 32997
+trial.preFreeze 32997
+picture.planet 33012
+picture.stim 33012
+shape.dot1 33012
+shape.dot2 33012
+shape.dot3 33012
+shape.dot4 33012
+shape.dot5 33012
+shape.dot6 33012
+shape.dot7 33012
+shape.dot8 33012
+shape.dot9 33012
+shape.dot10 33012
+shape.dot11 33012
+shape.dot12 33012
+shape.dot13 33012
+shape.dot14 33012
+shape.dot15 33012
+shape.dot16 33012
+shape.dot17 33012
+shape.dot18 33012
+shape.dot19 33012
+shape.dot20 33012
+shape.dot21 33012
+shape.dot22 33012
+shape.dot23 33012
+shape.dot24 33012
+shape.dot25 33012
+shape.dot26 33012
+shape.dot27 33012
+shape.dot28 33012
+shape.dot29 33012
+shape.dot30 33012
+shape.dot31 33012
+shape.dot32 33012
+shape.dot33 33012
+shape.dot34 33012
+shape.dot35 33012
+shape.dot36 33012
+shape.dot37 33012
+shape.dot38 33012
+shape.dot39 33012
+shape.dot40 33012
+shape.dot41 33012
+shape.dot42 33012
+shape.dot43 33012
+shape.dot44 33012
+shape.dot45 33012
+shape.dot46 33012
+shape.dot47 33012
+shape.dot48 33012
+shape.dot49 33012
+shape.dot50 33012
+shape.dot51 33012
+shape.dot52 33012
+shape.dot53 33012
+shape.dot54 33012
+shape.dot55 33012
+shape.dot56 33012
+shape.dot57 33012
+shape.dot58 33012
+shape.dot59 33012
+shape.dot60 33012
+picture.frozenShip 33012
+input response 33694
+trial.clock 33695
+picture.animatedCircle 33713
+picture.stim 33713
+shape.dot1 33713
+shape.dot2 33713
+shape.dot3 33713
+shape.dot4 33713
+shape.dot5 33713
+shape.dot6 33713
+shape.dot7 33713
+shape.dot8 33713
+shape.dot9 33713
+shape.dot10 33713
+shape.dot11 33713
+shape.dot12 33713
+shape.dot13 33713
+shape.dot14 33713
+shape.dot15 33713
+shape.dot16 33713
+shape.dot17 33713
+shape.dot18 33713
+shape.dot19 33713
+shape.dot20 33713
+shape.dot21 33713
+shape.dot22 33713
+shape.dot23 33713
+shape.dot24 33713
+shape.dot25 33713
+shape.dot26 33713
+shape.dot27 33713
+shape.dot28 33713
+shape.dot29 33713
+shape.dot30 33713
+shape.dot31 33713
+shape.dot32 33713
+shape.dot33 33713
+shape.dot34 33713
+shape.dot35 33713
+shape.dot36 33713
+shape.dot37 33713
+shape.dot38 33713
+shape.dot39 33713
+shape.dot40 33713
+shape.dot41 33713
+shape.dot42 33713
+shape.dot43 33713
+shape.dot44 33713
+shape.dot45 33713
+shape.dot46 33713
+shape.dot47 33713
+shape.dot48 33713
+shape.dot49 33713
+shape.dot50 33713
+shape.dot51 33713
+shape.dot52 33713
+shape.dot53 33713
+shape.dot54 33713
+shape.dot55 33713
+shape.dot56 33713
+shape.dot57 33713
+shape.dot58 33713
+shape.dot59 33713
+shape.dot60 33713
+input response 36018
+trial.ISI 36034
+picture.stim 36056
+picture.planet 36056
+shape.dot1 36056
+shape.dot2 36056
+shape.dot3 36056
+shape.dot4 36056
+shape.dot5 36056
+shape.dot6 36056
+shape.dot7 36056
+shape.dot8 36056
+shape.dot9 36056
+shape.dot10 36056
+shape.dot11 36056
+shape.dot12 36056
+shape.dot13 36056
+shape.dot14 36056
+shape.dot15 36056
+shape.dot16 36056
+shape.dot17 36056
+shape.dot18 36056
+shape.dot19 36056
+shape.dot20 36056
+shape.dot21 36056
+shape.dot22 36056
+shape.dot23 36056
+shape.dot24 36056
+shape.dot25 36056
+shape.dot26 36056
+shape.dot27 36056
+shape.dot28 36056
+shape.dot29 36056
+shape.dot30 36056
+shape.dot31 36056
+shape.dot32 36056
+shape.dot33 36056
+shape.dot34 36056
+shape.dot35 36056
+shape.dot36 36056
+shape.dot37 36056
+shape.dot38 36056
+shape.dot39 36056
+shape.dot40 36056
+shape.dot41 36056
+shape.dot42 36056
+shape.dot43 36056
+shape.dot44 36056
+shape.dot45 36056
+shape.dot46 36056
+shape.dot47 36056
+shape.dot48 36056
+shape.dot49 36056
+shape.dot50 36056
+shape.dot51 36056
+shape.dot52 36056
+shape.dot53 36056
+shape.dot54 36056
+shape.dot55 36056
+shape.dot56 36056
+shape.dot57 36056
+shape.dot58 36056
+shape.dot59 36056
+shape.dot60 36056
+picture.frozenShip 36056
+input response 36655
+trial.feedback 36656
+picture.feedback3 36664
+picture.feedback2 36664
+text.feedback1 36664
+input response 37357
+trial.ITI 37358
+picture.fixationCross 37365
+shape.dot1 37365
+shape.dot2 37365
+shape.dot3 37365
+shape.dot4 37365
+shape.dot5 37365
+shape.dot6 37365
+shape.dot7 37365
+shape.dot8 37365
+shape.dot9 37365
+shape.dot10 37365
+shape.dot11 37365
+shape.dot12 37365
+shape.dot13 37365
+shape.dot14 37365
+shape.dot15 37365
+shape.dot16 37365
+shape.dot17 37365
+shape.dot18 37365
+shape.dot19 37365
+shape.dot20 37365
+shape.dot21 37365
+shape.dot22 37365
+shape.dot23 37365
+shape.dot24 37365
+shape.dot25 37365
+shape.dot26 37365
+shape.dot27 37365
+shape.dot28 37365
+shape.dot29 37365
+shape.dot30 37365
+shape.dot31 37365
+shape.dot32 37365
+shape.dot33 37365
+shape.dot34 37365
+shape.dot35 37365
+shape.dot36 37365
+shape.dot37 37365
+shape.dot38 37365
+shape.dot39 37365
+shape.dot40 37365
+shape.dot41 37365
+shape.dot42 37365
+shape.dot43 37365
+shape.dot44 37365
+shape.dot45 37365
+shape.dot46 37365
+shape.dot47 37365
+shape.dot48 37365
+shape.dot49 37365
+shape.dot50 37365
+shape.dot51 37365
+shape.dot52 37365
+shape.dot53 37365
+shape.dot54 37365
+shape.dot55 37365
+shape.dot56 37365
+shape.dot57 37365
+shape.dot58 37365
+shape.dot59 37365
+shape.dot60 37365
+input response 37727
+trial.constructSpline 37727
+input response 37728
+trial.interpolateSpline 37728
+input response 37728
+trial.interpolateSpline 37728
+input response 37728
+trial.interpolateSpline 37728
+input response 37728
+trial.interpolateSpline 37728
+input response 37728
+trial.interpolateSpline 37728
+input response 37728
+trial.interpolateSpline 37730
+input response 37730
+trial.interpolateSpline 37730
+input response 37730
+trial.interpolateSpline 37730
+input response 37730
+trial.interpolateSpline 37730
+input response 37730
+trial.interpolateSpline 37730
+input response 37730
+trial.interpolateSpline 37730
+input response 37730
+trial.interpolateSpline 37730
+input response 37730
+trial.interpolateSpline 37730
+input response 37730
+trial.interpolateSpline 37730
+input response 37730
+trial.interpolateSpline 37730
+input response 37730
+trial.interpolateSpline 37730
+input response 37730
+trial.interpolateSpline 37730
+input response 37730
+trial.interpolateSpline 37730
+input response 37730
+trial.interpolateSpline 37730
+input response 37730
+trial.interpolateSpline 37730
+input response 37730
+trial.interpolateSpline 37730
+input response 37730
+trial.interpolateSpline 37730
+input response 37730
+trial.interpolateSpline 37730
+input response 37730
+trial.interpolateSpline 37730
+input response 37731
+trial.interpolateSpline 37731
+input response 37731
+trial.interpolateSpline 37731
+input response 37731
+trial.interpolateSpline 37731
+input response 37731
+trial.interpolateSpline 37731
+input response 37731
+trial.interpolateSpline 37731
+input response 37731
+trial.interpolateSpline 37731
+input response 37731
+trial.interpolateSpline 37731
+input response 37731
+trial.resetCounters 37731
+input response 37731
+trial.constructValueVector2 37731
+input response 37731
+trial.constructValueVector2 37731
+input response 37731
+trial.constructValueVector2 37731
+input response 37731
+trial.constructValueVector2 37731
+input response 37731
+trial.constructValueVector2 37731
+input response 37731
+trial.constructValueVector2 37731
+input response 37731
+trial.constructValueVector2 37731
+input response 37731
+trial.constructValueVector2 37731
+input response 37731
+trial.constructValueVector2 37731
+input response 37731
+trial.constructValueVector2 37731
+input response 37731
+trial.constructValueVector2 37731
+input response 37731
+trial.constructValueVector2 37731
+input response 37732
+trial.constructValueVector2 37732
+input response 37732
+trial.constructValueVector2 37732
+input response 37732
+trial.constructValueVector2 37732
+input response 37732
+trial.constructValueVector2 37732
+input response 37732
+trial.constructValueVector2 37732
+input response 37732
+trial.constructValueVector2 37732
+input response 37732
+trial.constructValueVector2 37732
+input response 37732
+trial.constructValueVector2 37732
+input response 37732
+trial.constructValueVector2 37732
+input response 37732
+trial.constructValueVector2 37732
+input response 37732
+trial.constructValueVector2 37732
+input response 37732
+trial.constructValueVector2 37732
+input response 37732
+trial.constructValueVector2 37732
+input response 37732
+trial.constructValueVector2 37732
+input response 37732
+trial.constructValueVector2 37732
+input response 37732
+trial.constructValueVector2 37732
+input response 37732
+trial.constructValueVector2 37732
+input response 37732
+trial.constructValueVector2 37732
+input response 37732
+trial.constructValueVector2 37733
+input response 37733
+trial.resetCounters3 37733
+input response 37733
+trial.preFreeze 37733
+picture.planet 37748
+picture.stim 37748
+shape.dot1 37748
+shape.dot2 37748
+shape.dot3 37748
+shape.dot4 37748
+shape.dot5 37748
+shape.dot6 37748
+shape.dot7 37748
+shape.dot8 37748
+shape.dot9 37748
+shape.dot10 37748
+shape.dot11 37748
+shape.dot12 37748
+shape.dot13 37748
+shape.dot14 37748
+shape.dot15 37748
+shape.dot16 37748
+shape.dot17 37748
+shape.dot18 37748
+shape.dot19 37748
+shape.dot20 37748
+shape.dot21 37748
+shape.dot22 37748
+shape.dot23 37748
+shape.dot24 37748
+shape.dot25 37748
+shape.dot26 37748
+shape.dot27 37748
+shape.dot28 37748
+shape.dot29 37748
+shape.dot30 37748
+shape.dot31 37748
+shape.dot32 37748
+shape.dot33 37748
+shape.dot34 37748
+shape.dot35 37748
+shape.dot36 37748
+shape.dot37 37748
+shape.dot38 37748
+shape.dot39 37748
+shape.dot40 37748
+shape.dot41 37748
+shape.dot42 37748
+shape.dot43 37748
+shape.dot44 37748
+shape.dot45 37748
+shape.dot46 37748
+shape.dot47 37748
+shape.dot48 37748
+shape.dot49 37748
+shape.dot50 37748
+shape.dot51 37748
+shape.dot52 37748
+shape.dot53 37748
+shape.dot54 37748
+shape.dot55 37748
+shape.dot56 37748
+shape.dot57 37748
+shape.dot58 37748
+shape.dot59 37748
+shape.dot60 37748
+picture.frozenShip 37748
+input response 38447
+trial.clock 38448
+picture.animatedCircle 38464
+picture.stim 38464
+shape.dot1 38464
+shape.dot2 38464
+shape.dot3 38464
+shape.dot4 38464
+shape.dot5 38464
+shape.dot6 38464
+shape.dot7 38464
+shape.dot8 38464
+shape.dot9 38464
+shape.dot10 38464
+shape.dot11 38464
+shape.dot12 38464
+shape.dot13 38464
+shape.dot14 38464
+shape.dot15 38464
+shape.dot16 38464
+shape.dot17 38464
+shape.dot18 38464
+shape.dot19 38464
+shape.dot20 38464
+shape.dot21 38464
+shape.dot22 38464
+shape.dot23 38464
+shape.dot24 38464
+shape.dot25 38464
+shape.dot26 38464
+shape.dot27 38464
+shape.dot28 38464
+shape.dot29 38464
+shape.dot30 38464
+shape.dot31 38464
+shape.dot32 38464
+shape.dot33 38464
+shape.dot34 38464
+shape.dot35 38464
+shape.dot36 38464
+shape.dot37 38464
+shape.dot38 38464
+shape.dot39 38464
+shape.dot40 38464
+shape.dot41 38464
+shape.dot42 38464
+shape.dot43 38464
+shape.dot44 38464
+shape.dot45 38464
+shape.dot46 38464
+shape.dot47 38464
+shape.dot48 38464
+shape.dot49 38464
+shape.dot50 38464
+shape.dot51 38464
+shape.dot52 38464
+shape.dot53 38464
+shape.dot54 38464
+shape.dot55 38464
+shape.dot56 38464
+shape.dot57 38464
+shape.dot58 38464
+shape.dot59 38464
+shape.dot60 38464
+input response 42746
+trial.ISI 42762
+picture.stim 42782
+picture.planet 42782
+shape.dot1 42782
+shape.dot2 42782
+shape.dot3 42782
+shape.dot4 42782
+shape.dot5 42782
+shape.dot6 42782
+shape.dot7 42782
+shape.dot8 42782
+shape.dot9 42782
+shape.dot10 42782
+shape.dot11 42782
+shape.dot12 42782
+shape.dot13 42782
+shape.dot14 42782
+shape.dot15 42782
+shape.dot16 42782
+shape.dot17 42782
+shape.dot18 42782
+shape.dot19 42782
+shape.dot20 42782
+shape.dot21 42782
+shape.dot22 42782
+shape.dot23 42782
+shape.dot24 42782
+shape.dot25 42782
+shape.dot26 42782
+shape.dot27 42782
+shape.dot28 42782
+shape.dot29 42782
+shape.dot30 42782
+shape.dot31 42782
+shape.dot32 42782
+shape.dot33 42782
+shape.dot34 42782
+shape.dot35 42782
+shape.dot36 42782
+shape.dot37 42782
+shape.dot38 42782
+shape.dot39 42782
+shape.dot40 42782
+shape.dot41 42782
+shape.dot42 42782
+shape.dot43 42782
+shape.dot44 42782
+shape.dot45 42782
+shape.dot46 42782
+shape.dot47 42782
+shape.dot48 42782
+shape.dot49 42782
+shape.dot50 42782
+shape.dot51 42782
+shape.dot52 42782
+shape.dot53 42782
+shape.dot54 42782
+shape.dot55 42782
+shape.dot56 42782
+shape.dot57 42782
+shape.dot58 42782
+shape.dot59 42782
+shape.dot60 42782
+picture.frozenShip 42782
+input response 43114
+trial.feedback 43115
+picture.feedback3 43133
+picture.feedback2 43133
+text.feedback1 43133
+input response 43816
+trial.ITI 43817
+picture.fixationCross 43833
+shape.dot1 43833
+shape.dot2 43833
+shape.dot3 43833
+shape.dot4 43833
+shape.dot5 43833
+shape.dot6 43833
+shape.dot7 43833
+shape.dot8 43833
+shape.dot9 43833
+shape.dot10 43833
+shape.dot11 43833
+shape.dot12 43833
+shape.dot13 43833
+shape.dot14 43833
+shape.dot15 43833
+shape.dot16 43833
+shape.dot17 43833
+shape.dot18 43833
+shape.dot19 43833
+shape.dot20 43833
+shape.dot21 43833
+shape.dot22 43833
+shape.dot23 43833
+shape.dot24 43833
+shape.dot25 43833
+shape.dot26 43833
+shape.dot27 43833
+shape.dot28 43833
+shape.dot29 43833
+shape.dot30 43833
+shape.dot31 43833
+shape.dot32 43833
+shape.dot33 43833
+shape.dot34 43833
+shape.dot35 43833
+shape.dot36 43833
+shape.dot37 43833
+shape.dot38 43833
+shape.dot39 43833
+shape.dot40 43833
+shape.dot41 43833
+shape.dot42 43833
+shape.dot43 43833
+shape.dot44 43833
+shape.dot45 43833
+shape.dot46 43833
+shape.dot47 43833
+shape.dot48 43833
+shape.dot49 43833
+shape.dot50 43833
+shape.dot51 43833
+shape.dot52 43833
+shape.dot53 43833
+shape.dot54 43833
+shape.dot55 43833
+shape.dot56 43833
+shape.dot57 43833
+shape.dot58 43833
+shape.dot59 43833
+shape.dot60 43833
+input response 44070
+trial.constructSpline 44071
+input response 44071
+trial.interpolateSpline 44071
+input response 44071
+trial.interpolateSpline 44071
+input response 44071
+trial.interpolateSpline 44071
+input response 44071
+trial.interpolateSpline 44071
+input response 44071
+trial.interpolateSpline 44072
+input response 44072
+trial.interpolateSpline 44073
+input response 44073
+trial.interpolateSpline 44073
+input response 44073
+trial.interpolateSpline 44073
+input response 44073
+trial.interpolateSpline 44073
+input response 44073
+trial.interpolateSpline 44073
+input response 44073
+trial.interpolateSpline 44073
+input response 44073
+trial.interpolateSpline 44073
+input response 44073
+trial.interpolateSpline 44073
+input response 44073
+trial.interpolateSpline 44073
+input response 44073
+trial.interpolateSpline 44073
+input response 44073
+trial.interpolateSpline 44073
+input response 44073
+trial.interpolateSpline 44073
+input response 44073
+trial.interpolateSpline 44073
+input response 44073
+trial.interpolateSpline 44073
+input response 44073
+trial.interpolateSpline 44073
+input response 44073
+trial.interpolateSpline 44073
+input response 44073
+trial.interpolateSpline 44073
+input response 44073
+trial.interpolateSpline 44074
+input response 44074
+trial.interpolateSpline 44074
+input response 44074
+trial.interpolateSpline 44074
+input response 44074
+trial.interpolateSpline 44074
+input response 44074
+trial.interpolateSpline 44074
+input response 44074
+trial.interpolateSpline 44074
+input response 44074
+trial.interpolateSpline 44074
+input response 44074
+trial.interpolateSpline 44074
+input response 44074
+trial.interpolateSpline 44074
+input response 44074
+trial.resetCounters 44074
+input response 44074
+trial.constructValueVector2 44074
+input response 44074
+trial.constructValueVector2 44074
+input response 44074
+trial.constructValueVector2 44074
+input response 44074
+trial.constructValueVector2 44074
+input response 44074
+trial.constructValueVector2 44074
+input response 44074
+trial.constructValueVector2 44074
+input response 44074
+trial.constructValueVector2 44074
+input response 44074
+trial.constructValueVector2 44074
+input response 44074
+trial.constructValueVector2 44074
+input response 44075
+trial.constructValueVector2 44075
+input response 44075
+trial.constructValueVector2 44075
+input response 44075
+trial.constructValueVector2 44075
+input response 44075
+trial.constructValueVector2 44075
+input response 44075
+trial.constructValueVector2 44075
+input response 44075
+trial.constructValueVector2 44075
+input response 44075
+trial.constructValueVector2 44075
+input response 44075
+trial.constructValueVector2 44075
+input response 44075
+trial.constructValueVector2 44075
+input response 44075
+trial.constructValueVector2 44075
+input response 44075
+trial.constructValueVector2 44075
+input response 44075
+trial.constructValueVector2 44075
+input response 44075
+trial.constructValueVector2 44075
+input response 44075
+trial.constructValueVector2 44075
+input response 44075
+trial.constructValueVector2 44075
+input response 44075
+trial.constructValueVector2 44075
+input response 44075
+trial.constructValueVector2 44075
+input response 44075
+trial.constructValueVector2 44075
+input response 44075
+trial.constructValueVector2 44075
+input response 44075
+trial.constructValueVector2 44075
+input response 44076
+trial.constructValueVector2 44076
+input response 44076
+trial.constructValueVector2 44076
+input response 44076
+trial.resetCounters3 44076
+input response 44076
+trial.preFreeze 44076
+picture.planet 44100
+picture.stim 44100
+shape.dot1 44100
+shape.dot2 44100
+shape.dot3 44100
+shape.dot4 44100
+shape.dot5 44100
+shape.dot6 44100
+shape.dot7 44100
+shape.dot8 44100
+shape.dot9 44100
+shape.dot10 44100
+shape.dot11 44100
+shape.dot12 44100
+shape.dot13 44100
+shape.dot14 44100
+shape.dot15 44100
+shape.dot16 44100
+shape.dot17 44100
+shape.dot18 44100
+shape.dot19 44100
+shape.dot20 44100
+shape.dot21 44100
+shape.dot22 44100
+shape.dot23 44100
+shape.dot24 44100
+shape.dot25 44100
+shape.dot26 44100
+shape.dot27 44100
+shape.dot28 44100
+shape.dot29 44100
+shape.dot30 44100
+shape.dot31 44100
+shape.dot32 44100
+shape.dot33 44100
+shape.dot34 44100
+shape.dot35 44100
+shape.dot36 44100
+shape.dot37 44100
+shape.dot38 44100
+shape.dot39 44100
+shape.dot40 44100
+shape.dot41 44100
+shape.dot42 44100
+shape.dot43 44100
+shape.dot44 44100
+shape.dot45 44100
+shape.dot46 44100
+shape.dot47 44100
+shape.dot48 44100
+shape.dot49 44100
+shape.dot50 44100
+shape.dot51 44100
+shape.dot52 44100
+shape.dot53 44100
+shape.dot54 44100
+shape.dot55 44100
+shape.dot56 44100
+shape.dot57 44100
+shape.dot58 44100
+shape.dot59 44100
+shape.dot60 44100
+picture.frozenShip 44100
+input response 44666
+trial.clock 44667
+picture.animatedCircle 44683
+picture.stim 44683
+shape.dot1 44683
+shape.dot2 44683
+shape.dot3 44683
+shape.dot4 44683
+shape.dot5 44683
+shape.dot6 44683
+shape.dot7 44683
+shape.dot8 44683
+shape.dot9 44683
+shape.dot10 44683
+shape.dot11 44683
+shape.dot12 44683
+shape.dot13 44683
+shape.dot14 44683
+shape.dot15 44683
+shape.dot16 44683
+shape.dot17 44683
+shape.dot18 44683
+shape.dot19 44683
+shape.dot20 44683
+shape.dot21 44683
+shape.dot22 44683
+shape.dot23 44683
+shape.dot24 44683
+shape.dot25 44683
+shape.dot26 44683
+shape.dot27 44683
+shape.dot28 44683
+shape.dot29 44683
+shape.dot30 44683
+shape.dot31 44683
+shape.dot32 44683
+shape.dot33 44683
+shape.dot34 44683
+shape.dot35 44683
+shape.dot36 44683
+shape.dot37 44683
+shape.dot38 44683
+shape.dot39 44683
+shape.dot40 44683
+shape.dot41 44683
+shape.dot42 44683
+shape.dot43 44683
+shape.dot44 44683
+shape.dot45 44683
+shape.dot46 44683
+shape.dot47 44683
+shape.dot48 44683
+shape.dot49 44683
+shape.dot50 44683
+shape.dot51 44683
+shape.dot52 44683
+shape.dot53 44683
+shape.dot54 44683
+shape.dot55 44683
+shape.dot56 44683
+shape.dot57 44683
+shape.dot58 44683
+shape.dot59 44683
+shape.dot60 44683
+input response 47682
+trial.ISI 47699
+picture.stim 47726
+picture.planet 47726
+shape.dot1 47726
+shape.dot2 47726
+shape.dot3 47726
+shape.dot4 47726
+shape.dot5 47726
+shape.dot6 47726
+shape.dot7 47726
+shape.dot8 47726
+shape.dot9 47726
+shape.dot10 47726
+shape.dot11 47726
+shape.dot12 47726
+shape.dot13 47726
+shape.dot14 47726
+shape.dot15 47726
+shape.dot16 47726
+shape.dot17 47726
+shape.dot18 47726
+shape.dot19 47726
+shape.dot20 47726
+shape.dot21 47726
+shape.dot22 47726
+shape.dot23 47726
+shape.dot24 47726
+shape.dot25 47726
+shape.dot26 47726
+shape.dot27 47726
+shape.dot28 47726
+shape.dot29 47726
+shape.dot30 47726
+shape.dot31 47726
+shape.dot32 47726
+shape.dot33 47726
+shape.dot34 47726
+shape.dot35 47726
+shape.dot36 47726
+shape.dot37 47726
+shape.dot38 47726
+shape.dot39 47726
+shape.dot40 47726
+shape.dot41 47726
+shape.dot42 47726
+shape.dot43 47726
+shape.dot44 47726
+shape.dot45 47726
+shape.dot46 47726
+shape.dot47 47726
+shape.dot48 47726
+shape.dot49 47726
+shape.dot50 47726
+shape.dot51 47726
+shape.dot52 47726
+shape.dot53 47726
+shape.dot54 47726
+shape.dot55 47726
+shape.dot56 47726
+shape.dot57 47726
+shape.dot58 47726
+shape.dot59 47726
+shape.dot60 47726
+picture.frozenShip 47726
+input response 47942
+trial.feedback 47943
+picture.feedback3 47951
+picture.feedback2 47951
+text.feedback1 47951
+input response 48644
+trial.ITI 48645
+picture.fixationCross 48651
+shape.dot1 48651
+shape.dot2 48651
+shape.dot3 48651
+shape.dot4 48651
+shape.dot5 48651
+shape.dot6 48651
+shape.dot7 48651
+shape.dot8 48651
+shape.dot9 48651
+shape.dot10 48651
+shape.dot11 48651
+shape.dot12 48651
+shape.dot13 48651
+shape.dot14 48651
+shape.dot15 48651
+shape.dot16 48651
+shape.dot17 48651
+shape.dot18 48651
+shape.dot19 48651
+shape.dot20 48651
+shape.dot21 48651
+shape.dot22 48651
+shape.dot23 48651
+shape.dot24 48651
+shape.dot25 48651
+shape.dot26 48651
+shape.dot27 48651
+shape.dot28 48651
+shape.dot29 48651
+shape.dot30 48651
+shape.dot31 48651
+shape.dot32 48651
+shape.dot33 48651
+shape.dot34 48651
+shape.dot35 48651
+shape.dot36 48651
+shape.dot37 48651
+shape.dot38 48651
+shape.dot39 48651
+shape.dot40 48651
+shape.dot41 48651
+shape.dot42 48651
+shape.dot43 48651
+shape.dot44 48651
+shape.dot45 48651
+shape.dot46 48651
+shape.dot47 48651
+shape.dot48 48651
+shape.dot49 48651
+shape.dot50 48651
+shape.dot51 48651
+shape.dot52 48651
+shape.dot53 48651
+shape.dot54 48651
+shape.dot55 48651
+shape.dot56 48651
+shape.dot57 48651
+shape.dot58 48651
+shape.dot59 48651
+shape.dot60 48651
+input response 49047
+trial.constructSpline 49047
+input response 49047
+trial.interpolateSpline 49047
+input response 49047
+trial.interpolateSpline 49048
+input response 49048
+trial.interpolateSpline 49048
+input response 49048
+trial.interpolateSpline 49048
+input response 49048
+trial.interpolateSpline 49048
+input response 49048
+trial.interpolateSpline 49049
+input response 49049
+trial.interpolateSpline 49049
+input response 49049
+trial.interpolateSpline 49049
+input response 49049
+trial.interpolateSpline 49049
+input response 49049
+trial.interpolateSpline 49049
+input response 49049
+trial.interpolateSpline 49049
+input response 49049
+trial.interpolateSpline 49049
+input response 49049
+trial.interpolateSpline 49049
+input response 49049
+trial.interpolateSpline 49049
+input response 49049
+trial.interpolateSpline 49049
+input response 49050
+trial.interpolateSpline 49050
+input response 49050
+trial.interpolateSpline 49050
+input response 49050
+trial.interpolateSpline 49050
+input response 49050
+trial.interpolateSpline 49050
+input response 49050
+trial.interpolateSpline 49050
+input response 49050
+trial.interpolateSpline 49050
+input response 49050
+trial.interpolateSpline 49050
+input response 49050
+trial.interpolateSpline 49050
+input response 49050
+trial.interpolateSpline 49050
+input response 49050
+trial.interpolateSpline 49050
+input response 49050
+trial.interpolateSpline 49050
+input response 49050
+trial.interpolateSpline 49050
+input response 49050
+trial.interpolateSpline 49050
+input response 49050
+trial.interpolateSpline 49050
+input response 49050
+trial.interpolateSpline 49050
+input response 49050
+trial.interpolateSpline 49050
+input response 49050
+trial.resetCounters 49050
+input response 49050
+trial.constructValueVector2 49050
+input response 49051
+trial.constructValueVector2 49051
+input response 49051
+trial.constructValueVector2 49051
+input response 49051
+trial.constructValueVector2 49051
+input response 49051
+trial.constructValueVector2 49051
+input response 49051
+trial.constructValueVector2 49051
+input response 49051
+trial.constructValueVector2 49051
+input response 49051
+trial.constructValueVector2 49051
+input response 49051
+trial.constructValueVector2 49051
+input response 49051
+trial.constructValueVector2 49051
+input response 49051
+trial.constructValueVector2 49051
+input response 49051
+trial.constructValueVector2 49051
+input response 49051
+trial.constructValueVector2 49051
+input response 49051
+trial.constructValueVector2 49051
+input response 49051
+trial.constructValueVector2 49051
+input response 49051
+trial.constructValueVector2 49051
+input response 49051
+trial.constructValueVector2 49051
+input response 49051
+trial.constructValueVector2 49051
+input response 49051
+trial.constructValueVector2 49051
+input response 49051
+trial.constructValueVector2 49051
+input response 49051
+trial.constructValueVector2 49052
+input response 49052
+trial.constructValueVector2 49052
+input response 49052
+trial.constructValueVector2 49052
+input response 49052
+trial.constructValueVector2 49052
+input response 49052
+trial.constructValueVector2 49052
+input response 49052
+trial.constructValueVector2 49052
+input response 49052
+trial.constructValueVector2 49052
+input response 49052
+trial.constructValueVector2 49052
+input response 49052
+trial.constructValueVector2 49052
+input response 49052
+trial.constructValueVector2 49052
+input response 49052
+trial.constructValueVector2 49052
+input response 49052
+trial.resetCounters3 49052
+input response 49052
+trial.preFreeze 49052
+picture.planet 49067
+picture.stim 49067
+shape.dot1 49067
+shape.dot2 49067
+shape.dot3 49067
+shape.dot4 49067
+shape.dot5 49067
+shape.dot6 49067
+shape.dot7 49067
+shape.dot8 49067
+shape.dot9 49067
+shape.dot10 49067
+shape.dot11 49067
+shape.dot12 49067
+shape.dot13 49067
+shape.dot14 49067
+shape.dot15 49067
+shape.dot16 49067
+shape.dot17 49067
+shape.dot18 49067
+shape.dot19 49067
+shape.dot20 49067
+shape.dot21 49067
+shape.dot22 49067
+shape.dot23 49067
+shape.dot24 49067
+shape.dot25 49067
+shape.dot26 49067
+shape.dot27 49067
+shape.dot28 49067
+shape.dot29 49067
+shape.dot30 49067
+shape.dot31 49067
+shape.dot32 49067
+shape.dot33 49067
+shape.dot34 49067
+shape.dot35 49067
+shape.dot36 49067
+shape.dot37 49067
+shape.dot38 49067
+shape.dot39 49067
+shape.dot40 49067
+shape.dot41 49067
+shape.dot42 49067
+shape.dot43 49067
+shape.dot44 49067
+shape.dot45 49067
+shape.dot46 49067
+shape.dot47 49067
+shape.dot48 49067
+shape.dot49 49067
+shape.dot50 49067
+shape.dot51 49067
+shape.dot52 49067
+shape.dot53 49067
+shape.dot54 49067
+shape.dot55 49067
+shape.dot56 49067
+shape.dot57 49067
+shape.dot58 49067
+shape.dot59 49067
+shape.dot60 49067
+picture.frozenShip 49067
+input response 49699
+trial.clock 49700
+picture.animatedCircle 49717
+picture.stim 49717
+shape.dot1 49717
+shape.dot2 49717
+shape.dot3 49717
+shape.dot4 49717
+shape.dot5 49717
+shape.dot6 49717
+shape.dot7 49717
+shape.dot8 49717
+shape.dot9 49717
+shape.dot10 49717
+shape.dot11 49717
+shape.dot12 49717
+shape.dot13 49717
+shape.dot14 49717
+shape.dot15 49717
+shape.dot16 49717
+shape.dot17 49717
+shape.dot18 49717
+shape.dot19 49717
+shape.dot20 49717
+shape.dot21 49717
+shape.dot22 49717
+shape.dot23 49717
+shape.dot24 49717
+shape.dot25 49717
+shape.dot26 49717
+shape.dot27 49717
+shape.dot28 49717
+shape.dot29 49717
+shape.dot30 49717
+shape.dot31 49717
+shape.dot32 49717
+shape.dot33 49717
+shape.dot34 49717
+shape.dot35 49717
+shape.dot36 49717
+shape.dot37 49717
+shape.dot38 49717
+shape.dot39 49717
+shape.dot40 49717
+shape.dot41 49717
+shape.dot42 49717
+shape.dot43 49717
+shape.dot44 49717
+shape.dot45 49717
+shape.dot46 49717
+shape.dot47 49717
+shape.dot48 49717
+shape.dot49 49717
+shape.dot50 49717
+shape.dot51 49717
+shape.dot52 49717
+shape.dot53 49717
+shape.dot54 49717
+shape.dot55 49717
+shape.dot56 49717
+shape.dot57 49717
+shape.dot58 49717
+shape.dot59 49717
+shape.dot60 49717
+input response 49987
+trial.ISI 50003
+picture.stim 50025
+picture.planet 50025
+shape.dot1 50025
+shape.dot2 50025
+shape.dot3 50025
+shape.dot4 50025
+shape.dot5 50025
+shape.dot6 50025
+shape.dot7 50025
+shape.dot8 50025
+shape.dot9 50025
+shape.dot10 50025
+shape.dot11 50025
+shape.dot12 50025
+shape.dot13 50025
+shape.dot14 50025
+shape.dot15 50025
+shape.dot16 50025
+shape.dot17 50025
+shape.dot18 50025
+shape.dot19 50025
+shape.dot20 50025
+shape.dot21 50025
+shape.dot22 50025
+shape.dot23 50025
+shape.dot24 50025
+shape.dot25 50025
+shape.dot26 50025
+shape.dot27 50025
+shape.dot28 50025
+shape.dot29 50025
+shape.dot30 50025
+shape.dot31 50025
+shape.dot32 50025
+shape.dot33 50025
+shape.dot34 50025
+shape.dot35 50025
+shape.dot36 50025
+shape.dot37 50025
+shape.dot38 50025
+shape.dot39 50025
+shape.dot40 50025
+shape.dot41 50025
+shape.dot42 50025
+shape.dot43 50025
+shape.dot44 50025
+shape.dot45 50025
+shape.dot46 50025
+shape.dot47 50025
+shape.dot48 50025
+shape.dot49 50025
+shape.dot50 50025
+shape.dot51 50025
+shape.dot52 50025
+shape.dot53 50025
+shape.dot54 50025
+shape.dot55 50025
+shape.dot56 50025
+shape.dot57 50025
+shape.dot58 50025
+shape.dot59 50025
+shape.dot60 50025
+picture.frozenShip 50025
+input response 50508
+trial.feedback 50509
+picture.feedback3 50517
+picture.feedback2 50517
+text.feedback1 50517
+input response 51209
+trial.ITI 51210
+picture.fixationCross 51217
+shape.dot1 51217
+shape.dot2 51217
+shape.dot3 51217
+shape.dot4 51217
+shape.dot5 51217
+shape.dot6 51217
+shape.dot7 51217
+shape.dot8 51217
+shape.dot9 51217
+shape.dot10 51217
+shape.dot11 51217
+shape.dot12 51217
+shape.dot13 51217
+shape.dot14 51217
+shape.dot15 51217
+shape.dot16 51217
+shape.dot17 51217
+shape.dot18 51217
+shape.dot19 51217
+shape.dot20 51217
+shape.dot21 51217
+shape.dot22 51217
+shape.dot23 51217
+shape.dot24 51217
+shape.dot25 51217
+shape.dot26 51217
+shape.dot27 51217
+shape.dot28 51217
+shape.dot29 51217
+shape.dot30 51217
+shape.dot31 51217
+shape.dot32 51217
+shape.dot33 51217
+shape.dot34 51217
+shape.dot35 51217
+shape.dot36 51217
+shape.dot37 51217
+shape.dot38 51217
+shape.dot39 51217
+shape.dot40 51217
+shape.dot41 51217
+shape.dot42 51217
+shape.dot43 51217
+shape.dot44 51217
+shape.dot45 51217
+shape.dot46 51217
+shape.dot47 51217
+shape.dot48 51217
+shape.dot49 51217
+shape.dot50 51217
+shape.dot51 51217
+shape.dot52 51217
+shape.dot53 51217
+shape.dot54 51217
+shape.dot55 51217
+shape.dot56 51217
+shape.dot57 51217
+shape.dot58 51217
+shape.dot59 51217
+shape.dot60 51217
+input response 51712
+trial.resetCounters3 51713
+input response 51713
+trial.preFreeze 51713
+picture.planet 51718
+picture.stim 51718
+shape.dot1 51718
+shape.dot2 51718
+shape.dot3 51718
+shape.dot4 51718
+shape.dot5 51718
+shape.dot6 51718
+shape.dot7 51718
+shape.dot8 51718
+shape.dot9 51718
+shape.dot10 51718
+shape.dot11 51718
+shape.dot12 51718
+shape.dot13 51718
+shape.dot14 51718
+shape.dot15 51718
+shape.dot16 51718
+shape.dot17 51718
+shape.dot18 51718
+shape.dot19 51718
+shape.dot20 51718
+shape.dot21 51718
+shape.dot22 51718
+shape.dot23 51718
+shape.dot24 51718
+shape.dot25 51718
+shape.dot26 51718
+shape.dot27 51718
+shape.dot28 51718
+shape.dot29 51718
+shape.dot30 51718
+shape.dot31 51718
+shape.dot32 51718
+shape.dot33 51718
+shape.dot34 51718
+shape.dot35 51718
+shape.dot36 51718
+shape.dot37 51718
+shape.dot38 51718
+shape.dot39 51718
+shape.dot40 51718
+shape.dot41 51718
+shape.dot42 51718
+shape.dot43 51718
+shape.dot44 51718
+shape.dot45 51718
+shape.dot46 51718
+shape.dot47 51718
+shape.dot48 51718
+shape.dot49 51718
+shape.dot50 51718
+shape.dot51 51718
+shape.dot52 51718
+shape.dot53 51718
+shape.dot54 51718
+shape.dot55 51718
+shape.dot56 51718
+shape.dot57 51718
+shape.dot58 51718
+shape.dot59 51718
+shape.dot60 51718
+picture.frozenShip 51718
+input response 52217
+trial.clock 52218
+picture.animatedCircle 52235
+picture.stim 52235
+shape.dot1 52235
+shape.dot2 52235
+shape.dot3 52235
+shape.dot4 52235
+shape.dot5 52235
+shape.dot6 52235
+shape.dot7 52235
+shape.dot8 52235
+shape.dot9 52235
+shape.dot10 52235
+shape.dot11 52235
+shape.dot12 52235
+shape.dot13 52235
+shape.dot14 52235
+shape.dot15 52235
+shape.dot16 52235
+shape.dot17 52235
+shape.dot18 52235
+shape.dot19 52235
+shape.dot20 52235
+shape.dot21 52235
+shape.dot22 52235
+shape.dot23 52235
+shape.dot24 52235
+shape.dot25 52235
+shape.dot26 52235
+shape.dot27 52235
+shape.dot28 52235
+shape.dot29 52235
+shape.dot30 52235
+shape.dot31 52235
+shape.dot32 52235
+shape.dot33 52235
+shape.dot34 52235
+shape.dot35 52235
+shape.dot36 52235
+shape.dot37 52235
+shape.dot38 52235
+shape.dot39 52235
+shape.dot40 52235
+shape.dot41 52235
+shape.dot42 52235
+shape.dot43 52235
+shape.dot44 52235
+shape.dot45 52235
+shape.dot46 52235
+shape.dot47 52235
+shape.dot48 52235
+shape.dot49 52235
+shape.dot50 52235
+shape.dot51 52235
+shape.dot52 52235
+shape.dot53 52235
+shape.dot54 52235
+shape.dot55 52235
+shape.dot56 52235
+shape.dot57 52235
+shape.dot58 52235
+shape.dot59 52235
+shape.dot60 52235
+input response 52914
+trial.ISI 52930
+picture.stim 52944
+picture.planet 52944
+shape.dot1 52944
+shape.dot2 52944
+shape.dot3 52944
+shape.dot4 52944
+shape.dot5 52944
+shape.dot6 52944
+shape.dot7 52944
+shape.dot8 52944
+shape.dot9 52944
+shape.dot10 52944
+shape.dot11 52944
+shape.dot12 52944
+shape.dot13 52944
+shape.dot14 52944
+shape.dot15 52944
+shape.dot16 52944
+shape.dot17 52944
+shape.dot18 52944
+shape.dot19 52944
+shape.dot20 52944
+shape.dot21 52944
+shape.dot22 52944
+shape.dot23 52944
+shape.dot24 52944
+shape.dot25 52944
+shape.dot26 52944
+shape.dot27 52944
+shape.dot28 52944
+shape.dot29 52944
+shape.dot30 52944
+shape.dot31 52944
+shape.dot32 52944
+shape.dot33 52944
+shape.dot34 52944
+shape.dot35 52944
+shape.dot36 52944
+shape.dot37 52944
+shape.dot38 52944
+shape.dot39 52944
+shape.dot40 52944
+shape.dot41 52944
+shape.dot42 52944
+shape.dot43 52944
+shape.dot44 52944
+shape.dot45 52944
+shape.dot46 52944
+shape.dot47 52944
+shape.dot48 52944
+shape.dot49 52944
+shape.dot50 52944
+shape.dot51 52944
+shape.dot52 52944
+shape.dot53 52944
+shape.dot54 52944
+shape.dot55 52944
+shape.dot56 52944
+shape.dot57 52944
+shape.dot58 52944
+shape.dot59 52944
+shape.dot60 52944
+picture.frozenShip 52944
+input response 53210
+trial.feedback 53211
+picture.feedback3 53218
+picture.feedback2 53218
+text.feedback1 53218
+input response 53912
+trial.ITI 53913
+picture.fixationCross 53919
+shape.dot1 53919
+shape.dot2 53919
+shape.dot3 53919
+shape.dot4 53919
+shape.dot5 53919
+shape.dot6 53919
+shape.dot7 53919
+shape.dot8 53919
+shape.dot9 53919
+shape.dot10 53919
+shape.dot11 53919
+shape.dot12 53919
+shape.dot13 53919
+shape.dot14 53919
+shape.dot15 53919
+shape.dot16 53919
+shape.dot17 53919
+shape.dot18 53919
+shape.dot19 53919
+shape.dot20 53919
+shape.dot21 53919
+shape.dot22 53919
+shape.dot23 53919
+shape.dot24 53919
+shape.dot25 53919
+shape.dot26 53919
+shape.dot27 53919
+shape.dot28 53919
+shape.dot29 53919
+shape.dot30 53919
+shape.dot31 53919
+shape.dot32 53919
+shape.dot33 53919
+shape.dot34 53919
+shape.dot35 53919
+shape.dot36 53919
+shape.dot37 53919
+shape.dot38 53919
+shape.dot39 53919
+shape.dot40 53919
+shape.dot41 53919
+shape.dot42 53919
+shape.dot43 53919
+shape.dot44 53919
+shape.dot45 53919
+shape.dot46 53919
+shape.dot47 53919
+shape.dot48 53919
+shape.dot49 53919
+shape.dot50 53919
+shape.dot51 53919
+shape.dot52 53919
+shape.dot53 53919
+shape.dot54 53919
+shape.dot55 53919
+shape.dot56 53919
+shape.dot57 53919
+shape.dot58 53919
+shape.dot59 53919
+shape.dot60 53919
+input response 54032
+trial.resetCounters3 54032
+input response 54033
+trial.preFreeze 54033
+picture.planet 54035
+picture.stim 54035
+shape.dot1 54035
+shape.dot2 54035
+shape.dot3 54035
+shape.dot4 54035
+shape.dot5 54035
+shape.dot6 54035
+shape.dot7 54035
+shape.dot8 54035
+shape.dot9 54035
+shape.dot10 54035
+shape.dot11 54035
+shape.dot12 54035
+shape.dot13 54035
+shape.dot14 54035
+shape.dot15 54035
+shape.dot16 54035
+shape.dot17 54035
+shape.dot18 54035
+shape.dot19 54035
+shape.dot20 54035
+shape.dot21 54035
+shape.dot22 54035
+shape.dot23 54035
+shape.dot24 54035
+shape.dot25 54035
+shape.dot26 54035
+shape.dot27 54035
+shape.dot28 54035
+shape.dot29 54035
+shape.dot30 54035
+shape.dot31 54035
+shape.dot32 54035
+shape.dot33 54035
+shape.dot34 54035
+shape.dot35 54035
+shape.dot36 54035
+shape.dot37 54035
+shape.dot38 54035
+shape.dot39 54035
+shape.dot40 54035
+shape.dot41 54035
+shape.dot42 54035
+shape.dot43 54035
+shape.dot44 54035
+shape.dot45 54035
+shape.dot46 54035
+shape.dot47 54035
+shape.dot48 54035
+shape.dot49 54035
+shape.dot50 54035
+shape.dot51 54035
+shape.dot52 54035
+shape.dot53 54035
+shape.dot54 54035
+shape.dot55 54035
+shape.dot56 54035
+shape.dot57 54035
+shape.dot58 54035
+shape.dot59 54035
+shape.dot60 54035
+picture.frozenShip 54035
+input response 54651
+trial.clock 54651
+picture.animatedCircle 54668
+picture.stim 54668
+shape.dot1 54668
+shape.dot2 54668
+shape.dot3 54668
+shape.dot4 54668
+shape.dot5 54668
+shape.dot6 54668
+shape.dot7 54668
+shape.dot8 54668
+shape.dot9 54668
+shape.dot10 54668
+shape.dot11 54668
+shape.dot12 54668
+shape.dot13 54668
+shape.dot14 54668
+shape.dot15 54668
+shape.dot16 54668
+shape.dot17 54668
+shape.dot18 54668
+shape.dot19 54668
+shape.dot20 54668
+shape.dot21 54668
+shape.dot22 54668
+shape.dot23 54668
+shape.dot24 54668
+shape.dot25 54668
+shape.dot26 54668
+shape.dot27 54668
+shape.dot28 54668
+shape.dot29 54668
+shape.dot30 54668
+shape.dot31 54668
+shape.dot32 54668
+shape.dot33 54668
+shape.dot34 54668
+shape.dot35 54668
+shape.dot36 54668
+shape.dot37 54668
+shape.dot38 54668
+shape.dot39 54668
+shape.dot40 54668
+shape.dot41 54668
+shape.dot42 54668
+shape.dot43 54668
+shape.dot44 54668
+shape.dot45 54668
+shape.dot46 54668
+shape.dot47 54668
+shape.dot48 54668
+shape.dot49 54668
+shape.dot50 54668
+shape.dot51 54668
+shape.dot52 54668
+shape.dot53 54668
+shape.dot54 54668
+shape.dot55 54668
+shape.dot56 54668
+shape.dot57 54668
+shape.dot58 54668
+shape.dot59 54668
+shape.dot60 54668
+input response 54755
+trial.ISI 54771
+picture.stim 54793
+picture.planet 54793
+shape.dot1 54793
+shape.dot2 54793
+shape.dot3 54793
+shape.dot4 54793
+shape.dot5 54793
+shape.dot6 54793
+shape.dot7 54793
+shape.dot8 54793
+shape.dot9 54793
+shape.dot10 54793
+shape.dot11 54793
+shape.dot12 54793
+shape.dot13 54793
+shape.dot14 54793
+shape.dot15 54793
+shape.dot16 54793
+shape.dot17 54793
+shape.dot18 54793
+shape.dot19 54793
+shape.dot20 54793
+shape.dot21 54793
+shape.dot22 54793
+shape.dot23 54793
+shape.dot24 54793
+shape.dot25 54793
+shape.dot26 54793
+shape.dot27 54793
+shape.dot28 54793
+shape.dot29 54793
+shape.dot30 54793
+shape.dot31 54793
+shape.dot32 54793
+shape.dot33 54793
+shape.dot34 54793
+shape.dot35 54793
+shape.dot36 54793
+shape.dot37 54793
+shape.dot38 54793
+shape.dot39 54793
+shape.dot40 54793
+shape.dot41 54793
+shape.dot42 54793
+shape.dot43 54793
+shape.dot44 54793
+shape.dot45 54793
+shape.dot46 54793
+shape.dot47 54793
+shape.dot48 54793
+shape.dot49 54793
+shape.dot50 54793
+shape.dot51 54793
+shape.dot52 54793
+shape.dot53 54793
+shape.dot54 54793
+shape.dot55 54793
+shape.dot56 54793
+shape.dot57 54793
+shape.dot58 54793
+shape.dot59 54793
+shape.dot60 54793
+picture.frozenShip 54793
+input response 55325
+trial.feedback 55327
+picture.feedback3 55335
+picture.feedback2 55335
+text.feedback1 55335
+input response 56026
+trial.ITI 56027
+picture.fixationCross 56036
+shape.dot1 56036
+shape.dot2 56036
+shape.dot3 56036
+shape.dot4 56036
+shape.dot5 56036
+shape.dot6 56036
+shape.dot7 56036
+shape.dot8 56036
+shape.dot9 56036
+shape.dot10 56036
+shape.dot11 56036
+shape.dot12 56036
+shape.dot13 56036
+shape.dot14 56036
+shape.dot15 56036
+shape.dot16 56036
+shape.dot17 56036
+shape.dot18 56036
+shape.dot19 56036
+shape.dot20 56036
+shape.dot21 56036
+shape.dot22 56036
+shape.dot23 56036
+shape.dot24 56036
+shape.dot25 56036
+shape.dot26 56036
+shape.dot27 56036
+shape.dot28 56036
+shape.dot29 56036
+shape.dot30 56036
+shape.dot31 56036
+shape.dot32 56036
+shape.dot33 56036
+shape.dot34 56036
+shape.dot35 56036
+shape.dot36 56036
+shape.dot37 56036
+shape.dot38 56036
+shape.dot39 56036
+shape.dot40 56036
+shape.dot41 56036
+shape.dot42 56036
+shape.dot43 56036
+shape.dot44 56036
+shape.dot45 56036
+shape.dot46 56036
+shape.dot47 56036
+shape.dot48 56036
+shape.dot49 56036
+shape.dot50 56036
+shape.dot51 56036
+shape.dot52 56036
+shape.dot53 56036
+shape.dot54 56036
+shape.dot55 56036
+shape.dot56 56036
+shape.dot57 56036
+shape.dot58 56036
+shape.dot59 56036
+shape.dot60 56036
+input response 56262
+trial.resetCounters3 56263
+input response 56263
+trial.preFreeze 56263
+picture.planet 56269
+picture.stim 56269
+shape.dot1 56269
+shape.dot2 56269
+shape.dot3 56269
+shape.dot4 56269
+shape.dot5 56269
+shape.dot6 56269
+shape.dot7 56269
+shape.dot8 56269
+shape.dot9 56269
+shape.dot10 56269
+shape.dot11 56269
+shape.dot12 56269
+shape.dot13 56269
+shape.dot14 56269
+shape.dot15 56269
+shape.dot16 56269
+shape.dot17 56269
+shape.dot18 56269
+shape.dot19 56269
+shape.dot20 56269
+shape.dot21 56269
+shape.dot22 56269
+shape.dot23 56269
+shape.dot24 56269
+shape.dot25 56269
+shape.dot26 56269
+shape.dot27 56269
+shape.dot28 56269
+shape.dot29 56269
+shape.dot30 56269
+shape.dot31 56269
+shape.dot32 56269
+shape.dot33 56269
+shape.dot34 56269
+shape.dot35 56269
+shape.dot36 56269
+shape.dot37 56269
+shape.dot38 56269
+shape.dot39 56269
+shape.dot40 56269
+shape.dot41 56269
+shape.dot42 56269
+shape.dot43 56269
+shape.dot44 56269
+shape.dot45 56269
+shape.dot46 56269
+shape.dot47 56269
+shape.dot48 56269
+shape.dot49 56269
+shape.dot50 56269
+shape.dot51 56269
+shape.dot52 56269
+shape.dot53 56269
+shape.dot54 56269
+shape.dot55 56269
+shape.dot56 56269
+shape.dot57 56269
+shape.dot58 56269
+shape.dot59 56269
+shape.dot60 56269
+picture.frozenShip 56269
+input response 56818
+trial.clock 56818
+picture.animatedCircle 56835
+picture.stim 56835
+shape.dot1 56835
+shape.dot2 56835
+shape.dot3 56835
+shape.dot4 56835
+shape.dot5 56835
+shape.dot6 56835
+shape.dot7 56835
+shape.dot8 56835
+shape.dot9 56835
+shape.dot10 56835
+shape.dot11 56835
+shape.dot12 56835
+shape.dot13 56835
+shape.dot14 56835
+shape.dot15 56835
+shape.dot16 56835
+shape.dot17 56835
+shape.dot18 56835
+shape.dot19 56835
+shape.dot20 56835
+shape.dot21 56835
+shape.dot22 56835
+shape.dot23 56835
+shape.dot24 56835
+shape.dot25 56835
+shape.dot26 56835
+shape.dot27 56835
+shape.dot28 56835
+shape.dot29 56835
+shape.dot30 56835
+shape.dot31 56835
+shape.dot32 56835
+shape.dot33 56835
+shape.dot34 56835
+shape.dot35 56835
+shape.dot36 56835
+shape.dot37 56835
+shape.dot38 56835
+shape.dot39 56835
+shape.dot40 56835
+shape.dot41 56835
+shape.dot42 56835
+shape.dot43 56835
+shape.dot44 56835
+shape.dot45 56835
+shape.dot46 56835
+shape.dot47 56835
+shape.dot48 56835
+shape.dot49 56835
+shape.dot50 56835
+shape.dot51 56835
+shape.dot52 56835
+shape.dot53 56835
+shape.dot54 56835
+shape.dot55 56835
+shape.dot56 56835
+shape.dot57 56835
+shape.dot58 56835
+shape.dot59 56835
+shape.dot60 56835
+input response 56931
+trial.ISI 56947
+picture.stim 56961
+picture.planet 56961
+shape.dot1 56961
+shape.dot2 56961
+shape.dot3 56961
+shape.dot4 56961
+shape.dot5 56961
+shape.dot6 56961
+shape.dot7 56961
+shape.dot8 56961
+shape.dot9 56961
+shape.dot10 56961
+shape.dot11 56961
+shape.dot12 56961
+shape.dot13 56961
+shape.dot14 56961
+shape.dot15 56961
+shape.dot16 56961
+shape.dot17 56961
+shape.dot18 56961
+shape.dot19 56961
+shape.dot20 56961
+shape.dot21 56961
+shape.dot22 56961
+shape.dot23 56961
+shape.dot24 56961
+shape.dot25 56961
+shape.dot26 56961
+shape.dot27 56961
+shape.dot28 56961
+shape.dot29 56961
+shape.dot30 56961
+shape.dot31 56961
+shape.dot32 56961
+shape.dot33 56961
+shape.dot34 56961
+shape.dot35 56961
+shape.dot36 56961
+shape.dot37 56961
+shape.dot38 56961
+shape.dot39 56961
+shape.dot40 56961
+shape.dot41 56961
+shape.dot42 56961
+shape.dot43 56961
+shape.dot44 56961
+shape.dot45 56961
+shape.dot46 56961
+shape.dot47 56961
+shape.dot48 56961
+shape.dot49 56961
+shape.dot50 56961
+shape.dot51 56961
+shape.dot52 56961
+shape.dot53 56961
+shape.dot54 56961
+shape.dot55 56961
+shape.dot56 56961
+shape.dot57 56961
+shape.dot58 56961
+shape.dot59 56961
+shape.dot60 56961
+picture.frozenShip 56961
+input response 57477
+trial.feedback 57478
+picture.feedback3 57487
+picture.feedback2 57487
+text.feedback1 57487
+input response 58179
+trial.ITI 58180
+picture.fixationCross 58187
+shape.dot1 58187
+shape.dot2 58187
+shape.dot3 58187
+shape.dot4 58187
+shape.dot5 58187
+shape.dot6 58187
+shape.dot7 58187
+shape.dot8 58187
+shape.dot9 58187
+shape.dot10 58187
+shape.dot11 58187
+shape.dot12 58187
+shape.dot13 58187
+shape.dot14 58187
+shape.dot15 58187
+shape.dot16 58187
+shape.dot17 58187
+shape.dot18 58187
+shape.dot19 58187
+shape.dot20 58187
+shape.dot21 58187
+shape.dot22 58187
+shape.dot23 58187
+shape.dot24 58187
+shape.dot25 58187
+shape.dot26 58187
+shape.dot27 58187
+shape.dot28 58187
+shape.dot29 58187
+shape.dot30 58187
+shape.dot31 58187
+shape.dot32 58187
+shape.dot33 58187
+shape.dot34 58187
+shape.dot35 58187
+shape.dot36 58187
+shape.dot37 58187
+shape.dot38 58187
+shape.dot39 58187
+shape.dot40 58187
+shape.dot41 58187
+shape.dot42 58187
+shape.dot43 58187
+shape.dot44 58187
+shape.dot45 58187
+shape.dot46 58187
+shape.dot47 58187
+shape.dot48 58187
+shape.dot49 58187
+shape.dot50 58187
+shape.dot51 58187
+shape.dot52 58187
+shape.dot53 58187
+shape.dot54 58187
+shape.dot55 58187
+shape.dot56 58187
+shape.dot57 58187
+shape.dot58 58187
+shape.dot59 58187
+shape.dot60 58187
+input response 58482
+trial.resetCounters3 58482
+input response 58483
+trial.preFreeze 58483
+picture.planet 58486
+picture.stim 58486
+shape.dot1 58486
+shape.dot2 58486
+shape.dot3 58486
+shape.dot4 58486
+shape.dot5 58486
+shape.dot6 58486
+shape.dot7 58486
+shape.dot8 58486
+shape.dot9 58486
+shape.dot10 58486
+shape.dot11 58486
+shape.dot12 58486
+shape.dot13 58486
+shape.dot14 58486
+shape.dot15 58486
+shape.dot16 58486
+shape.dot17 58486
+shape.dot18 58486
+shape.dot19 58486
+shape.dot20 58486
+shape.dot21 58486
+shape.dot22 58486
+shape.dot23 58486
+shape.dot24 58486
+shape.dot25 58486
+shape.dot26 58486
+shape.dot27 58486
+shape.dot28 58486
+shape.dot29 58486
+shape.dot30 58486
+shape.dot31 58486
+shape.dot32 58486
+shape.dot33 58486
+shape.dot34 58486
+shape.dot35 58486
+shape.dot36 58486
+shape.dot37 58486
+shape.dot38 58486
+shape.dot39 58486
+shape.dot40 58486
+shape.dot41 58486
+shape.dot42 58486
+shape.dot43 58486
+shape.dot44 58486
+shape.dot45 58486
+shape.dot46 58486
+shape.dot47 58486
+shape.dot48 58486
+shape.dot49 58486
+shape.dot50 58486
+shape.dot51 58486
+shape.dot52 58486
+shape.dot53 58486
+shape.dot54 58486
+shape.dot55 58486
+shape.dot56 58486
+shape.dot57 58486
+shape.dot58 58486
+shape.dot59 58486
+shape.dot60 58486
+picture.frozenShip 58486
+input response 59002
+trial.clock 59003
+picture.animatedCircle 59019
+picture.stim 59019
+shape.dot1 59019
+shape.dot2 59019
+shape.dot3 59019
+shape.dot4 59019
+shape.dot5 59019
+shape.dot6 59019
+shape.dot7 59019
+shape.dot8 59019
+shape.dot9 59019
+shape.dot10 59019
+shape.dot11 59019
+shape.dot12 59019
+shape.dot13 59019
+shape.dot14 59019
+shape.dot15 59019
+shape.dot16 59019
+shape.dot17 59019
+shape.dot18 59019
+shape.dot19 59019
+shape.dot20 59019
+shape.dot21 59019
+shape.dot22 59019
+shape.dot23 59019
+shape.dot24 59019
+shape.dot25 59019
+shape.dot26 59019
+shape.dot27 59019
+shape.dot28 59019
+shape.dot29 59019
+shape.dot30 59019
+shape.dot31 59019
+shape.dot32 59019
+shape.dot33 59019
+shape.dot34 59019
+shape.dot35 59019
+shape.dot36 59019
+shape.dot37 59019
+shape.dot38 59019
+shape.dot39 59019
+shape.dot40 59019
+shape.dot41 59019
+shape.dot42 59019
+shape.dot43 59019
+shape.dot44 59019
+shape.dot45 59019
+shape.dot46 59019
+shape.dot47 59019
+shape.dot48 59019
+shape.dot49 59019
+shape.dot50 59019
+shape.dot51 59019
+shape.dot52 59019
+shape.dot53 59019
+shape.dot54 59019
+shape.dot55 59019
+shape.dot56 59019
+shape.dot57 59019
+shape.dot58 59019
+shape.dot59 59019
+shape.dot60 59019
+input response 59395
+trial.ISI 59411
+picture.stim 59428
+picture.planet 59428
+shape.dot1 59428
+shape.dot2 59428
+shape.dot3 59428
+shape.dot4 59428
+shape.dot5 59428
+shape.dot6 59428
+shape.dot7 59428
+shape.dot8 59428
+shape.dot9 59428
+shape.dot10 59428
+shape.dot11 59428
+shape.dot12 59428
+shape.dot13 59428
+shape.dot14 59428
+shape.dot15 59428
+shape.dot16 59428
+shape.dot17 59428
+shape.dot18 59428
+shape.dot19 59428
+shape.dot20 59428
+shape.dot21 59428
+shape.dot22 59428
+shape.dot23 59428
+shape.dot24 59428
+shape.dot25 59428
+shape.dot26 59428
+shape.dot27 59428
+shape.dot28 59428
+shape.dot29 59428
+shape.dot30 59428
+shape.dot31 59428
+shape.dot32 59428
+shape.dot33 59428
+shape.dot34 59428
+shape.dot35 59428
+shape.dot36 59428
+shape.dot37 59428
+shape.dot38 59428
+shape.dot39 59428
+shape.dot40 59428
+shape.dot41 59428
+shape.dot42 59428
+shape.dot43 59428
+shape.dot44 59428
+shape.dot45 59428
+shape.dot46 59428
+shape.dot47 59428
+shape.dot48 59428
+shape.dot49 59428
+shape.dot50 59428
+shape.dot51 59428
+shape.dot52 59428
+shape.dot53 59428
+shape.dot54 59428
+shape.dot55 59428
+shape.dot56 59428
+shape.dot57 59428
+shape.dot58 59428
+shape.dot59 59428
+shape.dot60 59428
+picture.frozenShip 59428
+input response 59894
+trial.feedback 59896
+picture.feedback3 59903
+picture.feedback2 59903
+text.feedback1 59903
+input response 60595
+trial.ITI 60596
+picture.fixationCross 60604
+shape.dot1 60604
+shape.dot2 60604
+shape.dot3 60604
+shape.dot4 60604
+shape.dot5 60604
+shape.dot6 60604
+shape.dot7 60604
+shape.dot8 60604
+shape.dot9 60604
+shape.dot10 60604
+shape.dot11 60604
+shape.dot12 60604
+shape.dot13 60604
+shape.dot14 60604
+shape.dot15 60604
+shape.dot16 60604
+shape.dot17 60604
+shape.dot18 60604
+shape.dot19 60604
+shape.dot20 60604
+shape.dot21 60604
+shape.dot22 60604
+shape.dot23 60604
+shape.dot24 60604
+shape.dot25 60604
+shape.dot26 60604
+shape.dot27 60604
+shape.dot28 60604
+shape.dot29 60604
+shape.dot30 60604
+shape.dot31 60604
+shape.dot32 60604
+shape.dot33 60604
+shape.dot34 60604
+shape.dot35 60604
+shape.dot36 60604
+shape.dot37 60604
+shape.dot38 60604
+shape.dot39 60604
+shape.dot40 60604
+shape.dot41 60604
+shape.dot42 60604
+shape.dot43 60604
+shape.dot44 60604
+shape.dot45 60604
+shape.dot46 60604
+shape.dot47 60604
+shape.dot48 60604
+shape.dot49 60604
+shape.dot50 60604
+shape.dot51 60604
+shape.dot52 60604
+shape.dot53 60604
+shape.dot54 60604
+shape.dot55 60604
+shape.dot56 60604
+shape.dot57 60604
+shape.dot58 60604
+shape.dot59 60604
+shape.dot60 60604
+input response 60749
+trial.resetCounters3 60749
+input response 60749
+trial.preFreeze 60749
+picture.planet 60753
+picture.stim 60753
+shape.dot1 60753
+shape.dot2 60753
+shape.dot3 60753
+shape.dot4 60753
+shape.dot5 60753
+shape.dot6 60753
+shape.dot7 60753
+shape.dot8 60753
+shape.dot9 60753
+shape.dot10 60753
+shape.dot11 60753
+shape.dot12 60753
+shape.dot13 60753
+shape.dot14 60753
+shape.dot15 60753
+shape.dot16 60753
+shape.dot17 60753
+shape.dot18 60753
+shape.dot19 60753
+shape.dot20 60753
+shape.dot21 60753
+shape.dot22 60753
+shape.dot23 60753
+shape.dot24 60753
+shape.dot25 60753
+shape.dot26 60753
+shape.dot27 60753
+shape.dot28 60753
+shape.dot29 60753
+shape.dot30 60753
+shape.dot31 60753
+shape.dot32 60753
+shape.dot33 60753
+shape.dot34 60753
+shape.dot35 60753
+shape.dot36 60753
+shape.dot37 60753
+shape.dot38 60753
+shape.dot39 60753
+shape.dot40 60753
+shape.dot41 60753
+shape.dot42 60753
+shape.dot43 60753
+shape.dot44 60753
+shape.dot45 60753
+shape.dot46 60753
+shape.dot47 60753
+shape.dot48 60753
+shape.dot49 60753
+shape.dot50 60753
+shape.dot51 60753
+shape.dot52 60753
+shape.dot53 60753
+shape.dot54 60753
+shape.dot55 60753
+shape.dot56 60753
+shape.dot57 60753
+shape.dot58 60753
+shape.dot59 60753
+shape.dot60 60753
+picture.frozenShip 60753
+input response 61402
+trial.clock 61403
+picture.animatedCircle 61420
+picture.stim 61420
+shape.dot1 61420
+shape.dot2 61420
+shape.dot3 61420
+shape.dot4 61420
+shape.dot5 61420
+shape.dot6 61420
+shape.dot7 61420
+shape.dot8 61420
+shape.dot9 61420
+shape.dot10 61420
+shape.dot11 61420
+shape.dot12 61420
+shape.dot13 61420
+shape.dot14 61420
+shape.dot15 61420
+shape.dot16 61420
+shape.dot17 61420
+shape.dot18 61420
+shape.dot19 61420
+shape.dot20 61420
+shape.dot21 61420
+shape.dot22 61420
+shape.dot23 61420
+shape.dot24 61420
+shape.dot25 61420
+shape.dot26 61420
+shape.dot27 61420
+shape.dot28 61420
+shape.dot29 61420
+shape.dot30 61420
+shape.dot31 61420
+shape.dot32 61420
+shape.dot33 61420
+shape.dot34 61420
+shape.dot35 61420
+shape.dot36 61420
+shape.dot37 61420
+shape.dot38 61420
+shape.dot39 61420
+shape.dot40 61420
+shape.dot41 61420
+shape.dot42 61420
+shape.dot43 61420
+shape.dot44 61420
+shape.dot45 61420
+shape.dot46 61420
+shape.dot47 61420
+shape.dot48 61420
+shape.dot49 61420
+shape.dot50 61420
+shape.dot51 61420
+shape.dot52 61420
+shape.dot53 61420
+shape.dot54 61420
+shape.dot55 61420
+shape.dot56 61420
+shape.dot57 61420
+shape.dot58 61420
+shape.dot59 61420
+shape.dot60 61420
+input response 62219
+trial.ISI 62235
+picture.stim 62253
+picture.planet 62253
+shape.dot1 62253
+shape.dot2 62253
+shape.dot3 62253
+shape.dot4 62253
+shape.dot5 62253
+shape.dot6 62253
+shape.dot7 62253
+shape.dot8 62253
+shape.dot9 62253
+shape.dot10 62253
+shape.dot11 62253
+shape.dot12 62253
+shape.dot13 62253
+shape.dot14 62253
+shape.dot15 62253
+shape.dot16 62253
+shape.dot17 62253
+shape.dot18 62253
+shape.dot19 62253
+shape.dot20 62253
+shape.dot21 62253
+shape.dot22 62253
+shape.dot23 62253
+shape.dot24 62253
+shape.dot25 62253
+shape.dot26 62253
+shape.dot27 62253
+shape.dot28 62253
+shape.dot29 62253
+shape.dot30 62253
+shape.dot31 62253
+shape.dot32 62253
+shape.dot33 62253
+shape.dot34 62253
+shape.dot35 62253
+shape.dot36 62253
+shape.dot37 62253
+shape.dot38 62253
+shape.dot39 62253
+shape.dot40 62253
+shape.dot41 62253
+shape.dot42 62253
+shape.dot43 62253
+shape.dot44 62253
+shape.dot45 62253
+shape.dot46 62253
+shape.dot47 62253
+shape.dot48 62253
+shape.dot49 62253
+shape.dot50 62253
+shape.dot51 62253
+shape.dot52 62253
+shape.dot53 62253
+shape.dot54 62253
+shape.dot55 62253
+shape.dot56 62253
+shape.dot57 62253
+shape.dot58 62253
+shape.dot59 62253
+shape.dot60 62253
+picture.frozenShip 62253
+input response 62635
+trial.feedback 62637
+picture.feedback3 62655
+picture.feedback2 62655
+text.feedback1 62655
+input response 63337
+trial.ITI 63338
+picture.fixationCross 63354
+shape.dot1 63354
+shape.dot2 63354
+shape.dot3 63354
+shape.dot4 63354
+shape.dot5 63354
+shape.dot6 63354
+shape.dot7 63354
+shape.dot8 63354
+shape.dot9 63354
+shape.dot10 63354
+shape.dot11 63354
+shape.dot12 63354
+shape.dot13 63354
+shape.dot14 63354
+shape.dot15 63354
+shape.dot16 63354
+shape.dot17 63354
+shape.dot18 63354
+shape.dot19 63354
+shape.dot20 63354
+shape.dot21 63354
+shape.dot22 63354
+shape.dot23 63354
+shape.dot24 63354
+shape.dot25 63354
+shape.dot26 63354
+shape.dot27 63354
+shape.dot28 63354
+shape.dot29 63354
+shape.dot30 63354
+shape.dot31 63354
+shape.dot32 63354
+shape.dot33 63354
+shape.dot34 63354
+shape.dot35 63354
+shape.dot36 63354
+shape.dot37 63354
+shape.dot38 63354
+shape.dot39 63354
+shape.dot40 63354
+shape.dot41 63354
+shape.dot42 63354
+shape.dot43 63354
+shape.dot44 63354
+shape.dot45 63354
+shape.dot46 63354
+shape.dot47 63354
+shape.dot48 63354
+shape.dot49 63354
+shape.dot50 63354
+shape.dot51 63354
+shape.dot52 63354
+shape.dot53 63354
+shape.dot54 63354
+shape.dot55 63354
+shape.dot56 63354
+shape.dot57 63354
+shape.dot58 63354
+shape.dot59 63354
+shape.dot60 63354
+input response 63723
+trial.resetCounters3 63724
+input response 63724
+trial.preFreeze 63724
+picture.planet 63737
+picture.stim 63737
+shape.dot1 63737
+shape.dot2 63737
+shape.dot3 63737
+shape.dot4 63737
+shape.dot5 63737
+shape.dot6 63737
+shape.dot7 63737
+shape.dot8 63737
+shape.dot9 63737
+shape.dot10 63737
+shape.dot11 63737
+shape.dot12 63737
+shape.dot13 63737
+shape.dot14 63737
+shape.dot15 63737
+shape.dot16 63737
+shape.dot17 63737
+shape.dot18 63737
+shape.dot19 63737
+shape.dot20 63737
+shape.dot21 63737
+shape.dot22 63737
+shape.dot23 63737
+shape.dot24 63737
+shape.dot25 63737
+shape.dot26 63737
+shape.dot27 63737
+shape.dot28 63737
+shape.dot29 63737
+shape.dot30 63737
+shape.dot31 63737
+shape.dot32 63737
+shape.dot33 63737
+shape.dot34 63737
+shape.dot35 63737
+shape.dot36 63737
+shape.dot37 63737
+shape.dot38 63737
+shape.dot39 63737
+shape.dot40 63737
+shape.dot41 63737
+shape.dot42 63737
+shape.dot43 63737
+shape.dot44 63737
+shape.dot45 63737
+shape.dot46 63737
+shape.dot47 63737
+shape.dot48 63737
+shape.dot49 63737
+shape.dot50 63737
+shape.dot51 63737
+shape.dot52 63737
+shape.dot53 63737
+shape.dot54 63737
+shape.dot55 63737
+shape.dot56 63737
+shape.dot57 63737
+shape.dot58 63737
+shape.dot59 63737
+shape.dot60 63737
+picture.frozenShip 63737
+input response 64436
+trial.clock 64437
+picture.animatedCircle 64454
+picture.stim 64454
+shape.dot1 64454
+shape.dot2 64454
+shape.dot3 64454
+shape.dot4 64454
+shape.dot5 64454
+shape.dot6 64454
+shape.dot7 64454
+shape.dot8 64454
+shape.dot9 64454
+shape.dot10 64454
+shape.dot11 64454
+shape.dot12 64454
+shape.dot13 64454
+shape.dot14 64454
+shape.dot15 64454
+shape.dot16 64454
+shape.dot17 64454
+shape.dot18 64454
+shape.dot19 64454
+shape.dot20 64454
+shape.dot21 64454
+shape.dot22 64454
+shape.dot23 64454
+shape.dot24 64454
+shape.dot25 64454
+shape.dot26 64454
+shape.dot27 64454
+shape.dot28 64454
+shape.dot29 64454
+shape.dot30 64454
+shape.dot31 64454
+shape.dot32 64454
+shape.dot33 64454
+shape.dot34 64454
+shape.dot35 64454
+shape.dot36 64454
+shape.dot37 64454
+shape.dot38 64454
+shape.dot39 64454
+shape.dot40 64454
+shape.dot41 64454
+shape.dot42 64454
+shape.dot43 64454
+shape.dot44 64454
+shape.dot45 64454
+shape.dot46 64454
+shape.dot47 64454
+shape.dot48 64454
+shape.dot49 64454
+shape.dot50 64454
+shape.dot51 64454
+shape.dot52 64454
+shape.dot53 64454
+shape.dot54 64454
+shape.dot55 64454
+shape.dot56 64454
+shape.dot57 64454
+shape.dot58 64454
+shape.dot59 64454
+shape.dot60 64454
+input response 65643
+trial.ISI 65659
+picture.stim 65680
+picture.planet 65680
+shape.dot1 65680
+shape.dot2 65680
+shape.dot3 65680
+shape.dot4 65680
+shape.dot5 65680
+shape.dot6 65680
+shape.dot7 65680
+shape.dot8 65680
+shape.dot9 65680
+shape.dot10 65680
+shape.dot11 65680
+shape.dot12 65680
+shape.dot13 65680
+shape.dot14 65680
+shape.dot15 65680
+shape.dot16 65680
+shape.dot17 65680
+shape.dot18 65680
+shape.dot19 65680
+shape.dot20 65680
+shape.dot21 65680
+shape.dot22 65680
+shape.dot23 65680
+shape.dot24 65680
+shape.dot25 65680
+shape.dot26 65680
+shape.dot27 65680
+shape.dot28 65680
+shape.dot29 65680
+shape.dot30 65680
+shape.dot31 65680
+shape.dot32 65680
+shape.dot33 65680
+shape.dot34 65680
+shape.dot35 65680
+shape.dot36 65680
+shape.dot37 65680
+shape.dot38 65680
+shape.dot39 65680
+shape.dot40 65680
+shape.dot41 65680
+shape.dot42 65680
+shape.dot43 65680
+shape.dot44 65680
+shape.dot45 65680
+shape.dot46 65680
+shape.dot47 65680
+shape.dot48 65680
+shape.dot49 65680
+shape.dot50 65680
+shape.dot51 65680
+shape.dot52 65680
+shape.dot53 65680
+shape.dot54 65680
+shape.dot55 65680
+shape.dot56 65680
+shape.dot57 65680
+shape.dot58 65680
+shape.dot59 65680
+shape.dot60 65680
+picture.frozenShip 65680
+input response 66179
+trial.feedback 66180
+picture.feedback3 66189
+picture.feedback2 66189
+text.feedback1 66189
+input response 66881
+trial.ITI 66882
+picture.fixationCross 66897
+shape.dot1 66897
+shape.dot2 66897
+shape.dot3 66897
+shape.dot4 66897
+shape.dot5 66897
+shape.dot6 66897
+shape.dot7 66897
+shape.dot8 66897
+shape.dot9 66897
+shape.dot10 66897
+shape.dot11 66897
+shape.dot12 66897
+shape.dot13 66897
+shape.dot14 66897
+shape.dot15 66897
+shape.dot16 66897
+shape.dot17 66897
+shape.dot18 66897
+shape.dot19 66897
+shape.dot20 66897
+shape.dot21 66897
+shape.dot22 66897
+shape.dot23 66897
+shape.dot24 66897
+shape.dot25 66897
+shape.dot26 66897
+shape.dot27 66897
+shape.dot28 66897
+shape.dot29 66897
+shape.dot30 66897
+shape.dot31 66897
+shape.dot32 66897
+shape.dot33 66897
+shape.dot34 66897
+shape.dot35 66897
+shape.dot36 66897
+shape.dot37 66897
+shape.dot38 66897
+shape.dot39 66897
+shape.dot40 66897
+shape.dot41 66897
+shape.dot42 66897
+shape.dot43 66897
+shape.dot44 66897
+shape.dot45 66897
+shape.dot46 66897
+shape.dot47 66897
+shape.dot48 66897
+shape.dot49 66897
+shape.dot50 66897
+shape.dot51 66897
+shape.dot52 66897
+shape.dot53 66897
+shape.dot54 66897
+shape.dot55 66897
+shape.dot56 66897
+shape.dot57 66897
+shape.dot58 66897
+shape.dot59 66897
+shape.dot60 66897
+input response 67310
+trial.resetCounters3 67311
+input response 67311
+trial.preFreeze 67311
+picture.planet 67322
+picture.stim 67322
+shape.dot1 67322
+shape.dot2 67322
+shape.dot3 67322
+shape.dot4 67322
+shape.dot5 67322
+shape.dot6 67322
+shape.dot7 67322
+shape.dot8 67322
+shape.dot9 67322
+shape.dot10 67322
+shape.dot11 67322
+shape.dot12 67322
+shape.dot13 67322
+shape.dot14 67322
+shape.dot15 67322
+shape.dot16 67322
+shape.dot17 67322
+shape.dot18 67322
+shape.dot19 67322
+shape.dot20 67322
+shape.dot21 67322
+shape.dot22 67322
+shape.dot23 67322
+shape.dot24 67322
+shape.dot25 67322
+shape.dot26 67322
+shape.dot27 67322
+shape.dot28 67322
+shape.dot29 67322
+shape.dot30 67322
+shape.dot31 67322
+shape.dot32 67322
+shape.dot33 67322
+shape.dot34 67322
+shape.dot35 67322
+shape.dot36 67322
+shape.dot37 67322
+shape.dot38 67322
+shape.dot39 67322
+shape.dot40 67322
+shape.dot41 67322
+shape.dot42 67322
+shape.dot43 67322
+shape.dot44 67322
+shape.dot45 67322
+shape.dot46 67322
+shape.dot47 67322
+shape.dot48 67322
+shape.dot49 67322
+shape.dot50 67322
+shape.dot51 67322
+shape.dot52 67322
+shape.dot53 67322
+shape.dot54 67322
+shape.dot55 67322
+shape.dot56 67322
+shape.dot57 67322
+shape.dot58 67322
+shape.dot59 67322
+shape.dot60 67322
+picture.frozenShip 67322
+input response 67821
+trial.clock 67822
+picture.animatedCircle 67839
+picture.stim 67839
+shape.dot1 67839
+shape.dot2 67839
+shape.dot3 67839
+shape.dot4 67839
+shape.dot5 67839
+shape.dot6 67839
+shape.dot7 67839
+shape.dot8 67839
+shape.dot9 67839
+shape.dot10 67839
+shape.dot11 67839
+shape.dot12 67839
+shape.dot13 67839
+shape.dot14 67839
+shape.dot15 67839
+shape.dot16 67839
+shape.dot17 67839
+shape.dot18 67839
+shape.dot19 67839
+shape.dot20 67839
+shape.dot21 67839
+shape.dot22 67839
+shape.dot23 67839
+shape.dot24 67839
+shape.dot25 67839
+shape.dot26 67839
+shape.dot27 67839
+shape.dot28 67839
+shape.dot29 67839
+shape.dot30 67839
+shape.dot31 67839
+shape.dot32 67839
+shape.dot33 67839
+shape.dot34 67839
+shape.dot35 67839
+shape.dot36 67839
+shape.dot37 67839
+shape.dot38 67839
+shape.dot39 67839
+shape.dot40 67839
+shape.dot41 67839
+shape.dot42 67839
+shape.dot43 67839
+shape.dot44 67839
+shape.dot45 67839
+shape.dot46 67839
+shape.dot47 67839
+shape.dot48 67839
+shape.dot49 67839
+shape.dot50 67839
+shape.dot51 67839
+shape.dot52 67839
+shape.dot53 67839
+shape.dot54 67839
+shape.dot55 67839
+shape.dot56 67839
+shape.dot57 67839
+shape.dot58 67839
+shape.dot59 67839
+shape.dot60 67839
+input response 68819
+trial.ISI 68835
+picture.stim 68847
+picture.planet 68847
+shape.dot1 68847
+shape.dot2 68847
+shape.dot3 68847
+shape.dot4 68847
+shape.dot5 68847
+shape.dot6 68848
+shape.dot7 68848
+shape.dot8 68848
+shape.dot9 68848
+shape.dot10 68848
+shape.dot11 68848
+shape.dot12 68848
+shape.dot13 68848
+shape.dot14 68848
+shape.dot15 68848
+shape.dot16 68848
+shape.dot17 68848
+shape.dot18 68848
+shape.dot19 68848
+shape.dot20 68848
+shape.dot21 68848
+shape.dot22 68848
+shape.dot23 68848
+shape.dot24 68848
+shape.dot25 68848
+shape.dot26 68848
+shape.dot27 68848
+shape.dot28 68848
+shape.dot29 68848
+shape.dot30 68848
+shape.dot31 68848
+shape.dot32 68848
+shape.dot33 68848
+shape.dot34 68848
+shape.dot35 68848
+shape.dot36 68848
+shape.dot37 68848
+shape.dot38 68848
+shape.dot39 68848
+shape.dot40 68848
+shape.dot41 68848
+shape.dot42 68848
+shape.dot43 68848
+shape.dot44 68848
+shape.dot45 68848
+shape.dot46 68848
+shape.dot47 68848
+shape.dot48 68848
+shape.dot49 68848
+shape.dot50 68848
+shape.dot51 68848
+shape.dot52 68848
+shape.dot53 68848
+shape.dot54 68848
+shape.dot55 68848
+shape.dot56 68848
+shape.dot57 68848
+shape.dot58 68848
+shape.dot59 68848
+shape.dot60 68848
+picture.frozenShip 68848
+input response 69279
+trial.feedback 69281
+picture.feedback3 69290
+picture.feedback2 69290
+text.feedback1 69290
+input response 69981
+trial.ITI 69982
+picture.fixationCross 69990
+shape.dot1 69990
+shape.dot2 69990
+shape.dot3 69990
+shape.dot4 69990
+shape.dot5 69990
+shape.dot6 69990
+shape.dot7 69990
+shape.dot8 69990
+shape.dot9 69990
+shape.dot10 69990
+shape.dot11 69990
+shape.dot12 69990
+shape.dot13 69990
+shape.dot14 69990
+shape.dot15 69990
+shape.dot16 69990
+shape.dot17 69990
+shape.dot18 69990
+shape.dot19 69990
+shape.dot20 69990
+shape.dot21 69990
+shape.dot22 69990
+shape.dot23 69990
+shape.dot24 69990
+shape.dot25 69990
+shape.dot26 69990
+shape.dot27 69990
+shape.dot28 69990
+shape.dot29 69990
+shape.dot30 69990
+shape.dot31 69990
+shape.dot32 69990
+shape.dot33 69990
+shape.dot34 69990
+shape.dot35 69990
+shape.dot36 69990
+shape.dot37 69990
+shape.dot38 69990
+shape.dot39 69990
+shape.dot40 69990
+shape.dot41 69990
+shape.dot42 69990
+shape.dot43 69990
+shape.dot44 69990
+shape.dot45 69990
+shape.dot46 69990
+shape.dot47 69990
+shape.dot48 69990
+shape.dot49 69990
+shape.dot50 69990
+shape.dot51 69990
+shape.dot52 69990
+shape.dot53 69990
+shape.dot54 69990
+shape.dot55 69990
+shape.dot56 69990
+shape.dot57 69990
+shape.dot58 69990
+shape.dot59 69990
+shape.dot60 69990
+input response 70168
+trial.resetCounters3 70168
+input response 70168
+trial.preFreeze 70168
+picture.planet 70172
+picture.stim 70172
+shape.dot1 70172
+shape.dot2 70172
+shape.dot3 70172
+shape.dot4 70172
+shape.dot5 70172
+shape.dot6 70172
+shape.dot7 70172
+shape.dot8 70172
+shape.dot9 70172
+shape.dot10 70172
+shape.dot11 70172
+shape.dot12 70172
+shape.dot13 70172
+shape.dot14 70172
+shape.dot15 70172
+shape.dot16 70172
+shape.dot17 70172
+shape.dot18 70172
+shape.dot19 70172
+shape.dot20 70172
+shape.dot21 70172
+shape.dot22 70172
+shape.dot23 70172
+shape.dot24 70172
+shape.dot25 70172
+shape.dot26 70172
+shape.dot27 70172
+shape.dot28 70172
+shape.dot29 70172
+shape.dot30 70172
+shape.dot31 70172
+shape.dot32 70172
+shape.dot33 70172
+shape.dot34 70172
+shape.dot35 70172
+shape.dot36 70172
+shape.dot37 70172
+shape.dot38 70172
+shape.dot39 70172
+shape.dot40 70172
+shape.dot41 70172
+shape.dot42 70172
+shape.dot43 70172
+shape.dot44 70172
+shape.dot45 70172
+shape.dot46 70172
+shape.dot47 70172
+shape.dot48 70172
+shape.dot49 70172
+shape.dot50 70172
+shape.dot51 70172
+shape.dot52 70172
+shape.dot53 70172
+shape.dot54 70172
+shape.dot55 70172
+shape.dot56 70172
+shape.dot57 70172
+shape.dot58 70172
+shape.dot59 70172
+shape.dot60 70172
+picture.frozenShip 70172
+input response 70754
+trial.clock 70755
+picture.animatedCircle 70773
+picture.stim 70773
+shape.dot1 70773
+shape.dot2 70773
+shape.dot3 70773
+shape.dot4 70773
+shape.dot5 70773
+shape.dot6 70773
+shape.dot7 70773
+shape.dot8 70773
+shape.dot9 70773
+shape.dot10 70773
+shape.dot11 70773
+shape.dot12 70773
+shape.dot13 70773
+shape.dot14 70773
+shape.dot15 70773
+shape.dot16 70773
+shape.dot17 70773
+shape.dot18 70773
+shape.dot19 70773
+shape.dot20 70773
+shape.dot21 70773
+shape.dot22 70773
+shape.dot23 70773
+shape.dot24 70773
+shape.dot25 70773
+shape.dot26 70773
+shape.dot27 70773
+shape.dot28 70773
+shape.dot29 70773
+shape.dot30 70773
+shape.dot31 70773
+shape.dot32 70773
+shape.dot33 70773
+shape.dot34 70773
+shape.dot35 70773
+shape.dot36 70773
+shape.dot37 70773
+shape.dot38 70773
+shape.dot39 70773
+shape.dot40 70773
+shape.dot41 70773
+shape.dot42 70773
+shape.dot43 70773
+shape.dot44 70773
+shape.dot45 70773
+shape.dot46 70773
+shape.dot47 70773
+shape.dot48 70773
+shape.dot49 70773
+shape.dot50 70773
+shape.dot51 70773
+shape.dot52 70773
+shape.dot53 70773
+shape.dot54 70773
+shape.dot55 70773
+shape.dot56 70773
+shape.dot57 70773
+shape.dot58 70773
+shape.dot59 70773
+shape.dot60 70773
+input response 72115
+trial.ISI 72132
+picture.stim 72165
+picture.planet 72165
+shape.dot1 72165
+shape.dot2 72165
+shape.dot3 72165
+shape.dot4 72165
+shape.dot5 72165
+shape.dot6 72165
+shape.dot7 72165
+shape.dot8 72165
+shape.dot9 72165
+shape.dot10 72165
+shape.dot11 72165
+shape.dot12 72165
+shape.dot13 72165
+shape.dot14 72165
+shape.dot15 72165
+shape.dot16 72165
+shape.dot17 72165
+shape.dot18 72165
+shape.dot19 72165
+shape.dot20 72165
+shape.dot21 72165
+shape.dot22 72165
+shape.dot23 72165
+shape.dot24 72165
+shape.dot25 72165
+shape.dot26 72165
+shape.dot27 72165
+shape.dot28 72165
+shape.dot29 72165
+shape.dot30 72165
+shape.dot31 72165
+shape.dot32 72165
+shape.dot33 72165
+shape.dot34 72165
+shape.dot35 72165
+shape.dot36 72165
+shape.dot37 72165
+shape.dot38 72165
+shape.dot39 72165
+shape.dot40 72165
+shape.dot41 72165
+shape.dot42 72165
+shape.dot43 72165
+shape.dot44 72165
+shape.dot45 72165
+shape.dot46 72165
+shape.dot47 72165
+shape.dot48 72165
+shape.dot49 72165
+shape.dot50 72165
+shape.dot51 72165
+shape.dot52 72165
+shape.dot53 72165
+shape.dot54 72165
+shape.dot55 72165
+shape.dot56 72165
+shape.dot57 72165
+shape.dot58 72165
+shape.dot59 72165
+shape.dot60 72165
+picture.frozenShip 72165
+input response 72447
+trial.feedback 72449
+picture.feedback3 72457
+picture.feedback2 72457
+text.feedback1 72457
+input response 73148
+trial.ITI 73150
+picture.fixationCross 73156
+shape.dot1 73156
+shape.dot2 73156
+shape.dot3 73156
+shape.dot4 73156
+shape.dot5 73156
+shape.dot6 73156
+shape.dot7 73156
+shape.dot8 73156
+shape.dot9 73156
+shape.dot10 73156
+shape.dot11 73156
+shape.dot12 73156
+shape.dot13 73156
+shape.dot14 73156
+shape.dot15 73156
+shape.dot16 73156
+shape.dot17 73156
+shape.dot18 73156
+shape.dot19 73156
+shape.dot20 73156
+shape.dot21 73156
+shape.dot22 73156
+shape.dot23 73156
+shape.dot24 73156
+shape.dot25 73156
+shape.dot26 73156
+shape.dot27 73156
+shape.dot28 73156
+shape.dot29 73156
+shape.dot30 73156
+shape.dot31 73156
+shape.dot32 73156
+shape.dot33 73156
+shape.dot34 73156
+shape.dot35 73156
+shape.dot36 73156
+shape.dot37 73156
+shape.dot38 73156
+shape.dot39 73156
+shape.dot40 73156
+shape.dot41 73156
+shape.dot42 73156
+shape.dot43 73156
+shape.dot44 73156
+shape.dot45 73156
+shape.dot46 73156
+shape.dot47 73156
+shape.dot48 73156
+shape.dot49 73156
+shape.dot50 73156
+shape.dot51 73156
+shape.dot52 73156
+shape.dot53 73156
+shape.dot54 73156
+shape.dot55 73156
+shape.dot56 73156
+shape.dot57 73156
+shape.dot58 73156
+shape.dot59 73156
+shape.dot60 73156
+input response 73284
+trial.resetCounters3 73285
+input response 73285
+trial.preFreeze 73285
+picture.planet 73290
+picture.stim 73290
+shape.dot1 73290
+shape.dot2 73290
+shape.dot3 73290
+shape.dot4 73290
+shape.dot5 73290
+shape.dot6 73290
+shape.dot7 73290
+shape.dot8 73290
+shape.dot9 73290
+shape.dot10 73290
+shape.dot11 73290
+shape.dot12 73290
+shape.dot13 73290
+shape.dot14 73290
+shape.dot15 73290
+shape.dot16 73290
+shape.dot17 73290
+shape.dot18 73290
+shape.dot19 73290
+shape.dot20 73290
+shape.dot21 73290
+shape.dot22 73290
+shape.dot23 73290
+shape.dot24 73290
+shape.dot25 73290
+shape.dot26 73290
+shape.dot27 73290
+shape.dot28 73290
+shape.dot29 73290
+shape.dot30 73290
+shape.dot31 73290
+shape.dot32 73290
+shape.dot33 73290
+shape.dot34 73290
+shape.dot35 73290
+shape.dot36 73290
+shape.dot37 73290
+shape.dot38 73290
+shape.dot39 73290
+shape.dot40 73290
+shape.dot41 73290
+shape.dot42 73290
+shape.dot43 73290
+shape.dot44 73290
+shape.dot45 73290
+shape.dot46 73290
+shape.dot47 73290
+shape.dot48 73290
+shape.dot49 73290
+shape.dot50 73290
+shape.dot51 73290
+shape.dot52 73290
+shape.dot53 73290
+shape.dot54 73290
+shape.dot55 73290
+shape.dot56 73290
+shape.dot57 73290
+shape.dot58 73290
+shape.dot59 73290
+shape.dot60 73290
+picture.frozenShip 73290
+input response 73922
+trial.clock 73922
+picture.animatedCircle 73940
+picture.stim 73940
+shape.dot1 73940
+shape.dot2 73940
+shape.dot3 73940
+shape.dot4 73940
+shape.dot5 73940
+shape.dot6 73940
+shape.dot7 73940
+shape.dot8 73940
+shape.dot9 73940
+shape.dot10 73940
+shape.dot11 73940
+shape.dot12 73940
+shape.dot13 73940
+shape.dot14 73940
+shape.dot15 73940
+shape.dot16 73940
+shape.dot17 73940
+shape.dot18 73940
+shape.dot19 73940
+shape.dot20 73940
+shape.dot21 73940
+shape.dot22 73940
+shape.dot23 73940
+shape.dot24 73940
+shape.dot25 73940
+shape.dot26 73940
+shape.dot27 73940
+shape.dot28 73940
+shape.dot29 73940
+shape.dot30 73940
+shape.dot31 73940
+shape.dot32 73940
+shape.dot33 73940
+shape.dot34 73940
+shape.dot35 73940
+shape.dot36 73940
+shape.dot37 73940
+shape.dot38 73940
+shape.dot39 73940
+shape.dot40 73940
+shape.dot41 73940
+shape.dot42 73940
+shape.dot43 73940
+shape.dot44 73940
+shape.dot45 73940
+shape.dot46 73940
+shape.dot47 73940
+shape.dot48 73940
+shape.dot49 73940
+shape.dot50 73940
+shape.dot51 73940
+shape.dot52 73940
+shape.dot53 73940
+shape.dot54 73940
+shape.dot55 73940
+shape.dot56 73940
+shape.dot57 73940
+shape.dot58 73940
+shape.dot59 73940
+shape.dot60 73940
+input response 75394
+trial.ISI 75411
+picture.stim 75432
+picture.planet 75432
+shape.dot1 75432
+shape.dot2 75432
+shape.dot3 75432
+shape.dot4 75432
+shape.dot5 75432
+shape.dot6 75432
+shape.dot7 75432
+shape.dot8 75432
+shape.dot9 75432
+shape.dot10 75432
+shape.dot11 75432
+shape.dot12 75432
+shape.dot13 75432
+shape.dot14 75432
+shape.dot15 75432
+shape.dot16 75432
+shape.dot17 75432
+shape.dot18 75432
+shape.dot19 75432
+shape.dot20 75432
+shape.dot21 75432
+shape.dot22 75432
+shape.dot23 75432
+shape.dot24 75432
+shape.dot25 75432
+shape.dot26 75432
+shape.dot27 75432
+shape.dot28 75432
+shape.dot29 75432
+shape.dot30 75432
+shape.dot31 75432
+shape.dot32 75432
+shape.dot33 75432
+shape.dot34 75432
+shape.dot35 75432
+shape.dot36 75432
+shape.dot37 75432
+shape.dot38 75432
+shape.dot39 75432
+shape.dot40 75432
+shape.dot41 75432
+shape.dot42 75432
+shape.dot43 75432
+shape.dot44 75432
+shape.dot45 75432
+shape.dot46 75432
+shape.dot47 75432
+shape.dot48 75432
+shape.dot49 75432
+shape.dot50 75432
+shape.dot51 75432
+shape.dot52 75432
+shape.dot53 75432
+shape.dot54 75432
+shape.dot55 75432
+shape.dot56 75432
+shape.dot57 75432
+shape.dot58 75432
+shape.dot59 75432
+shape.dot60 75432
+picture.frozenShip 75432
+input response 75831
+trial.feedback 75833
+picture.feedback3 75840
+picture.feedback2 75840
+text.feedback1 75840
+input response 76532
+trial.ITI 76534
+picture.fixationCross 76541
+shape.dot1 76541
+shape.dot2 76541
+shape.dot3 76541
+shape.dot4 76541
+shape.dot5 76541
+shape.dot6 76541
+shape.dot7 76541
+shape.dot8 76541
+shape.dot9 76541
+shape.dot10 76541
+shape.dot11 76541
+shape.dot12 76541
+shape.dot13 76541
+shape.dot14 76541
+shape.dot15 76541
+shape.dot16 76541
+shape.dot17 76541
+shape.dot18 76541
+shape.dot19 76541
+shape.dot20 76541
+shape.dot21 76541
+shape.dot22 76541
+shape.dot23 76541
+shape.dot24 76541
+shape.dot25 76541
+shape.dot26 76541
+shape.dot27 76541
+shape.dot28 76541
+shape.dot29 76541
+shape.dot30 76541
+shape.dot31 76541
+shape.dot32 76541
+shape.dot33 76541
+shape.dot34 76541
+shape.dot35 76541
+shape.dot36 76541
+shape.dot37 76541
+shape.dot38 76541
+shape.dot39 76541
+shape.dot40 76541
+shape.dot41 76541
+shape.dot42 76541
+shape.dot43 76541
+shape.dot44 76541
+shape.dot45 76541
+shape.dot46 76541
+shape.dot47 76541
+shape.dot48 76541
+shape.dot49 76541
+shape.dot50 76541
+shape.dot51 76541
+shape.dot52 76541
+shape.dot53 76541
+shape.dot54 76541
+shape.dot55 76541
+shape.dot56 76541
+shape.dot57 76541
+shape.dot58 76541
+shape.dot59 76541
+shape.dot60 76541
+input response 76736
+trial.resetCounters3 76736
+input response 76737
+trial.preFreeze 76737
+picture.planet 76742
+picture.stim 76742
+shape.dot1 76742
+shape.dot2 76742
+shape.dot3 76742
+shape.dot4 76742
+shape.dot5 76742
+shape.dot6 76742
+shape.dot7 76742
+shape.dot8 76742
+shape.dot9 76742
+shape.dot10 76742
+shape.dot11 76742
+shape.dot12 76742
+shape.dot13 76742
+shape.dot14 76742
+shape.dot15 76742
+shape.dot16 76742
+shape.dot17 76742
+shape.dot18 76742
+shape.dot19 76742
+shape.dot20 76742
+shape.dot21 76742
+shape.dot22 76742
+shape.dot23 76742
+shape.dot24 76742
+shape.dot25 76742
+shape.dot26 76742
+shape.dot27 76742
+shape.dot28 76742
+shape.dot29 76742
+shape.dot30 76742
+shape.dot31 76742
+shape.dot32 76742
+shape.dot33 76742
+shape.dot34 76742
+shape.dot35 76742
+shape.dot36 76742
+shape.dot37 76742
+shape.dot38 76742
+shape.dot39 76742
+shape.dot40 76742
+shape.dot41 76742
+shape.dot42 76742
+shape.dot43 76742
+shape.dot44 76742
+shape.dot45 76742
+shape.dot46 76742
+shape.dot47 76742
+shape.dot48 76742
+shape.dot49 76742
+shape.dot50 76742
+shape.dot51 76742
+shape.dot52 76742
+shape.dot53 76742
+shape.dot54 76742
+shape.dot55 76742
+shape.dot56 76742
+shape.dot57 76742
+shape.dot58 76742
+shape.dot59 76742
+shape.dot60 76742
+picture.frozenShip 76742
+input response 77274
+trial.clock 77274
+picture.animatedCircle 77291
+picture.stim 77291
+shape.dot1 77291
+shape.dot2 77291
+shape.dot3 77291
+shape.dot4 77291
+shape.dot5 77291
+shape.dot6 77291
+shape.dot7 77291
+shape.dot8 77291
+shape.dot9 77291
+shape.dot10 77291
+shape.dot11 77291
+shape.dot12 77291
+shape.dot13 77291
+shape.dot14 77291
+shape.dot15 77291
+shape.dot16 77291
+shape.dot17 77291
+shape.dot18 77291
+shape.dot19 77291
+shape.dot20 77291
+shape.dot21 77291
+shape.dot22 77291
+shape.dot23 77291
+shape.dot24 77291
+shape.dot25 77291
+shape.dot26 77291
+shape.dot27 77291
+shape.dot28 77291
+shape.dot29 77291
+shape.dot30 77291
+shape.dot31 77291
+shape.dot32 77291
+shape.dot33 77291
+shape.dot34 77291
+shape.dot35 77291
+shape.dot36 77291
+shape.dot37 77291
+shape.dot38 77291
+shape.dot39 77291
+shape.dot40 77291
+shape.dot41 77291
+shape.dot42 77291
+shape.dot43 77291
+shape.dot44 77291
+shape.dot45 77291
+shape.dot46 77291
+shape.dot47 77291
+shape.dot48 77291
+shape.dot49 77291
+shape.dot50 77291
+shape.dot51 77291
+shape.dot52 77291
+shape.dot53 77291
+shape.dot54 77291
+shape.dot55 77291
+shape.dot56 77291
+shape.dot57 77291
+shape.dot58 77291
+shape.dot59 77291
+shape.dot60 77291
+input response 78450
+trial.ISI 78467
+picture.stim 78483
+picture.planet 78483
+shape.dot1 78483
+shape.dot2 78483
+shape.dot3 78483
+shape.dot4 78483
+shape.dot5 78483
+shape.dot6 78483
+shape.dot7 78483
+shape.dot8 78483
+shape.dot9 78483
+shape.dot10 78483
+shape.dot11 78483
+shape.dot12 78483
+shape.dot13 78483
+shape.dot14 78483
+shape.dot15 78483
+shape.dot16 78483
+shape.dot17 78483
+shape.dot18 78483
+shape.dot19 78483
+shape.dot20 78483
+shape.dot21 78483
+shape.dot22 78483
+shape.dot23 78483
+shape.dot24 78483
+shape.dot25 78483
+shape.dot26 78483
+shape.dot27 78483
+shape.dot28 78483
+shape.dot29 78483
+shape.dot30 78483
+shape.dot31 78483
+shape.dot32 78483
+shape.dot33 78483
+shape.dot34 78483
+shape.dot35 78483
+shape.dot36 78483
+shape.dot37 78483
+shape.dot38 78483
+shape.dot39 78483
+shape.dot40 78483
+shape.dot41 78483
+shape.dot42 78483
+shape.dot43 78483
+shape.dot44 78483
+shape.dot45 78483
+shape.dot46 78483
+shape.dot47 78483
+shape.dot48 78483
+shape.dot49 78483
+shape.dot50 78483
+shape.dot51 78483
+shape.dot52 78483
+shape.dot53 78483
+shape.dot54 78483
+shape.dot55 78483
+shape.dot56 78483
+shape.dot57 78483
+shape.dot58 78483
+shape.dot59 78483
+shape.dot60 78483
+picture.frozenShip 78483
+input response 78849
+trial.feedback 78850
+picture.feedback3 78858
+picture.feedback2 78858
+text.feedback1 78858
+input response 79551
+trial.ITI 79552
+picture.fixationCross 79558
+shape.dot1 79558
+shape.dot2 79558
+shape.dot3 79558
+shape.dot4 79558
+shape.dot5 79558
+shape.dot6 79558
+shape.dot7 79558
+shape.dot8 79558
+shape.dot9 79558
+shape.dot10 79558
+shape.dot11 79558
+shape.dot12 79558
+shape.dot13 79558
+shape.dot14 79558
+shape.dot15 79558
+shape.dot16 79558
+shape.dot17 79558
+shape.dot18 79558
+shape.dot19 79558
+shape.dot20 79558
+shape.dot21 79558
+shape.dot22 79558
+shape.dot23 79558
+shape.dot24 79558
+shape.dot25 79558
+shape.dot26 79558
+shape.dot27 79558
+shape.dot28 79558
+shape.dot29 79558
+shape.dot30 79558
+shape.dot31 79558
+shape.dot32 79558
+shape.dot33 79558
+shape.dot34 79558
+shape.dot35 79558
+shape.dot36 79558
+shape.dot37 79558
+shape.dot38 79558
+shape.dot39 79558
+shape.dot40 79558
+shape.dot41 79558
+shape.dot42 79558
+shape.dot43 79558
+shape.dot44 79558
+shape.dot45 79558
+shape.dot46 79558
+shape.dot47 79558
+shape.dot48 79558
+shape.dot49 79558
+shape.dot50 79558
+shape.dot51 79558
+shape.dot52 79558
+shape.dot53 79558
+shape.dot54 79558
+shape.dot55 79558
+shape.dot56 79558
+shape.dot57 79558
+shape.dot58 79558
+shape.dot59 79558
+shape.dot60 79558
+input response 79870
+trial.resetCounters3 79871
+input response 79871
+trial.preFreeze 79871
+picture.planet 79876
+picture.stim 79876
+shape.dot1 79876
+shape.dot2 79876
+shape.dot3 79876
+shape.dot4 79876
+shape.dot5 79876
+shape.dot6 79876
+shape.dot7 79876
+shape.dot8 79876
+shape.dot9 79876
+shape.dot10 79876
+shape.dot11 79876
+shape.dot12 79876
+shape.dot13 79876
+shape.dot14 79876
+shape.dot15 79876
+shape.dot16 79876
+shape.dot17 79876
+shape.dot18 79876
+shape.dot19 79876
+shape.dot20 79876
+shape.dot21 79876
+shape.dot22 79876
+shape.dot23 79876
+shape.dot24 79876
+shape.dot25 79876
+shape.dot26 79876
+shape.dot27 79876
+shape.dot28 79876
+shape.dot29 79876
+shape.dot30 79876
+shape.dot31 79876
+shape.dot32 79876
+shape.dot33 79876
+shape.dot34 79876
+shape.dot35 79876
+shape.dot36 79876
+shape.dot37 79876
+shape.dot38 79876
+shape.dot39 79876
+shape.dot40 79876
+shape.dot41 79876
+shape.dot42 79876
+shape.dot43 79876
+shape.dot44 79876
+shape.dot45 79876
+shape.dot46 79876
+shape.dot47 79876
+shape.dot48 79876
+shape.dot49 79876
+shape.dot50 79876
+shape.dot51 79876
+shape.dot52 79876
+shape.dot53 79876
+shape.dot54 79876
+shape.dot55 79876
+shape.dot56 79876
+shape.dot57 79876
+shape.dot58 79876
+shape.dot59 79876
+shape.dot60 79876
+picture.frozenShip 79876
+input response 80491
+trial.clock 80491
+picture.animatedCircle 80509
+picture.stim 80509
+shape.dot1 80509
+shape.dot2 80509
+shape.dot3 80509
+shape.dot4 80509
+shape.dot5 80509
+shape.dot6 80509
+shape.dot7 80509
+shape.dot8 80509
+shape.dot9 80509
+shape.dot10 80509
+shape.dot11 80509
+shape.dot12 80509
+shape.dot13 80509
+shape.dot14 80509
+shape.dot15 80509
+shape.dot16 80509
+shape.dot17 80509
+shape.dot18 80509
+shape.dot19 80509
+shape.dot20 80509
+shape.dot21 80509
+shape.dot22 80509
+shape.dot23 80509
+shape.dot24 80509
+shape.dot25 80509
+shape.dot26 80509
+shape.dot27 80509
+shape.dot28 80509
+shape.dot29 80509
+shape.dot30 80509
+shape.dot31 80509
+shape.dot32 80509
+shape.dot33 80509
+shape.dot34 80509
+shape.dot35 80509
+shape.dot36 80509
+shape.dot37 80509
+shape.dot38 80509
+shape.dot39 80509
+shape.dot40 80509
+shape.dot41 80509
+shape.dot42 80509
+shape.dot43 80509
+shape.dot44 80509
+shape.dot45 80509
+shape.dot46 80509
+shape.dot47 80509
+shape.dot48 80509
+shape.dot49 80509
+shape.dot50 80509
+shape.dot51 80509
+shape.dot52 80509
+shape.dot53 80509
+shape.dot54 80509
+shape.dot55 80509
+shape.dot56 80509
+shape.dot57 80509
+shape.dot58 80509
+shape.dot59 80509
+shape.dot60 80509
+input response 82043
+trial.ISI 82059
+picture.stim 82084
+picture.planet 82084
+shape.dot1 82084
+shape.dot2 82084
+shape.dot3 82084
+shape.dot4 82084
+shape.dot5 82084
+shape.dot6 82084
+shape.dot7 82084
+shape.dot8 82084
+shape.dot9 82084
+shape.dot10 82084
+shape.dot11 82084
+shape.dot12 82084
+shape.dot13 82084
+shape.dot14 82084
+shape.dot15 82084
+shape.dot16 82084
+shape.dot17 82084
+shape.dot18 82084
+shape.dot19 82084
+shape.dot20 82084
+shape.dot21 82084
+shape.dot22 82084
+shape.dot23 82084
+shape.dot24 82084
+shape.dot25 82084
+shape.dot26 82084
+shape.dot27 82084
+shape.dot28 82084
+shape.dot29 82084
+shape.dot30 82084
+shape.dot31 82084
+shape.dot32 82084
+shape.dot33 82084
+shape.dot34 82084
+shape.dot35 82084
+shape.dot36 82084
+shape.dot37 82084
+shape.dot38 82084
+shape.dot39 82084
+shape.dot40 82084
+shape.dot41 82084
+shape.dot42 82084
+shape.dot43 82084
+shape.dot44 82084
+shape.dot45 82084
+shape.dot46 82084
+shape.dot47 82084
+shape.dot48 82084
+shape.dot49 82084
+shape.dot50 82084
+shape.dot51 82084
+shape.dot52 82084
+shape.dot53 82084
+shape.dot54 82084
+shape.dot55 82084
+shape.dot56 82084
+shape.dot57 82084
+shape.dot58 82084
+shape.dot59 82084
+shape.dot60 82084
+picture.frozenShip 82084
+input response 82533
+trial.feedback 82535
+picture.feedback3 82543
+picture.feedback2 82543
+text.feedback1 82543
+input response 83235
+trial.ITI 83236
+picture.fixationCross 83243
+shape.dot1 83243
+shape.dot2 83243
+shape.dot3 83243
+shape.dot4 83243
+shape.dot5 83243
+shape.dot6 83243
+shape.dot7 83243
+shape.dot8 83243
+shape.dot9 83243
+shape.dot10 83243
+shape.dot11 83243
+shape.dot12 83243
+shape.dot13 83243
+shape.dot14 83243
+shape.dot15 83243
+shape.dot16 83243
+shape.dot17 83243
+shape.dot18 83243
+shape.dot19 83243
+shape.dot20 83243
+shape.dot21 83243
+shape.dot22 83243
+shape.dot23 83243
+shape.dot24 83243
+shape.dot25 83243
+shape.dot26 83243
+shape.dot27 83243
+shape.dot28 83243
+shape.dot29 83243
+shape.dot30 83243
+shape.dot31 83243
+shape.dot32 83243
+shape.dot33 83243
+shape.dot34 83243
+shape.dot35 83243
+shape.dot36 83243
+shape.dot37 83243
+shape.dot38 83243
+shape.dot39 83243
+shape.dot40 83243
+shape.dot41 83243
+shape.dot42 83243
+shape.dot43 83243
+shape.dot44 83243
+shape.dot45 83243
+shape.dot46 83243
+shape.dot47 83243
+shape.dot48 83243
+shape.dot49 83243
+shape.dot50 83243
+shape.dot51 83243
+shape.dot52 83243
+shape.dot53 83243
+shape.dot54 83243
+shape.dot55 83243
+shape.dot56 83243
+shape.dot57 83243
+shape.dot58 83243
+shape.dot59 83243
+shape.dot60 83243
+input response 83337
+trial.resetCounters3 83338
+input response 83338
+trial.preFreeze 83338
+picture.planet 83343
+picture.stim 83343
+shape.dot1 83343
+shape.dot2 83343
+shape.dot3 83343
+shape.dot4 83343
+shape.dot5 83343
+shape.dot6 83343
+shape.dot7 83343
+shape.dot8 83343
+shape.dot9 83343
+shape.dot10 83343
+shape.dot11 83343
+shape.dot12 83343
+shape.dot13 83343
+shape.dot14 83343
+shape.dot15 83343
+shape.dot16 83343
+shape.dot17 83343
+shape.dot18 83343
+shape.dot19 83343
+shape.dot20 83343
+shape.dot21 83343
+shape.dot22 83343
+shape.dot23 83343
+shape.dot24 83343
+shape.dot25 83343
+shape.dot26 83343
+shape.dot27 83343
+shape.dot28 83343
+shape.dot29 83343
+shape.dot30 83343
+shape.dot31 83343
+shape.dot32 83343
+shape.dot33 83343
+shape.dot34 83343
+shape.dot35 83343
+shape.dot36 83343
+shape.dot37 83343
+shape.dot38 83343
+shape.dot39 83343
+shape.dot40 83343
+shape.dot41 83343
+shape.dot42 83343
+shape.dot43 83343
+shape.dot44 83343
+shape.dot45 83343
+shape.dot46 83343
+shape.dot47 83343
+shape.dot48 83343
+shape.dot49 83343
+shape.dot50 83343
+shape.dot51 83343
+shape.dot52 83343
+shape.dot53 83343
+shape.dot54 83343
+shape.dot55 83343
+shape.dot56 83343
+shape.dot57 83343
+shape.dot58 83343
+shape.dot59 83343
+shape.dot60 83343
+picture.frozenShip 83343
+input response 84025
+trial.clock 84026
+picture.animatedCircle 84043
+picture.stim 84043
+shape.dot1 84043
+shape.dot2 84043
+shape.dot3 84043
+shape.dot4 84043
+shape.dot5 84043
+shape.dot6 84043
+shape.dot7 84043
+shape.dot8 84043
+shape.dot9 84043
+shape.dot10 84043
+shape.dot11 84043
+shape.dot12 84043
+shape.dot13 84043
+shape.dot14 84043
+shape.dot15 84043
+shape.dot16 84043
+shape.dot17 84043
+shape.dot18 84043
+shape.dot19 84043
+shape.dot20 84043
+shape.dot21 84043
+shape.dot22 84043
+shape.dot23 84043
+shape.dot24 84043
+shape.dot25 84043
+shape.dot26 84043
+shape.dot27 84043
+shape.dot28 84043
+shape.dot29 84043
+shape.dot30 84043
+shape.dot31 84043
+shape.dot32 84043
+shape.dot33 84043
+shape.dot34 84043
+shape.dot35 84043
+shape.dot36 84043
+shape.dot37 84043
+shape.dot38 84043
+shape.dot39 84043
+shape.dot40 84043
+shape.dot41 84043
+shape.dot42 84043
+shape.dot43 84043
+shape.dot44 84043
+shape.dot45 84043
+shape.dot46 84043
+shape.dot47 84043
+shape.dot48 84043
+shape.dot49 84043
+shape.dot50 84043
+shape.dot51 84043
+shape.dot52 84043
+shape.dot53 84043
+shape.dot54 84043
+shape.dot55 84043
+shape.dot56 84043
+shape.dot57 84043
+shape.dot58 84043
+shape.dot59 84043
+shape.dot60 84043
+input response 85467
+trial.ISI 85483
+picture.stim 85501
+picture.planet 85501
+shape.dot1 85501
+shape.dot2 85501
+shape.dot3 85501
+shape.dot4 85501
+shape.dot5 85501
+shape.dot6 85501
+shape.dot7 85501
+shape.dot8 85501
+shape.dot9 85501
+shape.dot10 85501
+shape.dot11 85501
+shape.dot12 85501
+shape.dot13 85501
+shape.dot14 85501
+shape.dot15 85501
+shape.dot16 85501
+shape.dot17 85501
+shape.dot18 85501
+shape.dot19 85501
+shape.dot20 85501
+shape.dot21 85501
+shape.dot22 85501
+shape.dot23 85501
+shape.dot24 85501
+shape.dot25 85501
+shape.dot26 85501
+shape.dot27 85501
+shape.dot28 85501
+shape.dot29 85501
+shape.dot30 85501
+shape.dot31 85501
+shape.dot32 85501
+shape.dot33 85501
+shape.dot34 85501
+shape.dot35 85501
+shape.dot36 85501
+shape.dot37 85501
+shape.dot38 85501
+shape.dot39 85501
+shape.dot40 85501
+shape.dot41 85501
+shape.dot42 85501
+shape.dot43 85501
+shape.dot44 85501
+shape.dot45 85501
+shape.dot46 85501
+shape.dot47 85501
+shape.dot48 85501
+shape.dot49 85501
+shape.dot50 85501
+shape.dot51 85501
+shape.dot52 85501
+shape.dot53 85501
+shape.dot54 85501
+shape.dot55 85501
+shape.dot56 85501
+shape.dot57 85501
+shape.dot58 85501
+shape.dot59 85501
+shape.dot60 85501
+picture.frozenShip 85501
+input response 85850
+trial.feedback 85852
+picture.feedback3 85860
+picture.feedback2 85860
+text.feedback1 85860
+input response 86551
+trial.ITI 86553
+picture.fixationCross 86560
+shape.dot1 86560
+shape.dot2 86560
+shape.dot3 86560
+shape.dot4 86560
+shape.dot5 86560
+shape.dot6 86560
+shape.dot7 86560
+shape.dot8 86560
+shape.dot9 86560
+shape.dot10 86560
+shape.dot11 86560
+shape.dot12 86560
+shape.dot13 86560
+shape.dot14 86560
+shape.dot15 86560
+shape.dot16 86560
+shape.dot17 86560
+shape.dot18 86560
+shape.dot19 86560
+shape.dot20 86560
+shape.dot21 86560
+shape.dot22 86560
+shape.dot23 86560
+shape.dot24 86560
+shape.dot25 86560
+shape.dot26 86560
+shape.dot27 86560
+shape.dot28 86560
+shape.dot29 86560
+shape.dot30 86560
+shape.dot31 86560
+shape.dot32 86560
+shape.dot33 86560
+shape.dot34 86560
+shape.dot35 86560
+shape.dot36 86560
+shape.dot37 86560
+shape.dot38 86560
+shape.dot39 86560
+shape.dot40 86560
+shape.dot41 86560
+shape.dot42 86560
+shape.dot43 86560
+shape.dot44 86560
+shape.dot45 86560
+shape.dot46 86560
+shape.dot47 86560
+shape.dot48 86560
+shape.dot49 86560
+shape.dot50 86560
+shape.dot51 86560
+shape.dot52 86560
+shape.dot53 86560
+shape.dot54 86560
+shape.dot55 86560
+shape.dot56 86560
+shape.dot57 86560
+shape.dot58 86560
+shape.dot59 86560
+shape.dot60 86560
+input response 86822
+trial.resetCounters3 86822
+input response 86822
+trial.preFreeze 86822
+picture.planet 86827
+picture.stim 86827
+shape.dot1 86827
+shape.dot2 86827
+shape.dot3 86827
+shape.dot4 86827
+shape.dot5 86827
+shape.dot6 86827
+shape.dot7 86827
+shape.dot8 86827
+shape.dot9 86827
+shape.dot10 86827
+shape.dot11 86827
+shape.dot12 86827
+shape.dot13 86827
+shape.dot14 86827
+shape.dot15 86827
+shape.dot16 86827
+shape.dot17 86827
+shape.dot18 86827
+shape.dot19 86827
+shape.dot20 86827
+shape.dot21 86827
+shape.dot22 86827
+shape.dot23 86827
+shape.dot24 86827
+shape.dot25 86827
+shape.dot26 86827
+shape.dot27 86827
+shape.dot28 86827
+shape.dot29 86827
+shape.dot30 86827
+shape.dot31 86827
+shape.dot32 86827
+shape.dot33 86827
+shape.dot34 86827
+shape.dot35 86827
+shape.dot36 86827
+shape.dot37 86827
+shape.dot38 86827
+shape.dot39 86827
+shape.dot40 86827
+shape.dot41 86827
+shape.dot42 86827
+shape.dot43 86827
+shape.dot44 86827
+shape.dot45 86827
+shape.dot46 86827
+shape.dot47 86827
+shape.dot48 86827
+shape.dot49 86827
+shape.dot50 86827
+shape.dot51 86827
+shape.dot52 86827
+shape.dot53 86827
+shape.dot54 86827
+shape.dot55 86827
+shape.dot56 86827
+shape.dot57 86827
+shape.dot58 86827
+shape.dot59 86827
+shape.dot60 86827
+picture.frozenShip 86827
+input response 87426
+trial.clock 87427
+picture.animatedCircle 87443
+picture.stim 87443
+shape.dot1 87443
+shape.dot2 87443
+shape.dot3 87443
+shape.dot4 87443
+shape.dot5 87443
+shape.dot6 87443
+shape.dot7 87443
+shape.dot8 87443
+shape.dot9 87443
+shape.dot10 87443
+shape.dot11 87443
+shape.dot12 87443
+shape.dot13 87443
+shape.dot14 87443
+shape.dot15 87443
+shape.dot16 87443
+shape.dot17 87443
+shape.dot18 87443
+shape.dot19 87443
+shape.dot20 87443
+shape.dot21 87443
+shape.dot22 87443
+shape.dot23 87443
+shape.dot24 87443
+shape.dot25 87443
+shape.dot26 87443
+shape.dot27 87443
+shape.dot28 87443
+shape.dot29 87444
+shape.dot30 87444
+shape.dot31 87444
+shape.dot32 87444
+shape.dot33 87444
+shape.dot34 87444
+shape.dot35 87444
+shape.dot36 87444
+shape.dot37 87444
+shape.dot38 87444
+shape.dot39 87444
+shape.dot40 87444
+shape.dot41 87444
+shape.dot42 87444
+shape.dot43 87444
+shape.dot44 87444
+shape.dot45 87444
+shape.dot46 87444
+shape.dot47 87444
+shape.dot48 87444
+shape.dot49 87444
+shape.dot50 87444
+shape.dot51 87444
+shape.dot52 87444
+shape.dot53 87444
+shape.dot54 87444
+shape.dot55 87444
+shape.dot56 87444
+shape.dot57 87444
+shape.dot58 87444
+shape.dot59 87444
+shape.dot60 87444
+input response 88203
+trial.ISI 88219
+picture.stim 88236
+picture.planet 88236
+shape.dot1 88236
+shape.dot2 88236
+shape.dot3 88236
+shape.dot4 88236
+shape.dot5 88236
+shape.dot6 88236
+shape.dot7 88236
+shape.dot8 88236
+shape.dot9 88236
+shape.dot10 88236
+shape.dot11 88236
+shape.dot12 88236
+shape.dot13 88236
+shape.dot14 88236
+shape.dot15 88236
+shape.dot16 88236
+shape.dot17 88236
+shape.dot18 88236
+shape.dot19 88236
+shape.dot20 88236
+shape.dot21 88236
+shape.dot22 88236
+shape.dot23 88236
+shape.dot24 88236
+shape.dot25 88236
+shape.dot26 88236
+shape.dot27 88236
+shape.dot28 88236
+shape.dot29 88236
+shape.dot30 88236
+shape.dot31 88236
+shape.dot32 88236
+shape.dot33 88236
+shape.dot34 88236
+shape.dot35 88236
+shape.dot36 88236
+shape.dot37 88236
+shape.dot38 88236
+shape.dot39 88236
+shape.dot40 88236
+shape.dot41 88236
+shape.dot42 88236
+shape.dot43 88236
+shape.dot44 88236
+shape.dot45 88236
+shape.dot46 88236
+shape.dot47 88236
+shape.dot48 88236
+shape.dot49 88236
+shape.dot50 88236
+shape.dot51 88236
+shape.dot52 88236
+shape.dot53 88236
+shape.dot54 88236
+shape.dot55 88236
+shape.dot56 88236
+shape.dot57 88236
+shape.dot58 88236
+shape.dot59 88236
+shape.dot60 88236
+picture.frozenShip 88236
+input response 88785
+trial.feedback 88787
+picture.feedback3 88794
+picture.feedback2 88794
+text.feedback1 88794
+input response 89486
+trial.ITI 89487
+picture.fixationCross 89495
+shape.dot1 89495
+shape.dot2 89495
+shape.dot3 89495
+shape.dot4 89495
+shape.dot5 89495
+shape.dot6 89495
+shape.dot7 89495
+shape.dot8 89495
+shape.dot9 89495
+shape.dot10 89495
+shape.dot11 89495
+shape.dot12 89495
+shape.dot13 89495
+shape.dot14 89495
+shape.dot15 89495
+shape.dot16 89495
+shape.dot17 89495
+shape.dot18 89495
+shape.dot19 89495
+shape.dot20 89495
+shape.dot21 89495
+shape.dot22 89495
+shape.dot23 89495
+shape.dot24 89495
+shape.dot25 89495
+shape.dot26 89495
+shape.dot27 89495
+shape.dot28 89495
+shape.dot29 89495
+shape.dot30 89495
+shape.dot31 89495
+shape.dot32 89495
+shape.dot33 89495
+shape.dot34 89495
+shape.dot35 89495
+shape.dot36 89495
+shape.dot37 89495
+shape.dot38 89495
+shape.dot39 89495
+shape.dot40 89495
+shape.dot41 89495
+shape.dot42 89495
+shape.dot43 89495
+shape.dot44 89495
+shape.dot45 89495
+shape.dot46 89495
+shape.dot47 89495
+shape.dot48 89495
+shape.dot49 89495
+shape.dot50 89495
+shape.dot51 89495
+shape.dot52 89495
+shape.dot53 89495
+shape.dot54 89495
+shape.dot55 89495
+shape.dot56 89495
+shape.dot57 89495
+shape.dot58 89495
+shape.dot59 89495
+shape.dot60 89495
+input response 89657
+trial.resetCounters3 89657
+input response 89657
+trial.preFreeze 89657
+picture.planet 89662
+picture.stim 89662
+shape.dot1 89662
+shape.dot2 89662
+shape.dot3 89662
+shape.dot4 89662
+shape.dot5 89662
+shape.dot6 89662
+shape.dot7 89662
+shape.dot8 89662
+shape.dot9 89662
+shape.dot10 89662
+shape.dot11 89662
+shape.dot12 89662
+shape.dot13 89662
+shape.dot14 89662
+shape.dot15 89662
+shape.dot16 89662
+shape.dot17 89662
+shape.dot18 89662
+shape.dot19 89662
+shape.dot20 89662
+shape.dot21 89662
+shape.dot22 89662
+shape.dot23 89662
+shape.dot24 89662
+shape.dot25 89662
+shape.dot26 89662
+shape.dot27 89662
+shape.dot28 89662
+shape.dot29 89662
+shape.dot30 89662
+shape.dot31 89662
+shape.dot32 89662
+shape.dot33 89662
+shape.dot34 89662
+shape.dot35 89662
+shape.dot36 89662
+shape.dot37 89662
+shape.dot38 89662
+shape.dot39 89662
+shape.dot40 89662
+shape.dot41 89662
+shape.dot42 89662
+shape.dot43 89662
+shape.dot44 89662
+shape.dot45 89662
+shape.dot46 89662
+shape.dot47 89662
+shape.dot48 89662
+shape.dot49 89662
+shape.dot50 89662
+shape.dot51 89662
+shape.dot52 89662
+shape.dot53 89662
+shape.dot54 89662
+shape.dot55 89662
+shape.dot56 89662
+shape.dot57 89662
+shape.dot58 89662
+shape.dot59 89662
+shape.dot60 89662
+picture.frozenShip 89662
+input response 90228
+trial.clock 90228
+picture.animatedCircle 90253
+picture.stim 90253
+shape.dot1 90253
+shape.dot2 90253
+shape.dot3 90253
+shape.dot4 90253
+shape.dot5 90253
+shape.dot6 90253
+shape.dot7 90253
+shape.dot8 90253
+shape.dot9 90253
+shape.dot10 90253
+shape.dot11 90253
+shape.dot12 90253
+shape.dot13 90253
+shape.dot14 90253
+shape.dot15 90253
+shape.dot16 90253
+shape.dot17 90253
+shape.dot18 90253
+shape.dot19 90253
+shape.dot20 90253
+shape.dot21 90253
+shape.dot22 90253
+shape.dot23 90253
+shape.dot24 90253
+shape.dot25 90253
+shape.dot26 90253
+shape.dot27 90253
+shape.dot28 90253
+shape.dot29 90253
+shape.dot30 90253
+shape.dot31 90253
+shape.dot32 90253
+shape.dot33 90253
+shape.dot34 90253
+shape.dot35 90253
+shape.dot36 90253
+shape.dot37 90253
+shape.dot38 90253
+shape.dot39 90253
+shape.dot40 90253
+shape.dot41 90253
+shape.dot42 90253
+shape.dot43 90253
+shape.dot44 90253
+shape.dot45 90253
+shape.dot46 90253
+shape.dot47 90253
+shape.dot48 90253
+shape.dot49 90253
+shape.dot50 90253
+shape.dot51 90253
+shape.dot52 90253
+shape.dot53 90253
+shape.dot54 90253
+shape.dot55 90253
+shape.dot56 90253
+shape.dot57 90253
+shape.dot58 90253
+shape.dot59 90253
+shape.dot60 90253
+input response 90427
