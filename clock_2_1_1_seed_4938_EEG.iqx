@@ -2191,8 +2191,24 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 
 </block>
 
+<trial ITI1>
+/ ontrialbegin = [
+	values.ITI_start = script.elapsedtime;
+]
+/ stimulustimes = [
+	0 = sendITI, fixationCross, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+		dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+		dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+		dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+		dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+		dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
+]
+/ recorddata = true
+/ trialduration = 499
+</trial>
+
 <block break>
-/ trials = [1=break; 2=reminder1; 3=reminder2; 4=presscont; 5=scanner_sync; 6=countdown;]
+/ trials = [1=ITI1, 2=break; 3=reminder1; 4=reminder2; 5=presscont; 6=scanner_sync; 7=countdown;]
 </block>
 
 <block experiment>
