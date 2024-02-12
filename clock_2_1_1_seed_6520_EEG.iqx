@@ -2308,7 +2308,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 
 <block endscreen>
 / trials = [
-	1=endscreen;
+	1=ITI1; 2=endscreen;
 ]
 </block>
 
