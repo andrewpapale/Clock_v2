@@ -99,21 +99,24 @@
 </include>
 
 <list ITI>
-/ items = (99, 116, 132, 149, 166, 182, 199, 216, 232, 249, 266, 282, 299, 316, 332, 349, 366, 382, 399, 416, 432, 449, 466, 482, 499) // 60Hz
-/ poolsize = 25
+// items = (99, 116, 132, 149, 166, 182, 199, 216, 232, 249, 266, 282, 299, 316, 332, 349, 366, 382, 399, 416, 432, 449, 466, 482, 499) // 60Hz
+/ items = (100, 108, 116, 125, 133, 141, 150, 158, 166, 175, 183, 191, 200, 208, 216, 225, 233, 241, 250, 258, 266, 275, 283, 291, 300, 308, 316, 325, 333, 341, 350, 358, 366, 375, 383, 391, 400, 408, 416, 425, 433, 441, 450, 458, 466, 475, 483, 491, 500) // 120Hz
+/ poolsize = 49
 / selectionmode = random
 </list>
 
 <list ISI>
-/ items = (216, 232, 249, 266, 282, 299, 316, 332, 349, 366, 382, 399, 416, 432, 449, 466, 482, 499, 516, 532, 549, 566, 582, 599) // 60Hz
-/ poolsize = 24
+// items = (216, 232, 249, 266, 282, 299, 316, 332, 349, 366, 382, 399, 416, 432, 449, 466, 482, 499, 516, 532, 549, 566, 582, 599) // 60Hz
+/ items = (200, 208, 216, 225, 233, 241, 250, 258, 266, 275, 283, 291, 300, 308, 316, 325, 333, 341, 350, 358, 366, 375, 383, 391, 400, 408, 416, 425, 433, 441, 450, 458, 466, 475, 483, 491, 500, 508, 516, 525, 533, 541, 550, 558, 566, 575, 583, 591, 600) // 120Hz
+/ poolsize = 49
 / selectionmode = random
 </list>
 
 
 <list preClockFreeze>
-/ items = (499, 516, 532, 549, 566, 582, 599, 615, 632, 649, 665, 682, 699) // 60Hz
-/ poolsize = 13
+// items = (499, 516, 532, 549, 566, 582, 599, 615, 632, 649, 665, 682, 699) // 60Hz
+/ items = (500, 508, 516, 525, 533, 541, 550, 558, 566, 575, 583, 591, 600, 608, 616, 625, 633, 641, 650, 658, 666, 675, 683, 691, 700)
+/ poolsize = 25
 / selectionmode = random
 </list>
 
@@ -1616,7 +1619,7 @@ number of mushrooms anywhere on the planet.")
 ]
 / ontrialend = [
 ]
-/ posttrialpause = 32
+/ posttrialpause = 33
 </trial>
 
 <trial constructSpline>
@@ -1814,7 +1817,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 	values.circle_y = picture.animatedCircle.ypct;
 	values.n_revolutions = ipart(script.elapsedtime - picture.animatedCircle.timestamp/values.time_per_revolution);
 ]
-/ posttrialpause = 32
+/ posttrialpause = 33
 </trial>
 
 <trial ISI>
@@ -1966,7 +1969,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 / stimulustimes = [
 	0 = sendfeedback, feedback3, feedback2, text.feedback1;
 ]
-/ trialduration = 699
+/ trialduration = 700
 // correctresponse = (next) // testing only
 / recorddata = true
 / ontrialend = [
