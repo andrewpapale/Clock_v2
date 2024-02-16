@@ -1,0 +1,111 @@
+﻿<defaults>
+/ canvasaspectratio = (4,4)
+/ minimumversion = "6.0.0.0"
+/ inputdevice = keyboard
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 0)
+/ txbgcolor = (128,128,128)
+/ txcolor = (0, 0, 0)
+/ screencolor = (128,128,128)
+</defaults>
+
+<expt main1>
+/ blocks = [
+	1 = test;
+]
+</expt>
+
+<block test>
+/ trials = [
+	1 = clock; 2=clock; 3=clock;
+]
+</block>
+
+<values>
+/ timeout = 1000
+/ inc_rg = null
+/ inc = 10;
+/ gauss_sd = 0.001;
+/ Earnings = 0;
+/  totalEarnings = 0;
+</values>
+
+<trial clock>
+/ ontrialbegin = [
+]
+
+/ timeout = values.timeout;
+/ validresponse = (" ") 
+/ inputdevice = keyboard
+/ responseinterrupt = immediate
+/ recorddata = true
+/ branch = [
+	return trial.feedback
+]
+/ posttrialpause = 33
+</trial>
+
+<trial feedback>
+/ ontrialbegin = [
+	if (trial.clock.latency < values.timeout) {
+		values.inc_rg = round(randgaussian(values.inc, values.gauss_sd*values.inc));
+		if (values.inc_rg < values.inc - 1.5*values.gauss_sd*values.inc) {
+			values.inc_rg = round(values.inc - 1.5*values.gauss_sd*values.inc);
+		} else if (values.inc_rg > values.inc + 1.5*values.gauss_sd*values.inc) {
+			values.inc_rg = round(values.inc + 1.5*values.gauss_sd*values.inc);
+		}
+		if (values.inc_rg < 10) {
+			values.inc_rg = 10;
+		}
+		if (values.inc_rg > 200) {
+			values.inc_rg = 200;
+		}
+		values.Earnings = values.inc_rg*values.conversion;
+		values.totalEarnings = values.totalEarnings + values.Earnings;
+		picture.feedback2.item.1 = ("Mushroom1A.png");
+		picture.feedback2.hposition = 15%;
+		picture.feedback2.vposition = 50%;
+		text.feedback1.items.1 = ("<%values.inc_rg%>");
+	} else {
+		values.totalEarnings = values.totalEarnings + values.Earnings;
+		picture.feedback2.item.1 = ("timeout.png");
+		picture.feedback2.hposition = 50%;
+		picture.feedback2.vposition = 50%;
+		text.feedback1.items.1 = ("");
+	}
+]
+/ stimulustimes = [
+	0 = text.feedback1, feedback2;
+]
+/ trialduration = 2000
+</trial>
+
+<text feedback1>
+// items = ("You got <% values.inc_rg %> mushroom(s)")
+/ items = ("$XX")
+/ fontstyle = ("Arial", 35%, false, false, false, false, 5, 238)
+/ txbgcolor = (transparent)
+/ position = (50%, 50%)
+/ vjustify = center
+/ hjustify = left
+</text>
+
+<picture timeout>
+/ items = ("timeout.png")
+/ position = (50%, 50%)
+/ size = (10%, 10%)
+/ erase = true(128,128,128)
+</picture>
+
+<picture feedback2>
+/ items = ("blank.png")
+/ position = (15%, 50%)
+/ size = (40%, 40%)
+/ erase = true(128,128,128)
+</picture>
+
+<picture mushrooms1>
+/ items = ("Mushroom1A.png")
+/ position = (50%, 50%)
+/ size = (40%, 40%)
+/ erase = true(128,128,128)
+</picture>

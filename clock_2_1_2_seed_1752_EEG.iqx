@@ -105,24 +105,24 @@
 </include>
 
 <list ITI>
-// items = (99, 116, 132, 149, 166, 182, 199, 216, 232, 249, 266, 282, 299, 316, 332, 349, 366, 382, 399, 416, 432, 449, 466, 482, 499) // 60Hz
-/ items = (100, 108, 116, 125, 133, 141, 150, 158, 166, 175, 183, 191, 200, 208, 216, 225, 233, 241, 250, 258, 266, 275, 283, 291, 300, 308, 316, 325, 333, 341, 350, 358, 366, 375, 383, 391, 400, 408, 416, 425, 433, 441, 450, 458, 466, 475, 483, 491, 500) // 120Hz
-/ poolsize = 49
+/ items = (99, 116, 132, 149, 166, 182, 199, 216, 232, 249, 266, 282, 299, 316, 332, 349, 366, 382, 399, 416, 432, 449, 466, 482, 499) // 60Hz
+// items = (100, 108, 116, 125, 133, 141, 150, 158, 166, 175, 183, 191, 200, 208, 216, 225, 233, 241, 250, 258, 266, 275, 283, 291, 300, 308, 316, 325, 333, 341, 350, 358, 366, 375, 383, 391, 400, 408, 416, 425, 433, 441, 450, 458, 466, 475, 483, 491, 500) // 120Hz
+/ poolsize = 25
 / selectionmode = random
 </list>
 
 <list ISI>
-// items = (216, 232, 249, 266, 282, 299, 316, 332, 349, 366, 382, 399, 416, 432, 449, 466, 482, 499, 516, 532, 549, 566, 582, 599) // 60Hz
-/ items = (200, 208, 216, 225, 233, 241, 250, 258, 266, 275, 283, 291, 300, 308, 316, 325, 333, 341, 350, 358, 366, 375, 383, 391, 400, 408, 416, 425, 433, 441, 450, 458, 466, 475, 483, 491, 500, 508, 516, 525, 533, 541, 550, 558, 566, 575, 583, 591, 600) // 120Hz
-/ poolsize = 49
+/ items = (216, 232, 249, 266, 282, 299, 316, 332, 349, 366, 382, 399, 416, 432, 449, 466, 482, 499, 516, 532, 549, 566, 582, 599) // 60Hz
+// items = (200, 208, 216, 225, 233, 241, 250, 258, 266, 275, 283, 291, 300, 308, 316, 325, 333, 341, 350, 358, 366, 375, 383, 391, 400, 408, 416, 425, 433, 441, 450, 458, 466, 475, 483, 491, 500, 508, 516, 525, 533, 541, 550, 558, 566, 575, 583, 591, 600) // 120Hz
+/ poolsize = 24
 / selectionmode = random
 </list>
 
 
 <list preClockFreeze>
-// items = (499, 516, 532, 549, 566, 582, 599, 615, 632, 649, 665, 682, 699) // 60Hz
-/ items = (500, 508, 516, 525, 533, 541, 550, 558, 566, 575, 583, 591, 600, 608, 616, 625, 633, 641, 650, 658, 666, 675, 683, 691, 700)
-/ poolsize = 25
+/ items = (499, 516, 532, 549, 566, 582, 599, 615, 632, 649, 665, 682, 699) // 60Hz
+// items = (500, 508, 516, 525, 533, 541, 550, 558, 566, 575, 583, 591, 600, 608, 616, 625, 633, 641, 650, 658, 666, 675, 683, 691, 700)
+/ poolsize = 13
 / selectionmode = random
 </list>
 
@@ -789,10 +789,11 @@ Get ready!")
 </text>
 
 <text payment>
-/ items = ("You won a total of $ <%values.totalEarnings%> dollars.
+/ items = ("You won a total of 
+$10.03 dollars.
 Thank you for playing!")
-/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 238)
-/ position = (50%, 45%)
+/ fontstyle = ("Arial", 10%, false, false, false, false, 5, 238)
+/ position = (50%, 35%)
 / vjustify = center
 / hjustify = left
 </text>
@@ -1971,6 +1972,9 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 			picture.feedback2.item.1 = ("Mushroom3A.png");
 			picture.feedback3.item.1 = ("Mushroom3A.png");
 		}
+		picture.feedback2.hposition = 15%;
+		picture.feedback2.vposition = 50%;
+		text.feedback1.items.1 = ("<%values.inc_rg%>");
 	} else {
 		values.inc = 0;
 		values.inc_rg = NULL;
@@ -1978,8 +1982,8 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 		values.totalEarnings = values.totalEarnings + values.Earnings;
 		picture.feedback2.item.1 = ("timeout.png");
 		picture.feedback2.hposition = 50%;
-		picture.feedback3.item.1 = ("blank.png");
-	}
+		picture.feedback2.vposition = 50%;
+		text.feedback1.items.1 = ("");
 ]
 / stimulustimes = [
 	0 = feedback3, feedback2, text.feedback1;
@@ -2155,7 +2159,7 @@ dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
 dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
 dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, breaktext, breaktimer;
 ]
-/ timeout = 60000;
+/ timeout = 120000;
 / recorddata = false
 </trial>
 
@@ -2194,7 +2198,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / stimulusframes = [
 	1=payment
 ]
-/ timeout = 5000
+/ timeout = 10000
 </trial>
 
 <block instructions> 

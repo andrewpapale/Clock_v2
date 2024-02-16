@@ -1,0 +1,28 @@
+﻿<expt main1>
+/ blocks = [
+	1 = test
+]
+</expt>
+
+<block test>
+/ trials = [
+	1 = test
+]
+</block>
+
+<trial test>
+/ stimulustimes = [
+	0 = payment
+]
+/ timeout = 3000
+</trial>
+
+<text payment>
+/ items = ("You won a total of 
+$10.03 dollars.
+Thank you for playing!")
+/ fontstyle = ("Arial", 10%, false, false, false, false, 5, 238)
+/ position = (50%, 35%)
+/ vjustify = center
+/ hjustify = left
+</text>
