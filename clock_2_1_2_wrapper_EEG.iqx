@@ -1,0 +1,67 @@
+﻿<batch>
+/ groups = (1 of 10)
+/ groupassignment = random
+/ file = "clock_2_1_2_seed_152_EEG.iqx"
+</batch>
+
+<batch>
+/ groups = (2 of 10)
+/ groupassignment = random
+/ file = "clock_2_1_2_seed_1464_EEG.iqx"
+</batch>
+
+<batch>
+/ groups = (3 of 10)
+/ groupassignment = random
+/ file = "clock_2_1_2_seed_1752_EEG.iqx"
+</batch>
+
+<batch>
+/ groups = (4 of 10)
+/ groupassignment = random
+/ file = "clock_2_1_2_seed_2534_EEG.iqx"
+</batch>
+
+<batch>
+/ groups = (5 of 10)
+/ groupassignment = random
+/ file = "clock_2_1_2_seed_868_EEG.iqx"
+</batch>
+
+<batch>
+/ groups = (6 of 10)
+/ groupassignment = random
+/ file = "clock_2_1_2_seed_4938_EEG.iqx"
+</batch>
+
+<batch>
+/ groups = (7 of 10)
+/ groupassignment = random
+/ file = "clock_2_1_2_seed_5094_EEG.iqx"
+</batch>
+
+<batch>
+/ groups = (8 of 10)
+/ groupassignment = random
+/ file = "clock_2_1_2_seed_5173_EEG.iqx"
+</batch>
+
+<batch>
+/ groups = (9 of 10)
+/ groupassignment = random
+/ file = "clock_2_1_2_seed_5815_EEG.iqx"
+</batch>
+
+<batch>
+/ groups = (10 of 10)
+/ groupassignment = random
+/ file = "clock_2_1_2_seed_6520_EEG.iqx"
+</batch>
+
+
+<summarydata>
+/ columns = (script.subjectid, values.completed, script.startdate, 
+script.starttime, script.elapsedtime)
+/ separatefiles = true
+</summarydata>
+
