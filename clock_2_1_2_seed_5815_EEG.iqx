@@ -48,6 +48,12 @@
 / subport = data
 </port>
 
+<port allbitstolow>
+/ port = COM4
+/ subport = data
+/ items = ("00000000")
+</port>
+
 <usermanual>
     For background see:
     Press et al., Numerical Recipes in C: The Art of Scientific Computing, 2nd Ed. (1992), 
@@ -1346,6 +1352,8 @@ number of mushrooms anywhere on the planet.")
 
 <trial ITI>
 / ontrialbegin = [
+	trial.ITI.insertstimulustime(port.sendITI, 0);
+	trial.ITI.insertstimulustime(port.allbitstolow, 83);
 	values.ITI_start = script.elapsedtime;
 	values.trial +=1;
 	if (values.trial > 1){
@@ -1598,7 +1606,7 @@ number of mushrooms anywhere on the planet.")
 ]
 
 / stimulustimes = [
-	0 = sendITI, fixationCross, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+	0 = fixationCross, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 		dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 		dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 		dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
@@ -1749,6 +1757,9 @@ number of mushrooms anywhere on the planet.")
 
 <trial preFreeze>
 / ontrialbegin = [
+	trial.preFreeze.insertstimulustime(port.sendprefreeze, 0);
+	trial.preFreeze.insertstimulustime(port.allbitstolow, 83);
+	values.freeze_start = script.elapsedtime;
 	picture.planet.erase = false;
 	picture.stim.erase = false;
 	picture.frozenShip.erase = true;
@@ -1771,10 +1782,9 @@ number of mushrooms anywhere on the planet.")
 		picture.frozenShip.hposition = 1px * (expressions.centerx + cos(rad(90*values.startPos/25))*expressions.radius_px);
 		picture.frozenShip.vposition = 1px * (expressions.centery + sin(rad(90*values.startPos/25))*expressions.radius_px);
 	}
-	values.freeze_start = script.elapsedtime;
 ]
 
-/ stimulustimes = [ 0 = sendprefreeze, planet, stim, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+/ stimulustimes = [ 0 = planet, stim, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
@@ -1791,13 +1801,15 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 
 <trial clock>
 / ontrialbegin = [
+	trial.clock.insertstimulustime(port.sendtrialstart, 0);
+	trial.clock.insertstimulustime(port.allbitstolow, 83);
 	values.n_revolutions = 0;
 	picture.animatedCircle.erase = false;
 	values.trial_start = script.elapsedtime;
 ]
 
 / stimulustimes = [
-	0 = sendtrialstart, animatedCircle, stim, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+	0 = animatedCircle, stim, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 		dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 		dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 		dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
@@ -1822,6 +1834,9 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 
 <trial ISI>
 / ontrialbegin = [
+	trial.ISI.insertstimulustime(port.sendISI, 0);
+	trial.ISI.insertstimulustime(port.allbitstolow, 83);
+	values.ISI_start = script.elapsedtime;
 	picture.frozenShip.xpct = values.circle_x;
 	picture.frozenShip.ypct = values.circle_y;
 	picture.planet.erase = true;
@@ -1889,7 +1904,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 	
 	values.ISI_start = script.elapsedtime;
 ]
-/ stimulustimes = [0 = sendISI, stim, planet, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+/ stimulustimes = [0 = stim, planet, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
@@ -1905,6 +1920,9 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 
 <trial feedback>
 / ontrialbegin = [
+	trial.feedback.insertstimulustime(port.sendfeedback, 0);
+	trial.feedback.insertstimulustime(port.allbitstolow, 83);
+	values.feedback_start = script.elapsedtime;
 	picture.feedback2.hposition = 15%;
 	if (values.startPos >= 0 && values.startPos < 75) {
 		// shift 0 from 3 o'clock to 12 o'clock
@@ -1964,12 +1982,11 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 		picture.feedback2.hposition = 50%;
 		picture.feedback3.item.1 = ("blank.png");
 	}
-	values.feedback_start = script.elapsedtime;
 ]
 / stimulustimes = [
-	0 = sendfeedback, feedback3, feedback2, text.feedback1;
+	0 = feedback3, feedback2, text.feedback1;
 ]
-/ trialduration = 700
+/ trialduration = 699
 // correctresponse = (next) // testing only
 / recorddata = true
 / ontrialend = [
@@ -2195,10 +2212,12 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 
 <trial ITI1>
 / ontrialbegin = [
+	trial.ITI.insertstimulustime(port.sendITI, 0);
+	trial.ITI.insertstimulustime(port.allbitstolow, 83);
 	values.ITI_start = script.elapsedtime;
 ]
 / stimulustimes = [
-	0 = sendITI, fixationCross, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+	0 = fixationCross, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 		dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 		dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 		dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
