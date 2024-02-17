@@ -51,7 +51,7 @@
 <port allbitstolow>
 / port = COM4
 / subport = data
-/ items = ("00000000")
+/ items = (0)
 </port>
 
 <usermanual>
@@ -1353,9 +1353,6 @@ number of mushrooms anywhere on the planet.")
 
 <trial ITI>
 / ontrialbegin = [
-	trial.ITI.insertstimulustime(port.sendITI, 0);
-	trial.ITI.insertstimulustime(port.allbitstolow, 83);
-	values.ITI_start = script.elapsedtime;
 	values.trial +=1;
 	if (values.trial > 1){
 		values.last_block_type = values.block_type;
@@ -1604,15 +1601,17 @@ number of mushrooms anywhere on the planet.")
 	} else if (values.trial_since_erasure_gen > 15) {
 		values.trial_since_erasure_gen = null;
 	}
+	values.ITI_start = script.elapsedtime;
 ]
 
 / stimulustimes = [
-	0 = fixationCross, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+	0 = sendITI, fixationCross, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 		dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 		dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 		dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
 		dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
 		dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
+	33 = allbitstolow;
 ]
 / ontrialend = [
 ]
@@ -1758,9 +1757,6 @@ number of mushrooms anywhere on the planet.")
 
 <trial preFreeze>
 / ontrialbegin = [
-	trial.preFreeze.insertstimulustime(port.sendprefreeze, 0);
-	trial.preFreeze.insertstimulustime(port.allbitstolow, 83);
-	values.freeze_start = script.elapsedtime;
 	picture.planet.erase = false;
 	picture.stim.erase = false;
 	picture.frozenShip.erase = true;
@@ -1783,14 +1779,16 @@ number of mushrooms anywhere on the planet.")
 		picture.frozenShip.hposition = 1px * (expressions.centerx + cos(rad(90*values.startPos/25))*expressions.radius_px);
 		picture.frozenShip.vposition = 1px * (expressions.centery + sin(rad(90*values.startPos/25))*expressions.radius_px);
 	}	
+	values.freeze_start = script.elapsedtime;
 ]
 
-/ stimulustimes = [ 0 = planet, stim, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
-dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
-dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
-dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
-dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
-dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip;
+/ stimulustimes = [  0 = sendprefreeze, planet, stim, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+					dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
+					dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
+					dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
+					dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
+					dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip;
+					33 = allbitstolow;
 ]
 / timeout = list.preClockFreeze.nextvalue;
 / recorddata = false
@@ -1802,23 +1800,23 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 
 <trial clock>
 / ontrialbegin = [
-	trial.clock.insertstimulustime(port.sendtrialstart, 0);
-	trial.clock.insertstimulustime(port.allbitstolow, 83);
 	values.n_revolutions = 0;
 	picture.animatedCircle.erase = false;
 	values.trial_start = script.elapsedtime;
 ]
 
 / stimulustimes = [
-	0 = animatedCircle, stim, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+	0 = sendtrialstart,animatedCircle, stim, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 		dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 		dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 		dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
 		dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
 		dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
+	33 = allbitstolow;
 ]
 / timeout = values.timeout;
-/ validresponse = (" ") 
+/ validresponse = (" ")
+/ beginresponsetime = 34; 
 / inputdevice = keyboard
 / responseinterrupt = immediate
 / recorddata = true
@@ -1835,9 +1833,6 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 
 <trial ISI>
 / ontrialbegin = [
-	trial.ISI.insertstimulustime(port.sendISI, 0);
-	trial.ISI.insertstimulustime(port.allbitstolow, 83);
-	values.ISI_start = script.elapsedtime;
 	picture.frozenShip.xpct = values.circle_x;
 	picture.frozenShip.ypct = values.circle_y;
 	picture.planet.erase = true;
@@ -1902,14 +1897,15 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 	shape.dot58.erase = true;
 	shape.dot59.erase = true;
 	shape.dot60.erase = true;
-
+	values.ISI_start = script.elapsedtime;
 ]
-/ stimulustimes = [0 = stim, planet, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+/ stimulustimes = [0 = sendISI, stim, planet, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
 dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
 dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip;
+33 = allbitstolow;
 ]
 / timeout = list.ISI.nextvalue;
 / recorddata = false
@@ -1920,9 +1916,6 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 
 <trial feedback>
 / ontrialbegin = [
-	trial.feedback.insertstimulustime(port.sendfeedback, 0);
-	trial.feedback.insertstimulustime(port.allbitstolow, 83);
-	values.feedback_start = script.elapsedtime;
 	picture.feedback2.hposition = 15%;
 	if (values.startPos >= 0 && values.startPos < 75) {
 		// shift 0 from 3 o'clock to 12 o'clock
@@ -1948,7 +1941,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 	} else {
 		values.inc = 10;
 	}
-	if (trial.clock.latency < values.timeout) {
+	if (trial.clock.latency < values.timeout - 34) {
 		values.inc_rg = round(randgaussian(values.inc, values.gauss_sd*values.inc));
 		if (values.inc_rg < values.inc - 1.5*values.gauss_sd*values.inc) {
 			values.inc_rg = round(values.inc - 1.5*values.gauss_sd*values.inc);
@@ -1982,12 +1975,16 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 		values.Earnings = 0;
 		values.totalEarnings = values.totalEarnings + values.Earnings;
 		picture.feedback2.item.1 = ("timeout.png");
+		picture.feedback3.item.1 = ("blank.png");
 		picture.feedback2.hposition = 50%;
 		picture.feedback2.vposition = 50%;
-		text.feedback1.items.1 = ("");
+		text.feedback1.items.1 = (""); 
+	}
+	values.feedback_start = script.elapsedtime;
 ]
 / stimulustimes = [
-	0 = feedback3, feedback2, text.feedback1;
+	0 = sendfeedback,feedback3, feedback2, text.feedback1;
+	33 = allbitstolow;
 ]
 / trialduration = 699
 // correctresponse = (next) // testing only
@@ -2215,17 +2212,76 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 
 <trial ITI1>
 / ontrialbegin = [
-	trial.ITI.insertstimulustime(port.sendITI, 0);
-	trial.ITI.insertstimulustime(port.allbitstolow, 83);
+	shape.dot1.erase = true;
+	shape.dot2.erase = true;
+	shape.dot3.erase = true;
+	shape.dot4.erase = true;
+	shape.dot5.erase = true;
+	shape.dot6.erase = true;
+	shape.dot7.erase = true;
+	shape.dot8.erase = true;
+	shape.dot9.erase = true;
+	shape.dot10.erase = true;
+	shape.dot11.erase = true;
+	shape.dot12.erase = true;
+	shape.dot13.erase = true;
+	shape.dot14.erase = true;
+	shape.dot15.erase = true;
+	shape.dot16.erase = true;
+	shape.dot17.erase = true;
+	shape.dot18.erase = true;
+	shape.dot19.erase = true;
+	shape.dot20.erase = true;
+	shape.dot21.erase = true;
+	shape.dot22.erase = true;
+	shape.dot23.erase = true;
+	shape.dot24.erase = true;
+	shape.dot25.erase = true;
+	shape.dot26.erase = true;
+	shape.dot27.erase = true;
+	shape.dot28.erase = true;
+	shape.dot29.erase = true;
+	shape.dot30.erase = true;
+	shape.dot31.erase = true;
+	shape.dot32.erase = true;
+	shape.dot33.erase = true;
+	shape.dot34.erase = true;
+	shape.dot35.erase = true;
+	shape.dot36.erase = true;
+	shape.dot37.erase = true;
+	shape.dot38.erase = true;
+	shape.dot39.erase = true;
+	shape.dot40.erase = true;
+	shape.dot41.erase = true;
+	shape.dot42.erase = true;
+	shape.dot43.erase = true;
+	shape.dot44.erase = true;
+	shape.dot45.erase = true;
+	shape.dot46.erase = true;
+	shape.dot47.erase = true;
+	shape.dot48.erase = true;
+	shape.dot49.erase = true;
+	shape.dot50.erase = true;
+	shape.dot51.erase = true;
+	shape.dot52.erase = true;
+	shape.dot53.erase = true;
+	shape.dot54.erase = true;
+	shape.dot55.erase = true;
+	shape.dot56.erase = true;
+	shape.dot57.erase = true;
+	shape.dot58.erase = true;
+	shape.dot59.erase = true;
+	shape.dot60.erase = true;
 	values.ITI_start = script.elapsedtime;
 ]
 / stimulustimes = [
-	0 = fixationCross, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+	0 = sendITI, fixationCross, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 		dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 		dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 		dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
 		dot41, dot42, dot43, dot44, dot45, dot46, dot47, dot48, dot49, dot50,
 		dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60;
+	33 = allbitstolow;
 ]
 / recorddata = true
 / trialduration = 499

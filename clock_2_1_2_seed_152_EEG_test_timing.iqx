@@ -15,7 +15,7 @@
 / clockdotSize = 2%
 / attentional_control = null;
 / local_uncertainty = null;
-/ seed = 2534;
+/ seed = 152;
 </parameters>
 
 <port sendtrialstart>
@@ -77,31 +77,31 @@
 </list>
 
 <include>
-/ file = "values-2534.txt"
+/ file = "values-152.txt"
 </include>
 
 <include>
-/ file = "RTs-2534.txt"
+/ file = "RTs-152.txt"
 </include>
 
 <include>
-/ file = "att_loc-2534.txt"
+/ file = "att_loc-152.txt"
 </include>
 
 <include>
-/ file = "era_loc-2534.txt"
+/ file = "era_loc-152.txt"
 </include>
 
 <include>
-/ file = "era_val-2534.txt"
+/ file = "era_val-152.txt"
 </include>
 
 <include>
-/ file = "block_type-2534.txt"
+/ file = "block_type-152.txt"
 </include>
 
 <include>
-/ file = "spread-2534.txt"
+/ file = "spread-152.txt"
 </include>
 
 <list ITI>
@@ -366,6 +366,20 @@ values.right_index,values.left_index, values.stim_left_deg, values.stim_right_de
 values.erasure_blocks,parameters.attentional_control,parameters.local_uncertainty,picture.planet.item.1,picture.animatedCircle.item.1,picture.feedback2.items.1,picture.stim.item.1,values.Earnings, values.totalEarnings)
 / audit = true
 </data>
+
+<picture whitesquare>
+/ items = ("white_square.png")
+/ size = (20%, 0.05px*display.canvaswidth)
+/ position = (95%, 5%)
+/ erase = true(black)
+</picture>
+
+<picture blacksquare>
+/ items = ("black_square.png")
+/ size = (20%, 0.075px*display.canvaswidth)
+/ position = (95%, 5%)
+/ erase = true(black)
+</picture>
 
 <picture animatedCircle>
 / items = ("blank.png")
@@ -1390,31 +1404,31 @@ number of mushrooms anywhere on the planet.")
 	if (values.trial == 1) {
 		values.era_index = 0;
 		values.erasure_blocks +=1;
-	} else if (values.trial == 51) {
+	} else if (values.trial == 41) {
 		values.era_index = 3;
 		values.erasure_blocks +=1;
-	} else if (values.trial == 71) {
+	} else if (values.trial == 81) {
 		values.era_index = 6;
 		values.erasure_blocks +=1;
 	} else if (values.trial == 101) {
 		values.era_index = 9;
 		values.erasure_blocks +=1;
-	} else if (values.trial == 121) {
+	} else if (values.trial == 141) {
 		values.era_index = 12;
 		values.erasure_blocks +=1;
 	} else if (values.trial == 171) {
 		values.era_index = 15;
 		values.erasure_blocks +=1;
-	} else if (values.trial == 201) {
+	} else if (values.trial == 191) {
 		values.era_index = 18;
 		values.erasure_blocks +=1;
 	} else if (values.trial == 221) {
 		values.era_index = 21;
 		values.erasure_blocks +=1;
-	} else if (values.trial == 261) {
+	} else if (values.trial == 251) {
 		values.era_index = 24;
 		values.erasure_blocks +=1;
-	} else if (values.trial == 281) {
+	} else if (values.trial == 291) {
 		values.era_index = 27;
 		values.erasure_blocks +=1;
 	}
@@ -1782,7 +1796,7 @@ number of mushrooms anywhere on the planet.")
 	values.freeze_start = script.elapsedtime;
 ]
 
-/ stimulustimes = [  0 = sendprefreeze, planet, stim, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+/ stimulustimes = [ 0 = sendprefreeze, blacksquare,planet, stim, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 					dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 					dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 					dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
@@ -1806,7 +1820,7 @@ number of mushrooms anywhere on the planet.")
 ]
 
 / stimulustimes = [
-	0 = sendtrialstart,animatedCircle, stim, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+	0 = sendtrialstart,blacksquare,animatedCircle, stim, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 		dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 		dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 		dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
@@ -1816,7 +1830,6 @@ number of mushrooms anywhere on the planet.")
 ]
 / timeout = values.timeout;
 / validresponse = (" ") 
-/ beginresponsetime = 34;
 / inputdevice = keyboard
 / responseinterrupt = immediate
 / recorddata = true
@@ -1899,7 +1912,7 @@ number of mushrooms anywhere on the planet.")
 	shape.dot60.erase = true;
 	values.ISI_start = script.elapsedtime;
 ]
-/ stimulustimes = [0 = sendISI, stim, planet, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+/ stimulustimes = [0 = sendISI, blacksquare,stim, planet, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
@@ -1941,7 +1954,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 	} else {
 		values.inc = 10;
 	}
-	if (trial.clock.latency < values.timeout - 34) {
+	if (trial.clock.latency < values.timeout) {
 		values.inc_rg = round(randgaussian(values.inc, values.gauss_sd*values.inc));
 		if (values.inc_rg < values.inc - 1.5*values.gauss_sd*values.inc) {
 			values.inc_rg = round(values.inc - 1.5*values.gauss_sd*values.inc);
@@ -1975,16 +1988,16 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 		values.Earnings = 0;
 		values.totalEarnings = values.totalEarnings + values.Earnings;
 		picture.feedback2.item.1 = ("timeout.png");
-		picture.feedback3.item.1 = ("blank.png");
 		picture.feedback2.hposition = 50%;
 		picture.feedback2.vposition = 50%;
-		text.feedback1.items.1 = (""); 
+		text.feedback1.items.1 = ("");
 	}
 	values.feedback_start = script.elapsedtime;
 ]
 / stimulustimes = [
-	0 = sendfeedback,feedback3, feedback2, text.feedback1;
+	0 = sendfeedback,blacksquare,feedback3, feedback2, text.feedback1;
 	33 = allbitstolow;
+	100 = whitesquare;
 ]
 / trialduration = 699
 // correctresponse = (next) // testing only
@@ -2183,6 +2196,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 / responseinterrupt = immediate
 </trial>
 
+
 <trial endscreen>
 / ontrialbegin = [
 	values.mag = NULL;
@@ -2212,70 +2226,10 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 
 <trial ITI1>
 / ontrialbegin = [
-	shape.dot1.erase = true;
-	shape.dot2.erase = true;
-	shape.dot3.erase = true;
-	shape.dot4.erase = true;
-	shape.dot5.erase = true;
-	shape.dot6.erase = true;
-	shape.dot7.erase = true;
-	shape.dot8.erase = true;
-	shape.dot9.erase = true;
-	shape.dot10.erase = true;
-	shape.dot11.erase = true;
-	shape.dot12.erase = true;
-	shape.dot13.erase = true;
-	shape.dot14.erase = true;
-	shape.dot15.erase = true;
-	shape.dot16.erase = true;
-	shape.dot17.erase = true;
-	shape.dot18.erase = true;
-	shape.dot19.erase = true;
-	shape.dot20.erase = true;
-	shape.dot21.erase = true;
-	shape.dot22.erase = true;
-	shape.dot23.erase = true;
-	shape.dot24.erase = true;
-	shape.dot25.erase = true;
-	shape.dot26.erase = true;
-	shape.dot27.erase = true;
-	shape.dot28.erase = true;
-	shape.dot29.erase = true;
-	shape.dot30.erase = true;
-	shape.dot31.erase = true;
-	shape.dot32.erase = true;
-	shape.dot33.erase = true;
-	shape.dot34.erase = true;
-	shape.dot35.erase = true;
-	shape.dot36.erase = true;
-	shape.dot37.erase = true;
-	shape.dot38.erase = true;
-	shape.dot39.erase = true;
-	shape.dot40.erase = true;
-	shape.dot41.erase = true;
-	shape.dot42.erase = true;
-	shape.dot43.erase = true;
-	shape.dot44.erase = true;
-	shape.dot45.erase = true;
-	shape.dot46.erase = true;
-	shape.dot47.erase = true;
-	shape.dot48.erase = true;
-	shape.dot49.erase = true;
-	shape.dot50.erase = true;
-	shape.dot51.erase = true;
-	shape.dot52.erase = true;
-	shape.dot53.erase = true;
-	shape.dot54.erase = true;
-	shape.dot55.erase = true;
-	shape.dot56.erase = true;
-	shape.dot57.erase = true;
-	shape.dot58.erase = true;
-	shape.dot59.erase = true;
-	shape.dot60.erase = true;
 	values.ITI_start = script.elapsedtime;
 ]
 / stimulustimes = [
-	0 = sendITI, fixationCross, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
+	0 = sendITI, blacksquare,fixationCross, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 		dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
 		dot21, dot22, dot23, dot24, dot25, dot26, dot27, dot28, dot29, dot30,
 		dot31, dot32, dot33, dot34, dot35, dot36, dot37, dot38, dot39, dot40,
