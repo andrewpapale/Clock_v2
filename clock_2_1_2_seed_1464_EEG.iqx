@@ -1986,6 +1986,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 		picture.feedback2.hposition = 50%;
 		picture.feedback2.vposition = 50%;
 		text.feedback1.items.1 = ("");
+	}
 ]
 / stimulustimes = [
 	0 = feedback3, feedback2, text.feedback1;
