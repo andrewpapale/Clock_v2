@@ -1816,6 +1816,7 @@ number of mushrooms anywhere on the planet.")
 ]
 / timeout = values.timeout;
 / validresponse = (" ") 
+/ beginresponsetime = 34;
 / inputdevice = keyboard
 / responseinterrupt = immediate
 / recorddata = true
@@ -1940,7 +1941,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 	} else {
 		values.inc = 10;
 	}
-	if (trial.clock.latency < values.timeout) {
+	if (trial.clock.latency < values.timeout - 34) {
 		values.inc_rg = round(randgaussian(values.inc, values.gauss_sd*values.inc));
 		if (values.inc_rg < values.inc - 1.5*values.gauss_sd*values.inc) {
 			values.inc_rg = round(values.inc - 1.5*values.gauss_sd*values.inc);
@@ -1974,9 +1975,10 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 		values.Earnings = 0;
 		values.totalEarnings = values.totalEarnings + values.Earnings;
 		picture.feedback2.item.1 = ("timeout.png");
+		picture.feedback3.item.1 = ("blank.png");
 		picture.feedback2.hposition = 50%;
 		picture.feedback2.vposition = 50%;
-		text.feedback1.items.1 = ("");
+		text.feedback1.items.1 = (""); 
 	}
 	values.feedback_start = script.elapsedtime;
 ]
@@ -2190,6 +2192,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 	values.inc = NULL;
 	values.rng = NULL;
 	values.Earnings = NULL;
+
 ]
 
 / stimulusframes = [
@@ -2211,6 +2214,66 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 
 <trial ITI1>
 / ontrialbegin = [
+	shape.dot1.erase = true;
+	shape.dot2.erase = true;
+	shape.dot3.erase = true;
+	shape.dot4.erase = true;
+	shape.dot5.erase = true;
+	shape.dot6.erase = true;
+	shape.dot7.erase = true;
+	shape.dot8.erase = true;
+	shape.dot9.erase = true;
+	shape.dot10.erase = true;
+	shape.dot11.erase = true;
+	shape.dot12.erase = true;
+	shape.dot13.erase = true;
+	shape.dot14.erase = true;
+	shape.dot15.erase = true;
+	shape.dot16.erase = true;
+	shape.dot17.erase = true;
+	shape.dot18.erase = true;
+	shape.dot19.erase = true;
+	shape.dot20.erase = true;
+	shape.dot21.erase = true;
+	shape.dot22.erase = true;
+	shape.dot23.erase = true;
+	shape.dot24.erase = true;
+	shape.dot25.erase = true;
+	shape.dot26.erase = true;
+	shape.dot27.erase = true;
+	shape.dot28.erase = true;
+	shape.dot29.erase = true;
+	shape.dot30.erase = true;
+	shape.dot31.erase = true;
+	shape.dot32.erase = true;
+	shape.dot33.erase = true;
+	shape.dot34.erase = true;
+	shape.dot35.erase = true;
+	shape.dot36.erase = true;
+	shape.dot37.erase = true;
+	shape.dot38.erase = true;
+	shape.dot39.erase = true;
+	shape.dot40.erase = true;
+	shape.dot41.erase = true;
+	shape.dot42.erase = true;
+	shape.dot43.erase = true;
+	shape.dot44.erase = true;
+	shape.dot45.erase = true;
+	shape.dot46.erase = true;
+	shape.dot47.erase = true;
+	shape.dot48.erase = true;
+	shape.dot49.erase = true;
+	shape.dot50.erase = true;
+	shape.dot51.erase = true;
+	shape.dot52.erase = true;
+	shape.dot53.erase = true;
+	shape.dot54.erase = true;
+	shape.dot55.erase = true;
+	shape.dot56.erase = true;
+	shape.dot57.erase = true;
+	shape.dot58.erase = true;
+	shape.dot59.erase = true;
+	shape.dot60.erase = true;
 	values.ITI_start = script.elapsedtime;
 ]
 / stimulustimes = [
