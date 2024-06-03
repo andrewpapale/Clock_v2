@@ -156,7 +156,7 @@
 // columns = (values.starttime, values.etime, values.trialCount,values.master_idx,values.to_h,values.to_l, values.curr_max,values.curr_min,values.curr_mean, list.spread.nextvalue, values.x_final,values.y_final, values.yindex,values.final_idx, values.erasure_RT,values.erasure_value,values.original_value)
 // columns = (values.yindex,list.erasure_RTs.nextvalue,list.curr_RTs.nextvalue,list.curr_values.nextvalue,list.y_test.item(values.yindex), list.spread.nextvalue)
 / columns = (build, computer.platform, computer.touch, date, time, subject, group, script.sessionid, blockcode, blocknum,
-trialcode,values.rt_index,values.rt_shifted,values.startPos,values.inc, values.inc_rg,values.rng)
+trialcode,values.rt_index,values.rt_shifted,values.startPos,values.pos_shifted,values.inc, values.inc_rg,values.rng)
 / audit = true
 </data>
 
