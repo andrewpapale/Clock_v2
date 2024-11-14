@@ -1308,7 +1308,7 @@ number of mushrooms anywhere on the planet.")
 
 <trial ITI>
 / ontrialbegin = [
-	values.trial_start = script.currenttime;
+	values.trial_start = script.elapsedtime;
 	values.trial +=1;
 	if (values.trial > 1){
 		values.last_block_type = values.block_type;
@@ -1733,7 +1733,7 @@ number of mushrooms anywhere on the planet.")
 		picture.frozenShip.hposition = 1px * (expressions.centerx + cos(rad(90*values.startPos/25))*expressions.radius_px);
 		picture.frozenShip.vposition = 1px * (expressions.centery + sin(rad(90*values.startPos/25))*expressions.radius_px);
 	}
-	values.freeze_start = script.currenttime;
+	values.freeze_start = script.elapsedtime;
 ]
 
 / stimulustimes = [ 0 = planet, stim, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
@@ -1755,7 +1755,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 / ontrialbegin = [
 	values.n_revolutions = 0;
 	picture.animatedCircle.erase = false;
-	values.trial_start = script.currenttime;
+	values.trial_start = script.elapsedtime;
 ]
 
 / stimulustimes = [
@@ -1848,7 +1848,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 	shape.dot59.erase = true;
 	shape.dot60.erase = true;
 	
-	values.ISI_start = script.currenttime;
+	values.ISI_start = script.elapsedtime;
 ]
 / stimulustimes = [0 = stim, planet, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
 dot11, dot12, dot13, dot14, dot15, dot16, dot17, dot18, dot19, dot20,
@@ -1925,7 +1925,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 		picture.feedback2.hposition = 50%;
 		picture.feedback3.item.1 = ("blank.png");
 	}
-	values.feedback_start = script.currenttime;
+	values.feedback_start = script.elapsedtime;
 ]
 / stimulustimes = [
 	0 = feedback3, feedback2, text.feedback1;
@@ -2063,7 +2063,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 / inputdevice = keyboard
 / validresponse = ("=")
 / ontrialend = [
-	values.scanner_sync = script.currenttime;
+	values.scanner_sync = script.elapsedtime;
 ]
 </trial>
 
