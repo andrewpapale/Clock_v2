@@ -2053,7 +2053,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 
 <block presscont>
 / trials = [
-	1 = presscont; 2=scanner_sync; 3=countdown;
+	1 =reminder1; 2=reminder2; 3=presscont; 4=scanner_sync; 5=countdown;
 ]
 </block>
 
