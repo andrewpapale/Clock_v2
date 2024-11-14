@@ -1308,7 +1308,7 @@ number of mushrooms anywhere on the planet.")
 
 <trial ITI>
 / ontrialbegin = [
-	values.trial_start = script.elapsedtime;
+	values.ITI_start = script.elapsedtime;
 	values.trial +=1;
 	if (values.trial > 1){
 		values.last_block_type = values.block_type;
