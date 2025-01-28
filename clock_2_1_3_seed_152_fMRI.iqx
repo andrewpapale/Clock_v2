@@ -308,12 +308,15 @@
 / feedback_start = null
 / ITI_start = null
 
+/ scanner_sync_time = null
+/ ITI_start_time = null
+
 </values>
 
 <data>
 // columns = (values.starttime, values.etime, values.trialCount,values.master_idx,values.to_h,values.to_l, values.curr_max,values.curr_min,values.curr_mean, list.spread.nextvalue, values.x_final,values.y_final, values.yindex,values.final_idx, values.erasure_RT,values.erasure_value,values.original_value)
 // columns = (values.yindex,list.erasure_RTs.nextvalue,list.curr_RTs.nextvalue,list.curr_values.nextvalue,list.y_test.item(values.yindex), list.spread.nextvalue)
-/ columns = (build, computer.platform, computer.touch, date, time, subject, group, script.sessionid, blockcode, blocknum,
+/ columns = (build, computer.platform, computer.touch, date, time, subject, group, values.scanner_sync_time, values.ITI_start_time, script.sessionid, blockcode, blocknum,
 trialcode, list.ITI.currentvalue, list.preClockFreeze.currentvalue, latency, list.ISI.currentvalue, 
 values.block, values.trialCount, values.trial, values.run_trial,values.block_trial,values.block_type, values.trial_type, values.last_block_type,
 values.generate_new_erasure,values.trial_since_erasure_gen,values.att_index, values.era_index, values.x_final, values.y_final, values.ITI_index,
@@ -1310,6 +1313,7 @@ number of mushrooms anywhere on the planet.")
 <trial ITI>
 / ontrialbegin = [
 	values.ITI_start = script.elapsedtime;
+	values.ITI_start_time = script.currenttime;	
 	values.trial +=1;
 	if (values.trial > 1){
 		values.last_block_type = values.block_type;
@@ -2065,6 +2069,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 / validresponse = ("=")
 / ontrialend = [
 	values.scanner_sync = script.elapsedtime;
+	values.scanner_sync_time = script.currenttime;	
 ]
 </trial>
 
@@ -2218,6 +2223,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, presscont;
 	shape.dot59.erase = true;
 	shape.dot60.erase = true;
 	values.ITI_start = script.elapsedtime;
+	values.ITI_start_time = script.currenttime;
 ]
 / stimulustimes = [
 	0 = fixationCross, dot1, dot2, dot3, dot4, dot5, dot6, dot7, dot8, dot9, dot10,
