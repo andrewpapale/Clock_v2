@@ -2137,7 +2137,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 / monitor = 1
 / position = (50%, 50%)
 / resetrate = block
-/ timeout = 120000
+/ timeout = 15000
 / txbgcolor = white
 / txcolor = black
 </clock>
@@ -2145,7 +2145,7 @@ dot51, dot52, dot53, dot54, dot55, dot56, dot57, dot58, dot59, dot60, frozenShip
 <text breaktext>
 / position = (50%, 40%)
 / erase = true(128,128,128)
-/ items = ("Please relax for two minutes.
+/ items = ("Please relax for 15 seconds.
 Your spaceship is traveling to a new planet.")
 </text>
 
